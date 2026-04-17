@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Playwright
+.playwright-mcp/
+playwright/.cache/
+
+# Obsidian (user-specific state)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Captured assets (images can be heavy; opt-in commit)
+raw/research/**/assets/
+
+# OS
+.DS_Store
+Thumbs.db
