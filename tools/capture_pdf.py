@@ -44,7 +44,7 @@ def capture(src: str, out_dir: Path, slug: str | None, engine: str, max_pages: i
         "captured_on": today_iso(),
         "capture_method": "pdf",
         "engine": engine,
-        "assets_dir": "./assets" if assets_dir.exists() and any(assets_dir.iterdir()) else None,
+        "assets_dir": "./assets" if assets_dir.exists() and next(assets_dir.iterdir(), None) is not None else None,
     })
     out_path = out_dir / filename
     out_path.write_text(fm + body_md, encoding="utf-8")
@@ -114,6 +114,8 @@ def _save_images(images: dict, assets_dir: Path) -> None:
     assets_dir.mkdir(parents=True, exist_ok=True)
     for name, img in images.items():
         path = assets_dir / name
+        if not path.suffix:
+            path = path.with_suffix(".png")
         if hasattr(img, "save"):
             img.save(path)
         else:
