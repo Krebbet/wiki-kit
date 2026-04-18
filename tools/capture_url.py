@@ -35,7 +35,7 @@ def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
         "title": title or "(untitled)",
         "captured_on": today_iso(),
         "capture_method": "url",
-        "assets_dir": "./assets" if assets_dir.exists() else None,
+        "assets_dir": "./assets" if assets_dir.exists() and any(assets_dir.iterdir()) else None,
     })
     out_path = out_dir / filename
     out_path.write_text(fm + body_md)
@@ -72,7 +72,7 @@ def _extract_with_playwright(url: str) -> tuple[str | None, str]:
 
 
 def _main_content_html(html: str) -> str:
-    for tag in ("<article", "<main", '<div role="main"'):
+    for tag in ("<article", "<main"):
         m = re.search(rf"{tag}[^>]*>", html)
         if m:
             start = m.start()
@@ -94,7 +94,7 @@ def _rewrite_images(body: str, assets_dir: Path) -> str:
             if filename is None:
                 return m.group(0)
             return f"![{alt}](./assets/{filename})"
-        return re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", _replace, body)
+        return re.sub(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)', _replace, body)
 
 
 def main(argv: list[str] | None = None) -> int:

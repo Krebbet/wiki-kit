@@ -32,12 +32,21 @@ def next_numbered_filename(out_dir: Path, slug: str) -> str:
 
 
 def write_frontmatter(fields: dict[str, Any]) -> str:
-    """Render a YAML frontmatter block (trailing blank line included)."""
+    """Render a YAML frontmatter block (trailing blank line included).
+
+    String values are double-quoted with `"` and `\\` escaped so that values
+    containing `:` or `"` produce valid YAML. None values are skipped.
+    Non-string values pass through unmodified.
+    """
     lines = ["---"]
     for k, v in fields.items():
         if v is None:
             continue
-        lines.append(f"{k}: {v}")
+        if isinstance(v, str):
+            escaped = v.replace("\\", "\\\\").replace('"', '\\"')
+            lines.append(f'{k}: "{escaped}"')
+        else:
+            lines.append(f"{k}: {v}")
     lines.append("---")
     lines.append("")
     return "\n".join(lines) + "\n"
