@@ -18,6 +18,8 @@ claude
 
 Then inside Claude Code: `/bootstrap`
 
+`/bootstrap` interviews you about your domain, tailors the schema and the four operational commands, then **deletes itself** so you don't accidentally re-run it. (To redo bootstrap: `git restore .claude/commands/bootstrap.md`.)
+
 ## Repo tour
 
 - `llm-wiki.md` — the pattern this kit instantiates (read this to understand the philosophy).

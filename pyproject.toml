@@ -11,8 +11,9 @@ packages = [{ include = "tools" }]
 python = "^3.10"
 trafilatura = "^1.12"
 markdownify = "^0.13"
+beautifulsoup4 = "^4.12"      # used directly by capture_url for main-content extraction
 playwright = "^1.47"
-marker-pdf = "*"              # pin loose; marker API has evolved across minor versions
+marker-pdf = ">=1.0,<3"       # loose lower bound; marker API has evolved across minor versions
 pymupdf = "^1.24"             # explicit; used directly for page count
 pymupdf4llm = "^0.0.17"
 yt-dlp = "^2024.10"
