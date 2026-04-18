@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -68,11 +69,22 @@ def download_asset(url: str, assets_dir: Path, *, client: httpx.Client | None = 
         if not target.exists():
             target.write_bytes(data)
         return filename
-    except Exception:
+    except Exception as e:
+        print(f"download_asset failed for {url}: {e}", file=sys.stderr)
         return None
     finally:
         if own_client:
             client.close()
+
+
+_CONTENT_TYPE_EXTS: list[tuple[str, str]] = [
+    ("png", ".png"),
+    ("jpeg", ".jpg"),
+    ("jpg", ".jpg"),
+    ("gif", ".gif"),
+    ("webp", ".webp"),
+    ("svg", ".svg"),
+]
 
 
 def _guess_ext(url: str, content_type: str) -> str:
@@ -80,11 +92,9 @@ def _guess_ext(url: str, content_type: str) -> str:
     m = re.search(r"\.([a-zA-Z0-9]{2,4})(?:\?|$)", url)
     if m:
         return f".{m.group(1).lower()}"
-    if "png" in content_type: return ".png"
-    if "jpeg" in content_type or "jpg" in content_type: return ".jpg"
-    if "gif" in content_type: return ".gif"
-    if "webp" in content_type: return ".webp"
-    if "svg" in content_type: return ".svg"
+    for token, ext in _CONTENT_TYPE_EXTS:
+        if token in content_type:
+            return ext
     return ".bin"
 
 

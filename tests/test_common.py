@@ -89,6 +89,19 @@ def _make_mock_client(content: bytes, content_type: str = "image/png") -> MagicM
     return client
 
 
+def test_download_asset_happy_path_writes_file():
+    with tempfile.TemporaryDirectory() as d:
+        assets_dir = Path(d) / "assets"
+        client = _make_mock_client(b"png-content", "image/png")
+        result = download_asset("https://example.com/foo.png", assets_dir, client=client)
+        assert result is not None
+        assert result.endswith(".png")
+        target = assets_dir / result
+        assert target.exists()
+        assert target.read_bytes() == b"png-content"
+        client.get.assert_called_once_with("https://example.com/foo.png")
+
+
 def test_download_asset_dedupes_same_content():
     with tempfile.TemporaryDirectory() as d:
         assets_dir = Path(d) / "assets"
@@ -100,6 +113,12 @@ def test_download_asset_dedupes_same_content():
         files = list(assets_dir.iterdir())
         assert len(files) == 1
         assert files[0].read_bytes() == b"image-bytes-here"
+        # Both calls hit the network (dedupe is content-hash based, not URL based).
+        # The dedupe property under test is "no second write," which we verify by
+        # asserting only one file exists in the assets dir.
+        assert client.get.call_count == 2
+        target = assets_dir / f1
+        assert target.exists()
 
 
 def test_download_asset_returns_none_on_http_failure():
@@ -122,8 +141,28 @@ def test_guess_ext_from_url_extension():
     assert _guess_ext("https://example.com/foo.PNG?v=1", "") == ".png"
 
 
+def test_guess_ext_from_content_type_png():
+    assert _guess_ext("https://example.com/image", "image/png") == ".png"
+
+
 def test_guess_ext_from_content_type_jpeg():
     assert _guess_ext("https://example.com/image", "image/jpeg") == ".jpg"
+
+
+def test_guess_ext_from_content_type_jpg():
+    assert _guess_ext("https://example.com/image", "image/jpg") == ".jpg"
+
+
+def test_guess_ext_from_content_type_gif():
+    assert _guess_ext("https://example.com/image", "image/gif") == ".gif"
+
+
+def test_guess_ext_from_content_type_webp():
+    assert _guess_ext("https://example.com/image", "image/webp") == ".webp"
+
+
+def test_guess_ext_from_content_type_svg():
+    assert _guess_ext("https://example.com/image", "image/svg+xml") == ".svg"
 
 
 def test_guess_ext_unknown_returns_bin():

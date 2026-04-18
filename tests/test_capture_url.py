@@ -22,3 +22,4 @@ def test_capture_url_smoke():
         assert content.startswith("---\n")
         assert "url: https://example.com" in content
         assert "capture_method: url" in content
+        assert "Example Domain" in content

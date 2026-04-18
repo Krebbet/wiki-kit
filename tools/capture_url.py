@@ -38,7 +38,7 @@ def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
         "assets_dir": "./assets" if assets_dir.exists() and any(assets_dir.iterdir()) else None,
     })
     out_path = out_dir / filename
-    out_path.write_text(fm + body_md)
+    out_path.write_text(fm + body_md, encoding="utf-8")
     return out_path
 
 
@@ -68,6 +68,7 @@ def _extract_with_playwright(url: str) -> tuple[str | None, str]:
         browser.close()
     body_html = _main_content_html(html)
     body_md = md(body_html, heading_style="ATX", strip=["script", "style"])
+    title = title or None
     return title, body_md
 
 
