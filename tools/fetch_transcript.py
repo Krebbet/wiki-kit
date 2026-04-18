@@ -71,10 +71,13 @@ _TIMESTAMP_RE = re.compile(r"^(\d{2}):(\d{2}):(\d{2})\.\d+ --> ")
 
 
 def _vtt_to_markdown(vtt_path: Path, timestamp_every: int) -> str:
+    # TODO: YouTube auto-captions emit rolling cues where each new cue restates
+    # the tail of the previous one. We don't dedupe yet, so transcripts are
+    # ~2-3x longer than necessary. Tracked for a follow-up.
     lines = vtt_path.read_text(encoding="utf-8").splitlines()
-    current_start: int | None = None
     last_stamp_emitted: int = -timestamp_every  # ensures first stamp at 0
-    out: list[str] = []
+    paragraphs: list[str] = []  # each item is a paragraph; joined with \n\n
+    current_buf: list[str] = []  # text accumulating into the current paragraph
     i = 0
     while i < len(lines):
         line = lines[i]
@@ -91,13 +94,17 @@ def _vtt_to_markdown(vtt_path: Path, timestamp_every: int) -> str:
             if not text:
                 continue
             if current_start - last_stamp_emitted >= timestamp_every:
-                out.append(f"\n**[{hh:02d}:{mm:02d}:{ss:02d}]** {text}")
+                if current_buf:
+                    paragraphs.append(" ".join(current_buf))
+                current_buf = [f"**[{hh:02d}:{mm:02d}:{ss:02d}]** {text}"]
                 last_stamp_emitted = current_start
             else:
-                out.append(text)
+                current_buf.append(text)
         else:
             i += 1
-    return " ".join(out).strip()
+    if current_buf:
+        paragraphs.append(" ".join(current_buf))
+    return "\n\n".join(paragraphs).strip()
 
 
 def main(argv: list[str] | None = None) -> int:
