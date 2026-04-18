@@ -6,13 +6,13 @@ Perform a health check of the wiki.
 
 1. **Read all wiki pages** — glob `wiki/**/*.md` and read each file.
 
-2. **Check for orphan pages** — pages with no inbound `[[wiki-link]]` references. `index.md`, `CLAUDE.md`, and tracking files are exempt.
+2. **Check for orphan pages** — pages with no inbound `[[wiki-link]]` references. `index.md`, `CLAUDE.md`, `revisions.md`, and `log.md` are exempt.
 
 3. **Check for broken links** — `[[wiki-link]]` references pointing to pages that don't exist.
 
 4. **Check for missing cross-references** — concepts mentioned in body text that have their own page but aren't linked on first mention.
 
-5. **Check for contradictions** — statements on one page that conflict with statements on another. Pay attention to pages that cite the same raw source.
+5. **Check for conflicts** — statements on one page that conflict with statements on another. Pay attention to pages that cite the same raw source. Cross-reference any open files in `wiki/conflicts/`.
 
 6. **Check for coverage gaps** — important concepts discussed in `raw/` source documents that have no wiki page or are only mentioned in passing.
 
@@ -43,7 +43,7 @@ Produce a structured lint report:
 ### Format Issues
 - ...
 
-### Contradictions
+### Conflicts
 - ...
 
 ### Coverage Gaps
