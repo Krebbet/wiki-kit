@@ -20,6 +20,6 @@ def test_capture_url_smoke():
         assert out_path.exists()
         content = out_path.read_text()
         assert content.startswith("---\n")
-        assert "url: https://example.com" in content
-        assert "capture_method: url" in content
+        assert 'url: "https://example.com"' in content
+        assert 'capture_method: "url"' in content
         assert "Example Domain" in content
