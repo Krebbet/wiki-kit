@@ -132,8 +132,8 @@ def test_download_asset_returns_none_on_http_failure():
         client.get.return_value = response
         result = download_asset("https://example.com/missing.png", assets_dir, client=client)
         assert result is None
-        # No file written. Directory may exist (created up-front), but should be empty.
-        assert not any(assets_dir.iterdir())
+        # mkdir is deferred until after successful fetch, so failures leave no dir.
+        assert not assets_dir.exists()
 
 
 def test_guess_ext_from_url_extension():

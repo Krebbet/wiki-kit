@@ -73,14 +73,13 @@ def _extract_with_playwright(url: str) -> tuple[str | None, str]:
 
 
 def _main_content_html(html: str) -> str:
-    for tag in ("<article", "<main"):
-        m = re.search(rf"{tag}[^>]*>", html)
-        if m:
-            start = m.start()
-            end_tag = tag[1:].split()[0].rstrip(">")
-            close_m = re.search(rf"</{end_tag}\s*>", html[start:])
-            if close_m:
-                return html[start : start + close_m.end()]
+    """Extract the outermost <article> or <main> element. Falls back to full HTML."""
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(html, "html.parser")
+    for tag_name in ("article", "main"):
+        el = soup.find(tag_name)
+        if el:
+            return str(el)
     return html
 
 

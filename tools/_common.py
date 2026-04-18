@@ -54,8 +54,10 @@ def write_frontmatter(fields: dict[str, Any]) -> str:
 
 
 def download_asset(url: str, assets_dir: Path, *, client: httpx.Client | None = None) -> str | None:
-    """Download a binary asset to assets_dir, dedupe by content hash, return relative filename or None on failure."""
-    assets_dir.mkdir(parents=True, exist_ok=True)
+    """Download a binary asset to assets_dir, dedupe by content hash, return relative filename or None on failure.
+
+    Defers mkdir until after a successful fetch so all-failed captures leave no empty assets/ dir.
+    """
     own_client = client is None
     client = client or httpx.Client(follow_redirects=True, timeout=20.0)
     try:
@@ -65,6 +67,7 @@ def download_asset(url: str, assets_dir: Path, *, client: httpx.Client | None = 
         digest = hashlib.sha256(data).hexdigest()[:16]
         ext = _guess_ext(url, r.headers.get("content-type", ""))
         filename = f"{digest}{ext}"
+        assets_dir.mkdir(parents=True, exist_ok=True)
         target = assets_dir / filename
         if not target.exists():
             target.write_bytes(data)
