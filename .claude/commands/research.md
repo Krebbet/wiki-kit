@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki are:** (a) papers from established ML labs (Anthropic, DeepMind, OpenAI, Meta FAIR, Google Brain/Research, MILA, etc.) and well-cited authors; (b) peer-reviewed venues (NeurIPS, ICML, ICLR, ACL, EMNLP) or ArXiv preprints with strong follow-on citations; (c) primary methodology papers over surveys when both exist — treat surveys as roadmaps, not ground truth. When citing an ArXiv paper, capture both v1 and the latest version if claims diverge between revisions. Avoid: marketing posts, vague claims without methodology, benchmark cherry-picks, blog summaries of papers (capture the paper itself).
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -50,7 +50,12 @@ $ARGUMENTS — the topic to research.
    Each tool prints the written file path on success and exits non-zero with a stderr message on failure.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Source-type guidance for this wiki:**
+   - **ArXiv abstract pages or PDF URLs** → use `capture_pdf.py` with `--engine marker` (preserves figures and equations, which are usually load-bearing).
+   - **Lab blog posts and web articles** → use `capture_url.py`. Add `--js` for sites that render content client-side (most modern lab blogs).
+   - **YouTube conference talks** → use `fetch_transcript.py`. Note in the wiki page that the source is a talk transcript (timestamps, no figures).
+   - **Prefer arXiv over journal paywalls** when both exist. If only the paywalled version is canonical, still capture the arXiv preprint and note the divergence.
+   - **Prefer arXiv abs page (HTML) for the bibliographic record**, but always capture the PDF for the actual content.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.

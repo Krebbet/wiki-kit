@@ -21,7 +21,12 @@ Perform a health check of the wiki.
 8. **Check page format compliance** — every page must have: `# Title`, summary paragraph, `## Source` section, `## Related` section with `[[wiki-link]]`s.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-9. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+9. **Domain-specific checks** — research-wiki for LLM fine-tuning method development:
+   a. **Paper identifier present** — every page citing a paper has the ArXiv ID (e.g., `arXiv:2401.12345`) or DOI in its `## Source` section.
+   b. **Conceptual cross-links** — method pages link to at least one related-method page, not only papers they cite. The conceptual graph matters as much as the citation graph.
+   c. **Quantitative claims cite figures** — pages making numeric claims ("X% improvement", "Y× more sample-efficient") cite the specific table or figure number from the source.
+   d. **Research-page schema** — pages under `wiki/research/` have `## Method` and `## Claims` sections in addition to the standard `## Source` and `## Related`.
+   e. **Recency check for fast-moving topics** — flag pages on RL, LLM training, or post-training methods whose only sources are older than 5 years. (Foundational papers older than that are fine, but the page should also reference recent follow-ups.)
 <!-- /DOMAIN-SLOT -->
 
 ## Output

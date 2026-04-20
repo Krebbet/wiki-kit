@@ -15,7 +15,14 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
    - What is new or different from what the wiki already covers
    - Conflicts with existing wiki positions
    <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   - **Method:** what algorithm, architecture, or training procedure is proposed? Pseudocode if available.
+   - **Claim:** what does it improve over what baseline, by how much, on which benchmarks?
+   - **Sample efficiency:** how much data does it need? Is single-sample or few-shot training demonstrated?
+   - **Concept-learning evidence:** does it argue for concept acquisition (generalisation, compositionality, transfer) versus pattern matching? What's the evidence?
+   - **RL connection:** if RL-based, what's the reward signal, exploration strategy, on/off-policy choice?
+   - **Failure modes / limitations** the authors acknowledge (and any unstated ones you notice).
+   - **Key figures and equations** worth referencing later — note figure numbers and what they show.
+   - **Cited prior work** that looks foundational — these are leads for follow-up `/research` runs.
    <!-- /DOMAIN-SLOT -->
 
 3. **Wait for user input** — Let the user guide emphasis before writing. They may want to highlight specific aspects or skip others.
