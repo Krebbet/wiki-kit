@@ -1,10 +1,10 @@
 ---
-url: "https://arxiv.org/pdf/2504.20571"
+url: "file:///home/david/code/wiki-kit/raw/research/single-sample-llm-learning/pdfs/01-rl-one-training-example.pdf"
 title: "Reinforcement Learning for Reasoning in Large Language Models with *One* Training Example"
-captured_on: "2026-04-19"
+captured_on: "2026-04-20"
 capture_method: "pdf"
 engine: "marker"
-assets_dir: "./assets"
+assets_dir: "./assets/01-rl-one-training-example"
 ---
 
 # Reinforcement Learning for Reasoning in Large Language Models with *One* Training Example
@@ -28,7 +28,7 @@ Recently, significant progress has been achieved in enhancing the reasoning capa
 
 <sup>39</sup>th Conference on Neural Information Processing Systems (NeurIPS 2025).
 
-<span id="page-1-0"></span>![](_page_1_Figure_0.jpeg)
+<span id="page-1-0"></span>![](./assets/01-rl-one-training-example/_page_1_Figure_0.jpeg)
 
 Figure 1: RLVR with 1 example (green) can perform as well as using datasets with thousands of examples (blue). Left/Right corresponds to MATH500/Average performance on 6 mathematical reasoning benchmarks (MATH500, AIME24, AMC23, Minerva Math, OlympiadBench, and AIME25). Base model is Qwen2.5-Math-1.5B. π<sup>1</sup> and π<sup>13</sup> are examples defined by Eqn. [2](#page-2-0) and detailed in Tab. [2,](#page-4-0) and they are from the 1.2k DeepScalerR subset (DSR-sub). Setup details are in Sec. [3.1.](#page-3-0) We find that RLVR with 1 example {π13} (35.7%) performs close to that with 1.2k DSR-sub (35.9%), and RLVR with 2 examples {π1, π13} (36.6%) even performs better than RLVR with DSR-sub and as well as using 7.5k MATH train dataset (36.7%). Format reward (gold) (Appendix [C.2.3\)](#page-26-0) serves as a baseline for format correction. Detailed results are in Appendix [C.1.1.](#page-24-0) Additional results for non-mathematical reasoning tasks are in Tab. [1.](#page-2-1)
 
@@ -127,7 +127,7 @@ First, we inspect the examples that produce such strong results. Tab. [2](#page-
 
 #### <span id="page-4-5"></span>3.2.2 Post-saturation Generalization: Generalization After Training Accuracy Saturation
 
-<span id="page-4-3"></span>![](_page_4_Figure_4.jpeg)
+<span id="page-4-3"></span>![](./assets/01-rl-one-training-example/_page_4_Figure_4.jpeg)
 
 Figure 2: Post-saturation generalization in 1-shot RLVR. The training accuracy of RLVR with π1(Left) and π13(Middle) saturates before step 100, but their test performance continues improving. On the other hand, the training accuracy for RLVR with 1.2k DSR-sub dataset (Right) still has not saturated after 2000 steps, but there is no significant improvement on test tasks after step 1000.
 
@@ -207,7 +207,7 @@ In this section, we show another empirical observation of 1-shot RLVR: it can in
 | {π1, π2}      | 2    | 1580 | Alg./N.T. | 89.5 63.2 61.0 | 60.8 | 82.3 | 74.4 | 58.9 | 72.8                                                         | 15.0 |
 | {π1, π13}     | 2    | 2000 | Alg./Geo. | 92.7 71.1 58.5 | 57.7 | 79.0 | 84.2 | 71.4 | 76.0                                                         | 17.9 |
 
-<span id="page-6-1"></span>![](_page_6_Figure_2.jpeg)
+<span id="page-6-1"></span>![](./assets/01-rl-one-training-example/_page_6_Figure_2.jpeg)
 
 Figure 4: (Left, Middle) Average response length on training data and entropy loss. After around 1300/1700 steps, the average response length of 1-shot RLVR with π1/π<sup>13</sup> significantly increases, corresponding to that model tries to solve the single problem with longer CoT reasoning in a more diverse way (Fig. [3,](#page-5-0) step 1300), which is also confirmed by the increase of entropy loss. These may also indicate the gradual overfitting (Fig. [3,](#page-5-0) step 1860). (Right) Number of reflection words detected in evaluation tasks. The number of reflection words ("rethink", "recheck", and "recalculate") appearing in evaluation tasks increases in 1-shot RLVR with π1/π13, especially after around 1250 steps, matching the increase of response length. On the other hand, RLVR with DSR-sub contains fewer reflection words as the training progresses.
 
@@ -260,7 +260,7 @@ We further investigate whether 1(few)-shot RLVR is feasible for other models and
 
 In this section, we concentrate on exploring the potential mechanisms that allow RLVR to work with only one or a few examples. We hope the following analyses can provide some insight for future works. Additional experiments and discussions about the format correction (Appendix [C.2.3\)](#page-26-0), prompt modification (Appendix [C.2.5\)](#page-30-0) and the reasoning capabilities of base models (Appendix [D\)](#page-31-0) are included in supplementary materials.
 
-<span id="page-8-2"></span>![](_page_8_Figure_3.jpeg)
+<span id="page-8-2"></span>![](./assets/01-rl-one-training-example/_page_8_Figure_3.jpeg)
 
 ## <span id="page-8-0"></span>4.1 Ablation Study:
 
@@ -268,7 +268,7 @@ In this section, we concentrate on exploring the potential mechanisms that allow
 
 As discussed in Sec. [3.2.2,](#page-4-5) 1-shot RLVR shows the property of post-saturation generalization. This phenomenon is similar to "grokking" [\[36,](#page-12-4) [37\]](#page-12-5), which shows that neural networks first memorize/overfit the training data but still perform poorly on
 
-![](_page_8_Figure_7.jpeg)
+![](./assets/01-rl-one-training-example/_page_8_Figure_7.jpeg)
 
 the test set, while suddenly improve generalization after many training steps. A natural question is raised: *Is the performance gain from 1-shot RLVR related to the "grokking" phenomenon?* To answer this question, noting "grokking" is strongly affected by regularization [\[36,](#page-12-4) [38](#page-12-6)[–41\]](#page-12-7) like weight decay, we conduct an ablation study by removing or changing the components of the loss function one by one to see how each of them contributes to the improvement.
 
@@ -618,27 +618,27 @@ Our empirical investigation demonstrates that modifying the torch\_dtype paramet
 
 <span id="page-21-0"></span>Table 11: 1(few)-shot RL still works well for different model with different scales. Here we record model's best performance on each benchmark independently.
 
-<span id="page-21-1"></span>![](_page_21_Figure_2.jpeg)
+<span id="page-21-1"></span>![](./assets/01-rl-one-training-example/_page_21_Figure_2.jpeg)
 
 Figure 6: Different data have large difference on improving MATH500 accuracy, but they all improve various tasks rather than their own task. From left to right correspond to 1-shot RL on π1, π11, π13, or π16. Details are in Tab. [3.](#page-6-0)
 
-<span id="page-22-0"></span>![](_page_22_Figure_0.jpeg)
+<span id="page-22-0"></span>![](./assets/01-rl-one-training-example/_page_22_Figure_0.jpeg)
 
 Figure 7: Detailed results for RLVR on Qwen2.5-Math-1.5B.
 
-<span id="page-22-1"></span>![](_page_22_Figure_2.jpeg)
+<span id="page-22-1"></span>![](./assets/01-rl-one-training-example/_page_22_Figure_2.jpeg)
 
 Figure 8: Detailed results for RLVR on Qwen2.5-Math-7B.
 
-<span id="page-23-1"></span>![](_page_23_Figure_0.jpeg)
+<span id="page-23-1"></span>![](./assets/01-rl-one-training-example/_page_23_Figure_0.jpeg)
 
 Figure 9: Detailed results for RLVR on Llama-3.2-3B-Instruct.
 
-<span id="page-23-0"></span>![](_page_23_Figure_2.jpeg)
+<span id="page-23-0"></span>![](./assets/01-rl-one-training-example/_page_23_Figure_2.jpeg)
 
 Figure 10: Detailed results for RLVR on Qwen2.5-1.5B. The gap between 1-shot RLVR and full-set RLVR is larger, but the 1-shot RLVR still improves a lot from initial model and 16-shot RLVR behaves close to full-set RLVR.
 
-<span id="page-24-7"></span>![](_page_24_Figure_0.jpeg)
+<span id="page-24-7"></span>![](./assets/01-rl-one-training-example/_page_24_Figure_0.jpeg)
 
 Figure 11: Detailed results for RLVR on Qwen2.5-Math-1.5B-Instruct. Interestingly, 1-shot RLVR is more stable than full-set RLVR here.
 
@@ -709,7 +709,7 @@ In Fig. [12,](#page-26-2) we can see the test curves for ablation study (Sec. [4
 
 Detailed results of entropy-loss-only training. As in Sec. [4.2,](#page-9-1) we show the full results of entropyloss-only training in Tab. [13.](#page-26-1) Training with only entropy loss for a few steps can improve model performance on all math benchmarks except AIME2025. The test curves are in Fig. [12.](#page-26-2) Notice that the improvement of entropy-loss-only training on Qwen2.5-Math-1.5B is similar to that of RLVR with
 
-<span id="page-26-2"></span>![](_page_26_Figure_0.jpeg)
+<span id="page-26-2"></span>![](./assets/01-rl-one-training-example/_page_26_Figure_0.jpeg)
 
 Figure 12: Test curves for ablation study. Here we consider adding policy gradient loss (PG), weight decay (WD), KL divergence loss (KL) and entropy loss (Ent) one by one for 1-shot RLVR training on Qwen2.5-Math-1.5B (Sec. [4.1\)](#page-8-0). Especially for only-entropy training, the test performance quickly achieves 0 since too large entropy will result in random output, but before that, the model gets significant improvement from the first several steps, which is close to the results of format-reward RLVR training (Appendix [C.2.3\)](#page-26-0). More discussions are in Appendix [C.2.3.](#page-26-0)
 
@@ -740,11 +740,11 @@ To investigate it, we consider three methods:
 
 Notably, we can find that (1) Applying format reward to full-set RLVR and 1-shot RLVR behave very similarly. (2) applying only format reward is already capable of improving model performance
 
-<span id="page-27-1"></span>![](_page_27_Figure_0.jpeg)
+<span id="page-27-1"></span>![](./assets/01-rl-one-training-example/_page_27_Figure_0.jpeg)
 
 Figure 13: Comparison between outcome reward and format reward for full-set RLVR with 1.2k DSR-sub on Qwen2.5-Math-1.5B.
 
-<span id="page-27-0"></span>![](_page_27_Figure_2.jpeg)
+<span id="page-27-0"></span>![](./assets/01-rl-one-training-example/_page_27_Figure_2.jpeg)
 
 Figure 14: Comparison between outcome reward and format reward for 1-shot RLVR with π<sup>1</sup> on Qwen2.5-Math-1.5B.
 
@@ -760,7 +760,7 @@ significantly (e.g., about 29% improvement on MATH500 and about 11% gain on aver
 
 Interestingly, we also note that the best performance of format-reward RLVR on MATH500 and AIME24 are close to that for 1-shot RLVR with relatively worse examples, for example, π<sup>7</sup> and π<sup>11</sup> in Tab. [3.](#page-6-0) This may imply that *1-shot RLVR with outcome reward can at least work as well as format-reward RLVR, but with proper examples that can better incentivize the reasoning capability of the model, 1-shot RLVR with outcome reward can bring additional non-trivial improvement*. Appendix [C.2.5](#page-30-0) provides a prompt π ′ 1 , which uses a sub-question of π1, as an example to support our claim here.
 
-<span id="page-28-1"></span>![](_page_28_Figure_4.jpeg)
+<span id="page-28-1"></span>![](./assets/01-rl-one-training-example/_page_28_Figure_4.jpeg)
 
 Figure 15: Relation between the number of \boxed{} and test accuracy. We can see that they have a strong positive correlation. However, after the number of \boxed{} enters a plateau, the evaluation results on some evaluation tasks continue improving (like Minerva Math, OlympiadBench and MATH500).
 
@@ -869,7 +869,7 @@ In Tab. [20,](#page-31-5) we report the pass@8 results on the evaluation tasks. 
 
 Due to the limit of computational resources, we haven't tried larger models like Qwen2.5-32B training currently. But in general, a lot of RLVR works are conducted on 1.5B and 7B models, and they already achieve impressive improvement on some challenging math benchmarks like OlympiadBench, so our experiments are still insightful for RLVR topics. Another limitation of our work is that we mainly focus on the math domain, but haven't tried 1(few)-shot RLVR on other verifiable domains like coding. But we also emphasize that all math-related experiments and conclusions in our paper are logically self-contained and clearly recorded, to ensure clarity and avoid confusion for readers. And we mainly focus on analyzing this new phenomenon itself, which already brings a lot of novel observations (e.g., cross-category generalization, post-saturation generalization, and more frequent self-reflection in 1-shot RLVR, etc.). We leave the few-shot RLVR on other scenarios for future work.
 
-<span id="page-32-3"></span>![](_page_32_Figure_0.jpeg)
+<span id="page-32-3"></span>![](./assets/01-rl-one-training-example/_page_32_Figure_0.jpeg)
 
 Figure 16: The norm of policy gradient loss for 1-shot RLVR (π1) on Qwen2.5-Math-1.5B.
 

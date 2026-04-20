@@ -40,4 +40,14 @@ Running log of what works and what doesn't, both for this project and for our co
 **Implication:** Long-running multi-agent workflows should leave a checkpoint file *as a matter of routine*, not just when a reboot is imminent. Anything that takes >30 min on CPU is worth a checkpoint snapshot every ~15 min so resume is trivial. Candidate convention: `STATE.md` at repo root, written by long-running orchestrator after each major phase.
 **Status:** open — propose for project CLAUDE.md once we see how resume goes
 
+### 2026-04-20 — fidelity audit should be a wiki-kit primitive
+**Scope:** both (project + interaction)
+**Observation:** Caught a 33% image-loss bug in capture_pdf only because the user explicitly asked me to "check that you are capturing the raw materials with fidelity." Without that prompt, synthesis would have proceeded against silently-corrupted captures. The fix to capture_pdf is in (`tools/capture_pdf.py` on `single-shot-training-wiki`), but the deeper issue is that the kit has no automated "did the capture actually work end-to-end?" check.
+**Implication:** Two CLAUDE.md candidates:
+1. **Project CLAUDE.md (this wiki):** add a "Post-capture verification" step to the wiki assistant's session protocol — after any `/research` or `/ingest`, run a fidelity check before declaring success.
+2. **Master CLAUDE.md:** add a general principle — "When orchestrating data pipelines that produce large numbers of derived files, verify a sample for end-to-end correctness (not just exit code = 0) before downstream work." This applies far beyond wiki-kit.
+Also: build `tools/audit_captures.py` and wire it into `/lint`. See FEEDBACK.md for the spec.
+**Status:** project CLAUDE.md change should be made in this branch; master CLAUDE.md needs user sign-off before edit.
+
+
 

@@ -19,6 +19,26 @@ Scratchpad for friction points, bugs, and improvement ideas surfaced while using
 
 <!-- Add entries below, newest first. -->
 
+### 2026-04-20 — capture_pdf has TWO image-fidelity bugs (FIXED on this branch)
+**Where:** `tools/capture_pdf.py` (pre-fix); fix applied on `single-shot-training-wiki` branch.
+**What happened:** Two compounding bugs caused ~33% image loss across a 30-paper batch:
+1. **Broken image refs.** Marker emits `![](_page_X.jpeg)` with bare filenames. The tool saved images to `<out>/assets/`, so the bare ref `_page_X.jpeg` resolves to `<out>/_page_X.jpeg` — wrong dir. Markdown viewers couldn't render any image.
+2. **Cross-paper collision.** All papers in the same `<out>` shared one `assets/` dir. Marker's `_page_N_TYPE_M.jpeg` naming collides across papers (most papers have a `_page_0_Picture_0.jpeg`). Later captures silently overwrote earlier ones, so even when a ref resolved, it might point to the *wrong paper's* image.
+**Diagnosis:** counted 220 unique image refs across 22 captured MDs vs 148 actual files in `assets/` — 72 broken refs from collisions, plus 100% of refs broken by path mismatch.
+**Fix:** namespaced asset dir per slug (`assets/<slug>/...`) and added `_rewrite_image_refs` regex that prefixes bare filenames with the namespaced path. Frontmatter `assets_dir` now reflects the per-slug path.
+**Severity:** blocker for figure-bearing wikis (which is most research wikis).
+**Notes:** This fix should be backported to `main`. Should also be regression-tested with a multi-paper integration test before next release.
+
+### 2026-04-20 — wiki-kit needs a built-in capture-fidelity audit
+**Where:** workflow / `/lint` or new tool
+**What happened:** The bugs above went undetected because nothing in the workflow systematically checks that markdown image refs resolve to actual files. The user surfaced this by asking. Future users won't necessarily know to ask.
+**Expected / wanted:** Build a fidelity audit into the kit so every wiki gets the check by default. Concrete proposals:
+- A `tools/audit_captures.py` that, for each MD under `raw/`, (a) parses image refs, (b) verifies each resolves to a real file relative to the MD, (c) verifies the source PDF exists alongside (in `pdfs/` or paired path), (d) compares MD line count vs PDF page count for sanity (flag MDs <10 lines per page as suspicious), (e) reports collisions where the same image filename is referenced by multiple MDs.
+- `/lint` should call this for any topic dir present under `raw/`, not just wiki pages.
+- Could also run automatically as a post-capture hook from `/research`.
+**Severity:** structural improvement (proposed)
+**Notes:** Per the user: "the fidelity check should be something we want to implement for all wiki-start ups". Strong candidate for `main` branch + bake into the lint command's domain-agnostic checks.
+
 ### 2026-04-19 — capture_pdf doesn't preserve source PDF
 **Where:** `tools/capture_pdf.py`
 **What happened:** The tool downloads a remote PDF, converts to markdown via marker/pymupdf, and discards the source. The user explicitly wants raw verbatim PDFs kept alongside the markdown extraction (markdown + extracted images is a derived view, not a replacement for the source).

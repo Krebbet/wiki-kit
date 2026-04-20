@@ -1,10 +1,10 @@
 ---
-url: "https://arxiv.org/pdf/2506.03295"
+url: "file:///home/david/code/wiki-kit/raw/research/single-sample-llm-learning/pdfs/02-critique-ft-one-problem.pdf"
 title: "Unleashing the Reasoning Potential of Pre-trained LLMs by Critique Fine-Tuning on One Problem"
-captured_on: "2026-04-19"
+captured_on: "2026-04-20"
 capture_method: "pdf"
 engine: "marker"
-assets_dir: "./assets"
+assets_dir: "./assets/02-critique-ft-one-problem"
 ---
 
 # Unleashing the Reasoning Potential of Pre-trained LLMs by Critique Fine-Tuning on One Problem
@@ -29,7 +29,7 @@ Another popular post-training method is supervised fine-tuning (SFT). While SFT 
 
 Recently, Critique Fine-Tuning (CFT) has emerged as a promising alternative [\(Wang et al.](#page-9-4) , [2025b\)](#page-9-4). By enabling models to learn from critiques of diverse incorrect solutions, CFT can enhance the model's exposure to varied reasoning patterns and mitigates overfitting. Specifically, CFT introduces diversity by allowing teacher models to critique a
 
-<span id="page-1-0"></span>![](_page_1_Figure_0.jpeg)
+<span id="page-1-0"></span>![](./assets/02-critique-ft-one-problem/_page_1_Figure_0.jpeg)
 
 Figure 1: One-shot CFT consistently improves mathematical and logical reasoning. Left: Average accuracy (%) on six mathematical reasoning benchmarks for Qwen and Llama models, comparing base, SFT, RLVR, and CFT with only one training example. Right: In-domain accuracy (%) on three logic reasoning benchmarks (BBEH subtasks) for Qwen2.5-Math-7B. Across both domains, CFT with a single problem significantly outperforms standard supervised fine-tuning and matches or exceeds reinforcement learning with much lower compute.
 
@@ -53,7 +53,7 @@ To make post-training more efficient, researchers have explored methods that req
 
 Our work builds on this paradigm of efficient post-training but introduces critique fine-tuning (CFT) [\(Wang et al.,](#page-9-4) [2025b\)](#page-9-4) as an alternative to
 
-<span id="page-2-0"></span>![](_page_2_Figure_0.jpeg)
+<span id="page-2-0"></span>![](./assets/02-critique-ft-one-problem/_page_2_Figure_0.jpeg)
 
 Figure 2: Overview of the 1-shot CFT dataset construction and the key difference between SFT and CFT training. Top: Candidate solutions to a single math problem are generated, critiqued, and filtered to form the training set. Bottom: Comparison of training paradigms: (left) SFT supervises the model to generate the reference solution; (right) CFT trains the model to critique a candidate solution, encouraging deeper reasoning and error analysis.
 
@@ -189,7 +189,7 @@ Table 3: Comparison of performance (%) with different seed math problems on Qwen
 
 Overall, one-shot CFT is robust to the seed choice, with moderate-difficulty seeds providing the strongest learning signal.
 
-<span id="page-5-1"></span>![](_page_5_Figure_5.jpeg)
+<span id="page-5-1"></span>![](./assets/02-critique-ft-one-problem/_page_5_Figure_5.jpeg)
 
 Figure 4: Comparing Model accuracy on Math-500, v.s. the training cost. For the Qwen2.5-Math-7B trained with 1-shot RL and 1-shot CFT.
 

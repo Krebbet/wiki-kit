@@ -60,6 +60,14 @@ $ARGUMENTS — the topic to research.
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
 
+   Then run the fidelity audit on the topic directory:
+
+   ```bash
+   poetry run python -m tools.audit_captures raw/research/<topic-slug>
+   ```
+
+   The audit checks that every image ref in each captured markdown resolves to a real file, that source PDFs are paired, and that no two markdowns reference the same image (cross-paper overwrite indicator). Re-capture any paper flagged with broken refs or thin extraction before proceeding to `/ingest` — silently-corrupted captures will produce wiki pages with broken figure links.
+
 6. **Integrate via `/ingest`** — Invoke `/ingest raw/research/<topic-slug>` on the topic directory. `/ingest` reads the raw files, discusses takeaways, writes wiki pages with source-traceable claims, and updates tracking files.
 
 7. **Report.** Separate three things:

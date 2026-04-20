@@ -20,6 +20,14 @@ Perform a health check of the wiki.
 
 8. **Check page format compliance** — every page must have: `# Title`, summary paragraph, `## Source` section, `## Related` section with `[[wiki-link]]`s.
 
+9. **Audit raw capture fidelity** — for every topic directory under `raw/`, run:
+
+   ```bash
+   poetry run python -m tools.audit_captures raw/<topic-dir>
+   ```
+
+   The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
+
 <!-- DOMAIN-SLOT: domain-lint-checks -->
 9. **Domain-specific checks** — research-wiki for LLM fine-tuning method development:
    a. **Paper identifier present** — every page citing a paper has the ArXiv ID (e.g., `arXiv:2401.12345`) or DOI in its `## Source` section.
@@ -58,6 +66,9 @@ Produce a structured lint report:
 - ...
 
 ### Domain-Specific Issues
+- ...
+
+### Capture Fidelity (raw/)
 - ...
 ```
 
