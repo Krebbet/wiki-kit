@@ -7,6 +7,7 @@ Theme covering the *mechanics* of RL with verifier rewards (RLVR) for LLM reason
 - [[deepseekmath-grpo]] — GRPO, the critic-free, group-relative PPO variant; unified gradient view of SFT/RFT/DPO/PPO/GRPO.
 - [[rl-sparse-subnetwork]] — RL fine-tuning modifies only 5–30% of weights across seven algorithms; updates are sparse but full-rank; subnetwork-only retraining recovers full performance.
 - [[learning-to-think]] — L2T: episodic GRPO with a universal information-gain process reward computed via PAC-Bayes + Fisher / low-rank SVD, no external PRM.
+- [[structured-fisher-optimizer]] — Gong et al. (Microsoft, 2025). Structured FIM approximation (RACS, Alice) unifying Adam / Shampoo / grad-norm; 2× Adam speedup at LLaMA scale. Adjacent to L2T's Fisher proxy on the optimisation side, not the reward side.
 
 ## Cross-cutting themes
 
@@ -41,8 +42,9 @@ Theme covering the *mechanics* of RL with verifier rewards (RLVR) for LLM reason
 - `../../../raw/research/single-sample-llm-learning/pdfs/04-learning-to-think.pdf`
 - `../../../raw/research/single-sample-llm-learning/pdfs/05-rl-sparse-subnetwork.pdf`
 - `../../../raw/research/single-sample-llm-learning/pdfs/F-1-deepseekmath-grpo.pdf`
+- `../../../raw/research/adjacent-reward-signals/pdfs/structured-fisher-llm-optimizer.pdf`
 
 ## Related themes
 
-- [[single-sample-rl-finetuning]]
-- [[process-reward-models]]
+- [[../single-sample-rl-finetuning/_overview]]
+- [[../process-reward-models/_overview]]

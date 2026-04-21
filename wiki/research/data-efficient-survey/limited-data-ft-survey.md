@@ -100,6 +100,6 @@ Use this as the **map**, not the territory. Three concrete uses:
 
 ## Related
 
-- [[single-sample-rl-finetuning/_overview]] — single-example RL fine-tuning (the regime the survey does not reach).
-- [[meta-learning-few-shot/_overview]] — MAML / ProtoNets, the few-shot tradition the survey cites in §4.2.
-- [[self-improvement/_overview]] — STaR, SPIN, Reflexion, Self-Refine; self-bootstrapping methods this survey only partially covers.
+- [[../single-sample-rl-finetuning/_overview]] — single-example RL fine-tuning (the regime the survey does not reach).
+- [[../meta-learning-few-shot/_overview]] — MAML / ProtoNets, the few-shot tradition the survey cites in §4.2.
+- [[../self-improvement/_overview]] — STaR, SPIN, Reflexion, Self-Refine; self-bootstrapping methods this survey only partially covers.

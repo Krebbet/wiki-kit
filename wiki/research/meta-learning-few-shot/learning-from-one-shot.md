@@ -36,5 +36,5 @@ This paper is the strongest empirical case that *single-sample learning* is achi
 ## Related
 - [[maml]] — opposite philosophy: learn the prior from a meta-distribution; here, encode it by hand.
 - [[prototypical-networks]] — both rely on a similarity space + simple classifier; protonets learn the metric, this paper engineers it.
-- [[in-context-learning-theory]] — LLM in-context generalization as the "innate-prior" analogue.
-- [[test-time-training]] — alternative route to single-example adaptation in deep models.
+- [[../in-context-learning-theory/_overview]] — LLM in-context generalization as the "innate-prior" analogue.
+- [[../test-time-training/_overview]] — alternative route to single-example adaptation in deep models.

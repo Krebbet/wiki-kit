@@ -31,4 +31,4 @@ Prototypical networks epitomize the *metric-based* branch of meta-learning: inst
 ## Related
 - [[maml]] — gradient-based meta-learning counterpart; comparable accuracy, very different mechanism.
 - [[learning-from-one-shot]] — single-shot k-NN in a hand-crafted similarity space, no meta-training at all.
-- [[in-context-learning-theory]] — LLMs as implicit prototype learners over in-context support sets.
+- [[../in-context-learning-theory/_overview]] — LLMs as implicit prototype learners over in-context support sets.

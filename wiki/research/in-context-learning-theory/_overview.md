@@ -50,9 +50,9 @@ Across all four accounts the same skeleton appears: a single example exerts its 
 
 ## Related themes
 
-- [[meta-learning-few-shot]] — MAML and Prototypical Networks; the explicit-fine-tune analogue of ICL's implicit meta-learning.
-- [[test-time-training]] — Akyürek et al.'s TTT and Algorithm Distillation: hybrid of explicit weight updates and ICL, narrowing the gap this theme studies.
-- [[rlvr-mechanics]] — RL-side methods that also rely on dense per-step signal (cf. L2T's information-gain reward).
+- [[../meta-learning-few-shot/_overview]] — MAML and Prototypical Networks; the explicit-fine-tune analogue of ICL's implicit meta-learning.
+- [[../test-time-training/_overview]] — Akyürek et al.'s TTT and Algorithm Distillation: hybrid of explicit weight updates and ICL, narrowing the gap this theme studies.
+- [[../rlvr-mechanics/_overview]] — RL-side methods that also rely on dense per-step signal (cf. L2T's information-gain reward).
 
 ## Source
 

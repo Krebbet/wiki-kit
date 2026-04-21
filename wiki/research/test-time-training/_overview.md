@@ -23,7 +23,7 @@ TTT's central design choice is that adapters are *thrown away* per task. The nat
 | Single-sample fit | Direct (K=1 LOO is single-example FT) | Single trajectory, not single (x,y) | Single example → single update (RLOO etc.) |
 | Generalisation | Within-task | Across tasks from a meta-distribution | Within RL training distribution |
 
-The two papers occupy opposite corners of the (in-weights, in-context) × (gradient, gradient-free) grid that includes [[maml]] (in-weights, gradient meta-learning) and standard ICL (in-context, gradient-free, no meta-training of the algorithm).
+The two papers occupy opposite corners of the (in-weights, in-context) × (gradient, gradient-free) grid that includes [[../meta-learning-few-shot/maml]] (in-weights, gradient meta-learning) and standard ICL (in-context, gradient-free, no meta-training of the algorithm).
 
 ### Method comparison
 
@@ -39,9 +39,9 @@ The two papers occupy opposite corners of the (in-weights, in-context) × (gradi
 
 ### Exotic-learning landscape
 Relative to the rest of the project corpus:
-- **TTT** is closest to [[maml]] (per-task gradient adaptation, modern LoRA-flavoured) and to single-example RL FT ([[learning-from-one-shot]], [[rl-one-training-example]]) but framed at *inference* rather than training.
-- **AD** is closest to in-context learning theory ([[induction-heads]], [[icl-as-gradient-descent]]) — both posit the transformer as an implicit learning algorithm — but explicitly meta-trains on *learning curves* rather than relying on emergent ICL.
-- Both bypass the verifier-and-reward stack of [[rlvr-mechanics]] entirely. TTT uses supervised LM loss on demos; AD uses NLL on actions from a source algorithm that already solved the credit-assignment problem.
+- **TTT** is closest to [[../meta-learning-few-shot/maml]] (per-task gradient adaptation, modern LoRA-flavoured) and to single-example RL FT ([[../meta-learning-few-shot/learning-from-one-shot]], [[../single-sample-rl-finetuning/1-shot-rlvr]]) but framed at *inference* rather than training.
+- **AD** is closest to in-context learning theory ([[../in-context-learning-theory/induction-heads]], [[../in-context-learning-theory/icl-as-gradient-descent]]) — both posit the transformer as an implicit learning algorithm — but explicitly meta-trains on *learning curves* rather than relying on emergent ICL.
+- Both bypass the verifier-and-reward stack of [[../rlvr-mechanics/_overview]] entirely. TTT uses supervised LM loss on demos; AD uses NLL on actions from a source algorithm that already solved the credit-assignment problem.
 - Neither targets *concept persistence*. The natural composition is: **AD-style in-context discovery → TTT-style per-input distillation → permanent merge**. None of the papers attempt step three.
 
 ## Open questions
@@ -49,15 +49,19 @@ Relative to the rest of the project corpus:
 - **Composability of TTT adapters.** The shared-adapter wins on BBH (text-distinguishable tasks) but loses on ARC (uniform format). What's the boundary, and can it be engineered (orthogonalised subspaces, mixture-of-LoRA routing, task-keyed gating)?
 - **Permanent merge.** No experiment tries TTT-then-merge across many tasks. How fast does the base model degrade? Does LoRA-arithmetic (TIES, DARE) preserve the per-task gains when merging dozens of throwaway adapters?
 - **Single-sample TTT.** Akyürek operates at K=2–10 demos. With K=1, LOO degenerates and the augmentation pipeline becomes the entire signal — open whether ARC-style invertible transforms generalise to text concepts.
-- **AD without an RL source.** AD requires N converged RL runs as a pretraining corpus. For LLM concept learning, what is the analogue of a "learning history" — chains of self-correction, [[reflexion]]-style retry traces, distillation-from-search trajectories? Could D consist of teacher–student CoT improvement curves rather than RL histories?
+- **AD without an RL source.** AD requires N converged RL runs as a pretraining corpus. For LLM concept learning, what is the analogue of a "learning history" — chains of self-correction, [[../critique-self-correction/reflexion]]-style retry traces, distillation-from-search trajectories? Could D consist of teacher–student CoT improvement curves rather than RL histories?
 - **Context length scaling.** AD's emergence requires multi-episodic context. For language tasks where one "episode" might be a whole document, multi-episode context demands hundreds of thousands of tokens — feasibility and cost?
 - **Why some tasks resist TTT.** *Boolean Expressions* declines under TTT (85.7% → 80.4%); algorithmic step-by-step tasks gain little. Is this a signal that TTT helps *pattern recognition* concepts more than *procedural* ones — and how does that map onto the project's concept taxonomy?
 - **Distribution-shift cost.** ARC public 61.9% vs semi-private 47.5% — TTT's per-task fitting may overfit to subtle benchmark idiosyncrasies. How does this trade off against the obvious overfitting protection of having only K demos?
 
+## Source
+
+See individual paper pages: [[ttt-few-shot]], [[algorithm-distillation]].
+
 ## Related themes
 
-- [[in-context-learning-theory]] — what computation does the frozen transformer actually run? AD shows it can run an *RL algorithm* given the right pretraining.
-- [[meta-learning-few-shot]] — TTT is meta-learning's inference-time cousin; AD is offline meta-RL via sequence modelling.
-- [[single-sample-rl-finetuning]] — adjacent: permanent weight updates from one (x, r) pair vs TTT's throwaway LoRA from K demos.
-- [[self-improvement]] — Reflexion, Self-Refine, STaR — produce the kind of "learning trajectories" AD's recipe would consume; potential synthesis path.
-- [[rlvr-mechanics]] — verifier-driven permanent updates; complement to TTT's verifier-free demonstration-only adaptation.
+- [[../in-context-learning-theory/_overview]] — what computation does the frozen transformer actually run? AD shows it can run an *RL algorithm* given the right pretraining.
+- [[../meta-learning-few-shot/_overview]] — TTT is meta-learning's inference-time cousin; AD is offline meta-RL via sequence modelling.
+- [[../single-sample-rl-finetuning/_overview]] — adjacent: permanent weight updates from one (x, r) pair vs TTT's throwaway LoRA from K demos.
+- [[../self-improvement/_overview]] — Reflexion, Self-Refine, STaR — produce the kind of "learning trajectories" AD's recipe would consume; potential synthesis path.
+- [[../rlvr-mechanics/_overview]] — verifier-driven permanent updates; complement to TTT's verifier-free demonstration-only adaptation.

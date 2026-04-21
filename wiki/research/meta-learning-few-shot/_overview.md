@@ -19,7 +19,7 @@ Pre-LLM foundations for the question David's project asks of LLMs: *how can a mo
 - Yu et al. show that for restricted, structured domains an *explicit* prior (here, a distortion metric over canvas transformations) can replace meta-training entirely. The implication: the role of meta-training is to *induce a useful prior from data* — if you have one already, you can skip it.
 
 ### Transfer to the LLM regime
-- LLM in-context learning *is* a kind of forward-pass-only meta-learner: the pretraining objective induces an initialization in which a few examples in the prompt suffice. This makes pretrained LLMs the strongest empirical instantiation of MAML's vision (with tokens-in-context replacing SGD updates) — see [[in-context-learning-theory]].
+- LLM in-context learning *is* a kind of forward-pass-only meta-learner: the pretraining objective induces an initialization in which a few examples in the prompt suffice. This makes pretrained LLMs the strongest empirical instantiation of MAML's vision (with tokens-in-context replacing SGD updates) — see [[../in-context-learning-theory/_overview]].
 - Prototypical-network intuitions survive too: residual-stream features support implicit "concept prototypes" assembled from in-context support, and induction-head circuits implement nearest-token-pattern lookup analogous to 1-NN.
 - The Yu et al. analogue for LLMs: the prior is no longer hand-engineered geometric distortions but the entire pretraining corpus, which already encodes a vast library of conceptual invariances. David's single-sample fine-tuning aims to *consolidate* a concept into weights using one example — banking on this pre-existing prior.
 
@@ -47,8 +47,12 @@ Pre-LLM foundations for the question David's project asks of LLMs: *how can a mo
 - Can second-order / implicit-gradient meta-learning (iMAML, Reptile) scale to 7B+ models cheaply enough to be useful for single-sample fine-tuning?
 - Does a single-sample weight update interfere catastrophically with unrelated capabilities, and what regularizer (EWC-style? sparse subnetwork?) prevents it?
 
+## Source
+
+See individual paper pages: [[maml]], [[prototypical-networks]], [[learning-from-one-shot]].
+
 ## Related themes
 
-- [[in-context-learning-theory]] — LLMs as implicit few-shot learners; ICL as implicit gradient descent / Bayesian inference.
-- [[test-time-training]] — modern descendants of MAML's inner loop applied to deep networks at inference time.
-- [[rlvr-mechanics]] — RL-based single-sample updates (1-shot RLVR) as an alternative to supervised meta-adaptation.
+- [[../in-context-learning-theory/_overview]] — LLMs as implicit few-shot learners; ICL as implicit gradient descent / Bayesian inference.
+- [[../test-time-training/_overview]] — modern descendants of MAML's inner loop applied to deep networks at inference time.
+- [[../rlvr-mechanics/_overview]] — RL-based single-sample updates (1-shot RLVR) as an alternative to supervised meta-adaptation.

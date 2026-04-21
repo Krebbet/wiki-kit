@@ -29,5 +29,5 @@ MAML is the canonical "learn-to-fine-tune" algorithm and the closest pre-LLM ana
 ## Related
 - [[prototypical-networks]] — metric-based contrast to MAML's gradient-based meta-learning.
 - [[learning-from-one-shot]] — single-shot learning *without* any pretraining or meta-training.
-- [[in-context-learning-theory]] — LLM analogue of fast adaptation without weight updates.
-- [[test-time-training]] — adapting weights at inference, a modern descendant of MAML's inner loop.
+- [[../in-context-learning-theory/_overview]] — LLM analogue of fast adaptation without weight updates.
+- [[../test-time-training/_overview]] — adapting weights at inference, a modern descendant of MAML's inner loop.

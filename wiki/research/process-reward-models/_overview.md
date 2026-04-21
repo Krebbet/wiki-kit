@@ -8,6 +8,7 @@ Theme overview for PRM research: how to give a reward model credit signals that 
 - [[process-outcome-feedback]] — Uesato et al. 2022 (DeepMind). First direct process-vs-outcome comparison; outcomes match on final-answer error but only process supervision (or its emulator) achieves low *trace* error; ORMs surprisingly emulate PRMs.
 - [[lets-verify-step-by-step]] — Lightman et al. 2023 (OpenAI). PRM800K; 800K human step labels on GPT-4 traces; PRM 78.2% on MATH-500; active learning 2.6x; PRM > ORM > majority at every N.
 - [[math-shepherd]] — Wang et al. 2023 (PKU/DeepSeek). MCTS-rollout automatic step labels (no humans); beats PRM800K on MATH at matched generator; step-by-step PPO lifts Mistral-7B 77.9 → 84.1% GSM8K.
+- [[pav-rewarding-progress]] — Setlur et al. 2024 (Google / DeepMind / CMU). PAV: process credit = step-level *advantage* under a complementary prover policy, not step correctness. >8% test-time search gain and 5–6× RL sample efficiency vs ORMs.
 
 ## Cross-cutting synthesis
 
@@ -48,7 +49,11 @@ Three regimes have been demonstrated to work, ordered by human cost:
 - All evidence is on closed numerical-answer tasks. Free-form correctness (proofs, code, natural language argumentation) is uncharted for PRMs.
 - Process labels at the *concept-component* granularity (rather than reasoning step) — does the same machinery apply when "step" is replaced by "sub-claim" or "predicate"? Directly relevant to the project.
 
+## Source
+
+See individual paper pages: [[lets-verify-step-by-step]], [[math-shepherd]], [[process-outcome-feedback]], [[training-verifiers-gsm8k]], [[pav-rewarding-progress]].
+
 ## Related themes
 
-- [[single-sample-rl-finetuning]] — companion theme; PRMs supply the dense reward signal that single-sample RL needs to be well-defined.
-- [[rlvr-mechanics]] — RL with verifiable rewards mechanics; PRMs are a richer instantiation of the verifiable-reward family.
+- [[../single-sample-rl-finetuning/_overview]] — companion theme; PRMs supply the dense reward signal that single-sample RL needs to be well-defined.
+- [[../rlvr-mechanics/_overview]] — RL with verifiable rewards mechanics; PRMs are a richer instantiation of the verifiable-reward family.

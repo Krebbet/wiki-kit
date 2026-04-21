@@ -6,6 +6,7 @@ Methods that make a model train on data it generated itself, optionally curated 
 - [[star]] — STaR (Zelikman et al., 2022). Iterated rationale generation + answer-conditioned rationalization, fine-tuned on rationales whose final answer matches ground truth.
 - [[self-rewarding-lm]] — Self-Rewarding LMs (Yuan et al., 2024). LLM-as-a-Judge replaces the frozen RM; Iterative DPO improves both generation and judging ability.
 - [[rstar-math]] — rStar-Math (Guan, Zhang et al., 2025). MCTS rollouts + code-execution filter + step-level Process Preference Model, evolved over four rounds; small models beat o1-preview on competition math.
+- [[multi-turn-policy-verifier]] — PAG (Jiang et al., Tsinghua / ByteDance Seed, 2025). Single LLM alternates policy and verifier roles in multi-turn RL; selective revision avoids collapse; 65.2% MATH500 at 1.5B; verifier outperforms majority voting on RewardBench.
 
 ## Cross-cutting synthesis
 
@@ -39,7 +40,11 @@ See the table above. Headline: each method amplifies a small seed by ~10²–10�
 - **Saturation dynamics.** All three plateau within a handful of rounds. Why? Distribution shift in the seed pool, or fundamental ceiling of policy ⊕ verifier?
 - **Length / style hacking.** Self-Rewarding LMs generations grew from 1092 → 2552 tokens; STaR rationales drifted from few-shot style without anchoring prompts. Self-improvement loops appear to bias toward verbosity.
 
+## Source
+
+See individual paper pages: [[star]], [[self-rewarding-lm]], [[rstar-math]], [[multi-turn-policy-verifier]].
+
 ## Related themes
-- [[single-sample-rl-finetuning]] — RL on a single problem (RLOOE, 1-shot RLVR); shares the "amplify one example" goal but uses RL rather than supervised self-distillation.
-- [[critique-self-correction]] — Self-Refine, Reflexion, Constitutional AI; same self-judge primitive used at inference rather than training time.
-- [[process-reward-models]] — Lightman et al., Math-Shepherd, Uesato; the verifier side of the rStar-Math equation, used externally rather than self-trained.
+- [[../single-sample-rl-finetuning/_overview]] — RL on a single problem (RLOOE, 1-shot RLVR); shares the "amplify one example" goal but uses RL rather than supervised self-distillation.
+- [[../critique-self-correction/_overview]] — Self-Refine, Reflexion, Constitutional AI; same self-judge primitive used at inference rather than training time.
+- [[../process-reward-models/_overview]] — Lightman et al., Math-Shepherd, Uesato; the verifier side of the rStar-Math equation, used externally rather than self-trained.
