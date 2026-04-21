@@ -168,14 +168,27 @@ def _normalize_asset_url(source_url: str, asset_url: str) -> str | None:
     if asset_url.startswith("//"):
         return "https:" + asset_url
     base = source_url
-    parsed = urlparse(base)
-    last_segment = parsed.path.rsplit("/", 1)[-1]
-    if last_segment and "." not in last_segment and not base.endswith("/"):
-        base = base + "/"
+    if not base.endswith("/"):
+        parsed = urlparse(base)
+        last_segment = parsed.path.rsplit("/", 1)[-1]
+        # Only treat the last segment as a file (no trailing slash) if it
+        # ends in a known page extension. arXiv article IDs like
+        # "2509.21556v1" and journal DOIs like "s41538-025-00441-8" contain
+        # dots but are not files — they are article-directory pages whose
+        # figures live *under* that path.
+        if not _looks_like_page_file(last_segment):
+            base = base + "/"
     try:
         return urljoin(base, asset_url)
     except ValueError:
         return None
+
+
+_PAGE_EXTENSIONS = (".html", ".htm", ".php", ".aspx", ".jsp", ".pdf", ".xml")
+
+
+def _looks_like_page_file(segment: str) -> bool:
+    return segment.lower().endswith(_PAGE_EXTENSIONS)
 
 
 def main(argv: list[str] | None = None) -> int:
