@@ -22,10 +22,33 @@ from tools._common import (
 
 MIN_CONTENT_CHARS = 500
 
+# Heuristic — if the extracted body is short AND contains any of these
+# signatures, treat as a bot-wall / block page rather than a successful
+# capture. Silent-success on tiny "Access Denied" pages was the easiest
+# failure mode to miss until you read the file by hand.
+_BOT_WALL_BODY_MAX = 3000
+_BOT_WALL_SIGNATURES = (
+    "access denied",
+    "cloudflare_error",
+    "edgesuite.net",
+    "there was a problem providing the content you requested",
+    "please enable cookies",
+    "unusual traffic from your computer",
+    "you don't have permission to access",
+    "request blocked",
+    "attention required!",
+)
+
 
 def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     title, body_md = _extract(url, force_js=force_js)
+    if _looks_like_bot_wall(title, body_md):
+        raise RuntimeError(
+            f"capture appears to be a bot-wall / block page (title={title!r}, "
+            f"body={len(body_md)} chars). Try --js, a direct PDF URL, or a "
+            f"manual PDF drop into the output directory."
+        )
     effective_slug = slug or slugify(title or url)
     filename = next_numbered_filename(out_dir, effective_slug)
     assets_dir = out_dir / "assets"
@@ -106,6 +129,19 @@ def _rewrite_images(body: str, assets_dir: Path, *, source_url: str) -> str:
                 return m.group(0)
             return f"![{alt}](./assets/{filename})"
         return re.sub(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)', _replace, body)
+
+
+def _looks_like_bot_wall(title: str | None, body: str) -> bool:
+    """Return True if the captured content looks like a bot-wall / block page.
+
+    Short bodies are treated as strong evidence; long bodies that happen to
+    contain a signature string in a legitimate context (e.g. a paper
+    discussing Cloudflare) are left alone.
+    """
+    if len(body) > _BOT_WALL_BODY_MAX:
+        return False
+    haystack = f"{title or ''}\n{body}".lower()
+    return any(sig in haystack for sig in _BOT_WALL_SIGNATURES)
 
 
 def _normalize_asset_url(source_url: str, asset_url: str) -> str | None:
