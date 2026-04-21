@@ -1,18 +1,26 @@
-# Master Notes — wiki-kit
+# Master Notes
 
-Running log of what works and what doesn't, both for this project and for our collaboration generally. Append-only scratchpad. Periodically I'll review and propose CLAUDE.md changes (project-level I'll just make and tell you; master-level I'll always ask first).
+Running log of what works and what doesn't — both for this specific wiki's operation and for the collaboration generally. Append-only scratchpad for observations that might deserve to become CLAUDE.md guidance, command updates, or kit-level improvements.
+
+During normal operation, Claude appends observations here with `Status: open`. At `/harvest` time (or whenever you review), entries are triaged: some become kit-level code or doc changes promoted to main via `/harvest`; some become this wiki's project CLAUDE.md updates; some are rejected; some stay open for more signal.
 
 ## Format
 
+Append entries using this structure:
+
 ```
 ### YYYY-MM-DD — short title
-**Scope:** project | interaction | both
-**Observation:** what I noticed
-**Implication:** what this suggests for CLAUDE.md or process
+**Scope:** project | interaction | kit | both
+**Observation:** what was noticed
+**Implication:** what this suggests for CLAUDE.md, a command, a tool, or process
 **Status:** open | proposed | applied | rejected
 ```
 
----
+**Scope guide:**
+- `project` — specific to this wiki (lands in this wiki's `wiki/CLAUDE.md` or DOMAIN-SLOT content).
+- `kit` — generic to wiki-kit itself (gets promoted to main via `/harvest`; every other wiki benefits).
+- `interaction` — about how the user and assistant work together (may become memory or user-level CLAUDE.md).
+- `both` — overlaps more than one scope.
 
 ## Notes
 
@@ -26,13 +34,13 @@ Running log of what works and what doesn't, both for this project and for our co
 **Scope:** project
 **Observation:** User wrote bootstrap intent in `boot_stap_instructions.md` (typo: missing 'r') instead of answering the seven interview questions one at a time. I synthesized all seven answers from that file and presented a single proposal. User approved with "looks great. approved" — zero revision rounds needed.
 **Implication:** `/bootstrap` could explicitly support an "instructions file" mode: if `boot_strap_instructions.md` (or some canonical name) exists in the repo root, skip the seven serial questions and synthesize from that file. Faster for users who prefer writing thoughts in one go vs. interactive Q&A.
-**Status:** open — propose for project CLAUDE.md / bootstrap.md (next time bootstrap.md is recovered)
+**Status:** applied upstream — main's `90e7420 feat(bootstrap): accept boot_strap_instructions.md as fast-path input` ships this.
 
 ### 2026-04-19 — marker GPU assumption
 **Scope:** project
 **Observation:** First `/research` run crashed because marker tried CUDA on a saturated GPU. Recovered with `TORCH_DEVICE=cpu`, but 5–10× slower per paper. Logged in FEEDBACK.md.
 **Implication:** capture_pdf.py needs either auto-fallback or a documented env var. The bootstrap source-type-notes slot for ArXiv should also acknowledge this. Project-level CLAUDE.md change candidate: add a "Capture environment" section noting the GPU caveat.
-**Status:** open — both project CLAUDE.md and capture_pdf.py code changes are reasonable follow-ups
+**Status:** partially addressed upstream — main's `11b2ecb fix(capture_pdf): one-line hint on CUDA OOM instead of stacktrace` covers the surface-level UX; auto-fallback and documentation still open.
 
 ### 2026-04-19 — reboot mid-research-run
 **Scope:** interaction
@@ -47,7 +55,4 @@ Running log of what works and what doesn't, both for this project and for our co
 1. **Project CLAUDE.md (this wiki):** add a "Post-capture verification" step to the wiki assistant's session protocol — after any `/research` or `/ingest`, run a fidelity check before declaring success.
 2. **Master CLAUDE.md:** add a general principle — "When orchestrating data pipelines that produce large numbers of derived files, verify a sample for end-to-end correctness (not just exit code = 0) before downstream work." This applies far beyond wiki-kit.
 Also: build `tools/audit_captures.py` and wire it into `/lint`. See FEEDBACK.md for the spec.
-**Status:** project CLAUDE.md change should be made in this branch; master CLAUDE.md needs user sign-off before edit.
-
-
-
+**Status:** tool + lint wiring applied upstream (`tools/audit_captures.py` and `/lint` / `/research` hooks are on main); Project and Master CLAUDE.md language still open.

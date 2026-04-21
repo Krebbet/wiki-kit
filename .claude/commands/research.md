@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** (a) papers from established ML labs (Anthropic, DeepMind, OpenAI, Meta FAIR, Google Brain/Research, MILA, etc.) and well-cited authors; (b) peer-reviewed venues (NeurIPS, ICML, ICLR, ACL, EMNLP) or ArXiv preprints with strong follow-on citations; (c) primary methodology papers over surveys when both exist — treat surveys as roadmaps, not ground truth. When citing an ArXiv paper, capture both v1 and the latest version if claims diverge between revisions. Avoid: marketing posts, vague claims without methodology, benchmark cherry-picks, blog summaries of papers (capture the paper itself).
+**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -49,16 +49,13 @@ $ARGUMENTS — the topic to research.
 
    Each tool prints the written file path on success and exits non-zero with a stderr message on failure.
 
+   **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
+
    <!-- DOMAIN-SLOT: source-type-notes -->
-   **Source-type guidance for this wiki:**
-   - **ArXiv abstract pages or PDF URLs** → use `capture_pdf.py` with `--engine marker` (preserves figures and equations, which are usually load-bearing).
-   - **Lab blog posts and web articles** → use `capture_url.py`. Add `--js` for sites that render content client-side (most modern lab blogs).
-   - **YouTube conference talks** → use `fetch_transcript.py`. Note in the wiki page that the source is a talk transcript (timestamps, no figures).
-   - **Prefer arXiv over journal paywalls** when both exist. If only the paywalled version is canonical, still capture the arXiv preprint and note the divergence.
-   - **Prefer arXiv abs page (HTML) for the bibliographic record**, but always capture the PDF for the actual content.
+   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
    <!-- /DOMAIN-SLOT -->
 
-5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
+5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
 
    Then run the fidelity audit on the topic directory:
 
@@ -68,9 +65,19 @@ $ARGUMENTS — the topic to research.
 
    The audit checks that every image ref in each captured markdown resolves to a real file, that source PDFs are paired, and that no two markdowns reference the same image (cross-paper overwrite indicator). Re-capture any paper flagged with broken refs or thin extraction before proceeding to `/ingest` — silently-corrupted captures will produce wiki pages with broken figure links.
 
-6. **Integrate via `/ingest`** — Invoke `/ingest raw/research/<topic-slug>` on the topic directory. `/ingest` reads the raw files, discusses takeaways, writes wiki pages with source-traceable claims, and updates tracking files.
+6. **Integrate via `/ingest`** — Slash commands cannot nest (see `bootstrap.md`), so follow `/ingest`'s process inline rather than literally invoking it. Before doing so, **announce the phase transition plainly to the user** so the boundary is visible:
+
+   > — research captures done; transitioning to ingest —
+
+   Then proceed with `/ingest` on `raw/research/<topic-slug>`: read the raw files, discuss takeaways, wait for user input on emphasis, write wiki pages with source-traceable claims, and update tracking files. When the ingest phase ends and you move to the final report (step 7), announce that boundary too:
+
+   > — ingest complete; finalising research report —
+
+   The announcements exist so the user understands which phase they are in; without them the user can read the "wait for user input" checkpoint as "the command stalled for no reason."
 
 7. **Report.** Separate three things:
    - **What the sources said** — faithful summary of each captured file, per file.
    - **What was changed in the wiki** — pages created or modified, cross-references added.
    - **Open questions for the user** — conflicts, gaps, or decisions that need a ruling.
+
+8. **Harvest checkpoint.** Did anything surface during this research run that would help *any* wiki, not just this one? Examples: a capture tool bug, a failure mode worth documenting in this file itself, a heuristic for judging source authority that generalises. If yes, append a brief entry to `master_notes.md` with `Scope: kit` and `Status: open`, and mention it inline. `/harvest` will pick it up.

@@ -9,8 +9,9 @@ Clone it, answer seven questions, and you have a working wiki tailored to your d
 ## Quickstart
 
 ```bash
-git clone <this-repo> my-wiki
-cd my-wiki
+git clone --single-branch --branch main <this-repo> wiki-<topic>
+cd wiki-<topic>
+git checkout -b <topic>-wiki
 poetry install
 poetry run playwright install chromium
 claude
@@ -18,7 +19,26 @@ claude
 
 Then inside Claude Code: `/bootstrap`
 
-`/bootstrap` interviews you about your domain, tailors the schema and the four operational commands, then **deletes itself** so you don't accidentally re-run it. (To redo bootstrap: `git restore .claude/commands/bootstrap.md`.)
+`/bootstrap` interviews you about your domain (or synthesises from a `boot_strap_instructions.md` file at repo root if you prefer writing your answers in one go), tailors the schema and the four operational commands, then **deletes itself** so you don't accidentally re-run it. (To redo bootstrap: `git restore .claude/commands/bootstrap.md`.)
+
+## Running multiple wikis
+
+Each wiki is its own clone with its own topic branch. The kit's `main` is the template; topic branches carry domain-specific content. Never merge a topic branch back to `main` — that mixes content into the template.
+
+```
+~/code/wiki-<topic-a>/   # clone, on branch <topic-a>-wiki
+~/code/wiki-<topic-b>/   # clone, on branch <topic-b>-wiki
+...
+```
+
+When you fix a kit-level bug or improve a command while working on a topic wiki, use `/harvest` to promote the generic parts back to `main` without dragging content along. Other topic wikis then `git pull origin main` + merge to pick up the improvement.
+
+The loop:
+
+1. Work in a topic wiki.
+2. Notice a generic fix/improvement (or find one in `master_notes.md`).
+3. Run `/harvest` — it classifies your diff, promotes only kit paths (and only the non-`DOMAIN-SLOT` parts of commands), merges to `main`, pushes.
+4. In every other topic wiki: `git pull origin main && git merge origin/main`.
 
 ## Repo tour
 
@@ -34,6 +54,11 @@ Then inside Claude Code: `/bootstrap`
 - `/research <topic>` — find sources on the web, capture them, integrate via `/ingest`.
 - `/query <question>` — answer from the wiki with citations; optionally file the answer back as a new page.
 - `/lint` — health-check the wiki for orphans, broken links, contradictions, and gaps.
+
+Plus two meta-commands:
+
+- `/bootstrap` — one-shot setup for a fresh clone (self-deletes).
+- `/harvest` — promote generic kit improvements from a topic branch back to `main`.
 
 ## First-run notes
 
