@@ -114,22 +114,70 @@ Run this periodically on a topic-wiki branch to keep `main` evolving as a clean 
    ```
    If anything fails that the harvest introduced, fix it. If the failures are pre-existing network-dependent smoke tests, note that for the user but proceed.
 
-8. **Merge to main.** Ask the user for final sign-off, then:
+8. **Merge to main.** Ask the user for final sign-off, then fetch before merging so divergence is detected early:
+
    ```bash
    git switch main
+   git fetch origin main
+   ```
+
+   Inspect whether `origin/main` has advanced since the harvest branch was created:
+
+   ```bash
+   git log --oneline main..origin/main  # remote-ahead commits (empty if clean)
+   ```
+
+   **If `origin/main` is unchanged from the harvest base (the output above is empty)**, proceed with the fast-forward merge:
+
+   ```bash
    git merge --ff-only kit-harvest-YYYY-MM-DD
    git push origin main
    git branch -d kit-harvest-YYYY-MM-DD
    ```
-   If fast-forward fails (main has diverged), stop and surface the problem — the user probably harvested from another wiki in the meantime. Suggest a rebase.
+
+   **If `origin/main` has advanced** (another wiki harvested first), do not force-push or merge-create. Rebase the harvest branch onto the new `origin/main`, resolving conflicts inline:
+
+   ```bash
+   git log --oneline main..origin/main        # what they have that we don't
+   git diff --name-only main origin/main      # files they touched
+   git rebase origin/main                     # replays the harvest's N commits on top
+   ```
+
+   For each conflict git halts on, inspect both sides and resolve with these principles:
+
+   - **Same-fix collisions (both sides solved the same problem).** Keep whichever implementation is strictly more complete. If the remote's version is a proper subset of ours, take ours; if ours is a subset, take theirs. State the reasoning in the resolution comment. Do not split the difference by taking half of each — that produces a broken middle.
+   - **Orthogonal improvements on the same file.** Fold both in. The remote often ships small collateral improvements (a new constant like `USER_AGENT`, an import line, a headers argument) that live alongside the conflicting hunk but are independent of the fix; integrate those unchanged.
+   - **Signature mismatches caused by new tests on the other side.** When the remote added tests that call your refactored function with a different signature (positional vs. keyword-only, reordered args), adjust your signature to match the tests unless there is a correctness reason not to — keyword-only markers are almost always preference, not safety, and breaking parallel tests is a bigger cost than losing the keyword-only hint.
+   - **Docs conflicts inside command files.** Outside `DOMAIN-SLOT` regions only. If both sides added text in the same location, concatenate both additions with a blank line; order by logical flow rather than branch order.
+
+   After every conflict resolution, before `git rebase --continue`:
+
+   ```bash
+   git add <resolved-file>
+   poetry run pytest tests/ -q -m 'not slow and not network'
+   ```
+
+   Parallel test suites catch signature drift (and other API mismatches) that isolated inspection misses; run them at each conflict, not only once at the end. If the tests fail, the resolution is wrong — fix it before continuing.
+
+   When the rebase completes cleanly and the full test suite passes, push and clean up:
+
+   ```bash
+   git push origin main
+   git branch -d kit-harvest-YYYY-MM-DD
+   ```
+
+   Never force-push `main`. If the push is rejected after a clean local rebase (another wiki landed *during* your rebase), re-run the fetch → rebase → tests → push loop — do not `--force`.
 
 9. **Return to the topic branch.**
    ```bash
    git switch <topic-branch>
+   git merge main
    ```
 
-   Remind the user:
-   > Kit improvements are now on main. To pick them up on this topic branch, run `git merge origin/main` (or rebase). Repeat for your other topic wikis so they all share the latest kit.
+   The `git merge main` likely will not be a fast-forward (the topic branch has its own commits) and may hit the same class of conflicts that step 8 resolved, particularly if the topic branch touched the same tool files during the session. Apply the same resolution principles, run the test suite again after resolution, and commit the merge.
+
+   After the merge lands cleanly on the topic branch, remind the user:
+   > Kit improvements are now on main and merged back into this topic branch. Before running `/harvest` on any other topic wiki, switch to that wiki, `git merge main` into it first so the harvest starts from current-main and the final merge-back is as small as possible.
 
 ## Flagging opportunities mid-session
 
