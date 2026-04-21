@@ -128,6 +128,35 @@ def test_slug_hint_from_local_path():
     assert _slug_hint("/tmp/some-paper.pdf", Path("/tmp/some-paper.pdf")) == "some-paper"
 
 
+def test_resolve_source_remote_sends_user_agent(monkeypatch, tmp_path):
+    """_resolve_source must set a browser User-Agent so Akamai-fronted sources (ftc.gov) return 200."""
+    from tools._common import USER_AGENT
+    captured_kwargs: dict = {}
+
+    class FakeResponse:
+        content = b"%PDF-1.4\nfake\n"
+        def raise_for_status(self):
+            return None
+
+    class FakeClient:
+        def __init__(self, **kwargs):
+            captured_kwargs.update(kwargs)
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+        def get(self, url):
+            return FakeResponse()
+
+    monkeypatch.setattr("tools.capture_pdf.httpx.Client", FakeClient)
+    pdf_path, source_url, cleanup = _resolve_source("https://www.ftc.gov/fake.pdf")
+    try:
+        assert captured_kwargs.get("headers", {}).get("User-Agent") == USER_AGENT
+        assert source_url == "https://www.ftc.gov/fake.pdf"
+    finally:
+        cleanup()
+
+
 def test_capture_namespaces_assets_per_slug(tmp_path, monkeypatch):
     """Two captures into the same out_dir must not share the assets/ namespace."""
     local_pdf = tmp_path / "input.pdf"

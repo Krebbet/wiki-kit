@@ -11,6 +11,15 @@ from typing import Any
 import httpx
 
 
+# Browser-like User-Agent. Many government, academic, and enterprise sites
+# (ftc.gov behind Akamai, Wikimedia upload endpoints) return 403 to the default
+# httpx User-Agent; a browser UA keeps them unblocked for routine captures.
+USER_AGENT = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) wiki-kit/0.1 Chrome/120.0.0.0 Safari/537.36"
+)
+
+
 _SLUG_CLEAN_RE = re.compile(r"[^a-z0-9]+")
 _NUMBERED_FILE_RE = re.compile(r"^(\d+)-.+\.md$")
 
@@ -59,7 +68,9 @@ def download_asset(url: str, assets_dir: Path, *, client: httpx.Client | None = 
     Defers mkdir until after a successful fetch so all-failed captures leave no empty assets/ dir.
     """
     own_client = client is None
-    client = client or httpx.Client(follow_redirects=True, timeout=20.0)
+    client = client or httpx.Client(
+        follow_redirects=True, timeout=20.0, headers={"User-Agent": USER_AGENT}
+    )
     try:
         r = client.get(url)
         r.raise_for_status()

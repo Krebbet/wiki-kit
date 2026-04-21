@@ -12,6 +12,7 @@ from typing import Callable
 import httpx
 
 from tools._common import (
+    USER_AGENT,
     next_numbered_filename,
     slugify,
     today_iso,
@@ -99,7 +100,9 @@ def _resolve_source(src: str) -> tuple[Path, str | None, Callable[[], None]]:
         tmp_dir = Path(tempfile.mkdtemp(prefix="wk-pdf-"))
         tmp_path = tmp_dir / "source.pdf"
         try:
-            with httpx.Client(follow_redirects=True, timeout=60.0) as client:
+            with httpx.Client(
+                follow_redirects=True, timeout=60.0, headers={"User-Agent": USER_AGENT}
+            ) as client:
                 r = client.get(src)
                 r.raise_for_status()
                 tmp_path.write_bytes(r.content)
