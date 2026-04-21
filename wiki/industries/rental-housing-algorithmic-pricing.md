@@ -1,6 +1,6 @@
 # Rental Housing — Algorithmic Pricing
 
-RealPage, Inc. and the apartment-landlord ecosystem became the most developed U.S. antitrust case against algorithmic pricing when the DOJ and eight state attorneys general sued the company in August 2024. The litigation, the late-2025 settlement, and parallel suits against major landlords form the clearest recent example of a regulator treating algorithmic pricing as unlawful coordination.
+RealPage, Inc. and the apartment-landlord ecosystem became the most developed U.S. antitrust case against [[dynamic-pricing-overview|algorithmic pricing]] when the DOJ and eight state attorneys general sued the company in August 2024. The litigation, the late-2025 settlement, and parallel suits against major landlords form the clearest recent example of a regulator treating algorithmic pricing as unlawful coordination.
 
 ## What RealPage did
 

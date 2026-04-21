@@ -1,6 +1,6 @@
 # Consumer-Facing Dynamic Pricing
 
-Dynamic pricing has been standard in airlines and hotels for decades and has spread across ride-sharing, online retail, live-events ticketing, theme parks, sports, and — most recently and controversially — quick-service restaurants. This page catalogues industry-by-industry deployment with specific companies, numbers, and consumer-backlash moments as named in the wiki's sources.
+[[dynamic-pricing-overview|Dynamic pricing]] has been standard in airlines and hotels for decades and has spread across ride-sharing, online retail, live-events ticketing, theme parks, sports, and — most recently and controversially — quick-service restaurants. This page catalogues industry-by-industry deployment with specific companies, numbers, and consumer-backlash moments as named in the wiki's sources.
 
 ## Airlines
 

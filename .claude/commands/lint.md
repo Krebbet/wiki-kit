@@ -30,7 +30,7 @@ Perform a health check of the wiki.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
 10. **Domain-specific checks** — collective-consumer-action wiki:
-    a. **Source metadata present** — every `## Source` entry on every page records origin / intended audience / purpose / trust tag. This is the core convention; missing metadata is a lint failure.
+    a. **Source metadata present** — every source file cited in the wiki must have its origin / intended audience / purpose / trust tag recorded on at least one wiki page (typically the page where the source is the primary basis). Pages that cite a source already-metadata'd on another page may defer with a one-line pointer instead of duplicating the full metadata, provided the deferral is explicit (e.g., a disclaimer noting where the canonical metadata lives). Missing metadata *entirely* — i.e., a source with no full metadata on any page — is a lint failure.
     b. **Conceptual cross-links** — pages on specific tools or orgs link to the counter-power mechanism they embody (collective bargaining, co-op, class action, regulation, exit-alternative, transparency tool, boycott, tech workaround). The mechanism graph matters as much as the citation graph.
     c. **Industry ↔ counter-power balance** — for each industry or extraction mechanism covered, flag if no page exists on counter-power tactics against it (and conversely, a tactic page with no industry it's deployed against).
     d. **Claim attribution** — specific or numeric claims (pricing incidents, company actions, court rulings, policy effects) cite the primary source, not a second-hand summary that cites the primary source.

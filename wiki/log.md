@@ -35,3 +35,20 @@ First content run. Topic: industries using dynamic / algorithmic / surveillance 
 3. `capture_pdf.py --engine marker` has no graceful fallback on CUDA OOM.
 
 All three tagged `Scope: kit`, `Status: open` — available to `/harvest`.
+
+## [2026-04-21] lint | first lint run
+
+Pre-harvest lint flow (report inline in chat; persisted-report behaviour and auto-ingest landed on `main` after this branch was created, arrives here on next `git merge origin/main`).
+
+**Findings:** no orphans, no broken links, no conflicts, no format issues. 4 missing first-mention cross-references. 1 domain-specific convention question on source-metadata pointer pattern.
+
+**Fixes applied:**
+- Added first-mention `[[dynamic-pricing-overview|...]]` links on `surveillance-pricing-retail.md`, `consumer-facing-dynamic-pricing.md`, `rental-housing-algorithmic-pricing.md`, `algorithmic-collusion.md`.
+- Amended domain lint check 10a in `.claude/commands/lint.md` DOMAIN-SLOT to explicitly allow the metadata-by-pointer pattern (full metadata on canonical page; other pages cite with a short pointer and explicit disclaimer).
+
+**Deferred:**
+- Creating mechanism pages (collective-bargaining, co-op, class-action, regulation, exit-alternative, transparency-tool, boycott, tech-workaround) — appropriate as a targeted research job, not a lint-fix stub. The wiki's "no synthesised knowledge" rule precludes empty definitional stubs.
+- Re-capturing primary sources for 2 Wikipedia-chained claims (Delta 3%→20% expansion; 74% cost-plus figure) — low priority.
+
+**Known issues left open:**
+- 2 broken image refs in `08-arxiv-algorithmic-collusion.md` (pymupdf fallback after marker CUDA OOM). Figures not cited on any wiki page.

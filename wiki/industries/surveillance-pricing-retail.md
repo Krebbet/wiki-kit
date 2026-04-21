@@ -1,6 +1,6 @@
 # Surveillance Pricing — Retail and Beyond
 
-In July 2024 the FTC invoked its Section 6(b) authority to order eight companies to produce information on the surveillance-pricing ecosystem. Interim findings (January 2025) describe a mature intermediary industry selling price-targeting, consumer-segmentation, and product-ranking tools that feed on behavioural data, location data, loyalty-program data, and inferences drawn from both. This page covers what the FTC found and the industries implicated.
+In July 2024 the FTC invoked its Section 6(b) authority to order eight companies to produce information on the [[dynamic-pricing-overview|surveillance-pricing]] ecosystem. Interim findings (January 2025) describe a mature intermediary industry selling price-targeting, consumer-segmentation, and product-ranking tools that feed on behavioural data, location data, loyalty-program data, and inferences drawn from both. This page covers what the FTC found and the industries implicated.
 
 ## Scope of the FTC 6(b) study
 
