@@ -182,10 +182,28 @@ def main(argv: list[str] | None = None) -> int:
     try:
         written = capture(args.src, args.out, args.slug, args.engine, args.max_pages)
     except Exception as e:
-        print(f"capture_pdf failed: {e}", file=sys.stderr)
+        if _is_cuda_oom(e):
+            print(
+                "capture_pdf failed: GPU out of memory while running marker engine. "
+                "Retry with `--engine pymupdf` for a CPU-based fallback "
+                "(less faithful on figures/equations but reliable on contended GPU hosts).",
+                file=sys.stderr,
+            )
+        else:
+            print(f"capture_pdf failed: {e}", file=sys.stderr)
         return 1
     print(written)
     return 0
+
+
+def _is_cuda_oom(e: BaseException) -> bool:
+    """Heuristic: was this a CUDA OOM from torch?
+
+    torch's OutOfMemoryError subclasses RuntimeError with "CUDA out of memory"
+    in the message. We also check the exception class name to cover future
+    torch versions that may rename the class.
+    """
+    return "CUDA out of memory" in str(e) or type(e).__name__ == "OutOfMemoryError"
 
 
 if __name__ == "__main__":
