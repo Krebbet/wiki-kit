@@ -70,7 +70,15 @@ $ARGUMENTS — the topic to research.
 
    The audit checks that every image ref in each captured markdown resolves to a real file, that source PDFs are paired, and that no two markdowns reference the same image (cross-paper overwrite indicator). Re-capture any paper flagged with broken refs or thin extraction before proceeding to `/ingest` — silently-corrupted captures will produce wiki pages with broken figure links.
 
-6. **Integrate via `/ingest`** — Invoke `/ingest raw/research/<topic-slug>` on the topic directory. `/ingest` reads the raw files, discusses takeaways, writes wiki pages with source-traceable claims, and updates tracking files.
+6. **Integrate via `/ingest`** — Slash commands cannot nest (see `bootstrap.md`), so follow `/ingest`'s process inline rather than literally invoking it. Before doing so, **announce the phase transition plainly to the user** so the boundary is visible:
+
+   > — research captures done; transitioning to ingest —
+
+   Then proceed with `/ingest` on `raw/research/<topic-slug>`: read the raw files, discuss takeaways, wait for user input on emphasis, write wiki pages with source-traceable claims, and update tracking files. When the ingest phase ends and you move to the final report (step 7), announce that boundary too:
+
+   > — ingest complete; finalising research report —
+
+   The announcements exist so the user understands which phase they are in; without them the user can read the "wait for user input" checkpoint as "the command stalled for no reason."
 
 7. **Report.** Separate three things:
    - **What the sources said** — faithful summary of each captured file, per file.

@@ -12,6 +12,7 @@ import trafilatura
 from markdownify import markdownify as md
 
 from tools._common import (
+    USER_AGENT,
     download_asset,
     next_numbered_filename,
     slugify,
@@ -52,7 +53,7 @@ def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
     effective_slug = slug or slugify(title or url)
     filename = next_numbered_filename(out_dir, effective_slug)
     assets_dir = out_dir / "assets"
-    body_md = _rewrite_images(body_md, assets_dir, source_url=url)
+    body_md = _rewrite_images(body_md, assets_dir, url)
 
     fm = write_frontmatter({
         "url": url,
@@ -107,7 +108,7 @@ def _main_content_html(html: str) -> str:
     return html
 
 
-def _rewrite_images(body: str, assets_dir: Path, *, source_url: str) -> str:
+def _rewrite_images(body: str, assets_dir: Path, source_url: str) -> str:
     """Replace markdown image URLs with local asset paths.
 
     Normalises protocol-relative (`//host/path`) and plain-relative
@@ -116,7 +117,9 @@ def _rewrite_images(body: str, assets_dir: Path, *, source_url: str) -> str:
     those forms and would otherwise fail at the httpx layer with "Request
     URL is missing an http/https protocol".
     """
-    with httpx.Client(follow_redirects=True, timeout=20.0) as client:
+    with httpx.Client(
+        follow_redirects=True, timeout=20.0, headers={"User-Agent": USER_AGENT}
+    ) as client:
         def _replace(m: re.Match) -> str:
             alt, url = m.group(1), m.group(2)
             if url.startswith("data:") or url.startswith("./"):

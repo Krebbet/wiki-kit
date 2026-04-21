@@ -12,10 +12,12 @@ import pytest
 
 from tools.capture_pdf import (
     _first_heading,
+    _is_cuda_oom,
     _resolve_source,
     _rewrite_image_refs,
     _slug_hint,
     capture,
+    main,
 )
 
 
@@ -126,6 +128,89 @@ def test_slug_hint_from_url():
 
 def test_slug_hint_from_local_path():
     assert _slug_hint("/tmp/some-paper.pdf", Path("/tmp/some-paper.pdf")) == "some-paper"
+
+
+def test_is_cuda_oom_detects_by_message():
+    e = RuntimeError("CUDA out of memory. Tried to allocate 20.00 MiB.")
+    assert _is_cuda_oom(e) is True
+
+
+def test_is_cuda_oom_detects_by_class_name():
+    class OutOfMemoryError(RuntimeError):
+        pass
+    assert _is_cuda_oom(OutOfMemoryError("whatever")) is True
+
+
+def test_is_cuda_oom_rejects_unrelated_errors():
+    assert _is_cuda_oom(FileNotFoundError("not found")) is False
+    assert _is_cuda_oom(RuntimeError("something else")) is False
+
+
+def test_main_emits_pymupdf_hint_on_cuda_oom(monkeypatch, tmp_path, capsys):
+    """On CUDA OOM, main() must emit a one-line hint rather than the raw error."""
+    def raise_oom(*args, **kwargs):
+        raise RuntimeError("CUDA out of memory. Tried to allocate 20.00 MiB.")
+
+    monkeypatch.setattr("tools.capture_pdf.capture", raise_oom)
+    local_pdf = tmp_path / "x.pdf"
+    local_pdf.write_bytes(b"%PDF-1.4\n%EOF\n")
+    rc = main([
+        "--src", str(local_pdf),
+        "--out", str(tmp_path / "out"),
+        "--engine", "marker",
+    ])
+    assert rc == 1
+    captured = capsys.readouterr()
+    assert "GPU out of memory" in captured.err
+    assert "--engine pymupdf" in captured.err
+    assert "Traceback" not in captured.err
+
+
+def test_main_uses_default_error_message_for_other_failures(monkeypatch, tmp_path, capsys):
+    def raise_other(*args, **kwargs):
+        raise FileNotFoundError("not found")
+
+    monkeypatch.setattr("tools.capture_pdf.capture", raise_other)
+    local_pdf = tmp_path / "x.pdf"
+    local_pdf.write_bytes(b"%PDF-1.4\n%EOF\n")
+    rc = main([
+        "--src", str(local_pdf),
+        "--out", str(tmp_path / "out"),
+        "--engine", "pymupdf",
+    ])
+    assert rc == 1
+    captured = capsys.readouterr()
+    assert "not found" in captured.err
+    assert "GPU out of memory" not in captured.err
+
+
+def test_resolve_source_remote_sends_user_agent(monkeypatch, tmp_path):
+    """_resolve_source must set a browser User-Agent so Akamai-fronted sources (ftc.gov) return 200."""
+    from tools._common import USER_AGENT
+    captured_kwargs: dict = {}
+
+    class FakeResponse:
+        content = b"%PDF-1.4\nfake\n"
+        def raise_for_status(self):
+            return None
+
+    class FakeClient:
+        def __init__(self, **kwargs):
+            captured_kwargs.update(kwargs)
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+        def get(self, url):
+            return FakeResponse()
+
+    monkeypatch.setattr("tools.capture_pdf.httpx.Client", FakeClient)
+    pdf_path, source_url, cleanup = _resolve_source("https://www.ftc.gov/fake.pdf")
+    try:
+        assert captured_kwargs.get("headers", {}).get("User-Agent") == USER_AGENT
+        assert source_url == "https://www.ftc.gov/fake.pdf"
+    finally:
+        cleanup()
 
 
 def test_capture_namespaces_assets_per_slug(tmp_path, monkeypatch):
