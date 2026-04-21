@@ -23,9 +23,10 @@ Run this periodically on a topic-wiki branch to keep `main` evolving as a clean 
 **Never promotes:**
 - `wiki/**` (content)
 - `raw/**` (sources)
-- Session artifacts: `STATE.md`, `FEEDBACK.md`, `master_notes.md`, `boot_stap_instructions.md`
+- Session artifacts: `STATE.md`, `FEEDBACK.md`, `master_notes.md`, `boot_stap_instructions.md` / `bootstrap_instructions.md`
 - `wiki/CLAUDE.md` placeholder fills (bootstrap output)
 - DOMAIN-SLOT body content in command files
+- **Deletion of `.claude/commands/bootstrap.md`** — the bootstrap command self-deletes by design after running, so on any post-bootstrap topic branch the file is absent. Promoting that deletion would strip bootstrap from `main` and break every future new-wiki clone. Always treat this deletion as a session artifact.
 
 ## Process
 
