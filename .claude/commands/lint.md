@@ -20,8 +20,21 @@ Perform a health check of the wiki.
 
 8. **Check page format compliance** — every page must have: `# Title`, summary paragraph, `## Source` section, `## Related` section with `[[wiki-link]]`s.
 
+9. **Audit raw capture fidelity** — for every topic directory under `raw/`, run:
+
+   ```bash
+   poetry run python -m tools.audit_captures raw/<topic-dir>
+   ```
+
+   The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
+
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-9. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+9. **Domain-specific checks** — research-wiki for LLM fine-tuning method development:
+   a. **Paper identifier present** — every page citing a paper has the ArXiv ID (e.g., `arXiv:2401.12345`) or DOI in its `## Source` section.
+   b. **Conceptual cross-links** — method pages link to at least one related-method page, not only papers they cite. The conceptual graph matters as much as the citation graph.
+   c. **Quantitative claims cite figures** — pages making numeric claims ("X% improvement", "Y× more sample-efficient") cite the specific table or figure number from the source.
+   d. **Research-page schema** — pages under `wiki/research/` have `## Method` and `## Claims` sections in addition to the standard `## Source` and `## Related`.
+   e. **Recency check for fast-moving topics** — flag pages on RL, LLM training, or post-training methods whose only sources are older than 5 years. (Foundational papers older than that are fine, but the page should also reference recent follow-ups.)
 <!-- /DOMAIN-SLOT -->
 
 ## Output
@@ -53,6 +66,9 @@ Produce a structured lint report:
 - ...
 
 ### Domain-Specific Issues
+- ...
+
+### Capture Fidelity (raw/)
 - ...
 ```
 
