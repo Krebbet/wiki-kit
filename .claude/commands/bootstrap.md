@@ -12,7 +12,13 @@ This command **self-deletes** after successful completion. Recovery is `git rest
 
    If not confirmed, stop. Treat the wiki as un-bootstrapped only when both files contain nothing beyond their shipped headers.
 
-2. **Interview.** Ask these questions one at a time. Wait for the user's answer before moving to the next. Acknowledge briefly between questions; don't lecture.
+2. **Gather inputs.** There are two paths — pick whichever matches how the user wants to work.
+
+   **Fast path — instructions file.** If a file named `boot_strap_instructions.md` (or `bootstrap_instructions.md`) exists at the repo root, read it, try to extract answers to all seven questions below, and jump directly to step 3 with a proposal synthesised from the file. If any question is unanswered in the file, ask only those specific questions as follow-ups rather than running the full interview. Announce:
+
+   > Found `boot_strap_instructions.md` — synthesising from it instead of running the interview.
+
+   **Interview path** — used when no instructions file exists, or when the user explicitly asks to "run the interview". Ask these questions one at a time. Wait for the user's answer before moving to the next. Acknowledge briefly between questions; don't lecture.
 
    1. **Domain.** "What is this wiki about? Give me a sentence or two describing the domain."
    2. **Goal.** "What do you want this wiki to do for you in 3–6 months? (answer queries you care about, compile a synthesis, serve as a reference for others, something else)"
@@ -85,7 +91,7 @@ This command **self-deletes** after successful completion. Recovery is `git rest
 
    **Date placeholder.** `YYYY-MM-DD` above is a literal placeholder — substitute today's actual date (the date this command runs) when writing the row and the log entry.
 
-5. **Self-delete.** Run `rm .claude/commands/bootstrap.md` via the Bash tool. Then announce:
+5. **Self-delete.** Run `rm .claude/commands/bootstrap.md` via the Bash tool. If an instructions file was consumed in step 2, also `rm boot_strap_instructions.md` (or `bootstrap_instructions.md`, whichever was present) — it's served its purpose and the proposal it spawned is now recorded in `wiki/log.md` and the command files. Then announce:
 
    > Bootstrap complete. Bootstrap command removed; `git restore .claude/commands/bootstrap.md` to recover if you want to re-run.
 
