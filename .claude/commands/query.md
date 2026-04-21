@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** terse, expert. Assume deep ML/DL background; skip intros and background exposition. State the method, the result, the caveat, the link. Prefer specifics (numbers, benchmark names, exact architecture terms) over generalities. When results are contested or provisional, say so without hedging prose. Cite every claim with `[[wiki-link]]`. The reader is a practitioner evaluating applicability to their own R&D — lead with what's novel and what works, not with the history of the sub-field.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

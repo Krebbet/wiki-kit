@@ -17,7 +17,13 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
    - What is new or different from what the wiki already covers
    - Conflicts with existing wiki positions
    <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   - **Method** — the technique in precise terms: architecture change, training objective, data recipe, RL reward design, fine-tuning protocol, etc. Name prior work it derives from.
+   - **Results** — concrete numbers: benchmarks hit, scale (params / tokens / compute), baselines beaten and by how much. Cite the specific table or figure.
+   - **Applicability** — what kind of project could use this? Prerequisites (compute budget, data scale, base-model availability, RL infrastructure).
+   - **Novelty** — is this a genuinely new technique, a refinement, or a recombination? What's the closest prior work and what changed?
+   - **Reproducibility** — is there code? A paperswithcode entry? Released weights? An independent reproduction?
+   - **Adoption signals** — is this picked up by other labs, cited widely, climbing a paperswithcode leaderboard, or discussed across the community?
+   - **Conflicts** — does this contradict a claim already in the wiki (e.g., contested scaling laws, RL-vs-SFT stance, architecture bets)? If so, flag for `wiki/conflicts/`.
    <!-- /DOMAIN-SLOT -->
 
 3. **Wait for user input** — Let the user guide emphasis before writing. They may want to highlight specific aspects or skip others.

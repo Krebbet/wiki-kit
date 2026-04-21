@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki:** don't gatekeep on provenance. Capture the method, the results, and full source metadata (authors, venue, year, arXiv link, code repo, paperswithcode entry if any) so the reader can judge trustworthiness themselves. Reproducibility signals — code release, weights, paperswithcode leaderboards — are positive but not required. Prefer primary sources (the paper itself, the author's blog post) over secondhand coverage. When a claim is contested or early-stage, capture the strongest version of each position rather than declaring a winner. The reader is a practitioner with deep ML/DL background; record methods and numeric results in enough detail that applicability can be judged without re-reading the source.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +52,15 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Source-type guidance for this wiki:**
+   - **arXiv / academic / conference PDFs** → `capture_pdf.py --engine marker` (preserves figures and equations — usually load-bearing for method papers).
+   - **Lab blog posts, GitHub READMEs, model cards, paperswithcode pages** → `capture_url.py`. Add `--js` for sites that render content client-side.
+   - **YouTube conference talks** → `fetch_transcript.py`. Note in the wiki page that the source is a transcript (timestamps, no figures).
+   - **X/Twitter threads, Reddit threads** → `capture_url.py`. Prefer `old.reddit.com` URLs for clean markdown. X threads may require `--js` and sometimes fail outright on gated threads — fall back to manual paste.
+   - **Discord excerpts** → no public capture. Paste the relevant message(s) into `raw/manual/<slug>/<slug>.md` with source metadata (channel, author handle, date) and run `/ingest raw/manual/<slug>`.
+   - **Prefer arXiv over paywalled journal versions** when both exist. Capture the arXiv preprint and note any divergence from the final published version.
+   - **Prefer arXiv abs page (HTML) for the bibliographic record**, but always capture the PDF for the actual content.
+   - **When a paperswithcode entry exists**, capture it alongside the paper — it carries benchmark numbers, leaderboard position, and the canonical code link that the paper body often lacks.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
