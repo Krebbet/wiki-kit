@@ -53,7 +53,7 @@ def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
     effective_slug = slug or slugify(title or url)
     filename = next_numbered_filename(out_dir, effective_slug)
     assets_dir = out_dir / "assets"
-    body_md = _rewrite_images(body_md, assets_dir, source_url=url)
+    body_md = _rewrite_images(body_md, assets_dir, url)
 
     fm = write_frontmatter({
         "url": url,
@@ -108,7 +108,7 @@ def _main_content_html(html: str) -> str:
     return html
 
 
-def _rewrite_images(body: str, assets_dir: Path, *, source_url: str) -> str:
+def _rewrite_images(body: str, assets_dir: Path, source_url: str) -> str:
     """Replace markdown image URLs with local asset paths.
 
     Normalises protocol-relative (`//host/path`) and plain-relative
