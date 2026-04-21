@@ -13,7 +13,7 @@ Append entries using this structure:
 **Scope:** project | interaction | kit | both
 **Observation:** what was noticed
 **Implication:** what this suggests for CLAUDE.md, a command, a tool, or process
-**Status:** applied (2026-04-21 kit harvest → main @ 678dc4c) | proposed | applied | rejected
+**Status:** open | proposed | applied | rejected
 ```
 
 **Scope guide:**

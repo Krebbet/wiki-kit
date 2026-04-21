@@ -7,6 +7,7 @@ import httpx
 import pytest
 
 from tools._common import (
+    USER_AGENT,
     _guess_ext,
     download_asset,
     next_numbered_filename,
@@ -167,3 +168,35 @@ def test_guess_ext_from_content_type_svg():
 
 def test_guess_ext_unknown_returns_bin():
     assert _guess_ext("https://example.com/blob", "application/octet-stream") == ".bin"
+
+
+def test_user_agent_is_browser_like():
+    """The UA must look like a browser to avoid 403 on Akamai-fronted sources."""
+    assert "Mozilla/5.0" in USER_AGENT
+    assert "AppleWebKit" in USER_AGENT
+
+
+def test_download_asset_own_client_sends_user_agent(monkeypatch):
+    """When download_asset creates its own httpx.Client, it must pass the UA header."""
+    captured_kwargs: dict = {}
+
+    class FakeClient:
+        def __init__(self, **kwargs):
+            captured_kwargs.update(kwargs)
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+        def get(self, url):
+            response = MagicMock()
+            response.content = b"data"
+            response.headers = {"content-type": "image/png"}
+            response.raise_for_status = MagicMock()
+            return response
+        def close(self):
+            pass
+
+    monkeypatch.setattr("tools._common.httpx.Client", FakeClient)
+    with tempfile.TemporaryDirectory() as d:
+        download_asset("https://example.com/foo.png", Path(d) / "assets")
+    assert captured_kwargs.get("headers", {}).get("User-Agent") == USER_AGENT
