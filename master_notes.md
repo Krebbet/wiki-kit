@@ -38,6 +38,20 @@ Append entries using this structure:
 **Implication:** In `capture_url.py` asset resolver, use `urllib.parse.urljoin(page_url, asset_href)` so protocol-relative and root-relative URLs both resolve correctly. Default scheme should be the source page's scheme (`https://`), not `http://`.
 **Status:** open
 
+### 2026-04-21 — /research should signpost the phase transition into ingest
+**Scope:** kit
+**Observation:** `/research` step 6 says to "Integrate via `/ingest`" but slash commands do not nest — the model follows `/ingest`'s process inline without announcing it. From the user's perspective the boundary is invisible; it can read as "research paused for no clear reason" when `/ingest` reaches its "wait for user input" checkpoint. In this session the user asked explicitly whether ingest runs automatically after research — legibility issue, not a behaviour issue.
+**Implication:** Add a one-line announcement requirement to `/research` step 6 — literally "— transitioning to ingest —" or similar, so the user sees the phase boundary. Optionally mirror on step 5→6 and 6→7 for consistent signposting. Pure prose change to `.claude/commands/research.md`; no tooling change.
+**Status:** open
+
+### 2026-04-21 — /lint should emit a summary document and then auto-ingest surfaced raw sources
+**Scope:** kit
+**Observation:** Current `/lint` flow ends with an interactive "would you like me to fix any of these issues?" prompt. User wants a different flow for lint: (1) produce a summary document as a persisted artifact (not just inline chat output), presented to the user first. (2) Lint step 6 ("coverage gaps — important concepts discussed in `raw/` source documents that have no wiki page or are only mentioned in passing") currently only reports gaps; user wants it to *then* run `/ingest` on any un-ingested raw sources it surfaces, so lint closes the coverage gap rather than merely naming it.
+**Implication:** Two changes to `.claude/commands/lint.md`:
+1. Persist the lint report to a file (e.g., `wiki/lint-reports/YYYY-MM-DD.md` or similar) before any remediation, so the user has a durable artefact to review. Present a pointer to the file, not only inline output.
+2. After presenting the report, for coverage-gap items that are *un-ingested raw source files* (distinct from conceptual gaps in existing pages), invoke the `/ingest` process on each. Apply the same phase-transition signposting as /research (previous note). Respect `/ingest`'s user-input checkpoint — the user still approves page structure per source.
+**Status:** open
+
 ### 2026-04-21 — capture_pdf marker engine has no graceful fallback on CUDA OOM
 **Scope:** kit
 **Observation:** On a host where another process held ~21 GB of the 23.5 GB GPU, `capture_pdf --engine marker` for the HBS working paper failed with `CUDA out of memory. Tried to allocate 20.00 MiB...` and exited with a stacktrace. No automatic fallback. Workaround: re-ran with `--engine pymupdf` — cost was 2 broken image refs in the arXiv capture (figures that marker would have extracted, pymupdf did not).
