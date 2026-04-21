@@ -27,8 +27,10 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-# Markdown image refs that target a local file (skip URLs and absolute paths).
-_IMAGE_REF_RE = re.compile(r"!\[[^\]]*\]\((?!https?://|/)([^)\s]+)\)")
+# Markdown image refs that target a local file. Skip http(s):// URLs, absolute
+# paths, inline data: URIs (e.g. `data:image/svg+xml;base64,...` UI chrome on
+# publisher pages like Nature), and fragment/JS/mail schemes.
+_IMAGE_REF_RE = re.compile(r"!\[[^\]]*\]\((?!https?://|data:|javascript:|mailto:|#|/)([^)\s]+)\)")
 
 # Markdown filenames written by capture_pdf are prefixed with a sequence number,
 # e.g. `04-B-1-maml-finn.md`. Stripping that prefix recovers the slug.
