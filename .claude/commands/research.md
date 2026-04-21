@@ -49,6 +49,8 @@ $ARGUMENTS — the topic to research.
 
    Each tool prints the written file path on success and exits non-zero with a stderr message on failure.
 
+   **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
+
    <!-- DOMAIN-SLOT: source-type-notes -->
    **Source-type handling for this wiki:**
    - **Academic papers** — `capture_url` the abstract/landing page for discovery; if the full paper is PDF-only, use `capture_pdf` on the PDF URL or ask the user to drop the PDF into `raw/research/<topic-slug>/`. For ML/optimization papers, prefer arXiv (open) over journal paywalls when both exist.
@@ -58,7 +60,7 @@ $ARGUMENTS — the topic to research.
    - **Paywalled or login-gated content** — flag it to the user and stop. Never guess at contents from a landing page.
    <!-- /DOMAIN-SLOT -->
 
-5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
+5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
 
    Then run the fidelity audit on the topic directory:
 

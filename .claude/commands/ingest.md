@@ -10,6 +10,8 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
 
 1. **Read the source** — Read the file at the given path. If it's a directory, read all `.md` files within it.
 
+   **For large corpora (rule of thumb: total size over ~200KB, or more than three non-trivial source files), do not read every file into main context.** Dispatch parallel subagents (Explore or general-purpose) — one per source — and hand each the domain-specific takeaway prompts from the `DOMAIN-SLOT: takeaway-prompts` block below as its extraction structure. Ask each agent for a word-bounded structured report (headings matching the slot prompts, per-section bullets attributed to the file, a short quote budget). Synthesise those reports into the step-2 takeaway summary. This keeps the main conversation's context free for synthesis and the ingest-to-wiki writing step, and it makes the per-source extraction bounded and reproducible.
+
 2. **Discuss key takeaways** — Present a brief summary to the user:
    - Main ideas and claims
    - What is new or different from what the wiki already covers
