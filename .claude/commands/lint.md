@@ -29,7 +29,12 @@ Perform a health check of the wiki.
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+10. **Domain-specific checks** — apply the following to every wiki page:
+    1. **Food-science terms defined on first use** — any non-trivial food-science term (rheology, hydrocolloid, Maillard reaction, emulsion stability, Bostwick, shear thinning, etc.) is defined inline on first appearance, or linked to a page that defines it. The reader is ML-fluent but new to food science; undefined jargon is a bug.
+    2. **Generation vs. evaluation separation** — method pages are explicit about whether they address candidate *generation*, *evaluation/scoring*, or both. Conflation of the two is a common failure mode; flag pages that discuss "a method" without making this distinction clear.
+    3. **Food-science claims are cited** — any mechanistic or empirical claim about food behavior traces to a paper, textbook, or authoritative wiki page (via `[[wiki-link]]` or `## Source`). Floating assertions about ingredient behavior or property dependencies are a lint failure.
+    4. **Method-expansion pages name their axis** — pages proposing extensions to the GA + predictive-model method state which axis they expand: candidate space, model sophistication, evaluation quality, HITL reduction, or GenAI integration. If a page proposes an extension without naming its axis, flag it.
+    5. **Open questions are surfaced, not buried** — contested or unresolved design questions live either in `wiki/conflicts/` or under an explicit "Open questions" heading. Flag open questions hidden mid-paragraph in research pages.
 <!-- /DOMAIN-SLOT -->
 
 ## Output

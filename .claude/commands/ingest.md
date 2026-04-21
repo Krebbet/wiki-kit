@@ -15,7 +15,14 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
    - What is new or different from what the wiki already covers
    - Conflicts with existing wiki positions
    <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   Domain-specific prompts — explicitly scan for and flag the following:
+   - **Candidate generation** — methods or representations for producing formulation candidates (GA, BO, RL, generative models, constraint programming, LLM-driven). Note the search space, the encoding, and any feasibility constraints.
+   - **Predictive and evaluation models** — models over food properties (viscosity, emulsion stability, texture, shelf life, sensory attributes). Record inputs, training data, accuracy claims, and stated limitations.
+   - **Food-science mechanisms** — the underlying chemistry, physics, or engineering that explains *why* a property behaves as it does. Define any non-trivial food-science term on first use (the wiki reader is ML-fluent but new to food science).
+   - **Ingredient data and substitutability** — structured ingredient info, functional roles, substitute ingredients, cost/sensory/functional tradeoffs (the "cheaper peanut-oil replacement" pattern).
+   - **Human-in-the-loop patterns** — where expert judgment is necessary, where it can be automated, and what the interface between human and system looks like.
+   - **GenAI leverage points** — concrete ways LLMs or other generative models could enter the workflow (literature reasoning, tacit-knowledge encoding, candidate generation, evaluation/critique, UI).
+   - **Claims that disagree with other sources** — flag for the `conflicts/` workflow; the wiki is actively building a POV on contested questions.
    <!-- /DOMAIN-SLOT -->
 
 3. **Wait for user input** — Let the user guide emphasis before writing. They may want to highlight specific aspects or skip others.

@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki:** peer-reviewed food-science journals (J. Food Sci., Food Hydrocolloids, J. Food Eng., Trends in Food Sci. & Tech., Food Chemistry, Innovative Food Sci. & Emerging Tech.) and chem/process-engineering venues where relevant (AIChE J., Ind. Eng. Chem. Res.). For the algorithmic side, top ML / optimization venues (NeurIPS, ICML, ICLR, AAAI, JMLR). Graduate-level textbooks on food science, formulation, rheology, and chemometrics count as authoritative for foundational material. Trusted lab/researcher blogs, review articles, and industry trade publications (Food Technology, Prepared Foods) are acceptable secondary sources. **Avoid:** marketing content, vendor whitepapers with undisclosed methods, diet/nutrition pop-science, and consumer-facing health claims detached from primary research.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -50,7 +50,12 @@ $ARGUMENTS — the topic to research.
    Each tool prints the written file path on success and exits non-zero with a stderr message on failure.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Source-type handling for this wiki:**
+   - **Academic papers** — `capture_url` the abstract/landing page for discovery; if the full paper is PDF-only, use `capture_pdf` on the PDF URL or ask the user to drop the PDF into `raw/research/<topic-slug>/`. For ML/optimization papers, prefer arXiv (open) over journal paywalls when both exist.
+   - **Web articles and blogs** — `capture_url`, add `--js` for JS-heavy sites.
+   - **Books and textbook chapters** — user supplies an excerpt or scanned chapter as a local PDF; `capture_pdf --src <local-path>`. Treat as a manual source drop, not a web fetch.
+   - **YouTube talks / conference videos** — `fetch_transcript`; in the wiki page, record speaker name and venue/year so the source can be cited properly.
+   - **Paywalled or login-gated content** — flag it to the user and stop. Never guess at contents from a landing page.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.

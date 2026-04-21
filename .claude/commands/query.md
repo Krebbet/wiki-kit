@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** Explanatory. The reader is solo, ML-fluent (can skip ML 101 — don't explain gradient descent, cross-validation, or standard optimization/ML vocabulary), and new to food science (define food-science terms on first use, or link to a wiki page that defines them). When synthesizing, surface the reasoning chain explicitly: what's the claim, what's the evidence, what's the mechanism. Cite every substantive claim with `[[wiki-link]]`. When sources disagree, name the disagreement — do not smooth it over, because that disagreement is material to the POV this wiki is building.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:
