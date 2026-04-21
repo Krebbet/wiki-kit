@@ -5,6 +5,7 @@ import argparse
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 
 import httpx
 import trafilatura
@@ -28,7 +29,7 @@ def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
     effective_slug = slug or slugify(title or url)
     filename = next_numbered_filename(out_dir, effective_slug)
     assets_dir = out_dir / "assets"
-    body_md = _rewrite_images(body_md, assets_dir)
+    body_md = _rewrite_images(body_md, assets_dir, source_url=url)
 
     fm = write_frontmatter({
         "url": url,
@@ -83,18 +84,59 @@ def _main_content_html(html: str) -> str:
     return html
 
 
-def _rewrite_images(body: str, assets_dir: Path) -> str:
-    """Replace markdown image URLs with local asset paths."""
+def _rewrite_images(body: str, assets_dir: Path, *, source_url: str) -> str:
+    """Replace markdown image URLs with local asset paths.
+
+    Normalises protocol-relative (`//host/path`) and plain-relative
+    (`fig01.png`, `img/logo.png`) asset URLs against `source_url` before
+    fetching — many publisher pages (Nature, arXiv HTML renderings) use
+    those forms and would otherwise fail at the httpx layer with "Request
+    URL is missing an http/https protocol".
+    """
     with httpx.Client(follow_redirects=True, timeout=20.0) as client:
         def _replace(m: re.Match) -> str:
             alt, url = m.group(1), m.group(2)
             if url.startswith("data:") or url.startswith("./"):
                 return m.group(0)
-            filename = download_asset(url, assets_dir, client=client)
+            fetchable = _normalize_asset_url(source_url, url)
+            if fetchable is None:
+                return m.group(0)
+            filename = download_asset(fetchable, assets_dir, client=client)
             if filename is None:
                 return m.group(0)
             return f"![{alt}](./assets/{filename})"
         return re.sub(r'!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)', _replace, body)
+
+
+def _normalize_asset_url(source_url: str, asset_url: str) -> str | None:
+    """Return a fetchable absolute URL for an asset found in source_url.
+
+    Handles three cases:
+    - Already absolute (`http://` / `https://`) — returned unchanged.
+    - Protocol-relative (`//host/path`) — prefixed with `https:`.
+    - Relative (`fig01.png`, `img/logo.png`, `../x.png`) — joined against
+      `source_url`, appending a trailing `/` to the base when the last
+      segment looks like a page rather than a file (no extension), so that
+      arXiv HTML URLs like `https://arxiv.org/html/2509.21556v1` resolve
+      figures under that article and not the `/html/` parent.
+
+    Returns None if the URL is too malformed to normalise.
+    """
+    if not asset_url:
+        return None
+    if asset_url.startswith("http://") or asset_url.startswith("https://"):
+        return asset_url
+    if asset_url.startswith("//"):
+        return "https:" + asset_url
+    base = source_url
+    parsed = urlparse(base)
+    last_segment = parsed.path.rsplit("/", 1)[-1]
+    if last_segment and "." not in last_segment and not base.endswith("/"):
+        base = base + "/"
+    try:
+        return urljoin(base, asset_url)
+    except ValueError:
+        return None
 
 
 def main(argv: list[str] | None = None) -> int:
