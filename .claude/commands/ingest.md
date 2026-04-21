@@ -38,3 +38,5 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
    - `wiki/log.md` — append a dated ingest entry: `## [YYYY-MM-DD] ingest | Source Title`.
 
 7. **Report** — List all pages created or updated, and any unresolved conflicts.
+
+8. **Harvest checkpoint.** Did anything surface during this ingest that would help *any* wiki, not just this one? Examples: a source-format gotcha worth warning about in this file, a synthesis pattern worth codifying, a capture bug you worked around. If yes, append a brief entry to `master_notes.md` with `Scope: kit` and `Status: open`, and mention it inline. `/harvest` will pick it up.

@@ -22,6 +22,7 @@ At the start of every session:
 1. Read `wiki/index.md` to understand what exists.
 2. Read `wiki/revisions.md` to understand what changed recently.
 3. Read the last 20 lines of `wiki/log.md` for recent activity context.
+4. Read `../master_notes.md` (repo root) to pick up open process learnings carrying over from prior sessions. Any entries with `Status: open` and `Scope: project` or `both` should inform how you approach this session's work.
 
 ## Wiki Structure
 
@@ -94,6 +95,7 @@ When two sources conflict:
 - `/research <topic>` — Find sources on the web, capture, integrate.
 - `/query <question>` — Answer from the wiki, reflect new insights back.
 - `/lint` — Health-check the wiki.
+- `/harvest` — Promote generic kit-level improvements from this wiki's branch back to the wiki-kit template on main.
 
 ## Modifying the Wiki
 
@@ -103,3 +105,19 @@ For any wiki modification:
 3. Append to `revisions.md`.
 4. Append to `log.md` for significant operations (ingest, research, lint).
 5. **Never** modify files in `../raw/` — raw sources are immutable.
+
+## Flagging Process Learnings
+
+During normal operation, watch for learnings that transcend this wiki's specific content:
+
+- **Generic fixes** — bugs you fix in `tools/` or `.claude/commands/` that would help any wiki, not just this one.
+- **Process insights** — observations about how `/ingest`, `/research`, `/query`, or `/lint` could be sharper, including failure modes worth documenting.
+- **Collaboration patterns** — things about how the user and assistant work together that, if repeated, should become convention.
+
+When you notice one, append a brief entry to `../master_notes.md` (repo root) using its format. Use `Status: open` and pick scope:
+- `project` — specific to this wiki
+- `kit` — generic to wiki-kit itself (gets promoted via `/harvest`)
+- `interaction` — about collaboration style (may become memory or user-level guidance)
+- `both` — overlaps
+
+Log it **in-situ**, not at session end. Say it inline so the user sees the flag — e.g., "This looks like a kit-level learning — logging to `master_notes.md`." These entries are what `/harvest` uses to surface improvements worth promoting.
