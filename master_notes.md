@@ -52,6 +52,12 @@ Append entries using this structure:
 2. After presenting the report, for coverage-gap items that are *un-ingested raw source files* (distinct from conceptual gaps in existing pages), invoke the `/ingest` process on each. Apply the same phase-transition signposting as /research (previous note). Respect `/ingest`'s user-input checkpoint — the user still approves page structure per source.
 **Status:** applied (2026-04-21 kit harvest → main @ 678dc4c)
 
+### 2026-04-21 — /harvest should fast-forward local main to origin/main before branching
+**Scope:** kit
+**Observation:** During the 2026-04-21 harvest, `git switch -c kit-harvest-2026-04-21 origin/main` correctly branched from the live `origin/main` ref, but local `main` was 2 commits behind (someone had merged PR #1 "kit-learning-capture" since the local tree was last touched). This was not detected before the final merge. When I eventually ran `git merge --ff-only kit-harvest-...` into local main, the output showed *all* commits between the stale local HEAD and the harvest HEAD — including the 2 that were already on origin/main — making it look as though the harvest had promoted a large amount of additional content (including DOMAIN-SLOT bodies and `master_notes.md`, which are meant to be skipped). The push was correct — `a94db53..678dc4c` shipped only the 5 harvest commits I added — but the merge output was genuinely alarming until I traced it.
+**Implication:** Add a pre-check in `/harvest` step 1 (or step 2 right after `git fetch origin main`): compare `git rev-parse main` to `git rev-parse origin/main`. If they differ, first fast-forward local main to origin/main (safe as long as it is a pure ancestor — verify with `git merge-base --is-ancestor main origin/main`). This ensures the eventual ff-merge output reflects *only* the harvest diff. If local main has diverged rather than merely lagged, stop and surface it. Pure prose change to `.claude/commands/harvest.md`.
+**Status:** open
+
 ### 2026-04-21 — capture_pdf marker engine has no graceful fallback on CUDA OOM
 **Scope:** kit
 **Observation:** On a host where another process held ~21 GB of the 23.5 GB GPU, `capture_pdf --engine marker` for the HBS working paper failed with `CUDA out of memory. Tried to allocate 20.00 MiB...` and exited with a stacktrace. No automatic fallback. Workaround: re-ran with `--engine pymupdf` — cost was 2 broken image refs in the arXiv capture (figures that marker would have extracted, pymupdf did not).
