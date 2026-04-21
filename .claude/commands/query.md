@@ -19,7 +19,9 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** terse and expert. Short answers, high information density. No background-filling or term definitions unless the question explicitly asks for them. Every substantive claim cites a `[[wiki-link]]`. When the wiki does not cover part of a question, say so in one line rather than hedge.
+
+   **User's querying lens:** the user's personal lens favours **market solutions**, **tech-enabled solutions**, **exit pathways** (parallel institutions), and **collective framings**. When asked "what should I build", "how could I approach this", or similar design-oriented questions, foreground ideas from those four categories. Otherwise stay neutral — the wiki itself documents all positions fairly.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

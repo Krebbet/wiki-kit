@@ -29,12 +29,12 @@ Perform a health check of the wiki.
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-9. **Domain-specific checks** — research-wiki for LLM fine-tuning method development:
-   a. **Paper identifier present** — every page citing a paper has the ArXiv ID (e.g., `arXiv:2401.12345`) or DOI in its `## Source` section.
-   b. **Conceptual cross-links** — method pages link to at least one related-method page, not only papers they cite. The conceptual graph matters as much as the citation graph.
-   c. **Quantitative claims cite figures** — pages making numeric claims ("X% improvement", "Y× more sample-efficient") cite the specific table or figure number from the source.
-   d. **Research-page schema** — pages under `wiki/research/` have `## Method` and `## Claims` sections in addition to the standard `## Source` and `## Related`.
-   e. **Recency check for fast-moving topics** — flag pages on RL, LLM training, or post-training methods whose only sources are older than 5 years. (Foundational papers older than that are fine, but the page should also reference recent follow-ups.)
+10. **Domain-specific checks** — collective-consumer-action wiki:
+    a. **Source metadata present** — every `## Source` entry on every page records origin / intended audience / purpose / trust tag. This is the core convention; missing metadata is a lint failure.
+    b. **Conceptual cross-links** — pages on specific tools or orgs link to the counter-power mechanism they embody (collective bargaining, co-op, class action, regulation, exit-alternative, transparency tool, boycott, tech workaround). The mechanism graph matters as much as the citation graph.
+    c. **Industry ↔ counter-power balance** — for each industry or extraction mechanism covered, flag if no page exists on counter-power tactics against it (and conversely, a tactic page with no industry it's deployed against).
+    d. **Claim attribution** — specific or numeric claims (pricing incidents, company actions, court rulings, policy effects) cite the primary source, not a second-hand summary that cites the primary source.
+    e. **Stale tech check** — pages on specific tools, apps, platforms, or companies flagged if their only sources are older than 2 years. This space moves fast; tools die, companies pivot, regulations change. Foundational concept pages are exempt.
 <!-- /DOMAIN-SLOT -->
 
 ## Output
@@ -75,3 +75,7 @@ Produce a structured lint report:
 After presenting the report, ask: "Would you like me to fix any of these issues?"
 
 If the user says yes, fix the issues, then update `wiki/revisions.md` and `wiki/log.md` with a lint entry.
+
+## Harvest checkpoint
+
+Before finishing, ask: did this lint surface anything that would help *any* wiki, not just this one? Examples: a new class of issue worth adding as a generic lint check, a pattern in orphans suggesting `/ingest` or `/research` could be smarter, a bug in `audit_captures`. If yes, append a brief entry to `master_notes.md` with `Scope: kit` and `Status: open`, and mention it inline so the user sees the flag. `/harvest` will pick it up.

@@ -15,7 +15,12 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
    - What is new or different from what the wiki already covers
    - Conflicts with existing wiki positions
    <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   - **Origin / audience / purpose triple** — who produced this (journalism / academic / advocacy / industry / government), who it's written for, what it's trying to do (inform / persuade / document / sell). Plus a short trust tag. Record this in the source metadata; it is required on every page.
+   - **Industry or power structure** — what industry, platform, or extraction mechanism is being described (ride-share dynamic pricing, healthcare information asymmetry, landlord data extraction, etc.).
+   - **Counter-power mechanism** — if the source describes a pushback tactic, tool, org, or law, categorise it: collective bargaining / co-op / class action / regulation / exit-alternative / transparency tool / boycott / tech workaround.
+   - **Technology angle** — tech-as-extraction (algorithmic pricing, surveillance, dark patterns) vs. tech-as-counter-power (coordination tools, price transparency, platform co-ops). Flag explicitly — this is a core axis of the wiki.
+   - **Actionability / design-input** — does the source describe something the user could build, join, or adapt? Flag it as a design-input candidate.
+   - **Conflicts with existing wiki positions** — the wiki stays neutral, so surface competing framings rather than silently adopting a new one.
    <!-- /DOMAIN-SLOT -->
 
 3. **Wait for user input** — Let the user guide emphasis before writing. They may want to highlight specific aspects or skip others.
@@ -38,3 +43,5 @@ $ARGUMENTS — the file path to the source document (e.g., `raw/research/my-topi
    - `wiki/log.md` — append a dated ingest entry: `## [YYYY-MM-DD] ingest | Source Title`.
 
 7. **Report** — List all pages created or updated, and any unresolved conflicts.
+
+8. **Harvest checkpoint.** Did anything surface during this ingest that would help *any* wiki, not just this one? Examples: a source-format gotcha worth warning about in this file, a synthesis pattern worth codifying, a capture bug you worked around. If yes, append a brief entry to `master_notes.md` with `Scope: kit` and `Status: open`, and mention it inline. `/harvest` will pick it up.

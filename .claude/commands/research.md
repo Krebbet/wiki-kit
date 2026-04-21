@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** (a) papers from established ML labs (Anthropic, DeepMind, OpenAI, Meta FAIR, Google Brain/Research, MILA, etc.) and well-cited authors; (b) peer-reviewed venues (NeurIPS, ICML, ICLR, ACL, EMNLP) or ArXiv preprints with strong follow-on citations; (c) primary methodology papers over surveys when both exist — treat surveys as roadmaps, not ground truth. When citing an ArXiv paper, capture both v1 and the latest version if claims diverge between revisions. Avoid: marketing posts, vague claims without methodology, benchmark cherry-picks, blog summaries of papers (capture the paper itself).
+**Sources for this wiki span a wide range** and are recorded with **origin / intended audience / purpose** metadata plus a **trust tag** so the reader can judge for themselves. Priority lanes: peer-reviewed academic work (economics, antitrust, law reviews, STS), investigative journalism (ProPublica, The Markup, Reuters, reputable beat reporters), advocacy-org primary materials (EFF, Open Markets Institute, Public Citizen, platform-coop networks), government and regulatory filings (FTC, EU Commission, court dockets, SEC), and Wikipedia as a *starting* reference — always chase the footnote trail to the primary source when a claim is load-bearing. Books, talks, and podcasts are acceptable. There is no hard trust hierarchy; the only filter is spam / slop. When a source has a clear political stance or commercial interest, record it in the source metadata rather than excluding the source.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -51,11 +51,14 @@ $ARGUMENTS — the topic to research.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
    **Source-type guidance for this wiki:**
-   - **ArXiv abstract pages or PDF URLs** → use `capture_pdf.py` with `--engine marker` (preserves figures and equations, which are usually load-bearing).
-   - **Lab blog posts and web articles** → use `capture_url.py`. Add `--js` for sites that render content client-side (most modern lab blogs).
-   - **YouTube conference talks** → use `fetch_transcript.py`. Note in the wiki page that the source is a talk transcript (timestamps, no figures).
-   - **Prefer arXiv over journal paywalls** when both exist. If only the paywalled version is canonical, still capture the arXiv preprint and note the divergence.
-   - **Prefer arXiv abs page (HTML) for the bibliographic record**, but always capture the PDF for the actual content.
+   - **Web articles, Substack, org blogs, news** → `capture_url.py`. Add `--js` for sites that render content client-side (most modern sites).
+   - **Wikipedia pages** → `capture_url.py`. Treat as starting reference, not final authority — chase the footnote trail to primary sources when a claim matters.
+   - **Academic papers (ArXiv, SSRN, law reviews, NBER, Brookings)** → `capture_pdf.py` with `--engine marker`. Prefer preprint / open-access. Capture the PDF for content and (for ArXiv) the abs page for the bibliographic record.
+   - **Government / regulatory docs (FTC filings, EU reports, court dockets, SEC filings)** → `capture_pdf.py`. Capture the original filing, not journalism about it.
+   - **Books and book chapters (PDFs)** → `capture_pdf.py --engine marker`. Note copyright status in the source metadata.
+   - **YouTube talks and podcasts** → `fetch_transcript.py`. Note in the wiki page that the source is a transcript (timestamps available, no figures).
+   - **Organisation websites** → `capture_url.py`. Prefer "about / mission / methods" pages over blog posts when establishing what an org does.
+   - **Primary data or datasets** — if it's a downloadable file, drop it into `raw/` manually and ingest.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
@@ -74,3 +77,5 @@ $ARGUMENTS — the topic to research.
    - **What the sources said** — faithful summary of each captured file, per file.
    - **What was changed in the wiki** — pages created or modified, cross-references added.
    - **Open questions for the user** — conflicts, gaps, or decisions that need a ruling.
+
+8. **Harvest checkpoint.** Did anything surface during this research run that would help *any* wiki, not just this one? Examples: a capture tool bug, a failure mode worth documenting in this file itself, a heuristic for judging source authority that generalises. If yes, append a brief entry to `master_notes.md` with `Scope: kit` and `Status: open`, and mention it inline. `/harvest` will pick it up.
