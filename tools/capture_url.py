@@ -5,12 +5,14 @@ import argparse
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urljoin
 
 import httpx
 import trafilatura
 from markdownify import markdownify as md
 
 from tools._common import (
+    USER_AGENT,
     download_asset,
     next_numbered_filename,
     slugify,
@@ -28,7 +30,7 @@ def capture(url: str, out_dir: Path, slug: str | None, force_js: bool) -> Path:
     effective_slug = slug or slugify(title or url)
     filename = next_numbered_filename(out_dir, effective_slug)
     assets_dir = out_dir / "assets"
-    body_md = _rewrite_images(body_md, assets_dir)
+    body_md = _rewrite_images(body_md, assets_dir, url)
 
     fm = write_frontmatter({
         "url": url,
@@ -83,14 +85,23 @@ def _main_content_html(html: str) -> str:
     return html
 
 
-def _rewrite_images(body: str, assets_dir: Path) -> str:
-    """Replace markdown image URLs with local asset paths."""
-    with httpx.Client(follow_redirects=True, timeout=20.0) as client:
+def _rewrite_images(body: str, assets_dir: Path, page_url: str) -> str:
+    """Replace markdown image URLs with local asset paths.
+
+    Resolves protocol-relative (`//host/path`) and root-relative (`/path`)
+    URLs against the source page URL via urljoin, so that, e.g., a Wikipedia
+    page containing `//upload.wikimedia.org/...` produces a complete
+    https:// URL for the asset fetcher.
+    """
+    with httpx.Client(
+        follow_redirects=True, timeout=20.0, headers={"User-Agent": USER_AGENT}
+    ) as client:
         def _replace(m: re.Match) -> str:
             alt, url = m.group(1), m.group(2)
             if url.startswith("data:") or url.startswith("./"):
                 return m.group(0)
-            filename = download_asset(url, assets_dir, client=client)
+            resolved = urljoin(page_url, url)
+            filename = download_asset(resolved, assets_dir, client=client)
             if filename is None:
                 return m.group(0)
             return f"![{alt}](./assets/{filename})"
