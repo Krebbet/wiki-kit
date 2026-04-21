@@ -45,3 +45,9 @@ Captures: ran `tools.capture_pdf` on all 8 arXiv URLs into `raw/research/adjacen
 Ingest: dispatched 3 parallel synth agents (3 critique papers, 3 PRM/RL papers, 2 Fisher/EWC papers). All returned successfully; 8 wiki pages written into `critique-self-correction/`, `process-reward-models/`, `single-sample-rl-finetuning/`, `self-improvement/`, `rlvr-mechanics/`, and a new `catastrophic-forgetting/` theme directory seeded with the EWC paper.
 
 Refreshed theme overviews to list the new papers in their `## Papers` and `## Source` sections. Updated `wiki/index.md` with 8 new per-paper rows and a new "Catastrophic forgetting (seed)" section. Added `structured-fisher-llm-optimizer.pdf` to `rlvr-mechanics/_overview.md` Source PDFs.
+
+---
+
+## [2026-04-21] lint | schema compliance sweep
+
+Full lint pass. Capture audit clean on both raw dirs (30 + 8 papers, 0 issues). 0 orphans, 0 real broken links (scanner hits in `log.md`/`revisions.md`/`CLAUDE.md` are prose descriptions of past rewrites and placeholder syntax, not references). 0 stale markers. 0 open conflicts. 1 real format issue: `limited-data-ft-survey.md` used `## Method taxonomy` and `## Key claims and findings` instead of the canonical `## Method` / `## Claims`. Renamed both headings; no anchor links depended on the old names. Post-fix format check passes on all 49 research pages.

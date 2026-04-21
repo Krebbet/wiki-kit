@@ -12,7 +12,7 @@ In scope (the survey's four pillars):
 
 Out of scope (explicit or by omission): pretraining from scratch, retrieval architecture details, agentic systems, single-example RL fine-tuning, reasoning-trace bootstrapping (STaR/rStar), test-time training, mechanistic interpretability of fine-tuning, and reward design beyond pairwise preference signals.
 
-## Method taxonomy
+## Method
 
 The survey's organising backbone (with reference to Pfeiffer et al., 2023, for PEFT):
 
@@ -39,7 +39,7 @@ The survey's organising backbone (with reference to Pfeiffer et al., 2023, for P
 
 Tables 1–3 in the paper are the canonical condensed view; Table 4 + Appendix A give an encoder-task PEFT cheat sheet.
 
-## Key claims and findings
+## Claims
 
 **PEFT (§3).**
 - Full FT becomes preferable only at million-sample scale; PEFT matches or beats it under ~100k (Zhang 2023a; Lialin 2024). LoRA and adapters are the most robust defaults across model sizes.
