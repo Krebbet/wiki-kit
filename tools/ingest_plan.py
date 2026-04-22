@@ -27,16 +27,25 @@ class SummarySchemaError(ValueError):
     """Raised when a summary file violates the expected schema."""
 
 
+# matches: leading YAML frontmatter block `---\n...\n---\n` at file start
 _FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+# matches: a section heading line `## Heading` (captures the heading text)
 _SECTION_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
+# matches: `- [[page-name]] — reason` / `- [[x]] - r` / `- [[x]] r`
 _CROSS_REF_LINE_RE = re.compile(r"^-\s*\[\[([^\]]+)\]\]\s*(?:—|--|-)?\s*(.*)$")
+# matches: `- Claim: <text>` (one line of a conflict block)
 _CONFLICT_CLAIM_RE = re.compile(r"^-\s*Claim:\s*(.+?)$", re.MULTILINE)
+# matches: `Contradicts: [[page]] which says X` or `- Contradicts: [[page]] X`
 _CONFLICT_CONTRADICTS_RE = re.compile(
-    r"^\s*Contradicts:\s*\[\[([^\]]+)\]\]\s*(?:which says)?\s*(.*)$",
+    r"^\s*-?\s*Contradicts:\s*\[\[([^\]]+)\]\]\s*(?:which says)?\s*(.*)$",
     re.MULTILINE,
 )
-_CONFLICT_BASIS_RE = re.compile(r"^\s*Basis:\s*(.+?)$", re.MULTILINE)
+# matches: `Basis: <text>` or `- Basis: <text>` (one line of a conflict block)
+_CONFLICT_BASIS_RE = re.compile(r"^\s*-?\s*Basis:\s*(.+?)$", re.MULTILINE)
+# matches: `- New page: title — justification` (title captured up to optional em-dash)
+# titles contain hyphens (foo-method), so exclude newlines, not hyphens
 _PAGE_SHAPE_NEW_RE = re.compile(r"^-\s*New page:\s*([^—\n]+?)(?:\s*—\s*(.+))?$", re.MULTILINE)
+# matches: `- extend [[page]] with section "S"` / `- OR: extend [[page]] with section "S"`
 _PAGE_SHAPE_EXTEND_RE = re.compile(
     r"^-\s*(?:OR:\s*)?extend\s*\[\[([^\]]+)\]\]\s*with section\s*\"([^\"]+)\"",
     re.MULTILINE | re.IGNORECASE,
@@ -153,12 +162,16 @@ def _parse_simple_yaml(block: str) -> dict[str, Any]:
         key, _, raw = line.partition(":")
         key = key.strip()
         raw = raw.strip()
+        # Strip surrounding quotes if present
         if raw.startswith('"') and raw.endswith('"'):
-            out[key] = raw[1:-1].replace('\\"', '"').replace("\\\\", "\\")
-        elif raw.isdigit() or (raw.startswith("-") and raw[1:].isdigit()):
-            out[key] = int(raw)
+            unquoted = raw[1:-1].replace('\\"', '"').replace("\\\\", "\\")
         else:
-            out[key] = raw
+            unquoted = raw
+        # Coerce to int when the (possibly unquoted) value is a decimal integer
+        if unquoted.lstrip("-").isdigit():
+            out[key] = int(unquoted)
+        else:
+            out[key] = unquoted
     return out
 
 

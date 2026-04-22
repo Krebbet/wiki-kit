@@ -92,3 +92,49 @@ def test_aggregate_page_plan_has_one_new_per_non_merged_summary():
     assert plan.page_plan[0].kind == "new"
     assert plan.page_plan[0].title == "foo-method"
     assert plan.page_plan[0].sources == ["01-foo"]
+
+
+def test_parse_summary_accepts_quoted_schema_version(tmp_path):
+    """A subagent that quotes the int should still be accepted."""
+    p = tmp_path / "quoted.summary.md"
+    p.write_text(
+        '---\n'
+        'source: "src.md"\n'
+        'slug: "quoted"\n'
+        'summarized_on: "2026-04-21"\n'
+        'schema_version: "1"\n'
+        '---\n\n'
+        '# Quoted\n\n## One-line\nq\n\n## Method\nx\n\n'
+        '## Cross-ref candidates\n(none)\n\n'
+        '## Conflict flags\n(none)\n\n'
+        '## Proposed page shape\n- New page: quoted\n',
+        encoding="utf-8",
+    )
+    s = parse_summary(p)
+    assert s["frontmatter"]["schema_version"] == 1
+
+
+def test_parse_summary_accepts_bullet_style_conflict(tmp_path):
+    """Bullet-form conflict block (each line `- Xxx:`) should parse."""
+    p = tmp_path / "bullet.summary.md"
+    p.write_text(
+        '---\n'
+        'source: "src.md"\n'
+        'slug: "bullet"\n'
+        'summarized_on: "2026-04-21"\n'
+        'schema_version: 1\n'
+        '---\n\n'
+        '# Bullet\n\n## One-line\nb\n\n## Method\nm\n\n'
+        '## Cross-ref candidates\n- [[dpo]] — refines\n\n'
+        '## Conflict flags\n'
+        '- Claim: Bullet reports 90.0 on X.\n'
+        '- Contradicts: [[dpo]] which says 80.0\n'
+        '- Basis: Table 1\n\n'
+        '## Proposed page shape\n- New page: bullet-method\n',
+        encoding="utf-8",
+    )
+    s = parse_summary(p)
+    assert len(s["conflict_flags"]) == 1
+    cf = s["conflict_flags"][0]
+    assert cf["contradicts_page"] == "dpo"
+    assert cf["basis"] == "Table 1"
