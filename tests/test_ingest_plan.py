@@ -1,6 +1,9 @@
 """Tests for tools/ingest_plan.py."""
 from __future__ import annotations
 
+import json
+import os
+import time
 from pathlib import Path
 
 import pytest
@@ -9,7 +12,10 @@ from tools.ingest_plan import (
     INGEST_SCHEMA_VERSION,
     SummarySchemaError,
     aggregate,
+    compute_dispatch_list,
+    load_run_state,
     parse_summary,
+    save_run_state,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "ingest"
@@ -140,15 +146,6 @@ def test_parse_summary_accepts_bullet_style_conflict(tmp_path):
     assert cf["basis"] == "Table 1"
 
 
-import json
-
-from tools.ingest_plan import (
-    compute_dispatch_list,
-    load_run_state,
-    save_run_state,
-)
-
-
 def _make_source(topic: Path, slug: str, body: str = "x") -> Path:
     src = topic / f"{slug}.md"
     src.write_text(body, encoding="utf-8")
@@ -219,8 +216,6 @@ def test_compute_dispatch_list_redispatches_failed(tmp_path):
 
 
 def test_compute_dispatch_list_redispatches_stale_mtime(tmp_path, monkeypatch):
-    import os
-    import time
     s1 = _make_source(tmp_path, "01-foo")
     summary = _make_summary(tmp_path, "01-foo")
     save_run_state(tmp_path, {

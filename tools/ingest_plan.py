@@ -390,7 +390,11 @@ def save_run_state(topic_dir: Path, state: dict[str, Any]) -> None:
     state.setdefault("started_at", _iso_now())
     target = _run_json_path(topic_dir)
     tmp = target.with_suffix(".json.tmp")
-    tmp.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+    data = json.dumps(state, indent=2) + "\n"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(data)
+        f.flush()
+        os.fsync(f.fileno())
     os.replace(tmp, target)
 
 
@@ -409,6 +413,10 @@ def compute_dispatch_list(
       - summary file missing on disk despite status=ok
       - source mtime newer than summary mtime (re-captured)
       - summary schema_version != INGEST_SCHEMA_VERSION
+
+    Assumes source_paths all live within topic_dir and have unique file stems
+    (i.e., the subagent contract's slug derivation from src.stem is collision-free).
+    The orchestrator is responsible for enforcing this at the call site.
     """
     state = load_run_state(topic_dir)
     sources_map: dict[str, dict[str, Any]] = state.get("sources", {})
