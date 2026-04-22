@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "count=$(git -C \"$CLAUDE_PROJECT_DIR\" status --porcelain 2>/dev/null | grep -cE '(wiki/|raw/research/weekly-)'); if [ \"$count\" -gt 0 ]; then branch=$(git -C \"$CLAUDE_PROJECT_DIR\" branch --show-current 2>/dev/null); printf '{\"systemMessage\":\"⚠ %s uncommitted weekly-brief files on %s — run git status to inspect\"}\\n' \"$count\" \"$branch\"; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
