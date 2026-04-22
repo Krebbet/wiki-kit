@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-04-22T13:57:40Z",
+  "last_updated": "2026-04-22T14:19:14Z",
+  "sources": {
+    "01-eggroll": {
+      "status": "ok",
+      "summary": "01-eggroll.summary.md"
+    },
+    "01-05-titans-miras": {
+      "status": "ok",
+      "summary": "01-05-titans-miras.summary.md"
+    },
+    "02-10-moonlake": {
+      "status": "ok",
+      "summary": "02-10-moonlake.summary.md"
+    },
+    "02-huxley-godel": {
+      "status": "ok",
+      "summary": "02-huxley-godel.summary.md"
+    },
+    "03-tidar": {
+      "status": "ok",
+      "summary": "03-tidar.summary.md"
+    },
+    "04-nested-learning": {
+      "status": "ok",
+      "summary": "04-nested-learning.summary.md"
+    },
+    "06-mhc-deepseek": {
+      "status": "ok",
+      "summary": "06-mhc-deepseek.summary.md"
+    },
+    "07-lejepa": {
+      "status": "ok",
+      "summary": "07-lejepa.summary.md"
+    },
+    "08-apple-sharp": {
+      "status": "ok",
+      "summary": "08-apple-sharp.summary.md"
+    },
+    "09-in-place-ttt": {
+      "status": "ok",
+      "summary": "09-in-place-ttt.summary.md"
+    }
+  },
+  "review_completed_at": "2026-04-22T14:19:14.866732+00:00",
+  "pages_written": [
+    "wiki/eggroll.md",
+    "wiki/titans-miras.md",
+    "wiki/moonlake-world-models.md",
+    "wiki/huxley-godel-machine.md",
+    "wiki/tidar.md",
+    "wiki/nested-learning.md",
+    "wiki/manifold-constrained-hyper-connections.md",
+    "wiki/lejepa.md",
+    "wiki/sharp-view-synthesis.md",
+    "wiki/in-place-ttt.md",
+    "wiki/test-time-training.md",
+    "wiki/watchlist.md",
+    "wiki/conflicts/long-context-attention-vs-recurrent-memory.md",
+    "wiki/conflicts/grpo-vs-evolution-strategies.md",
+    "wiki/conflicts/icl-emergent-vs-nested-levels.md",
+    "wiki/conflicts/ttt-distinct-vs-parametric-icl.md",
+    "wiki/conflicts/regression-vs-diffusion-view-synthesis.md",
+    "wiki/conflicts/pure-video-vs-3d-world-models.md",
+    "wiki/conflicts/fixed-state-ssm-long-context.md",
+    "wiki/index.md",
+    "wiki/log.md",
+    "wiki/revisions.md"
+  ]
+}
