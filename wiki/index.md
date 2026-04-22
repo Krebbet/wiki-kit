@@ -13,6 +13,7 @@ Domain: design of a computational food-formulation system — extending a GA + p
 | Page | Summary |
 |---|---|
 | [[field-overview]] | Orientation page: where computational food formulation sits in 2025, how the user's GA + predictive-model method fits, and a recommended reading order. |
+| [[priority-improvements]] | Consolidated prioritisation of the extensions the method pages propose — ordered by leverage ÷ build-cost, with deferred items and an evaluation strategy. *(synthesis)* |
 | [[industry-examples]] | Named companies, platforms, and deployed systems — NotCo, Brightseed, Climax, Perfect Day, Plant Jammer, PIPA, Ajinomatrix, and others. |
 | [[open-gaps]] | Where the field agrees it is weak: data, generalisation, bioavailability, explainability, cultural diversity, benchmarks, preference elicitation. |
 
@@ -34,6 +35,7 @@ Domain: design of a computational food-formulation system — extending a GA + p
 | [[predictive-models]] | Property-prediction models by domain (texture/rheology, flavour/aroma, nutrition, fermentation, sensory), accuracy claims, limits. |
 | [[inverse-design]] | Target property → formulation framing, VAE/GAN/diffusion approaches, optimisation-over-surrogate route. |
 | [[genai-leverage-points]] | Concrete LLM and generative-AI entry points — literature mining, substitution proposal, feedback translation, copilots, agentic loops. |
+| [[literature-mining-pipelines]] | The six-stage extraction recipe (retrieve → filter → extract → link → ratify → active-learn), case studies (FoodAtlas v1/v2, FooDis), validation numbers, tool stack. |
 
 ### Food science (reference)
 
@@ -48,7 +50,8 @@ Domain: design of a computational food-formulation system — extending a GA + p
 
 | Page | Summary |
 |---|---|
-| [[datasets-and-databases]] | Public and notable proprietary datasets — USDA, FAO/INFOODS, FoodAtlas, FlavorGraph, Recipe1M+, Principal Odor Map, PTFI, and others. |
+| [[datasets-and-databases]] | Public and notable proprietary datasets — USDA, FAO/INFOODS, FoodAtlas v1/v2, FoodKG, FoodOntoMap, FooDB, CTD, ChEMBL, FoodOn, AGROVOC, Recipe1M+, Principal Odor Map, PTFI, and others. |
 | [[ingredient-data-structures]] | Heterogeneous graph representations, role taxonomies, similarity measures, ingredient records. |
+| [[literature-mining-substrates]] | Audit of the corpora an LLM extraction pipeline can actually use — PMC / Europe PMC / Agricola / patents / recipe corpora / composition DBs — with access, licensing, and coverage-gap assessment. |
 
 ---
