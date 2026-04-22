@@ -44,6 +44,8 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **Self-Improving Coding Agent (SICA, Robeyns 2025, arXiv:2504.15228)** — HGM's secondary baseline. *(huxley-godel-machine.)*
 - **Gödel Machine (Schmidhuber 2003)** — Theoretical anchor HGM claims to approximate under Assumption 1. *(huxley-godel-machine.)*
 - **SWE-bench (Verified + Lite)** — Primary benchmark for HGM and the broader self-improving-agent line. *(huxley-godel-machine.)*
+- **SKILL0 (arXiv 2604.*, Apr 2026)** — In-Context RL framework for LLM agents: internalises skills into model parameters via ICRL, enabling autonomous behaviour without external skill descriptions at inference. Parametric counterposition to external-KB agent frameworks (SkillX below). *(weekly-brief 2026-04-22.)*
+- **SkillX (Zhejiang U + Ant Digital, Apr 2026)** — Automated framework that builds a plug-and-play skill knowledge base for LLM agents using a hierarchical (planning / functional / atomic) representation. ~10% task-success lift for weaker models. External-KB counterposition to SKILL0's parametric approach. *(weekly-brief 2026-04-22.)*
 
 ## Evolution strategies
 
@@ -61,6 +63,7 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **Gen3C / ViewCrafter / ZeroNVS / CAT3D / Wonderland** — Diffusion-side view-synthesis line SHARP positions against. *(sharp-view-synthesis.)*
 - **AdaMPI (Han 2022)** — Source of the warp-back trick SHARP inverts for SSFT. *(sharp-view-synthesis.)*
 - **Sora-class video foundation models / Genie** — Pure-video-scaling world-model line that Moonlake's hybrid 3D position challenges. *(moonlake-world-models.)*
+- **OpenWorldLib (arXiv:2604.04707, Peking/Kuaishou/HKUST/Tsinghua/NUS/SJTU, Apr 2026)** — Unified inference framework + taxonomy for advanced world models (video gen, physics sim, 3D reconstruction, action-conditioned prediction, language-grounded). Explicitly argues text-to-video generators don't qualify as world models — aligns with the 3D-world-model side of [[conflicts/pure-video-vs-3d-world-models]]. *(weekly-brief 2026-04-22.)*
 
 ## Benchmarks & evaluation
 

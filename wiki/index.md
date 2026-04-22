@@ -25,12 +25,14 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[test-time-training]] | Cluster page comparing the three TTT-flavoured sources (Titans, Hope, In-Place TTT) on host, objective, drop-in vs from-scratch, and forgetting mechanism. |
 | [[tidar]] | NVIDIA single-model hybrid: drafts tokens via masked diffusion, AR-verifies in same forward pass. 4.71×–5.91× throughput vs Qwen base AR; beats EAGLE-3 on measured T/s. |
 | [[manifold-constrained-hyper-connections]] | DeepSeek mHC: stabilizes Hyper-Connections by projecting residual-mixing matrix onto Birkhoff polytope via Sinkhorn-Knopp. Composite-mapping Amax 3000 → 1.6 at 27B; +2.1 BBH, +2.3 DROP vs HC. |
+| [[triattention]] | MIT/NVIDIA/ZJU: training-free KV cache compression via pre-RoPE Q/K concentration — a closed-form trigonometric distance-preference score replaces post-RoPE attention sampling. 2.5× throughput at matched AIME25 accuracy; 10.7× KV memory; 6.3× on MATH 500 at budget 1024. Code released. |
 
 ## Training & optimization
 
 | Page | Summary |
 |---|---|
 | [[eggroll]] | Oxford/MILA/NVIDIA Evolution Strategies at hyperscale: low-rank LoRA-style perturbations + counter-based PRNG → ~100× ES throughput. Beats GRPO on 14B RWKV-7 reasoning where GRPO is infeasible (Adam state). Pure-int8 RNN pretraining at population 2^20. |
+| [[rlsd-self-distilled-rlvr]] | IIE/CAS + JD.COM: fixes on-policy self-distillation's privileged-info leakage by decoupling direction (verifier reward, same as GRPO) from magnitude (teacher/student evidence ratio as scalar weight). +2.32% avg over GRPO on Qwen3-VL-8B across 5 multimodal-reasoning benchmarks; RLSD@200 steps beats GRPO@400. |
 
 ## Self-supervised learning
 
