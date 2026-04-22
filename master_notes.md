@@ -25,3 +25,9 @@ Append entries using this structure:
 ## Notes
 
 <!-- Entries appended during operation go below. -->
+
+### 2026-04-21 — Raw source bodies in main context can trip the usage-policy classifier
+**Scope:** kit
+**Observation:** `/ingest` on `raw/research/post-training-alignment-2026/` (11 alignment/post-training papers) crashed mid-run with a Claude Code usage-policy 403. Cause: cumulative main-session context packed with safety-spec excerpts, jailbreak taxonomies, disallowed-content categories, and CoT traces reasoning about harmful requests — the concrete vocabulary a content classifier is tuned for, even though each source individually is a legitimate research paper. The next turn and `/compact` also 403'd because the flagged context was re-sent each call. Only a fresh session recovered.
+**Implication:** `/ingest` must keep raw source bodies out of the main session. Design approved in `docs/superpowers/specs/2026-04-21-subagent-per-source-ingest-design.md`: subagent-per-source with coherence orchestration. Main context only ever sees distilled summaries plus the specific existing wiki pages touched by a plan. Also an input signal for `/research` tooling: the capture pipeline shouldn't feed straight into a main-session summarisation loop for topics rich in safety/alignment vocabulary.
+**Status:** proposed
