@@ -21,6 +21,8 @@ The terms carry different regulatory theories:
 
 These framings are complementary, not mutually exclusive. A single practice (e.g., RealPage's rent algorithm) is simultaneously surveillance pricing (of tenants), algorithmic pricing (fast, automated), and explicit algorithmic collusion (data-pooling among competitors).
 
+**A fourth framing, orthogonal to the above.** [[platform-cooperatives]] sit outside the dynamic-pricing debate entirely — instead of regulating extractive platforms or detecting personalised pricing, they build ownership-level alternatives (worker- or user-owned platforms) that don't run extractive pricing in the first place. Covered on [[regulatory-responses]] as the exit-alternative counter-power lane.
+
 ## Coverage in this wiki
 
 - **Industries:** [[rental-housing-algorithmic-pricing]] · [[surveillance-pricing-retail]] · [[consumer-facing-dynamic-pricing]]

@@ -14,15 +14,10 @@ Run order is a suggestion, not a contract — the user may reorder or skip.
 
 ## Priority 1
 
-### `/research platform cooperatives`
-**Lens:** exit pathways (primary); tech-enabled solutions, collective framings (secondary).
-**Mechanisms covered:** co-op; exit-alternative; (partially) tech workaround.
-**Likely pages:**
-- `mechanisms/platform-cooperatives.md` — definition, governance models, historical context.
-- `mechanisms/exit-alternative.md` — the broader "parallel institution" tactic.
-- `organizations/stocksy.md`, `organizations/up-and-go.md`, `organizations/mondragon.md` (or similar) — specific co-ops as case studies.
-- Possible update to `regulatory-responses.md` design-input section to cross-reference the case studies.
-**Rationale:** Highest-value first run. Sits directly in the user's stated exit-pathway lane and anchors both the co-op and exit-alternative mechanism vocabularies at once. Likely source types: platform-co-op advocacy orgs (PCC, New Economics Foundation), academic work (Trebor Scholz and others), primary org websites.
+### ~~`/research platform cooperatives`~~ ✓ completed 2026-04-21
+**Completed run — see `wiki/log.md` 2026-04-21 entry and [[platform-cooperatives]].**
+Produced: `mechanisms/platform-cooperatives.md` + `organizations/{drivers-cooperative,mondragon,coopcycle}.md` + updates to `counter-power/regulatory-responses.md` and `dynamic-pricing-overview.md`.
+Deferred from original plan: `mechanisms/exit-alternative.md` (defer to a dedicated run; sources frame "exit" through platform-coops specifically); Stocksy and other Shareable-list co-ops (thin sourcing — wait for dedicated sources).
 
 ### `/research consumer data pooling and buyer-side tools`
 **Lens:** tech-enabled solutions; collective framings (primary). Directly serves the user's "what could I build" interest.

@@ -52,3 +52,40 @@ Pre-harvest lint flow (report inline in chat; persisted-report behaviour and aut
 
 **Known issues left open:**
 - 2 broken image refs in `08-arxiv-algorithmic-collusion.md` (pymupdf fallback after marker CUDA OOM). Figures not cited on any wiki page.
+
+## [2026-04-21] research+ingest | platform-cooperatives
+
+Priority-1 run from `wiki/research-queue.md`. Topic: platform cooperatives as an exit-pathway counter-power mechanism.
+
+**Sources captured (8):** Trebor Scholz 2016 Rosa Luxemburg Stiftung NYC pamphlet (foundational text); OECD 2023 "Empowering Communities with Platform Cooperatives" policy report; Wikipedia platform-cooperative article; Wikipedia Mondragon Corporation article; Platform Cooperativism Consortium About page (thin, JS-rendered); Grassroots Economic Organizing excerpt on Drivers Cooperative; The Drivers Cooperative homepage; Shareable "11 Platform Cooperatives" list. All under `raw/research/platform-cooperatives/`.
+
+**Capture notes:**
+- Fast Company article bot-walled by Datadome captcha — substituted GEO repost (partial quote).
+- Wiley pdfdirect URL 403'd even with browser UA — substituted Shareable list for case-study breadth.
+- Both substitutions logged to `master_notes.md` as kit-level note on bot-walled-host detection.
+- 4 broken image refs in OECD PDF (pymupdf fallback). Figures not cited on any wiki page; acceptable.
+
+**Wiki pages created (4):**
+- `mechanisms/platform-cooperatives.md` — anchor page; definition, Scholz origin, OECD typology, capital-conundrum debate (Srnicek/Morozov vs Sundararajan), federation pattern, legal vehicles.
+- `organizations/drivers-cooperative.md` — NYC driver-owned rideshare; 15% commission vs Uber/Lyft 25–40%; Forman/Lewis/Orlando founding team.
+- `organizations/mondragon.md` — the pre-digital foundational federation; 70K workers, 10 principles, 3:1–9:1 wage-ratio cap, 10% solidarity fund, Fagor 2013 bankruptcy and 2022 ULMA/Orona exits as stress-test evidence.
+- `organizations/coopcycle.md` — OECD's featured federation case; 72 coops in 12 countries; second-level cooperative pattern as the transferable scaling blueprint.
+
+**Pages updated (2):**
+- `counter-power/regulatory-responses.md` — new section 8 "Exit-alternative — platform cooperatives"; previous section 8 renumbered to 9; gap analysis updated with platform-coops as "exists but weak"; design-input #2 (buyer-side data co-op) extended with MIDATA.coop and CoopCycle precedents.
+- `dynamic-pricing-overview.md` — added orthogonal-framing note that platform-coops sit outside the dynamic-pricing debate as an ownership alternative.
+
+**Deferred from the queue's anticipated output:**
+- `mechanisms/exit-alternative.md` — captured sources frame "exit" through platform-cooperatives specifically rather than as a distinct standalone concept. Better deferred to a future research run.
+- Stocksy and other Shareable-list co-ops — thin sourcing (only Wikipedia + Shareable). Deferred to avoid empty stubs.
+
+**Open design-input candidates surfaced:**
+- Consumer data cooperative for pricing-surveillance data (MIDATA.coop model applied to the personalised-pricing problem).
+- Federation-first architecture for any new consumer-side counter-power tool (CoopCycle pattern).
+- Colorado LCA as the practical US legal vehicle for investor-member cooperatives.
+
+**Substantive tension documented (not resolved):**
+- Scholz vs Morozov/Srnicek on platform-coop viability. OECD 2023 takes a middle position. Both framings preserved on `mechanisms/platform-cooperatives.md`.
+
+**Kit-level findings logged to `master_notes.md`:**
+- Fast Company (Datadome captcha) and Wiley Online Library (pdfdirect 403 even with UA) are now listed as bot-walled hosts; research.md could gain a detection hint for common captcha-wall signatures.

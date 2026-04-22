@@ -79,7 +79,26 @@ Not a coordinated movement, but a recurring pattern. Each episode below produced
 
 The pattern suggests that **public disclosure** — whether by a journalist, a regulator, or an artist — is often the operative lever.
 
-## 8. Academic-proposed remedies (editorial context, not enacted)
+## 8. Exit-alternative — platform cooperatives
+
+Rather than regulating extractive platforms, the exit-alternative lane builds parallel institutions with different ownership. See [[platform-cooperatives]] for the full treatment; highlights relevant as counter-power:
+
+- **[[drivers-cooperative]] (NYC, 2021–)** — worker-owned rideshare. 15% commission vs Uber/Lyft's 25–40%; drivers receive profit as dividends. Current focus: paratransit and Non-Emergency Medical Transportation.
+- **[[coopcycle]]** — federation of 72 bike-delivery worker cooperatives across 12 countries. The OECD's featured case for how second-level (federation) cooperatives address the capital-conundrum scaling problem.
+- **MIDATA.coop (Switzerland)** — data cooperative for personal health data, jointly created by ETH Zurich and Bern University. Direct template for a buyer-side data cooperative on pricing data (see design-input #2 below).
+- **[[mondragon]]** — the pre-digital foundational model. Nearly 70 years of operation, ~70,000 workers, 10% solidarity-fund mechanism, 3:1–9:1 wage-ratio cap. Cited by platform-coop advocates as proof-of-concept that cooperative federations can reach material scale.
+
+**Policy support for the exit lane:**
+- Colorado UCLAA (Uniform Limited Cooperative Association Act) enables investor-member cooperatives — partial solution to the capital conundrum.
+- Berkeley Worker Cooperative Revolving Loan Fund (2016) — public below-market-rate loans.
+- Barcelona "La Communificadora" (2015) — entrepreneurship training and match-funding for platform coops.
+- NYC Council Brad Lander 2016 report "Raising the Floor for Workers in the Gig Economy" presents platform cooperativism as a gig-worker-protection model.
+- USDA *Rural Cooperatives* Sep/Oct 2016 endorsement.
+- UK Corbyn 2016 Digital Democracy Manifesto — National Investment Bank financing for platform coops.
+
+**Known limits** (documented on [[platform-cooperatives]] without resolution): Srnicek / Morozov / Pollock argue the capital conundrum and network effects make scale impossible. OECD 2023 takes a middle position — "unique solutions with positive impact, but their scale remains limited." The exit lane is real but partial.
+
+## 9. Academic-proposed remedies (editorial context, not enacted)
 
 - **HBS 22-050:** price-setting frequency caps (e.g., weekly limit on price changes); algorithm transparency/auditing; pre-deployment testing.
 - **arXiv 2504.16592:** detection tooling (statistical signatures of algorithmic collusion in market data); real-time monitoring; algorithm disclosure and compliance audits.
@@ -100,6 +119,7 @@ These are proposals, not law. See [[algorithmic-collusion]].
 - Federal legislation (Preventing Algorithmic Collusion Act introduced, not enacted).
 - State disclosure regimes (NY A3008 is a first mover; no other state has followed).
 - EU platform rules (DMA/DSA) — scope covers the large platforms but does not specifically reach algorithmic pricing collusion.
+- **Platform cooperatives as an exit lane** — structurally viable ([[mondragon]] at ~70K workers, [[coopcycle]] at 72-coop federation) but the capital conundrum keeps the scale limited against VC-funded incumbents. Works best in sectors meeting Sundararajan's conditions (see [[platform-cooperatives]]).
 
 **Missing:**
 - **No clean legal theory for tacit algorithmic collusion.** The hardest variant is unaddressed by current antitrust law in either the US or EU.
@@ -118,7 +138,7 @@ Prioritised by closeness to existing gaps in counter-power infrastructure:
    - A "personalised-pricing exposure score" at the category level.
    Combines elements of The Markup's investigative stance with standing infrastructure. Feeds into FTC / CMA / EU investigations.
 
-2. **Buyer-side data co-op.** The direct counterweight to seller-side data pooling. Consumers contribute anonymised purchase data, offer/counter-offer data, and pricing observations; the co-op returns a "fair price" estimate and flags outliers. Governance as a platform cooperative. Applications: rent (tenant version of RealPage); major-appliance and car purchases; insurance; subscription services.
+2. **Buyer-side data co-op.** The direct counterweight to seller-side data pooling. Consumers contribute anonymised purchase data, offer/counter-offer data, and pricing observations; the co-op returns a "fair price" estimate and flags outliers. Governance as a platform cooperative — see [[platform-cooperatives]]. **Precedents to copy:** *MIDATA.coop* (Switzerland — data cooperative for personal health data, jointly created by ETH Zurich and Bern University) demonstrates the governance pattern for member-owned data pooling; *CoopCycle* (see [[coopcycle]]) demonstrates the federation-first architecture for technical/marketing infrastructure without centralised ownership. Practical legal vehicle in the US: Colorado's Limited Cooperative Association (LCA) structure. Applications: rent (tenant version of RealPage, referencing [[rental-housing-algorithmic-pricing]] outcomes); major-appliance and car purchases; insurance; subscription services.
 
 3. **Disclosure-complaint factory.** One-click regulatory submissions. Pre-drafted text per regulator (FTC complaint form; CMA super-complaint format; EU Commission consumer portal; state AG consumer protection filings). Plug-in modules per pricing scandal. Industrialises the episodic consumer-backlash pattern into a sustained complaint flow.
 
