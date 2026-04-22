@@ -15,8 +15,11 @@ playwright/.cache/
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 
-# Captured assets (images can be heavy; opt-in commit)
-raw/research/**/assets/
+# Raw captures (markdown renderings + PNG assets + .ingest summaries).
+# All derivable from the arxiv URL in each wiki page's `## Source` section;
+# committing them bloats the repo with staging artifacts. The wiki/ pages are
+# the committed product. Re-run `capture_pdf` if you need raw text again.
+raw/research/
 
 # OS
 .DS_Store
