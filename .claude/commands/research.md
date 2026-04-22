@@ -77,7 +77,7 @@ $ARGUMENTS — the topic to research.
 
    > — research captures done; transitioning to ingest —
 
-   Then proceed with `/ingest` on `raw/research/<topic-slug>`: read the raw files, discuss takeaways, wait for user input on emphasis, write wiki pages with source-traceable claims, and update tracking files. When the ingest phase ends and you move to the final report (step 7), announce that boundary too:
+   Then proceed with `/ingest` on `raw/research/<topic-slug>`: dispatch one subagent per captured source (so raw source bodies stay out of the main context), aggregate their structured summaries, and present a single consolidated review packet covering page plan, cross-references, conflicts, and low-value candidates. Wait for the user's rulings on the packet, then write wiki pages with source-traceable claims and update tracking files. When the ingest phase ends and you move to the final report (step 7), announce that boundary too:
 
    > — ingest complete; finalising research report —
 
