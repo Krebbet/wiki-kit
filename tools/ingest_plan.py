@@ -13,9 +13,11 @@ for the summary schema and review-packet contract.
 from __future__ import annotations
 
 import json
+import os
 import re
 from collections import defaultdict
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -349,3 +351,103 @@ def _populate_low_value(plan: IngestPlan, parsed: list[tuple[Path, dict[str, Any
         shape = s["proposed_page_shape"]
         if all_extends and shape["kind"] == "extend":
             plan.low_value.append(s["frontmatter"]["slug"])
+
+
+# ---------- run.json state + dispatch ----------
+
+def _run_json_path(topic_dir: Path) -> Path:
+    return topic_dir / ".ingest" / "run.json"
+
+
+def _iso_now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def load_run_state(topic_dir: Path) -> dict[str, Any]:
+    """Return the .ingest/run.json contents, or a fresh default if absent.
+
+    Default state carries today's started_at and an empty sources map.
+    """
+    p = _run_json_path(topic_dir)
+    if not p.exists():
+        return {
+            "schema_version": INGEST_SCHEMA_VERSION,
+            "started_at": _iso_now(),
+            "last_updated": _iso_now(),
+            "sources": {},
+            "review_completed_at": None,
+            "pages_written": [],
+        }
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def save_run_state(topic_dir: Path, state: dict[str, Any]) -> None:
+    """Write run.json atomically. Updates last_updated; creates .ingest/ if absent."""
+    ingest = topic_dir / ".ingest"
+    ingest.mkdir(exist_ok=True)
+    state["last_updated"] = _iso_now()
+    state.setdefault("schema_version", INGEST_SCHEMA_VERSION)
+    state.setdefault("started_at", _iso_now())
+    target = _run_json_path(topic_dir)
+    tmp = target.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
+    os.replace(tmp, target)
+
+
+def compute_dispatch_list(
+    topic_dir: Path,
+    source_paths: list[Path],
+    *,
+    force: bool = False,
+) -> tuple[list[Path], list[Path]]:
+    """Partition source_paths into (to_dispatch, cached_summary_paths).
+
+    A source needs re-dispatch when any of:
+      - force=True
+      - no run.json entry (never processed)
+      - run.json entry status != "ok"
+      - summary file missing on disk despite status=ok
+      - source mtime newer than summary mtime (re-captured)
+      - summary schema_version != INGEST_SCHEMA_VERSION
+    """
+    state = load_run_state(topic_dir)
+    sources_map: dict[str, dict[str, Any]] = state.get("sources", {})
+    to_dispatch: list[Path] = []
+    cached: list[Path] = []
+
+    for src in source_paths:
+        slug = src.stem
+        if force:
+            to_dispatch.append(src)
+            continue
+        entry = sources_map.get(slug)
+        if not entry or entry.get("status") != "ok":
+            to_dispatch.append(src)
+            continue
+        summary_name = entry.get("summary")
+        if not summary_name:
+            to_dispatch.append(src)
+            continue
+        summary_path = topic_dir / ".ingest" / summary_name
+        if not summary_path.exists():
+            to_dispatch.append(src)
+            continue
+        if src.stat().st_mtime > summary_path.stat().st_mtime:
+            to_dispatch.append(src)
+            continue
+        if not _summary_schema_ok(summary_path):
+            to_dispatch.append(src)
+            continue
+        cached.append(summary_path)
+
+    return to_dispatch, cached
+
+
+def _summary_schema_ok(summary_path: Path) -> bool:
+    """Return True if the summary's frontmatter declares the current schema_version."""
+    text = summary_path.read_text(encoding="utf-8")
+    m = _FRONTMATTER_RE.match(text)
+    if not m:
+        return False
+    fm = _parse_simple_yaml(m.group(1))
+    return fm.get("schema_version") == INGEST_SCHEMA_VERSION

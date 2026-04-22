@@ -138,3 +138,121 @@ def test_parse_summary_accepts_bullet_style_conflict(tmp_path):
     cf = s["conflict_flags"][0]
     assert cf["contradicts_page"] == "dpo"
     assert cf["basis"] == "Table 1"
+
+
+import json
+
+from tools.ingest_plan import (
+    compute_dispatch_list,
+    load_run_state,
+    save_run_state,
+)
+
+
+def _make_source(topic: Path, slug: str, body: str = "x") -> Path:
+    src = topic / f"{slug}.md"
+    src.write_text(body, encoding="utf-8")
+    return src
+
+
+def _make_summary(topic: Path, slug: str, schema_version: int = 1) -> Path:
+    ingest = topic / ".ingest"
+    ingest.mkdir(exist_ok=True)
+    summary = ingest / f"{slug}.summary.md"
+    summary.write_text(
+        f"---\nsource: \"{slug}.md\"\nslug: \"{slug}\"\n"
+        f"summarized_on: \"2026-04-21\"\nschema_version: {schema_version}\n---\n"
+        "# Stub\n\n## One-line\nstub\n\n## Method\nstub\n\n"
+        "## Cross-ref candidates\n(none)\n\n## Conflict flags\n(none)\n\n"
+        "## Proposed page shape\n- New page: stub\n",
+        encoding="utf-8",
+    )
+    return summary
+
+
+def test_load_run_state_absent_returns_default(tmp_path):
+    state = load_run_state(tmp_path)
+    assert state["schema_version"] == 1
+    assert state["sources"] == {}
+    assert state["started_at"] is not None
+
+
+def test_save_run_state_writes_atomically(tmp_path):
+    (tmp_path / ".ingest").mkdir()
+    state = {"schema_version": 1, "sources": {"01-foo": {"status": "ok"}}}
+    save_run_state(tmp_path, state)
+    loaded = json.loads((tmp_path / ".ingest" / "run.json").read_text())
+    assert loaded["sources"]["01-foo"]["status"] == "ok"
+    assert "last_updated" in loaded
+
+
+def test_compute_dispatch_list_no_cache_dispatches_all(tmp_path):
+    s1 = _make_source(tmp_path, "01-foo")
+    s2 = _make_source(tmp_path, "02-bar")
+    to_dispatch, cached = compute_dispatch_list(tmp_path, [s1, s2])
+    assert sorted(p.name for p in to_dispatch) == ["01-foo.md", "02-bar.md"]
+    assert cached == []
+
+
+def test_compute_dispatch_list_skips_cached_ok(tmp_path):
+    s1 = _make_source(tmp_path, "01-foo")
+    s2 = _make_source(tmp_path, "02-bar")
+    _make_summary(tmp_path, "01-foo")
+    save_run_state(tmp_path, {
+        "schema_version": 1,
+        "sources": {"01-foo": {"status": "ok", "summary": "01-foo.summary.md"}},
+    })
+    to_dispatch, cached = compute_dispatch_list(tmp_path, [s1, s2])
+    assert [p.name for p in to_dispatch] == ["02-bar.md"]
+    assert [p.name for p in cached] == ["01-foo.summary.md"]
+
+
+def test_compute_dispatch_list_redispatches_failed(tmp_path):
+    s1 = _make_source(tmp_path, "01-foo")
+    save_run_state(tmp_path, {
+        "schema_version": 1,
+        "sources": {"01-foo": {"status": "failed", "error": "timeout"}},
+    })
+    to_dispatch, cached = compute_dispatch_list(tmp_path, [s1])
+    assert [p.name for p in to_dispatch] == ["01-foo.md"]
+    assert cached == []
+
+
+def test_compute_dispatch_list_redispatches_stale_mtime(tmp_path, monkeypatch):
+    import os
+    import time
+    s1 = _make_source(tmp_path, "01-foo")
+    summary = _make_summary(tmp_path, "01-foo")
+    save_run_state(tmp_path, {
+        "schema_version": 1,
+        "sources": {"01-foo": {"status": "ok", "summary": "01-foo.summary.md"}},
+    })
+    # touch source newer than summary
+    newer = time.time() + 5
+    os.utime(s1, (newer, newer))
+    to_dispatch, _ = compute_dispatch_list(tmp_path, [s1])
+    assert [p.name for p in to_dispatch] == ["01-foo.md"]
+
+
+def test_compute_dispatch_list_redispatches_wrong_schema_version(tmp_path):
+    s1 = _make_source(tmp_path, "01-foo")
+    _make_summary(tmp_path, "01-foo", schema_version=0)
+    save_run_state(tmp_path, {
+        "schema_version": 1,
+        "sources": {"01-foo": {"status": "ok", "summary": "01-foo.summary.md"}},
+    })
+    to_dispatch, cached = compute_dispatch_list(tmp_path, [s1])
+    assert [p.name for p in to_dispatch] == ["01-foo.md"]
+    assert cached == []
+
+
+def test_compute_dispatch_list_force_redispatches_all(tmp_path):
+    s1 = _make_source(tmp_path, "01-foo")
+    _make_summary(tmp_path, "01-foo")
+    save_run_state(tmp_path, {
+        "schema_version": 1,
+        "sources": {"01-foo": {"status": "ok", "summary": "01-foo.summary.md"}},
+    })
+    to_dispatch, cached = compute_dispatch_list(tmp_path, [s1], force=True)
+    assert [p.name for p in to_dispatch] == ["01-foo.md"]
+    assert cached == []
