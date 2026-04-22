@@ -42,7 +42,7 @@ Append entries using this structure:
 **Scope:** kit
 **Observation:** First validation pass in `/ingest` step 4 marked all 10 summaries `failed` with `AttributeError: 'str' object has no attribute 'read_text'`. Cause: passed `str(p)` instead of `Path(p)` to `parse_summary`. The function uses duck-typed `Path.read_text()` and explodes on str. The orchestrator block in `ingest.md` is ambiguous about types — uses `parse_summary('$TOPIC_DIR/.ingest/<slug>.summary.md')` in shell substitution, which evaluates to a str when interpolated.
 **Implication:** Either (a) `parse_summary` should accept `str | Path` and convert internally, or (b) the snippet in `ingest.md` should make the `Path(...)` wrap explicit. (a) is friendlier to all future callers. Single-line fix.
-**Status:** open
+**Status:** applied — 2026-04-22 ingest-smoke fixture run re-tripped the same bug. Fixed in `tools/ingest_plan.py` by widening `parse_summary`, `load_run_state`, and `save_run_state` to accept `Path | str` and coerce internally.
 
 ### 2026-04-22 — Aggregator's `merge_candidates` matches on DOMAIN-SLOT marker tokens
 **Scope:** kit
@@ -54,4 +54,22 @@ Append entries using this structure:
 **Scope:** kit
 **Observation:** Out of 10 summaries, 9 produced `kind: "new"` correctly but 01-05-titans-miras produced `kind: "unknown"` with empty title. Cause: that summary used a `**New page**:` markdown bold prefix on its proposed-page bullets where the others used plain `New page:`. The parser regex apparently doesn't tolerate `**`/asterisk wrapping or other emphasis variants.
 **Implication:** Loosen the parser to strip leading/trailing markdown emphasis (`**`, `*`, `` ` ``, etc.) before matching the `New page` / `Extend` / `MERGE` keywords. Or have the subagent prompt template show the bullets unambiguously and instruct subagents to keep that exact form.
+**Status:** open
+
+### 2026-04-22 — `/ingest` dispatch list includes fixture READMEs and any non-source *.md at top level
+**Scope:** kit
+**Observation:** Running `/ingest tests/fixtures/ingest-smoke/` picked up the fixture's own `README.md` as a source to dispatch — alongside `01-method-a.md` and `02-method-b.md`. The `compute_dispatch_list` contract is "every `*.md` at the top level of the topic dir", which is correct for `raw/research/<topic>/` layouts but wrong for any directory that contains sibling markdown that isn't a source (README, CHANGELOG, notes). Orchestrator had to skip it manually.
+**Implication:** Either (a) exclude well-known non-source names (`README.md`, `CHANGELOG.md`, `NOTES.md`, case-insensitive) in `compute_dispatch_list`, (b) let the topic dir declare sources explicitly via a manifest file, or (c) have `/ingest` prose explicitly say "fixture READMEs won't be caught; name them `_README.md` or move them elsewhere." (a) is cheapest and most forgiving; unlikely to ever be wrong (real sources named exactly `README.md` would be unusual).
+**Status:** open
+
+### 2026-04-22 — Subagents write cross-ref candidates in free-form prose when there are no matches; parser returns empty
+**Scope:** kit
+**Observation:** On the ingest-smoke run, neither fixture source had a real existing wiki page to cross-reference. 01-method-a wrote `- (none) — ...` (a bulleted reason-why-not); 02-method-b wrote the whole block as a parenthesized paragraph: `(No existing wiki page covers ... — nearest tangential pages are [[eggroll]] ... neither of which is a real cross-ref.)`. The parser's `_CROSS_REF_LINE_RE` only matches `^-\s*\[\[page\]\]\s*—\s*reason$`, so in both cases returned `[]`. The subagents *did* discuss cross-refs, just not in the parser's exact form.
+**Implication:** Tighten the subagent prompt template: "If no cross-ref candidates, write exactly `(none)` on its own line, nothing else. Otherwise write only `- [[page]] — reason` bullets." Optionally also broaden the parser to recognise `(none)` as an explicit empty-list marker (distinct from "couldn't parse"). The prompt tightening is the real fix — parser liberalism invites format drift.
+**Status:** open
+
+### 2026-04-22 — Conflict `contradicts_page` requires `[[page]]` brackets; empty when conflict points at another source, not a wiki page
+**Scope:** kit
+**Observation:** 02-method-b's conflict wrote `Contradicts: sibling fixture source 01-method-a (not read here per instructions), which ...` — no `[[...]]` because there's no existing wiki page covering Method A. Parser regex `_CONFLICT_CONTRADICTS_RE` requires `\[\[...\]\]` and returned `contradicts_page=""`. The claim + basis survived, but the contradicts field was lost. This is actually correct behaviour *in production* (conflicts must point at a wiki page) but it makes the smoke fixture partially incapable of exercising the contradicts-page plumbing until there's a real page to contradict.
+**Implication:** Two options: (a) add a seed wiki page to the smoke fixture (e.g., a stub `wiki/dpo.md`) so the subagent has a real target; (b) document in the subagent prompt that greenfield topics without existing wiki coverage should write `Contradicts: (no existing wiki page yet)` on its own line, parsed as a sentinel. (a) is truer to production; (b) is cheaper. Either way, the `(none)` sentinel convention from the cross-ref finding above should apply here too.
 **Status:** open

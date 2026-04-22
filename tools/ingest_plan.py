@@ -89,12 +89,16 @@ class IngestPlan:
     merge_candidates: list[MergeCandidate] = field(default_factory=list)
 
 
-def parse_summary(path: Path) -> dict[str, Any]:
+def parse_summary(path: Path | str) -> dict[str, Any]:
     """Parse a subagent-produced summary file into a structured dict.
+
+    Accepts `Path` or `str` since the orchestrator prose in
+    `.claude/commands/ingest.md` invokes this from shell with a string path.
 
     Raises SummarySchemaError if the file lacks frontmatter, the required
     sections, or carries the wrong schema_version.
     """
+    path = Path(path)
     text = path.read_text(encoding="utf-8")
 
     m = _FRONTMATTER_RE.match(text)
@@ -363,11 +367,15 @@ def _iso_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
-def load_run_state(topic_dir: Path) -> dict[str, Any]:
+def load_run_state(topic_dir: Path | str) -> dict[str, Any]:
     """Return the .ingest/run.json contents, or a fresh default if absent.
+
+    Accepts `Path` or `str` since the orchestrator prose in
+    `.claude/commands/ingest.md` invokes this from shell with a string path.
 
     Default state carries today's started_at and an empty sources map.
     """
+    topic_dir = Path(topic_dir)
     p = _run_json_path(topic_dir)
     if not p.exists():
         return {
@@ -381,8 +389,12 @@ def load_run_state(topic_dir: Path) -> dict[str, Any]:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def save_run_state(topic_dir: Path, state: dict[str, Any]) -> None:
-    """Write run.json atomically. Updates last_updated; creates .ingest/ if absent."""
+def save_run_state(topic_dir: Path | str, state: dict[str, Any]) -> None:
+    """Write run.json atomically. Updates last_updated; creates .ingest/ if absent.
+
+    Accepts `Path` or `str` for the same reason as `load_run_state`.
+    """
+    topic_dir = Path(topic_dir)
     ingest = topic_dir / ".ingest"
     ingest.mkdir(exist_ok=True)
     state["last_updated"] = _iso_now()
