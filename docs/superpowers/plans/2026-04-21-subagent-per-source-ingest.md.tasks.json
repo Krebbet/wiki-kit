@@ -4,20 +4,20 @@
     {
       "id": 8,
       "subject": "Task 1: Summary parser + aggregate() in tools/ingest_plan.py",
-      "status": "pending",
+      "status": "completed",
       "description": "**Goal:** Ship the pure-function core that reads a subagent-produced summary file and aggregates N summaries into a structured IngestPlan.\n\n**Files:** tools/ingest_plan.py, tests/test_ingest_plan.py, tests/fixtures/ingest/{01-foo,02-bar,03-baz}.summary.md, tests/fixtures/ingest/malformed-{no-frontmatter,missing-sections}.md\n\n**Verify:** poetry run pytest tests/test_ingest_plan.py -v\n\nSee plan Task 1 for full code.\n\n```json:metadata\n{\"files\": [\"tools/ingest_plan.py\", \"tests/test_ingest_plan.py\", \"tests/fixtures/ingest/\"], \"verifyCommand\": \"poetry run pytest tests/test_ingest_plan.py -v\", \"acceptanceCriteria\": [\"parse_summary returns structured dict\", \"parse_summary raises SummarySchemaError\", \"aggregate returns IngestPlan dataclass\", \"merge candidates detected\", \"strong cross-refs flagged\", \"INGEST_SCHEMA_VERSION exported\"]}\n```"
     },
     {
       "id": 9,
       "subject": "Task 2: run.json cache + compute_dispatch_list()",
-      "status": "pending",
+      "status": "completed",
       "blockedBy": [8],
       "description": "**Goal:** Add cache/resume layer to tools/ingest_plan.py.\n\n**Files:** tools/ingest_plan.py (append), tests/test_ingest_plan.py (append)\n\n**Verify:** poetry run pytest tests/test_ingest_plan.py -v (all 15 tests pass)\n\nSee plan Task 2 for full code.\n\n```json:metadata\n{\"files\": [\"tools/ingest_plan.py\", \"tests/test_ingest_plan.py\"], \"verifyCommand\": \"poetry run pytest tests/test_ingest_plan.py -v\", \"acceptanceCriteria\": [\"load_run_state default\", \"save_run_state atomic\", \"compute_dispatch_list partitions\", \"mtime staleness\", \"schema_version mismatch\", \"force flag\"]}\n```"
     },
     {
       "id": 10,
       "subject": "Task 3: tools/clear_ingest_cache.py companion CLI",
-      "status": "pending",
+      "status": "completed",
       "description": "**Goal:** Trivial CLI to wipe a topic's .ingest/ cache.\n\n**Files:** tools/clear_ingest_cache.py, tests/test_clear_ingest_cache.py\n\n**Verify:** poetry run pytest tests/test_clear_ingest_cache.py -v\n\nSee plan Task 3 for full code.\n\n```json:metadata\n{\"files\": [\"tools/clear_ingest_cache.py\", \"tests/test_clear_ingest_cache.py\"], \"verifyCommand\": \"poetry run pytest tests/test_clear_ingest_cache.py -v\", \"acceptanceCriteria\": [\"clear removes existing\", \"returns False when absent\", \"refuses non-.ingest\", \"CLI exit codes\"]}\n```"
     },
     {
@@ -48,5 +48,5 @@
       "description": "**Goal:** Minimal 2-source fixture with planted numeric conflict for manual /ingest QA.\n\n**Files:** tests/fixtures/ingest-smoke/{01-method-a,02-method-b,README}.md\n\n**Verify:** Three files present; visual inspection confirms clear conflict\n\nSee plan Task 7 for content.\n\n```json:metadata\n{\"files\": [\"tests/fixtures/ingest-smoke/01-method-a.md\", \"tests/fixtures/ingest-smoke/02-method-b.md\", \"tests/fixtures/ingest-smoke/README.md\"], \"verifyCommand\": \"ls tests/fixtures/ingest-smoke/\", \"acceptanceCriteria\": [\"two sources with planted conflict\", \"README explains behavior\", \"flagged as fixtures\"]}\n```"
     }
   ],
-  "lastUpdated": "2026-04-21T22:40:00Z"
+  "lastUpdated": "2026-04-22T00:00:00Z"
 }

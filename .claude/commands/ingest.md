@@ -12,6 +12,19 @@ $ARGUMENTS — a file path or a directory path. If a directory, every `*.md` fil
 - **Subagents write only `.ingest/<slug>.summary.md`.** No other files. No wiki writes.
 - **All wiki writes happen in the orchestrator, after the human gate.**
 
+## Placeholder convention
+
+Bash snippets in the pipeline refer to a few variables the orchestrator must bind before executing:
+
+- `TOPIC_DIR` — absolute path of the topic directory (file's parent if `$ARGUMENTS` is a file).
+- `WIKI_INDEX` — absolute path of `wiki/index.md` in this repo.
+- `RUN_UPDATE_JSON` — when recording a subagent's completion, a single-line JSON blob like `{"01-foo": {"status": "ok", "summary": "01-foo.summary.md"}}`.
+
+Bind these before running any snippet. Example:
+
+`TOPIC_DIR=/abs/path/to/raw/research/post-training-alignment-2026`
+`WIKI_INDEX=/abs/path/to/wiki/index.md`
+
 ## Pipeline
 
 ### 1. Resolve inputs
@@ -39,7 +52,7 @@ print(json.dumps({
     'to_dispatch': [str(p) for p in to_dispatch],
     'cached': [str(p) for p in cached],
 }))
-" <topic-dir>
+" "$TOPIC_DIR"
 ```
 
 Report to the user: `N sources total, K cached, (N-K) to dispatch`.
@@ -48,14 +61,14 @@ Report to the user: `N sources total, K cached, (N-K) to dispatch`.
 
 For every source in `to_dispatch`, spawn a `general-purpose` Agent with the prompt template below. **Send all Agent tool calls in a single message** so they execute in parallel.
 
-Subagent prompt template (substitute `<SOURCE_PATH>`, `<TOPIC_DIR>`, `<SLUG>`):
+Subagent prompt template (substitute `<SOURCE_PATH>`, `<TOPIC_DIR>`, `<SLUG>`, `<WIKI_INDEX>`). The orchestrator already has `$WIKI_INDEX` bound per the Placeholder-convention block above; substitute its value when dispatching.
 
 ```
 You are ingesting ONE raw source into a structured summary file. Your output is consumed by an orchestrator that aggregates many such summaries into a wiki update plan.
 
 Read only these two paths:
-- <SOURCE_PATH>            (the one raw source you own)
-- <TOPIC_DIR>/../../wiki/index.md   (the wiki catalog — for cross-ref candidate naming)
+- <SOURCE_PATH>   (the one raw source you own)
+- <WIKI_INDEX>    (absolute path to wiki/index.md — for cross-ref candidate naming)
 
 Do NOT read:
 - Other raw sources
@@ -68,9 +81,9 @@ Write exactly ONE file:
 Use this schema EXACTLY:
 
 ---
-source: "<relative path to source from repo root>"
+source: "<fill in with the relative path from repo root, e.g., raw/research/foo/01-bar.md>"
 slug: "<SLUG>"
-summarized_on: "<today's date, YYYY-MM-DD>"
+summarized_on: "<fill in with today's ISO date, e.g., 2026-04-21>"
 schema_version: 1
 ---
 
@@ -122,22 +135,30 @@ Return value: a single line confirming the file was written, plus any warnings (
 
 ### 4. Wait for all subagents; update run.json
 
-As each subagent completes:
-- If it wrote `.ingest/<slug>.summary.md` successfully: record `{"status": "ok", "summary": "<slug>.summary.md"}` in `run.json`.
-- If it errored or failed schema validation: record `{"status": "failed", "error": "<reason>"}`.
+**When**: after each subagent returns (success or failure). Invoke the snippet below once per subagent completion with a single-entry blob.
 
-Persist via:
+**What**: construct `RUN_UPDATE_JSON` as a single-entry object keyed by slug, e.g. `{"01-foo": {"status": "ok", "summary": "01-foo.summary.md"}}` on success or `{"01-foo": {"status": "failed", "error": "timeout"}}` on error.
+
+**How success is determined**: check that `$TOPIC_DIR/.ingest/<slug>.summary.md` exists AND `tools.ingest_plan.parse_summary()` on it does not raise `SummarySchemaError` (imported from `tools/ingest_plan.py`). The Agent tool's return line is not authoritative.
+
+> **Orchestrator does not trust the Agent return value for success.** After each return, check both:
+> 1. `$TOPIC_DIR/.ingest/<slug>.summary.md` exists.
+> 2. `poetry run python -c "from tools.ingest_plan import parse_summary; parse_summary('$TOPIC_DIR/.ingest/<slug>.summary.md')"` exits 0 (it raises `SummarySchemaError` on schema failure).
+> Only if both pass: record `status: "ok"`. Otherwise `status: "failed"` with the error reason.
+
+Persist via (reads JSON from stdin to avoid shell quoting land-mines):
 
 ```bash
-poetry run python -c "
+echo "$RUN_UPDATE_JSON" | poetry run python -c "
+import json, sys
 from pathlib import Path
 from tools.ingest_plan import load_run_state, save_run_state
-import json, sys
+
 topic = Path(sys.argv[1])
 state = load_run_state(topic)
-state['sources'].update(json.loads(sys.argv[2]))
+state['sources'].update(json.loads(sys.stdin.read()))
 save_run_state(topic, state)
-" <topic-dir> '<json-blob-of-updates>'
+" "$TOPIC_DIR"
 ```
 
 Block on all siblings before moving to aggregation.
@@ -151,8 +172,8 @@ poetry run python -c "
 from pathlib import Path
 from tools.ingest_plan import aggregate
 from dataclasses import asdict
-import json
-topic = Path('<topic-dir>')
+import json, sys
+topic = Path(sys.argv[1])
 summaries = sorted((topic / '.ingest').glob('*.summary.md'))
 plan = aggregate(summaries)
 print(json.dumps({
@@ -162,7 +183,7 @@ print(json.dumps({
     'merge_candidates': [asdict(x) for x in plan.merge_candidates],
     'low_value': plan.low_value,
 }, indent=2))
-"
+" "$TOPIC_DIR"
 ```
 
 ### 6. Human gate — render the review packet
@@ -212,7 +233,21 @@ For each approved page-plan entry:
 - **NEW**: create `wiki/<topic>/<title>.md` with frontmatter-free page format: `# Title`, one-paragraph summary, takeaway content drawn from the relevant summaries, `## Source` (listing raw files), `## Related` (cross-refs from the plan).
 - **EXTEND**: read the existing page, add the new section, update `## Related` if new cross-refs apply.
 
-Append each written page to `state['pages_written']` and `save_run_state` after each write, so a crash mid-write is resumable.
+Append each written page to `state['pages_written']` and `save_run_state` after each write, so a crash mid-write is resumable:
+
+```bash
+PAGE_WRITTEN="wiki/<topic>/<page-title>.md"
+poetry run python -c "
+import sys
+from pathlib import Path
+from tools.ingest_plan import load_run_state, save_run_state
+topic = Path(sys.argv[1])
+page = sys.argv[2]
+state = load_run_state(topic)
+state.setdefault('pages_written', []).append(page)
+save_run_state(topic, state)
+" "$TOPIC_DIR" "$PAGE_WRITTEN"
+```
 
 After all writes:
 - `wiki/index.md` — add/update entries for created or modified pages.
@@ -225,13 +260,13 @@ After all writes:
 | Failure | Detection | Response |
 |---|---|---|
 | Subagent errors out (API, timeout) | Agent tool returns non-zero | `run.json` → `failed` with error. Continue waiting for siblings. Report in review packet. User decides retry or skip. |
-| Schema-invalid summary | `parse_summary()` raises `SummarySchemaError` when orchestrator tries to aggregate | Treat as `failed`; offer retry with an extra-strict prompt. |
+| Schema-invalid summary | `parse_summary()` raises `SummarySchemaError` (from `tools/ingest_plan.py`) when orchestrator tries to aggregate | Treat as `failed`; offer retry with an extra-strict prompt. |
 | Subagent wrote outside `.ingest/` | Orchestrator post-check lists files under the topic dir written in the run window | Treat as `failed`; flag loudly — contract breach. |
 | Empty / near-empty summary | Size < 500 bytes heuristic | Warn in review packet, don't block. |
 
 ## Resume
 
-Re-running `/ingest <same-path>` reads existing `run.json` and skips sources already marked `ok` with a valid summary on disk. Use `poetry run python -m tools.clear_ingest_cache <topic-dir>` to force full re-dispatch.
+Re-running `/ingest <same-path>` reads existing `run.json` and skips sources already marked `ok` with a valid summary on disk. Use `poetry run python -m tools.clear_ingest_cache "$TOPIC_DIR"` to force full re-dispatch.
 
 ## Report
 
