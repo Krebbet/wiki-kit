@@ -30,7 +30,7 @@ Append entries using this structure:
 **Scope:** kit
 **Observation:** `/ingest` on `raw/research/post-training-alignment-2026/` (11 alignment/post-training papers) crashed mid-run with a Claude Code usage-policy 403. Cause: cumulative main-session context packed with safety-spec excerpts, jailbreak taxonomies, disallowed-content categories, and CoT traces reasoning about harmful requests — the concrete vocabulary a content classifier is tuned for, even though each source individually is a legitimate research paper. The next turn and `/compact` also 403'd because the flagged context was re-sent each call. Only a fresh session recovered.
 **Implication:** `/ingest` must keep raw source bodies out of the main session. Design approved in `docs/superpowers/specs/2026-04-21-subagent-per-source-ingest-design.md`: subagent-per-source with coherence orchestration. Main context only ever sees distilled summaries plus the specific existing wiki pages touched by a plan. Also an input signal for `/research` tooling: the capture pipeline shouldn't feed straight into a main-session summarisation loop for topics rich in safety/alignment vocabulary.
-**Status:** proposed
+**Status:** applied — 2026-04-22. Subagent-per-source `/ingest` shipped on ai-trends-wiki and promoted to main via `/harvest` (commit d2ddc16). Spec doc also promoted.
 
 ### 2026-04-22 — `capture_pdf` --out path resolves relative to CWD; nests when CWD is the target dir
 **Scope:** kit
@@ -78,7 +78,7 @@ Append entries using this structure:
 **Scope:** kit
 **Observation:** The wiki-kit default `.gitignore` ignored only `raw/research/**/assets/` (PNGs), but continued to track the marker-rendered `.md` captures and `.ingest/*.summary.md` files. On the 2026-04-22 audit of this wiki, that amounted to 32 tracked files across three sweeps (post-training-alignment-2026, radar-2026-04, weekly-2026-04-22) — ~few MB of derived text whose source of truth is an arxiv URL already embedded in each wiki page's `## Source` section. Every weekly-brief run would add more. Wiki pages are the *product*; raw captures are staging artifacts that get bloated commit history for no query/diff value.
 **Implication:** Update the wiki-kit template `.gitignore` to ignore `raw/research/` entirely (one line replaces the narrower `raw/research/**/assets/` rule) and add a comment explaining why — raw captures are always regenerable via `capture_pdf`; the wiki/ pages are the committed product. `/harvest` should promote this change to main so every future wiki spawned from the kit starts clean. This wiki's repo trimmed 32 staged deletions on 2026-04-22 after the rule change; no on-disk files were removed. Composes well with the ask-forgiveness `/weekly-brief` contract (captures live in the working tree, wiki/ diff is what gets committed).
-**Status:** applied (local) — 2026-04-22. Awaiting promotion to wiki-kit main via `/harvest`.
+**Status:** applied — 2026-04-22. Promoted to wiki-kit main via `/harvest` (commit 4a9a3ae).
 
 ### 2026-04-22 — `tools.capture_pdf` marker-OOM handler doesn't auto-fallback to pymupdf
 **Scope:** kit
