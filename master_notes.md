@@ -56,3 +56,9 @@ Append entries using this structure:
 **Implication:** (a) Capture scripts should surface a hard failure (non-zero exit) when the captured body is clearly a known bot-wall signature (Access Denied, Cloudflare error 1000s, etc.) rather than silently writing a tiny markdown file. (b) `/research` should flag any capture smaller than ~2KB for manual inspection before ingest. (c) Worth documenting in `research.md` that MDPI and ScienceDirect often require a manual PDF drop from a browser.
 **Status:** applied (delivered on main in kit-harvest-2026-04-21)
 
+
+### 2026-04-21 — capture_pdf (pymupdf) writes image refs as repo-root-relative paths
+**Scope:** kit
+**Observation:** On `/research` for `llm-literature-mining-corpora`, capture_pdf with `--engine pymupdf` wrote image refs inside the markdown as `raw/research/llm-literature-mining-corpora/assets/<slug>/source.pdf-N-N.png` — i.e. relative to the working directory the command was run from, not relative to the markdown file's own location. The assets themselves are correctly placed on disk; only the *references* are wrong. `_rewrite_image_refs` already exists for post-processing but only matches bare-filename refs (no `/` in the ref), so these path-qualified refs slip through. The audit catches it as "broken image refs" — that's the fix surfacing, but it's a new bug class not a false positive.
+**Implication:** Fix in `_convert_pymupdf` in `tools/capture_pdf.py` by passing `image_path` as a path relative to the markdown file's own directory (e.g. `./assets/<slug>`) rather than the resolved absolute / CWD-relative path. Alternatively, extend `_rewrite_image_refs` to match refs that end with a known-basename under `assets/<slug>/` and rewrite them to the bare `./assets/<slug>/<name>` form regardless of their prefix. The first is cleaner; the second is more defensive.
+**Status:** open
