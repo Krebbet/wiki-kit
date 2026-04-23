@@ -12,8 +12,8 @@ venv/
 playwright/.cache/
 
 # Obsidian (user-specific state)
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+.obsidian/
+wiki/.obsidian/
 
 # Raw captures (markdown renderings + PNG assets + .ingest summaries).
 # All derivable from the arxiv URL in each wiki page's `## Source` section;
