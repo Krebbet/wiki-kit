@@ -65,3 +65,12 @@ Also: build `tools/audit_captures.py` and wire it into `/lint`. See FEEDBACK.md 
 2. `tools/audit_captures.py` could detect "nested raw-tree-within-raw-tree" layouts as a suspicious signal and flag it — a `raw/research/X/raw/research/Y/` path is almost always a bug.
 Also useful: the assistant protocol could prefer `--out $(git rev-parse --show-toplevel)/raw/research/<slug>` when invoking capture tools, to be CWD-agnostic.
 **Status:** open — kit-level fix needed; see `/harvest` for promotion.
+
+### 2026-04-23 — /weekly-brief template hardcodes wiki-ai-trends as the target repo
+**Scope:** kit
+**Observation:** The `/weekly-brief` skill (`.claude/commands/weekly-brief.md`) was merged from main as part of the kit-level weekly-brief feature. It has 10 hardcoded references to `wiki-ai-trends` / `ai-trends-wiki` (the reference wiki the feature was developed for). Running the skill in any other wiki (e.g. `wiki-single-sample-learning`) produces an email whose commit-reminder banner tells the user to cd into the wrong repo. Also the cron-install stub, the "uncommitted on ai-trends-wiki" Telegram message, and the "render as relative GitHub links to the ai-trends-wiki branch" guidance are all wrong-by-default for other wikis.
+**Implication:** Make the template dynamic. Three candidate fixes:
+1. Template the hardcoded strings: in the skill body, replace `wiki-ai-trends` / `ai-trends-wiki` / `/home/david/code/wiki-ai-trends` with placeholder tokens like `<REPO_NAME>` / `<BRANCH_NAME>` / `<REPO_PATH>`, and add a skill-body step to resolve them via `git rev-parse --show-toplevel && git branch --show-current && basename $(git rev-parse --show-toplevel)` before composing the email.
+2. Alternative: introduce a per-wiki `WEEKLY_BRIEF_CONFIG` block in `wiki/reference-sources.md` (or a dedicated `wiki/.weekly-brief.yaml`) that declares the target repo, branch, and email recipient. Skill reads it on startup.
+3. Also: the first-time bootstrap should create `wiki/reference-sources.md` + `wiki/watchlist.md` + `wiki/weekly-briefs/` automatically if absent, rather than silently failing or writing into an empty structure. Today I created them by hand for wiki-single-sample-learning.
+**Status:** open — kit-level fix needed; see `/harvest` for promotion.
