@@ -44,6 +44,7 @@ Topical subdirectories emerge from `/ingest` and `/research` operations; they ar
 Raw source documents live in `../raw/` and are **never modified**:
 - `../raw/research/<topic>/` — sources captured via `/research`
 - `../raw/<other>/` — sources the user dropped in manually
+- `../raw/<topic>/.ingest/` is the **one exception** to the immutability rule — it holds derived summaries written by `/ingest`'s subagents. Raw source files themselves are never modified.
 
 **Source types this wiki ingests:** Priority — web articles, academic papers, Wikipedia. Also accepted: books, YouTube talks / podcasts, organisation websites, government and regulatory documents, primary datasets. Spam and slop are the only hard filter. Every source is recorded with **origin / intended audience / purpose** metadata and a **trust tag** so the reader can judge for themselves.
 
@@ -96,6 +97,10 @@ When two sources conflict:
 - `/query <question>` — Answer from the wiki, reflect new insights back.
 - `/lint` — Health-check the wiki.
 - `/harvest` — Promote generic kit-level improvements from this wiki's branch back to the wiki-kit template on main.
+
+## Manual QA for `/ingest`
+
+A minimal smoke fixture lives at `tests/fixtures/ingest-smoke/`: two sources with a pre-known conflict. To validate any change to `/ingest`, run it on that fixture and eyeball the review packet + any pages the orchestrator would write. Document regressions in `master_notes.md` (Scope: kit).
 
 ## Modifying the Wiki
 

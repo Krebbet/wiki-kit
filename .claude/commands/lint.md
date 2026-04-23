@@ -70,6 +70,12 @@ Produce a structured lint report:
 
 ### Capture Fidelity (raw/)
 - ...
+
+### Trend Radar
+- ...
+
+### Radar Evolution
+- ...
 ```
 
 **Persist the report before presenting it.** Write the full report to `wiki/lint-reports/YYYY-MM-DD.md` (creating the directory if needed; if a report for today already exists, append `-v2`, `-v3`, etc. to the filename). Then present the report inline in chat along with a pointer to the persisted file — the user wants a durable artefact they can review separately from the conversation.

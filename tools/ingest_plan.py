@@ -1,0 +1,473 @@
+"""Pure-function aggregator for /ingest subagent-produced summaries.
+
+Parses per-source summary markdown files produced by subagents during
+/ingest fan-out, and aggregates a batch of them into a structured
+IngestPlan used by the orchestrator to build the human review packet.
+
+No side effects, no wiki writes, no file creation outside explicit
+save_run_state calls. Unit-testable under tests/test_ingest_plan.py.
+
+See docs/superpowers/specs/2026-04-21-subagent-per-source-ingest-design.md
+for the summary schema and review-packet contract.
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+from collections import defaultdict
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+
+INGEST_SCHEMA_VERSION = 1
+
+
+class SummarySchemaError(ValueError):
+    """Raised when a summary file violates the expected schema."""
+
+
+# matches: leading YAML frontmatter block `---\n...\n---\n` at file start
+_FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
+# matches: a section heading line `## Heading` (captures the heading text)
+_SECTION_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
+# matches: `- [[page-name]] — reason` / `- [[x]] - r` / `- [[x]] r`
+_CROSS_REF_LINE_RE = re.compile(r"^-\s*\[\[([^\]]+)\]\]\s*(?:—|--|-)?\s*(.*)$")
+# matches: `- Claim: <text>` (one line of a conflict block)
+_CONFLICT_CLAIM_RE = re.compile(r"^-\s*Claim:\s*(.+?)$", re.MULTILINE)
+# matches: `Contradicts: [[page]] which says X` or `- Contradicts: [[page]] X`
+_CONFLICT_CONTRADICTS_RE = re.compile(
+    r"^\s*-?\s*Contradicts:\s*\[\[([^\]]+)\]\]\s*(?:which says)?\s*(.*)$",
+    re.MULTILINE,
+)
+# matches: `Basis: <text>` or `- Basis: <text>` (one line of a conflict block)
+_CONFLICT_BASIS_RE = re.compile(r"^\s*-?\s*Basis:\s*(.+?)$", re.MULTILINE)
+# matches: `- New page: title — justification` (title captured up to optional em-dash)
+# titles contain hyphens (foo-method), so exclude newlines, not hyphens
+_PAGE_SHAPE_NEW_RE = re.compile(r"^-\s*New page:\s*([^—\n]+?)(?:\s*—\s*(.+))?$", re.MULTILINE)
+# matches: `- extend [[page]] with section "S"` / `- OR: extend [[page]] with section "S"`
+_PAGE_SHAPE_EXTEND_RE = re.compile(
+    r"^-\s*(?:OR:\s*)?extend\s*\[\[([^\]]+)\]\]\s*with section\s*\"([^\"]+)\"",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+_REQUIRED_SECTIONS = ("One-line", "Cross-ref candidates", "Conflict flags", "Proposed page shape")
+_TAKEAWAY_EXCLUDED = {"One-line", "Cross-ref candidates", "Conflict flags", "Proposed page shape"}
+
+
+@dataclass
+class PagePlanEntry:
+    kind: str  # "new" or "extend"
+    title: str  # new page title, or existing page name
+    section: str | None  # for extend, the section name; None for new
+    sources: list[str]
+
+
+@dataclass
+class CrossRef:
+    page: str
+    reasons: list[str]
+    source_slugs: list[str]
+    strong: bool
+
+
+@dataclass
+class MergeCandidate:
+    slugs: list[str]
+    shared_concepts: list[str]
+    reason: str
+
+
+@dataclass
+class IngestPlan:
+    page_plan: list[PagePlanEntry] = field(default_factory=list)
+    cross_refs: list[CrossRef] = field(default_factory=list)
+    conflicts: list[dict[str, str]] = field(default_factory=list)
+    low_value: list[str] = field(default_factory=list)  # slugs suggested as skip
+    merge_candidates: list[MergeCandidate] = field(default_factory=list)
+
+
+def parse_summary(path: Path | str) -> dict[str, Any]:
+    """Parse a subagent-produced summary file into a structured dict.
+
+    Accepts `Path` or `str` since the orchestrator prose in
+    `.claude/commands/ingest.md` invokes this from shell with a string path.
+
+    Raises SummarySchemaError if the file lacks frontmatter, the required
+    sections, or carries the wrong schema_version.
+    """
+    path = Path(path)
+    text = path.read_text(encoding="utf-8")
+
+    m = _FRONTMATTER_RE.match(text)
+    if not m:
+        raise SummarySchemaError(f"{path}: missing frontmatter")
+    frontmatter = _parse_simple_yaml(m.group(1))
+    if frontmatter.get("schema_version") != INGEST_SCHEMA_VERSION:
+        raise SummarySchemaError(
+            f"{path}: schema_version={frontmatter.get('schema_version')} "
+            f"(expected {INGEST_SCHEMA_VERSION})"
+        )
+    body = text[m.end():]
+
+    sections = _split_sections(body)
+    for required in _REQUIRED_SECTIONS:
+        if required not in sections:
+            raise SummarySchemaError(f"{path}: missing required section '## {required}'")
+
+    takeaway_sections = {name: sections[name] for name in sections if name not in _TAKEAWAY_EXCLUDED}
+
+    return {
+        "frontmatter": frontmatter,
+        "one_line": sections["One-line"].strip(),
+        "takeaway_sections": takeaway_sections,
+        "cross_ref_candidates": _parse_cross_refs(sections["Cross-ref candidates"]),
+        "conflict_flags": _parse_conflicts(sections["Conflict flags"]),
+        "proposed_page_shape": _parse_page_shape(sections["Proposed page shape"]),
+    }
+
+
+def aggregate(summary_paths: list[Path]) -> IngestPlan:
+    """Aggregate parsed summaries into a single IngestPlan.
+
+    page_plan: one entry per summary's proposed_page_shape, except entries
+    that are part of a merge_candidate (those stay in page_plan individually
+    — user decides whether to merge).
+    cross_refs: union across summaries; strong=True when named by ≥2.
+    conflicts: every conflict_flag verbatim, tagged with source slug.
+    merge_candidates: ≥2 NEW page proposals that share ≥2 named cross-ref
+    pages.
+    low_value: slugs whose cross_ref_candidates are all "extends" style with
+    no other signal — flagged as skip candidates.
+    """
+    parsed = [(p, parse_summary(p)) for p in summary_paths]
+
+    plan = IngestPlan()
+    _populate_page_plan(plan, parsed)
+    _populate_cross_refs(plan, parsed)
+    _populate_conflicts(plan, parsed)
+    _populate_merge_candidates(plan, parsed)
+    _populate_low_value(plan, parsed)
+    return plan
+
+
+# ---------- internal helpers ----------
+
+def _parse_simple_yaml(block: str) -> dict[str, Any]:
+    """Minimal key: value parser; handles quoted strings and bare ints.
+
+    Good enough for summary frontmatter (flat, no nesting, no lists).
+    """
+    out: dict[str, Any] = {}
+    for line in block.splitlines():
+        line = line.strip()
+        if not line or ":" not in line:
+            continue
+        key, _, raw = line.partition(":")
+        key = key.strip()
+        raw = raw.strip()
+        # Strip surrounding quotes if present
+        if raw.startswith('"') and raw.endswith('"'):
+            unquoted = raw[1:-1].replace('\\"', '"').replace("\\\\", "\\")
+        else:
+            unquoted = raw
+        # Coerce to int when the (possibly unquoted) value is a decimal integer
+        if unquoted.lstrip("-").isdigit():
+            out[key] = int(unquoted)
+        else:
+            out[key] = unquoted
+    return out
+
+
+def _split_sections(body: str) -> dict[str, str]:
+    """Split body into {section_name: content} by '## Heading' markers.
+
+    Content is the text from after the heading line up to the next heading
+    (or end of body). Leading/trailing whitespace preserved per-section.
+    """
+    matches = list(_SECTION_RE.finditer(body))
+    sections: dict[str, str] = {}
+    for i, m in enumerate(matches):
+        name = m.group(1).strip()
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(body)
+        sections[name] = body[start:end]
+    return sections
+
+
+def _parse_cross_refs(block: str) -> list[dict[str, str]]:
+    refs: list[dict[str, str]] = []
+    for line in block.splitlines():
+        line = line.strip()
+        if not line or line.lower().startswith("(none"):
+            continue
+        m = _CROSS_REF_LINE_RE.match(line)
+        if m:
+            refs.append({"page": m.group(1).strip(), "reason": m.group(2).strip()})
+    return refs
+
+
+def _parse_conflicts(block: str) -> list[dict[str, str]]:
+    if "(none" in block.lower():
+        return []
+    conflicts: list[dict[str, str]] = []
+    claim_matches = list(_CONFLICT_CLAIM_RE.finditer(block))
+    for i, cm in enumerate(claim_matches):
+        chunk_end = claim_matches[i + 1].start() if i + 1 < len(claim_matches) else len(block)
+        chunk = block[cm.start():chunk_end]
+        contradicts_m = _CONFLICT_CONTRADICTS_RE.search(chunk)
+        basis_m = _CONFLICT_BASIS_RE.search(chunk)
+        conflicts.append(
+            {
+                "claim": cm.group(1).strip(),
+                "contradicts_page": contradicts_m.group(1).strip() if contradicts_m else "",
+                "contradicts_text": contradicts_m.group(2).strip() if contradicts_m else "",
+                "basis": basis_m.group(1).strip() if basis_m else "",
+            }
+        )
+    return conflicts
+
+
+def _parse_page_shape(block: str) -> dict[str, Any]:
+    new_m = _PAGE_SHAPE_NEW_RE.search(block)
+    if new_m:
+        return {
+            "kind": "new",
+            "title": new_m.group(1).strip(),
+            "section": None,
+            "justification": (new_m.group(2) or "").strip(),
+        }
+    extend_m = _PAGE_SHAPE_EXTEND_RE.search(block)
+    if extend_m:
+        return {
+            "kind": "extend",
+            "title": extend_m.group(1).strip(),
+            "section": extend_m.group(2).strip(),
+            "justification": "",
+        }
+    return {"kind": "unknown", "title": "", "section": None, "justification": block.strip()}
+
+
+def _populate_page_plan(plan: IngestPlan, parsed: list[tuple[Path, dict[str, Any]]]) -> None:
+    for _path, s in parsed:
+        shape = s["proposed_page_shape"]
+        plan.page_plan.append(
+            PagePlanEntry(
+                kind=shape["kind"],
+                title=shape["title"],
+                section=shape.get("section"),
+                sources=[s["frontmatter"]["slug"]],
+            )
+        )
+
+
+def _populate_cross_refs(plan: IngestPlan, parsed: list[tuple[Path, dict[str, Any]]]) -> None:
+    by_page: dict[str, dict[str, Any]] = defaultdict(
+        lambda: {"reasons": [], "source_slugs": []}
+    )
+    for _path, s in parsed:
+        slug = s["frontmatter"]["slug"]
+        for ref in s["cross_ref_candidates"]:
+            entry = by_page[ref["page"]]
+            entry["reasons"].append(ref["reason"])
+            entry["source_slugs"].append(slug)
+    for page, entry in by_page.items():
+        plan.cross_refs.append(
+            CrossRef(
+                page=page,
+                reasons=entry["reasons"],
+                source_slugs=entry["source_slugs"],
+                strong=len(set(entry["source_slugs"])) >= 2,
+            )
+        )
+
+
+def _populate_conflicts(plan: IngestPlan, parsed: list[tuple[Path, dict[str, Any]]]) -> None:
+    for _path, s in parsed:
+        slug = s["frontmatter"]["slug"]
+        for cf in s["conflict_flags"]:
+            plan.conflicts.append({"source_slug": slug, **cf})
+
+
+_CONCEPT_STOPWORDS = frozenset(
+    {
+        "a", "an", "the", "and", "or", "but", "is", "are", "was", "were", "be",
+        "been", "being", "of", "in", "on", "at", "to", "for", "with", "by", "from",
+        "as", "this", "that", "these", "those", "it", "its", "has", "have", "had",
+        "also", "another", "both", "only", "than", "then", "some", "any", "all",
+        "new", "via", "like", "over", "under", "into", "onto", "upon", "each",
+        "when", "where", "while", "about", "before", "after", "same",
+    }
+)
+
+
+def _extract_concepts(summary: dict[str, Any]) -> set[str]:
+    """Extract normalized "named concepts" from a parsed summary.
+
+    Concepts are the union of:
+      - cross-ref page names (lowercased),
+      - significant tokens from the one-line (length >= 4, not stopwords).
+    """
+    concepts: set[str] = set()
+    for ref in summary["cross_ref_candidates"]:
+        concepts.add(ref["page"].strip().lower())
+    for token in re.findall(r"[a-zA-Z][a-zA-Z0-9]+", summary["one_line"]):
+        low = token.lower()
+        if len(low) >= 4 and low not in _CONCEPT_STOPWORDS:
+            concepts.add(low)
+    return concepts
+
+
+def _populate_merge_candidates(plan: IngestPlan, parsed: list[tuple[Path, dict[str, Any]]]) -> None:
+    new_proposals = [
+        (s["frontmatter"]["slug"], _extract_concepts(s))
+        for _path, s in parsed
+        if s["proposed_page_shape"]["kind"] == "new"
+    ]
+    seen: set[frozenset[str]] = set()
+    for i in range(len(new_proposals)):
+        for j in range(i + 1, len(new_proposals)):
+            slug_i, concepts_i = new_proposals[i]
+            slug_j, concepts_j = new_proposals[j]
+            shared = concepts_i & concepts_j
+            if len(shared) >= 2:
+                key = frozenset({slug_i, slug_j})
+                if key in seen:
+                    continue
+                seen.add(key)
+                plan.merge_candidates.append(
+                    MergeCandidate(
+                        slugs=sorted([slug_i, slug_j]),
+                        shared_concepts=sorted(shared),
+                        reason=f"both propose NEW pages and share {len(shared)} named concepts",
+                    )
+                )
+
+
+def _populate_low_value(plan: IngestPlan, parsed: list[tuple[Path, dict[str, Any]]]) -> None:
+    for _path, s in parsed:
+        refs = s["cross_ref_candidates"]
+        if not refs:
+            continue
+        all_extends = all("extend" in r["reason"].lower() for r in refs)
+        shape = s["proposed_page_shape"]
+        if all_extends and shape["kind"] == "extend":
+            plan.low_value.append(s["frontmatter"]["slug"])
+
+
+# ---------- run.json state + dispatch ----------
+
+def _run_json_path(topic_dir: Path) -> Path:
+    return topic_dir / ".ingest" / "run.json"
+
+
+def _iso_now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def load_run_state(topic_dir: Path | str) -> dict[str, Any]:
+    """Return the .ingest/run.json contents, or a fresh default if absent.
+
+    Accepts `Path` or `str` since the orchestrator prose in
+    `.claude/commands/ingest.md` invokes this from shell with a string path.
+
+    Default state carries today's started_at and an empty sources map.
+    """
+    topic_dir = Path(topic_dir)
+    p = _run_json_path(topic_dir)
+    if not p.exists():
+        return {
+            "schema_version": INGEST_SCHEMA_VERSION,
+            "started_at": _iso_now(),
+            "last_updated": _iso_now(),
+            "sources": {},
+            "review_completed_at": None,
+            "pages_written": [],
+        }
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def save_run_state(topic_dir: Path | str, state: dict[str, Any]) -> None:
+    """Write run.json atomically. Updates last_updated; creates .ingest/ if absent.
+
+    Accepts `Path` or `str` for the same reason as `load_run_state`.
+    """
+    topic_dir = Path(topic_dir)
+    ingest = topic_dir / ".ingest"
+    ingest.mkdir(exist_ok=True)
+    state["last_updated"] = _iso_now()
+    state.setdefault("schema_version", INGEST_SCHEMA_VERSION)
+    state.setdefault("started_at", _iso_now())
+    target = _run_json_path(topic_dir)
+    tmp = target.with_suffix(".json.tmp")
+    data = json.dumps(state, indent=2) + "\n"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(data)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, target)
+
+
+def compute_dispatch_list(
+    topic_dir: Path,
+    source_paths: list[Path],
+    *,
+    force: bool = False,
+) -> tuple[list[Path], list[Path]]:
+    """Partition source_paths into (to_dispatch, cached_summary_paths).
+
+    A source needs re-dispatch when any of:
+      - force=True
+      - no run.json entry (never processed)
+      - run.json entry status != "ok"
+      - summary file missing on disk despite status=ok
+      - source mtime newer than summary mtime (re-captured)
+      - summary schema_version != INGEST_SCHEMA_VERSION
+
+    Assumes source_paths all live within topic_dir and have unique file stems
+    (i.e., the subagent contract's slug derivation from src.stem is collision-free).
+    The orchestrator is responsible for enforcing this at the call site.
+    """
+    state = load_run_state(topic_dir)
+    sources_map: dict[str, dict[str, Any]] = state.get("sources", {})
+    to_dispatch: list[Path] = []
+    cached: list[Path] = []
+
+    for src in source_paths:
+        slug = src.stem
+        if force:
+            to_dispatch.append(src)
+            continue
+        entry = sources_map.get(slug)
+        if not entry or entry.get("status") != "ok":
+            to_dispatch.append(src)
+            continue
+        summary_name = entry.get("summary")
+        if not summary_name:
+            to_dispatch.append(src)
+            continue
+        summary_path = topic_dir / ".ingest" / summary_name
+        if not summary_path.exists():
+            to_dispatch.append(src)
+            continue
+        if src.stat().st_mtime > summary_path.stat().st_mtime:
+            to_dispatch.append(src)
+            continue
+        if not _summary_schema_ok(summary_path):
+            to_dispatch.append(src)
+            continue
+        cached.append(summary_path)
+
+    return to_dispatch, cached
+
+
+def _summary_schema_ok(summary_path: Path) -> bool:
+    """Return True if the summary's frontmatter declares the current schema_version."""
+    text = summary_path.read_text(encoding="utf-8")
+    m = _FRONTMATTER_RE.match(text)
+    if not m:
+        return False
+    fm = _parse_simple_yaml(m.group(1))
+    return fm.get("schema_version") == INGEST_SCHEMA_VERSION
