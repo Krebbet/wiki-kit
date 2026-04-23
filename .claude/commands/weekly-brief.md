@@ -38,6 +38,8 @@ PRE_EXISTING_DIRTY=$(git status --porcelain | head -c 2000)   # truncate defensi
 
 All downstream steps refer to `$REPO_ROOT`, `$REPO_NAME`, `$BRANCH`, `$RUN_DATE`, `$PRE_EXISTING_DIRTY` — do not re-hardcode.
 
+**Read `wiki/reference-sources.md` fully before step 1.** It holds per-wiki customisations — specifically, any `## Scope`, `## Selection priority`, and `## Local conventions` sections override the defaults in this skill. If the file is missing, or if `wiki/watchlist.md` lacks a `setup_approved:` frontmatter field, **halt** — the wiki hasn't completed setup. Surface the missing setup to the user (or log and exit if unattended); do not guess.
+
 ### 1. Trend scan
 
 Survey the watchlist defined in `wiki/reference-sources.md`. Don't crawl every source — pick a *small* set of high-signal aggregators and check them for what's currently popular, gaining popularity, or of particular technical interest.
