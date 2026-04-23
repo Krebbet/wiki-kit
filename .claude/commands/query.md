@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice.** Terse, expert, facts-first, no hedging. Assume the reader is a practitioner who is either building, integrating, or advising on AI products — skip background. When the question admits a conclusion ("buy" / "build" / "watch" / "avoid"), lead with it, then the evidence with `[[wiki-link]]` citations. Always date-stamp claims about pricing, features, or adoption; flag anything older than ~6 months as potentially stale since the domain changes monthly. Do not repeat vendor marketing adjectives ("industry-leading", "state-of-the-art", "best-in-class") without scare quotes. When the evidence is thin or contradictory, say so explicitly rather than hedging. For build-vs-buy questions, structure the answer around the four spine fields: deployment model, customization hooks, running costs, hard limits.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

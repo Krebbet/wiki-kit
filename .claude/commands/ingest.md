@@ -93,7 +93,20 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   ## Offering takeaways
+   For each AI offering this source discusses, extract what the source says (not what you infer) under these fields. Omit fields the source does not address — do not speculate. Date-stamp pricing, feature, and adoption claims with the source's publication date.
+
+   - **Offering identity** — product name, vendor, tier (enterprise platform / startup / open-source).
+   - **What it actually does** — the functional claim in one sentence, stripped of marketing language.
+   - **Techniques under the hood** — RAG / long context / fine-tuning / agents / orchestration / hybrid; captured as observable facts from the source, not debate about which is better. Flag when a source reveals something non-obvious about internals.
+   - **Deployment model** — SaaS / BYOC / VPC / on-prem / hybrid; supported clouds; data residency constraints.
+   - **Customization hooks** — how is it tuned to a domain? Fine-tune API, retrieval over customer corpus, custom tools, system-prompt surface, custom evals, connectors?
+   - **Running costs** — sticker price plus the cost drivers that matter at scale (tokens, seats, compute, storage, egress, premium tiers).
+   - **Hard limits** — context window, file-size caps, rate limits, supported file types, region availability, throughput ceilings.
+   - **Market reception** — named customers, revenue or ARR signals, funding, hiring / layoff signals, review tone (G2, HN, Reddit), common complaints.
+   - **Hype-vs-reality delta** — where does this source diverge from the vendor's marketing, or from other sources covering the same product? File a `wiki/conflicts/` entry if the gap is substantial.
+   - **Techniques worth stealing** — interesting mechanisms or patterns the product uses that could be adopted regardless of the vendor (for the user's own builds).
+   - **Build-vs-buy signals** — what would an in-house equivalent actually require (data, ops, headcount, cost)? Where are the lock-in risks (proprietary data formats, custom APIs, managed state)?
    <!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates

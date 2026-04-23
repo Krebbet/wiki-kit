@@ -29,7 +29,13 @@ Perform a health check of the wiki.
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+10. **Domain-specific checks.**
+    1. **Stale facts** — flag any page containing pricing, adoption numbers, feature claims, or model-capability statements older than 6 months without a re-verification note. Pricing and features in this domain change monthly; anything undated or >6 months old is suspect.
+    2. **Unverified vendor claims** — flag pages where a superiority claim ("best-in-class", "leading", "state-of-the-art", performance numbers) or an adoption claim (customer logos, revenue, usage counts) sits without an independent cross-check — at minimum one of: G2 review, Hacker News / Reddit thread, independent benchmark, practitioner blog post describing real use.
+    3. **Missing build-vs-buy spine** — for any offering page, flag if it is missing any of: deployment model, customization hooks, running costs, hard limits. These are the four fields that make a page useful for client advisory; a page without them is radar-only.
+    4. **Orphan offerings** — offering pages not linked from any category overview / landscape map page. Either link them from an overview or note that no overview yet exists for their category (possible new page needed).
+    5. **Stuck hype-vs-reality conflicts** — entries in `wiki/conflicts/` older than 30 days with no resolution entry or no new evidence appended. These either need a ruling or should be closed as unresolved with a note on why.
+    6. **Marketing-voice leakage** — flag pages containing vendor adjectives like "industry-leading", "state-of-the-art", "best-in-class", "cutting-edge", "revolutionary" without scare quotes or a source attribution. The wiki's voice is terse and factual; unquoted marketing copy is a regression.
 <!-- /DOMAIN-SLOT -->
 
 ## Output

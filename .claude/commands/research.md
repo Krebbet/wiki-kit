@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki.** Signal quality varies sharply in this domain. Vendor material — product docs, pricing pages, changelogs, launch posts — is authoritative on *features, pricing, and deployment options*, but any claim of superiority, "state-of-the-art" status, or adoption numbers is marketing until cross-checked. Ground truth about whether something actually works comes from the friction surface: customer reviews (G2, Reddit, Hacker News), public support forums, GitHub issue trackers, Stack Overflow question volume around a product, and practitioner blog posts describing real production use. Independent benchmarks (LMSYS, SWE-bench, HumanEval variants, BFCL, etc.) beat vendor-reported numbers. Analyst reports (Gartner, Forrester, IDC) are treated skeptically given pay-to-play dynamics — useful for category framing, not for product ranking. Actively discount: LinkedIn thought-leadership, X hype threads, anonymous Medium posts, vendor-sponsored "case studies". Capture X / LinkedIn posts only when they contain non-public specifics (founder disclosing revenue, teardown of internals); default is to skip. Every claim captured into the wiki must be date-stamped; facts older than ~6 months should be flagged as potentially stale since pricing and features in this space change monthly.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +52,13 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Source-handling notes for this wiki.**
+   - **Vendor pages, product docs, launch posts, news articles, newsletters** — primary workhorse; use `capture_url.py` (add `--js` for JS-heavy SPA-style product pages, common for AI tool marketing sites).
+   - **Analyst reports and other PDFs** — `capture_pdf.py --engine pymupdf` for speed; reserve the default `marker` engine for academic papers that need layout-preserving extraction.
+   - **Conference talks, founder interviews, podcast episodes on YouTube** — `fetch_transcript.py`. Prefer episodes where founders disclose real numbers or architecture specifics over "thought-leadership" interviews.
+   - **Hacker News, Reddit, G2, Stack Overflow threads, GitHub issues** — `capture_url.py`. Treat these as **first-class ground-truth evidence**, not as supplementary colour. Threads complaining about a specific limitation are often more informative than the vendor's own docs.
+   - **X / LinkedIn posts** — capture only when they contain non-public specifics (founder admitting revenue, teardown of internals, concrete limitations). Default is to skip.
+   - **User-dropped notes** — rare; the user will place them into `raw/<topic>/` manually and run `/ingest` directly.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
