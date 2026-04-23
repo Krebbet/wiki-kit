@@ -56,3 +56,12 @@ Append entries using this structure:
 2. **Master CLAUDE.md:** add a general principle — "When orchestrating data pipelines that produce large numbers of derived files, verify a sample for end-to-end correctness (not just exit code = 0) before downstream work." This applies far beyond wiki-kit.
 Also: build `tools/audit_captures.py` and wire it into `/lint`. See FEEDBACK.md for the spec.
 **Status:** tool + lint wiring applied upstream (`tools/audit_captures.py` and `/lint` / `/research` hooks are on main); Project and Master CLAUDE.md language still open.
+
+### 2026-04-23 — capture tools are CWD-relative, silently producing nested directories
+**Scope:** kit
+**Observation:** A previous `cd raw/research/rlt-followups` that failed (exit 2: "No such file or directory") left my shell CWD unchanged to the caller's view but actually *changed* inside Bash tool invocations that use cd + && chains. Subsequent `mkdir -p raw/research/rl-optimizers` and the capture_pdf / capture_url commands resolved `--out raw/research/rl-optimizers` relative to the drifted CWD, so files landed at `raw/research/rlt-followups/raw/research/rl-optimizers/` — inside the previous topic's directory, not at the intended location. No error, no warning. I only noticed when sub-agents flagged the path discrepancy in their per-paper wiki pages.
+**Implication:** Two kit-level asks:
+1. `tools/capture_pdf.py`, `tools/capture_url.py`, `tools/fetch_transcript.py` should resolve `--out` relative to a repo-root anchor (e.g., walk up to the nearest directory containing `pyproject.toml` or `wiki/`), or at minimum print the absolute resolved output path on success so drift is visible.
+2. `tools/audit_captures.py` could detect "nested raw-tree-within-raw-tree" layouts as a suspicious signal and flag it — a `raw/research/X/raw/research/Y/` path is almost always a bug.
+Also useful: the assistant protocol could prefer `--out $(git rev-parse --show-toplevel)/raw/research/<slug>` when invoking capture tools, to be CWD-agnostic.
+**Status:** open — kit-level fix needed; see `/harvest` for promotion.

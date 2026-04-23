@@ -46,5 +46,6 @@ Theme covering the *mechanics* of RL with verifier rewards (RLVR) for LLM reason
 
 ## Related themes
 
+- [[../synthesis/single-sample-concept-skeleton]] — editorial composition of this theme's primitives into a candidate method
 - [[../single-sample-rl-finetuning/_overview]]
 - [[../process-reward-models/_overview]]

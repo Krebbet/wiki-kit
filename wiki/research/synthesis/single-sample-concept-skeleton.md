@@ -86,6 +86,9 @@ The four-primitive composition is not any of the above; it's the specific hybrid
 - **Low-G variance reduction.** GRPO's group-relative baseline collapses at `G=1` and is noisy at small `G`. Candidate: shared baseline from a frozen reference policy per prompt, or a leave-one-out baseline across perturbations of `x`.
 - **Related-input pool for validation.** MDL over a held-out related set requires the set. Options: x-augmentations (paraphrase, invariance transforms), nearest-neighbour retrieval from pretraining corpus, or LLM-generated sibling prompts. None validated here.
 - **Catastrophic forgetting bound.** The P2 mask + KL leash mitigate but do not bound forgetting. This is the unclaimed territory — no paper in the current corpus addresses it. Next research cluster to run.
+- **Reference-material-in-context during weight updates.** The skeleton is silent on whether a comprehensive reference text (e.g. a textbook chapter, a worked-solution library) should sit in the prompt while the loop iterates. TTT keeps synthetic tasks in-context for *one* test instance ([[../test-time-training/ttt-few-shot]]); Algorithm Distillation is gradient-free ([[../test-time-training/algorithm-distillation]]); Reflexion's memory is Ω=1–3 ([[../critique-self-correction/reflexion]]). None of these do *weight-updating RL with a persistent long-context reference*. Bayesian-ICL's per-token-information theorem argues this would help ([[../in-context-learning-theory/icl-bayesian-inference]]); no corpus method instantiates it.
+- **Small-curriculum band (N ≈ 10–100).** Existing single-sample work sits at N=1 (1-shot RLVR, CFT) or training-scale (rStar-Math); the middle band of a curated curriculum (e.g. textbook exercises sharing a reference text) is unmeasured. Load-bearing for "synthesise a textbook, run the exercises" designs.
+- **Concept probing for LLM math understanding.** RCE and CBM concept-probes are vision-first; RCE's LLM numbers are *projected* per the paper's own caveat. A direct test of whether a specific math concept (chain rule, integration by parts) is installed vs pattern-matched is not in the corpus.
 
 ## Next capture priorities
 
@@ -96,6 +99,10 @@ Downstream research leads this skeleton exposes (for a future `/research` run):
 - Principle self-extraction by LLMs (constitution-generation, chain-of-critique taxonomies).
 - Info-gain rewards at small G (leave-one-out baselines for RLHF/RLVR).
 - Dense-reward composability (α/β/γ weighting under competing signals).
+- Retrieval-augmented / long-context fine-tuning (RETRO / Atlas / RA-DIT variants; long-context RL with documents resident in prompt).
+- Curriculum and textbook synthesis for LLMs (graded problem sets, AI-generated curricula, self-grading loops over exercises).
+- Worked-example / reference-grounded RL (triples of (problem, worked-solution-in-context, final-answer); CoT with reference grounding).
+- LLM concept-probing for math specifically (mechanistic evaluation of whether named concepts are installed vs memorised after RLVR).
 
 ## Source
 

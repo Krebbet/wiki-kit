@@ -17,6 +17,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/meta-learning-few-shot/_overview]] | Pre-LLM foundations for few-shot learning: MAML, Prototypical Networks, one-shot prior-engineering. |
 | [[research/test-time-training/_overview]] | Adaptation at deployment: per-input TTT fine-tunes and Algorithm Distillation's in-context RL. |
 | [[research/concept-learning/_overview]] | Operational definitions of "concept": Concept Bottleneck Models (supervised, fixed vocabulary) and Recursive Concept Evolution (self-supervised, dynamic, low-rank library). |
+| [[research/teacher-student-rl/_overview]] | Teacher-for-student-learning as an optimisation problem: Fan L2T, Saha LLM-teacher-explanations, Ho Fine-tune-CoT, TRICE, SOAR bilevel meta-RL, Sakana RLT, PM4GRPO. |
+| [[research/rl-optimizers/_overview]] | RL-for-LLM optimiser lineage: PPO → InstructGPT → DPO → GRPO → post-GRPO (DAPO, Dr. GRPO, GSPO) + siblings RLOO, KTO. Critic-free, KL placement, length-bias convergence, preference-vs-RLVR subtrees. |
 | [[research/catastrophic-forgetting/ewc-gemma2-cpt]] | Seed entry for the catastrophic-forgetting theme: EWC + Fisher applied to Gemma2 continual pretraining. |
 | [[research/data-efficient-survey/limited-data-ft-survey]] | Szep et al. 2024 survey mapping PEFT, domain/cross-lingual adaptation, specialisation, and preference alignment under 10²–10⁵ label budgets. |
 
@@ -114,6 +116,34 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/concept-learning/concept-bottleneck-models]] | Koh et al., ICML 2020 — supervised concept coordinates; test-time intervention; robust to background shift. |
 | [[research/concept-learning/recursive-concept-evolution]] | Chaudhry 2025 — frozen base + growing low-rank concept library; spawn-on-failure, MDL-on-accept. |
 
+### Teacher-student RL & teaching-as-optimisation
+
+| Page | Summary |
+|---|---|
+| [[research/teacher-student-rl/_overview]] | Theme overview — RL-optimised teachers, teacher-for-student-learning, four-axis map (action space × student feedback × is-teacher-trained × does-teacher-see-answer). |
+| [[research/teacher-student-rl/fan-learning-to-teach]] | Fan et al. (ICLR 2018) — canonical L2T. Teacher RL agent outputs data / loss / hypothesis-space actions; REINFORCE on student val accuracy. Halves data; transfers across architectures. |
+| [[research/teacher-student-rl/saha-teacher-explanations]] | Saha, Hase, Bansal (NeurIPS 2023). Inference-time LLM teacher intervenes with natural-language explanations; Theory-of-Mind mental model for *when* and *how*; multi-round teaching generalises. |
+| [[research/teacher-student-rl/ho-reasoning-teachers]] | Ho, Schmid, Yun (ACL 2023) — Fine-tune-CoT. GPT-3 175B teacher generates Zero-shot-CoT rationales; filter by answer; fine-tune small student. Diverse reasoning is the critical extension. |
+| [[research/teacher-student-rl/trice-cot-latent-variable]] | Phan, Hoffman et al. (NeurIPS 2023) — TRICE. Rationales as latent variables; marginal LL via MCMC-EM with control variate; learns from incorrect rationales; beats STaR. |
+| [[research/teacher-student-rl/soar-edge-of-learnability]] | Sundaram et al. (MIT/Meta FAIR, 2026) — SOAR. Bilevel meta-RL; teacher generates synthetic Q–A, student trains with RLVR, teacher rewarded by student improvement on hard set. Escapes 0/128 plateau. |
+| [[research/teacher-student-rl/sakana-rlt]] | Cetin, Zhao, Tang / Sakana AI (2025). RLT. Teacher given (Q, A); rewarded by student log-prob of solution given teacher think-tokens, with KL plausibility regulariser. 7B RLT beats R1-scale distillation. |
+| [[research/teacher-student-rl/pm4grpo]] | Lee, Park, Sim, Bae (Jan 2026) — TACReward. Process-mining alignment between student and teacher reasoning traces as dense scalar reward; drops into RLOO/GRPO/GSPO; GSPO+TACReward +89.2% relative. |
+| [[research/teacher-student-rl/rlt-followups-2026]] | Post-RLT landscape (2025-Q4 → 2026-Q2): OPD siblings at Qwen3/MiMo/GLM-5/Thinking Machines, self-distillation-with-privileged-info (OPSD), ExGRPO, Kwiatkowski log-prob rewards. Finding: no follow-up directly cites RLT. |
+
+### RL optimisers
+
+| Page | Summary |
+|---|---|
+| [[research/rl-optimizers/_overview]] | Theme overview — family tree, what each algorithm changes, critic-free trend, KL placement, length-bias convergence. |
+| [[research/rl-optimizers/ppo]] | Schulman et al. (2017) — clipped surrogate + adaptive KL + actor-critic/GAE. Root of the LLM RLHF lineage. |
+| [[research/rl-optimizers/instructgpt]] | Ouyang et al. (2022) — canonical three-stage RLHF: SFT → RM → PPO(+ptx). 1.3B preferred over 175B GPT-3. |
+| [[research/rl-optimizers/dpo]] | Rafailov et al. (NeurIPS 2023) — closed-form preference optimisation via BT reparameterisation; no RL loop. |
+| [[research/rl-optimizers/rloo]] | Ahmadian et al. (ACL 2024) — REINFORCE-LOO beats PPO and DPO on RLHF; sequence-level MDP framing. |
+| [[research/rl-optimizers/kto]] | Ethayarajh et al. (ICML 2024) — Kahneman-Tversky HALO; binary signal, no preference pairs needed. |
+| [[research/rl-optimizers/dapo]] | Yu et al. (ByteDance Seed + Tsinghua AIR, 2025) — Clip-Higher, Dynamic Sampling, Token-Level PG Loss, Overlong Reshape. 50 AIME'24 on Qwen2.5-32B. |
+| [[research/rl-optimizers/dr-grpo]] | Liu et al. (SAIL, COLM 2025) — *Understanding R1-Zero*. Identifies length and std biases in GRPO; removes them. |
+| [[research/rl-optimizers/gspo]] | Zheng et al. (Alibaba Qwen, 2025) — sequence-level importance ratio and clipping; stabilises MoE; powers Qwen3. |
+
 ### Catastrophic forgetting (seed)
 
 | Page | Summary |
@@ -131,6 +161,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | Page | Summary |
 |---|---|
 | [[research/synthesis/single-sample-concept-skeleton]] | Candidate method skeleton composing RCE failure-trigger + Balashov sparse-mask + L2T Fisher-reward + CAI principle-decomposition into a single-sample concept fine-tuner. |
+| [[research/synthesis/proposed-method]] | Implementation roadmap — reference-grounded single-sample concept fine-tuning. Components (RLT reward, RCE trigger, Balashov mask, EWC anchor, MDL sibling test, reference-in-context), end-to-end algorithm, prioritised 15-paper reading list. |
 
 ---
 

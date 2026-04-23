@@ -4,7 +4,7 @@ Wang et al. (NeurIPS 2025) show that RLVR with a *single* math problem repeated 
 
 ## Method
 - GRPO over a dataset of size 1 (the single example is duplicated to fill the 128-sample batch). Reward is binary outcome correctness; loss has policy-gradient, KL-to-reference and entropy components.
-- *Historical variance* data selection: train on full pool for 500 steps, score each example by $v_i = \mathrm{var}(s_{i,1},\dots,s_{i,E})$ over per-epoch training accuracies, rank, and pick the top item ($\pi_1$). Many other examples (incl. low-variance ones) also work.
+- *Historical variance* data selection: train on full pool for 500 steps, score each example by $v_i = \mathrm{var}(s_{i,1},\dots,s_{i,E})$ over per-epoch training accuracies, rank, and pick the top item ($\pi_1$). Many other examples (incl. low-variance ones) also work. This is a heuristic proxy for the principled within-group-reward-variance quantity formalised by [[data-efficiency-rft]] Theorem 1: $\mathbb{E}[\|g\|^2] \propto p(1-p)(1-1/G)$, peaking at $p = 0.5$. A prompt whose per-epoch accuracy fluctuates is empirically one whose current-policy pass-rate spent time near 0.5 during the calibration run — exactly where the GRPO gradient is strongest. The 500-step full-pool calibration run that historical-variance selection requires is also the mechanism that makes 1-shot RLVR *not quite* a cold-start method.
 - Ablations swap weight decay, KL, entropy coefficients to isolate which component drives generalization.
 
 ## Claims

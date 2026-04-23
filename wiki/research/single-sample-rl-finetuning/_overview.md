@@ -44,6 +44,7 @@ For David's concept-based, single-sample fine-tuning thesis this is the closest 
 See individual paper pages.
 
 ## Related
+- [[../synthesis/single-sample-concept-skeleton]] — editorial composition of this theme's primitives into a candidate method
 - [[../rlvr-mechanics/_overview]]
 - [[../process-reward-models/_overview]]
 - [[../self-improvement/_overview]]

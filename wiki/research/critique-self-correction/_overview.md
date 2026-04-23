@@ -66,6 +66,7 @@ All three substitute *language structure* (principles, critiques, lessons) for *
 See individual paper pages: [[self-refine]], [[reflexion]], [[constitutional-ai]], [[prometheus-2]], [[critic-tool-interactive]], [[critic-cot]].
 
 ## Related themes
+- [[../synthesis/single-sample-concept-skeleton]] — editorial composition using CAI principle decomposition (P4) to turn scalar reward into a vector over addressable axes.
 - [[../single-sample-rl-finetuning/_overview]] — RL on a single problem; shares the "amplify one example" goal but uses RL gradients rather than verbal critique.
 - [[../self-improvement/_overview]] — STaR / Self-Rewarding LMs / rStar-Math; same self-judge primitive used to *generate training data* rather than to refine outputs at inference.
 - [[../process-reward-models/_overview]] — Lightman / Math-Shepherd / Uesato; the externally-trained verifier alternative to self-critique. Process rewards are dense per-step signals; critiques are dense per-aspect signals — analogous decomposition along different axes.

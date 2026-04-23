@@ -54,6 +54,7 @@ Theme covering *operational definitions of "concept"* in neural models and the t
 
 ## Related themes
 
+- [[../synthesis/single-sample-concept-skeleton]] — editorial composition using RCE's failure trigger (P1) as the single-sample update gate
 - [[../in-context-learning-theory/_overview]] — Bayesian "latent concepts in pretraining" view; CBM makes those concepts observed; RCE adds new ones post hoc
 - [[../meta-learning-few-shot/_overview]] — concepts as cluster centres (ProtoNets) and as adaptation directions (MAML); representation-side counterparts to the architectural commitments here
 - [[../rlvr-mechanics/_overview]] — RL edits a sparse, low-rank-adjacent subnetwork; structurally adjacent to RCE's concept subspaces, with no paper co-measuring
