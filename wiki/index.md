@@ -37,6 +37,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/single-sample-rl-finetuning/critique-ft-one-problem]] | Single-problem critique fine-tuning as an SFT alternative to RLVR. |
 | [[research/single-sample-rl-finetuning/data-efficiency-rft]] | Difficulty-targeted online data selection and rollout replay. |
 | [[research/single-sample-rl-finetuning/reft]] | ReFT — SFT warm-up + PPO on multiple sampled CoT paths per problem; +10–12% over SFT on math without external RM. |
+| [[research/single-sample-rl-finetuning/cbrl]] | CBRL (arXiv:2603.18953, March 2026) — curriculum of annealed few-shot demonstration prepending during RLVR; +1.3–22.3% over GRPO-only on ARC-1D, Word Sorting, others. |
 
 ### RLVR mechanics
 
@@ -129,6 +130,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/teacher-student-rl/sakana-rlt]] | Cetin, Zhao, Tang / Sakana AI (2025). RLT. Teacher given (Q, A); rewarded by student log-prob of solution given teacher think-tokens, with KL plausibility regulariser. 7B RLT beats R1-scale distillation. |
 | [[research/teacher-student-rl/pm4grpo]] | Lee, Park, Sim, Bae (Jan 2026) — TACReward. Process-mining alignment between student and teacher reasoning traces as dense scalar reward; drops into RLOO/GRPO/GSPO; GSPO+TACReward +89.2% relative. |
 | [[research/teacher-student-rl/rlt-followups-2026]] | Post-RLT landscape (2025-Q4 → 2026-Q2): OPD siblings at Qwen3/MiMo/GLM-5/Thinking Machines, self-distillation-with-privileged-info (OPSD), ExGRPO, Kwiatkowski log-prob rewards. Finding: no follow-up directly cites RLT. |
+| [[research/teacher-student-rl/knowrl]] | KnowRL (arXiv:2604.12627, April 2026) — atomic knowledge-points + Constrained Subset Search for minimal-sufficient hint design; no KL loss. 1.5B SOTA. |
 
 ### RL optimisers
 
@@ -143,6 +145,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rl-optimizers/dapo]] | Yu et al. (ByteDance Seed + Tsinghua AIR, 2025) — Clip-Higher, Dynamic Sampling, Token-Level PG Loss, Overlong Reshape. 50 AIME'24 on Qwen2.5-32B. |
 | [[research/rl-optimizers/dr-grpo]] | Liu et al. (SAIL, COLM 2025) — *Understanding R1-Zero*. Identifies length and std biases in GRPO; removes them. |
 | [[research/rl-optimizers/gspo]] | Zheng et al. (Alibaba Qwen, 2025) — sequence-level importance ratio and clipping; stabilises MoE; powers Qwen3. |
+| [[research/rl-optimizers/mcpo]] | Mastery-Consolidated PO (arXiv:2604.16972, April 2026) — hinge-KL on mastered prompts + advantage-denominator rescaling; shows Dr. GRPO's std-removal fix is incomplete. |
+| [[research/rl-optimizers/maspo]] | MASPO (arXiv:2602.17550) — unifying objective across Gradient Utilization, Probability Mass, Signal Reliability; subsumes DAPO Clip-Higher and BAPO. |
 
 ### Catastrophic forgetting (seed)
 

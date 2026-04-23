@@ -83,3 +83,27 @@ Also useful: the assistant protocol could prefer `--out $(git rev-parse --show-t
 2. Extend `/bootstrap` to offer weekly-brief setup as an opt-in question during initial wiki creation; for wikis already bootstrapped, the user can re-run `/bootstrap --add weekly-brief` or similar. This keeps the setup colocated with the other wiki-initialization choices.
 Also related: saved a feedback memory at `.claude/projects/.../memory/feedback_weekly_brief_setup.md` so I don't repeat the pre-seeding mistake across sessions.
 **Status:** open — kit-level fix needed; see `/harvest` for promotion.
+
+### 2026-04-23 — /harvest needs semantic vetting before promotion AND post-promotion verification
+**Scope:** kit
+**Observation:** The current `/harvest` flow classifies changes by **path** (kit paths → promote, wiki/raw → skip, DOMAIN-SLOT bodies → skip). But that filter is purely mechanical and doesn't answer the real question: "Does this change improve the core wiki-kit, or is it wiki-specific?" Example: today's edits to `.claude/commands/weekly-brief.md` (dynamic REPO_ROOT/BRANCH resolution, first-run guard) are clearly kit-generic and should promote. But the same file also gained a reference to `wiki/reference-sources.md`'s "Local conventions" section, which is a concept this specific wiki uses — if that convention isn't adopted by the kit as a first-class feature, the skill reference to it becomes dead weight for other wikis. The current path-based filter can't tell these apart.
+
+Separately: after a harvest lands on main, **no step in the flow verifies the promoted changes actually apply to and improve other existing wikis** (wiki-ai-trends, wiki-agentic-trends, wiki-food-formulation, etc.). A change that's kit-clean on the origin branch could still conflict with another wiki's DOMAIN-SLOT, duplicate a local customisation, or silently fail to apply. Currently the assumption is "other wikis will rebase main and deal with it" — that's not reliable.
+
+User requirements (raised 2026-04-23):
+1. Harvest should only propagate to main if the change will **improve the core wiki-kit** as a whole. Wiki-specific stuff stays on the originating branch.
+2. When a harvest is applied to (a) main and (b) each existing wiki, the change should be **vetted to make sure it applies AND improves** that destination.
+
+**Implication:** Two process additions needed in `.claude/commands/harvest.md`:
+
+1. **Semantic vet step (pre-promote).** After the path-based classification, for every hunk in the "promote" bucket, present it to the user with the question: "Does this generalise across all wikis, or is it specific to this branch?" If wiki-specific, move the hunk to a new `keep-local` bucket; record a note in `master_notes.md` describing why it's staying local so it can be reconsidered later if the pattern generalises. (Agent can pre-classify with low confidence and surface only the uncertain cases to reduce user burden.)
+
+2. **Post-promote verification (per-wiki).** After a harvest push to main, iterate over other wikis under `~/code/wiki-*` and for each:
+   - `git fetch && git merge origin/main --no-commit` (or rebase) in a worktree.
+   - Run a quick self-check: does the wiki's `/lint` still pass? Do DOMAIN-SLOT markers in command files still align? Do any per-wiki configs (e.g. `reference-sources.md` "Local conventions", watchlist setup) still make sense relative to the new kit content?
+   - Report per-wiki as "applies cleanly + improves" / "applies but adds noise" / "doesn't apply cleanly" / "applies but requires manual adjustment".
+   - Do **not** auto-merge into other wiki branches — surface the assessment, let the user initiate the pull on each wiki when they next work on it. The verification is informational.
+
+Candidate: new companion command `/harvest-verify` that encapsulates step 2, separate from the promotion step, since promoting and verifying happen at different times (post-push, async across wikis).
+
+**Status:** open — process change to `/harvest`; also saving as a feedback memory since this is a strong user preference about kit hygiene.

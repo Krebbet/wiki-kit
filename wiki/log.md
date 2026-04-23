@@ -145,3 +145,30 @@ Key editorial observation flagged to the user in the page: **this proposal is th
 Catastrophic forgetting explicitly flagged by the user; traced in the page to candidate counters from the corpus ([[research/catastrophic-forgetting/ewc-gemma2-cpt]] Fisher-weighted EWC anchor, [[research/rlvr-mechanics/rl-sparse-subnetwork]] Balashov sparse mask), with the caveat that both are applied *once* in their source settings; repeat application across a curriculum is untested.
 
 Updated `index.md`, `revisions.md`.
+
+---
+
+## [2026-04-23] weekly-brief | first run against seeded reference-sources
+
+Manual invocation of `/weekly-brief` after setup interview. Runtime values resolved: `REPO=wiki-single-sample-learning`, `BRANCH=single-shot-training-wiki`, `RUN_DATE=2026-04-23`. Pre-existing dirty tree: none.
+
+**Trend scan** (alphaXiv trending, HF papers, r/ML, targeted arXiv). Podcasts skipped per setup. Initial candidate pool ~10 papers; narrowed to 4 captures + 5 surplus not auto-promoted (per interview's no-auto-seed watchlist rule).
+
+**Captures (4):** MCPO (arXiv:2604.16972, April 18), KnowRL (arXiv:2604.12627, April 2026), CBRL (arXiv:2603.18953, March 19), MASPO (arXiv:2602.17550, Feb 2026). Audit: 11 broken figure refs from pymupdf; text intact.
+
+**Ingest via subagent-per-source:** 4 parallel `general-purpose` agents wrote `.ingest/*.summary.md`. Aggregated via `tools.ingest_plan.aggregate`; `run.json` persisted. Autonomous page plan: MCPO → `rl-optimizers/mcpo`, MASPO → `rl-optimizers/maspo`, KnowRL → `teacher-student-rl/knowrl`, CBRL → `single-sample-rl-finetuning/cbrl`. 4 more parallel agents wrote full wiki pages from the summaries + raw sources.
+
+**Three conflicts surfaced** (strong, from the summaries' `## Conflict flags`):
+1. MCPO vs Dr. GRPO — std-removal alone doesn't kill the $p(1-p)$ weight residual.
+2. MCPO vs DAPO — Dynamic Sampling discards mastered prompts, which MCPO shows causes ~5% regression.
+3. KnowRL vs Sakana RLT — minimal-sufficient hints + no KL vs maximal context + plausibility regularisation.
+
+Conflict files written to `wiki/conflicts/`; `conflicts/index.md` updated.
+
+**Brief composed** at `/tmp/weekly-brief-2026-04-23.md` and `wiki/weekly-briefs/2026-04-23.md`. Per local convention, empty sections are omitted — no "Other watchlist references" section (watchlist was empty at start of run). Every trend bullet includes explicit thesis-relevance clause.
+
+**Delivery:** HTML rendered via `tools/render_brief_html.py` (needed to `pip install markdown` — the package was declared in pyproject but not actually installed in the venv; small kit-level gap). SMTP send succeeded; Message-ID `<aef351ce-077e-4413-ba50-ebb5743593a4@gmail.com>` delivered to `david.hugh.mcnamee@outlook.com`. Telegram ping delivered (message_id 85).
+
+**Not committed** per skill policy — 12 uncommitted files await user commit on next login.
+
+Kit-level gap worth flagging: per-wiki poetry environment may not have `markdown` installed even when `pyproject.toml` declares it; fresh clones likely need `poetry install` before first weekly-brief run. Worth adding to skill preflight or the first-run guard.
