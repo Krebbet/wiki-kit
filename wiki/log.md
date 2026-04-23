@@ -131,3 +131,17 @@ Dispatched 8 parallel sub-agents (sonnet), one per paper, to produce per-paper w
 **Surface-level open contradiction:** [[research/rl-optimizers/dpo]] reports PPO failing to beat Pythia-2.8B base on HH while DPO wins; [[research/rl-optimizers/rloo]] reports RLOO beating both PPO and DPO across TL;DR and HH. The two papers disagree about DPO's performance. Resolving this requires close reading of experimental protocols (base model, RM, KL budget); not attempted in this pass.
 
 Master-notes entry planned: working-directory drift from failed `cd` into capture tooling is a recurring foot-gun — capture scripts should probably resolve `--out` relative to a fixed repo-root rather than CWD, or at least print the absolute resolved output path on success. Will log to `master_notes.md` with scope: kit.
+
+---
+
+## [2026-04-23] synth | concept-curriculum-method (third method proposal)
+
+User sketched a new method idea in conversation: a hierarchical concept-curriculum approach where a strong teacher model decomposes a goal topic into a concept DAG, materialises (Q, E, A, textbook) packets per concept, and a small student is trained bottom-up with a test-fail-train loop per node. Captured and elaborated as `wiki/research/synthesis/concept-curriculum-method.md`.
+
+Structured the page as: roles table (teacher/student axes), detailed step (a)–(f) breakdown, per-step strengths/weaknesses/unknowns/challenges, overall assessment, and a comparison table against [[research/synthesis/single-sample-concept-skeleton]] and [[research/synthesis/proposed-method]]. Final section lists five open questions the project must answer to turn the sketch into an implementation plan — most critical: is this a competing method to [[research/synthesis/proposed-method]] or do they compose (curriculum outer loop, single-sample RLT inner loop)?
+
+Key editorial observation flagged to the user in the page: **this proposal is the most teacher-heavy and the least single-sample of the three method pages**. The project's stated goal is "single-sample, concept-based learning" ([[wiki/index]]). This curriculum proposal is arguably concept-based but not single-sample. A scope decision is surfaced in the page's open-questions section.
+
+Catastrophic forgetting explicitly flagged by the user; traced in the page to candidate counters from the corpus ([[research/catastrophic-forgetting/ewc-gemma2-cpt]] Fisher-weighted EWC anchor, [[research/rlvr-mechanics/rl-sparse-subnetwork]] Balashov sparse mask), with the caveat that both are applied *once* in their source settings; repeat application across a curriculum is untested.
+
+Updated `index.md`, `revisions.md`.

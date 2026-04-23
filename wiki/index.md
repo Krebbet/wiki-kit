@@ -162,6 +162,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 |---|---|
 | [[research/synthesis/single-sample-concept-skeleton]] | Candidate method skeleton composing RCE failure-trigger + Balashov sparse-mask + L2T Fisher-reward + CAI principle-decomposition into a single-sample concept fine-tuner. |
 | [[research/synthesis/proposed-method]] | Implementation roadmap — reference-grounded single-sample concept fine-tuning. Components (RLT reward, RCE trigger, Balashov mask, EWC anchor, MDL sibling test, reference-in-context), end-to-end algorithm, prioritised 15-paper reading list. |
+| [[research/synthesis/concept-curriculum-method]] | Third method proposal — teacher-built hierarchical concept DAG with test-train-retest loop per node. Teacher materialises (Q, E, A, textbook) packets; student trained bottom-up until each concept's held-out TestSet passes. Most teacher-heavy, least single-sample of the three. |
 
 ---
 
