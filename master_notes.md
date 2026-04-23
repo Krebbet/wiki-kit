@@ -101,10 +101,29 @@ Both fixes are single-file. If they land together with the marker-OOM auto-fallb
 **Scope:** kit
 **Observation:** `/weekly-brief` step 8 said "Use the Gmail MCP `send` tool to <user> with the brief body." On the 2026-04-22 dry-run, the only write-capable Gmail MCP tool exposed is `mcp__claude_ai_Gmail__create_draft`. The surface also includes `list_drafts`, `create_label`, `label_*`, `search_threads`, `get_thread` — but no `send`. This appears to be a deliberate MCP design (claude.ai Gmail connector defaults to draft-only for safety). Skill's contract was aspirational.
 **Implication:** Updated `.claude/commands/weekly-brief.md` step 8 to reflect reality: create a draft via `mcp__claude_ai_Gmail__create_draft`, surface the draft ID, and let the user hit send manually. Composes well with the no-auto-commit posture from the same 2026-04-22 rewrite — *both* the commit and the send stay manual, so the weekly sweep can't cause irreversible external effects without the user's hand. Added step **8b**: fire a short Telegram notification via the user's existing `remote_workstation` bot (`dispatcher/telegram.py`) so the user knows the run happened without having to check Gmail. Reminder becomes: "commit the wiki diff, then hit send on the Gmail draft."
-**Status:** applied — 2026-04-22. Skill rewritten; Telegram step documented. If a true-send path opens up later (SMTP wired, different MCP, or user escalates to A/B/C from the send-mechanism options), revisit.
+**Status:** applied — 2026-04-22. Skill rewritten; Telegram step documented. *Superseded 2026-04-23* by the SMTP + HTML entry below — true-send path is now primary, create_draft is the fallback.
 
 ### 2026-04-22 — `/ingest` step 6 gate is heavier than it needs to be; weekly-brief shows autonomous path works
 **Scope:** kit
 **Observation:** `/ingest` currently blocks at step 6 for user sign-off on the full review packet (page plan, per-source emphasis, conflict rulings, retry list). `/weekly-brief` runs the same subagent-per-source + aggregate + write flow with zero human gates (see `.claude/commands/weekly-brief.md:66-82`), using simple heuristics: one paper page per source, extend existing cluster pages when ≥2 sources overlap, open conflict files only when a summary's conflict flag cites an existing wiki page. Evidence from the 2026-04-22 radar-2026-04 run and the smoke fixture is that the review packet mostly confirms what the heuristics would have produced anyway.
 **Implication:** Shift `/ingest` to "ask forgiveness" mode. Default path: apply the `/weekly-brief` heuristics autonomously and commit in one shot; user corrects post-hoc via `master_notes.md`, a revert, or a manual follow-up. Keep a `--review` opt-in flag (or a keyword like "interactive") for the first run on a sensitive topic. Gates worth keeping even in autonomous mode: hard capture failures that would silently drop a source, and any conflict that would *overwrite* (not extend) an existing wiki claim. Everything else — page plan shape, emphasis, retry-vs-drop on soft parser failures — should default to the heuristic.
 **Status:** open
+
+### 2026-04-23 — `/weekly-brief` gains SMTP send + HTML email rendering + watchlist-centric shape (harvest-ready)
+**Scope:** kit
+**Observation:** Three user-driven iterations on the 2026-04-22 dry-run surfaced gaps worth promoting to every wiki built from the kit:
+  (1) **Brief shape** — the captures-first shape (5 full paper summaries, trends as afterthought) was wrong for the "what's in our radar?" use-case. User wants watchlist-centric: industry-trend synthesis → top 3 picks (title + 1 line) → terse `title — tag` ledger of remaining watchlist items grouped by section. The watchlist is the load-bearing artifact; captures are an implementation detail in run notes.
+  (2) **Email delivery** — the create_draft-only Gmail MCP path leaves a draft sitting in Gmail that never reaches an Outlook reader. Solved with `tools/send_email.py` (Gmail SMTP via app password, sourced from `remote_workstation/.env`) as the primary path; `create_draft` stays as the fallback when SMTP creds aren't configured.
+  (3) **Email legibility** — raw markdown in the body is unreadable in Outlook. Solved with `tools/render_brief_html.py` (Python `markdown` lib + inline-styled template; banner + footer classes wrap the `⚠` block and the attribution). Sender now produces both plain-text (markdown) and HTML alternatives; clients pick the right one.
+**Implication:** Promote to main via `/harvest`:
+  - `tools/send_email.py` — generic SMTP sender, reads `GMAIL_USER` + `GMAIL_APP_PASSWORD` from env. Not wiki-specific.
+  - `tools/render_brief_html.py` — markdown → styled HTML. Not wiki-specific.
+  - `markdown` dependency in `pyproject.toml`.
+  - `.claude/commands/weekly-brief.md` step 6 (watchlist-centric shape template + `wiki/weekly-briefs/<DATE>.md` output path) and step 8 (render-then-SMTP-with-fallback) — these are kit-level contract changes.
+  - `wiki/weekly-briefs/` as a new kit convention (directory created lazily on first run).
+**Wiki-specific bits that must stay project-scoped** (do not promote):
+  - Recipient email (`david.hugh.mcnamee@outlook.com`) — belongs in a per-wiki memory or project CLAUDE.md, not the kit skill. Kit template should say `<RECIPIENT_EMAIL>` or source from a project env.
+  - Repo path (`/home/david/code/wiki-ai-trends`) — already hardcoded in the skill from prior state; harvest candidate separately (see earlier kit-note on per-wiki path collisions).
+  - Wiki branch name (`ai-trends-wiki`).
+  Recommend `/harvest` templatise these as `<WIKI_ROOT>`, `<WIKI_BRANCH>`, `<RECIPIENT_EMAIL>` with a small onboarding step when a new wiki is spun up from the kit.
+**Status:** open — ready for next `/harvest`. End-to-end verified on 2026-04-23 (Message-ID `<8262b43c-a865-48c8-97b2-029ddfaf530c@gmail.com>`, delivered to Outlook inbox, rendered HTML body).

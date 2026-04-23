@@ -83,7 +83,15 @@ Follow `/ingest`'s subagent-per-source flow exactly *except* the human gate:
 
 ### 6. Compose the brief (fixed shape)
 
-Write to `/tmp/weekly-brief-<YYYY-MM-DD>.md` with **exactly** this shape:
+The brief is **watchlist-centric**, not captures-centric. The user's view of this-week's world is: the wiki's radar (the watchlist), with industry-wide trends framing it. This-week's captures are an implementation detail shown in run notes, not a headline section.
+
+**Two outputs.** Every run produces both:
+- `wiki/weekly-briefs/<YYYY-MM-DD>.md` — the markdown, committed as part of the wiki (uncommitted per the no-commit policy; user commits on next login).
+- `/tmp/weekly-brief-<YYYY-MM-DD>.html` — the email-legible HTML render of the same markdown, generated in step 8 by `tools/render_brief_html.py`.
+
+The skill also still writes `/tmp/weekly-brief-<YYYY-MM-DD>.md` (same content as the wiki copy) so the existing audit-trail path on disk is preserved.
+
+Write to `/tmp/weekly-brief-<YYYY-MM-DD>.md` AND `wiki/weekly-briefs/<YYYY-MM-DD>.md` with **exactly** this shape:
 
 ```markdown
 Subject: Weekly AI radar — week of <YYYY-MM-DD>
@@ -91,19 +99,27 @@ Subject: Weekly AI radar — week of <YYYY-MM-DD>
 ⚠ **Uncommitted changes on `ai-trends-wiki`.** On your next login, run:
 `cd /home/david/code/wiki-ai-trends && git add wiki/ raw/research/weekly-<YYYY-MM-DD>/ && git commit -m "weekly: <YYYY-MM-DD> radar sweep"`
 
-# Trends this week (synthesis)
-- <bullet 1>
+# Trends in the industry
+- <bullet 1 — a trend visible across the full watchlist + web scan, not just this week's additions. State the method/pattern, who's driving it, and what it's displacing or building on>
 - <bullet 2>
 - <bullet 3>
-- <bullet 4-6 if warranted>
+- <bullet 4-7 as warranted>
 
-# Captured (N papers)
-- **<short title>** — <one sentence on what's new and why it matters>. [[<wiki-slug>]]
-- ... (one per captured paper, max 5)
+# Top 3 from the watchlist
+Pick either *new-and-interesting* (recent watchlist addition with novel mechanism) OR *old-and-now-trending* (foundational entry everyone is building on this quarter). Mix is fine. Format: **Title** — one line. No more.
 
-# Closer-look candidates from the watchlist
-- <title> — <URL or arXiv ID> — <1-line why-trending>
-- ... (cap 10)
+1. **<title>** — <1-line summary>. *(new | old-now-trending, <arXiv or year>)*
+2. **<title>** — <1-line summary>. *(new | old-now-trending, <arXiv or year>)*
+3. **<title>** — <1-line summary>. *(new | old-now-trending, <arXiv or year>)*
+
+# Other watchlist references
+Remaining watchlist items worth keeping in scope. Group by the watchlist's section headers. Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence descriptions — this is a scannable ledger, not a summary.
+
+## <Section name>
+- <title> — <tag>
+- ...
+
+(repeat per section that has entries worth carrying)
 
 # Conflicts opened or extended this week
 - [[conflicts/<slug>]] — <one sentence on the position>
@@ -111,8 +127,9 @@ Subject: Weekly AI radar — week of <YYYY-MM-DD>
 
 # Run notes
 - Sources scanned: <count>
-- Captures attempted / succeeded: <a> / <b>
+- Captures attempted / succeeded: <a> / <b> (detail: <slug list>)
 - Wiki pages written: <count>
+- Watchlist additions this run: <N>
 - Uncommitted changes (awaiting your commit): <N> files — <short `git status --porcelain` summary or "none">
 - Pre-existing uncommitted changes at run start: <none | brief list>
 
@@ -120,6 +137,8 @@ Subject: Weekly AI radar — week of <YYYY-MM-DD>
 ```
 
 The wiki-link `[[...]]` notation will not render in plain-text email; that's intentional — they're pointers for the user to grep against in their checkout. If sending HTML, render them as relative GitHub links to the `ai-trends-wiki` branch.
+
+**Trends vs top-3 vs references — why the split matters.** The trends section is editorial synthesis across the whole watchlist; it's the one place the brief is allowed to generalize. The top 3 are the concrete "if you only read about three things this week, these" picks. The references list is the ledger — it exists so the user can scan what's in-scope without opening the watchlist file. Don't merge or reorder these; the shape is the signal.
 
 ### 7. Do not commit
 
@@ -129,11 +148,38 @@ Before exiting step 7, run `git status --porcelain` and record the output to inc
 
 ### 8. Send email
 
-The claude.ai Gmail MCP exposes `create_draft` but **no send tool** (safety default). Deliver the brief as a **draft** addressed to `david.hugh.mcnamee@outlook.com` via `mcp__claude_ai_Gmail__create_draft`; the user hits send manually in Gmail.
+The user reads mail in Outlook, so the brief must actually *send* to `david.hugh.mcnamee@outlook.com` — not sit as a draft in Gmail. Primary path is SMTP via `tools/send_email.py` (Gmail SMTP + app password). Fallback is the Gmail MCP `create_draft` if the SMTP env isn't configured.
 
-- The email body **must** include the bolded commit-reminder banner at the top (see step 6 template) — that reminder is the primary user-facing signal that manual work is pending.
-- Capture the `id` returned by `create_draft`; it feeds step 8b.
-- If Gmail MCP is not authenticated/available, log the failure prominently (the brief file at `/tmp/weekly-brief-<YYYY-MM-DD>.md` is still on disk for manual recovery), skip to step 8b with `DRAFT_ID="(mcp unavailable)"`, and exit non-zero *after* the Telegram ping so the user is still notified the run happened.
+- The email body **must** include the bolded commit-reminder banner at the top (see step 6 template).
+- **Credentials.** `GMAIL_USER` (should be `krebbet@gmail.com`) and `GMAIL_APP_PASSWORD` (16-char Google app password, generated in the user's Google Account → Security → App passwords) live in `/home/david/code/remote_workstation/.env` alongside the Telegram token. The skill sources that file, so no separate config is needed.
+- **Before sending: render HTML.** Convert the markdown to a legible email body. This is required, not optional — sending raw markdown produces the unreadable format the user originally pushed back on.
+  ```bash
+  poetry run python -m tools.render_brief_html \
+    --in /tmp/weekly-brief-<YYYY-MM-DD>.md \
+    --out /tmp/weekly-brief-<YYYY-MM-DD>.html \
+    --title "Weekly AI radar — week of <YYYY-MM-DD>"
+  ```
+- **Primary: SMTP send (both bodies).** Plain-text markdown is the fallback alternative; HTML is what Outlook renders.
+  ```bash
+  set -a; source /home/david/code/remote_workstation/.env; set +a
+  if [ -n "${GMAIL_APP_PASSWORD:-}" ]; then
+    MESSAGE_ID=$(cd /home/david/code/wiki-ai-trends && poetry run python -m tools.send_email \
+      --to david.hugh.mcnamee@outlook.com \
+      --subject "Weekly AI radar — week of <YYYY-MM-DD>" \
+      --body-file /tmp/weekly-brief-<YYYY-MM-DD>.md \
+      --html-body-file /tmp/weekly-brief-<YYYY-MM-DD>.html)
+    DELIVERY_KIND="sent"
+    DELIVERY_ID="${MESSAGE_ID}"
+  else
+    # Fallback — no SMTP creds on this machine.
+    # Call mcp__claude_ai_Gmail__create_draft with BOTH `body` (markdown) and `htmlBody` (HTML);
+    # capture the returned id.
+    DELIVERY_KIND="draft"
+    DELIVERY_ID="<draft-id from create_draft>"
+  fi
+  ```
+- Capture `DELIVERY_KIND` (`sent` | `draft` | `failed`) and `DELIVERY_ID` (Message-ID or draft id or `"(mcp unavailable)"`); these feed step 8b.
+- If SMTP send fails (exit 3), fall back to `create_draft` within the same run so the brief is at least recoverable. If both fail, log prominently (the brief file at `/tmp/weekly-brief-<YYYY-MM-DD>.md` is still on disk for manual recovery), set `DELIVERY_KIND="failed"`, and exit non-zero *after* the Telegram ping.
 
 ### 8b. Telegram notification
 
@@ -142,7 +188,8 @@ Fire a short notification via the user's existing Telegram bot (plumbing lives i
 ```bash
 set -a; source /home/david/code/remote_workstation/.env; set +a
 CHAT_ID="${TELEGRAM_ALLOWED_CHAT_IDS%%,*}"   # first allowed chat
-TEXT="📡 Weekly brief <YYYY-MM-DD> — ${N_CAPTURED} captured, ${N_WATCHLIST} watchlisted. Gmail draft: ${DRAFT_ID}. Uncommitted on ai-trends-wiki."
+# DELIVERY_KIND is "sent" (Outlook got it) or "draft" (needs manual send from Gmail).
+TEXT="📡 Weekly brief <YYYY-MM-DD> — ${N_CAPTURED} captured, ${N_WATCHLIST} watchlisted. Email ${DELIVERY_KIND}: ${DELIVERY_ID}. Uncommitted on ai-trends-wiki."
 curl -sS --max-time 10 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
   --data-urlencode "chat_id=${CHAT_ID}" \
   --data-urlencode "text=${TEXT}" >/dev/null || echo "telegram ping failed (non-fatal)"
@@ -151,10 +198,10 @@ curl -sS --max-time 10 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMe
 Keep the message terse — it's a notification, not a duplicate brief. Always include:
 - run date
 - `N_CAPTURED` / `N_WATCHLIST` counts
-- `DRAFT_ID` (so the user can jump straight to the draft in Gmail)
+- `DELIVERY_KIND` + `DELIVERY_ID` (so the user knows whether Outlook has it or whether they need to hit send in Gmail)
 - a reminder that the diff is uncommitted
 
-If `TELEGRAM_BOT_TOKEN` isn't set (e.g. `remote_workstation/.env` missing), log and continue — the draft + brief file on disk are the real audit trail. Don't fail the whole run on a missed ping.
+If `TELEGRAM_BOT_TOKEN` isn't set (e.g. `remote_workstation/.env` missing), log and continue — the email + brief file on disk are the real audit trail. Don't fail the whole run on a missed ping.
 
 ### 9. Empty-run policy
 
