@@ -126,4 +126,4 @@ Both fixes are single-file. If they land together with the marker-OOM auto-fallb
   - Repo path (`/home/david/code/wiki-ai-trends`) — already hardcoded in the skill from prior state; harvest candidate separately (see earlier kit-note on per-wiki path collisions).
   - Wiki branch name (`ai-trends-wiki`).
   Recommend `/harvest` templatise these as `<WIKI_ROOT>`, `<WIKI_BRANCH>`, `<RECIPIENT_EMAIL>` with a small onboarding step when a new wiki is spun up from the kit.
-**Status:** open — ready for next `/harvest`. End-to-end verified on 2026-04-23 (Message-ID `<8262b43c-a865-48c8-97b2-029ddfaf530c@gmail.com>`, delivered to Outlook inbox, rendered HTML body).
+**Status:** applied — 2026-04-23. Promoted to main via `/harvest` (commits `1db4132` feat + `7528ac1` docs, fast-forwarded). Topic branch merged back via `5070284`. End-to-end verified on 2026-04-23 (Message-ID `<8262b43c-a865-48c8-97b2-029ddfaf530c@gmail.com>`, delivered to Outlook inbox, rendered HTML body). Templatisation of `<RECIPIENT_EMAIL>`, `<WIKI_ROOT>`, `<WIKI_BRANCH>` remains a separate follow-up item.
