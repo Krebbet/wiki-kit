@@ -30,6 +30,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[llms/anthropic-claude-family\|anthropic-claude-family]] | Running page for Anthropic Claude models; Opus 4.7 (2026-04-16) launch detail |
 | [[platforms/salesforce\|salesforce]] | Salesforce platform profile — Headless 360 (2026-04-15 TDX), Agentforce, Agent Fabric, AgentExchange |
 | [[platforms/c3-ai\|c3-ai]] | C3 AI platform profile — C3 Code GA (2026-04-08), vendor-marketing caveats |
+| [[landscape/google-cloud-next-2026-day2\|google-cloud-next-2026-day2]] | Google Cloud Next '26 Day 2 — Gemini Enterprise Agent Platform (Vertex AI rebrand); ADK, Agent Runtime, Memory Bank, governance trio, Model Garden, AP2 (2026-04-22) |
+| [[landscape/spacex-cursor-60b-option-2026-04\|spacex-cursor-60b-option-2026-04]] | SpaceX/Cursor $60B acquisition option via Colossus compute; ~30x ARR multiple; harness-vs-model proof point (2026-04-21) |
+| [[landscape/agentic-compute-pricing-2026-04\|agentic-compute-pricing-2026-04]] | GitHub Copilot Pro signup pause + Claude Code Pro test/revert; agent workloads breaking flat-subscription economics (2026-04-21) |
 | [[watchlist\|watchlist]] | Signals surfaced during weekly radar sweeps that didn't merit full capture — future research targets |
 | [[reference-sources\|reference-sources]] | Signal-source hierarchy scanned by `/weekly-brief` for this wiki's domain |
 

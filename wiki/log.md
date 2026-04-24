@@ -68,3 +68,31 @@ First (interactive) run of `/weekly-brief` — adapted from the kit-shipped pape
 **Critical reader note:** changes are **uncommitted on main**. Pre-existing uncommitted changes from bootstrap + two prior /research runs this session are also present — the weekly-brief diff is layered on top of that larger uncommitted body. The Gmail draft (step 8) includes a prominent commit reminder.
 
 **Kit-level learning** flagged in prior session: `/weekly-brief` command is configured for a different wiki (hardcoded `cd /home/david/code/wiki-ai-trends`, branch `ai-trends-wiki`, ML-paper-focused signal hierarchy). For this wiki, the cron invocation needs adjustment and the signal hierarchy diverges. Created [[reference-sources]] to codify the domain-appropriate signal list. Harvest candidate: the kit's `/weekly-brief` scaffold could ship a `wiki/reference-sources.md` template that `/bootstrap` fills in based on the wiki's domain — currently each wiki reinvents this.
+
+## [2026-04-23] weekly-brief | Week of 2026-04-21 → 2026-04-23 (partial cycle)
+
+Second run of `/weekly-brief` on this wiki; fired one day after the 2026-04-22 inaugural sweep, so the window is 72h rather than a full week. Signal still plentiful — this week's news cycle ran hot.
+
+**Sources scanned:** TechCrunch AI, Google Cloud Blog, Snowflake newsroom, The Register, Hacker News front page (2026-04-21 through -23), Simon Willison, r/LocalLLaMA via HN coverage, BusinessWire (funding), GitHub Changelog, VentureBeat, MIT Technology Review (see [[reference-sources]]).
+
+**Trend synthesis (editorial):**
+1. **Google's "everything is Gemini Enterprise" consolidation continues.** GEAP (Vertex AI rebrand) + Workspace Intelligence / Studio + Chrome AI Co-Worker all shipped same-day as Cloud Next '26 Day 2 (2026-04-22), stacked atop the $750M partner fund from 2026-04-21. Full enterprise-platform posture across compute → apps → browser; direct answer to Microsoft Copilot-everywhere stack.
+2. **Agentic compute is breaking vendor pricing models in real time.** GitHub paused Copilot Pro signups and tightened Opus usage (2026-04-21); Anthropic tested removing Claude Code from Pro, reverted within a day after backlash (2026-04-21/22). Concrete evidence that real production use of coding agents is blowing through $20/mo economics. Direct counter-evidence for C17/C19 debate: agent adoption is economically-binding real, but monetization model unsettled. *(synthesis)*
+3. **Snowflake counters Google with "agentic control plane" positioning.** Same-day 2026-04-21 keynote: Intelligence MCP-connector expansion + Cortex Code IDE plugins (VS Code, Claude Code) + cross-platform connectors (AWS Glue, Databricks, Postgres). Platform-vs-platform fight via MCP adoption depth, not model differentiation.
+4. **Frontier labs are consolidating with hyperscalers, not diversifying.** Anthropic's new $5B from Amazon + $100B 10-year AWS commit (2026-04-20) cements AWS Trainium as primary training hardware. Material tension with C3: if direct-to-lab is the enterprise story, why are the labs themselves locking into specific CSPs? *(synthesis)*
+5. **$60B for a harness, not a model.** SpaceX's option-to-acquire Cursor at $60B (2026-04-21) is this week's M&A shock. Validates C8 counter-thesis that harness/platform > model, but $60B at ~$2B ARR (~30x) reignites bubble-vs-reality debate.
+6. **Open-weight coding collapses another tier.** Qwen3.6-27B (Apache 2.0) beats Alibaba's own 397B MoE on SWE-bench Verified (77.2%) while running Q4-quantized on a single consumer GPU. Compounds pricing-vs-economics story (item 2): if you can self-host frontier-adjacent coding locally, the $100+ API tier is a standing target.
+
+**Captured 5 sources:** Google Cloud Next Day 2 (Gemini Enterprise Agent Platform), Snowflake Intelligence + Cortex Code, SpaceX/Cursor $60B option, GitHub Copilot Pro plan pause, Anthropic/AWS $5B/$100B. All audit-clean.
+
+**Wrote 3 new content pages + 3 existing-page extensions:**
+- NEW: [[landscape/google-cloud-next-2026-day2]], [[landscape/spacex-cursor-60b-option-2026-04]], [[landscape/agentic-compute-pricing-2026-04]]
+- EXTENDED: [[platforms/snowflake]] (2026-04-21 Intelligence + Cortex Code section), [[llms/anthropic-claude-family]] (Compute-infrastructure section), [[landscape/llm-api-enterprise-share]] (lab-CSP coupling update)
+
+**Conflicts updated:** C3 (strong Position-B evidence — direct-to-lab procurement masks AWS substrate lock-in); C8 (dual evidence — SpaceX $60B market signal + GitHub Copilot pause agent-scale signal, coding-agent adoption is real but generalization untested); C11 (Trainium displacement signal); C13 (bubble-vs-revenue-reality both sides reinforced; refined to three-tier read); **C17 upgraded from watching → trending-resolved-confirmed** (Google + Snowflake both adopt MCP-first pattern within 8 days of Salesforce — decisive); C18 (indirect architectural-category confirmation; Salesforce-specific multi-vendor claim still unverified).
+
+**Watchlist this run (9 items):** Qwen3.6-27B (open-weight coding), AcuityMD $80M Series C (MedTech vertical agent), NeoCognition $40M seed, Google TPU 8t/8i, Chrome AI Co-Worker, Workspace Intelligence/Studio, Zed parallel agents, "Over-editing" empirical study (nrehiew), EVAS Intelligence ¥1.5B Series B (China RISC-V AI chip). Claude Code Pro test/revert captured inline in [[landscape/agentic-compute-pricing-2026-04]].
+
+**Critical reader note:** changes are **uncommitted on `ai-offerings-trends-wiki`**. Pre-existing uncommitted changes from prior bootstrap + 2 prior /research runs + the 2026-04-22 weekly brief are all still present — this week's diff stacks on top. The email (step 8) includes a prominent commit reminder.
+
+**Kit learning carried forward from 2026-04-22:** `/weekly-brief` command still hardcodes wrong wiki path (`/home/david/code/wiki-ai-trends`) and branch (`ai-trends-wiki`) and the wrong signal hierarchy. The brief template, commit reminder, and email subject line were all hand-fixed again this run; the kit-level fix proposed in `master_notes.md` remains **open** — worth prioritizing for the next `/harvest`.
