@@ -12,6 +12,8 @@ Editorial proposal captured from a conversation with David on 2026-04-23. Third 
 
 A powerful world-access *teacher* model decomposes a goal topic (e.g. undergrad calculus, or a specific proof) into a dependency DAG of supporting concepts; for each node it synthesises a learning packet (textbook body, (Q, E, A) triples, held-out tests); a small *student* model is trained bottom-up, one concept at a time, with a test-fail-train loop per node, until it can answer both concept-understanding and concept-application questions without external help.
 
+> **Sequencing (2026-04-23 follow-up).** The DAG, curriculum order, and test-fail-train scaffolding (steps a–c, e, f) are auxiliary to step (d). If the inner loop cannot install *one* target concept from a small example set under a bounded training run — and produce evidence of *understanding*, not just answer correctness — none of the rest matters. See [§First experiment](#first-experiment-validate-the-inner-loop-in-isolation) for the experimental sequencing and [§Prioritized reading list](#prioritized-reading-list) keyed to that experiment.
+
 ## Roles
 
 | Role | Capability | Access | Optimisation |
@@ -239,6 +241,60 @@ When the curriculum's last concept $C^\star$ is mastered, $S$ should by construc
 - **Explicit compositionality test.** The proposal ends when the last concept is mastered — but end-of-curriculum tests should probe *combinations* of concepts, not just $C^\star$ in isolation. No sketch of this yet.
 - **Granularity drift.** Nothing in the sketch prevents $T$ from generating concepts that are too fine (waste) or too coarse (skip important substructure). This is a DAG-quality problem without a captured audit method.
 
+## Variant: failure-driven interactive DAG expansion
+
+A non-trivial alternative to step (a) is to *not pre-build the DAG at all*. Instead, start at the root $C^\star$ and let the DAG materialise top-down in response to observed student failures:
+
+```
+frontier ← {C*}
+trained  ← {}
+while frontier ≠ ∅:
+    C ← pop(frontier)                       # top-down, deepest-failed first
+    test S on TestSet(C)
+    if pass: trained ← trained ∪ {C}; continue
+    else:
+        prereqs ← T( diagnose(S's failure trace on TestSet(C)) )
+        prereqs ← prereqs \ trained         # dedupe against already-mastered
+        if prereqs = ∅:
+            run inner-loop on Packet(C); retest
+        else:
+            push prereqs onto frontier      # recurse downward
+```
+
+The DAG becomes the *trace* of what got expanded, not a pre-built artefact. This is the curriculum-level analogue of [[../concept-learning/recursive-concept-evolution]]'s spawn-on-failure-with-MDL-on-accept dynamic, lifted from the concept-library level (per-input low-rank subspace) to the curriculum level (per-student concept node).
+
+### Why the corpus supports it
+
+- **[[../concept-learning/recursive-concept-evolution]]** — failure score $F(x) = H/(M+\epsilon)$ as the spawn trigger; MDL gate as the accept criterion. RCE proves that *reactive* library growth + complexity penalty yields sublinear growth (47 stable concepts) with high reuse (4–9 per concept). Your variant is the curriculum-DAG analogue.
+- **[[../teacher-student-rl/soar-edge-of-learnability]]** — Sundaram et al. show that a base LM scoring 0/128 on a target *can still surface useful stepping stones*, and that grounding the teacher reward in measured student progress beats every intrinsic-difficulty proxy. "Structural quality beats correctness" applies directly: $T$ doesn't need to enumerate the right DAG, it just needs to surface a useful prereq when failure is observed.
+- **§Step (a) Weakness above** — the "what does the base student already know" frontier is error-prone in the up-front version. The interactive variant *replaces estimation with measurement*: the frontier emerges from observed passes/failures.
+- **§Step (c) Weakness above** — adaptive curriculum was flagged as "desirable but requires a pre-test the student passes — which means generating a TestSet you may then throw away". The interactive variant makes that pre-test the *primary* mode rather than an awkward bolt-on.
+- **§Step (e) Unknowns above** — already asked whether to "spawn a sibling concept" RCE-style on persistent failure. The interactive variant generalises that move from sibling-spawn to *prereq-spawn*.
+
+### What the variant *adds* to the algorithm's strengths
+
+| Aspect | up-front DAG (steps a–c above) | interactive expansion |
+|---|---|---|
+| DAG construction | $T$ enumerates ahead; frontier *estimated* | $T$ proposes one level on demand; frontier *measured* |
+| Compute paid | All nodes, regardless of student | Only nodes the student actually fails — naturally adaptive |
+| Determinism | Same DAG given same $T$ | Per-student; reproducibility intentionally personalised |
+| Single-sample alignment | Weak (packet $\geq 1$ per node) | **Stronger** — each node is paid for by one observed failure trace |
+| Closest corpus analogue | classical curriculum learning + RLT | **RCE spawn-on-failure + SOAR student-grounded reward, at the curriculum scale** |
+
+This makes the variant arguably a *better fit for this wiki's project frame* — single-sample, concept-based, reactive — than the up-front version.
+
+### New problems the variant introduces (not present in the up-front DAG)
+
+1. **Curriculum-level credit assignment.** When $S$ fails $C$, *which* missing prereq caused it? The up-front DAG sidesteps this by teaching every prereq whether the student needs it or not. The interactive variant turns curriculum construction into a credit-assignment problem at the concept level. The corpus has step-level credit assignment within a single trajectory ([[../process-reward-models/_overview]], [[../process-reward-models/pav-rewarding-progress]]), but **no captured method for attributing a high-level failure to a specific missing concept across a curriculum**. Closest analogue is [[../teacher-student-rl/saha-teacher-explanations]]'s Theory-of-Mind framing of *when/how* to intervene, but that's per-instance explanation, not gap inference. **Real gap.**
+2. **Termination / depth bound.** Up-front DAG bottoms out at $T$'s explicit "what the base student has" frontier. Interactive expansion bottoms out at *whatever the student happens to pass* — for a frontier topic, recursion can drift into tangentially related skills. Needs an explicit budget (max depth, max nodes per failure, or a SOAR-style learnability filter on the prereq).
+3. **Cycles via re-decomposition.** Topological sort in the up-front version enforces acyclicity by inspection. Lazy expansion can re-spawn an already-mastered concept under a different framing if $T$'s decomposition is non-deterministic. Needs a *concept-identity* check (hash, embedding similarity, MDL equivalence) to make `prereqs \ trained` non-trivial. [[../concept-learning/recursive-concept-evolution]]'s MDL-on-accept is a template.
+4. **TestSet reuse under retest is more acute.** A node may be retested after each downstream prereq is filled — the same TestSet is used multiple times. Either rebuild per retest (expensive; risks shifting the competence measured) or accept partial leakage.
+5. **Diagnosis is harder than decomposition.** "Decompose $C$ into prereqs" is a clean teacher action with corpus precedent. "Look at $S$'s failed attempt and infer the missing prereq" is *diagnostic teaching* — closer to Saha than to Sakana RLT, and not directly attested in the corpus at curriculum scale. Likely capture gap.
+
+### MVP that would falsify the variant fastest
+
+Same 3-node DAG as §Open question 2 ("addition → multiplication → simple linear equations"), but pretend the DAG is *not* known to the system. Start the student at the root, observe failure, see whether $T$'s diagnosis recovers the right prereqs. **Failure on this is more diagnostic than failure of the up-front version**, because if the diagnostic step is broken at $N=3$ it will not survive at $N=30$.
+
 ## Relation to the other two synthesis pages
 
 | Aspect | [[single-sample-concept-skeleton]] | [[proposed-method]] | This page (concept-curriculum) |
@@ -262,15 +318,74 @@ This method is the *most teacher-heavy* and the *least single-sample* of the thr
 - **Optimiser choice:** [[../rl-optimizers/_overview]], [[../rl-optimizers/dr-grpo]], [[../rl-optimizers/dapo]]
 - **Memorisation-vs-understanding probes:** [[../teacher-student-rl/rlt-followups-2026]] (ExGRPO), [[../concept-learning/recursive-concept-evolution]] (MDL sibling test)
 
+## First experiment: validate the inner loop in isolation
+
+**Scope.** One target concept $C$. No DAG, no curriculum order, no inter-concept forgetting question. The whole experiment lives inside a single $\text{Packet}(C)$. Per the sequencing note above, this gates everything else in the proposal.
+
+**Four-part pass/fail contract.** Each part must produce measurable evidence; performance alone is insufficient — that is the whole point of the project's "concept vs pattern" frame.
+
+| # | What | How (corpus-grounded) |
+|---|---|---|
+| (i) | **Construct a small example set on $C$** | $T$ produces $\text{Packet}(C) = \langle \text{Textbook}, \text{Examples} = \{(Q_j, E_j, A_j)\}_{j=1}^N, \text{TestSet}\rangle$. Sweep $N \in \{1, 5, 20\}$. Start at $N=1$ ([[../single-sample-rl-finetuning/1-shot-rlvr]] existence proof). For principled minimality if $N=1$ fails, lift [[../teacher-student-rl/knowrl]]'s atomic-knowledge-points + Constrained-Subset-Search machinery. Diversity of $E_j$ is load-bearing per [[../teacher-student-rl/ho-reasoning-teachers]]. |
+| (ii) | **Bound the training process** | Three orthogonal bounds: **temporal** (max $K$ updates, early-stop on TestSet plateau), **spatial** ([[../rlvr-mechanics/rl-sparse-subnetwork]] mask restricting which weights move), **functional** (KL-to-base regulariser). Default inner loop: RLT reward $r^{SS} = \log \pi_S(A \mid Q, E, \text{Textbook})$ ([[../teacher-student-rl/sakana-rlt]]) optimised with Dr. GRPO ([[../rl-optimizers/dr-grpo]]) at small group $G$. Cheap baseline RL must beat: critique-FT on the same packet ([[../single-sample-rl-finetuning/critique-ft-one-problem]]). |
+| (iii) | **Evaluate performance** | Pass-rate on $\text{TestSet}(C)$, items calibrated to $p \approx 0.5$ pre-training per [[../single-sample-rl-finetuning/data-efficiency-rft]] Theorem 1, strictly disjoint from $\text{Examples}(C)$. |
+| (iv) | **Evaluate understanding and deficits** | Three independent probes — answer-correctness alone is the weakest signal: |
+| | — *MDL sibling test* | [[../concept-learning/recursive-concept-evolution]]: does the post-training model *compress* related-but-unseen items? Pattern matching grows description length; concept acquisition reduces it. The single most direct corpus tool for "did a concept install, or did a pattern get memorised". |
+| | — *Explanatory probes* | [[../teacher-student-rl/rlt-followups-2026]] (ExGRPO): generate probes that test the *logic* behind $A$, not the surface answer. A model that passes TestSet but fails coherence probes has memorised. |
+| | — *Failure-score map* | [[../concept-learning/recursive-concept-evolution]]'s $F(x) = H/(M+\epsilon)$ on a held-out probe set. Yields a *deficit map*: where the model is still uncertain after training, with no labels needed. This is the project's natural "what does the student still not know" signal. |
+
+**Falsification.** The experiment kills the inner loop (and therefore the entire proposal) if any of:
+
+- TestSet pass-rate plateaus $\leq$ pre-training baseline within the step budget. *(Training did not adapt.)*
+- TestSet pass-rate rises but MDL sibling test does not improve. *(Pattern, not concept — the project's central distinction has collapsed.)*
+- TestSet pass-rate rises but explanatory probes regress. *(Memorisation; the [[../teacher-student-rl/rlt-followups-2026]] ExGRPO failure mode.)*
+- KL-to-base or sparse-mask ablation shows fluency collapse. *(The "bounded training" part is broken — see the gibberish-trace side effect on [[../single-sample-rl-finetuning/1-shot-rlvr]].)*
+
+Only if (i)–(iv) all pass on a single concept does the DAG / curriculum / failure-driven-expansion machinery from §Steps and §Variant become worth implementing. Until then, that machinery is decoration.
+
 ## Open questions for the project
 
-*(editorial — these are the decisions that would turn this sketch into an implementation plan)*
+*(editorial — these are the decisions that would turn this sketch into an implementation plan, **after** §First experiment passes)*
 
 1. **Is this a competing method to [[proposed-method]], or do they compose?** A concept-curriculum where each concept's inner loop is [[proposed-method]]'s single-sample RLT+mask+EWC stack is the obvious composition — but no captured source demonstrates it.
-2. **What is the MVP that would falsify the method fastest?** Proposal: one 3-node DAG (e.g. "addition → multiplication → simple linear equations"), one packet per node, one inner-loop algorithm, on a small base student. Success = pass root TestSet without external help; failure = any node retest loops indefinitely, or root test fails despite all nodes passing.
+2. **Second experiment, after §First experiment passes:** one 3-node DAG (e.g. "addition → multiplication → simple linear equations"), one packet per node, the validated inner loop from experiment 1, on the same base student. Success = pass root TestSet *and* root MDL/ExGRPO probes; failure = any node retest loops indefinitely, or root test fails despite all nodes passing. The §Variant *interactive* version uses the same 3 concepts but doesn't tell the system the DAG — it's the more diagnostic of the two if experiment 1 passed cleanly.
 3. **What inner-loop algorithm to prototype first?** The wiki evidence points at RLT-flavour ($r^{SS}$ with textbook in context) + GRPO/Dr. GRPO as the least-risky starting point, but [[../teacher-student-rl/rlt-followups-2026]] OPSD is a cheaper alternative worth keeping in reserve.
 4. **How to test compositional generalisation at $C^\star$?** Candidate: build a *second* TestSet for $C^\star$ that requires combining $\geq 3$ DAG nodes in novel ways, held out from everything $T$ has ever seen. Critical missing piece in the sketch.
 5. **Does the curriculum approach belong in the project at all, or is it a separate method?** The project's stated goal in [[../../index]] is "single-sample, concept-based learning". The curriculum proposal is arguably *concept-based* but not *single-sample*. A decision is needed on whether this is a parallel exploration or a scope expansion.
+
+## Prioritized reading list
+
+Tiered for the §First experiment scope (one concept, four-part contract). Tag: **(i)** small-set construction, **(ii)** bounded training, **(iii)** performance eval, **(iv)** understanding/deficit eval.
+
+### Tier 1 — must-read before §First experiment
+
+| # | Paper | Tags | What it gives the experiment |
+|---|---|---|---|
+| 1 | [[../teacher-student-rl/sakana-rlt]] | (i)+(ii) | RLT reward $r^{SS} = \log \pi_S(A \mid Q, E, \text{Textbook})$. Canonical packet shape and the dense per-token reward that makes the inner loop tractable at small $N$. Reward $r=0.89$ correlation with student gain. |
+| 2 | [[../single-sample-rl-finetuning/1-shot-rlvr]] | (ii) | $N=1$ existence proof + the side effects (training-trace gibberish, post-saturation generalisation). Tells you what to look for and what can go wrong at the smallest packet. |
+| 3 | [[../concept-learning/recursive-concept-evolution]] | (iv) | MDL sibling test for concept-vs-pattern + failure score $F(x) = H/(M{+}\epsilon)$ as a label-free deficit map. The single most aligned corpus tool for part (iv). |
+| 4 | [[../teacher-student-rl/knowrl]] | (i) | Atomic knowledge-points + Constrained Subset Search for *minimal-sufficient hint design*. Closest precedent for principled "small set on a target concept" with a notion of minimality. |
+| 5 | [[../teacher-student-rl/rlt-followups-2026]] | (ii)+(iv) | OPSD as a cheap single-model RLT alternative; ExGRPO explanatory probes for the memorisation-vs-understanding test in part (iv). |
+| 6 | [[../rl-optimizers/dr-grpo]] | (ii) | Length and std biases of GRPO; mandatory if the inner loop runs at small group $G$ on a single packet. |
+| 7 | [[../single-sample-rl-finetuning/critique-ft-one-problem]] | (ii) | Single-problem critique-FT — the cheap SFT baseline that RL must beat before claiming RL adds value at small $N$. |
+
+### Tier 2 — extension (read once Tier 1 results indicate the inner loop is alive)
+
+| # | Paper | Tags | What it gives |
+|---|---|---|---|
+| 8 | [[../teacher-student-rl/ho-reasoning-teachers]] | (i) | Diversity of reasoning is load-bearing at small $N$. Tells you whether one $(Q, E, A)$ is enough or you need 5–20 with varied $E_j$. |
+| 9 | [[../rlvr-mechanics/rl-sparse-subnetwork]] | (ii) | Balashov mask — bounds blast radius of a single-packet update *spatially* rather than by step count. Composes with §First experiment's "spatial bound" axis. |
+| 10 | [[../single-sample-rl-finetuning/data-efficiency-rft]] | (i)+(iii) | DOTS $p=0.5$ rule. Calibrates both packet-difficulty and TestSet-item-difficulty for max gradient signal / max diagnostic value. |
+| 11 | [[../teacher-student-rl/saha-teacher-explanations]] | (iv) | Theory-of-Mind framing for *when/how* a teacher should intervene. Closest analogue to "diagnose a student deficit from a failure trace" — relevant once part (iv) yields a deficit map and you want $T$ to act on it. |
+| 12 | [[../critique-self-correction/critic-cot]] | (iv) | System-2 step-wise critique trained via SFT — turned around, this is a per-step deficit-detector you can apply to the trained student's reasoning trace. |
+| 13 | [[../rl-optimizers/dapo]] | (ii) | Clip-Higher + Dynamic Sampling. What to do when the inner loop on a small packet starts hitting zero-variance batches (Dynamic Sampling becomes a no-op at $N=1$ — useful negative result). |
+
+### Tier 3 — theory & alternative framings (read once, return when needed)
+
+| # | Paper | Tags | What it gives |
+|---|---|---|---|
+| 14 | [[../in-context-learning-theory/icl-bayesian-inference]] | (iv) | Latent-concept posterior framing for "did the concept install" — theoretical lens for the part-(iv) probes. |
+| 15 | [[../concept-learning/concept-bottleneck-models]] | (iv) | Concept-as-axis with test-time intervention. Alternative deficit-detection primitive: if you can intervene on an axis and predict the answer change, the concept is auditably present. |
 
 ## Source
 
