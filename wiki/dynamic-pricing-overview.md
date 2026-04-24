@@ -26,7 +26,8 @@ These framings are complementary, not mutually exclusive. A single practice (e.g
 ## Coverage in this wiki
 
 - **Industries:** [[rental-housing-algorithmic-pricing]] · [[surveillance-pricing-retail]] · [[consumer-facing-dynamic-pricing]]
-- **Mechanisms:** [[algorithmic-collusion]]
+- **Mechanisms:** [[algorithmic-collusion]] · [[pricing-algorithm-taxonomy]] (algorithm families + data-input catalogue, added 2026-04-23)
+- **Strategy readouts:** [[data-disruption-strategy-map]] (which levers work against which algorithm family; platform-enforcement risk tiers)
 - **Counter-power:** [[regulatory-responses]]
 
 ## Source

@@ -19,6 +19,32 @@
 - In 2015, following that backlash, Uber agreed to cap surge pricing during emergencies. *(Wikipedia.)*
 - **Lyft** uses a similar surge mechanism. *(Wikipedia.)*
 
+### Uber's Q1 2023 transition to per-trip dynamic pricing (UK)
+
+From the FAccT 2025 participatory audit *"Not Even Nice Work If You Can Get It"* (arXiv 2506.15278, captured `raw/research/seller-algorithm-taxonomy/08-09-uber-algorithmic-pay-audit.md`). **Methodology:** 258 UK drivers submitted GDPR Article 15/20 DSARs to Worker Info Exchange, yielding **1.5M trips spanning 2016–2024**.
+
+**What changed.** Pre-transition: *"Fares were a simple function of time and distance, with Uber taking a fixed percentage of the passenger's fare, first 20% and then later raised to 25%."* Post-Q1-2023: *"fares are no longer a simple function of time and distance. Instead the price the passenger pays and the fee the driver receives vary independently of each other, and are calculated dynamically based on location of pick up and drop off, time of day / week / year, probability of driver / passenger cancellation, and other factors undisclosed by Uber. This means that Uber's take rate (the percentage they keep) is no longer stable but varies trip-by-trip."*
+
+**Measured outcomes for drivers (continuous-data 114-driver panel):**
+
+| Metric | Pre-dynamic | Post-dynamic |
+|---|---|---|
+| Average inflation-adjusted pay/hour (ET working-time def) | £22.20 | £19.06 |
+| Same panel, Uber's narrower time def | £37.01 | £35.91 |
+| Median Uber take rate | 25% | 29% |
+| Uber surplus per driver-hour on trip | £8.47 | £11.70 (+38%) |
+| Drivers worse off | — | 93 / 114 |
+| Pay predictability (R² of prior-year model) | 0.85–0.89 | **−54** |
+| Weekly standby time | baseline | +1 hour, "most months since 2023, drivers spend more time waiting to be allocated their next job than they do on journeys with passengers" |
+
+On take-rate extremes: *"On some trips the take rate is over 50%."* Only 46% of drivers maintained an average take rate ≥75% post-transition.
+
+**Information-asymmetry structure.** *"The amount that a passenger pays for a trip is not available to drivers in the app, and Uber bars drivers from asking their passengers for this information directly, so it is not possible for drivers to work out Uber's cut on any given journey."* Post-Q1 2023, customer fares were also removed from drivers' weekly earnings report.
+
+**Per-driver personalization confirmed on the pay side.** From Uber CEO investor-call statement (quoted in audit): *"point estimates for every single trip based on the driver... targeting of different trips to different drivers based on their preferences or based on behavioral patterns that they're showing us."* Audit empirical finding: drivers whose post-dynamic pay held up *"skew further right"* in acceptance-rate history — consistent with driver-suspicion that dispatch favours high-acceptance-rate drivers.
+
+**Structural category on the [[pricing-algorithm-taxonomy|algorithm-taxonomy page]]:** Family 6 (per-trip opaque dynamic pricing). Distinctive feature: both sides of the market are algorithmic subjects. Disruption via DSAR coordination is the documented successful lever; see [[data-disruption-strategy-map|strategy map]].
+
 ## Online retail
 
 - **Amazon** is the canonical example. By 2015, roughly one-third of its top 1,600 products were priced algorithmically. By 2018, the average Amazon product price changed every 10 minutes. *(Wikipedia; NBER; arXiv 2504.16592.)*
@@ -32,6 +58,16 @@
 - **FIFA** announced in May 2025 it would use dynamic pricing for the 2026 World Cup and the 2025 Club World Cup. *(Wikipedia.)*
 - Multiple high-profile artists have publicly refused dynamic pricing: **Coldplay, Taylor Swift, Ed Sheeran, Iron Maiden, Robert Smith**. Crowded House (2020) publicly asked its promoter for refunds after discovering dynamic pricing was used without the band's approval. *(Wikipedia.)*
 - An early 2012 example: **Heart of Midlothian FC** introduced dynamic pricing on season tickets and faced significant fan backlash. *(Wikipedia.)*
+
+### 2026 Live Nation / Ticketmaster outcomes
+
+Three distinct 2026 events established Live Nation/Ticketmaster as the canonical US live-events dynamic-pricing case:
+
+- **March 2026: DOJ + several states settle for $280M.** Service-fee caps at certain amphitheatres; greater venue flexibility on promoters and ticket distributors. National Independent Venue Association called the settlement "not significant enough to call a slap on the wrist." *(NPR via [[regulatory-responses|§ 1]].)*
+- **April 15 2026: 33 states + DC jury verdict.** Federal jury (SDNY, Judge Arun Subramanian) found Live Nation/Ticketmaster operated as a monopoly that harmed consumers and overcharged ticket buyers. The state-AG coalition declined the DOJ settlement and continued the trial — establishing state-AG-led monopolisation litigation as a viable counter-power path even when federal prosecutors settle short. Live Nation will appeal pending motions. *(NPR Apr 15 2026; see [[regulatory-responses|§ 3 State AGs]].)*
+- **April 21 2026: DC AG $9.9M consumer-protection settlement.** Separate from the antitrust case. DC AG Brian Schwalb found Consumer Protection Procedures Act violations from 2015 to May 2025: deceptive low-price advertising that excluded mandatory fees until checkout; undisclosed fee purposes; and a fake-scarcity countdown clock (*"Tickets are selling fast"* on one-minute inactivity, regardless of actual demand). Settlement requires all-in pricing on the ticket-selection page + itemised fee disclosure. Up to $8.9M for affected DC consumers. *(Washington Times Apr 21 2026; see [[regulatory-responses|§ 3]].)*
+
+**Doctrinal pattern:** antitrust liability and consumer-protection-statute liability ran in parallel against the same defendant — different doctrines, separate damages. The Ticketmaster fact-pattern (vertically-integrated platform, opaque dynamic pricing, dark-pattern UX, hidden fees) is now the canonical empirical anchor for both theories. The state-AG continuation pattern — declining a federal settlement to push for a jury verdict — is the load-bearing procedural innovation.
 
 ## Theme parks
 

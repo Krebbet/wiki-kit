@@ -19,15 +19,10 @@ Run order is a suggestion, not a contract — the user may reorder or skip.
 Produced: `mechanisms/platform-cooperatives.md` + `organizations/{drivers-cooperative,mondragon,coopcycle}.md` + updates to `counter-power/regulatory-responses.md` and `dynamic-pricing-overview.md`.
 Deferred from original plan: `mechanisms/exit-alternative.md` (defer to a dedicated run; sources frame "exit" through platform-coops specifically); Stocksy and other Shareable-list co-ops (thin sourcing — wait for dedicated sources).
 
-### `/research consumer data pooling and buyer-side tools`
-**Lens:** tech-enabled solutions; collective framings (primary). Directly serves the user's "what could I build" interest.
-**Mechanisms covered:** tech workaround; (partially) collective bargaining.
-**Likely pages:**
-- `mechanisms/tech-workaround.md` — the general category of consumer-side counter-power tech.
-- `tools/consumer-data-pooling.md` — the specific buyer-side-data-co-op pattern.
-- Specific tool pages for anything extant (Honey, Fakespot, Keepa, group-buying apps, etc. if sources validate inclusion).
-- Updates to `regulatory-responses.md` design-input section.
-**Rationale:** Second highest-value run. The RealPage case surfaced tenant data-pooling as a direct counter to landlord data-pooling — this research explores whether similar patterns exist for other industries and which tools already implement them. Directly informs design-input candidates.
+### ~~`/research consumer data pooling and buyer-side tools`~~ ✓ completed 2026-04-21
+**Completed run — see `wiki/log.md` 2026-04-21 entry and [[data-cooperatives]] + [[collective-bargaining-for-data]].**
+Produced: `mechanisms/data-cooperatives.md` + `mechanisms/collective-bargaining-for-data.md` + `organizations/{midata,drivers-seat-cooperative}.md` + `tools/open-tenant-screening.md` + updates to `counter-power/regulatory-responses.md` (new section 9), `industries/rental-housing-algorithmic-pricing.md`, and `wiki/index.md`.
+Deferred from original plan: `mechanisms/tech-workaround.md` (superseded by split coverage on data-cooperatives + collective-bargaining-for-data); `tools/consumer-data-pooling.md` (replaced by the anchor mechanism page + OpenTSS as a concrete proto-instance); Honey/Fakespot/Keepa tool pages (out of captured-source scope — defer to `/research price transparency tools` below); Salus Coop / JoinData standalone org pages (thin sourcing — defer).
 
 ## Priority 2
 
@@ -40,13 +35,10 @@ Deferred from original plan: `mechanisms/exit-alternative.md` (defer to a dedica
 - Updates to `rental-housing-algorithmic-pricing.md` and `regulatory-responses.md` to cross-link.
 **Rationale:** The RealPage-adjacent Greystar class action is already a recurring reference on existing pages but has no standalone treatment. Class actions are a mature, well-documented counter-power mechanism that academic and legal literature covers thoroughly.
 
-### `/research price transparency tools and personalised-pricing detectors`
-**Lens:** tech-enabled solutions (primary).
-**Mechanisms covered:** transparency tool; tech workaround.
-**Likely pages:**
-- `mechanisms/transparency-tool.md` — the general category.
-- `tools/keepa.md`, `tools/honey.md`, `tools/fakespot.md`, etc. — specific tools as case studies (pending source validation).
-**Rationale:** Transparency tools are the obvious first-wave tech counter-power and the FTC surveillance-pricing study (already in the wiki) frames transparency as the main regulatory lever. Worth dedicated coverage.
+### ~~`/research price transparency tools and personalised-pricing detectors`~~ ✓ completed 2026-04-22
+**Completed run — see `wiki/log.md` 2026-04-22 entry and [[transparency-tools]].**
+Produced: `mechanisms/transparency-tools.md` + `tools/{keepa,paypal-honey,fakespot,markup-citizen-browser}.md` + updates to `counter-power/regulatory-responses.md` (section 9 transparency-tools sub-section rewrite; design-input #1 extension) and `wiki/index.md`.
+Deferred from original plan: OECD 2018 *Personalised Pricing in the Digital Era* (403 bot-wall on both one.oecd.org and www.oecd.org URLs; academic anchor load carried by Hannak et al. 2014 instead); CamelCamelCamel standalone page (networkidle timeout on site capture; referenced on [[keepa]] page as context only); `mechanisms/tech-workaround.md` (superseded for this topic — covered as a sub-taxonomy in [[transparency-tools]]).
 
 ## Priority 3
 
@@ -58,13 +50,10 @@ Deferred from original plan: `mechanisms/exit-alternative.md` (defer to a dedica
 - `campaigns/right-to-repair.md` — the movement as a case study in successful collective consumer action.
 **Rationale:** Mature, documented movement with clear counter-power lessons. Lower priority only because it sits further from the user's primary querying lenses than the above runs.
 
-### `/research consumer collective bargaining and group purchasing`
-**Lens:** collective framings (primary).
-**Mechanisms covered:** collective bargaining.
-**Likely pages:**
-- `mechanisms/collective-bargaining.md` — consumer-side; distinct from labour collective bargaining.
-- Case studies of group-purchasing organisations (GPOs), buying clubs.
-**Rationale:** Fills the collective-bargaining vocabulary gap but sits in a more dispersed literature; later run so the wiki has better anchor points for cross-linking.
+### ~~`/research consumer collective bargaining and group purchasing`~~ ✓ completed 2026-04-22
+**Completed run — see `wiki/log.md` 2026-04-22 entry and [[consumer-collective-bargaining]] + [[community-choice-aggregation]].**
+Produced: `mechanisms/consumer-collective-bargaining.md` + `mechanisms/community-choice-aggregation.md` + `organizations/{park-slope-food-coop,rei}.md` + updates to `counter-power/regulatory-responses.md` (new section-9 sub-section) and `wiki/index.md`.
+Deferred from original plan: `mechanisms/collective-bargaining.md` — renamed `consumer-collective-bargaining.md` to avoid collision with [[collective-bargaining-for-data]]; GAO-12-399R standalone treatment (403 bot-wall; Blair & Durrance carries the analytic load plus Wikipedia GPO page captures the GAO 2002 findings via its footnote trail); standalone Rochdale Society / specific CCA / Groupon pages (folded into the anchor mechanism pages due to thin sourcing).
 
 ### `/research antitrust regulation evolution`
 **Lens:** market solutions.

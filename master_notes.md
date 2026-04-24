@@ -69,3 +69,82 @@ Append entries using this structure:
 **Observation:** On a host where another process held ~21 GB of the 23.5 GB GPU, `capture_pdf --engine marker` for the HBS working paper failed with `CUDA out of memory. Tried to allocate 20.00 MiB...` and exited with a stacktrace. No automatic fallback. Workaround: re-ran with `--engine pymupdf` — cost was 2 broken image refs in the arXiv capture (figures that marker would have extracted, pymupdf did not).
 **Implication:** Either (a) catch `torch.cuda.OutOfMemoryError` and retry on CPU with a clear single-line warning, (b) catch and emit a one-line error pointing to `--engine pymupdf` instead of a stacktrace, or (c) add an explicit `--device cpu` flag for users on contended GPU hosts. Option (b) is the cheapest useful fix.
 **Status:** applied (2026-04-21 kit harvest → main @ 678dc4c)
+
+### 2026-04-21 — parallel Bash batch cancels on first error; fragile for multi-source research captures
+**Scope:** kit
+**Observation:** During `/research consumer-data-pooling`, running 8 capture commands in parallel via a single Bash batch produced a cascading cancellation when the first command errored (GPU OOM on a marker PDF). The other 7 commands were not executed at all. Repeat attempts with the remaining 7 in a new parallel batch then hit a different first-error (OpenTSS Cloudflare block), cancelling again. Net result: I ended up running each capture one-by-one to avoid the cancellation cascade, which slowed the research phase meaningfully.
+**Implication:** Either (a) document the cancellation behaviour in `.claude/commands/research.md` step 4 so the model knows not to batch captures; or (b) prefer sequential captures in research.md's example invocations; or (c) if the harness supports a "best-effort parallel" mode that collects errors without cancelling the batch, document that. Lightweight prose fix in `research.md` is cheapest.
+**Status:** open
+
+### 2026-04-21 — MIT Press "wip" subdomain bot-walled by Cloudflare challenge
+**Scope:** kit
+**Observation:** Capturing `wip.mitpress.mit.edu/pub/...` (the MIT Press work-in-progress / manifold site for open-access book chapters like *Building the New Economy*) returns "Attention Required! | Cloudflare" (2470 chars) both with and without `--js`. The bot-wall detection in `capture_url.py` (from previous kit harvest) correctly caught this and exited non-zero — working as intended.
+**Implication:** Add `wip.mitpress.mit.edu` to the "Known bot-walled hosts" list in `research.md` step 4 alongside Fast Company and Wiley. Also consider noting a general heuristic: for book-chapter sources on publisher platforms, prefer an arXiv / SSRN / author-homepage preprint over the publisher URL, since open-access publisher sites increasingly bot-detect capture tools.
+**Status:** open
+
+### 2026-04-21 — defunct org websites worth detecting (Squarespace "account expired" pages)
+**Scope:** kit
+**Observation:** `driversseat.co` (canonical homepage of Driver's Seat Cooperative) returned a Squarespace "Website Expired" page as the full HTML response, which `capture_url.py` captured as a 2.7 KB markdown containing only Squarespace error-page JavaScript. The bot-wall check did not catch it (title "Squarespace - Website Expired" is not Cloudflare-branded). A human reading the file can immediately tell it is a defunct-site wrapper, but automated size-check alone did not flag it (file was above 2 KB).
+**Implication:** Extend the bot-wall detector in `capture_url.py` to also flag a small set of defunct-site signatures: (a) Squarespace `SQUARESPACE_CONTEXT.title === "Website Expired"`; (b) GoDaddy "domain parked" pages; (c) 404-redirect-with-200 patterns. These are analogous to bot-walls in that the capture succeeds but the content is worthless. Alternatively, just raise the thin-capture threshold for JS-rendered captures, since defunct-site wrappers tend to be well under 5 KB. The finding that driversseat.co is dead is itself interesting domain content — the tool doesn't need to save the user from it, but it should emit a warning so the user notices rather than letting thin content flow downstream to `/ingest`.
+**Status:** open
+
+### 2026-04-22 — OECD document server bot-walls captures (add to known-hosts)
+**Scope:** kit
+**Observation:** During `/research price-transparency-tools`, capturing the canonical OECD 2018 *Personalised Pricing in the Digital Era* paper via either `one.oecd.org/document/DAF/COMP(2018)13/en/pdf` or `www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DAF%2FCOMP%282018%2913&docLanguage=En` returned HTTP 403 with the browser User-Agent now in place. Both URLs are the standard OECD document-server patterns, so this is likely to recur for any OECD policy paper in a future research run.
+**Implication:** Extend the "Known bot-walled hosts" list in `.claude/commands/research.md` step 4 to include `one.oecd.org` and `www.oecd.org/officialdocuments/*`. Workaround: ask the user to download the PDF manually via a browser and drop it into the raw/ directory for local-path ingest (the convention already in place for MDPI/ScienceDirect).
+**Status:** open
+
+### 2026-04-22 — Playwright networkidle unreachable on ad-heavy consumer sites
+**Scope:** kit
+**Observation:** `capture_url.py --js` uses Playwright with `wait_until="networkidle"` (default 30s timeout). On ad/tracker-heavy consumer sites — specifically `keepa.com` and `camelcamelcamel.com` in this research run — networkidle is never reached because third-party analytics/ads scripts continuously poll. Both captures failed with `Page.goto: Timeout 30000ms exceeded`. These are not bot-walls — the sites serve content; they just never reach a quiet state. `capture_url.py` without `--js` also appears to use Playwright based on the error message, so the fallback path has the same issue.
+**Implication:** Three options for `tools/capture_url.py`:
+1. Add a `--wait-until` CLI flag accepting Playwright's `load|domcontentloaded|networkidle|commit` values, defaulting to `networkidle` (current) but callable with `domcontentloaded` for ad-heavy consumer sites.
+2. Change the default to `domcontentloaded` with a longer total timeout. Safer default for consumer sites; slightly less reliable for SPAs that fetch content after DOMContentLoaded.
+3. Fall back to `domcontentloaded` automatically on `networkidle` timeout, with a warning.
+Option 1 is most explicit and least behaviour-changing. Option 3 is most invisible-fix but slightly magical. Also document the workaround in `research.md` step 4.
+**Status:** open
+
+### 2026-04-22 — Fortuitous redirects to substantively-better content
+**Scope:** kit
+**Observation:** During `/research price-transparency-tools`, `capture_url.py` on `fakespot.com/faq` returned a Mozilla blog post (`Investing in what moves the internet forward`) because the FAQ URL 301s to the Mozilla shutdown announcement now that Fakespot has been wound down. The new content is *more* useful for the wiki than the original FAQ would have been (confirms the July 2025 sunset with Mozilla's own framing). The capture succeeded, the content passed all quality checks (3.4 KB markdown of real prose), and the ingest used it as the primary shutdown-announcement source.
+**Implication:** No kit change needed — this is `capture_url.py` working as designed. Logging as a positive signal that "follow redirects" is doing useful work in the live research stream, and as a reminder for future capture-tool changes: don't over-correct toward "reject any redirect" or "warn on redirect" — the content-quality checks (title, body size, bot-wall detection) are the right locus of scrutiny, not the URL.
+**Status:** applied (confirming current behaviour is correct)
+
+### 2026-04-22 — GAO.gov bot-walls captures (add to known-hosts)
+**Scope:** kit
+**Observation:** During `/research collective-bargaining-group-purchasing`, capturing the GAO-12-399R report on GPO oversight via `www.gao.gov/assets/gao-12-399r.pdf` returned HTTP 403 with the browser User-Agent in place. Falling back to the HTML landing page `www.gao.gov/products/gao-12-399r` returned a 247-byte "Access Denied" page (caught by the existing bot-wall detector). Both URLs are the canonical GAO document-serving patterns — any future GAO report capture will hit the same wall.
+**Implication:** Extend the "Known bot-walled hosts" list in `.claude/commands/research.md` step 4 to include `www.gao.gov` (both `/assets/*.pdf` and `/products/*`). Workaround: ask the user to download the PDF manually via a browser and drop it into the raw/ directory for local-path ingest — the convention already in place for MDPI/ScienceDirect/OECD. GAO reports are a high-value source category (US government primary documents on regulatory oversight) so this bot-wall is worth surfacing explicitly rather than leaving it to be re-discovered.
+**Status:** open
+
+### 2026-04-22 — Wikipedia Commons image 429 rate-limiting is a recurring pattern
+**Scope:** kit
+**Observation:** Two separate `capture_url.py` runs against Wikipedia pages in this research run (`Consumers'_co-operative` and `Community_Choice_Aggregation`) hit `429 Too Many Requests (f061ab2)` from `upload.wikimedia.org` when downloading thumbnail images. The markdown-body capture succeeded in both cases, but `download_asset` printed the 429 error for each affected image and the images are absent from the assets directory. This has been observed across multiple research runs now — not a one-off. The 429 response includes a specific tracking code (`f061ab2`) that suggests Wikimedia has per-IP or per-useragent rate limits that `capture_url.py` is hitting when it downloads multiple thumbnails in a short window.
+**Implication:** Two options for `tools/capture_url.py`:
+1. Add polite-retry-with-backoff on 429 for `download_asset` (e.g., 3 retries with exponential backoff 2s/4s/8s). Low-risk change since we're not hammering — we're just re-trying a small number of thumbnails.
+2. Add a `--skip-images` CLI flag that skips asset download entirely and rewrites image refs to the external URL. Useful when the user knows images aren't load-bearing (most Wikipedia captures on this wiki).
+Option 1 addresses the symptom; option 2 sidesteps it when the user knows images aren't needed. Both are independent of each other. Also: the 429 message mentions the tracking code — consider including that in the `download_asset failed` stderr message so the user can search Wikimedia's published rate-limit policy if needed.
+**Status:** open
+
+### 2026-04-23 — ftc.gov news/press-releases/ bot-walls capture_url even with --js
+**Scope:** kit
+**Observation:** During `/research seller-algorithm-taxonomy`, capturing `www.ftc.gov/news-events/news/press-releases/2025/01/ftc-surveillance-pricing-study-indicates-...` returned a bot-wall page of 693 bytes with the FTC's "PWH-Alert@ftc.gov" incident-reporting stub (non-Akamai/non-Cloudflare pattern, so existing bot-wall detector did not trip). Retry with `--js` returned the same 693-byte stub. This is the FTC's own anti-scraping WAF for news/press-releases. Note: the earlier kit harvest (2026-04-21) fixed the FTC Akamai 403 on /system/files/ PDFs by adding a browser User-Agent; the /news-events/ path has a different WAF layer that the UA header does not satisfy. PDF captures of FTC documents via /system/files/ still work (confirmed by prior-run `p246202_surveillancepricing6bstudy_researchsummaries_redacted.pdf`).
+**Implication:** Add `ftc.gov/news-events/*` to the "Known bot-walled hosts" list in `.claude/commands/research.md` step 4. Also consider extending `capture_url.py`'s bot-wall detector to catch the FTC-specific signature (text includes "The request resembles an abusive automated request" + "PWH-Alert@ftc.gov") so the check-tool fails fast rather than returning a thin capture that slips past the 2KB heuristic. Workaround: when a press release is needed, capture the linked primary PDF (usually at `/system/files/ftc_gov/pdf/*`) or ask the user to download the page manually and drop HTML into `raw/`.
+**Status:** open
+
+### 2026-04-23 — PMC (pmc.ncbi.nlm.nih.gov) bot-walls capture_url with reCAPTCHA
+**Scope:** kit
+**Observation:** During `/research seller-algorithm-taxonomy`, capturing `pmc.ncbi.nlm.nih.gov/articles/PMC10676015/` returned a Google reCAPTCHA challenge page (`title: "Checking your browser - reCAPTCHA"`, 20KB of reCAPTCHA boilerplate JS). Existing bot-wall detector did not catch it — the size was above the 2KB threshold because the reCAPTCHA bundle is verbose. PMC is a high-value source lane (peer-reviewed open-access primary research hosted by NCBI / NLM), so this will bite repeatedly across medicine-adjacent wikis.
+**Implication:** Add `pmc.ncbi.nlm.nih.gov` to the "Known bot-walled hosts" list in `.claude/commands/research.md` step 4. Also extend `capture_url.py` bot-wall detector: check for `title == "Checking your browser - reCAPTCHA"` or document body containing `RecaptchaChallengePageUi` — these are unambiguous captcha-page markers. Captures with a reCAPTCHA title should always be treated as failed regardless of byte-count, since the captured content is worthless even when it's 20KB of JS. Workaround: ask the user to download the PDF via a browser and drop the local path, OR search for an arXiv / author-homepage / PubMed-indexed preprint mirror (most biomedical papers on PMC have one).
+**Status:** open
+
+### 2026-04-23 — lint should detect 0-byte stub files at wiki/ root (Obsidian auto-creation artifacts)
+**Scope:** kit
+**Observation:** During 2026-04-23 lint, found 6 stray 0-byte `.md` files at `wiki/` root whose canonical pages exist in the correct subdirectories (`wiki/adnauseam.md` vs canonical `wiki/tools/adnauseam.md`; similar for `wiki/algorithmic-collusion.md`, `wiki/lever-implementation-readout.md`, `wiki/obfuscation-strategic-readout.md`, `wiki/possible-strategic-levers.md`, `wiki/2026-04-23.md`). Most likely cause: Obsidian auto-creates an empty `.md` at the vault root when a user clicks an unresolved `[[wiki-link]]` that the resolver can't place. The vault has `.obsidian/` enabled (visible in git status at session start of the first-user-session of this wiki branch). These stubs:
+- Don't appear in the link graph (my own lint extractor filtered on `! -empty`).
+- Don't trigger orphan detection (they're not in the pages inventory either).
+- Are not detected by any existing lint check.
+- Create confusing duplicate-name pairs in file listings.
+
+The lint check I hand-wrote for this session caught them only because I happened to run `find wiki -name "*.md" -type f` (including empty) as initial inventory, then noticed the duplicate basenames.
+**Implication:** Add a lint check: `find wiki -name "*.md" -type f -empty` as an early gate; report any 0-byte files as a distinct "stray / noise" category, independent of orphans and broken links. The check should probably exempt files under known Obsidian-special paths (none in this wiki's setup) and recommend deletion. Could live in `.claude/commands/lint.md` as a generic check; would help any Obsidian-enabled wiki-kit deployment.
+**Status:** open
