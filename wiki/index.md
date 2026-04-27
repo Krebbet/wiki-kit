@@ -25,7 +25,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[test-time-training]] | Cluster page comparing the three TTT-flavoured sources (Titans, Hope, In-Place TTT) on host, objective, drop-in vs from-scratch, and forgetting mechanism. |
 | [[tidar]] | NVIDIA single-model hybrid: drafts tokens via masked diffusion, AR-verifies in same forward pass. 4.71×–5.91× throughput vs Qwen base AR; beats EAGLE-3 on measured T/s. |
 | [[manifold-constrained-hyper-connections]] | DeepSeek mHC: stabilizes Hyper-Connections by projecting residual-mixing matrix onto Birkhoff polytope via Sinkhorn-Knopp. Composite-mapping Amax 3000 → 1.6 at 27B; +2.1 BBH, +2.3 DROP vs HC. |
+| [[hyperloop-transformers]] | MIT: middle-cycle looped Transformer + loop-level mHC (diagonal-sigmoid H_res, not Sinkhorn). Beats depth-matched Transformer on FineWeb-Edu PPL and downstream task accuracy at three scales (136M–991M looped) using ~50% fewer params. Survives INT4 GPTQ. |
 | [[triattention]] | MIT/NVIDIA/ZJU: training-free KV cache compression via pre-RoPE Q/K concentration — a closed-form trigonometric distance-preference score replaces post-RoPE attention sampling. 2.5× throughput at matched AIME25 accuracy; 10.7× KV memory; 6.3× on MATH 500 at budget 1024. Code released. |
+| [[mamba-3]] | CMU/Princeton/Together/Cartesia, ICLR 2026 poster (arXiv:2603.15569). Three SSM-principled deltas vs Mamba-2: exponential-trapezoidal discretization, complex-valued state transitions (data-dependent RoPE-like dynamics on B/C), MIMO matmul updates. +1.8 avg over Mamba-2 at 1.5B; first selective SSM with complex state, solving TC⁰-hard tasks (parity, modular arithmetic). |
 
 ## Training & optimization
 
@@ -33,6 +35,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 |---|---|
 | [[eggroll]] | Oxford/MILA/NVIDIA Evolution Strategies at hyperscale: low-rank LoRA-style perturbations + counter-based PRNG → ~100× ES throughput. Beats GRPO on 14B RWKV-7 reasoning where GRPO is infeasible (Adam state). Pure-int8 RNN pretraining at population 2^20. |
 | [[rlsd-self-distilled-rlvr]] | IIE/CAS + JD.COM: fixes on-policy self-distillation's privileged-info leakage by decoupling direction (verifier reward, same as GRPO) from magnitude (teacher/student evidence ratio as scalar weight). +2.32% avg over GRPO on Qwen3-VL-8B across 5 multimodal-reasoning benchmarks; RLSD@200 steps beats GRPO@400. |
+| [[token-gradient-cancellation]] | Alibaba/Tsinghua: formal "gradient exchangeability" condition for stable GRPO-style RL — shared/template tokens must cancel across trajectories. DFPO (Min-Replace or Adv-Orthogonal stop-gradient transforms) restores cancellation. +5.6 / +6.9 / +5.6 pp avg@32 (AIME25 / LiveCodeBench v6 / HMMT25) over GSPO at Qwen3-32B; gain grows with group size. |
+| [[neural-garbage-collection]] | Stanford/Goodman lab: end-to-end RL training of KV-cache eviction *jointly* with chain-of-thought, using outcome reward only. 2–3× cache compression with minimal accuracy loss on AMC/AIME; first method to unify eviction and token gradients under one signal. Replay attention mask corrects off-policyness from dynamic cache mutation. |
+| [[gepa-reflective-prompt-evolution]] | UC Berkeley/Stanford/Databricks/MIT, ICLR 2026 oral (arXiv:2507.19457). Genetic-Pareto reflective prompt optimizer for compound AI systems; no weight updates. Beats GRPO by up to 20% with up to 35× fewer rollouts on Qwen3-8B/6 tasks. Cross-model transfer: prompts optimized on Qwen3-8B beat baselines optimized natively on GPT-4.1-Mini. |
 
 ## Self-supervised learning
 
@@ -66,5 +71,6 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[conflicts/ttt-distinct-vs-parametric-icl]] | NL subsumes TTT under parametric ICL; In-Place TTT treats TTT as a distinct mechanism complementing attention. Internal cluster tension. |
 | [[conflicts/regression-vs-diffusion-view-synthesis]] | SHARP claims feedforward regression Pareto-dominates diffusion for nearby-view single-image synthesis. Awaiting diffusion-side defence (Gen3C, etc.). |
 | [[conflicts/pure-video-vs-3d-world-models]] | Moonlake claims pure video diffusion cannot yield interactive world simulators. Awaiting Sora-class pure-scaling defence. |
+| [[conflicts/ssm-vs-associative-memory-taxonomy]] | Mamba-3 (§5.4) argues complex-state SSM dynamics aren't expressible inside MIRAS; [[nested-learning]] presents MIRAS as a unifier. Framing-level dispute about which lens designs new models. |
 
 ---

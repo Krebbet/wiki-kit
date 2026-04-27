@@ -18,6 +18,19 @@
 
 Concurrent ES-for-LLMs work: Qiu et al. 2025, Korotyshova et al. 2025 (ESSA / CMA-ES on LoRA SVD bases) — an active subfield is forming.
 
+### Position A extension — Prompt-space evolution beats GRPO too (2026-04-27)
+
+**Source:** [[gepa-reflective-prompt-evolution]] (GEPA, arXiv:2507.19457, ICLR 2026 oral).
+
+**Claim:** Reflective prompt evolution + Pareto-illumination candidate selection beats GRPO with **35× fewer rollouts**, no weight updates.
+
+**Basis:**
+- Qwen3-8B, 6 tasks: GEPA aggregate +9.62 vs GRPO +3.68 (24,000 rollouts) vs MIPROv2 +2.61. GEPA wins 5/6 (Table 1).
+- GEPA rollouts: 678–7,051 (vs GRPO's 24,000).
+- Cross-model transfer: prompts optimized on Qwen3-8B beat baselines optimized natively on GPT-4.1-Mini (+9.00%).
+
+**Why it matters here:** Position A now spans **two mechanism axes** — weight-space ES (EGGROLL) and prompt-space evolutionary search (GEPA). Different substrates, same competitive claim against GRPO. Tightens the burden on Position B.
+
 ## Position B — GRPO/RLHF is the right primitive for LLM post-training
 
 **No source captured.** Awaiting an ingest of a primary GRPO/RLHF paper (DeepSeek-R1, GRPO original, broader RLHF-as-default-stance work) that argues for the orthodoxy.
@@ -28,4 +41,4 @@ Compare on matched substrate (RWKV-7 vs. transformer; same base scale; same task
 
 ## Related
 
-- [[eggroll]], [[watchlist]] (Salimans 2017 OpenES, MeZO, Qiu 2025, Korotyshova 2025, RWKV-7).
+- [[eggroll]], [[gepa-reflective-prompt-evolution]], [[watchlist]] (Salimans 2017 OpenES, MeZO, Qiu 2025, Korotyshova 2025, RWKV-7, MIPROv2, TextGrad).

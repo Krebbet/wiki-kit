@@ -15,12 +15,32 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **Hyper-Connections (Zhu 2024)** — Original HC paper that mHC stabilizes. *(manifold-constrained-hyper-connections.)*
 - **MUDDFormer / DenseFormer / RMT / LAuReL / DeepCrossAttention** — Wider-residual-stream family alongside HC/mHC. *(manifold-constrained-hyper-connections.)*
 - **DeepSeek-V3** — MoE backbone mHC inherits (MLA attention, DualPipe schedule). *(manifold-constrained-hyper-connections.)*
+- **Universal Transformers (Dehghani 2018) / ALBERT (Lan 2019)** — parameter-shared looped-Transformer ancestors that Hyperloop derives from. *(hyperloop-transformers.)*
+- **Middle-cycle looped Transformers (Bae 2025; Saunshi 2025) / Geiping 2025 / Prairie 2026** — current loop-as-test-time-compute line; Hyperloop is the latest entrant. *(hyperloop-transformers.)*
+- **ELT: Elastic Looped Transformers (arXiv:2604.09168, Apr 2026)** — single looped-transformer training yields elastic family of visual generative models; FID 2.0 on ImageNet at 4× fewer params. Visual-gen branch of the looped-transformer cluster. *(weekly-brief 2026-04-27.)*
+- **Loop, Think, & Generalize (arXiv:2604.07822, OSU-NLP, Apr 2026)** — recurrent-depth Transformers enable systematic compositional generalization and depth extrapolation in implicit reasoning. *(weekly-brief 2026-04-27.)*
+- **Universal Transformers Need Memory (arXiv:2604.21999, Apr 2026)** — theoretical depth-vs-state trade-offs in adaptive recursive Transformer reasoning. *(weekly-brief 2026-04-27.)*
+- **Attention to Mamba: Cross-Architecture Distillation (arXiv:2604.14191, Apr 2026)** — two-stage linearisation+distillation transfers a Transformer to Mamba with near-teacher perplexity (14.11 vs 13.86). *(weekly-brief 2026-04-27.)*
+- **S5 / LRU** — prior MIMO SSMs that traded state capacity for training efficiency; Mamba-3's MIMO formulation preserves capacity instead. *(mamba-3.)*
+- **H3 / Megalodon** — earlier complex-valued SSMs that were LTI and underperformed Transformers; Mamba-3 is the first to combine selective dynamics with complex state. *(mamba-3.)*
 
 ## Optimizers
 
 - **Muon (Jordan 2024)** — Newton-Schulz orthogonalization optimizer that NL re-derives as polynomial mapping to an orthogonal coordinate system; M3 builds on it. *(nested-learning.)*
 - **AdaMuon** — Muon variant referenced as M3's training-time peer. *(nested-learning.)*
 - **Shampoo / Soap** — Second-order optimizers re-decomposed as 2-level associative memories under NL. *(nested-learning.)*
+
+## RL / post-training
+
+- **DAPO (Yu 2025) / DCPO (Yang 2025) / SSPO (Yang 2025)** — Token-level reweighting fixes for GRPO; DFPO unifies the underlying failure mode (gradient non-cancellation) and proposes simpler stop-gradient transforms. *(token-gradient-cancellation.)*
+- **TEPO: Token-Level Policy Optimization (arXiv:2604.12736)** — Sequence-level likelihood bridge between group reward and per-token KL mask; stabilizes GRPO. Adjacent to RLSD and DFPO. *(weekly-brief 2026-04-27.)*
+- **GSPO (Zheng 2025)** — Sequence-coupled multiplicative-weight GRPO variant that DFPO identifies as structurally non-cancelling. *(token-gradient-cancellation.)*
+- **MIPROv2 (Opsahl-Ong 2024)** — Joint instruction + few-shot prompt optimizer; GEPA's direct predecessor and headline baseline. *(gepa-reflective-prompt-evolution.)*
+- **TextGrad / APO / Trace / OptoPrime** — prior prompt-optimization line that GEPA's reflective + Pareto-illumination + system-aware-merge combination beats. *(gepa-reflective-prompt-evolution.)*
+- **MAP-Elites / QD search (Mouret & Clune 2015)** — Quality-Diversity search lineage GEPA's Pareto-illumination adapts. *(gepa-reflective-prompt-evolution.)*
+- **DeepSeek Sparse Attention** — Closest prior to NGC: separate KL-trained KV-eviction indexer with detached gradients; NGC unifies eviction and token gradients under one reward. *(neural-garbage-collection.)*
+- **SnapKV / KeyDiff / KNorm / StreamingLLM / Breadcrumbs / Memento** — Inference-time KV-eviction baselines that NGC's RL-trained eviction beats by 2–3×. *(neural-garbage-collection.)*
+- **ml-intern (HF, Apr 2026)** — open-source agent automating LLM post-training: browses arXiv, runs GRPO fine-tuning; pushed Qwen3-1.7B GPQA 8.5% → 32% unattended. Tooling rather than method. *(weekly-brief 2026-04-27.)*
 
 ## Self-supervised learning
 
@@ -59,6 +79,7 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **3D Gaussian Splatting (Kerbl 2023, SIGGRAPH)** — De-facto representation underpinning SHARP. *(sharp-view-synthesis.)*
 - **Depth Pro (Bochkovskii 2025, ICLR)** — Apple's depth backbone used by SHARP (low-res image encoder unfrozen). *(sharp-view-synthesis.)*
+- **In Depth We Trust (arXiv:2604.05715, Apr 2026)** — Reliable monocular-depth supervision for 3DGS; addresses scale ambiguity + multi-view inconsistency. *(weekly-brief 2026-04-27.)*
 - **Splatter Image (Szymanowicz 2024) / Flash3D (2025a)** — Per-pixel Gaussian feedforward predecessors to SHARP. *(sharp-view-synthesis.)*
 - **Gen3C / ViewCrafter / ZeroNVS / CAT3D / Wonderland** — Diffusion-side view-synthesis line SHARP positions against. *(sharp-view-synthesis.)*
 - **AdaMPI (Han 2022)** — Source of the warp-back trick SHARP inverts for SSFT. *(sharp-view-synthesis.)*

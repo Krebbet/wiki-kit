@@ -31,3 +31,21 @@ Captures: `raw/research/weekly-2026-04-22/01-triattention.md` (arXiv:2604.04921)
 Ingest via subagent-per-source (2 parallel `general-purpose` Agents, sonnet). Both summaries parsed clean against `parse_summary`; aggregator flagged one **spurious merge_candidate** on DOMAIN-SLOT marker tokens (known bug, `master_notes.md` entry from 2026-04-22) — ignored per skill's autonomous page-plan policy (one page per source unless ≥2 sources share a *real* concept with an existing cluster page). RLSD conflict has no `[[wiki-page]]` to contradict (OPSD has no existing coverage), so no conflict file was opened; paper page notes the theoretical position.
 
 Wrote **2 paper pages** ([[triattention]], [[rlsd-self-distilled-rlvr]]) under autonomous heuristics — no human gate. All changes left uncommitted on `ai-trends-wiki`; email sent via Gmail MCP with bolded commit-reminder banner per the 2026-04-22 skill update. Dry-run outcome: full end-to-end pipeline exercises, 3 kit-level bugs surfaced + logged.
+
+## [2026-04-27] weekly-brief | first cron-shape run (autonomous, uncommitted)
+
+First weekly-brief run under the 2026-04-23 SMTP+HTML+watchlist-centric contract. Trend scan via sonnet subagent: WebSearch over alphaXiv / arXiv listings / HuggingFace trending / MarkTechPost / ICLR 2026 / r/MachineLearning surfaced 13 candidates; selection heuristic (multi-signal + technical novelty + wiki-fit + conflict-load-bearing + repro-positive) picked **5 for capture** and ~10 for watchlist.
+
+Captures (`raw/research/weekly-2026-04-27/`, all `--engine pymupdf`, all clean on `audit_captures`): `01-mamba-3.md` (2603.15569), `02-hyperloop-transformers.md` (2604.21254), `03-neural-garbage-collection.md` (2604.18002), `04-token-gradient-cancellation.md` (2604.13088), `05-gepa-reflective-prompt-evolution.md` (2507.19457). pymupdf engine still writes repo-root-relative image paths — post-processed with the documented `sed` workaround (kit bug from 2026-04-22 still open). Two of the five picks fall outside the strict 2026-04-20→27 window (Mamba-3 March, GEPA July 2025) but are trending *this* week due to ICLR 2026 conference activity; per skill heuristic both included on multi-signal + conflict-load-bearing grounds.
+
+Ingest: subagent-per-source (5 parallel `general-purpose` Agents, sonnet). All 5 summaries parsed clean against `parse_summary`; aggregator's `kind: "unknown"` page-plan parser bug from 2026-04-22 still surfaced on 3/5 entries (hyperloop, NGC, DFPO) — applied the autonomous one-page-per-source policy regardless. The DOMAIN-SLOT-token merge_candidate noise also still present (kit bug, ignored).
+
+Page plan applied:
+- **5 new paper pages**: [[mamba-3]], [[hyperloop-transformers]], [[neural-garbage-collection]], [[token-gradient-cancellation]], [[gepa-reflective-prompt-evolution]].
+- **1 new conflict**: [[conflicts/ssm-vs-associative-memory-taxonomy]] — Mamba-3 §5.4 directly contradicts [[nested-learning]]'s MIRAS unifying claim.
+- **2 existing conflicts extended**: [[conflicts/grpo-vs-evolution-strategies]] gains a prompt-space-evolution Position-A extension (GEPA), and [[conflicts/fixed-state-ssm-long-context]] gains a hybrid-only Position-B partial variant (Mamba-3).
+- ~10 watchlist additions across the looped-Transformer cluster (ELT, Loop-Think-Generalize, Universal-Transformers-Need-Memory), GRPO-line peers (DAPO/DCPO/SSPO/GSPO/TEPO), prompt-opt prior art (MIPROv2, TextGrad, APO, Trace, MAP-Elites), KV-eviction baselines (SnapKV/KeyDiff/etc.), tooling (ml-intern), and CV (In Depth We Trust).
+
+Cluster page [[test-time-training]] **not** extended — Hyperloop and Mamba-3 are TTT-adjacent (loop-as-depth-RNN; SSM-vs-MIRAS framing) but not TTT methods themselves. Per-page `Related` links carry the "see also" connection.
+
+All changes left uncommitted on `ai-trends-wiki` per skill contract.

@@ -14,7 +14,15 @@
 
 ## Position B — Fixed-state SSMs are sufficient at extreme context (with the right design)
 
-**No source captured.** Awaiting an ingest of a Mamba-2 / state-space-model paper that defends the fixed-state design for long context. Mamba-2 is referenced as a baseline by both Titans and Hope but not captured; primary capture is the next step to make this conflict resolvable.
+### B (partial, hybrid-only) — [[mamba-3]] (CMU/Princeton/Together/Cartesia, arXiv:2603.15569, 2026-04-27)
+
+**Claim (partial defence):** Mamba-3 *concedes* the retrieval weakness of pure fixed-state SSMs — explicit acknowledgement of *"natural retrieval-based weaknesses of fixed state-size"* (§4.1.2) — and **shifts the battleground to hybrids**. Mamba-3 layers interleaved with attention match or exceed pure-Transformer baselines on retrieval (Table 4: SWDE / SQuAD / FDA / TriviaQA / NQ / DROP / NIAH).
+
+This is *not* a defence of pure fixed-state SSMs against Position A. It is a partial Position-B variant: "fixed-state SSMs are sufficient *if* paired with attention layers". Pure-Mamba-3 still degrades at retrieval-heavy long context.
+
+### B (orthodox) — still no source
+
+Awaiting an ingest of a Mamba-2 / state-space-model paper that defends the *pure* fixed-state design for long context against [[titans-miras]] / [[nested-learning]]'s Position A.
 
 ## Resolution rule when Position B arrives
 
@@ -26,6 +34,7 @@ Worth distinguishing two sub-claims:
 
 ## Related
 
-- [[titans-miras]], [[nested-learning]], [[test-time-training]]
+- [[titans-miras]], [[nested-learning]], [[mamba-3]], [[test-time-training]]
 - [[conflicts/long-context-attention-vs-recurrent-memory]] — adjacent (different opponent).
+- [[conflicts/ssm-vs-associative-memory-taxonomy]] — separate Mamba-3-driven framing tension with [[nested-learning]].
 - [[watchlist]] — Mamba-2, Gated DeltaNet, RWKV-7, RetNet not captured.
