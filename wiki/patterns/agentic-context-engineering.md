@@ -2,6 +2,8 @@
 
 **ACE**, introduced in the October 2025 paper by Zhang, Hu et al. (Stanford + SambaNova + UC Berkeley), treats contexts as evolving playbooks updated via modular generation / reflection / curation, preventing context collapse and brevity bias that plague monolithic prompt-rewriting approaches. Notable in the 2025–2026 literature as a structured alternative to both full-prompt rewrites (GEPA) and wholesale memory replacement (Dynamic Cheatsheet).
 
+> **2026 follow-on:** [[codified-context]] (arXiv 2602.20478) directly cites ACE and uses its *brevity bias* finding as justification — at 100k-line scale, specialist agents need substantial embedded domain knowledge rather than minimal generic prompts. ACE's playbook approach is also a concrete instance of *reflective self-improving memory* in the [[memory-architectures]] taxonomy.
+
 ## Core idea
 
 Contexts are represented as **itemized playbooks** — structured bullets with:
@@ -77,3 +79,5 @@ Ablation: injecting harmful updates every 100 iterations shows <1% degradation. 
 - [[reasoning-frameworks]]
 - [[building-effective-agents]]
 - [[benchmarks]]
+- [[codified-context]] — 2026 follow-on cites ACE directly; embeds substantial domain knowledge in specialist agents to counter brevity bias at 100k-line scale.
+- [[memory-architectures]] — ACE classified as *reflective self-improving memory* in the survey's taxonomy.

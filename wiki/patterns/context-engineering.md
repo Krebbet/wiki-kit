@@ -37,6 +37,10 @@ Related: **middle-token loss** — accuracy degrades when relevant information s
 
 *(Cited from primary sources the survey reviews; the survey does not reproduce experiments.)*
 
+## Memory: deep-dive companion
+
+The `c_mem` component gets a more thorough treatment in [[memory-architectures]] — write-manage-read loop, five mechanism families, four evaluation benchmarks, ten open challenges. Three concrete 2026 instances live in the wiki: [[codified-context]] (hierarchical virtual context, hand-engineered), [[context-folding]] (context-resident compression, learned), [[cognitive-fabric-nodes]] (memory lifted out of agents into the network substrate). [[agents-md-eval]] adds empirical counter-evidence on the *retrieval/generation* axis: in well-documented Python repos, naive context-file injection often *hurts* coding-agent success rate.
+
 ## Cost structure — a live constraint
 
 Quadratic O(n²) attention complexity. Mistral-7B requires 122× more compute going from 4K → 128K tokens. *(Cited, 2025.)* Long-context is not free.
@@ -56,3 +60,5 @@ The survey explicitly frames context engineering and fine-tuning as **complement
 - [[building-effective-agents]]
 - [[reasoning-frameworks]]
 - [[failure-modes]]
+- [[memory-architectures]] — deep-dive on the `c_mem` component.
+- [[codified-context]], [[context-folding]], [[cognitive-fabric-nodes]] — three 2026 instances of context-management mechanisms.

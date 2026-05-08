@@ -1,0 +1,97 @@
+# Mem0: Production-ready scalable long-term memory
+
+Mem0 paper (Prateek Chhikara, Dev Khant, Saket Aryan, Taranjeet Singh, Deshraj Yadav; arXiv 2504.19413, 2025) backing the popular `mem0` open-source library (47k+ GitHub stars per third-party trackers as of early 2026). The gap targeted: fixed context windows force LLMs to "reset" between sessions, and even very large contexts (200K–10M tokens) merely *delay* the problem. Two sub-problems are called out: (a) conversations eventually exceed any context limit over weeks/months of use; (b) full-context processing forces the model to reason through irrelevant material, degrading retrieval quality and inflating latency/cost. [[memgpt]] addresses this via OS-style tiered paging but does not compress memories into efficient representations; raw RAG retrieves text chunks and preserves noise. Mem0's claim: dynamically extract and consolidate only salient facts, enabling selective retrieval that maintains near-full-context answer quality at **91% lower p95 latency and >90% lower token cost** on the LOCOMO benchmark.
+
+## Architecture — base Mem0
+
+Two-phase incremental pipeline triggered on each new message pair `(m_{t-1}, m_t)`:
+
+**Extraction phase**: Builds prompt `P = (S, {m_{t-m},...,m_{t-2}}, m_{t-1}, m_t)` where `S` is an asynchronously refreshed conversation summary (global context) and the recent `m=10` messages provide granular temporal context. An LLM (GPT-4o-mini in experiments) runs an extraction function `φ(P) → Ω`, a set of candidate salient facts.
+
+**Update phase**: For each candidate fact `ω_i`, retrieve the top `s=10` semantically similar existing memories via vector embeddings. Pass candidate + retrieved memories to the LLM via a function-calling interface. The LLM selects one of four operations:
+- **ADD** — no semantically equivalent memory exists.
+- **UPDATE** — augment existing memory with complementary info.
+- **DELETE** — new info contradicts existing.
+- **NOOP** — no change needed.
+
+Vector database stores dense embeddings for similarity search.
+
+## The graph variant — Mem0g
+
+Mem0g represents memories as a directed labelled graph `G = (V, E, L)`: nodes are entities (e.g., Alice, San_Francisco), edges are relationships (e.g., `lives_in`), labels assign semantic types (Person, City).
+
+**Two-stage extraction**: (1) entity extractor identifies key entities with types; (2) relationship generator derives `(source, relation, destination)` triplets via LLM with function calling. Both use GPT-4o-mini.
+
+**Storage / update**: new triplets are embedded; source and destination entities matched against existing nodes by semantic similarity threshold. A conflict-detection mechanism identifies potentially obsolete relationships; an LLM-based update resolver marks them invalid (rather than deleting) to preserve temporal reasoning.
+
+**Retrieval (dual-mode)**:
+1. **Entity-centric** — identify key entities in query, locate matching nodes, traverse incoming/outgoing relationships to build a subgraph.
+2. **Semantic triplet** — encode full query as a dense vector, score against all triplet text encodings, return those above a relevance threshold.
+
+Backend: Neo4j.
+
+## Empirical results — LOCOMO benchmark
+
+LOCOMO: 10 extended conversations, ~600 dialogues each, ~26K tokens average, ~200 questions each across single-hop, multi-hop, temporal, and open-domain categories.
+
+Metrics: F1, BLEU-1 (B1), LLM-as-Judge (J, 10-run mean ± 1 SD). Deployment: token consumption + search/total latency at p50/p95.
+
+**Overall J scores (Table 2)**:
+
+| Method | J | p95 total latency | Avg tokens |
+|---|---|---|---|
+| Full-context (26,031 tokens) | **72.90** | 17.117s | 26,031 |
+| Mem0g | 68.44 | 2.590s | 3,616 |
+| **Mem0** | **66.88** | **1.440s** | **1,764** |
+| Zep | 65.99 | 2.930s | 3,911 |
+| OpenAI memory | 52.90 | 0.890s | 4,437 |
+| Best RAG (k=2, 256-chunk) | 60.97 | — | — |
+| LangMem | 58.10 | 59.82s search | — |
+| A-Mem | 48.38 | — | — |
+
+**Per-category highlights** (Table 1):
+- *Single-hop*: Mem0 best (J=67.13); Mem0g slightly behind (65.71).
+- *Multi-hop*: Mem0 best (J=51.15).
+- *Temporal*: Mem0g best (J=58.13) — graph structure helps for event sequencing.
+- *Open-domain*: Zep marginally leads (76.60 vs Mem0g 75.71); Mem0 at 72.93.
+
+The headline claim from the abstract: **26% relative improvement over OpenAI memory on the LLM-as-Judge metric**. Mem0g scores ~2pp higher than base Mem0 overall.
+
+**Token footprint**: Mem0 averages 7K tokens per conversation; Mem0g 14K; Zep >600K; raw full-context 26K.
+
+## Latency claim
+
+- **Mem0 search latency**: p50 = 0.148s, **p95 = 0.200s** (lowest of all methods).
+- **Mem0 total latency**: p50 = 0.708s, **p95 = 1.440s**.
+- Full-context total latency: p50 = 9.870s, p95 = 17.117s.
+- **Mem0 p95 reduction vs full-context: 92%** (paper rounds to 91%).
+- Mem0g p95 total = 2.590s — 85% reduction vs full-context.
+- LangMem p95 search = 59.82s — authors call it *"impractical for interactive applications."*
+
+Mechanism: selective retrieval of only the most salient memories rather than fixed-size chunks or full context. Mem0's 1,764 average retrieval tokens vs 26,031 for full-context explains the latency gap.
+
+## Self-documented limitations
+
+The paper does not have a dedicated limitations section but flags:
+- Mem0g does not outperform base Mem0 on multi-hop queries; graph overhead introduces *"potential inefficiencies or redundancies"* for complex integrative tasks.
+- Full-context still achieves the highest J score (72.90 vs Mem0g 68.44); memory systems trade some accuracy for latency/cost.
+- Future work: optimise Mem0g graph operations to reduce latency overhead; explore hierarchical memory architectures blending efficiency with relational representation; develop more sophisticated memory consolidation; extend to procedural reasoning and multimodal interactions.
+
+## Why it matters
+
+- **Production-ready alternative to MemGPT/Letta lineage.** [[memgpt]] / [[letta-memory-blocks]] expose memory paging as agent-callable functions; Mem0 extracts and consolidates facts with conflict-resolution semantics, without requiring the agent to manage paging itself. Different mechanism families in [[memory-architectures]] — Mem0 is *retrieval-augmented memory stores*, MemGPT is *hierarchical virtual context*.
+- **Operationalises [[generative-agents]]'s retrieval discipline at production scale.** Mem0 implements relevance-based retrieval with semantic similarity and adds the operations primitive (ADD/UPDATE/DELETE/NOOP) that the original Generative Agents paper handled informally.
+- **The LOCOMO numbers are the cleanest available benchmark for the latency-vs-accuracy trade-off** in production memory systems. The 92% latency reduction at modest accuracy cost (66.88 vs 72.90 J, ~6pp) is a concrete engineering data point.
+- **Direct comparison data vs Zep, LangMem, A-Mem, OpenAI memory** in a single benchmark — useful for selection decisions in production.
+
+## Source
+
+- `raw/research/memory-management/07-04-mem0.md` (captured 2026-04-26 from https://arxiv.org/pdf/2504.19413 via marker on CPU; figures preserved in `assets/04-mem0/`)
+
+## Related
+
+- [[memory-architectures]] — survey's *retrieval-augmented memory stores* family; Mem0 is a 2025 production instance.
+- [[memgpt]] — alternative paradigm (tiered paging vs extracted-facts retrieval).
+- [[letta-memory-blocks]] — productionised MemGPT; the closest peer in the production-library landscape.
+- [[generative-agents]] — Mem0 is a production realisation of the retrieval-scored memory stream concept.
+- [[anthropic-memory-tool]] — Anthropic's API-level memory primitive; complementary rather than competing.

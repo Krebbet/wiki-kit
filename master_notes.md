@@ -25,3 +25,82 @@ Append entries using this structure:
 ## Notes
 
 <!-- Entries appended during operation go below. -->
+
+### 2026-04-27 — `gh api` beats `capture_url` for GitHub-hosted markdown
+**Scope:** kit
+**Observation:** During the MemPalace research run, captured 6 repository markdown files (README, MISSION, ROADMAP, CLAUDE.md, two docs/) via `gh api repos/<owner>/<repo>/contents/<path>` + base64-decode + manual frontmatter, instead of running `capture_url` on the GitHub blob HTML. The `gh api` path is materially better for this source class: deterministic byte-for-byte content (no trafilatura HTML→markdown round-trip), unambiguous provenance (the API response includes commit SHA, path, and size), no playwright fallback needed for "JS-heavy" rendered code blocks, and no risk of the bot-wall heuristic mis-firing. For markdown sources hosted in public GitHub repos, this is the preferred capture method.
+**Implication:** Add a `tools/capture_github.py` (or extend `capture_url` with a `--source github` switch) that takes `<owner>/<repo>/<path>@<ref>` and writes a numbered file with frontmatter including the commit SHA. Document in `.claude/commands/research.md` step 4 alongside the existing capture-tool table — *"Web page hosted on github.com (markdown file in a repo): use `gh api` or `tools/capture_github.py` rather than `capture_url`."* The research command currently lists capture_url as the default for "web page (HTML)"; this is suboptimal for GitHub-hosted markdown which is by far the most common source-tool we hit when ingesting from open-source projects.
+**Status:** open
+
+### 2026-04-27 — Source-authority concerns are upstream of auto-mode scope checkpoints
+**Scope:** interaction
+**Observation:** The auto-memory rule "Auto mode skips scope/emphasis checkpoints — execute recommended scope/emphasis/structure on /research ingests directly; don't ask" was applied during the MemPalace research run. But the run encountered a separate axis of decision-making the rule doesn't cover: when the candidate source's *authority* (not its scope) is contested or low — e.g., a 22-day-old GitHub project with a self-published benchmark, an in-README scam alert about impostor-malware domains, and credible third-party accusations of benchmark gaming. Auto mode handled this fine in practice (paused briefly to do an authority sniff-check via repo metadata + web search before the capture phase, then captured deliberately and labelled the resulting wiki page heavily with caveats), but the existing auto-memory rule doesn't anticipate this category. The good behaviour was a judgment call that a future agent without this run's memory might not make.
+**Implication:** Either (a) extend the existing auto-mode memory entry to clarify that scope-skipping is about *what to write*, not *whether to trust the source* — source-authority concerns warrant a brief inline check and a labelled-output decision even in auto mode; or (b) add a complementary feedback memory along the lines of *"When a /research candidate is a self-published, viral, or recently-launched source making strong empirical claims, do an authority sniff-check (creation date, contributor density, third-party corroboration) before capture and lead the wiki page with a Source caveat block — but don't pause to ask the user; this is part of doing the research correctly."* The latter is more concrete; the former is more general. Probably both.
+**Status:** open
+
+### 2026-04-22 — /weekly-brief hardcodes wiki-ai-trends path in email template
+**Scope:** kit
+**Observation:** `.claude/commands/weekly-brief.md` step 6 renders a commit-reminder banner into the email with the literal path `/home/david/code/wiki-ai-trends` baked in. When a second wiki (e.g. `wiki-agentic-trends`) adopts `/weekly-brief`, the email tells the user to commit in the wrong directory unless the running agent remembers to substitute cwd.
+**Implication:** Parameterize the template — the skill should derive the path from `pwd` (or a computed project-root) and the branch from `git rev-parse --abbrev-ref HEAD`, then render them into the banner. The skill's cron-install example is similarly wiki-specific; it should show a generic form.
+**Status:** open
+
+### 2026-04-22 — /weekly-brief brief-file path collides between wikis
+**Scope:** kit
+**Observation:** `.claude/commands/weekly-brief.md` step 6 instructs writing the brief to `/tmp/weekly-brief-<YYYY-MM-DD>.md`. That path isn't wiki-namespaced, so two wikis running on the same day (e.g. ai-trends at 07:00 Mon and agentic-trends at 07:30 Mon) will have the second clobber the first.
+**Implication:** Namespace the brief filename per wiki — e.g. `/tmp/weekly-brief-<wiki-slug>-<YYYY-MM-DD>.md` where `<wiki-slug>` is derived from cwd's basename. Same fix should flow through to the `DRAFT_ID` recovery-path note in step 8.
+**Status:** open
+
+### 2026-04-26 — Anthropic engineering blog flagged for next research round
+**Scope:** project
+**Observation:** During the memory-management research run (round 4 on 2026-04-26), the Anthropic Memory Tool docs page (`docs.claude.com/en/docs/agents-and-tools/tool-use/memory-tool`) explicitly references https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents as "a detailed case study of this pattern in practice, including the initializer script, progress file structure, and git-based recovery." This is distinct from the also-referenced "Effective context engineering" blog. Not yet captured. Likely the highest-signal Anthropic-authored source on long-running agent harnesses we don't have.
+**Implication:** Pull this URL in the next research run. Likely lands as either a peer to anthropic-memory-tool.md (concrete deployment patterns) or a new entry under deployments/ if the harness framing is broad enough.
+**Status:** open
+
+### 2026-04-26 — Anthropic memory_cookbook notebook captured as GitHub HTML, mostly base64
+**Scope:** kit
+**Observation:** During the same run I captured `https://github.com/anthropics/claude-cookbooks/blob/main/tool_use/memory_cookbook.ipynb` via capture_url. The result was 207KB but only 164 markdown lines — almost entirely base64-encoded output cells from the notebook, with very little usable prose. Notebooks captured this way produce thin source material because the GitHub HTML view embeds image outputs as data URLs.
+**Implication:** Two options for kit-level fix: (1) detect .ipynb URLs in capture_url and either fetch from raw.githubusercontent.com + parse the JSON to extract markdown cells only, or warn the user; (2) document this in research.md / capture_url docs as a known low-yield source. Option (1) is the better long-term fix — let me note this for /harvest.
+**Status:** open
+
+### 2026-04-25 — capture_pdf default-engine guidance lets pymupdf slip in
+**Scope:** kit
+**Observation:** During /research on long-horizon-context I picked `--engine pymupdf` for an AgentFold PDF capture and produced 2 broken image refs — repeating a mistake from 2026-04-22. The /research command doc reads "Default engine is `marker` (best for papers). For simple PDFs or to skip the model weight download, add `--engine pymupdf`." The "simple PDFs" carve-out and the "skip model download" hook are bait — they invite the agent to second-guess marker on speed/convenience grounds, exactly the reasoning the user has now corrected twice. The actual user-validated rule is: always marker (CPU fine), pymupdf is a last-resort for marker-fails-on-CPU only.
+**Implication:** Two changes to wiki-kit:
+1. `.claude/commands/research.md` — remove the `--engine pymupdf` carve-outs from the capture-step instructions; replace with: "Default to marker. If GPU is contended, force CPU with `CUDA_VISIBLE_DEVICES=\"\"`. Only use `--engine pymupdf` if marker fails on CPU too."
+2. Consider a `tools/capture_pdf` CLI guard: print a `[warning]` line if `--engine pymupdf` is invoked without `--force`, naming the figure-extraction tradeoff. Defends against agents in future sessions making the same call against future user expectations.
+**Status:** open
+
+### 2026-04-22 — /weekly-brief Gmail draft is plaintext markdown, illegible in email clients
+**Scope:** kit
+**Observation:** `.claude/commands/weekly-brief.md` step 8 calls `mcp__claude_ai_Gmail__create_draft` with only the markdown body, so email clients render literal `#`, `**`, and `[[…]]` instead of formatted text. The brief is dense and hard to skim in that form.
+**Implication:** The skill should produce both a plaintext alternative (current body) AND an HTML rendering (passed as `htmlBody` to `create_draft`). Add `markdown` (or `markdown-it-py`) to `pyproject.toml` and have step 8 render the brief markdown to HTML with a small inline stylesheet (similar to the one I used for the manual fix on 2026-04-22). Wikilinks `[[…]]` should render as monospace tokens (per the existing skill note that they're grep handles, not real links).
+
+### 2026-05-04 — Background bash invocations don't inherit interactive PATH
+**Scope:** kit
+**Observation:** First weekly-brief capture-tool invocations from background `Bash run_in_background` returned `poetry: command not found`. The shell snapshot used by background bash doesn't pull `~/.local/bin` into `PATH` despite `which poetry` working in interactive shells. Resolved by invoking `/home/david/.local/bin/poetry` explicitly. Wasted ~3 minutes on duplicate captures.
+**Implication:** Two complementary fixes worth promoting via `/harvest`:
+1. `tools/capture_pdf.py` and `tools/capture_url.py` could detect when invoked outside a poetry env and either `exec` themselves under poetry or print a clearer error than the shell's `command not found`.
+2. The `.claude/commands/weekly-brief.md` step 4 capture-script examples should use the resolved poetry path (or a `POETRY_BIN=$(command -v poetry || echo $HOME/.local/bin/poetry)` pattern) so future agents don't trip over the same PATH issue. Same fix applies to `.claude/commands/research.md` capture step.
+**Status:** open
+
+### 2026-05-04 — `tools.ingest_plan.aggregate` page-shape parser misses bold-wrapped directives
+**Scope:** kit
+**Observation:** All four subagent summaries this week wrote `**New page: <slug>** — <justification>` with the directive line wrapped in bold. The parser's `_PAGE_SHAPE_NEW_RE` regex matches `^-\s*New page:` literally and reports `kind="unknown"` for the bold-wrapped form. Same issue likely affects `_PAGE_SHAPE_EXTEND_RE`. Aggregate ran but only one of five page-plan entries was correctly parsed; recovered the other four manually from the raw summary "Proposed page shape" sections.
+**Implication:** Two fixes:
+1. Tighten the parser regex to tolerate optional `**`/`*`/`_` markdown emphasis around the directive prefix, e.g. `^-\s*\*?\*?(?:New page|extend)\s*:`. Backwards-compatible — current literal form still matches.
+2. Update the subagent prompts in `.claude/commands/weekly-brief.md` step 5 (and `.claude/commands/ingest.md` if it has a similar block) to show the exact unwrapped directive shape, with a "**format strictly**" note. Either fix alone resolves the issue; both is belt-and-braces.
+**Status:** open
+
+### 2026-05-08 — capture_pdf abs-page URL requires weasyprint dep that's not installed
+**Scope:** kit
+**Observation:** `tools.capture_pdf --src https://arxiv.org/abs/2604.18071 --engine marker` failed with `Failed to convert /tmp/wk-pdf-ml24cdo5/source.pdf to PDF: No module named 'weasyprint'`. The tool fetches the abs-page HTML and tries to convert HTML→PDF with weasyprint before passing to marker; the weasyprint dep isn't in `pyproject.toml`. Recovered by switching to the direct PDF URL `https://arxiv.org/pdf/2604.18071`, which bypasses the HTML-to-PDF conversion entirely.
+**Implication:** Two complementary fixes:
+1. Either add `weasyprint` to `pyproject.toml` (so abs-page URLs Just Work), or strip the abs-page HTML conversion path and require callers to pass `/pdf/` URLs (simpler — fewer deps, fewer code paths).
+2. If keeping the abs-page path: improve the error message to suggest the `/pdf/` URL. The current error doesn't hint that the workaround is one URL change away.
+**Status:** open
+
+### 2026-05-08 — `poetry install --no-root` from background-bash stalls
+**Scope:** kit
+**Observation:** During the post-merge dep install for the markdown package, two parallel `poetry install --no-root` invocations from `Bash run_in_background` both stalled with no output for several minutes. Direct `pip install markdown` into the poetry venv at `~/.cache/pypoetry/virtualenvs/wiki-kit-*/bin/pip` worked instantly. Possibly poetry-lockfile contention from concurrent invocations, but the first invocation also stalled when run alone earlier in the session.
+**Implication:** Worth double-checking before relying on `poetry install` in unattended cron paths. If the issue reproduces in cron, document a `pip install -r requirements.txt` (or pip-into-venv) fallback in the kit's setup steps. Single-occurrence — don't fix without reproducing.
+**Status:** open
