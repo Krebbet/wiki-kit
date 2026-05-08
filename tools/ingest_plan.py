@@ -53,6 +53,15 @@ _PAGE_SHAPE_EXTEND_RE = re.compile(
     re.MULTILINE | re.IGNORECASE,
 )
 
+
+def _strip_emphasis(block: str) -> str:
+    """Remove markdown emphasis markers (`**`, `__`) from a block before regex
+    matching. Subagents frequently wrap directive lines in `**...**`, which
+    the page-shape regexes were not tolerating. Stripping the markers here
+    keeps the regexes simple and uniform across `New page` / `extend`.
+    """
+    return block.replace("**", "").replace("__", "")
+
 _REQUIRED_SECTIONS = ("One-line", "Cross-ref candidates", "Conflict flags", "Proposed page shape")
 _TAKEAWAY_EXCLUDED = {"One-line", "Cross-ref candidates", "Conflict flags", "Proposed page shape"}
 
@@ -231,7 +240,8 @@ def _parse_conflicts(block: str) -> list[dict[str, str]]:
 
 
 def _parse_page_shape(block: str) -> dict[str, Any]:
-    new_m = _PAGE_SHAPE_NEW_RE.search(block)
+    stripped = _strip_emphasis(block)
+    new_m = _PAGE_SHAPE_NEW_RE.search(stripped)
     if new_m:
         return {
             "kind": "new",
@@ -239,7 +249,7 @@ def _parse_page_shape(block: str) -> dict[str, Any]:
             "section": None,
             "justification": (new_m.group(2) or "").strip(),
         }
-    extend_m = _PAGE_SHAPE_EXTEND_RE.search(block)
+    extend_m = _PAGE_SHAPE_EXTEND_RE.search(stripped)
     if extend_m:
         return {
             "kind": "extend",
