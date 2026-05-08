@@ -2,7 +2,7 @@
 
 Self-directed weekly research sweep: scan watched sources for what's *trending* in AI/ML, pick the most significant new papers, capture + ingest them into the wiki autonomously, then email a concise brief to the user.
 
-This command runs **locally** on a weekly cron (see **Local scheduling** below) and runs **unattended** — no human gate. The brief is the audit trail. Output lands *uncommitted* on the `ai-trends-wiki` branch; the user commits manually on their next login (the email contains the reminder).
+This command runs **locally** on a weekly cron (see **Local scheduling** below) and runs **unattended** — no human gate. The brief is the audit trail. Output lands *uncommitted* on whatever branch the run was invoked from (resolved at runtime — see step 0); the user commits manually on their next login (the email contains the reminder).
 
 ## Arguments
 
@@ -13,9 +13,32 @@ $ARGUMENTS — optional override for the trend-scan window (e.g. `--since 14d`).
 - **Autonomy.** No human gate. Every decision the orchestrator would normally surface (page plan, conflict rulings, prune list) is made by the agent using the heuristics below.
 - **Cap on captures.** Hard limit: **5 papers per run**. If more look interesting, the surplus goes straight to `wiki/watchlist.md`. The brief is a brief.
 - **Inherit `/research` and `/ingest` rules.** Don't re-summarize source bodies in the main agent. Subagent-per-source. Capture scripts are the default. No `WebFetch` for source content.
-- **Don't commit.** Leave all `wiki/` and `raw/research/weekly-<DATE>/` changes uncommitted on the `ai-trends-wiki` branch — the user commits when they next log on. The email body must include a prominent commit reminder (see step 8). If the working tree had pre-existing uncommitted changes when the run started, flag that in the email rather than absorbing them into the weekly diff.
+- **Don't commit.** Leave all `wiki/` and `raw/research/weekly-<DATE>/` changes uncommitted on the current branch — the user commits when they next log on. The email body must include a prominent commit reminder (see step 8). If the working tree had pre-existing uncommitted changes when the run started, flag that in the email rather than absorbing them into the weekly diff.
 
 ## Process
+
+### 0. Resolve runtime values
+
+Before any other step, resolve the target repo/branch so the email, Telegram, and commit-reminder can reference the right place regardless of which wiki invoked the command:
+
+```bash
+REPO_ROOT=$(git rev-parse --show-toplevel)
+REPO_NAME=$(basename "$REPO_ROOT")
+BRANCH=$(git branch --show-current)
+RUN_DATE=$(date -I)   # YYYY-MM-DD, used throughout as <YYYY-MM-DD>
+```
+
+If `git rev-parse` fails (not inside a git repo), abort with a short error — this command only makes sense inside a wiki checkout.
+
+Also at step-start, capture the pre-existing working-tree state so step 7 can separate weekly-brief's diff from prior work-in-progress:
+
+```bash
+PRE_EXISTING_DIRTY=$(git status --porcelain | head -c 2000)   # truncate defensively
+```
+
+All downstream steps refer to `$REPO_ROOT`, `$REPO_NAME`, `$BRANCH`, `$RUN_DATE`, `$PRE_EXISTING_DIRTY` — do not re-hardcode.
+
+**Read `wiki/reference-sources.md` fully before step 1.** It holds per-wiki customisations — specifically, any `## Scope`, `## Selection priority`, and `## Local conventions` sections override the defaults in this skill. If the file is missing, or if `wiki/watchlist.md` lacks a `setup_approved:` frontmatter field, **halt** — the wiki hasn't completed setup. Surface the missing setup to the user (or log and exit if unattended); do not guess.
 
 ### 1. Trend scan
 
@@ -83,27 +106,43 @@ Follow `/ingest`'s subagent-per-source flow exactly *except* the human gate:
 
 ### 6. Compose the brief (fixed shape)
 
-Write to `/tmp/weekly-brief-<YYYY-MM-DD>.md` with **exactly** this shape:
+The brief is **watchlist-centric**, not captures-centric. The user's view of this-week's world is: the wiki's radar (the watchlist), with industry-wide trends framing it. This-week's captures are an implementation detail shown in run notes, not a headline section.
+
+**Two outputs.** Every run produces both:
+- `wiki/weekly-briefs/<YYYY-MM-DD>.md` — the markdown, committed as part of the wiki (uncommitted per the no-commit policy; user commits on next login).
+- `/tmp/weekly-brief-<YYYY-MM-DD>.html` — the email-legible HTML render of the same markdown, generated in step 8 by `tools/render_brief_html.py`.
+
+The skill also still writes `/tmp/weekly-brief-<YYYY-MM-DD>.md` (same content as the wiki copy) so the existing audit-trail path on disk is preserved.
+
+Write to `/tmp/weekly-brief-<YYYY-MM-DD>.md` AND `wiki/weekly-briefs/<YYYY-MM-DD>.md` with **exactly** this shape:
 
 ```markdown
-Subject: Weekly AI radar — week of <YYYY-MM-DD>
+Subject: Weekly AI radar (<REPO_NAME>) — week of <YYYY-MM-DD>
 
-⚠ **Uncommitted changes on `ai-trends-wiki`.** On your next login, run:
-`cd /home/david/code/wiki-ai-trends && git add wiki/ raw/research/weekly-<YYYY-MM-DD>/ && git commit -m "weekly: <YYYY-MM-DD> radar sweep"`
+⚠ **Uncommitted changes on `<BRANCH>`.** On your next login, run:
+`cd <REPO_ROOT> && git add wiki/ raw/research/weekly-<YYYY-MM-DD>/ && git commit -m "weekly: <YYYY-MM-DD> radar sweep"`
 
-# Trends this week (synthesis)
-- <bullet 1>
+# Trends in the industry
+- <bullet 1 — a trend visible across the full watchlist + web scan, not just this week's additions. State the method/pattern, who's driving it, and what it's displacing or building on>
 - <bullet 2>
 - <bullet 3>
-- <bullet 4-6 if warranted>
+- <bullet 4-7 as warranted>
 
-# Captured (N papers)
-- **<short title>** — <one sentence on what's new and why it matters>. [[<wiki-slug>]]
-- ... (one per captured paper, max 5)
+# Top 3 from the watchlist
+Pick either *new-and-interesting* (recent watchlist addition with novel mechanism) OR *old-and-now-trending* (foundational entry everyone is building on this quarter). Mix is fine. Format: **Title** — one line. No more.
 
-# Closer-look candidates from the watchlist
-- <title> — <URL or arXiv ID> — <1-line why-trending>
-- ... (cap 10)
+1. **<title>** — <1-line summary>. *(new | old-now-trending, <arXiv or year>)*
+2. **<title>** — <1-line summary>. *(new | old-now-trending, <arXiv or year>)*
+3. **<title>** — <1-line summary>. *(new | old-now-trending, <arXiv or year>)*
+
+# Other watchlist references
+Remaining watchlist items worth keeping in scope. Group by the watchlist's section headers. Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence descriptions — this is a scannable ledger, not a summary.
+
+## <Section name>
+- <title> — <tag>
+- ...
+
+(repeat per section that has entries worth carrying)
 
 # Conflicts opened or extended this week
 - [[conflicts/<slug>]] — <one sentence on the position>
@@ -111,29 +150,59 @@ Subject: Weekly AI radar — week of <YYYY-MM-DD>
 
 # Run notes
 - Sources scanned: <count>
-- Captures attempted / succeeded: <a> / <b>
+- Captures attempted / succeeded: <a> / <b> (detail: <slug list>)
 - Wiki pages written: <count>
+- Watchlist additions this run: <N>
 - Uncommitted changes (awaiting your commit): <N> files — <short `git status --porcelain` summary or "none">
 - Pre-existing uncommitted changes at run start: <none | brief list>
 
 — Weekly brief generated by /weekly-brief on <ISO timestamp>
 ```
 
-The wiki-link `[[...]]` notation will not render in plain-text email; that's intentional — they're pointers for the user to grep against in their checkout. If sending HTML, render them as relative GitHub links to the `ai-trends-wiki` branch.
+The wiki-link `[[...]]` notation will not render in plain-text email; that's intentional — they're pointers for the user to grep against in their checkout. If sending HTML, render them as relative GitHub links to the `<BRANCH>` branch (resolved at runtime).
+
+**Trends vs top-3 vs references — why the split matters.** The trends section is editorial synthesis across the whole watchlist; it's the one place the brief is allowed to generalize. The top 3 are the concrete "if you only read about three things this week, these" picks. The references list is the ledger — it exists so the user can scan what's in-scope without opening the watchlist file. Don't merge or reorder these; the shape is the signal.
 
 ### 7. Do not commit
 
-Intentionally do **not** `git add`, `git commit`, or `git push`. Leave changes to `wiki/` and `raw/research/weekly-<YYYY-MM-DD>/` uncommitted on the `ai-trends-wiki` branch.
+Intentionally do **not** `git add`, `git commit`, or `git push`. Leave changes to `wiki/` and `raw/research/weekly-<YYYY-MM-DD>/` uncommitted on the current branch (`$BRANCH`).
 
 Before exiting step 7, run `git status --porcelain` and record the output to include in the email under `# Run notes → Uncommitted changes`. If there were pre-existing uncommitted changes at step-start (captured in step 0 state), note them separately so the user can tell weekly-brief's diff apart from any prior work-in-progress.
 
 ### 8. Send email
 
-The claude.ai Gmail MCP exposes `create_draft` but **no send tool** (safety default). Deliver the brief as a **draft** addressed to `david.hugh.mcnamee@outlook.com` via `mcp__claude_ai_Gmail__create_draft`; the user hits send manually in Gmail.
+The user reads mail in Outlook, so the brief must actually *send* to `david.hugh.mcnamee@outlook.com` — not sit as a draft in Gmail. Primary path is SMTP via `tools/send_email.py` (Gmail SMTP + app password). Fallback is the Gmail MCP `create_draft` if the SMTP env isn't configured.
 
-- The email body **must** include the bolded commit-reminder banner at the top (see step 6 template) — that reminder is the primary user-facing signal that manual work is pending.
-- Capture the `id` returned by `create_draft`; it feeds step 8b.
-- If Gmail MCP is not authenticated/available, log the failure prominently (the brief file at `/tmp/weekly-brief-<YYYY-MM-DD>.md` is still on disk for manual recovery), skip to step 8b with `DRAFT_ID="(mcp unavailable)"`, and exit non-zero *after* the Telegram ping so the user is still notified the run happened.
+- The email body **must** include the bolded commit-reminder banner at the top (see step 6 template).
+- **Credentials.** `GMAIL_USER` (should be `krebbet@gmail.com`) and `GMAIL_APP_PASSWORD` (16-char Google app password, generated in the user's Google Account → Security → App passwords) live in `/home/david/code/remote_workstation/.env` alongside the Telegram token. The skill sources that file, so no separate config is needed.
+- **Before sending: render HTML.** Convert the markdown to a legible email body. This is required, not optional — sending raw markdown produces the unreadable format the user originally pushed back on.
+  ```bash
+  poetry run python -m tools.render_brief_html \
+    --in /tmp/weekly-brief-$RUN_DATE.md \
+    --out /tmp/weekly-brief-$RUN_DATE.html \
+    --title "Weekly AI radar ($REPO_NAME) — week of $RUN_DATE"
+  ```
+- **Primary: SMTP send (both bodies).** Plain-text markdown is the fallback alternative; HTML is what Outlook renders.
+  ```bash
+  set -a; source /home/david/code/remote_workstation/.env; set +a
+  if [ -n "${GMAIL_APP_PASSWORD:-}" ]; then
+    MESSAGE_ID=$(cd "$REPO_ROOT" && poetry run python -m tools.send_email \
+      --to david.hugh.mcnamee@outlook.com \
+      --subject "Weekly AI radar ($REPO_NAME) — week of $RUN_DATE" \
+      --body-file /tmp/weekly-brief-$RUN_DATE.md \
+      --html-body-file /tmp/weekly-brief-$RUN_DATE.html)
+    DELIVERY_KIND="sent"
+    DELIVERY_ID="${MESSAGE_ID}"
+  else
+    # Fallback — no SMTP creds on this machine.
+    # Call mcp__claude_ai_Gmail__create_draft with BOTH `body` (markdown) and `htmlBody` (HTML);
+    # capture the returned id.
+    DELIVERY_KIND="draft"
+    DELIVERY_ID="<draft-id from create_draft>"
+  fi
+  ```
+- Capture `DELIVERY_KIND` (`sent` | `draft` | `failed`) and `DELIVERY_ID` (Message-ID or draft id or `"(mcp unavailable)"`); these feed step 8b.
+- If SMTP send fails (exit 3), fall back to `create_draft` within the same run so the brief is at least recoverable. If both fail, log prominently (the brief file at `/tmp/weekly-brief-<YYYY-MM-DD>.md` is still on disk for manual recovery), set `DELIVERY_KIND="failed"`, and exit non-zero *after* the Telegram ping.
 
 ### 8b. Telegram notification
 
@@ -142,7 +211,8 @@ Fire a short notification via the user's existing Telegram bot (plumbing lives i
 ```bash
 set -a; source /home/david/code/remote_workstation/.env; set +a
 CHAT_ID="${TELEGRAM_ALLOWED_CHAT_IDS%%,*}"   # first allowed chat
-TEXT="📡 Weekly brief <YYYY-MM-DD> — ${N_CAPTURED} captured, ${N_WATCHLIST} watchlisted. Gmail draft: ${DRAFT_ID}. Uncommitted on ai-trends-wiki."
+# DELIVERY_KIND is "sent" (Outlook got it) or "draft" (needs manual send from Gmail).
+TEXT="📡 Weekly brief ${REPO_NAME} ${RUN_DATE} — ${N_CAPTURED} captured, ${N_WATCHLIST} watchlisted. Email ${DELIVERY_KIND}: ${DELIVERY_ID}. Uncommitted on ${BRANCH}."
 curl -sS --max-time 10 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
   --data-urlencode "chat_id=${CHAT_ID}" \
   --data-urlencode "text=${TEXT}" >/dev/null || echo "telegram ping failed (non-fatal)"
@@ -151,10 +221,10 @@ curl -sS --max-time 10 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMe
 Keep the message terse — it's a notification, not a duplicate brief. Always include:
 - run date
 - `N_CAPTURED` / `N_WATCHLIST` counts
-- `DRAFT_ID` (so the user can jump straight to the draft in Gmail)
+- `DELIVERY_KIND` + `DELIVERY_ID` (so the user knows whether Outlook has it or whether they need to hit send in Gmail)
 - a reminder that the diff is uncommitted
 
-If `TELEGRAM_BOT_TOKEN` isn't set (e.g. `remote_workstation/.env` missing), log and continue — the draft + brief file on disk are the real audit trail. Don't fail the whole run on a missed ping.
+If `TELEGRAM_BOT_TOKEN` isn't set (e.g. `remote_workstation/.env` missing), log and continue — the email + brief file on disk are the real audit trail. Don't fail the whole run on a missed ping.
 
 ### 9. Empty-run policy
 
@@ -177,8 +247,10 @@ This command runs locally via the user's crontab (or equivalent). A minimal inst
 
 ```bash
 crontab -e
-# Append:
-0 7 * * 1 cd /home/david/code/wiki-ai-trends && git checkout ai-trends-wiki && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
+# Append (substitute your wiki's repo path and weekly-brief branch):
+0 7 * * 1 cd /path/to/your-wiki && git checkout <weekly-brief-branch> && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
+# Example for the ai-trends wiki:
+# 0 7 * * 1 cd /home/david/code/wiki-ai-trends && git checkout ai-trends-wiki && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
 ```
 
 Notes:
@@ -189,4 +261,6 @@ Notes:
 
 ## Why this command exists
 
-The user wants to delegate the "what's interesting this week?" loop. The contract is: the local cron fires Monday 7am, the wiki absorbs the week's signal *on the local `ai-trends-wiki` branch* (uncommitted), an email lands in the inbox by ~7:15 with the trends + the 5 things worth knowing + a prominent commit-on-next-login reminder. The commit stays manual so the user reviews the diff before it becomes history — and so a bad run can be `git restore`'d without a revert commit.
+The user wants to delegate the "what's interesting this week?" loop. The contract is: the local cron fires Monday 7am, the wiki absorbs the week's signal on the current branch (uncommitted), an email lands in the inbox by ~7:15 with the trends + the 5 things worth knowing + a prominent commit-on-next-login reminder. The commit stays manual so the user reviews the diff before it becomes history — and so a bad run can be `git restore`'d without a revert commit.
+
+The command is wiki-agnostic: run it inside any wiki checkout and the brief is scoped to that wiki's `reference-sources.md` + `watchlist.md`. The repo path, repo name, and branch are resolved at runtime (step 0) so email, Telegram ping, and commit-reminder banner point at the right place.
