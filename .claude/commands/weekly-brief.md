@@ -13,7 +13,7 @@ $ARGUMENTS — optional override for the trend-scan window (e.g. `--since 14d`).
 - **Autonomy.** No human gate. Every decision the orchestrator would normally surface (page plan, conflict rulings, prune list) is made by the agent using the heuristics below.
 - **Cap on captures.** Hard limit: **5 papers per run**. If more look interesting, the surplus goes straight to `wiki/watchlist.md`. The brief is a brief.
 - **Inherit `/research` and `/ingest` rules.** Don't re-summarize source bodies in the main agent. Subagent-per-source. Capture scripts are the default. No `WebFetch` for source content.
-- **Don't commit.** Leave all `wiki/` and `raw/research/weekly-<DATE>/` changes uncommitted on the current branch — the user commits when they next log on. The email body must include a prominent commit reminder (see step 8). If the working tree had pre-existing uncommitted changes when the run started, flag that in the email rather than absorbing them into the weekly diff.
+- **Commit and push.** End of run, the skill commits this-week's `wiki/` + `master_notes.md` deltas and pushes the topic branch to origin. `raw/research/*` is gitignored. Pre-existing uncommitted work present at step-start is flagged in the email but **not** absorbed into the weekly commit (the skill's `git add` is path-scoped, not blanket). Topic branches are isolated feature branches — they push to their own remote ref, never to `main`.
 
 ## Process
 
@@ -119,8 +119,7 @@ Write to `/tmp/weekly-brief-<YYYY-MM-DD>.md` AND `wiki/weekly-briefs/<YYYY-MM-DD
 ```markdown
 Subject: Weekly AI radar (<REPO_NAME>) — week of <YYYY-MM-DD>
 
-⚠ **Uncommitted changes on `<BRANCH>`.** On your next login, run:
-`cd <REPO_ROOT> && git add wiki/ raw/research/weekly-<YYYY-MM-DD>/ && git commit -m "weekly: <YYYY-MM-DD> radar sweep"`
+✓ **This run committed and pushed to `<BRANCH>` as `<COMMIT_SHA>`.** On other machines, run `git pull` to pick up. If `<PRE_EXISTING_DIRTY>` was non-empty at run start, that backlog is *still uncommitted* — see Run notes for the surviving paths.
 
 # Trends in the industry
 - <bullet 1 — a trend visible across the full watchlist + web scan, not just this week's additions. State the method/pattern, who's driving it, and what it's displacing or building on>
@@ -163,11 +162,30 @@ The wiki-link `[[...]]` notation will not render in plain-text email; that's int
 
 **Trends vs top-3 vs references — why the split matters.** The trends section is editorial synthesis across the whole watchlist; it's the one place the brief is allowed to generalize. The top 3 are the concrete "if you only read about three things this week, these" picks. The references list is the ledger — it exists so the user can scan what's in-scope without opening the watchlist file. Don't merge or reorder these; the shape is the signal.
 
-### 7. Do not commit
+### 7. Commit and push
 
-Intentionally do **not** `git add`, `git commit`, or `git push`. Leave changes to `wiki/` and `raw/research/weekly-<YYYY-MM-DD>/` uncommitted on the current branch (`$BRANCH`).
+Topic branches are managed as isolated feature branches: each run commits its own slice and pushes the branch to origin. They never merge into `main`. Pulling kit improvements from `main` happens via the separate `/apply-harvests` skill, not via merge.
 
-Before exiting step 7, run `git status --porcelain` and record the output to include in the email under `# Run notes → Uncommitted changes`. If there were pre-existing uncommitted changes at step-start (captured in step 0 state), note them separately so the user can tell weekly-brief's diff apart from any prior work-in-progress.
+**Path-scoped staging** — only this-run's outputs go into the commit. Anything `$PRE_EXISTING_DIRTY` flagged at step-start stays untouched, so an unrelated backlog can never piggy-back into the weekly-brief commit.
+
+```bash
+# Stage only this run's deltas:
+git add wiki/weekly-briefs/<YYYY-MM-DD>.md \
+        wiki/index.md wiki/log.md wiki/revisions.md wiki/watchlist.md \
+        master_notes.md
+# Plus any new pages this run wrote (paths captured in $PAGES_WRITTEN from step 5):
+for p in $PAGES_WRITTEN; do git add "$p"; done
+
+# raw/research/* is gitignored — confirm nothing slipped in:
+git diff --cached --name-only | grep -E '^raw/' && { echo "ABORT: raw/* path leaked into staging"; exit 1; }
+
+git commit -m "weekly: $RUN_DATE radar sweep ($N_CAPTURED captured, $N_WATCHLIST watchlisted)"
+git push origin "$BRANCH"
+```
+
+Capture `$COMMIT_SHA=$(git rev-parse HEAD)` for inclusion in the email Run notes section. If the push fails (offline, branch protection, force needed), do not retry blindly — surface the error in the email's Run notes and continue to step 8 so the artefacts are still recoverable.
+
+Before exiting step 7, run `git status --porcelain` again and record any *remaining* dirty state in the email under `# Run notes → Pre-existing uncommitted changes still on branch`. The user wants to see what survived the path-scoped commit so they can address the backlog separately.
 
 ### 8. Send email
 

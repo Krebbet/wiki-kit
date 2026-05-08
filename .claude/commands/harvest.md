@@ -36,6 +36,18 @@ Run this periodically on a topic-wiki branch to keep `main` evolving as a clean 
 
    Verify the working tree is clean (`git status --short` returns nothing). If dirty, ask the user to commit or stash first; the harvest process switches branches.
 
+   **Update local main from origin** before doing anything else. Topic branches are isolated feature branches that never merge into main, so local main may have drifted from origin/main since the last harvest. Pull first so the harvest base is current:
+
+   ```bash
+   TOPIC_BRANCH=$(git branch --show-current)
+   git fetch origin main
+   git switch main
+   git merge --ff-only origin/main || { echo "main has diverged from origin — needs manual resolution"; exit 1; }
+   git switch "$TOPIC_BRANCH"
+   ```
+
+   If `git merge --ff-only` fails because local main has unpushed commits ahead of origin/main, stop and surface to the user. The harvest must start from a clean, up-to-date main.
+
 2. **Classify changes.** Diff the current branch against `origin/main` (fall back to `main` if no remote):
 
    ```bash
@@ -80,9 +92,9 @@ Run this periodically on a topic-wiki branch to keep `main` evolving as a clean 
      - <path>  — unclassified, please advise
    ```
 
-   Ask: "Proceed with this harvest? (y/N, or list files to exclude)"
+   Then **walk the user through every proposed change individually** — show the unified diff for each promote-bucket file, label each command-file kit-vs-SLOT split clearly, and collect a per-change yes/no. The reviewer is the user; this is the gate that protects main. Do not batch-approve.
 
-5. **Review master_notes.** Read `master_notes.md`. Find entries with `Status: open` or `Status: proposed` that are scoped to `project` or `both`. For each, judge whether the implication can be delivered as a kit-level code or doc change right now (e.g., "add STATE.md convention to wiki/CLAUDE.md template", "add marker GPU env-var fallback to capture_pdf.py"). Propose these as additional commits beyond the file-level diff. Ask the user to approve each.
+5. **Review master_notes.** Read `master_notes.md`. Find entries with `Status: open` or `Status: proposed` that are scoped to `project` or `both`. For each, judge whether the implication can be delivered as a kit-level code or doc change right now (e.g., "add STATE.md convention to wiki/CLAUDE.md template", "add marker GPU env-var fallback to capture_pdf.py"). Propose these as additional commits beyond the file-level diff. Walk through each with the user and collect a yes/no — same individual-review discipline as step 4.
 
 6. **Execute.** Once approved:
 
@@ -168,16 +180,61 @@ Run this periodically on a topic-wiki branch to keep `main` evolving as a clean 
 
    Never force-push `main`. If the push is rejected after a clean local rebase (another wiki landed *during* your rebase), re-run the fetch → rebase → tests → push loop — do not `--force`.
 
-9. **Return to the topic branch.**
+9. **Apply approved changes back to the active topic branch.** Topic branches **never merge with main** — they are isolated feature branches. Apply the kit changes via path-scoped file checkout, not via `git merge main`:
+
    ```bash
-   git switch <topic-branch>
-   git merge main
+   git switch "$TOPIC_BRANCH"
+   # Collect the list of paths that were just promoted to main in step 8.
+   # PROMOTED_PATHS is the same path list you cherry-picked in step 6 (b)/(c)/(d).
+   for p in $PROMOTED_PATHS; do
+     # Skip any file whose topic-branch version is already byte-identical to main
+     # (it was promoted from this branch, so checkout would be a no-op).
+     if ! git diff --quiet main -- "$p"; then
+       git checkout main -- "$p"
+     fi
+   done
    ```
 
-   The `git merge main` likely will not be a fast-forward (the topic branch has its own commits) and may hit the same class of conflicts that step 8 resolved, particularly if the topic branch touched the same tool files during the session. Apply the same resolution principles, run the test suite again after resolution, and commit the merge.
+   For command files, only the kit-delta hunks were promoted in step 6(d); when applying back, the topic branch's DOMAIN-SLOT body should be preserved. Re-run the kit/SLOT splice in reverse if the file was a mixed-delta case: take main's *non-SLOT* regions, keep the topic branch's *SLOT* region.
 
-   After the merge lands cleanly on the topic branch, remind the user:
-   > Kit improvements are now on main and merged back into this topic branch. Before running `/harvest` on any other topic wiki, switch to that wiki, `git merge main` into it first so the harvest starts from current-main and the final merge-back is as small as possible.
+   Stage the resulting changes and commit on the topic branch:
+
+   ```bash
+   git add -A
+   git commit -m "apply kit harvest from main @ $(git rev-parse main) ($RUN_DATE)"
+   git push origin "$TOPIC_BRANCH"
+   ```
+
+   **Skip the commit + push if nothing changed** (the file checkout was a no-op because every promoted path was already this branch's contribution).
+
+10. **Flip master_notes status.** For each `master_notes.md` entry that this harvest delivered as a kit fix (the entries you proposed as additional commits in step 5, plus any open entries whose implication is now satisfied by a file you just promoted), edit the entry's `Status:` line on the topic branch:
+
+    ```
+    **Status:** applied 2026-05-08
+    ```
+
+    Use today's `$RUN_DATE`. Don't delete the entry — the audit trail is the value. Commit + push the master_notes update on the topic branch as a follow-on commit:
+
+    ```bash
+    git add master_notes.md
+    git commit -m "master_notes: flip applied entries from harvest $RUN_DATE"
+    git push origin "$TOPIC_BRANCH"
+    ```
+
+11. **Verify empty local harvest state.** After everything lands, the local repo should be in a clean post-harvest shape:
+
+    ```bash
+    git status --short                                  # empty
+    git branch --list 'kit-harvest-*'                   # empty (the harvest branch was deleted in step 8)
+    git log --oneline main..origin/main                 # empty (main fully pushed)
+    git log --oneline origin/main..main                 # empty (main fully pushed)
+    git log --oneline "origin/$TOPIC_BRANCH..$TOPIC_BRANCH"  # empty (topic fully pushed)
+    ```
+
+    All five outputs should be empty. Anything non-empty means a step was skipped — surface it before exiting.
+
+    Remind the user:
+    > Kit improvements landed on main and applied back to this topic branch. Other wikis pick them up via `/apply-harvests` (run from each wiki branch when the user is ready); they will not auto-pull.
 
 ## Flagging opportunities mid-session
 
