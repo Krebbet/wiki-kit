@@ -21,6 +21,9 @@ wiki/.obsidian/
 # the committed product. Re-run `capture_pdf` if you need raw text again.
 raw/research/
 
+# Claude Code runtime lock files
+.claude/scheduled_tasks.lock
+
 # OS
 .DS_Store
 Thumbs.db
