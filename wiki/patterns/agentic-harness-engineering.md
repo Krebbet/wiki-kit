@@ -106,3 +106,5 @@ The paper explicitly compares against three concurrent harness-engineering prima
 - [[evaluation/swe-bench-pro]] — eval ecosystem context (AHE reports SWE-bench-verified transfer numbers).
 - [[evaluation/airs-bench]] — peer 2026 long-horizon agent benchmark.
 - [[externalization-survey]] — places AHE under the "self-evolving harnesses" emerging direction (§8.3).
+- [[skillos]] — closest peer 2026 self-evolving system; same frozen-base + RL-on-external-structure pattern, scoped to skills only (vs whole-harness here). Different attribution mechanism (grouped-task downstream rewards vs change-manifest verification). Independent confirmation that **executor-grounded training matters more than curator scale** (8B-RL beats Gemini-2.5-Pro-without-RL) parallels AHE's structural-components-carry-the-lift finding.
+- [[agent-development-lifecycle]] — vendor-side (LangChain) Build → Test → Deploy → Monitor framing; AHE is the machine-evolved automation of the Monitor → Iterate → Build feedback loop.

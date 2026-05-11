@@ -127,3 +127,4 @@ The 4–5 rebuilds are themselves the operationalisation of this thesis — each
 - [[cognition-cloud-agents]] — peer enterprise deployment; both ship usage-based pricing.
 - [[paperorchestra]], [[ai-scientist-v2]] — peer multi-agent topologies (manager-agent + specialist subagents).
 - [[openai-symphony]] — peer 2026 practitioner-narrative case study on harness engineering, captured the same week.
+- [[direct-corpus-interaction]] — academic corroboration of Notion's "build for what the model understands" doctrine and the CLI-side of the four-axis MCP-vs-CLIs framing; specifically Notion's "vector embeddings are less and less" finding for agent-driven enterprise search.

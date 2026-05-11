@@ -227,4 +227,29 @@ Captured 5 sources, ingested via 5 parallel subagents, wrote 5 new pages + watch
 
 **Process learnings (logged inline):**
 - `tools.capture_pdf` failed on `https://arxiv.org/abs/<id>` with `No module named 'weasyprint'` — the abs-page-to-PDF conversion path requires weasyprint. Workaround: use `https://arxiv.org/pdf/<id>` (direct PDF URL) which bypasses HTML-to-PDF entirely. Kit-level fix: either install weasyprint as a dep or document the direct-PDF preference in the capture-tool docstrings + spec.
+
+---
+
+## [2026-05-11] weekly-brief | production observability + self-evolving skills + direct corpus interaction
+
+Autonomous Monday weekly sweep. 5 captures, 5 new wiki pages, 11 extensions, 1 conflict-page extension (3rd pole on verbatim-vs-extracted-memory).
+
+**Trends (synthesis):**
+- *(synthesis)* **Production agent observability crystallises as a vendor discipline.** Same week: LangChain "The Agent Development Lifecycle" (Build → Test → Deploy → Monitor framing); LangChain "Agent Observability Needs Feedback to Power Learning" (traces+feedback as training signal); Sierra "Who monitors the monitors?" (eval-of-evals calibration); TWIML 767 with Scott Clark on agent-eval-failures-in-production. Three vendors + one practitioner podcast in one week — the discipline-level naming has settled on "monitor / observe / evaluate" as the post-deployment counterpart to last month's "harness engineering."
+- *(synthesis)* **Self-evolving skills as RL-trained curation.** SkillOS (#1 alphaXiv) + Skill1 (#2 alphaXiv) both shipped same week with the same architectural pattern: frozen executor + RL-trained external structure (Markdown skills in SkillOS; per-task skill program in Skill1). SkillOS's headline architectural finding — **8B-RL-trained curator beats Gemini-2.5-Pro-as-curator-without-RL** — is the per-skill version of AHE's "structural components carry the lift over model scale." 2026 is converging on *evolve the scaffold, freeze the LLM* as the dominant self-evolving paradigm.
+- *(synthesis)* **Direct corpus interaction gives the practitioner CLI-skepticism a published mechanism.** "Beyond Semantic Similarity" (arXiv 2605.05242, top HF this week) argues retrieval should be `grep`/`bash`-mediated traversal of the raw corpus rather than vector-index top-k. +11 pp at −29.4% cost on BrowseComp-Plus with matched Sonnet 4.6; the gain is **interface resolution** (within-doc localisation 48.4 vs 21.7), not recall. Notion's "vector embeddings are less and less" finding from `case-studies/notion-token-town` and Lopopolo's MCP-skepticism in `deployments/openai-symphony` now have an academic counterpart on the same axis. Opens a third pole in `conflicts/verbatim-vs-extracted-memory`: not just verbatim-vs-extracted, but **with-index-or-without** at all.
+- **Coding-agent supply-chain security goes vendor.** Three independent signals in one week: Trustfall AI coding-CLI vulnerability disclosure (one keypress compromises 4 tools); Snyk + Anthropic Claude AI Security partnership; Opsera + Cursor enterprise DevSecOps partnership. Direction-of-travel: agent-security tooling shifting from research to vendor product surface. Watchlist-only this run.
+- **AlphaEvolve URL-verified.** The 2026-05-08 watchlist entry's verify-URL caveat closed; AlphaEvolve impact post is now `deployments/alphaevolve-impact`. DeepMind's 1-year-in-production retrospective lands as a peer to OpenAI Symphony / Cognition cloud-agents on the zero-human-code production-deployment axis at radically different scale (vendor-deployed in TPU/Spanner/compiler vs 7-person greenfield).
+
+**Sources captured** (in `raw/research/weekly-2026-05-11/`):
+- 01-langchain-agent-lifecycle — https://www.langchain.com/blog/the-agent-development-lifecycle
+- 02-sierra-monitor-the-monitors — https://sierra.ai/blog/agent-monitoring
+- 03-alphaevolve-impact — https://deepmind.google/blog/alphaevolve-impact/
+- 04-skillos — arXiv 2605.06614 (PDF via marker on CPU)
+- 05-beyond-semantic-similarity — arXiv 2605.05242 (PDF via marker on CPU)
+
+5 new pages: patterns/agent-development-lifecycle, patterns/sierra-monitor-eval-of-evals, deployments/alphaevolve-impact, patterns/skillos, patterns/direct-corpus-interaction. 11 extensions across topology-taxonomy, memory-architectures, externalization-survey, agentic-harness-engineering, effective-harnesses, sierra-context-engineering, mcp-infrastructure, openai-symphony, notion-token-town, cursor-agent-harness; 1 conflict extension (verbatim-vs-extracted-memory now three-poled). Audit clean (0 issues).
+
+**Process learnings (logged inline):**
+- The `/weekly-brief` skill's step-5 ingest-subagent prompt template doesn't include the `parse_summary`-required frontmatter (`schema_version: 1`) or the exact required section names (`One-line` / `Cross-ref candidates` / `Conflict flags` / `Proposed page shape`). All five subagent summaries this week were structurally fine but failed `parse_summary` validation — recovered by reading the summaries directly in the orchestrator. Master_notes-worthy fix: extend the step-5 template in `.claude/commands/weekly-brief.md` to embed the exact schema (frontmatter + section names) so subagents emit parseable summaries by default. Logging.
 - `poetry install --no-root` from `Bash run_in_background` stalled with no output for several minutes. Direct `pip install <dep>` into the poetry venv worked instantly. Possibly poetry-lockfile contention from two concurrent invocations earlier in the run. Worth double-checking next sweep before relying on poetry-install in unattended cron.

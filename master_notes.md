@@ -99,6 +99,16 @@ Append entries using this structure:
 2. If keeping the abs-page path: improve the error message to suggest the `/pdf/` URL. The current error doesn't hint that the workaround is one URL change away.
 **Status:** open
 
+### 2026-05-11 — /weekly-brief step-5 subagent prompt template lacks the `parse_summary` schema
+**Scope:** kit
+**Observation:** All five ingest subagents this week wrote summaries in the format I described to them (Source / Key claims / Notable specifics / Cross-references / Conflict flags / Proposed page shape / Open questions), but `tools.ingest_plan.parse_summary` rejected all five with "missing frontmatter" because it requires (a) `schema_version: 1` YAML frontmatter and (b) sections named exactly `One-line` / `Cross-ref candidates` / `Conflict flags` / `Proposed page shape`. My step-5 briefing template was wrong on both counts. Recovered by reading the summaries directly in the orchestrator (the content was all good), but the validation/aggregate path was bypassed and `run.json` was never persisted.
+**Implication:** `.claude/commands/weekly-brief.md` step 5 should embed (or link to) the *exact* required schema — specifically the frontmatter shape and the exact section names that `parse_summary` enforces. Two complementary fixes:
+1. Edit the step-5 template in the skill to show a literal example summary file (frontmatter + `## One-line` + `## Cross-ref candidates` + `## Conflict flags` + `## Proposed page shape`) rather than the loose Source/Key-claims/Notable-specifics shape I improvised.
+2. (Optional, fallback) Make `parse_summary` more forgiving — accept the alternate section names as aliases — so subagent-format drift doesn't silently bypass the validation path. Either fix alone closes the gap; doing both is belt-and-braces.
+
+The same gap likely exists in `.claude/commands/ingest.md` if `/ingest`'s subagent template is similarly loose; worth a parallel audit during /harvest.
+**Status:** open
+
 ### 2026-05-08 — `poetry install --no-root` from background-bash stalls
 **Scope:** kit
 **Observation:** During the post-merge dep install for the markdown package, two parallel `poetry install --no-root` invocations from `Bash run_in_background` both stalled with no output for several minutes. Direct `pip install markdown` into the poetry venv at `~/.cache/pypoetry/virtualenvs/wiki-kit-*/bin/pip` worked instantly. Possibly poetry-lockfile contention from concurrent invocations, but the first invocation also stalled when run alone earlier in the session.

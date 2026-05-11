@@ -1,11 +1,28 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-08
+last_reviewed: 2026-05-11
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-05-11
+
+Surplus from this week's sweep — the 5 captured items are recorded in `wiki/log.md` (LangChain ADL 2026-05-09, Sierra Monitor 2026-05-07, AlphaEvolve impact 2026-05-07, SkillOS arXiv 2605.06614, Beyond Semantic Similarity arXiv 2605.05242). Items below either lacked a strong-enough single signal to make the cap, ride a thread already represented in this week's captures, or are vendor-partnership announcements without primary technical writeup.
+
+- **Skill1 — Unified Evolution of Skill-Augmented Agents via RL (arXiv 2605.06130)** — https://arxiv.org/abs/2605.06130 — #2 alphaXiv trending (33 reactions); 97.5% on ALFWorld. Pairs with [[patterns/skillos]] as a twin self-evolving-skills entry; would extend [[patterns/skill-distillation]] cluster on the RL axis. Capture next week if a comparison piece against SkillOS lands or if a Skill1 + SkillOS unification paper appears.
+- **LangChain — "Agent Observability Needs Feedback to Power Learning"** — https://www.langchain.com/blog/agent-observability-needs-feedback-to-power-learning — Same week as the captured ADL post. Argues traces+feedback are training signal, not just logs. Captured indirectly via the ADL Monitor section; flag for next week if it gets cited as a load-bearing prior.
+- **TWIML 767 — "How to Find the Agent Failures Your Evals Miss" (Scott Clark, 2026-05-07)** — https://twimlai.com/podcast/twimlai/how-find-agent-failures-your-evals-miss — Production-observability framing for agent evals (telemetry → monitoring → online analytics). Names the offline-eval-vs-production-failure gap. Strong wiki-fit but podcast capture is comparatively expensive; flag for next week.
+- **Cursor changelog: PR Review parallel agents (2026-05-07) + Context Usage Breakdown (2026-05-06)** — https://cursor.com/changelog/05-07-26 / https://cursor.com/changelog/05-06-26 — Concrete shipped features; parallel-agent topology + per-source context accounting (rules / skills / MCPs / subagents). Lower priority because changelog rather than full writeup; flag if a Cursor blog post explains the architecture.
+- **VibeServe — Can AI Agents Build Bespoke LLM Serving Systems? (arXiv 2605.06068)** — https://arxiv.org/abs/2605.06068 — Outer-loop/inner-loop agent that designs custom vLLM-style serving stacks. First data point on agentic-engineering-on-infrastructure-code; complement to [[deployments/openai-symphony]]. Capture if the agentic-on-infra theme recurs.
+- **PARNESS — Paper Harness for End-to-End Automated Scientific Research (arXiv 2605.05258)** — https://arxiv.org/abs/2605.05258 — Direct PaperOrchestra/AI-Scientist peer with DAG scheduler + four-field Agent contract + cross-run knowledge accumulation. Capture next week if it shows up in a comparison-of-paper-harnesses thread or extends [[paperorchestra]].
+- **DTap — DecodingTrust-Agent Platform (arXiv 2605.04808)** — https://arxiv.org/abs/2605.04808 — Stanford / Bo Li / Percy Liang. 14 domains + 50+ simulated apps (Workspace, Slack, Paypal); first comprehensive agent red-team substrate. Wiki currently has zero observability-eval-substrate coverage; capture if a security-vertical thread opens.
+- **Workspace-Bench 1.0 (arXiv 2605.03596)** — https://arxiv.org/abs/2605.03596 — 20.4k files, 388 cross-file tasks, 7,399 rubrics; top agent 68.7% vs human 80.7%. Long-horizon cross-file eval, peer to [[airs-bench]] in the eval cluster. Capture if a SOTA leaderboard climb is tracked here.
+- **AI Co-Mathematician (arXiv 2605.06651, DeepMind)** — https://arxiv.org/abs/2605.06651 — #3 alphaXiv (40 reactions); stateful agent workbench for mathematicians. Domain-vertical agent deployment (math research); peer to [[ai-scientist-v2]] / [[paperorchestra]] / [[deployments/alphaevolve-impact]]. Capture if a math-vertical agent thread opens.
+- **Agent supply-chain security thread (Trustfall + Snyk-Anthropic + Opsera-Cursor)** — https://www.helpnetsecurity.com/2026/05/07/trustfall-ai-coding-cli-vulnerability-research/ + https://sdtimes.com/ai/may-8-2026-ai-updates-from-the-past-week-coder-agents-launch-snyk-claude-partnership-opsera-cursor-partnership-and-more/ — Three independent same-week signals on coding-agent supply-chain security moving from research to vendor partnerships. Watch for either a published vuln writeup with mechanism detail or a vendor primary post explaining the partnership architecture.
 
 ---
 
@@ -21,7 +38,7 @@ Surplus from this week's sweep — the 5 captured items are recorded in `wiki/lo
 - **ARIS — Autonomous Research via Adversarial Multi-Agent Collaboration (arXiv 2605.03042)** — https://arxiv.org/abs/2605.03042 — Open-source research harness using adversarial cross-model review to prevent unsupported claims in long-running autonomous research loops. 92 HuggingFace upvotes. Adjacent to PaperOrchestra (already in wiki); may extend rather than displace.
 - **Agent Capsules — Quality-Gated Granularity Control for Multi-Agent LLM Pipelines (arXiv 2605.00410)** — https://arxiv.org/abs/2605.00410 — Runtime system that intelligently merges/separates agent calls; 51% token reduction with quality gates, no training required. Practical harness-efficiency angle.
 - **SWE-WebDevBench — Evaluating Coding Agent Platforms as Virtual Software Agencies (arXiv 2605.04637)** — https://arxiv.org/abs/2605.04637 — First multi-dimensional eval of vibe-coding platforms as full dev agencies (68 metrics across PM/eng/ops). All 6 platforms fail below 60% engineering quality and 65% security. Pairs with the convergence-of-vibe-and-agentic thread.
-- **AlphaEvolve — Scaling Impact Across Fields (DeepMind)** — https://deepmind.google/blog/alphaevolve-impact/ (URL returns 404 on direct fetch but appeared on the DeepMind blog index) — Year-in-production report for the Gemini-powered evolutionary coding agent across genomics / TPU / quantum circuits. Verify URL before next-week capture.
+- ~~**AlphaEvolve — Scaling Impact Across Fields (DeepMind)** — https://deepmind.google/blog/alphaevolve-impact/~~ — Captured and ingested 2026-05-11 → [[deployments/alphaevolve-impact]]. URL verified live; year-in-production report for the Gemini-powered evolutionary coding agent (TPU silicon design, Spanner LSM compaction, Klarna 2× training, FM Logistic 10.4% routing, Schrödinger 4× MLFF). Vendor-stated quantitative claims; structural deployment claims credible.
 - **Karpathy — Sequoia Ascent 2026 (Software 3.0 / Agentic Engineering)** — https://karpathy.bearblog.dev/sequoia-ascent-2026/ — Frames "Software 3.0" with context window as the primary programming lever; distinguishes vibe coding (raises floor) from agentic engineering (raises ceiling). Cross-referenced from the Willison post; capture if it becomes load-bearing.
 
 ---

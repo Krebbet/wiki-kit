@@ -99,3 +99,7 @@ This source recommends structured context files (`feature_list.json`, `claude-pr
 - [[openai-symphony]] — extreme-scale multi-agent realization with session-log distillation and rework-state.
 - [[notion-token-town]] — multi-rebuild practitioner counterpart from a non-Anthropic vendor.
 - [[externalization-survey]] — unifying vocabulary for harness as cognitive environment.
+- [[agent-development-lifecycle]] — vendor-side LangChain framing of Build → Test → Deploy → Monitor; the Anthropic harness here is one concrete instance of the Lifecycle's "agent harness" build-tooling layer.
+- [[sierra-monitor-eval-of-evals]] — Sierra's flywheel (build → observe → understand → improve) is the operational counterpart to the single-shot harness design here; sustains a deployed agent over time.
+- [[skillos]] — learned-curation counterpart: the `feature_list.json` / `claude-progress.txt` artefacts here are hand-prompted; SkillOS demonstrates the curation policy can be RL-trained against downstream success.
+- [[direct-corpus-interaction]] — both reject the abstracted-API-mediates-everything posture; Anthropic's harness ships explicit progress files, DCI ships explicit corpus traversal — distinct flavours of the same anti-mediation move.

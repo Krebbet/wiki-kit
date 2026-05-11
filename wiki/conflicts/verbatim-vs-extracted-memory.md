@@ -1,8 +1,8 @@
 # Conflict: Verbatim storage vs extracted-fact consolidation
 
-**Status:** OPEN — empirical evidence is mixed and depends on regime (corpus scale, query type, retrieval metric vs end-to-end QA metric).
+**Status:** OPEN — empirical evidence is mixed and depends on regime (corpus scale, query type, retrieval metric vs end-to-end QA metric). *(2026-05-11: a third position — direct corpus interaction with **no separate index at all** — entered the conflict; see [Position 3](#position-3--no-index-direct-substrate-search-direct-corpus-interaction).)*
 
-Two production memory libraries operating in the same family of [[memory-architectures]] (*retrieval-augmented memory stores*) have made directly opposing design commitments on whether to summarise / extract or store verbatim.
+Two production memory libraries operating in the same family of [[memory-architectures]] (*retrieval-augmented memory stores*) have made directly opposing design commitments on whether to summarise / extract or store verbatim. A May 2026 academic paper has now added a third pole that questions whether a separate index is needed at all.
 
 ## Position 1 — Verbatim, never summarise: [[mempalace]]
 
@@ -24,6 +24,18 @@ Mechanism: facts (not transcripts) are the unit of storage. Mem0g extends to a l
 
 **Reproducible evidence:** LOCOMO J = 66.88 base / 68.44 graph; full-context J = 72.90 (Mem0 trades ~6pp accuracy for the latency/cost reduction).
 
+## Position 3 — No index, direct substrate search: [[direct-corpus-interaction]]
+
+From "Beyond Semantic Similarity" (arXiv 2605.05242, May 2026): *no offline index at all.* The agent searches the raw corpus using terminal tools (`grep` / `rg` / `head` / `cat`), moving semantic interpretation downward into the LLM at query time.
+
+Mechanism: bash-mediated traversal of raw files. No embedding model, no top-k API, no extracted facts. Both Position 1's "preserve original" commitment and Position 2's "extract for selection" mechanism are bypassed — there is nothing between the agent and the substrate.
+
+**Argument for the position:** the bottleneck isn't the retriever, it's the *retrieval interface resolution*. Top-k similarity collapses the corpus into a fixed-format ranked list and silently filters out evidence that downstream reasoning cannot recover. Stronger models can extract better evidence from raw text than any retriever can pre-package.
+
+**Reproducible evidence:** on BrowseComp-Plus with matched Sonnet 4.6 backbone, replacing Qwen3-Embedding-8B retrieval with DCI lifts accuracy 69.0 → 80.0 (+11 pp) **while reducing cost 29.4%**. +30.7 pp average over best retrieval-agent baseline on six knowledge-intensive QA benchmarks. Operates well in depth (within-document evidence isolation 48.4 vs 21.7) but poorly in breadth — at 200K docs cost more than doubles for −13.6 pp accuracy; at 400K docs accuracy falls to 37.5%.
+
+**Limitation that bears on this conflict:** DCI is workspace-scale, not 10M-doc enterprise-scale, in its current form. Hybrid (cheap retriever to narrow then DCI within subset) is unexplored.
+
 ## What the [[longmemeval]] paper says
 
 The ICLR 2025 LongMemEval paper, neutral on either project, recommends a **hybrid** at the index layer (§5.3): *"While using a flat index with the memory values themselves as the keys is a strong baseline, further expanding the keys with extracted user facts improves both memory recall (9.4% higher recall@k) and downstream question answering (5.4% higher accuracy)."*
@@ -34,14 +46,17 @@ That is: keep verbatim values, but enrich the keys with extracted facts. MemPala
 
 The conflict may be partially resolvable along one or more of these axes; the wiki has no empirical bridge yet.
 
-| Axis | Verbatim wins when… | Extraction wins when… |
-|---|---|---|
-| **Corpus scale** | Corpus fits comfortably in storage and retrieve-everything-then-rerank is feasible (≤ ~10M tokens) | Multi-year corpora where retrieve-all is infeasible; context-stuffing breaks down |
-| **Query type** | "What did I say about X?" — exact-words questions, single-fact recall, citation grounding | Multi-session reasoning, knowledge updates, temporal inference across many fragments |
-| **Trust budget** | User does not trust LLM to faithfully extract / summarise their words | User accepts faithful-summary tradeoff for 90% latency reduction |
-| **Metric** | Retrieval recall (`recall@k`) — verbatim is hard to beat at finding the relevant text | End-to-end QA accuracy — extracted facts already pre-digest the multi-step reasoning |
+| Axis | Verbatim wins when… | Extraction wins when… | No-index DCI wins when… |
+|---|---|---|---|
+| **Corpus scale** | Corpus fits comfortably in storage and retrieve-everything-then-rerank is feasible (≤ ~10M tokens) | Multi-year corpora where retrieve-all is infeasible; context-stuffing breaks down | Workspace / project-scale corpora (≤ ~100K docs) where the agent can traverse via tools without an index |
+| **Query type** | "What did I say about X?" — exact-words questions, single-fact recall, citation grounding | Multi-session reasoning, knowledge updates, temporal inference across many fragments | Multi-hop QA where evidence must be located *within* a document, not just that the document was retrieved |
+| **Trust budget** | User does not trust LLM to faithfully extract / summarise their words | User accepts faithful-summary tradeoff for 90% latency reduction | User accepts higher reasoning-tier model dependency for 11+ pp accuracy lift at 29% lower cost |
+| **Metric** | Retrieval recall (`recall@k`) — verbatim is hard to beat at finding the relevant text | End-to-end QA accuracy — extracted facts already pre-digest the multi-step reasoning | Within-document **localisation** (DCI 48.4 vs retrieval 21.7) over coverage (DCI 28.0 vs 56.7) |
+| **Index existence** | Index exists; values are verbatim text | Index exists; values *are* the extracted facts | **No index**; raw corpus is itself the queryable substrate |
 
-These axes are speculative; the wiki does not yet have a benchmark that directly compares verbatim-MemPalace and extracted-Mem0 on the *same* metric across the *same* corpus scale.
+These axes are speculative; the wiki does not yet have a benchmark that directly compares verbatim-MemPalace, extracted-Mem0, and no-index-DCI on the *same* metric across the *same* corpus scale.
+
+**The "Index existence" axis** (added 2026-05-11) is the new structural axis introduced by Position 3. The earlier two positions both assume an index — they disagree on what to put *in* it. DCI questions whether the index needs to exist at all for capable agents on appropriately-sized corpora.
 
 ## The scale-ceiling argument *(claim to confirm)*
 
@@ -50,22 +65,24 @@ Third-party reviews of [[mempalace]] argue that verbatim-everything has a scale 
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
-- Running both libraries on the same corpus at multiple scales (e.g. 100k, 1M, 10M tokens).
+- Running all three approaches on the same corpus at multiple scales (e.g. 100k, 1M, 10M tokens).
 - Reporting both retrieval recall and end-to-end QA accuracy on the same question set.
 - Holding the LLM reader constant.
 
-No such comparison exists in the captured sources. Until one does, the wiki keeps both positions documented and recommends practitioners pick by corpus-scale and metric they actually care about.
+No such comparison exists in the captured sources. Until one does, the wiki keeps the three positions documented and recommends practitioners pick by corpus-scale and metric they actually care about. DCI's scale ceiling (degrades sharply above 200K docs) and Mem0's claimed scale advantage (multi-year corpora) suggest the three positions may end up partitioning the regime space rather than competing head-on.
 
 ## Source
 
 - [[mempalace]] (and `raw/research/mempalace/01-readme.md`, `06-claude-md.md`, `02-mission.md` for the verbatim-discipline argument; `09-vectorize-review.md` for the scale-ceiling argument)
 - [[mem0]] (and `raw/research/memory-management/07-04-mem0.md` for the extraction-discipline argument and LOCOMO numbers)
 - [[longmemeval]] (and `raw/research/mempalace/11-longmemeval-paper.md` for the hybrid recommendation)
+- [[direct-corpus-interaction]] (and `raw/research/weekly-2026-05-11/05-beyond-semantic-similarity.md` for the no-index argument and BrowseComp-Plus / multi-hop QA numbers)
 
 ## Related
 
-- [[memory-architectures]] — both systems live in the *retrieval-augmented memory stores* family.
-- [[mempalace]] — verbatim position.
-- [[mem0]] — extraction position.
-- [[longmemeval]] — academic source recommending the hybrid (verbatim values + fact-augmented keys).
+- [[memory-architectures]] — Positions 1 and 2 live in the *retrieval-augmented memory stores* family; Position 3 challenges the family-defining assumption that an index exists.
+- [[mempalace]] — Position 1 (verbatim, with index).
+- [[mem0]] — Position 2 (extracted, with index).
+- [[direct-corpus-interaction]] — Position 3 (no index, direct substrate search).
+- [[longmemeval]] — academic source recommending a *with-index* hybrid (verbatim values + fact-augmented keys); DCI sits at a different point on the new "Index existence" axis.
 - [[generative-agents]] — historical antecedent of the extraction position (memory-stream summaries via the recency × importance × relevance scoring formula).

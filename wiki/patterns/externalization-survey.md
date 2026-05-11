@@ -111,13 +111,15 @@ The survey does **not** cite Anthropic's "Effective harnesses for long-running a
 
 The four-externalization taxonomy (memory + skills + protocols + harness) is genuinely cross-cutting in a way `memory-architectures` alone is not. The survey touches: memory (`memory-architectures` + 9 memory subpages), patterns (`effective-harnesses`, `skill-distillation`, `codified-context`, `context-folding`, `agentic-context-engineering`, `mcp-multi-agent-framework`, `agentic-harness-engineering`), deployments (`mcp-infrastructure`, `cognition-cloud-agents`, `microsoft-agent-365`, `openai-symphony`), coding-agents (`langchain-deep-agents`), case-studies (`anthropic-internal-study`, `willison-cognitive-cost`, `notion-token-town`).
 
-The skills chapter is particularly underrepresented in the existing wiki: [[skill-distillation]] argues for *eliminating* skills via collapse (the Metric Freedom F predictor), but no page currently surveys *what skills are and how they work as externalised artifacts*. The §6 harness chapter's six-dimension framework is also a new analytical vocabulary not present in the wiki.
+The skills chapter is particularly underrepresented in the existing wiki: [[skill-distillation]] argues for *eliminating* skills via collapse (the Metric Freedom F predictor), but no page currently surveys *what skills are and how they work as externalised artifacts*. The §6 harness chapter's six-dimension framework is also a new analytical vocabulary not present in the wiki. *(2026-05-11 update: [[skillos]] now provides a concrete RL operationalisation of §4 — frozen executor + RL-trained Markdown-skill curator with grouped-task downstream rewards.)*
 
 ## Related
 
 - [[memory-architectures]] — closest peer survey; bidirectional cross-reference.
 - [[effective-harnesses]] — concrete instance of the §6 six-dimension harness framework.
 - [[agentic-harness-engineering]] — operationalises §8.3 "self-evolving harnesses" emerging direction.
+- [[skillos]] — operationalises both §4 (skills externalization) and §8.3 (self-evolving harnesses) via RL on Markdown skill curation. The clearest 2026 instance of the survey's "skills as procedural-expertise externalization."
+- [[agent-development-lifecycle]] — process-lens (Build → Test → Deploy → Monitor) on the same substance the survey covers structurally; both arrive at memory + skills + protocols + harness as the load-bearing externalisations.
 - [[mcp-infrastructure]], [[mcp-multi-agent-framework]] — protocols-as-externalization (§5).
 - [[skill-distillation]] — complementary to the survey's skills chapter (one says "package", the other says "sometimes collapse").
 - [[codified-context]] — hand-engineered instance of all three externalizations simultaneously.

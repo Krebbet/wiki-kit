@@ -112,3 +112,5 @@ A weekly Cloud Agent Automation searches logs, surfaces new or recently spiked i
 - [[deployments/openai-symphony]] — both name "code/context for agent legibility" but from opposite directions: Symphony designs the codebase for agents, Cursor designs the harness per model
 - [[patterns/codified-context]] — direct contrast: codified-context relies on 660-line static constitution + 34-doc cold KB; Cursor's trajectory is explicitly away from heavy static context toward dynamic fetching
 - [[patterns/context-folding]] — Cursor's summarization-model-no-diff null result sits adjacent to AgentFold's variable-granularity argument; the strategies tested may differ
+- [[patterns/sierra-monitor-eval-of-evals]] — peer LLM-as-judge methodology with a different calibration mechanism (Cursor: Keep Rate + judge as separate signals; Sierra: judge calibrated against multi-model + team-labeled agreement before deployment)
+- [[patterns/agent-development-lifecycle]] — concrete production instantiation of the Lifecycle's Test + Monitor phases (CursorBench + Keep Rate + LLM-judge + automated-Linear-ticket loop)

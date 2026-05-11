@@ -69,3 +69,5 @@ Two practitioner sources captured the week of 2026-05-04 surface explicit MCP-vs
 - [[notion-token-town]] — practitioner four-axis MCP-vs-CLIs framing.
 - [[openai-symphony]] — OpenAI Frontier MCP-skepticism quote (token bloat, auto-compaction interference).
 - [[externalization-survey]] — protocols-as-externalization (§5); MCP as canonical agent-tool externalization.
+- [[direct-corpus-interaction]] — third (academic) data point alongside Notion + OpenAI Frontier in the MCP-vs-CLIs framing; reframes the question as **interface resolution** (does the abstracted retrieval surface preserve enough information for the agent to reason effectively?) rather than just token economics. Argues that for capable agents on workspace-scale corpora, raw `grep`/`bash` traversal beats top-k retrieval interfaces by +11 pp at lower cost. Implies MCP server design should expose `grep`/`find` primitives over data substrates rather than pre-mediated top-k APIs.
+- [[agent-development-lifecycle]] — Govern phase overlap (cost / tool-access / discoverability are the same gaps the 2026 MCP roadmap targets at the protocol layer).

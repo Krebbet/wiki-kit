@@ -148,3 +148,5 @@ The risk of investing in harness is that model improvements will obviate it. Lop
 - [[mcp-infrastructure]] — extended with Lopopolo's MCP-skepticism quote.
 - [[langchain-deep-agents]] — peer harness pattern; Symphony is what extreme harness investment looks like beyond the Deep Agents abstraction.
 - [[externalization-survey]] — places Symphony under §6 (six harness dimensions) and §8.5 (shared infrastructure → ecosystem-scale).
+- [[direct-corpus-interaction]] — academic counterpart to Lopopolo's CLI-first practitioner stance; DCI's `gh` praise + bash-as-search-interface analysis is the formal version of Symphony's MCP-skepticism on token-economic grounds.
+- [[alphaevolve-impact]] — peer zero-human-code production agent at radically different scale (DeepMind vendor-deployed in TPU/Spanner/compiler vs Symphony's 7-person greenfield); both are positive data points for high-Metric-Freedom = single-or-orchestrated single-vendor-stack.
