@@ -110,6 +110,7 @@ The other four are remediation; this is elimination. They are not in conflict �
 - [[memory-architectures]] — F's framing (behavioural-vs-score topology) is orthogonal to memory mechanisms; both are tools in the architecture decision.
 - [[ai-scientist-v2]], [[context-folding]], [[codified-context]], [[cognitive-fabric-nodes]] — the four within-MAS context-preservation mitigations the F-low regime invests in.
 - [[openai-symphony]] — production instance of skill distillation in practice: six skills, daily team-level agent loops over team-wide session logs, automatic re-extraction of durable improvements back into skills/docs.
+- [[agent-skills]] — Anthropic's "iterate on one hard task, then extract into a Skill" methodology is the practitioner-facing version of the F-metric collapse move.
 - [[notion-token-town]] — manager-agent topology and "automate itself out of a job" framing as adjacent F-question (when does collapsing a multi-agent fleet via a manager-agent layer match the F-predictor's collapse decision?).
 - [[externalization-survey]] — situates skill-distillation within the survey's skills-as-externalization chapter (§4); its boundary conditions (semantic alignment, portability, staleness, context-dependent degradation) are conceptual cousins to F.
 - [[agentic-harness-engineering]] — both use evidence-driven attribution before mutating an architecture (F predictor vs change-manifest verification).

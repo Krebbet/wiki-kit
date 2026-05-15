@@ -89,4 +89,6 @@ Citadel, FIS, BNY (via Eliza integration), Carlyle, Mizuho, Travelers, Walleye C
 - [[patterns/effective-harnesses]] — Managed Agent harness features (long sessions, per-tool permissions, credential vaults, audit log) as Anthropic's productized vertical harness
 - [[patterns/externalization-survey]] — three-component template = skills + protocols + harness instantiation; concrete vendor grounding for the survey's taxonomy
 - [[patterns/topology-taxonomy]] — main-agent + specialist subagent (comparables, methodology checks) is a manager-agent topology instance
+- [[patterns/agent-skills]] — the underlying skill-authoring spec behind the "skills + connectors + subagents" packaging
+- [[patterns/agent-personas]] — empirical caveat: naive expert personas net ≈ zero on mixed knowledge/alignment workloads
 - [[deployments/microsoft-agent-365]] — multi-cloud governance counterpart; M365 add-in layer complements that page's governance plane

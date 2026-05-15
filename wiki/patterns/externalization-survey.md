@@ -120,6 +120,8 @@ The skills chapter is particularly underrepresented in the existing wiki: [[skil
 - [[agentic-harness-engineering]] — operationalises §8.3 "self-evolving harnesses" emerging direction.
 - [[skillos]] — operationalises both §4 (skills externalization) and §8.3 (self-evolving harnesses) via RL on Markdown skill curation. The clearest 2026 instance of the survey's "skills as procedural-expertise externalization."
 - [[agent-development-lifecycle]] — process-lens (Build → Test → Deploy → Monitor) on the same substance the survey covers structurally; both arrive at memory + skills + protocols + harness as the load-bearing externalisations.
+- [[agent-skills]] — the canonical vendor instantiation of the §4 skills externalization axis (authoring mechanics + progressive disclosure).
+- [[agent-personas]] — persona-via-system-prompt as a context-layer externalization; PRISM moves it into weights via gated self-distillation.
 - [[mcp-infrastructure]], [[mcp-multi-agent-framework]] — protocols-as-externalization (§5).
 - [[skill-distillation]] — complementary to the survey's skills chapter (one says "package", the other says "sometimes collapse").
 - [[codified-context]] — hand-engineered instance of all three externalizations simultaneously.

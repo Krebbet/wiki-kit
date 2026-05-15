@@ -87,6 +87,25 @@ The MemoryArena delta is the cleanest empirical signal in the survey that *stati
 - [[ai-scientist-v2]] — node-tuple state pattern is a manual instantiation of memory in a research-agent setting.
 - [[mcp-infrastructure]] — async-lifecycle gap is the protocol-level expression of the survey's tool-orchestration memory problem.
 
+## Reading path for newcomers
+
+A four-paper minimum to navigate the cluster: this survey → [[memgpt]] (hierarchical virtual context, the dominant production paradigm) → [[mem0]] (retrieval-augmented stores, the latency/cost-optimised peer) → [[anthropic-memory-tool]] (the API-level vendor primitive) → [[conflicts/verbatim-vs-extracted-memory]] (the live three-way disagreement). Add [[reflexion]] + [[generative-agents]] for the 2023 foundational layer; add [[longmemeval]] for the indexing/retrieval/reading vocabulary used to compare systems on the same axis.
+
+**Picking by use-case** (synthesised across the family pages):
+
+| If you need… | Read |
+|---|---|
+| Exact-words recall, citation grounding, audit trails | [[mempalace]] (verbatim discipline) |
+| Multi-session reasoning at scale, 90% latency reduction | [[mem0]] (extract + consolidate) |
+| Multi-agent shared memory + sleep-time compute | [[letta-memory-blocks]] |
+| Vendor-supported primitive on the Claude API (ZDR-eligible) | [[anthropic-memory-tool]] |
+| Cross-session continuity inside Claude Code | [[claude-code-session-memory]] |
+| Application-layer hot/cold tiering for a large codebase | [[codified-context]] |
+| RL-trained skill curation (frozen executor) | [[skillos]] |
+| No-index, terminal-tool corpus search | [[direct-corpus-interaction]] |
+
+The three retrieval-augmented systems ([[mem0]], [[mempalace]], [[direct-corpus-interaction]]) sit in direct doctrinal tension; [[conflicts/verbatim-vs-extracted-memory]] is the page that catalogues the disagreement and the (currently speculative) reconciling axes.
+
 ## Externalization framing (Zhou et al. 2026)
 
 The [[externalization-survey]] (arXiv 2604.08224) reframes memory as one of four coupled externalizations (memory + skills + protocols + harness) with a four-content-type decomposition — *working context*, *episodic experience*, *semantic knowledge*, *personalised memory* — more granular than this page's three-axis taxonomy but mapping cleanly onto it. The survey's memory chapter (§3) uses Du 2026's four-paradigm taxonomy (monolithic context → context+retrieval → hierarchical memory & orchestration → adaptive memory systems), which aligns one-to-one with this page's five mechanism families. See [[externalization-survey]] for the cross-cutting framing across memory + skills + protocols + harness; this page remains the focused memory survey.

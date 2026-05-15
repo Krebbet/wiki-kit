@@ -62,6 +62,14 @@ Three new sources from the 2026-05-04 weekly sweep extend the conflict on differ
 
 Combining the three: the wiki's current best characterisation of *when context infrastructure works* is now: structural components (memory, tools, middleware) helps; prose-level system-prompt additions hurts at the margin; the surface representation should be model-native rather than internal-engineering-convenient; agent-authored continuously-distilled artefacts beat human-pre-generated ones; long-running multi-session regimes benefit more than single-session well-documented ones. None of these are individually controlled against the AGENTS.md eval methodology; the AHE component ablation is the closest to a controlled experiment that points the same direction.
 
+## New data points (week of 2026-05-15)
+
+Two from the agentic-skills-personalities research sweep; neither opens a new conflict — both *strengthen the regime-dependence reconciling axis*.
+
+- **[[../patterns/agent-skills]] (Anthropic primary sources: engineering blog + best-practices docs + Complete Guide + Claude Code docs)** — Anthropic's canonical statement of the *favorable regime's preconditions*. Skills are the same idea AGENTbench tested (packaged instruction/procedural context) but deliberately on the opposite side of every reconciling axis the conflict already names: **human/Claude-A-authored** (not LLM-auto-generated), **progressively disclosed / lazily loaded** (not always-on flat context), **evaluation-tested before documentation is written**, and **code-bearing** (deterministic scripts over prose where possible). Crucially the vendor guidance *itself* prescribes the anti-bloat discipline ("the context window is a public good"; "only add context the model doesn't already have"; SKILL.md <500 lines / <5,000 words; offload to `references/`). This is not a contradiction of AGENTbench — it is the vendor articulating exactly the conditions under which context infrastructure plausibly helps, and is best read as a candidate *reconciling lever* (disciplined progressive disclosure) rather than a fifth position. The Claude Code lifecycle detail ("skill body costs nothing until invoked" vs always-on CLAUDE.md) is a concrete mechanism for the always-on-vs-on-demand sub-axis.
+
+- **[[../patterns/agent-personas]] (Zheng et al. 2311.10054; Hu et al. 2603.18507)** — a system-prompt-layer empirical data point that *sharpens* the prompt-layer-fragility thread (Bug 3, AHE +system_prompt −2.3 pp). Adding a persona to the system prompt is net-negative on knowledge tasks (MMLU 68 vs 71.6), net-positive on alignment/safety generation, and ≈ zero on mixed workloads (the gains and losses cancel — which is *why* the older study found an aggregate null). The reconciliation (Hu et al.) is that the effect is **task-type dependent**, recoverable only via conditioned routing (PRISM), not a static prompt addition. This is the cleanest empirical statement yet that prose added at the system-prompt layer is regime-dependent and fragile — consistent with, and independent corroboration of, the conflict's existing "prose-level system-prompt additions hurt at the margin" characterisation.
+
 ## What's still genuinely open
 
 - **No empirical bridge between the regimes.** The AGENTS.md eval does not test 100k+ line repos. Codified Context does not test what would happen if its KB were stripped or auto-generated. A paper that runs AGENTbench-style controls against a Codified-Context-style infrastructure at scale would resolve this directly.
@@ -92,6 +100,8 @@ Use this table as a starting position, not a conclusion. The conflict remains op
 - `raw/research/weekly-2026-05-04/04-agentic-harness-engineering.md` — added 2026-05-04 as a fourth distinct position (machine-evolved, multi-component, +system_prompt only −2.3 pp).
 - `raw/research/weekly-2026-05-04/03-openai-symphony.md` — added 2026-05-04 as positive corroboration of agent-authored / continuously-distilled regime.
 - `raw/research/weekly-2026-05-04/02-notion-token-town.md` — added 2026-05-04, proposes representation-fit-to-model-priors as a newly surfaced (untested) reconciling axis.
+- `raw/research/agentic-skills-personalities/01-01..04-04` (Anthropic Skills primary sources) — added 2026-05-15 via [[../patterns/agent-skills]]; vendor articulation of the favorable-regime preconditions + progressive disclosure as a reconciling lever.
+- `raw/research/agentic-skills-personalities/05-05-helpful-assistant-personas.md`, `06-06-prism-expert-personas.md` — added 2026-05-15 via [[../patterns/agent-personas]]; system-prompt-layer fragility corroboration (persona effect is task-type-dependent, ≈ zero naive net).
 
 ## Related
 
@@ -104,3 +114,5 @@ Use this table as a starting position, not a conclusion. The conflict remains op
 - [[../patterns/agentic-harness-engineering]] — machine-evolved fourth position; +system_prompt only −2.3 pp ablation.
 - [[../deployments/openai-symphony]] — positive corroboration; six skills + agents.md + session-log distillation at OpenAI Frontier.
 - [[../case-studies/notion-token-town]] — representation-fit-to-model-priors as a newly surfaced reconciling axis.
+- [[../patterns/agent-skills]] — vendor articulation of the favorable-regime preconditions; progressive disclosure as a candidate reconciling lever (2026-05-15).
+- [[../patterns/agent-personas]] — system-prompt-layer fragility corroboration; persona effect is task-type-dependent (2026-05-15).

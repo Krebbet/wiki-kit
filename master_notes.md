@@ -114,3 +114,15 @@ The same gap likely exists in `.claude/commands/ingest.md` if `/ingest`'s subage
 **Observation:** During the post-merge dep install for the markdown package, two parallel `poetry install --no-root` invocations from `Bash run_in_background` both stalled with no output for several minutes. Direct `pip install markdown` into the poetry venv at `~/.cache/pypoetry/virtualenvs/wiki-kit-*/bin/pip` worked instantly. Possibly poetry-lockfile contention from concurrent invocations, but the first invocation also stalled when run alone earlier in the session.
 **Implication:** Worth double-checking before relying on `poetry install` in unattended cron paths. If the issue reproduces in cron, document a `pip install -r requirements.txt` (or pip-into-venv) fallback in the kit's setup steps. Single-occurrence — don't fix without reproducing.
 **Status:** open
+
+### 2026-05-15 — `cd` persists across Bash tool calls; breaks `poetry run python -m tools.*` snippets
+**Scope:** kit
+**Observation:** In this environment the working directory **persists** between Bash tool calls (contrary to the common "shell state does not persist" assumption). During the agentic-skills-personalities sweep, a `cd raw/research/<topic> && wc ...` command left cwd inside the topic dir; the next `poetry run python -m tools.audit_captures` then failed with `ModuleNotFoundError: No module named 'tools'` because it was no longer at repo root. A second command failed the same way.
+**Implication:** The `research.md` / `ingest.md` pipeline snippets all assume repo-root cwd. Any `cd` (even a convenience `cd` for `wc`/`ls`) silently breaks every subsequent `poetry run python -m tools.*` invocation. Kit fix options: (a) prefix tool snippets with an explicit `cd <repo-root> && ...`, or (b) add a note to research.md/ingest.md to never `cd` and always use absolute/repo-relative paths from root. Cheap, generalises to every wiki.
+**Status:** open
+
+### 2026-05-15 — `/ingest` aggregator parses "Proposed page shape" too strictly (bold prefix → kind:"unknown")
+**Scope:** kit
+**Observation:** 5 of 7 subagent summaries had their `## Proposed page shape` parsed as `kind:"unknown"` by `tools.ingest_plan.aggregate`, because subagents wrote `- **New page** \`patterns/foo\`` (bold) instead of the exact `- New page: <title>` prefix the parser keys on. The orchestrator had to read the summary files directly to recover the real plan — same class of issue as the 2026-05-08 weekly-brief schema-mismatch learning. Page-plan aggregation silently degrades rather than erroring.
+**Implication:** Either (a) make the subagent prompt template in `ingest.md` show the *exact* parseable prefixes (`- New page: ` / `- Extend [[page]] with section "..."`) with a "match this literally" instruction, or (b) make `parse`/`aggregate` tolerant of bold/`**`-wrapped and `:`-optional variants. (b) is more robust since subagents drift toward markdown emphasis. Recurring across at least two sweeps.
+**Status:** open

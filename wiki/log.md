@@ -253,3 +253,19 @@ Autonomous Monday weekly sweep. 5 captures, 5 new wiki pages, 11 extensions, 1 c
 **Process learnings (logged inline):**
 - The `/weekly-brief` skill's step-5 ingest-subagent prompt template doesn't include the `parse_summary`-required frontmatter (`schema_version: 1`) or the exact required section names (`One-line` / `Cross-ref candidates` / `Conflict flags` / `Proposed page shape`). All five subagent summaries this week were structurally fine but failed `parse_summary` validation — recovered by reading the summaries directly in the orchestrator. Master_notes-worthy fix: extend the step-5 template in `.claude/commands/weekly-brief.md` to embed the exact schema (frontmatter + section names) so subagents emit parseable summaries by default. Logging.
 - `poetry install --no-root` from `Bash run_in_background` stalled with no output for several minutes. Direct `pip install <dep>` into the poetry venv worked instantly. Possibly poetry-lockfile contention from two concurrent invocations earlier in the run. Worth double-checking next sweep before relying on poetry-install in unattended cron.
+
+## 2026-05-14 — query: memory-systems reading list
+
+Query asked for a curated reading list weighting different agentic memory systems by utility/benefits. Traversed [[memory-architectures]] → all 7 memory/* pages → [[conflicts/verbatim-vs-extracted-memory]] → [[patterns/direct-corpus-interaction]]. Synthesised a stage-by-stage reading path (survey → foundational 2023 → 2025-26 productionised → live conflicts) plus a per-system "when this wins" picker table.
+
+Wiki update: extended [[memory-architectures]] with a "Reading path for newcomers" section containing the four-paper minimum on-ramp and the use-case → recommended-system picker table. The factual content was already on each page; the gap was a learning-sequence entry point in one place. No new pages.
+
+## 2026-05-15 ingest | Agentic skills & personalities (research sweep)
+
+Topic: best practices for creating agentic skills & personalities (Claude Code + general). 7 sources captured to raw/research/agentic-skills-personalities/, audit clean (0 issues), 7/7 subagent summaries schema-valid.
+
+Sources: 4 Anthropic Skills primary (01 engineering blog, 02 best-practices docs, 03 Claude Code docs [lossy scrape — facts reliable, prose not quoted], 04 Complete Guide PDF [pymupdf; quantitative figures vendor-self-described aspirational → collect-but-confirm]); 2 empirical persona papers (05 Zheng arXiv 2311.10054 null result; 06 Hu/PRISM arXiv 2603.18507 task-type decomposition + gated-LoRA routing); 07 The New Stack practitioner tutorial.
+
+2 new pages: patterns/agent-skills (consolidates 01+02+03+04 — same conceptual ground at varying depth; one hub beats four thin pages; dedicated Claude Code mechanics section), patterns/agent-personas (05+06+07; practitioner advice bracketed against empirical evidence with an authority-stratified what-works/what-doesn't table). conflicts/agents-md-effectiveness extended with a 2026-05-15 data-points section (Skills = favorable-regime preconditions / progressive disclosure as reconciling lever; persona evidence = system-prompt-layer fragility corroboration). 4 reciprocal xrefs (skillos, externalization-survey, skill-distillation, anthropic-finance-agents). Filled the two named coverage gaps (persona/personality design; Claude Code skill-authoring mechanics).
+
+Conflict ruling (made under standing autonomy): did NOT open conflicts/persona-effectiveness — Hu et al. explicitly reconciles the Zheng null as a task-type aggregation artefact; no genuine impasse to elevate, documented as resolved-tension on the personas page per the conflict protocol.

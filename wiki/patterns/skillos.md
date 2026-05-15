@@ -159,6 +159,7 @@ Additional open questions:
 - [[patterns/agentic-harness-engineering]] — closest peer self-evolving system; whole-harness vs skills-only.
 - [[patterns/externalization-survey]] — canonical operationalisation of the survey's skills chapter and self-evolving-harness emerging direction.
 - [[patterns/skill-distillation]] — different abstraction level; compatible.
+- [[patterns/agent-skills]] — the human/Claude-A *authoring* counterpart to SkillOS's *policy-learned* curation of the same skill-as-Markdown abstraction.
 - [[memory/memory-architectures]] — Policy-learned memory-management family instance.
 - [[patterns/effective-harnesses]] — learned-curation counterpart to Anthropic's hand-prompted artefacts.
 - [[patterns/topology-taxonomy]] — policy-learned variant of the externalised-handoff-artefacts mitigation class.
