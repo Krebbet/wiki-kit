@@ -52,6 +52,9 @@ The "teacher can propose useful exercises without being able to solve them" resu
 - [[_overview]] — theme synthesis
 - [[fan-learning-to-teach]] — canonical bilevel teacher-RL with validation-accuracy reward
 - [[sakana-rlt]] — RL-teacher with dense per-step log-prob reward; complementary action space (explanations, not curricula)
+- [[../self-play/asymmetric-self-play]] — pre-LLM precursor: Alice/Bob with $R^A = \gamma \max(0, t_B - t_A)$. Same self-regulating-frontier idea via time asymmetry rather than student-improvement-rate.
+- [[../self-play/sqlm]] — direct LLM analogue at lower infrastructure cost: replaces SOAR's bilevel student-improvement reward with an instantaneous Goldilocks gate on solver consensus. Same goal (frontier-of-competence proposer reward); cheaper signal.
+- [[../synthesis/proposer-reward-shapes]] — comparison table placing SOAR's improvement-rate reward alongside five alternative proposer-reward shapes.
 - [[../single-sample-rl-finetuning/data-efficiency-rft]] — DOTS targets $p=0.5$ difficulty; SOAR's "generate the right stepping stones" is a generative analogue
 - [[../single-sample-rl-finetuning/1-shot-rlvr]] — the plateau-avoidance axis: 1-shot RLVR picks a high-variance seed; SOAR generates many
 - [[../self-improvement/_overview]] — self-play adjacent; SOAR's contribution is grounding rewards in real-dataset progress rather than intrinsic proxies

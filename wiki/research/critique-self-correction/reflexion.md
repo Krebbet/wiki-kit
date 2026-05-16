@@ -3,13 +3,13 @@
 Shinn et al., 2023. "Verbal RL": instead of updating weights, the agent stores natural-language self-reflections in an episodic memory buffer that is prepended in subsequent trials. Modular triple (Actor / Evaluator / Self-Reflection) lets sparse environment rewards be amplified into specific textual lessons. Achieves 91% pass@1 on HumanEval (vs 80% GPT-4 baseline), +22% on AlfWorld, +20% on HotPotQA.
 
 ## Method
-- Three LLMs (often the same base): **Actor** `M_a` (policy), **Evaluator** `M_e` (scores trajectories), **Self-Reflection** `M_sr` (turns scalar reward + trajectory into verbal summary).
-- Loop: trial `t` produces trajectory `τ_t`; evaluator gives scalar `r_t = M_e(τ_t)`; self-reflection emits `sr_t = M_sr(τ_t, r_t, mem)`; `sr_t` appended to `mem`. `mem` is bounded (Ω = 1–3 entries) to fit context.
+- Three LLMs (often the same base): **Actor** $M_a$ (policy), **Evaluator** $M_e$ (scores trajectories), **Self-Reflection** $M_{sr}$ (turns scalar reward + trajectory into verbal summary).
+- Loop: trial $t$ produces trajectory $\tau_t$; evaluator gives scalar $r_t = M_e(\tau_t)$; self-reflection emits $sr_t = M_{sr}(\tau_t, r_t, \text{mem})$; $sr_t$ appended to $\text{mem}$. $\text{mem}$ is bounded ($\Omega = 1$–3 entries) to fit context.
 - **Evaluator instantiations** per task:
   - Reasoning (HotPotQA): exact-match against gold answer.
   - Decision-making (AlfWorld): hand-written heuristic (loop detection / step budget) + LLM binary classifier.
-  - Programming (HumanEval, MBPP, LeetcodeHard): self-generated unit-test suite (CoT-prompted, AST-validated, sample n ≤ 6 tests). Note: avoiding ground-truth tests preserves pass@1 eligibility.
-- Self-reflection acts as a "semantic gradient": converts binary success into actionable verbal lesson (which action `a_i` was wrong, what `a'_i` would have done).
+  - Programming (HumanEval, MBPP, LeetcodeHard): self-generated unit-test suite (CoT-prompted, AST-validated, sample $n \leq 6$ tests). Note: avoiding ground-truth tests preserves pass@1 eligibility.
+- Self-reflection acts as a "semantic gradient": converts binary success into actionable verbal lesson (which action $a_i$ was wrong, what $a'_i$ would have done).
 
 ## Claims
 - Programming (Table 1): HumanEval Python 80.1 → **91.0**; HumanEval Rust 60.0 → 68.0; MBPP Rust 70.9 → 75.4; LeetcodeHard Python 7.5 → 15.0. MBPP Python *underperforms* base (80.1 → 77.1) due to high false-positive rate (16.3%) of self-generated tests vs HumanEval's 1.4% (Table 2).

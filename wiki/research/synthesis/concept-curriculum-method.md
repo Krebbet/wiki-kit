@@ -172,7 +172,7 @@ When the curriculum's last concept $C^\star$ is mastered, $S$ should by construc
 **Challenges:**
 - Zero-variance collapse. If $S$ always passes a concept's TestSet immediately, the inner loop produces no signal. (DAPO's Dynamic Sampling filters these out at scale — but if one concept in the curriculum already passes, skip-and-move-on is likely the right behaviour anyway.)
 - Conversely, if $S$ never passes, the inner loop runs forever. A compute budget per concept is essential.
-- Textbook size vs context window: a full textbook chapter may not fit at training time. Some form of retrieval or chunking is needed. Wiki has no captured source covering *training-time* retrieval (as opposed to RAG at inference time) — explicit gap flagged in [[proposed-method]].
+- Textbook size vs context window: a full textbook chapter may not fit at training time. Some form of retrieval or chunking is needed. Wiki has no captured source covering *training-time* retrieval (as opposed to RAG at inference time) — explicit gap flagged in [[proposed-method]]; specifically the **C_w / C_w⁺** extension (chunked SFT + RLVR-on-summary) in [[proposed-method]] is the design closure for this exact textbook-size question.
 
 ### Step (e): Test-train-retest loop
 
@@ -242,6 +242,8 @@ When the curriculum's last concept $C^\star$ is mastered, $S$ should by construc
 - **Granularity drift.** Nothing in the sketch prevents $T$ from generating concepts that are too fine (waste) or too coarse (skip important substructure). This is a DAG-quality problem without a captured audit method.
 
 ## Variant: failure-driven interactive DAG expansion
+
+> **Elevated 2026-04-28.** This variant has been promoted to a standalone fourth method proposal: [[recursive-concept-learning]] (RCL). The treatment below is preserved for context; for the refined algorithm, deliverables list, and research roadmap, see the dedicated page.
 
 A non-trivial alternative to step (a) is to *not pre-build the DAG at all*. Instead, start at the root $C^\star$ and let the DAG materialise top-down in response to observed student failures:
 

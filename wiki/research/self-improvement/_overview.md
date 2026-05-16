@@ -28,13 +28,13 @@ Methods that make a model train on data it generated itself, optionally curated 
 
 **Self-play scaling.** rStar-Math is the only paper here that does true tree-search self-play; STaR is closer to expert-iteration (Anthony et al. 2017) with a fixed expert; Self-Rewarding LMs is iterative DPO with a learned, co-evolving judge. The ordering by sample-efficiency-per-FLOP appears to be rStar-Math > STaR > Self-Rewarding LMs, but this trades off against generality (rStar-Math only does math; Self-Rewarding LMs does open-ended instruction following).
 
-**Where the supervision actually comes from.** Stripping back: STaR depends on `(x, y)` pairs (the answer is the verifier); Self-Rewarding LMs depends on a tiny hand-curated rubric prompt plus seed instruction data; rStar-Math depends on `(x, y)` pairs, a Python interpreter, and a curriculum of progressively harder problems. None of these are "free" — they are *cheaper* substitutes for human reasoning annotations.
+**Where the supervision actually comes from.** Stripping back: STaR depends on $(x, y)$ pairs (the answer is the verifier); Self-Rewarding LMs depends on a tiny hand-curated rubric prompt plus seed instruction data; rStar-Math depends on $(x, y)$ pairs, a Python interpreter, and a curriculum of progressively harder problems. None of these are "free" — they are *cheaper* substitutes for human reasoning annotations.
 
 ## Method comparison table
 See the table above. Headline: each method amplifies a small seed by ~10²–10⁴ effective examples through model-generated variants, gated by a verifier whose strictness determines downstream quality.
 
 ## Open questions
-- **Single-shot extreme.** None of these papers tests `|D| = 1`; STaR uses ~10 worked rationales as seed but thousands of question/answer pairs as the unsupervised pool. Can the loop close on a single concept-bearing example, or does it need a question distribution to bootstrap from?
+- **Single-shot extreme.** None of these papers tests $|\mathcal{D}| = 1$; STaR uses ~10 worked rationales as seed but thousands of question/answer pairs as the unsupervised pool. Can the loop close on a single concept-bearing example, or does it need a question distribution to bootstrap from?
 - **Concept-level vs token-level variability.** All three vary at the token level. Concept-based learning may need *concept-level* perturbation operators that the verifier can still score.
 - **Verifier provenance.** Code execution (rStar-Math) is the only fully external verifier. Self-judges saturate / hack; gold-answer verifiers exclude domains without crisp answers. What's the equivalent for "concept correctness"?
 - **Saturation dynamics.** All three plateau within a handful of rounds. Why? Distribution shift in the seed pool, or fundamental ceiling of policy ⊕ verifier?

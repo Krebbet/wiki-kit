@@ -4,7 +4,7 @@
 
 ## Goal
 
-Update model weights on a single training example `(x, y*)` such that:
+Update model weights on a single training example $(x, y^\star)$ such that:
 
 1. The edit lands in an **addressable, reversible subnetwork** (not the whole model).
 2. The edit **fires only when needed** (not on every example).
@@ -14,13 +14,13 @@ Update model weights on a single training example `(x, y*)` such that:
 ## The four primitives
 
 ### P1 — Failure trigger (RCE)
-`F(x) = H(π_θ(y|x)) / (M(π_θ(y|x)) + ε)` with `M = p_(1) − p_(2)`. When `F(x) > τ`, the current policy cannot resolve `x` with confidence — fire single-sample update. Cheap, label-free. See [[../concept-learning/recursive-concept-evolution]].
+$F(x) = H(\pi_\theta(y|x)) / (M(\pi_\theta(y|x)) + \varepsilon)$ with $M = p_{(1)} - p_{(2)}$. When $F(x) > \tau$, the current policy cannot resolve $x$ with confidence — fire single-sample update. Cheap, label-free. See [[../concept-learning/recursive-concept-evolution]].
 
 ### P2 — Sparse subnetwork mask (Balashov)
-RL effectively touches only 5–30% of weights (DeepSeek-Math 7B + GRPO specifically). Pre-compute a mask `M_θ` from a handful of reference rollouts via Fisher magnitude + LayerNorm exclusion. Restrict every gradient to `M_θ`. Edit locality by construction; unrelated capability protected; mask reusable across examples. See [[../rlvr-mechanics/rl-sparse-subnetwork]].
+RL effectively touches only 5–30% of weights (DeepSeek-Math 7B + GRPO specifically). Pre-compute a mask $M_\theta$ from a handful of reference rollouts via Fisher magnitude + LayerNorm exclusion. Restrict every gradient to $M_\theta$. Edit locality by construction; unrelated capability protected; mask reusable across examples. See [[../rlvr-mechanics/rl-sparse-subnetwork]].
 
 ### P3 — Fisher-proxy information-gain reward (L2T)
-Per-episode reward `r_t ≈ I(θ; episode_t)` estimated via low-rank Fisher / SVD proxy (`r/d ≈ 1–10%` at 1.5B). Dense, label-free, per-rollout. No external PRM required. See [[../rlvr-mechanics/learning-to-think]].
+Per-episode reward $r_t \approx I(\theta; \text{episode}_t)$ estimated via low-rank Fisher / SVD proxy ($r/d \approx 1$–$10\%$ at 1.5B). Dense, label-free, per-rollout. No external PRM required. See [[../rlvr-mechanics/learning-to-think]].
 
 ### P4 — Principle decomposition (CAI)
 Decompose the target concept into 5–10 natural-language principles. Each becomes a reward dimension evaluated by an LLM judge (self or sibling). CAI showed principle-decomposition replaces tens of thousands of preference labels. Reward becomes a *vector* over addressable axes rather than a scalar. See [[../critique-self-correction/constitutional-ai]].
@@ -81,13 +81,26 @@ The four-primitive composition is not any of the above; it's the specific hybrid
 
 ## Gaps / unknowns
 
-- **Cheap mask discovery.** Balashov recovers `M_θ` from a converged RL run. Need a heuristic that estimates it from `≤ G` rollouts + a Fisher snapshot on a single example. Candidate: top-k |Fisher · magnitude| with LayerNorms excluded. Unvalidated.
+- **Cheap mask discovery.** Balashov recovers $M_\theta$ from a converged RL run. Need a heuristic that estimates it from $\leq G$ rollouts + a Fisher snapshot on a single example. Candidate: top-k |Fisher · magnitude| with LayerNorms excluded. Unvalidated.
 - **Principle extraction for open-world concepts.** CAI hand-authored principles. For unseen concepts an LLM must self-decompose the concept, and decomposition quality is unmeasured. Candidate probe: multi-sample principle generation + consistency.
-- **Low-G variance reduction.** GRPO's group-relative baseline collapses at `G=1` and is noisy at small `G`. Candidate: shared baseline from a frozen reference policy per prompt, or a leave-one-out baseline across perturbations of `x`.
+- **Low-G variance reduction.** GRPO's group-relative baseline collapses at $G=1$ and is noisy at small $G$. Candidate: shared baseline from a frozen reference policy per prompt, or a leave-one-out baseline across perturbations of $x$.
 - **Related-input pool for validation.** MDL over a held-out related set requires the set. Options: x-augmentations (paraphrase, invariance transforms), nearest-neighbour retrieval from pretraining corpus, or LLM-generated sibling prompts. None validated here.
-- **Catastrophic forgetting bound.** The P2 mask + KL leash mitigate but do not bound forgetting. This is the unclaimed territory — no paper in the current corpus addresses it. Next research cluster to run.
-- **Reference-material-in-context during weight updates.** The skeleton is silent on whether a comprehensive reference text (e.g. a textbook chapter, a worked-solution library) should sit in the prompt while the loop iterates. TTT keeps synthetic tasks in-context for *one* test instance ([[../test-time-training/ttt-few-shot]]); Algorithm Distillation is gradient-free ([[../test-time-training/algorithm-distillation]]); Reflexion's memory is Ω=1–3 ([[../critique-self-correction/reflexion]]). None of these do *weight-updating RL with a persistent long-context reference*. Bayesian-ICL's per-token-information theorem argues this would help ([[../in-context-learning-theory/icl-bayesian-inference]]); no corpus method instantiates it.
-- **Small-curriculum band (N ≈ 10–100).** Existing single-sample work sits at N=1 (1-shot RLVR, CFT) or training-scale (rStar-Math); the middle band of a curated curriculum (e.g. textbook exercises sharing a reference text) is unmeasured. Load-bearing for "synthesise a textbook, run the exercises" designs.
+- **Catastrophic forgetting bound.** The P2 mask + KL leash mitigate but do not bound forgetting. This is the unclaimed territory — no paper in the current corpus addresses it. Next research cluster to run. Two distinct forgetting frames need separate bounds: *RL $\rightarrow$ pretraining* (the inert 70–95% is protected by sparsity, see [[../rlvr-mechanics/rl-sparse-subnetwork]]) and *RL $\rightarrow$ RL across concepts* (prior concepts live *in* the active 5–30% mask; new alignments compete for the same coordinates, with cross-domain mask overlap of 27%/67% as the empirical proxy for interference sites). The skeleton's P2 only addresses the first. The second — concept-on-concept interference inside a fixed-capacity active subnetwork — needs either per-concept Fisher anchors (component **F** in [[proposed-method]]) or mask-aware concept routing (freeze prior-concept $\cap$ new-concept entries, or steer concepts to disjoint mask regions).
+
+## Design space for the active-subnetwork question *(synthesis)*
+
+Four directions, mapped to existing primitives:
+
+| Direction | Sketch | Wiki primitive(s) | Tension / gap |
+|---|---|---|---|
+| (a) *Compress the layer to a low-dim surrogate* of the active subspace | Replace each $W$ with a low-rank approximation that captures the alignment-relevant span | None — and [[../rlvr-mechanics/rl-sparse-subnetwork]] argues against: $\Delta W$ is sparse-but-*full-rank* (avg $>99\%$, min-layer $\geq 91\%$); compression loses the geometry RL relies on | Imports the LoRA inductive bias the alignment evidence rejects |
+| (b) *Target the same variable set across tasks* | Freeze every alignment to a single discovered mask $M$ | **P2** is exactly this | Without (c) or (d), the shared mask becomes the contention zone for RL$\rightarrow$RL forgetting (cross-domain overlap 27%/67% [[../rlvr-mechanics/rl-sparse-subnetwork]]) |
+| (c) *A priori mask discovery* — find the basis before training | Top-k $\lvert\text{Fisher}\cdot\text{magnitude}\rvert$ from reference rollouts; layer-local Fisher/SVD; structured Fisher; magnitude-only | [[../rlvr-mechanics/learning-to-think]] (low-rank Fisher/SVD as info-gain reward); [[../catastrophic-forgetting/ewc-gemma2-cpt]] (empirical Fisher on representative task); [[../rlvr-mechanics/structured-fisher-optimizer]] (RACS / Alice for parameter interactions) | Open gap: corpus has no validated cheap mask-discovery primitive that matches Balashov's post-hoc mask. Closest method (L2T) is a reward signal, not a mask discovery routine — repurposing is unclaimed |
+| (d) *Alternative entry points per task* — install each new task on its own sparse representation, leave prior alignments untouched | Grow the basis: each new concept gets a new direction outside the existing column space | [[../concept-learning/recursive-concept-evolution]] is the load-bearing reference. Frozen base + growing low-rank library; new $B_i$ constructed by generator $G$, not selected from existing model directions; Prop 1 prefers $B_i$ outside $\text{col}(\Sigma)$. Geometric reading: update is $(1+g_i(x))\cdot h_\parallel$ on the concept subspace, identity on its orthogonal complement | RCE is a *concept-layer* mechanic, not an RL fine-tuning recipe. The orthogonal-subspace-per-task primitive is now in the corpus at SFT scale ([[../selective-finetuning/o-lora]]); the RLVR-trained-expert composition variant remains uncaptured (open — see [[../moe-adapters/_overview]]) |
+
+Cross-cutting: (a) and (d) are in tension — (a) wants one shared compressed subspace, (d) wants many task-specific ones. Sparse-but-full-rank evidence in [[../rlvr-mechanics/rl-sparse-subnetwork]] argues the alignment geometry does not naturally compress, which is also why [[../concept-learning/recursive-concept-evolution]] *grows* the basis rather than projecting onto a fixed low-rank one. (b) and (d) are the two horns of the RL$\rightarrow$RL forgetting question framed in [[../rlvr-mechanics/rl-sparse-subnetwork]] §"Capacity bound": (b) accepts the shared-knob bottleneck and pays the interference; (d) escapes it by installing each task on its own sub-representation. (c) is the prerequisite for either: without a-priori mask identification, every "restrict to $M$" or "orthogonal-to-$M_\text{prior}$" recipe needs a converged RL run first.
+- **Reference-material-in-context during weight updates.** The skeleton is silent on whether a comprehensive reference text (e.g. a textbook chapter, a worked-solution library) should sit in the prompt while the loop iterates. TTT keeps synthetic tasks in-context for *one* test instance ([[../test-time-training/ttt-few-shot]]); Algorithm Distillation is gradient-free ([[../test-time-training/algorithm-distillation]]); Reflexion's memory is $\Omega=1$–$3$ ([[../critique-self-correction/reflexion]]). None of these do *weight-updating RL with a persistent long-context reference*. Bayesian-ICL's per-token-information theorem argues this would help ([[../in-context-learning-theory/icl-bayesian-inference]]); no corpus method instantiates it.
+- **Small-curriculum band ($N \approx 10$–$100$).** Existing single-sample work sits at $N=1$ (1-shot RLVR, CFT) or training-scale (rStar-Math); the middle band of a curated curriculum (e.g. textbook exercises sharing a reference text) is unmeasured. Load-bearing for "synthesise a textbook, run the exercises" designs.
 - **Concept probing for LLM math understanding.** RCE and CBM concept-probes are vision-first; RCE's LLM numbers are *projected* per the paper's own caveat. A direct test of whether a specific math concept (chain rule, integration by parts) is installed vs pattern-matched is not in the corpus.
 
 ## Next capture priorities

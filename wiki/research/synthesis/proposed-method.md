@@ -33,7 +33,8 @@ Update model weights on a small set of (reference_text, question, solution) exam
 | **V** | **MDL concept-test on siblings** — maintain a small held-out set of *related* inputs (paraphrases, transformed instances, concept-family siblings). An edit commits iff it reduces description length on the sibling set: $\Delta DL(\text{sibling set}) < 0$. Revert otherwise. | [[../concept-learning/recursive-concept-evolution]] | Grades understanding vs memorisation. A pattern-matching edit compresses the seed but not the family. |
 | **F** | **EWC Fisher anchor** — compute Fisher diagonal on a pretraining-representative task set once; add $\frac{\lambda_{EWC}}{2}\sum_i F_i (\theta_i - \theta^*_i)^2$ to the loss. | [[../catastrophic-forgetting/ewc-gemma2-cpt]] | Forgetting protection. Complements **P2**'s subnetwork mask with an explicit anchor on the frozen-capability side. |
 | **S** | **Stopping signal** — monitor L2T-style Fisher/SVD info-gain per episode; stop the per-exercise loop when the info-gain delta plateaus *and* the MDL delta on siblings has stabilised. | [[../rlvr-mechanics/learning-to-think]], [[../concept-learning/recursive-concept-evolution]] | Avoids the 1-shot-RLVR post-saturation overfit band (>~1.4k steps). |
-| **G** | **Diversity injection** — group size $G > 1$ in GRPO; entropy bonus; optionally sample think-tokens at higher temperature. | [[../single-sample-rl-finetuning/1-shot-rlvr]], [[../teacher-student-rl/ho-reasoning-teachers]] | Prevents collapse to a single memorised explanation. Entropy loss shown load-bearing for post-saturation generalisation; diverse reasoning is load-bearing for distillation quality. |
+| **G** | **Diversity injection** — group size $G > 1$ in GRPO; entropy bonus; optionally sample think-tokens at higher temperature. **Pre-flight check (2026-05-01):** before training, audit candidate diversity using [[../self-play/info-gain-self-play]]'s prequential MDL test (Algorithm 1) — if epiplexity $S_{C,T}$ doesn't rise monotonically across iterations, fix proposer strength / synthetic direction *before* tuning reward shape. Diversity that isn't *learnable* (e.g. random rephrasings outside the Goldilocks zone) is wasted compute. | [[../single-sample-rl-finetuning/1-shot-rlvr]], [[../teacher-student-rl/ho-reasoning-teachers]], [[../self-play/info-gain-self-play]], [[../self-play/rstar]] (5-action MCTS as drop-in template at the per-problem level) | Prevents collapse to a single memorised explanation. Entropy loss shown load-bearing for post-saturation generalisation; diverse reasoning is load-bearing for distillation quality. |
+| **L** | **Format/fluency guard (composite)** — five composable corpus tools, all targeting the same failure mode: KL leash to $\pi_\text{base}$ ([[../single-sample-rl-finetuning/reft]], [[../rl-optimizers/instructgpt]]); EWC Fisher anchor (component **F** above); Balashov sparse mask (component **P2** above); Dr-GRPO length/std bias fix ([[../rl-optimizers/dr-grpo]]); DAPO Overlong Reshape on truncated rollouts ([[../rl-optimizers/dapo]]); MCPO hinge-KL on *mastered* prompts ([[../rl-optimizers/mcpo]]); InstructGPT ptx (mixed pretraining gradients during RL). | [[../single-sample-rl-finetuning/1-shot-rlvr]] (gibberish-trace at ~1.4k steps), [[../rl-optimizers/mcpo]] §4.1 Fig 2 (unanchored drift on mastered prompts ≈5% one-step regression — the mechanism behind 1-shot RLVR's degeneracy), [[../single-sample-rl-finetuning/cbrl]] (anneal-to-zero scaffold requirement) | Foregrounds what was previously scattered across **F**, **P2**, **S**, and the inline KL leash line. At $N=1$ every post-saturation step is unanchored drift on the same prompt's distribution — DAPO Dynamic Sampling is a no-op; MCPO hinge-KL is the corpus's specific response. **L** is what stops the format collapse [[../single-sample-rl-finetuning/1-shot-rlvr]] documents. |
 
 ## End-to-end flow
 
@@ -101,6 +102,7 @@ OUTPUT
 | Without **F** (EWC) + **KL leash** | Unrelated capability drifts; the method becomes a specialisation rather than a concept installer. |
 | Without **S** (stopping) | Post-saturation overfit — 1-shot RLVR shows accuracy peaks then declines after ~1.4k steps without a stopping rule. |
 | Without **G** (diversity) | Collapse to one memorised explanation — every corpus single-sample method that works has explicit diversity; every one that lacks it fails. |
+| Without **L** (format/fluency guard) | The 1-shot-RLVR gibberish-trace failure at ~1.4k steps. At $N=1$ post-saturation, every step is unanchored drift; DAPO Dynamic Sampling is a no-op (only one prompt); MCPO §4.1 shows ~5% one-step regression on mastered prompts. Test outputs degrade after training outputs do. |
 
 ## Relation to existing single-sample work
 
@@ -147,15 +149,237 @@ Read when you hit design questions the empirical papers above don't resolve.
 | 14 | [[../in-context-learning-theory/icl-as-gradient-descent]] | update shape | The implicit ICL update is rank-1 outer-product $(Wx - y)x^\top$. Explicit single-sample fine-tunes should mirror this — LoRA-shaped, not full-weight. |
 | 15 | [[../single-sample-rl-finetuning/rlvr-incentivizes-reasoning]] | format-vs-substance | CoT-Pass@K metric separates format gain from genuine reasoning gain. Instrument this alongside **V** to confirm concept uptake isn't a format artefact. |
 
+## Inner-loop reading order — alternative cut by reward vs dataset
+
+The Tier-1/2/3 lists above are keyed by *which component each paper supports*. When the question is instead "I've read Tier 1 — what next, focused on the inner-loop training itself: how to shape the reward signal and how to set up the data?", the same corpus rearranges as below. Both views point at the same papers; pick whichever cut matches your current question.
+
+### Reward signal — beyond correctness or RLT alone
+
+| Read | Contribution |
+|---|---|
+| [[../rlvr-mechanics/learning-to-think]] | Episodic GRPO with **label-free Fisher/SVD info-gain reward** (per-token, dense, no PRM); $r/d \approx 1\text{–}10\%$ at 1.5B. Complement to **R**; also the stopping diagnostic **S**. |
+| [[../teacher-student-rl/knowrl]] | **Atomic knowledge-points + Constrained Subset Search**; minimal-sufficient hint design; *no KL* loss; 1.5B SOTA. Closest precedent for "smallest concept-unit per step". |
+| [[../process-reward-models/pav-rewarding-progress]] | **PAV** — process advantage as step-level *progress* under a complementary prover. >8% search gain, 5–6× RL efficiency over outcome RM. The per-step cousin of **R** when CoTs are long. |
+| [[../process-reward-models/math-shepherd]] | Automated step labels from rollout success rate, no human annotation. The "process reward without humans" baseline to compare **R** against. |
+| [[../teacher-student-rl/pm4grpo]] | **TACReward** — process-mining alignment between student and teacher traces as dense scalar; drops into RLOO/GRPO/GSPO. Substitutable inner-loop reward when a teacher trace exists (which it does in the textbook setting). |
+| [[../teacher-student-rl/trice-cot-latent-variable]] | Rationales as latent variables; **marginal LL via MCMC-EM with control variate**; learns from incorrect rationales. Decides what to do with wrong teacher rollouts that still carry gradient. |
+| [[../critique-self-correction/critic-cot]] | SFT on weak-supervision critique-refine pairs; System-2 step-wise critique. 93.3% GSM8K, 57.8% MATH500. Recipe for *building* the critique RM when none is off-the-shelf. |
+| [[../self-improvement/multi-turn-policy-verifier]] | **PAG** — single LLM alternates policy/verifier roles in multi-turn RL. Bears on whether $\pi_s$ in **R** must be a separate student or can be the policy's own snapshot (open question §5 below). |
+| [[../rl-optimizers/dr-grpo]] | Identifies and removes length and std biases in GRPO. Recommended outer optimiser regardless of which reward you pick. |
+| [[../rl-optimizers/mcpo]] | **Hinge-KL on mastered prompts** + advantage-denominator rescaling. Bears directly on **P1** semantics — what to do once an exercise is mastered. |
+
+### Dataset setup — exercises, siblings, contrast, ordering
+
+| Read | Contribution |
+|---|---|
+| [[../single-sample-rl-finetuning/critique-ft-one-problem]] | **1-problem → 600-row** template via teacher critique amplification. Direct precedent for "one textbook exercise → many gradient signals". |
+| [[../teacher-student-rl/ho-reasoning-teachers]] | Fine-tune-CoT — **diverse rationales are the load-bearing extension**. Calibrates **G**: how many diverse $t$ rollouts per $(q,s)$ matter. |
+| [[../single-sample-rl-finetuning/reft]] | SFT warm-up + PPO on **multiple sampled CoT paths per problem**; +10–12% over SFT on math without external RM. Simplest "sample $K$ CoTs, reward correct" baseline against which **R** must justify itself. |
+| [[../single-sample-rl-finetuning/data-efficiency-rft]] | **DOTS** difficulty-targeted online data selection ($p \approx 0.5$); rollout replay. Calibration recipe for both training-item and eval-item difficulty. |
+| [[../single-sample-rl-finetuning/cbrl]] | **Curriculum of annealed few-shot demonstration prepending** during RLVR; +1.3–22.3% over GRPO-only. Recipe for how the reference text / worked solutions decay across iterations — speaks to **C**. |
+| [[../teacher-student-rl/soar-edge-of-learnability]] | **Bilevel meta-RL**: teacher generates synthetic Q–A, student trains with RLVR, teacher rewarded by student improvement on hard set. The recipe for *generating* exercises beyond the hand-curated textbook. |
+| [[../concept-evaluation/contrast-sets]] | Local-decision-boundary perturbations (manual, label-flipping); up-to-25% drop vs raw test set. Operationalises **V**'s sibling set. |
+| [[../concept-evaluation/gsm-symbolic]] | Symbolic templates over GSM8K; up-to-65% drop on irrelevant-clause "NoOp". Math-domain sibling generator; templated rather than authored. |
+| [[../concept-evaluation/math-perturb]] | 279 hard-perturbed level-5 MATH problems where the original solution path no longer applies. Stress-test for "concept installed vs path installed". |
+| [[../concept-evaluation/counterfactual-tasks]] | Same abstract task, counterfactual content (base-9, modified chess). Cleanest single axis for procedure-vs-abstraction. |
+| [[../concept-evaluation/skill-mix]] | Random $k$-subsets from $N$ skills; combinatorial explosion makes memorisation infeasible. Compositional retest *and* dataset-construction recipe. |
+
+### Theoretical anchors specific to the inner loop
+
+- [[../in-context-learning-theory/icl-bayesian-inference]] — per-token-information theorem; **a long reference-in-context carries more posterior signal than many short examples**. The theoretical underpinning for **C**.
+- [[../in-context-learning-theory/icl-as-gradient-descent]] — implicit ICL update is rank-1 outer product $(Wx-y)x^\top$; argues explicit single-sample fine-tunes should mirror this — LoRA-shaped, not full-weight.
+- [[../single-sample-rl-finetuning/rlvr-incentivizes-reasoning]] — **CoT-Pass@K** separates format gain from genuine reasoning gain. Instrument alongside **V** to distinguish format-vs-substance movement.
+
+### Suggested order if the reward shape is your blocking question
+
+1. Reward shape: [[../rlvr-mechanics/learning-to-think]] → [[../critique-self-correction/constitutional-ai]] → [[../teacher-student-rl/trice-cot-latent-variable]].
+2. Reward granularity: [[../process-reward-models/pav-rewarding-progress]] → [[../process-reward-models/math-shepherd]] → [[../teacher-student-rl/knowrl]].
+3. Dataset shape: [[../single-sample-rl-finetuning/critique-ft-one-problem]] → [[../teacher-student-rl/ho-reasoning-teachers]] → [[../single-sample-rl-finetuning/reft]] → [[../single-sample-rl-finetuning/data-efficiency-rft]] → [[../single-sample-rl-finetuning/cbrl]].
+4. Sibling/contrast for the **V** gate: [[../concept-evaluation/contrast-sets]] → [[../concept-evaluation/gsm-symbolic]] → [[../concept-evaluation/counterfactual-tasks]].
+5. Optimiser corrections you'll inherit: [[../rl-optimizers/dr-grpo]] → [[../rl-optimizers/mcpo]].
+
 ## Known gaps the implementation will hit
 
 1. **Cheap mask-discovery.** Balashov recovers $M_\theta$ from a *converged* RL run. The proposed method needs $M_\theta$ from a handful of reference rollouts. Candidate — top-$k$ $\|$Fisher · magnitude$\|$ — is principled but unvalidated at small rollout budgets.
 2. **RLT at small group size.** GRPO's group-relative baseline collapses at $G=1$ and is noisy at small $G$. Sakana used $G=64$; a textbook-scale budget may not afford this. Candidate workarounds: shared baseline from a frozen reference per prompt, leave-one-out baseline across principle axes or input perturbations.
-3. **Sibling set construction.** $V$ requires a pool of concept-family siblings for each exercise. Options: paraphrase augmentations, LLM-generated isomorphs, nearest-neighbour retrieval from the textbook. None validated in corpus.
-4. **Reference-in-context during RL — unmeasured.** No corpus paper runs gradient updates while a large reference document sits in the prompt. Risks: memory / context-length cost; attention-dilution over long context; the teacher may learn to ignore the reference.
+3. **Sibling set construction.** $V$ requires a pool of concept-family siblings for each exercise. Options: paraphrase augmentations, LLM-generated isomorphs, nearest-neighbour retrieval from the textbook. **Update 2026-04-28:** [[../concept-evaluation/contrast-sets]] (Gardner et al., EMNLP 2020) operationalises this directly — small, manual, label-flipping local-boundary perturbations are *exactly* what siblings should be. [[../concept-evaluation/gsm-symbolic]] gives the math-domain analogue via symbolic templates. Open question is whether a teacher LLM can generate contrast-set-quality siblings without manual authorship.
+4. **Reference-in-context during RL — partial answer found, decision locked.** Original concern: no corpus paper runs gradient updates while a large reference document sits in the *teacher's* prompt with $r^{KL}$-style soft leakage protection (memory cost, attention dilution, teacher learns to ignore reference). [[../self-play/spice]] (Liu, Jin et al., Meta, Oct 2025) supplied a *structural* alternative — Challenger reads document $d$, Reasoner answers without seeing $d$. **Decision locked 2026-05-01:** user has chosen **structural** over soft (memory: `feedback_self_play_design_choices.md`). Default Phase-0+ design: Reasoner does not see reference text during gradient step; teacher/Challenger does. RLT $r^{KL}$ regulariser dropped from the default loss. *Additional constraint surfaced:* training duration and entropy preservation are now load-bearing hyperparameters per [[../self-play/two-stage-dynamic]] — RLVR enters Stage-2 expansion regime only under entropy preservation; standard short-training GRPO stays in Stage-1 / Invisible-Leash bound ([[../self-play/invisible-leash]] Theorem C.1, [[../self-play/yue-rlvr-boundary]] empirical). Component **G** updated with [[../self-play/info-gain-self-play]]'s epiplexity pre-flight check.
 5. **Student choice.** Sakana uses a frozen Qwen2.5-7B as the student. Using the current policy's own frozen snapshot $\pi_s := \pi_\theta^{(t-1)}$ couples student and teacher curricula — potentially unstable. Decide up front.
-6. **Concept-probe metric on LLM math.** The MDL test requires a compression estimator that works on LLM-generated reasoning. RCE's operationalisation is vision-first; its LLM numbers are projected, not measured (see [[../concept-learning/_overview]] caveat).
+6. **Concept-probe metric on LLM math.** The MDL test requires a compression estimator that works on LLM-generated reasoning. RCE's operationalisation is vision-first; its LLM numbers are projected, not measured (see [[../concept-learning/_overview]] caveat). **Update 2026-04-28:** the [[../concept-evaluation/_overview|concept-evaluation theme]] supplies five candidate behavioural axes ([[../concept-evaluation/gsm-symbolic]] symbolic perturbation, [[../concept-evaluation/math-perturb]] hard solution-path perturbation, [[../concept-evaluation/counterfactual-tasks]] counterfactual variants, [[../concept-evaluation/contrast-sets]] local boundary, [[../concept-evaluation/skill-mix]] compositional combination) and one representational alternative ([[../concept-evaluation/causal-abstraction]] IIA) to MDL-on-text — all measured rather than projected. [[../concept-evaluation/embers-autoregression]] supplies the diagnostic prior.
 7. **Ordering and interference across exercises.** Bayesian-ICL predicts ordering-sensitivity; the method inherits it. No protocol for exercise ordering is specified above.
+
+## Extension: parametric SFT to lift $p_\gamma$ in the target region (2026-05-11)
+
+*Open extension surfaced by a /query against the 2026-05-10 RL-as-selection-not-learning cluster.* The original method embeds reference material **in-context** via component **C**. Under the 2026-05-10 cluster, RLVR has a hard coverage wall — [[../rl-optimizers/bolt-kl-rlvr-boltzmann]] Theorem 7 ($N \gtrsim 1/p_\gamma(x)$) and Theorem 6 ($\beta\log(1/\pi^*(S_N|x))$ saturation) — and [[../self-play/yue-rlvr-boundary]] identifies distillation as the unique mechanism that genuinely expands the support beyond what RLVR can reach. An extension worth tracking: pair the RL inner loop with a **parametric SFT round on the reference material itself**, designed to lift $\pi^*(S|x)$ in the target region *before* RL is asked to concentrate within that support.
+
+**Working name.** Component **C** (in-context reference) keeps its existing role; the new axis is component **C_w** (weight-update reference).
+
+**Corpus support — already in the wiki.**
+- [[../single-sample-rl-finetuning/deepseek-r1]] — multi-stage SFT/RL pipeline with cold-start long-CoT SFT before stage-1 RL; rejection-sampled SFT between RL stages.
+- [[../rl-optimizers/instructgpt]] — SFT → RM → PPO+ptx; PPO+ptx specifically mixes pretraining gradients into RL to prevent capability drift.
+- [[../single-sample-rl-finetuning/reft]] — 1–2 epoch SFT warm-up + PPO on multiple sampled CoTs; +10–12 pp over SFT alone.
+- [[../single-sample-rl-finetuning/cbrl]] — demonstrations prepended during RL with linearly annealed injection probability; gains *persist* after withdrawal.
+- [[../teacher-student-rl/knowrl]] — atomic knowledge-points injected on hard samples, CSS-selected to minimal-sufficient subset, withdrawn at inference; pruning interaction paradox documents that more context is not monotonically better.
+- [[../teacher-student-rl/co-evolving-policy-distillation]] — alternating GRPO and bidirectional mutual on-policy distillation; demonstrates that SFT-during-RL can sustain top-$k$ overlap >0.90 while RL drives capability.
+- [[../self-improvement/star]] — rationalise-then-SFT loop on self-generated correct reasoning; the "SFT-installs, RL-selects" pattern at minimum cost.
+
+**Corpus boundary — what *fails* in this direction.**
+- [[../teacher-student-rl/opsd-compresses-rlvr]] — RL-then-SFT (Incorrect-only OPSD) loses 7–10 pp. Distillation after RL only compacts; it cannot install reasoning states the student doesn't already support. **Implication: SFT must precede or alternate with RL, not follow it as a corrective.**
+
+**Design constraints inherited from the corpus.**
+1. *Pre-RL or interleaved, not post-RL corrective* (OPSD-compresses).
+2. *Minimal-sufficient over maximal context* (KnowRL's pruning paradox; full-KP injection can regress).
+3. *Anneal the scaffold* (CBRL: gains persist iff injection probability decays to zero).
+4. *Forgetting protection composes here* — components **F** (EWC anchor) and **P2** (Balashov mask) apply to the SFT round as well as the RL round; without them the SFT round risks erasing the very capability the RL round acts on.
+5. *Target the support-lifting requirement quantitatively* — the SFT pass should raise $\pi^*(S|x)$ for the target $x$ above the threshold where Theorem 7 becomes feasible. Open: how to measure $p_\gamma$ pre-SFT without a full RL probe.
+
+**What the corpus does *not* yet say.** No captured paper does parametric SFT on a textbook *body* (as opposed to long-CoT demonstrations or per-problem hints) before a per-concept RLT loop. The "SFT-installs, RL-selects" recipe at *textbook-as-target* granularity is consistent with the wiki but **not directly demonstrated**. This is the open experimental question this extension generates.
+
+**Relation to existing components.**
+- Composes with **C**: keep reference-in-context for the structural-asymmetry property (the SPICE-locked decision); add **C_w** as a preceding/alternating SFT pass on the same reference.
+- Composes with **G**: epiplexity pre-flight ([[../self-play/info-gain-self-play]]) applies before *and* after the SFT pass — if the SFT round doesn't raise learnable-information for the target region, abort before spending RL budget.
+- Composes with **V** (MDL sibling test): apply the sibling test after the SFT pass and again after the RL pass. The SFT pass should improve compression on siblings *without* RL; if it doesn't, the SFT data shape is wrong.
+
+**Relation to other method proposals.**
+- [[concept-curriculum-method]] step (b) packets already carry a Textbook body alongside $(Q, E, A)$ examples; whether to run weight-update SFT on the Textbook before the inner RL loop is left open in that page. This extension closes that as an explicit design choice.
+- [[recursive-concept-learning]] (RCL) inherits the same choice at every recursed-into node.
+
+### Sub-extension: offline logit-reweighting from a subject-matter prior (parametric-free variant) (2026-05-12)
+
+*Open hypothesis surfaced by the user 2026-05-12.* Claim: the relevant information is already in the base model; instead of (or before) any weight update, **reweight logits at inference time with a learned subject-matter prior** to push the model into the right solution space. Naming: **component R_w** (offline reweight prior) — orthogonal to **C** (in-context reference), **C_w** (SFT reference), **C_b** (per-rollout commentary SFT).
+
+**Where the corpus directly supports the hypothesis.**
+
+| Result | Source | What it says |
+|---|---|---|
+| **Token-level: RL = sparse logit rerank within base top-5** | [[../rlvr-mechanics/rethinking-rl-sparse-selection]] | Across GRPO/PPO/RLOO and three families: **0% of RL-promoted tokens lie outside base top-5**; 1.0–4.1% of positions reranked; mean rank 2.14–2.39; oracle intervention at those positions exactly recovers RL pass@1. **The information IS in there; RL only reranks at high-entropy positions.** |
+| **REASONMAXXER: rank-32 $W_O$ LoRA at 0.27–0.49% params matches RL** | [[../rlvr-mechanics/rethinking-rl-sparse-selection]] | Operationalises the offline reweight: ~50 problems + entropy-gated contrastive + rank-8 $W_O$ LoRA = 0.04% params; \$4–25 vs \$200–\$103k. **Strongest existence proof in the corpus that an offline prior suffices.** |
+| **BOLT closed-form static target** | [[../rl-optimizers/bolt-kl-rlvr-boltzmann]] | $\pi^* \propto \pi_\text{ref}\exp(r/\beta)$ — the KL-RLVR target is a Boltzmann tilt of the base. Static reweighting reaches the same target as online RL at 75–85% less wall-clock. |
+| **Filtered model $p^*$ as I-projection** | [[../rlvr-mechanics/binary-rewards-rl-challenges]] | The verifier-filtered model IS a reweighting; information-geometric structure (Dymetman). |
+| **ICL = posterior over latent pretraining concepts** | [[../in-context-learning-theory/icl-bayesian-inference]] | Theoretical underpinning: conditioning shifts the prior. Per-token-information theorem makes "long reference in context > many short examples" formal. **The hypothesis as a theorem.** |
+| **Algorithm Distillation: frozen weights, all in-context** | [[../test-time-training/algorithm-distillation]] | Limit case: transformer pre-trained on RL learning histories *executes the RL algorithm in-context with no weight updates*. |
+| **CBM test-time intervention** | [[../concept-learning/concept-bottleneck-models]] | Literally edit concept coordinates at inference. |
+| **TEMPO E-step verifier-ensemble recalibration** | [[../test-time-training/tempo]] | M-step refines policy; E-step is verifier-ensemble logit reweighting; +18.1pp AIME24 on OLMO3-7B. |
+| **rStar test-time multiplier** | [[../self-play/rstar]] | No fine-tuning; 32 MCTS × 5 actions + peer discriminator; LLaMA2-7B GSM8K **12.51% → 63.91%**. Pure decoding-time reweighting at the trajectory level. |
+
+**Corpus gap closed 2026-05-13.** The classical *decoding-time-only* family is now a full theme: [[../decoding-time-steering/_overview]]. Thirteen captures spanning four years (PPLM 2019 → Park-Veitch 2024), all supporting the R_w claim with no contradictions. Primary anchors for the R_w extension:
+
+| Anchor | Why load-bearing |
+|---|---|
+| [[../decoding-time-steering/iti]] (Li 2023) | **40% probe–generation gap** on LLaMA-7B TruthfulQA — direct quantitative evidence model "knows but doesn't say". TruthfulQA Alpaca 32.5% → 65.1% via head-level activation shift; ~40–81 contrast pairs suffice. |
+| [[../decoding-time-steering/repe]] (Zou 2023) | Umbrella framework — LAT scan + reading vector + linear/piecewise/projection-erasure control + LoRRA. **Concept-reading beats few-shot prompting on 5 QA benchmarks.** 4-experiment evaluation protocol (correlation / manipulation / termination / recovery). |
+| [[../decoding-time-steering/dola]] (Chuang 2023) | **Single-model layer-contrast** — no auxiliary model, no training, no retrieval. +12–17pp TruthfulQA on LLaMA family via late-vs-early-layer logit subtraction. Cleanest "info is intrinsic" demonstration. |
+| [[../decoding-time-steering/cd-improves-reasoning]] (O'Brien 2023) | Math/reasoning regime: LLaMA-65B + CD = 57.7 on GSM8K, beats PaLM-540B. Mid-training-checkpoint amateurs better than fully-trained small models — operationalises "skill increment recoverable post-hoc by subtraction." |
+| [[../decoding-time-steering/cfg-lm]] (Sanchez 2023) | Structural parallel to BOLT: $\log P(w\|c) + \gamma(\log P(w\|c) - \log P(w))$ — same multiplicative-reweighting form as $\pi^* \propto \pi_\text{ref}\exp(r/\beta)$, with prompt-direction acting as the reward signal. **LAMBADA SoTA at 7B beating PaLM-540B.** |
+| [[../decoding-time-steering/linear-rep-hypothesis]] (Park 2024) | **Formal theory anchor.** Theorem 2.5: adding $\bar\lambda_W$ to context increases $P(W=1)$ while leaving causally-separable concepts unchanged. Theorem 3.2: causal inner product unifies probing (reading) and steering (control) via Riesz isomorphism. Concept = cone direction defined by counterfactual pairs. |
+| [[../decoding-time-steering/actadd]] (Turner 2023) | **$n=1$ contrast-pair limit** — the absolute data-efficiency floor of the family. Two prompts, no labels, no optimisation. Single-sample existence proof at activation level. |
+| [[../decoding-time-steering/dexperts]] (Liu 2021) | Product-of-experts decoding $\mathbf{z}_t + \alpha(\mathbf{z}^+ - \mathbf{z}^-)$ with anti-expert direction; small specialist LMs steer frozen base via logit-additive prior. Most direct prior-art instantiation of R_w. |
+
+See [[decoding-time-shapes]] for the cross-source synthesis: 13 methods tabulated by intervention point × data floor × access × mechanism × R_w-implication, plus the Bayesian-vs-Boltzmann correspondence connecting decoding-time and training-time reweighting onto the same target distributions.
+
+**Unanimous finding across all 13 captures:** the information is in the base model; an offline reweighting prior (logit-space or activation-space) suffices to put it into the right solution space. No paper contradicts; this is the four-year empirical / methodological / theoretical consensus that R_w stands on.
+
+**Weight-level backbone added 2026-05-13.** Where the decoding-time-steering theme is the inference-time / reweighting backbone, [[../selective-finetuning/_overview]] is the **training-time / weight-modification backbone** for R_w. Fifteen captures across four sub-families: knowledge editing (locate-then-edit), skill localization, continual-learning gradient masking, and PEFT with explicit weight decomposition. Primary anchors for selective gradient application:
+
+| Anchor | Why load-bearing |
+|---|---|
+| [[../selective-finetuning/rome]] (Meng NeurIPS 2022) | **Rank-one MLP edit** at causal-traced mid-layer FF: factual associations are localised; surgical overwrite leaves other behaviour unchanged. |
+| [[../selective-finetuning/memit]] (Meng ICLR 2023) | Scales ROME to **thousands of edits** distributed across critical mid-layers; least-squares solve on GPT-J 6B / GPT-NeoX 20B. |
+| [[../selective-finetuning/alphaedit]] (Fang ICLR 2025 Outstanding) | **Null-space projection**: perturbation projected onto null space of preserved knowledge — by construction cannot affect preserved-fact outputs. Plug-and-play on ROME/MEMIT (+36.7%). Closest captured mechanism to "selective gradient mathematically cannot affect other behaviours." |
+| [[../selective-finetuning/skill-localization]] (Panigrahi ICML 2023) | **0.01% of params carry >95% of fine-tuned skill** via grafting. Direct empirical evidence that skills isolate to sparse subsets. |
+| [[../selective-finetuning/lima]] (Zhou NeurIPS 2023) | **1000 curated examples** preserve format and beat RLHF. **Superficial Alignment Hypothesis**: knowledge from pretraining, format from a tiny surface patch. The wiki's central distinction stated as a paper's headline. |
+| [[../selective-finetuning/surgical-finetuning]] (Lee ICLR 2023) | **Selectively fine-tune subset of *layers***; different shifts → different layer choices. Theoretical justification for 2-layer nets. Direct prescription for "apply gradient to specific layers only." |
+| [[../selective-finetuning/o-lora]] (Wang EMNLP 2023 Findings) | Each new task in a **LoRA subspace orthogonal to all prior task subspaces** — direct realisation of "isolated subspaces for isolated behaviours" at the parameter level. |
+| [[../selective-finetuning/dora]] (Liu ICML 2024 Oral) | Weight = **magnitude × direction** decomposition; LoRA on direction only; mimics full-FT update geometry. Demonstrates that *kinds* of updates can be structurally isolated. |
+| [[../selective-finetuning/pit]] (Jiang 2024) | **Pre-instruction-tune on QA before CPT on documents**: model learns "how to encode knowledge for QA-style access" before seeing the new documents. **Direct knowledge-injection recipe that preserves QA format.** Closest captured paper to component **C_w⁺** (chunked SFT + RLVR-on-summary). |
+| [[../selective-finetuning/mend]] (Mitchell ICLR 2022) | **Hypernetwork** learns to transform the fine-tuning gradient via rank-1 decomposition; gradient-as-target alternative to ROME's weights-as-target. Edits on 10B+ models. |
+| [[../selective-finetuning/knowledge-neurons]], [[../selective-finetuning/ff-kv-memories]] | Foundational mechanistic story: FF layers as key-value memories (Geva); individual neurons store specific facts (Dai). Why ROME/MEMIT work. |
+| [[../selective-finetuning/packnet]], [[../selective-finetuning/hat]] | Pre-LLM continual-learning ancestors: per-task pruned subnetworks (PackNet) and per-task hard-attention gradient masks (HAT). Historical anchors for the gradient-masking lineage. |
+| [[../selective-finetuning/knowledge-editing-survey]] | Landscape view: three-category taxonomy + six evaluation metrics (success, generalisation, **locality**, portability, scalability, fluency). The *locality* metric is the explicit "doesn't affect non-target outputs" criterion. |
+
+**Cross-source claim (training-time + inference-time + RL-observed):** behaviour is *isolable* in identifiable parameters / subspaces / layers / neurons. The localisation scale ranges from single neurons (Knowledge Neurons) through 0.01% of params (Skill Localization) through 0.04% rank-8 $W_O$ LoRA (REASONMAXXER) through 5–30% (Balashov spontaneous). The corpus has converged on this from multiple independent directions — making selective SFT a mechanistic claim, not just an engineering aspiration.
+
+**Composing the recipes — locked 2026-05-13 (design ruling).** User confirmation: *"These should all be complementary."* The five primitives target structurally different surfaces and compose without conflict; the working architecture is the full stack, not a choice among alternatives.
+
+| Stage | Primitive | Surface acted on | Source |
+|---|---|---|---|
+| 1 | **Ordering** | Sequence of training stages | [[../selective-finetuning/pit]] — instruction-tune on QA *before* CPT on documents |
+| 2 | **Sparse mask** | Which parameters receive gradient | [[../selective-finetuning/skill-localization]] — restrict to ~0.01% subset carrying the skill |
+| 3 | **Orthogonal subspace** | Direction of gradient flow | [[../selective-finetuning/o-lora]] — LoRA in subspaces orthogonal to prior tasks |
+| 4 | **Surgical edit** | Atomic factual rewrites | [[../selective-finetuning/rome]] / [[../selective-finetuning/memit]] — rank-one MLP updates for facts that don't need full SFT |
+| 5 | **Null-space projection** | Perturbation orthogonal to preserved-knowledge outputs | [[../selective-finetuning/alphaedit]] — wrap the whole stack so perturbations cannot affect preserved-fact outputs |
+
+No captured paper tests the composition end-to-end. The pieces target disjoint surfaces (when to update / which params / which direction / which atomic edits / which output-invariance constraint), so they are formally non-conflicting. The wiki's working frame is: **treat them as a composable stack of design primitives, not as alternatives to choose between.**
+
+**Three structural answers to skill-stacking interference (added 2026-05-16).** A /research run on "does RLVR skill-stacking just reallocate optimization?" surfaced that the corpus offers three complementary answers, now three themes:
+
+| Answer | Mechanism | Theme |
+|---|---|---|
+| **Implicit** | On-policy RL is biased toward KL-minimal, off-principal, sparse solutions → monolithic stacking is gentle (RL forgets far less than SFT) | [[../catastrophic-forgetting/_overview]] (RL's Razor, Path-Not-Taken, RFT-mitigates-forgetting) |
+| **Explicit** | Mask / anchor / orthogonalise the gradient so it cannot move prior-skill params | [[../selective-finetuning/_overview]] (EWC, O-LoRA, AlphaEdit null-space, Skill-Localization) |
+| **Architectural** | Don't co-train skills — route separately-trained delta/LoRA experts at inference (the user's **MoERA** technique) | [[../moe-adapters/_overview]] (LoRAMoE, BTX, Self-MoE, MoRAM) |
+
+These compose with the C_w / C_b / R_w stack: the implicit answer ([[../catastrophic-forgetting/rls-razor]]) is *why* an RLVR-based installation loop degrades response style less than an SFT-based one (mechanistic support for component **L**); the architectural answer ([[../moe-adapters/loramoe]]) is a routing-based alternative realisation of R_w (install a behaviour in one expert, leave the others untouched — vs. locate-then-edit or orthogonal-subspace). [[../moe-adapters/loramoe]] is the bridge — a forgetting-mitigation method built from routed LoRA experts, filed under moe-adapters but load-bearing for both themes. Open: no captured paper trains the routed experts by RLVR (which per [[../catastrophic-forgetting/rls-razor]] would make them KL-minimal/off-principal); RLVR-expert × router composition is the untested MoERA design question.
+
+**Composition with other components.**
+- *Replaces or precedes RL*: REASONMAXXER's existence proof says ~50 problems + rank-8 $W_O$ LoRA can substitute for Stage 2(a) entirely. The question for this project is whether the same recipe works *per concept* (not just per benchmark).
+- *Composes with **C_w***: an offline reweight LoRA trained on chunk-derived QA is a parametric-free instantiation of **C_w**. The chunk's information enters via the reweight prior, not full-weight SFT.
+- *Composes with **L***: a static reweight prior cannot cause format collapse (no gradient flow through $\pi_\text{base}$), so **L** is unnecessary in the pure-reweight variant. This is the strongest case for offline-only operation.
+- *Bounded by the same coverage wall*: [[../rl-optimizers/bolt-kl-rlvr-boltzmann]] Theorem 7's $N \gtrsim 1/p_\gamma$ applies — if the concept isn't in $\pi_\text{base}$'s support, no reweight installs it. Capacity expansion still requires SFT-distillation per [[../self-play/yue-rlvr-boundary]].
+
+### Sub-extension: chunked SFT + RLVR-on-summary (Stage 1 variant) (2026-05-12)
+
+*Refines **C_w**.* User's 2026-05-12 sketch: chunk the textbook, SFT each chunk into weights, then have the model emit a *summary of what it learned* and treat that summary-generation as RLVR with a bounded reward. Naming: **component C_w⁺** (synthesis-bounded textbook SFT).
+
+The bounded-reward question has at least six corpus-attested shapes. **The wiki's strongest single answer is RLT $r^{SS}$ with chunk-derived held-out QA as the eval set** — the summary plays the role of teacher think-tokens $t$ in [[../teacher-student-rl/sakana-rlt]]; bounded by normalised log-prob; reward correlates $r=0.89$ with student gain.
+
+| Reward shape | Source | What bounds it |
+|---|---|---|
+| RLT $r^{SS} = \log\pi_s(s\mid t, q)$ over chunk-QA | [[../teacher-student-rl/sakana-rlt]] | Log-prob normalisation + RLT $r^{KL}$ against answer-leakage |
+| L2T Fisher/SVD info-gain | [[../rlvr-mechanics/learning-to-think]] | Fisher norm; label-free; $r/d\approx 1\text{–}10\%$ |
+| Epiplexity prequential MDL | [[../self-play/info-gain-self-play]] | MDL; use as gate not gradient |
+| Self-judge rubric | [[../self-improvement/self-rewarding-lm]] | Rubric range. **Caveat:** gains transfer to open-ended generation but not to math/reasoning under OA seed |
+| Process verifier per step | [[../process-reward-models/math-shepherd]] | Binary verifier on step-success rate |
+| TRICE marginal-LL with control variate | [[../teacher-student-rl/trice-cot-latent-variable]] | Variance-reduction; learns from incorrect summaries |
+
+**Design constraints.** Epiplexity pre-flight ([[../self-play/info-gain-self-play]]) applies between chunks — if a chunk's summary doesn't raise learnable-information for the held-out QA, abort that chunk before spending RL budget. Self-Rewarding LM's length-blowup ($1092 \to 2552$ tokens across 3 iterations) is a format/fluency warning — see component **L** below. STaR temperature ablation requires trace-level filtering, not answer-level.
+
+**Open questions.**
+- Granularity: paragraph, section, or chapter as the chunk unit? Wiki has no precedent at textbook scale.
+- Whether to interleave chunked SFT with the per-exercise inner loop (CoPD-style) or run all chunks first (DeepSeek-R1 cold-start style).
+- Whether the RLVR-on-summary step counts toward Stage 2 (and competes for compute with Stage 2(a)+(b)) or Stage 1.
+
+### Sub-extension: per-rollout commentary-SFT (Stage 2(b) variant) (2026-05-12)
+
+*Refines the inner loop alongside **C_w**.* The user's 2026-05-12 sketch proposes a two-step inner loop per exercise: **(a)** RL/BOLT on the exercise — rollouts, verifier scores, optimise — followed by **(b)** *for each rollout*, generate a teacher commentary, append to the sample, and SFT on the (rollout + commentary) pair. Naming: **component C_b** (per-rollout commentary-SFT).
+
+**Corpus precedents — three independent attestations, never composed.**
+- [[../self-improvement/star]] rationalization branch is the closest precedent: on failures, prepend gold answer as a hint, resample a rationale, keep ones that now produce the gold, SFT on the union with hint stripped. STaR's outer loop is the proposed inner loop's structure.
+- [[../single-sample-rl-finetuning/critique-ft-one-problem]] is the amplification existence proof: 1 problem × 10 generators × 7 teacher critiques → 600 (problem, candidate, critique) SFT rows; beats 1-shot RLVR at 1/15–1/20 compute on Qwen2.5-Math-7B. Calibrates Stage 2(b)'s per-exercise yield.
+- [[../teacher-student-rl/trice-cot-latent-variable]] handles wrong rollouts: rationales as latent variables, marginal-LL via MCMC-EM with control variate, **learns from incorrect rationales**, beats STaR. Directly answers "what to do with teacher commentaries on failed rollouts that still carry gradient information".
+- [[../teacher-student-rl/co-evolving-policy-distillation]] alternating GRPO + bidirectional mutual on-policy distillation is the existence proof that the (a)/(b) interleave sustains top-$k$ overlap >0.90 while RL drives capability. *Alternating*, not *simultaneous-per-rollout*.
+- [[../critique-self-correction/critic-cot]] gives the recipe for *building* the commentary generator via weak-supervision critique-refine pairs; 93.3% GSM8K when used as the trained critic.
+- [[../teacher-student-rl/sakana-rlt]]'s $r^{SS}=\log\pi_s(s\mid t,q)$ formalises "teacher commentary as the think-tokens $t$"; the dense per-token signal Stage 2(b) wants to capture parametrically.
+
+**Design constraints inherited from the corpus.**
+1. *Order matters.* [[../teacher-student-rl/opsd-compresses-rlvr]] — SFT after RL only *compacts* (Incorrect-only OPSD loses 7–10pp). Stage 2(b) must run *interleaved* with Stage 2(a), per-rollout — not as a post-exercise corrective. The same boundary that constrained **C_w**'s position relative to RL applies recursively inside the per-exercise loop.
+2. *Filter at trace level, not answer level.* STaR temperature ablation (Section 5): correct-answer-via-wrong-reasoning poisons the SFT signal. Stage 2(b)'s SFT step needs commentary-quality gating, not just answer-correctness.
+3. *Wrong rollouts still carry gradient.* TRICE's marginal-LL framing argues against discarding failed rollouts — they should drive an MCMC-EM-style update on the commentary distribution rather than be dropped. Stage 2(b)'s filter shape (keep-only, weight-by-correctness, or full marginalisation) is a design knob.
+4. *RL gradient + SFT gradient on the same rollout is uncharacterised.* Captured methods *alternate* (CoPD) or *filter-then-SFT* (STaR) — not *simultaneous-per-rollout*. The double-counting risk is open.
+
+**What the corpus does *not* yet say.** No captured paper applies, *per rollout, in the same inner loop step*, both an RL update (advantage-weighted on the rollout) and an SFT update on (rollout + generated commentary). The natural composition of STaR-rationalize + critique-FT + TRICE-wrong-rollout-salvage at per-rollout granularity is novel as a composition.
+
+**Relation to existing components.**
+- Composes with **R**: keep RLT reward as Stage 2(a)'s gradient-of-record; commentary in **C_b** can be either the same teacher's think-tokens $t$ (parametric instantiation of Sakana's $t$) or an independent critique stream (critic-CoT trained separately).
+- Composes with **V** (MDL sibling test): apply gate after the combined (a)+(b) step. If only (b) improves MDL on siblings, the RL contribution is decorative; if only (a) does, the commentary-SFT is decorative; both is the load-bearing signal.
+- Composes with **C_w**: same support-lifting argument applies — commentary-SFT extends $\pi^*(S\mid x)$ in directions the rollout-only weighted-SFT (BOLT) cannot reach when the rollout support is reward-truncated.
+- Composes with **G** (diversity): commentary-SFT compounds STaR's "rationalise many ways" with critique-FT's "many wrong rollouts × many critiques" — Stage 2(b) is *where* the diversity Ho-reasoning-teachers calls load-bearing actually enters weight-space.
+
+**Open experimental questions.**
+- Per-rollout SFT vs per-exercise SFT (batch all rollouts' commentaries, then one SFT pass at end of exercise).
+- Commentary generated by the same teacher producing think-tokens for **R**, or by a separately-trained critic ([[../critique-self-correction/critic-cot]])?
+- Whether iterative BOLT ([[../rl-optimizers/bolt-kl-rlvr-boltzmann]] Theorem 11) as Stage 2(a)'s optimiser interacts coherently with per-rollout SFT in (b) — sampler refresh between BOLT rounds may double-count what (b) already installs.
+- Stage 2(b) at $G=1$: with one rollout per exercise, the (b) step degenerates to "STaR-rationalize-one-trace + SFT" — a cheaper baseline that Stage 2(a) must justify itself against.
 
 ## Source
 

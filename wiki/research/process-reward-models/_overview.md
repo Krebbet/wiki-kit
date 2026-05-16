@@ -30,7 +30,7 @@ Three regimes have been demonstrated to work, ordered by human cost:
 | Paper | Reward signal | Annotation cost | RL? | Best result |
 |---|---|---|---|---|
 | Cobbe 2021 | Terminal correctness (token-level value head) | Auto (final-answer check) | No (rerank only) | 6B + verifier ≈ 175B SFT on GSM8K |
-| Uesato 2022 | Per-step human / ORM-emulated | ~10K human step labels | Expert-iteration; ORM-RL, PRM-RL | 12.7% / 3.4% final/trace error on GSM8K |
+| Uesato 2022 | Per-step human / ORM-emulated | ~10K human step labels | Expert-iteration; ORM-RL vs PRM-RL | **ORM-RL+rerank 12.7%/3.4%**; PRM-RL+rerank 12.9%/3.8% final/trace error on GSM8K (ORM-RL slightly beats PRM-RL on both — see [[process-outcome-feedback]] Table 1) |
 | Lightman 2023 | Per-step human (positive/neutral/negative) | 800K labels (PRM800K) | No (rerank only) | 78.2% best-of-1860 on MATH-500 |
 | Wang 2023 | Per-step auto via MCTS rollouts (HE/SE) | Zero human; N completer rollouts/step | Step-by-step PPO + rerank | 89.1% / 43.5% GSM8K / MATH (Mistral-7B) |
 

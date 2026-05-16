@@ -2,6 +2,8 @@
 
 Two routes to *adaptation at deployment* that bypass conventional pre-training/fine-tuning. **Test-time training (TTT)** updates parameters per-test-input via gradient descent on a synthetic dataset bootstrapped from demonstrations, then discards the update. **In-context RL** (Algorithm Distillation, AD) goes further: a transformer pre-trained on RL learning histories runs its own RL algorithm *in-context*, with no weight updates at deployment. Together they bound the space of "exotic" adaptation methods relevant to single-sample, concept-based learning — TTT is per-input fine-tuning at the limit; AD is gradient-free meta-RL via behaviour cloning of learning curves.
 
+> **Not to be confused with test-time *scaling* (TTS).** TTT updates weights at inference; TTS invests more inference compute *without* weight updates (longer CoTs, sample-and-rerank, MCTS, iterative refinement, decoding-time steering). See [[../synthesis/test-time-scaling]] for the cross-cutting TTS catalog. AD sits closer to TTS in spirit (gradient-free at deployment) but is a distinct phenomenon (pretrained meta-learning over RL histories, not a generic inference-time compute knob).
+
 ## Papers
 
 - [[ttt-few-shot]] — Akyürek et al. 2024. Per-task LoRA at inference, leave-one-out ICL synthetic data, augmented inference + hierarchical voting. ARC 18.3% → 47.1%; ensembled 61.9% (matches avg human). BBH +7.3pp over ICL.

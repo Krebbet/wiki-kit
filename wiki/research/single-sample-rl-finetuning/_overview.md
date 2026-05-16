@@ -50,3 +50,5 @@ See individual paper pages.
 - [[../self-improvement/_overview]]
 - [[../critique-self-correction/_overview]]
 - [[../data-efficient-survey/limited-data-ft-survey]]
+- [[../decoding-time-steering/_overview]] **(added 2026-05-13)** — single-sample at the *activation* level (vs. this theme's weight-level focus). [[../decoding-time-steering/actadd]] is the activation-steering single-sample sibling — $n=1$ contrast pair, no labels, no optimisation, causally effective behaviour shift. Companion to the weight-update methods here.
+- [[../selective-finetuning/_overview]] **(added 2026-05-13)** — selective fine-tuning theme. Direct empirical anchors for the wiki's single-sample frame: [[../selective-finetuning/skill-localization]] (Panigrahi ICML 2023: **0.01% of params** carry **>95% of fine-tuned skill** via grafting), [[../selective-finetuning/lima]] (1000 curated examples beat RLHF DaVinci-003 — surface alignment hypothesis). Both papers make the wiki's "single-sample is enough because skills are sparse" thesis empirically load-bearing at the weight level.

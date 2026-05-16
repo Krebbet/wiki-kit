@@ -44,3 +44,5 @@ Limitation: PAG requires external ground-truth to assign training rewards; canno
 - [[../single-sample-rl-finetuning/_overview]] — dense RL on single dataset
 - [[../rlvr-mechanics/_overview]] — PPO stability and multi-turn trajectories
 - [[../synthesis/single-sample-concept-skeleton]] — framework for unified fine-tuning
+- [[../self-play/spell]] — generalises PAG's two-role decomposition (policy + verifier) to three (Questioner + Responder + Verifier); enables an independent Gaussian difficulty signal at the responder's competence frontier
+- [[../self-play/_overview]] — broader self-play landscape; PAG sits in the two-role subtree alongside SQLM, SPICE, SPAG

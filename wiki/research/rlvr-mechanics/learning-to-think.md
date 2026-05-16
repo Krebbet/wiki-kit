@@ -4,12 +4,12 @@ L2T (Wang et al., NeurIPS 2025) reframes RL fine-tuning as an episodic MDP with 
 
 ## Method
 
-- **Episodic reformulation.** A query–response trace is split by `<think>...</think>` markers into K episodes; the MDP state at episode k is `s_k = (x, z_{1:k-1})`, the action `z_k` is a token block (Sec 4.1).
+- **Episodic reformulation.** A query–response trace is split by `<think>...</think>` markers into $K$ episodes; the MDP state at episode $k$ is $s_k = (x, z_{1:k-1})$, the action $z_k$ is a token block (Sec 4.1).
 - **Dense process reward** (Eq. 3):
-  `r_k^prg = [J_r(π_θ(·|s_k, z_k)) − J_r(π_θ(·|s_k))]  −  β · [I(θ_k; s_k) − I(θ_{k-1}; s_{k-1})]`
-  The first bracket is *fitting information gain* (rise in correctness probability after consuming z_k); the second is a *parameter compression penalty* on context-induced parameter MI, discouraging redundant absorption.
-- **Tractable estimator.** The MI penalty is intractable in θ ∈ R^d. They take a low-rank SVD proxy `θ̃ ∈ R^r` (r/d ≈ 1–10% at 1.5B; 0.1–1% at 7B), assume Gaussian posterior, and use a Fisher-information second-order Taylor expansion (Theorem 4.2) — one extra forward call per episode.
-- **Policy update.** Riding GRPO: episode-level reward `R_{i,k} = r_i^out / K_i + α r_{i,k}^prg`, redistributed to tokens by log-prob surprise weights, normalised within group, plugged into clipped PG with KL.
+  $$r_k^{\text{prg}} = [J_r(\pi_\theta(\cdot|s_k, z_k)) - J_r(\pi_\theta(\cdot|s_k))] - \beta \cdot [I(\theta_k; s_k) - I(\theta_{k-1}; s_{k-1})]$$
+  The first bracket is *fitting information gain* (rise in correctness probability after consuming $z_k$); the second is a *parameter compression penalty* on context-induced parameter MI, discouraging redundant absorption.
+- **Tractable estimator.** The MI penalty is intractable in $\theta \in \mathbb{R}^d$. They take a low-rank SVD proxy $\tilde{\theta} \in \mathbb{R}^r$ ($r/d \approx 1$–10% at 1.5B; 0.1–1% at 7B), assume Gaussian posterior, and use a Fisher-information second-order Taylor expansion (Theorem 4.2) — one extra forward call per episode.
+- **Policy update.** Riding GRPO: episode-level reward $R_{i,k} = r_i^{\text{out}} / K_i + \alpha r_{i,k}^{\text{prg}}$, redistributed to tokens by log-prob surprise weights, normalised within group, plugged into clipped PG with KL.
 
 ## Claims
 

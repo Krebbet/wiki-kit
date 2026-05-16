@@ -35,8 +35,15 @@
 
 ## Related
 
+- [[../synthesis/proposed-method]] — EWC anchor is **component F** in the reference-grounded single-sample concept fine-tuner
+- [[../synthesis/concept-curriculum-method]] — candidate per-node forgetting mitigation in the curriculum DAG; repeated application untested
+- [[../synthesis/single-sample-concept-skeleton]] — catastrophic forgetting in minimal-data regimes
+- [[../single-sample-rl-finetuning/1-shot-rlvr]] — EWC × RLVR composition flagged as untested
+- [[../concept-learning/recursive-concept-evolution]] — EWC-style Fisher trust region at crystallisation of LoRA-distilled concepts
 - [[../rlvr-mechanics/learning-to-think]] — Fisher for parameter weighting and importance
 - [[../rlvr-mechanics/rl-sparse-subnetwork]] — sparse parameter selection; EWC as implicit importance mask
-- [[../synthesis/single-sample-concept-skeleton]] — catastrophic forgetting in minimal-data regimes
+- [[../rlvr-mechanics/structured-fisher-optimizer]] — richer (block / Kronecker) Fisher approximations beyond the diagonal used here
+- [[../meta-learning-few-shot/_overview]] — open question: EWC-style vs sparse-subnetwork as the right single-sample regulariser
 - [[../meta-learning-few-shot/maml]] — continual learning from few-shot perspective
 - [[../data-efficient-survey/limited-data-ft-survey]] — regularization for parameter-efficient adaptation
+- [[../selective-finetuning/_overview]] **(added 2026-05-13)** — full theme on selective fine-tuning / behaviour-isolation. EWC = **soft regularisation** alternative to this theme's **hard-mask / null-space / orthogonal-subspace** approaches; same goal (don't move weights that matter for other tasks), different mechanism. Direct cousins: [[../selective-finetuning/packnet]] (binary mask via pruning + freeze), [[../selective-finetuning/hat]] (per-task hard attention mask via SGD), [[../selective-finetuning/o-lora]] (LoRA in orthogonal subspaces — modern LLM-era), [[../selective-finetuning/alphaedit]] (null-space projection on knowledge edits). Open question: does Fisher-weighted EWC compose with O-LoRA's orthogonality constraint, or are they redundant?

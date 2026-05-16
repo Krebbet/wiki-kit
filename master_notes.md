@@ -107,3 +107,95 @@ User requirements (raised 2026-04-23):
 Candidate: new companion command `/harvest-verify` that encapsulates step 2, separate from the promotion step, since promoting and verifying happen at different times (post-push, async across wikis).
 
 **Status:** open — process change to `/harvest`; also saving as a feedback memory since this is a strong user preference about kit hygiene.
+
+---
+
+## 2026-04-28 — capture_pdf silently degrades to abstract-page scrape when marker is unavailable
+
+**Scope:** kit
+**Status:** open
+
+When `tools/capture_pdf.py --src <ARXIV_ABS_URL>` is run with `--engine` defaulting to marker, and weasyprint (a marker dependency) is missing from the poetry env, the script appears to fall back to pymupdf successfully — but if the abstract URL is what was passed (rather than the PDF URL), the result is a 7–8 KB scrape of the abstract page chrome rather than the paper body. The agent runs in this mode for ~5 minutes per paper, returns success, and reports clean audits. Only an external sanity check (file size or page count vs known paper length) catches it.
+
+Observed during the concept-understanding-eval research run on 2026-04-28: 9 captures came back at ~7 KB each before being recaptured via direct `arxiv.org/pdf/<id>` URLs at 50–294 KB each.
+
+**Candidate fixes (any one):**
+1. `tools/capture_pdf.py` should auto-resolve `arxiv.org/abs/<id>` → `arxiv.org/pdf/<id>` when `--src` is an arXiv abstract URL.
+2. Audit step should warn when a captured arXiv markdown is < 20 KB (probable abstract-only) even if no broken refs are found.
+3. weasyprint should be either added to poetry deps or `tools/capture_pdf.py` should hard-fail (rather than silently fall back to pymupdf) when marker can't run, prompting the user to install it.
+
+Promote one of these to the kit on next `/harvest`.
+
+### 2026-04-30 — math wrapped in backticks instead of dollar-signs
+**Scope:** kit
+**Observation:** Across ~60 wiki pages (most synthesis pages, theme overviews, and per-paper pages), inline math like `F(x) = H/(M+ε)`, `M_θ`, `r^{SS}`, `θ ← θ - η·g`, `p_(1) − p_(2)` was wrapped in backticks. In Obsidian (the user's reading environment) backticks render as monospace code spans, so none of these typeset as math. The user reads in Obsidian and noticed it. CLAUDE.md voice guidance already states "LaTeX-style inline `$x$` and display blocks" but I (and presumably the ingest sub-agents that write per-paper pages) defaulted to backticks for anything that looked identifier-shaped.
+**Implication:** The kit's `/ingest` and `/research` page-writing prompts need an explicit "wrap math in `$...$`, never backticks" rule. Likely lives in `tools/<wiki-kit>/templates/research-page.md` or the orchestrator prompt for the per-paper page sub-agent. Also worth adding a `/lint` check that flags backtick spans containing TeX-suspicious characters (^, _, Greek letters, math arrows) so this is caught at lint-time. The bulk fix on this wiki is being done now; promoting the rule + lint check to main would prevent regressions on every wiki built from the kit.
+**Status:** open
+
+### 2026-05-01 — page-writing sub-agents updated tracking files without coordination
+**Scope:** kit
+**Observation:** During the self-play research run, I dispatched four parallel sub-agents to write 11 wiki pages (the per-paper pages were the bounded unit-of-work). Three of the four sub-agents *also* updated `wiki/index.md`, `wiki/revisions.md`, and `wiki/log.md` because the prompts didn't explicitly forbid it. The result was partial / fragmented entries — three separate revisions rows for what is logically one ingest operation, an index theme summary that only mentioned 2 of the 11 pages, and a pages-by-theme table with 3 missing rows. I had to consolidate by hand afterward.
+
+**Implication:** The kit's page-writing sub-agent prompt template (or the `/ingest` orchestrator's per-source dispatch prompt) should include an explicit "DO NOT update `index.md`, `revisions.md`, or `log.md` — those are the orchestrator's responsibility" line. Each sub-agent should write only its assigned per-paper page(s). The consolidation step then has authoritative, single-source-of-truth tracking updates. This generalises beyond `/research` → `/ingest` to any multi-page generative operation.
+
+**Status:** open
+
+### 2026-05-13 — capture_pdf pymupdf engine writes wrong-anchor image refs (audit-tripping but not content-affecting)
+
+**Scope:** kit
+
+**Observation:** `tools/capture_pdf.py --engine pymupdf` writes image refs in the resulting markdown using paths anchored at the **repo root** (e.g. `raw/research/decoding-time-steering/assets/02-cd-improves-reasoning/source.pdf-0-0.png`) rather than relative to the markdown file itself (which would be `assets/02-cd-improves-reasoning/source.pdf-0-0.png`). The image files themselves are captured correctly to disk under `assets/<slug>/`. `tools/audit_captures.py` resolves refs via `(md.parent / ref).resolve()` and correctly flags them as broken — the resulting paths nest the topic-dir twice (`raw/research/decoding-time-steering/raw/research/decoding-time-steering/...`).
+
+Observed during the decoding-time-steering /research run on 2026-05-13: 86 "broken image refs" across all 13 captures, every single ref a wrong-anchor instance. Same issue recurred in the 2026-04-23 rl-optimizers run (revisions.md notes "20 broken figure refs across 5 PDFs"); appears endemic to the pymupdf engine path.
+
+**Impact:** Rendering-only. Text content is intact; ingest reads text and doesn't need the figures. Obsidian and markdown viewers fail to inline the figures, which is a UX regression for raw-source review but doesn't affect wiki pages downstream.
+
+**Candidate fixes (pick one):**
+1. `tools/capture_pdf.py` should write image refs as `assets/<slug>/<image>` (relative to MD) rather than `raw/research/<topic>/assets/<slug>/<image>`.
+2. `tools/audit_captures.py` should special-case the wrong-anchor pattern: if `(md.parent / ref).resolve()` fails *and* the same ref interpreted with a one-level-up anchor succeeds, classify as "wrong-anchor warning" not "broken ref" — keeps the audit-clean signal honest.
+3. Both — fix #1 prevents regression; #2 reclassifies historical captures so /lint isn't perpetually noisy.
+
+Promote on next `/harvest`.
+
+**Status:** open
+
+### 2026-05-15 — lint: weekly-brief pages systematically fail the research-page schema check
+
+**Scope:** kit
+
+**Observation:** /lint's research-page schema check (`## Method` + `## Claims` required under `wiki/research/`) flags 11 pages, and ~10 of them share one root cause: they were created by `/weekly-brief`, which uses a lighter page template than `/ingest` (it writes `## Results` / `## Empirical results` / `## Taxonomy` and folds method into the summary, rather than the `## Method` + `## Claims` schema `/ingest` enforces). Result: every weekly-brief sweep adds pages that the next lint flags as malformed, indefinitely. This is not 10 independent defects; it is one template mismatch between two kit commands writing into the same `wiki/research/` namespace.
+
+**Candidate fixes (any one):**
+1. `/weekly-brief`'s page-writing template adopt the same `## Method` + `## Claims` headings as `/ingest`'s research-page schema.
+2. `/lint`'s schema check accept the weekly-brief heading set (`## Results` / `## Empirical results` / `## Taxonomy`) as schema-equivalent.
+3. Mark weekly-brief-origin pages with frontmatter (e.g. `origin: weekly-brief`) and have lint apply a relaxed schema to them.
+Fix #1 is cleanest (one schema across the kit). Promote on next `/harvest`.
+
+**Status:** open
+
+### 2026-05-15 — lint: bare `[[_overview]]` convention produces ~75 false broken-link flags
+
+**Scope:** kit
+
+**Observation:** The per-paper-page convention `[[_overview]]` (link to the same-folder theme overview) is used ~75× across the wiki. Obsidian resolves it by same-folder proximity, so it is *functional*, but any link-graph linter that resolves by exact path or unique-basename (there are 16+ `_overview.md` files) flags every instance as broken. This swamps the genuine broken-link signal (5 real vs ~75 convention false-positives in the 2026-05-15 run).
+
+**Candidate fixes (any one):**
+1. Kit lint heuristic: resolve a bare `[[_overview]]` (and any non-unique basename) to a same-directory file first, mirroring Obsidian's proximity resolution, before declaring broken.
+2. Kit convention change: new pages use the explicit `[[../<theme>/_overview]]` form; add a lint autofix to rewrite bare forms.
+Fix #1 is lower-churn and makes the linter match the actual rendering environment. Promote on next `/harvest`. (Relatedly, this run reinforces the priority of the 2026-05-13 candidate-fix #2 for `audit_captures` wrong-anchor handling — same class of "linter stricter than the rendering environment" noise, 377 false flags.)
+
+**Status:** open
+
+### 2026-05-16 — lint broken-link checker has THREE false-positive classes, not one
+
+**Scope:** kit
+
+**Observation:** Following up the 2026-05-15 bare-`[[_overview]]` entry: applying the 2026-05-15 lint fixes revealed that **4 of the 5 "genuine broken links" were false positives**, in three distinct classes the link-graph checker mishandles — all cases where the linter is stricter than Obsidian's actual resolution:
+1. **In-page anchors** `[[#Conflicts]]` — normalised to empty target (`split('#')[0]` → `''`) and reported as `[[]]`. Obsidian resolves these to a same-file heading. (2 instances: binary-rewards-rl-challenges, rethinking-rl-sparse-selection.)
+2. **Table-escaped alias pipes** `[[path\|Alias]]` inside a markdown table — the `\|` is the *documented Obsidian convention* for piping an aliased wikilink inside a table cell; the checker's regex truncates at `\`. (1 instance: fine-tuning-best-practices.md.)
+3. **Bare non-unique basename** `[[_overview]]` — already filed 2026-05-15 (proximity resolution). (~75 instances.)
+Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net: the broken-link report was ~95% false positives this run, which destroys the signal.
+
+**Candidate fix:** the kit link-graph checker (and `/lint`'s mechanical step) must model Obsidian resolution before flagging: (a) treat `[[#anchor]]` as same-file, never empty; (b) strip a single leading `\` before `|` inside table rows; (c) resolve non-unique basenames by same-directory proximity. Until then, `/lint`'s "Broken Links" section should be read as "candidate links to manually triage", not "defects". Promote with the 2026-05-15 entries on next `/harvest`.
+
+**Status:** open
