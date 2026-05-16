@@ -89,7 +89,7 @@ Append entries using this structure:
 **Implication:** Two fixes:
 1. Tighten the parser regex to tolerate optional `**`/`*`/`_` markdown emphasis around the directive prefix, e.g. `^-\s*\*?\*?(?:New page|extend)\s*:`. Backwards-compatible — current literal form still matches.
 2. Update the subagent prompts in `.claude/commands/weekly-brief.md` step 5 (and `.claude/commands/ingest.md` if it has a similar block) to show the exact unwrapped directive shape, with a "**format strictly**" note. Either fix alone resolves the issue; both is belt-and-braces.
-**Status:** open
+**Status:** applied 2026-05-16 — delivered fix 1 (regex emphasis tolerance + title cleanup + 11 tests) to main @ d3d9407 via /harvest.
 
 ### 2026-05-08 — capture_pdf abs-page URL requires weasyprint dep that's not installed
 **Scope:** kit
@@ -125,4 +125,4 @@ The same gap likely exists in `.claude/commands/ingest.md` if `/ingest`'s subage
 **Scope:** kit
 **Observation:** 5 of 7 subagent summaries had their `## Proposed page shape` parsed as `kind:"unknown"` by `tools.ingest_plan.aggregate`, because subagents wrote `- **New page** \`patterns/foo\`` (bold) instead of the exact `- New page: <title>` prefix the parser keys on. The orchestrator had to read the summary files directly to recover the real plan — same class of issue as the 2026-05-08 weekly-brief schema-mismatch learning. Page-plan aggregation silently degrades rather than erroring.
 **Implication:** Either (a) make the subagent prompt template in `ingest.md` show the *exact* parseable prefixes (`- New page: ` / `- Extend [[page]] with section "..."`) with a "match this literally" instruction, or (b) make `parse`/`aggregate` tolerant of bold/`**`-wrapped and `:`-optional variants. (b) is more robust since subagents drift toward markdown emphasis. Recurring across at least two sweeps.
-**Status:** open
+**Status:** applied 2026-05-16 — delivered option (b) (regex emphasis/colon tolerance + `_clean_title()` + 11 parametrized tests) to main @ d3d9407 via /harvest.
