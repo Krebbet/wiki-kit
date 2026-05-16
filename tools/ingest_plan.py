@@ -44,14 +44,30 @@ _CONFLICT_CONTRADICTS_RE = re.compile(
 )
 # matches: `Basis: <text>` or `- Basis: <text>` (one line of a conflict block)
 _CONFLICT_BASIS_RE = re.compile(r"^\s*-?\s*Basis:\s*(.+?)$", re.MULTILINE)
-# matches: `- New page: title — justification` (title captured up to optional em-dash)
-# titles contain hyphens (foo-method), so exclude newlines, not hyphens
-_PAGE_SHAPE_NEW_RE = re.compile(r"^-\s*New page:\s*([^—\n]+?)(?:\s*—\s*(.+))?$", re.MULTILINE)
-# matches: `- extend [[page]] with section "S"` / `- OR: extend [[page]] with section "S"`
-_PAGE_SHAPE_EXTEND_RE = re.compile(
-    r"^-\s*(?:OR:\s*)?extend\s*\[\[([^\]]+)\]\]\s*with section\s*\"([^\"]+)\"",
+# Subagents drift toward markdown emphasis around the directive prefix/title;
+# tolerate optional **/__/*/_/` wrappers and an optional colon. Observed forms:
+#   - New page: title — justification           (canonical)
+#   - **New page: title** — justification        (whole directive bolded)
+#   - **New page** `patterns/title`              (bold prefix, no colon, backtick title)
+# titles contain hyphens (foo-method), so exclude newlines, not hyphens; the
+# captured title is cleaned of residual emphasis/backticks by _clean_title().
+_EMPH = r"[*_`]*"
+_PAGE_SHAPE_NEW_RE = re.compile(
+    rf"^-\s*{_EMPH}\s*New page\s*{_EMPH}\s*:?\s*{_EMPH}\s*([^—\n]+?)\s*{_EMPH}\s*(?:—\s*(.+))?$",
     re.MULTILINE | re.IGNORECASE,
 )
+# matches: `- extend [[page]] with section "S"` / `- OR: extend [[page]] ...`,
+# tolerating emphasis wrappers and curly quotes around the section name.
+_PAGE_SHAPE_EXTEND_RE = re.compile(
+    rf"^-\s*{_EMPH}\s*(?:OR:\s*)?{_EMPH}\s*extends?\s*{_EMPH}\s*\[\[([^\]]+)\]\]"
+    r"\s*with section\s*[\"“]([^\"”]+)[\"”]",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+
+def _clean_title(raw: str) -> str:
+    """Strip wrapping markdown emphasis / backticks / quotes from a parsed title."""
+    return raw.strip().strip("*_`\"'“”").strip()
 
 _REQUIRED_SECTIONS = ("One-line", "Cross-ref candidates", "Conflict flags", "Proposed page shape")
 _TAKEAWAY_EXCLUDED = {"One-line", "Cross-ref candidates", "Conflict flags", "Proposed page shape"}
@@ -235,7 +251,7 @@ def _parse_page_shape(block: str) -> dict[str, Any]:
     if new_m:
         return {
             "kind": "new",
-            "title": new_m.group(1).strip(),
+            "title": _clean_title(new_m.group(1)),
             "section": None,
             "justification": (new_m.group(2) or "").strip(),
         }
@@ -243,7 +259,7 @@ def _parse_page_shape(block: str) -> dict[str, Any]:
     if extend_m:
         return {
             "kind": "extend",
-            "title": extend_m.group(1).strip(),
+            "title": _clean_title(extend_m.group(1)),
             "section": extend_m.group(2).strip(),
             "justification": "",
         }
