@@ -48,3 +48,18 @@ The wiki's radar. `/weekly-brief` reads/extends this; the email's "Other watchli
 - Canadian drone onshoring — ISED / NRC IRAP / AIAC / CCAA signals; component country-of-origin & supply-chain concentration (low-frequency, check monthly).
 
 <!-- weekly-brief appends overflow entries below, newest run first -->
+
+### Run 2026-05-17
+**Regulation & operations**
+- FCC/DJI Covered List — comment deadline 11 May; FCC signalled no softening; ~96.7% US ops on DJI, market-structure inflection.
+- FAA Part 108 — no final rule in window; EO-mandated ~Feb/Mar 2026 target appears slipped (track next).
+
+**Onboard compute & energy**
+- ADLINK + Qualcomm ~15 TOPS edge-AI drone kit (Embedded World 2026) — integrated flight-control + onboard inference board.
+- DJI Enterprise Onboard-AI Challenge 2026 — platform push validating onboard (vs cloud) inference; finalists imminent.
+
+**Manufacturing & onshoring**
+- Canada onshoring momentum — Alberta investment backgrounder; InDro scaling Canadian content 50%→80%; Volatus domestic battery supply.
+
+**Physical interaction & manipulation**
+- VLA-for-aerial-manipulation subfield crystallising (AIR-VLA + DroneVLA captured; watch for sim-to-real / onboard-inference follow-ons).

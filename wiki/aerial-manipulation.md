@@ -33,6 +33,10 @@ How drones physically interact with real objects: grasping, carrying, opening do
 - **Source deferred:** the HKU dexterous continuum-manipulator paper (Nature Comms 2025) failed automated capture (PMC reCAPTCHA + Europe PMC 500) — needs manual PDF download to ingest. Continuum/compliant ground is partially covered here via the Ollero survey and HI-ARM meanwhile.
 - Note: **ETH ASL** (Siegwart — source behind the RL door-opening result) is a *different lab* from **[[eth-rpg-scaramuzza]]** (ETH RPG, Scaramuzza). Do not conflate.
 
+## VLA-driven aerial manipulation (emerging) *(added 2026-05-17)*
+
+A foundation-model subfield is crystallising around language-conditioned aerial manipulation — *demoed in simulation, pre-commercial*. Two complementary 2026 works: [[air-vla]] is the first systematic **benchmark** (mainstream VLA/VLM models on a sim UAV+7-DoF arm; best model ~42/100, heavy reliance on an external global camera) and [[dronevla]] a narrow **system PoC** (binary-action VLA, navigation real but the VLA validated only in sim). Net: VLA transfer to aerial manipulation is feasible in simulation but the maturity gap — onboard inference, sim-to-real, the perennial external-camera/mocap dependency — is unclosed. Reinforces this page's core gap: the manipulation isn't the blocker, the perception/autonomy stack is.
+
 ## Source
 
 - `raw/research/aerial-manipulation/01-ollero-arm-survey.md` — canonical IEEE T-RO 2022 aerial-manipulation survey (taxonomy, gaps)

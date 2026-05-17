@@ -54,4 +54,5 @@ Explicitly anti-LiDAR for agile/dynamic flight: "LiDARs and RGB cameras do not p
 - [[event-cameras-for-uavs]] — application taxonomy; RPG is dominant contributor
 - [[visual-inertial-slam]] — Ultimate SLAM fuses events with conventional VIO
 - [[lidar-vs-vision-autonomy]] — lab anchors the vision/event camp
+- [[dream-to-fly]] — RPG member paper (ICRA 2026): DreamerV3 pixel→control, extends the lab's pixel-based flight line
 - [[drone-autonomy-state]] — broader autonomy deployment context

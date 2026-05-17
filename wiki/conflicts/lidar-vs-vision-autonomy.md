@@ -14,6 +14,7 @@ The single dominant contested claim across the autonomy-and-sensors corpus. It i
 - **`03-vislam-no-lidar.md`** (TUM/Imperial): explicitly "state-of-the-art autonomous drone flying in forests typically relies on LiDAR," then *demonstrates* large-scale outdoor forest autonomy with only stereo + IMU, fully onboard, 0 collisions (1 real mission + 12/12 sim). Concedes LiDAR is superior on depth but argues cost/weight/scalability. See [[visual-inertial-slam]].
 - **`02/06/07/13` (ETH RPG / Scaramuzza cluster):** event cameras give µs latency, >120 dB dynamic range, near-zero motion blur at ~0.5 W; demoed 3.5 ms dodging, 9.8 m/s cluttered flight, low-light flight to 10 lux. Explicit anti-LiDAR stance for agile/dynamic flight: *"LiDARs and RGB cameras do not provide sufficient information to quickly and precisely react in a highly dynamic environment."* See [[eth-rpg-scaramuzza]], [[event-cameras]], [[event-cameras-for-uavs]].
 - **`08-skydio-autonomy-intro.md`:** a *commercially shipping* vision-only (6-camera, no LiDAR) autonomy product — an existence proof for consumer/prosumer regimes (vendor claim, 2020). See [[skydio-autonomy-stack]].
+- **`weekly-2026-05-17/01-dream-to-fly.md`** (ETH RPG, ICRA 2026): DreamerV3 model-based RL, raw 64×64 RGB pixels → control, **no LiDAR/depth/VIO**, agile gate flight ≤9 m/s with real-quadrotor dynamics (HIL). Strong Position-B — *asterisk:* real-world runs use rendered images, not a real camera feed, so the real-optics gap is unresolved. See [[dream-to-fly]].
 
 ## Where the camps actually agree *(synthesis)*
 

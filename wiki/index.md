@@ -33,6 +33,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[multimodal-locomotion]] | Drones that also drive/walk/swim; air-ground hybrids buy ~10–40× endurance; AirCrab/M4 exist. |
 | [[air-ground-hybrids]] | Energy spine: passive-wheel 77%, Roller-Quadrotor 41×, Tilt-Ropter 92.8%; AirCrab arm+wheels; M4. |
 | [[air-water-robots]] | Amphibious hybrids — research-curiosity maturity (≥200 s mode-switch, ~0.08 m/s swim). |
+| [[dream-to-fly]] | ETH RPG, ICRA 2026 — DreamerV3 pixel→control, no LiDAR, ≤9 m/s; Position-B for the lidar-vs-vision conflict. |
+| [[air-vla]] | First VLA benchmark for aerial manipulation (sim-only; best ~42/100; global-camera-dependent). |
+| [[dronevla]] | Binary-action VLA fetch-and-handover PoC; navigation real, VLA sim-only. |
 | [[lidar-vs-vision-autonomy]] | **Conflict (OPEN):** is LiDAR necessary for drone autonomy, or do vision/event cameras suffice? |
 
 ---
