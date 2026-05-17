@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** terse and expert. Assume strong AI/ML literacy and engineering basics (transformers, RL, basic aerodynamics — never re-explain). No introductory framing. Use comparison tables, charts (matplotlib), and Marp slide decks as first-class outputs alongside markdown — pick the form that compresses the information best. Flag uncertainty explicitly (*shipping at scale* / *demoed* / *claimed* / *speculated*). On contested topics (autonomy timelines, edge vs cloud inference, open vs closed stacks, propulsion futures, regulatory paths, AI-safety framings, the mass-commercial wedge, onshoring economics, physical-interaction futures), present the strongest version of each side before taking a position; never paper over disagreement. Reader is the user — a technical operator building a strategic / investable thesis — or an occasional collaborator with similar literacy.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

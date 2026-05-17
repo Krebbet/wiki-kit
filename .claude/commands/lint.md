@@ -29,7 +29,14 @@ Perform a health check of the wiki.
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+10. **Regulatory staleness** — flag claims about FAA / EASA / Transport Canada / CAAC rules older than 6 months without a re-verification note.
+11. **Benchmark staleness** — flag SOTA performance claims (onboard SLAM, monocular depth, planning, RL policies, aerial-manipulation accuracy) older than 9 months.
+12. **Company status drift** — flag company pages whose last update predates a known funding round, acquisition, layoff, or product launch referenced elsewhere in the wiki.
+13. **Intersection coverage** — for every "AI capability" page expect at least one outbound link to a "drone use case" page (and vice versa); flag orphans on either side.
+14. **Conflict freshness** — for each entry in `conflicts/`, flag if no new evidence has been added in 90 days (either the question resolved or the wiki has stopped tracking it).
+15. **Evidence-strength tags** — flag capability claims missing the *shipping at scale / demoed / claimed / speculated* qualifier.
+16. **Manufacturing / origin tags** — flag drone-platform pages without country-of-origin and (where relevant) Blue UAS / NDAA Section 848 status.
+17. **Canadian-onshoring tracker freshness** — entries on Canadian onshoring or domestic capacity should carry a last-verified date; flag if older than 6 months given how fast the procurement and funding environment moves.
 <!-- /DOMAIN-SLOT -->
 
 ## Output

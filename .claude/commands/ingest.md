@@ -93,7 +93,17 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   - **Platform identity:** specific airframe / autopilot / SoC and software stack (PX4 / ArduPilot / proprietary).
+   - **Onboard vs offboard split:** what runs on the drone vs at the operator / cloud; named accelerators (Jetson, Hailo, Ambarella, custom silicon) where stated.
+   - **Capability claims with evidence strength:** tag each non-trivial capability claim with one of *shipping at scale*, *demoed*, *claimed*, or *speculated* (use these tags literally).
+   - **Regulatory context:** FAA Part 107 / Part 108 / waiver, EASA Specific / Certified, Transport Canada Advanced / SFOC, CAAC, etc.; BVLOS status and basis.
+   - **Commercial use case & unit economics:** inspection / delivery / agriculture / defence / mapping / consumer; cost-per-flight-hour, payload, range, MTBF when stated.
+   - **Manufacturing / supply chain:** BOM-level component origin (motors, ESCs, autopilots, batteries, NPUs/SoCs, optics); dual-use export controls (EAR, ITAR, Canada Group); NDAA Section 848 / DIU Blue UAS status; assembly-only vs full-stack manufacturing.
+   - **Canadian onshoring signals:** Canadian facility, hiring, IRAP / SIF / ISED funding announcements, DND procurement awards, ITB obligations, AIAC / CCAA / ADRIQ membership.
+   - **Physical interaction:** modality (manipulator arm, perching mechanism, contact-NDT, gripper, hook-and-cable, tether), payload mass, contact dynamics / force-control approach, demonstrated environment (lab / field / commercial).
+   - **R&D maturity:** TRL-style read — bench demo / lab autonomy / field trial / paid pilot / commercial deployment.
+   - **Named players, deployments, funding events** worth a company page.
+   - **Conflict signals** with the running thesis on: autonomy timelines, centralised-vs-edge inference, open-vs-closed stacks, propulsion futures, regulatory paths to BVLOS, AI-safety framings, the mass-commercial wedge, onshoring economics, or physical-interaction futures.
    <!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates

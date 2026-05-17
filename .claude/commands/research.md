@@ -17,7 +17,17 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki are:**
+
+- Peer-reviewed robotics/vision/RL venues — ICRA, RSS, CVPR, NeurIPS, IROS, T-RO.
+- Named research groups with strong track records — ETH RPG (Scaramuzza), CMU AirLab, MIT CSAIL, Berkeley (Levine / Abbeel labs), UPenn GRASP (incl. Kumar lab for aerial manipulation), Stanford ASL, EPFL LIS (Floreano), TU Delft MAVLab, IIT Genova, University of Toronto UTIAS (Schoellig, Waslander), McGill Mobile Robotics Lab, University of Sherbrooke Createk.
+- Primary regulatory documents — FAA / EASA / Transport Canada / CAAC rulemaking, NPRMs, ARC reports.
+- Direct technical writeups from operating companies with deployed systems — Zipline operations data, Skydio autonomy stack posts, Anduril Lattice docs, Auterion engineering posts.
+- Primary Canadian sources for onshoring / manufacturing / procurement claims — ISED, Transport Canada economic & policy releases, DND / PSPC procurement docs, NRC IRAP, AIAC, CCAA.
+- US defence-industrial policy primaries on Blue UAS / NDAA Section 848 — DIU listings, GAO reports, the NDAA text itself.
+- Reputable analysts with disclosed methodology — Drone Industry Insights, ABI, McKinsey when they publish underlying data.
+
+**Discount or avoid:** vendor marketing without technical depth; "drones will deliver everything by [year]" hype lacking supply-side analysis; regurgitated press releases; social-media speculation (except as a narrative-shift signal); sponsored content posing as analysis; investor decks and provincial press-release announcements where claimed Canadian capacity is not corroborated by a deployed or observable line.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +62,15 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   - **Academic PDFs:** prefer arXiv preprints over paywalled journals when both exist; default to `--engine marker` for figure-heavy robotics papers.
+   - **YouTube talks:** treat ICRA / RSS keynotes and named-engineer company tech talks as primary sources for architectural claims; flag marketing-flavored keynotes as such.
+   - **Regulatory documents:** capture the primary PDF (NPRM, AC, ARC report, EASA opinion). Never rely on press summaries of rulemaking.
+   - **Company blogs:** primary source for what *that company* claims to do — never neutral framing of the field.
+   - **Canadian government / policy PDFs:** capture directly; primary for onshoring, procurement, and regulatory claims. Press-release paraphrases don't substitute.
+   - **Defence procurement docs (DND/PSPC, US DIU/Blue UAS listings, NDAA 848 text):** primary for market-access claims; tag any company's "Blue UAS approved" status with the listing date.
+   - **Manufacturer spec sheets:** primary for BOM and country-of-origin claims, but must be paired with at least one independent corroboration before being cited as deployed reality.
+   - **Bot-walled hosts:** IEEE Xplore, ScienceDirect, MDPI frequently block — use the manual-download fallback below; arXiv mirrors usually work.
+   - **Patents:** capture sparingly, only when claims reveal architecture; tag as *(patent — claims, not deployed reality)*.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
