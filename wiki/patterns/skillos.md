@@ -154,6 +154,10 @@ Additional open questions:
 - **Hierarchical and compositional skills** — unlock the affordances dropped in the simplification; connects to program synthesis / library learning.
 - **Multi-agent shared memory** — credit assignment when a shared skill helps one agent and hurts another. Currently an unsolved direction.
 
+## SDAR contrast: two approaches to skill-conditioned RL on the same benchmarks
+
+[[patterns/sdar]] (arXiv 2605.15155) addresses the same problem space on the same benchmarks (ALFWorld, WebShop) but via the opposite design choice: **SkillOS = trained curator over a frozen executor** — skill management happens at inference via an external live SkillRepo (insert/update/delete); **SDAR = gated distillation during training** — skills are injected as privileged context for a teacher branch at training only, then internalized into policy weights, leaving no runtime skill dependency. SkillOS externalizes skills permanently; SDAR internalizes them permanently. Different runtime footprint: SkillOS requires the curator + SkillRepo at inference; SDAR requires only the trained policy. Both are viable; the choice depends on whether online skill editing (SkillOS) or zero-overhead deployment (SDAR) matters more.
+
 ## Related
 
 - [[patterns/agentic-harness-engineering]] — closest peer self-evolving system; whole-harness vs skills-only.
@@ -169,3 +173,4 @@ Additional open questions:
 - [[memory/mempalace]] — peer 2026 memory work.
 - [[conflicts/agents-md-effectiveness]] — adds RL-trained-curator as a fifth authorship position.
 - [[patterns/direct-corpus-interaction]] — same week; SkillOS's "agentic search over experiential memory" future direction echoes DCI's no-index argument from a different angle.
+- [[patterns/sdar]] — parallel skill-conditioned RL on ALFWorld/WebShop; SkillOS externalizes skills at inference, SDAR internalizes them during training.

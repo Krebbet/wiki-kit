@@ -69,6 +69,10 @@ LongMemEval's distinguishing properties: **only benchmark covering all five abil
 - **It complements [[memory-architectures]]'s evaluation roster.** The survey already documents LoCoMo, MemBench, MemoryAgentBench, and MemoryArena. LongMemEval fills the *recall* slot (vs LoCoMo's QA-leaning slot, MemoryArena's agentic-task slot).
 - **The 30–60% drop on long-context LLMs is the cleanest signal** that pure context-window scaling does not solve the long-term memory problem. This is the academic counterpart to [[anthropic-internal-study]]'s cold-start observation and [[willison-cognitive-cost]]'s practitioner account.
 
+## Multi-party successor: GroupMemBench
+
+[[memory/groupmembench]] (arXiv 2605.14498, 2026-05-18) frames itself as the multi-party successor to LongMemEval: LongMemEval is strictly dyadic (one user, one assistant), has no Theory-of-Mind vocabulary, and no threaded reply structure. GroupMemBench adds multi-user speakers, coexisting beliefs, and user-conditioned queries — a dimension LongMemEval was not designed to test. GroupMemBench also challenges LongMemEval's fact-augmented key expansion recommendation: on multi-party corpora, extraction pipelines discard speaker-identity and thread-structure features that BM25 over raw text preserves, with BM25 Pareto-dominating four of five extraction-based systems. The two benchmarks complement rather than replace each other — LongMemEval's dyadic hybrid recommendation holds in its own regime.
+
 ## Source
 
 - `raw/research/mempalace/11-longmemeval-paper.md` (captured 2026-04-27 from https://arxiv.org/pdf/2410.10813 via marker on CPU; figures preserved in `assets/longmemeval-paper/`)
@@ -80,3 +84,4 @@ LongMemEval's distinguishing properties: **only benchmark covering all five abil
 - [[mem0]] — graded on the peer LoCoMo benchmark; same long-context regime, different question-type coverage.
 - [[memgpt]] — original LLM-as-OS framing; LongMemEval's three-stage indexing/retrieval/reading framework is a generalisation that subsumes the MemGPT mechanism.
 - [[generative-agents]] — the paper's "fact-augmented key expansion" design is the academic-benchmark counterpart to Generative Agents' importance-scored memory stream; both expand the addressable surface beyond raw text.
+- [[memory/groupmembench]] — multi-party successor benchmark; challenges extraction-based key expansion on multi-user corpora; BM25 over raw text Pareto-dominates four of five extraction systems.

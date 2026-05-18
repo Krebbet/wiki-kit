@@ -133,6 +133,10 @@ The risk of investing in harness is that model improvements will obviate it. Lop
 - **MCP scepticism (vs [[mcp-infrastructure]] / [[mcp-multi-agent-framework]]).** Practitioner data point that at-scale teams may bypass MCP for token-economic reasons. Not a benchmarked refutation; corroborating data point with Notion's MCP-vs-CLIs framing (Notion captured the same week, see [[notion-token-town#mcp-vs-clis-the-four-axes]]).
 - **Greenfield-only scope** caveat means [[anthropic-internal-study]]'s smaller-but-real productivity gains on existing systems are the realistic baseline; Symphony is an *upper bound* on autonomous-coding productivity achievable only under specific structural conditions.
 
+## SWE-Cycle context for the zero-human-code regime
+
+Symphony's large-scale zero-human-written-code experiment (>1M LOC, 0% human-authored) operates in precisely the full-lifecycle regime SWE-Cycle (arXiv 2605.13139) benchmarks: environment setup, implementation, and verification without human scaffolding. SWE-Cycle's reported <14% strict FullCycle solve rate on standard benchmark instances contextualizes how hard the Symphony regime actually is — and why the five months of harness investment, the 1-minute build-loop ratchet, and the reviewer-tuning work were necessary rather than incidental.
+
 ## Related
 
 - [[effective-harnesses]] — direct architectural sibling; Anthropic's small-scale single-developer harness vs Symphony's multi-agent orchestrated extreme-scale.
@@ -150,3 +154,4 @@ The risk of investing in harness is that model improvements will obviate it. Lop
 - [[externalization-survey]] — places Symphony under §6 (six harness dimensions) and §8.5 (shared infrastructure → ecosystem-scale).
 - [[direct-corpus-interaction]] — academic counterpart to Lopopolo's CLI-first practitioner stance; DCI's `gh` praise + bash-as-search-interface analysis is the formal version of Symphony's MCP-skepticism on token-economic grounds.
 - [[alphaevolve-impact]] — peer zero-human-code production agent at radically different scale (DeepMind vendor-deployed in TPU/Spanner/compiler vs Symphony's 7-person greenfield); both are positive data points for high-Metric-Freedom = single-or-orchestrated single-vendor-stack.
+- [[evaluation/swe-cycle]] — benchmark for the full-lifecycle coding-agent regime Symphony operates in; reported <14% FullCycle solve rate contextualizes the difficulty of the zero-human-code constraint.

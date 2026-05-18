@@ -62,6 +62,22 @@ These axes are speculative; the wiki does not yet have a benchmark that directly
 
 Third-party reviews of [[mempalace]] argue that verbatim-everything has a scale ceiling: a year of daily agent conversations produces ~10M tokens, at which point retrieve-everything-then-let-the-LLM-sort-it-out is no longer feasible and selective retrieval becomes mandatory. The verbatim camp's response (per `MISSION.md` and the `CLAUDE.md` design principles) is that the discipline is precisely about *preserving* the original words for audit and citation grounding, with retrieval quality as a downstream optimisation problem to be solved within the discipline rather than around it. No matched-scale benchmark currently arbitrates this.
 
+## New data points — 2026-05-18
+
+### (a) GroupMemBench: first matched-corpus empirical evidence for the verbatim/no-extraction side
+
+[[memory/groupmembench]] (arXiv 2605.14498) is the first benchmark to compare extraction-based agent memory systems against a BM25 verbatim baseline on a matched corpus with controlled ingestion. Results (reported; collect-but-confirm): BM25 (~43.2% cross-domain accuracy, ~\$0 ingestion) strictly Pareto-dominates four of five extraction-based systems — Mem0 (~25.7%), MemGPT (~28.2%), A-Mem (~35.1%), GraphRAG (~20.6%). Extraction pipelines lose ~10–20pp absolute to BM25 on average. Only Hindsight (~46.0%) beats BM25.
+
+This is load-bearing for Position 1 (verbatim) and Position 3 (no-index): both positions predict that extraction discards structural and lexical features that matter for retrieval; GroupMemBench's multi-party corpus (speaker identity, thread structure, coexisting beliefs) amplifies exactly those discarded features. The result fills the "no matched-scale benchmark" gap explicitly noted in the reconciling-axes table above.
+
+Knowledge-Update sub-result: Mem0 collapses to ~4.67% vs BM25 ~25.23% — Mem0's extractor appends new statements alongside obsolete ones without speaker-conditioned consolidation, a regime it was not designed for. Caveat: GroupMemBench is multi-party; favorable Mem0 LOCOMO numbers come from a dyadic regime. The conflict is real but involves a regime shift, not a direct contradiction on the same corpus.
+
+### (b) Memory-evolution survey: abstraction-depth framing axis
+
+[[memory/memory-evolution-survey]] (arXiv 2605.06716) adds a third framing axis to this conflict. Its Storage → Reflection → Experience evolutionary taxonomy maps the conflict positions onto a cognitive-depth axis: **Storage = verbatim-fidelity pole** (Position 1), **Reflection = middle ground** (extraction + consolidation, Position 2), **Experience = full-abstraction pole** (cross-trajectory policy priors, not yet a named position in this conflict). [[memory/longmemeval]]'s hybrid recommendation (verbatim values + extracted-fact keys) sits at the Storage/Reflection boundary on this axis. The survey does not resolve the conflict but provides vocabulary for locating each position. The survey also cites evidence (Xiong et al. 2025, Srivastava and He 2025 — collect-but-confirm) that unrestricted memory expansion is detrimental, which is mild pressure against the pure Storage/verbatim pole.
+
+**Status remains OPEN** — GroupMemBench strengthens Position 1/3 empirically on multi-party corpora; the regime dependency (dyadic vs multi-party) means the conflict is not closed, only better bounded.
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
@@ -86,3 +102,5 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[direct-corpus-interaction]] — Position 3 (no index, direct substrate search).
 - [[longmemeval]] — academic source recommending a *with-index* hybrid (verbatim values + fact-augmented keys); DCI sits at a different point on the new "Index existence" axis.
 - [[generative-agents]] — historical antecedent of the extraction position (memory-stream summaries via the recency × importance × relevance scoring formula).
+- [[memory/groupmembench]] — 2026-05-18 addition; first matched-corpus benchmark evidence for Position 1/3 (BM25 Pareto-dominates four of five extraction systems on multi-party corpora).
+- [[memory/memory-evolution-survey]] — 2026-05-18 addition; Storage→Reflection→Experience axis locates each position on an abstraction-depth continuum.

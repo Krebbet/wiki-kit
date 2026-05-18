@@ -79,6 +79,10 @@ Three new sources surfaced in the week of 2026-05-04 sit alongside this post in 
 
 The [[externalization-survey]] (arXiv 2604.08224) provides the unifying vocabulary: this harness is one concrete instance of the survey's six harness dimensions (agent loop, sandboxing, oversight, observability, configuration, context budget) and explicitly an instance of the §8.3 "self-evolving harnesses" emerging direction once AHE-style evolution is layered on.
 
+## Architectural principle vs operational lesson: compaction and structured state
+
+[[patterns/anthropic-context-engineering]] describes compaction as "typically the first lever in context engineering to drive better long-term coherence" — an architectural-principle framing about where to start. This page's headline claim — "compaction isn't sufficient" — is the operationally-learned refinement: starting with compaction is right, but it does not complete the picture for multi-session SDK-level agents. This is not a contradiction. The Anthropic post itself introduces structured note-taking as compaction's necessary complement in the same document; `feature_list.json` and `claude-progress.txt` are one concrete instantiation of that companion technique, evolved from production failure.
+
 ## Conflict with [[agents-md-eval]]
 
 This source recommends structured context files (`feature_list.json`, `claude-progress.txt`) as essential scaffolding for long-running agents. [[agents-md-eval]] finds LLM-generated context files reduce success ~3% and inflate cost >20% in well-documented repos. Possible reconciling axes — task type (long-running multi-session vs single-session well-documented), authorship (here the *agent* writes the artefacts during work, in agents-md-eval the artefacts are pre-generated), and file format (JSON vs Markdown AGENTS.md) — but no empirical bridge yet. Tracked in [[conflicts/agents-md-effectiveness]].
@@ -103,3 +107,4 @@ This source recommends structured context files (`feature_list.json`, `claude-pr
 - [[sierra-monitor-eval-of-evals]] — Sierra's flywheel (build → observe → understand → improve) is the operational counterpart to the single-shot harness design here; sustains a deployed agent over time.
 - [[skillos]] — learned-curation counterpart: the `feature_list.json` / `claude-progress.txt` artefacts here are hand-prompted; SkillOS demonstrates the curation policy can be RL-trained against downstream success.
 - [[direct-corpus-interaction]] — both reject the abstracted-API-mediates-everything posture; Anthropic's harness ships explicit progress files, DCI ships explicit corpus traversal — distinct flavours of the same anti-mediation move.
+- [[patterns/anthropic-context-engineering]] — conceptual parent; this harness is a concrete production instantiation of the JIT/compaction/note-taking triad; the "compaction isn't sufficient" lesson is the operational refinement of the post's architectural-principle ordering.

@@ -115,6 +115,8 @@ Three-layer mechanism:
 
 ### Adjacent threads
 
+- [[patterns/anthropic-context-engineering]] — Anthropic's engineering post independently names JIT retrieval via `grep`/`glob`/`head`/`tail` in Claude Code as a production pattern — framed as "just-in-time retrieval" where agents carry lightweight references and load content at runtime via tools rather than pre-loading. This is structurally identical to DCI's core thesis (search raw substrate via terminal tools > vector index), and Anthropic explicitly names Claude Code as the production instance — a primary-vendor corroboration of this page's central claim from a different empirical tradition.
+
 - [[patterns/sierra-context-engineering]] — Sierra's eight-block taxonomy treats Knowledge as a separately-retrieved block; DCI argues that for *agent-resident* corpora the right primitive may not be a Knowledge block at all but direct corpus access. Boundary: Knowledge-block-as-retrieval-injection makes more sense for cloud/SaaS knowledge bases than for local files.
 - [[patterns/agentic-context-engineering]] — ACE's playbook-as-evolving-context approach is orthogonal but compatible: DCI handles retrieval, ACE handles accumulated tactical knowledge. Could compose.
 - [[patterns/context-engineering]] — DCI reframes the `c_know` component of the C = {c_instr, c_know, c_tools, c_mem, c_state, c_query} formalism: knowledge is no longer a pre-retrieved injection but a tool-mediated direct-access primitive, blurring `c_know` into `c_tools`.
@@ -175,6 +177,7 @@ The **on-policy cohort** the paper cites — Anthropic Claude Cowork (2026), Ope
 - [[case-studies/notion-token-town]] — direct convergence on MCP-vs-CLIs and "vector embeddings are less and less."
 - [[deployments/openai-symphony]] — practitioner counterpart on token-economic grounds.
 - [[deployments/mcp-infrastructure]] — third (academic) data point for the practitioner MCP-vs-CLIs framing.
+- [[patterns/anthropic-context-engineering]] — primary-vendor corroboration; Anthropic independently names `grep`/`glob`/`head`/`tail` JIT retrieval in Claude Code, converging with DCI's core thesis from a practitioner angle.
 - [[patterns/sierra-context-engineering]] — Knowledge-block boundary case.
 - [[patterns/agentic-context-engineering]] — orthogonal and compatible; ACE handles tactical knowledge, DCI handles retrieval.
 - [[patterns/context-engineering]] — reframes `c_know` ↔ `c_tools` boundary.

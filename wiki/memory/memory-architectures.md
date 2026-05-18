@@ -79,6 +79,8 @@ The MemoryArena delta is the cleanest empirical signal in the survey that *stati
 
 **Benchmarks with their own pages:**
 - [[longmemeval]] — ICLR 2025; the benchmark MemPalace's headline number is graded against, with recommended index designs (round-granularity values, fact-augmented key expansion, time-aware query expansion).
+- [[memory/groupmembench]] — 2026; first multi-party memory benchmark; BM25 ≥ neural on multi-user conversational corpora.
+- [[memory/memory-evolution-survey]] — 2026; Storage→Reflection→Experience evolutionary axis; Experience tier extends above this page's five families.
 
 **Related applications:**
 - [[codified-context]] — hand-engineered application-layer instance of *hierarchical virtual context*.
@@ -105,6 +107,12 @@ A four-paper minimum to navigate the cluster: this survey → [[memgpt]] (hierar
 | No-index, terminal-tool corpus search | [[direct-corpus-interaction]] |
 
 The three retrieval-augmented systems ([[mem0]], [[mempalace]], [[direct-corpus-interaction]]) sit in direct doctrinal tension; [[conflicts/verbatim-vs-extracted-memory]] is the page that catalogues the disagreement and the (currently speculative) reconciling axes.
+
+## Evolutionary framing (Storage → Reflection → Experience)
+
+A second 2026 survey, [[memory/memory-evolution-survey]] (arXiv 2605.06716), proposes a **temporal / cognitive-depth axis** orthogonal to this page's five-family mechanism taxonomy. Its three stages map onto the families here: Storage (Linear / Vector / Structured) ≈ families 1–2 and the retrieval-augmented tier of family 3; Reflection ≈ families 3–4 (reflective/self-improving and hierarchical virtual context); **Experience (cross-trajectory policy abstraction, skill libraries, implicit fine-tuning) is a new tier above what this page's five families cover** — it represents an emerging frontier the write–manage–read loop does not yet address. See [[memory/memory-evolution-survey]] for the formal Table 1 distinctions and named system placements.
+
+[[memory/groupmembench]] (arXiv 2605.14498, 2026-05-18) adds a multi-party benchmark data point absent from the evaluation roster above: BM25 (~43.2%) matches or beats four of five neural/extraction-based memory systems (~20–35%) on multi-party conversational corpora. This is a new benchmark axis (multi-user, ToM-aware, threaded) and the first matched-corpus evidence that extraction pipelines may not repay their ingestion cost in retrievability. Collect-but-confirm; dyadic results (e.g., LOCOMO) differ.
 
 ## Externalization framing (Zhou et al. 2026)
 

@@ -99,6 +99,12 @@ The same independent reproduction (issue #39) reports that on the M2 Ultra setup
 
 Deferred: Synapse advanced retrieval (MMR, pinned memory, query expansion — #596), multi-device sync (#575, blocked on LanceDB), multilingual embedding (#488, #442), Qdrant backend (#381).
 
+## Tensions and corroboration from 2026 surveys (collect-but-confirm)
+
+[[memory/memory-evolution-survey]] (arXiv 2605.06716, 2026-05-18) argues that unrestricted memory expansion is detrimental to agent performance, citing Xiong et al. 2025 and Srivastava and He 2025 (neither independently verified in this wiki). This is mild tension with MemPalace's never-summarize tenet, which holds that expansion is preferable to lossy compression. The conflict is not direct — the survey is arguing against *unbounded growth without management policy*, not against verbatim storage per se — but the framing is worth noting. The cited papers should be checked before treating this as a strong counter-claim.
+
+Conversely, [[memory/groupmembench]] (arXiv 2605.14498) provides the strongest current empirical support for MemPalace's verbatim/raw-text-first discipline: a BM25 baseline over raw text (~43.2%) Pareto-dominates four of five extraction-based memory systems on multi-party conversational corpora, with extraction pipelines costing more while performing worse. This is independent corroboration from a different team and corpus type that the verbatim-first approach is competitive.
+
 ## Source
 
 - `raw/research/mempalace/01-readme.md` (https://github.com/MemPalace/mempalace/blob/develop/README.md)
@@ -122,3 +128,5 @@ Deferred: Synapse advanced retrieval (MMR, pinned memory, query expansion — #5
 - [[claude-code-session-memory]] — Claude Code product-layer; MemPalace's hooks target the same loop with verbatim discipline rather than automated summary.
 - [[codified-context]] — hand-engineered hot/cold tier system; MemPalace's wings/rooms/halls is a softer instance of the same scoping discipline.
 - [[conflicts/verbatim-vs-extracted-memory]] — open conflict pairing this page against [[mem0]].
+- [[memory/memory-evolution-survey]] — places MemPalace's verbatim discipline at the Storage pole of the Storage→Reflection→Experience axis; notes mild tension with expansion-is-detrimental claim (collect-but-confirm).
+- [[memory/groupmembench]] — BM25 over raw text Pareto-dominates four of five extraction systems on multi-party corpora; independent empirical corroboration of verbatim-first discipline.

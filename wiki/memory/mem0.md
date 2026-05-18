@@ -84,6 +84,10 @@ The paper does not have a dedicated limitations section but flags:
 - **The LOCOMO numbers are the cleanest available benchmark for the latency-vs-accuracy trade-off** in production memory systems. The 92% latency reduction at modest accuracy cost (66.88 vs 72.90 J, ~6pp) is a concrete engineering data point.
 - **Direct comparison data vs Zep, LangMem, A-Mem, OpenAI memory** in a single benchmark — useful for selection decisions in production.
 
+## Multi-party performance (GroupMemBench, collect-but-confirm)
+
+[[memory/groupmembench]] (arXiv 2605.14498, 2026-05-18) reports Mem0 underperforms BM25 on multi-party conversational corpora: ~25.7% average accuracy vs BM25 ~43.2%, and a collapse on Knowledge Update (~4.67% vs BM25 ~25.23%). The Knowledge-Update failure is attributed to Mem0's extractor appending new statements alongside obsolete ones without speaker-conditioned consolidation — a regime its ADD/UPDATE/DELETE/NOOP pipeline was not designed for. These numbers contrast with Mem0's favorable LOCOMO results (J=66.88, 26% improvement over OpenAI memory), which are dyadic. The two regimes are different enough that neither result invalidates the other; practitioners should note the multi-party degradation for any deployment spanning group conversations.
+
 ## Source
 
 - `raw/research/memory-management/07-04-mem0.md` (captured 2026-04-26 from https://arxiv.org/pdf/2504.19413 via marker on CPU; figures preserved in `assets/04-mem0/`)
@@ -95,3 +99,4 @@ The paper does not have a dedicated limitations section but flags:
 - [[letta-memory-blocks]] — productionised MemGPT; the closest peer in the production-library landscape.
 - [[generative-agents]] — Mem0 is a production realisation of the retrieval-scored memory stream concept.
 - [[anthropic-memory-tool]] — Anthropic's API-level memory primitive; complementary rather than competing.
+- [[memory/groupmembench]] — reports Mem0 ~25.7% avg / ~4.67% Knowledge Update vs BM25 ~43.2% on multi-party corpora; different regime from LOCOMO.

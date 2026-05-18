@@ -113,6 +113,10 @@ The four-externalization taxonomy (memory + skills + protocols + harness) is gen
 
 The skills chapter is particularly underrepresented in the existing wiki: [[skill-distillation]] argues for *eliminating* skills via collapse (the Metric Freedom F predictor), but no page currently surveys *what skills are and how they work as externalised artifacts*. The §6 harness chapter's six-dimension framework is also a new analytical vocabulary not present in the wiki. *(2026-05-11 update: [[skillos]] now provides a concrete RL operationalisation of §4 — frozen executor + RL-trained Markdown-skill curator with grouped-task downstream rewards.)*
 
+## SDAR: "distillation back into weights" direction of the arc
+
+[[patterns/sdar]] (arXiv 2605.15155) provides a concrete 2026 instance of the **distillation back into weights** direction within the weights→context→harness arc. Skills are placed in context at training only (as privileged teacher-branch context), then compressed into policy weights via a token-level sigmoid gate — the inference-time agent carries no external skill context. This fits the survey's framing of externalisation as a continuum: SDAR takes knowledge that was briefly externalised into context and re-internalises it into weights, choosing low runtime footprint over runtime editability.
+
 ## Related
 
 - [[memory-architectures]] — closest peer survey; bidirectional cross-reference.
@@ -124,6 +128,7 @@ The skills chapter is particularly underrepresented in the existing wiki: [[skil
 - [[agent-personas]] — persona-via-system-prompt as a context-layer externalization; PRISM moves it into weights via gated self-distillation.
 - [[mcp-infrastructure]], [[mcp-multi-agent-framework]] — protocols-as-externalization (§5).
 - [[skill-distillation]] — complementary to the survey's skills chapter (one says "package", the other says "sometimes collapse").
+- [[patterns/sdar]] — concrete instance of the "distillation back into weights" direction: privileged context at training only, internalized at inference.
 - [[codified-context]] — hand-engineered instance of all three externalizations simultaneously.
 - [[context-folding]], [[agentic-context-engineering]] — context-resident-compression instances of memory externalization.
 - [[memory/memgpt]], [[memory/letta-memory-blocks]], [[memory/mem0]], [[memory/mempalace]], [[memory/anthropic-memory-tool]], [[memory/claude-code-session-memory]], [[memory/longmemeval]], [[memory/reflexion]], [[memory/generative-agents]] — memory-externalization instances explicitly cited or implicitly mapped.

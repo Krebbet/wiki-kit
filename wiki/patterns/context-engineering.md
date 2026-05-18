@@ -45,6 +45,10 @@ The `c_mem` component gets a more thorough treatment in [[memory-architectures]]
 
 Quadratic O(n²) attention complexity. Mistral-7B requires 122× more compute going from 4K → 128K tokens. *(Cited, 2025.)* Long-context is not free.
 
+## Primary-vendor articulation
+
+[[patterns/anthropic-context-engineering]] is the canonical Anthropic engineering-blog treatment of context engineering as an operational discipline. It names the JIT/compaction/note-taking triad as the three load-bearing long-horizon techniques, frames the attention budget as the governing constraint, and positions Claude Code as the main production instance. It serves as the primary-vendor complement to the arXiv survey formalisation above.
+
 ## Relation to fine-tuning
 
 The survey explicitly frames context engineering and fine-tuning as **complementary, not substitutes**. See [[fine-tuning-vs-context-engineering]] for the decision framework synthesized across five sources.
@@ -62,3 +66,4 @@ The survey explicitly frames context engineering and fine-tuning as **complement
 - [[failure-modes]]
 - [[memory-architectures]] — deep-dive on the `c_mem` component.
 - [[codified-context]], [[context-folding]], [[cognitive-fabric-nodes]] — three 2026 instances of context-management mechanisms.
+- [[patterns/anthropic-context-engineering]] — primary-vendor articulation; JIT/compaction/note-taking triad as the operational technique cluster.

@@ -83,9 +83,14 @@ This distinction is architecturally coherent but partially deflates the rhetoric
 - Context engineering "future-proofs" agents: better models amplify returns from well-engineered context without requiring logic re-hardcoding. *(Vendor-stated; no evaluation cited.)*
 - Token efficiency: unnecessary inference cost is eliminated — *"you aren't paying to process a thousand tokens of baggage policy during a simple flight rebooking."* *(Operational cost framing.)*
 
+## Peer framing: Anthropic's general vs Sierra's domain-specific
+
+[[patterns/anthropic-context-engineering]] offers the complementary general-purpose vendor framing. Where Sierra's post instantiates context engineering as eight named, condition-gated block types for a customer-facing agent platform, Anthropic's post operates at the architectural-principle level: JIT retrieval, compaction, and structured note-taking as the technique triad, applied to coding agents. Sierra's "progressive disclosure" mechanism — inject each block only when its runtime condition fires — is the domain-specific instantiation of Anthropic's JIT retrieval principle. Both posts converge on the same load-bearing heuristic: context window as a finite attention budget that must be spent purposefully, not filled indiscriminately.
+
 ## Related
 
 - [[patterns/context-engineering]] — extends with concrete eight-block taxonomy and progressive-disclosure mechanism; Sierra is a primary vendor articulation of context engineering as a named discipline.
+- [[patterns/anthropic-context-engineering]] — peer vendor framing; Anthropic's general architectural principles vs Sierra's domain-specific eight-block instantiation.
 - [[patterns/agentic-context-engineering]] — adjacent; Sierra's conditional block injection is a practitioner instantiation of agentic context engineering concerns.
 - [[patterns/effective-harnesses]] — alternative harness architecture (Anthropic's initializer + coding-agent pattern) vs Sierra's condition-gated block system; both address the "right information at the right time" problem, differently.
 - [[patterns/topology-taxonomy]] — progressive tool disclosure mitigation class ([[case-studies/notion-token-town]]) extends directly to Sierra's context-block disclosure; Sierra adds the *conditions* mechanism as the formal gating layer.

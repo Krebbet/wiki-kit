@@ -4,6 +4,27 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-05-18] weekly-brief ingest | weekly radar sweep (5 captured, 10 watchlisted)
+
+Autonomous `/weekly-brief` radar sweep for week of 2026-05-18. 5 primary sources captured to `raw/research/weekly-2026-05-18/` (marker on CPU + capture_url; audit clean, 0 issues; 5/5 subagent summaries schema-valid). SkillOS (arXiv 2605.06614) was excluded — already covered by `patterns/skillos`.
+
+Sources:
+- **anthropic-context-engineering** (Anthropic Engineering blog, primary vendor) — context engineering vs prompt engineering; attention-budget / "context rot"; JIT-retrieval + compaction + structured-note-taking triad (hybrid-retrieval caveat).
+- **swe-cycle** (arXiv 2605.13139) — complete issue-resolution-cycle benchmark (Env/Impl/TestGen/FullCycle), 489 instances (~203 from SWE-bench Pro), reported FullCycle ~<14%; contamination challenge to SWE-bench Verified/Pro.
+- **memory-evolution-survey** (arXiv 2605.06716) — Storage→Reflection→Experience evolutionary taxonomy; orthogonal to memory-architectures' five-family taxonomy; Experience tier as a new frontier.
+- **GroupMemBench** (arXiv 2605.14498, UCSB + Microsoft) — first multi-party memory benchmark; BM25 ~43.2% Pareto-dominates four of five extraction-based systems; best system ~46%; Mem0 ~4.67% Knowledge Update collapse.
+- **SDAR** (arXiv 2605.15155) — on-policy self-distillation + token-level sigmoid gating for multi-turn agents; privileged context at training only, internalized into weights; reported ~+9.4% ALFWorld / ~+10.2% WebShop over GRPO; code + models released.
+
+**New pages:** `patterns/anthropic-context-engineering`, `evaluation/swe-cycle`, `conflicts/swe-bench-contamination` (OPEN), `memory/memory-evolution-survey`, `memory/groupmembench`, `patterns/sdar`
+
+**Extended pages:** `conflicts/verbatim-vs-extracted-memory` (2026-05-18 data-points: GroupMemBench + survey abstraction-depth axis), `patterns/context-engineering`, `patterns/sierra-context-engineering`, `patterns/effective-harnesses`, `patterns/direct-corpus-interaction`, `evaluation/swe-bench-pro`, `patterns/agentic-harness-engineering`, `deployments/openai-symphony`, `patterns/harness-design-space`, `memory/memory-architectures`, `memory/longmemeval`, `memory/mem0`, `memory/memgpt`, `memory/mempalace`, `patterns/skill-distillation`, `patterns/skillos`, `patterns/externalization-survey`, `memory/reflexion`
+
+**Key synthesis:** (1) Coding-agent eval frontier moved past "fix a GitHub issue" — SWE-Cycle (+ watchlisted SWE-Atlas/SWE-Chain/SWE-WebDevBench) target the whole lifecycle; SWE-Cycle also opens a new contamination conflict against SWE-bench Pro. (2) GroupMemBench is the first matched-corpus empirical evidence for the verbatim/no-extraction pole of the open verbatim-vs-extracted conflict (BM25 strictly Pareto-dominates four extraction pipelines, load-bearing for Positions 1/3); the memory-evolution survey adds an abstraction-depth framing axis and an Experience tier above the existing memory cluster. (3) Self-improvement converging on RL-trained-curation / distillation-over-frozen-executor — SDAR joins SkillOS/skill-distillation. (4) Context engineering canonized by a primary vendor (Anthropic), peer to the existing sierra-context-engineering page.
+
+**Conflict ruling (standing autonomy):** opened `conflicts/swe-bench-contamination` (SWE-Cycle vs SWE-bench Pro — genuine contradiction, no prior open conflict on the theme). Did NOT open a new memory conflict — survey/GroupMemBench tensions were folded into the already-OPEN `conflicts/verbatim-vs-extracted-memory` per the conflict protocol.
+
+---
+
 ## [2026-04-22] weekly-brief | agentic-trends radar sweep (week of 2026-04-22)
 
 Captured 5 sources, ingested via 5 parallel subagents, wrote 4 new pages + 1 extension + a fresh watchlist.
@@ -269,3 +290,11 @@ Sources: 4 Anthropic Skills primary (01 engineering blog, 02 best-practices docs
 2 new pages: patterns/agent-skills (consolidates 01+02+03+04 — same conceptual ground at varying depth; one hub beats four thin pages; dedicated Claude Code mechanics section), patterns/agent-personas (05+06+07; practitioner advice bracketed against empirical evidence with an authority-stratified what-works/what-doesn't table). conflicts/agents-md-effectiveness extended with a 2026-05-15 data-points section (Skills = favorable-regime preconditions / progressive disclosure as reconciling lever; persona evidence = system-prompt-layer fragility corroboration). 4 reciprocal xrefs (skillos, externalization-survey, skill-distillation, anthropic-finance-agents). Filled the two named coverage gaps (persona/personality design; Claude Code skill-authoring mechanics).
 
 Conflict ruling (made under standing autonomy): did NOT open conflicts/persona-effectiveness — Hu et al. explicitly reconciles the Zheng null as a task-type aggregation artefact; no genuine impasse to elevate, documented as resolved-tension on the personas page per the conflict protocol.
+
+## 2026-05-17 proposal | Two-operator memory system architecture
+
+User-directed design proposal (not /research, not /ingest). Created wiki/proposals/memory-system-architecture.md — new wiki/proposals/ subdir. Editorial synthesis of the user's brief grounded in the memory cluster: two operators (Librarian owns tiering/curation/routing; Worker extracts + records verbatim), verbatim-first store, text-search-first retrieval ladder (grep/regex → structured key index → vector/graph → LLM). Each of the five user tenets annotated with supporting + complicating wiki evidence. Honest risk surfacing: verbatim tenet sits inside the OPEN verbatim-vs-extracted conflict (LongMemEval hybrid taken as working position); DCI scale ceiling (~200K docs) flagged as a hard partitioning constraint; Librarian-as-LLM silent-failure / learning-to-forget risks from the survey open challenges. Page banner-labelled PROPOSAL/editorial; Source section states no new external sources. index.md + revisions.md updated. Awaiting user direction on the embedded open decisions (scale, topology, substrate assumptions) before any implementation framing.
+
+## 2026-05-17 proposal | Role & Skill definition (agentic-system proposal set)
+
+User elaborated the role/skill layer (role-defining vs project-specific memory classes) and asked for a dedicated proposal+best-practices page. Created wiki/proposals/agentic-system-roles-skills.md as the canonical role-definition spec; extended wiki/proposals/memory-system-architecture.md with the on-disk role/project memory layout + 3 risk bullets + forward cross-ref. Explicit single-responsibility split: roles-skills page = what a role IS + authoring best-practices; memory-system-architecture page = where role artefacts are stored/retrieved. Strongest synthesis: "improvement loop, uniform across roles" ⇒ Librarian-owned protocol (Worker produces failure-log signal, separate operator runs the protocol + rewrites Role Reference/Contract), grounded via SkillOS separate-curator evidence + memory-architectures trustworthy-reflection caveat + Reflexion mechanism + SkillOS insert/update/delete as the update action. Both pages editorial-labelled; grounding citations throughout; no external sources. index.md/revisions.md updated. 4 open decisions surfaced on the roles/skills page (improvement-loop validator, relationship-graph default, contract-size threshold, role-vs-personality unit) awaiting user direction.

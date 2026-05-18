@@ -30,6 +30,10 @@ SWE-bench Pro is a Scale AI benchmark of 1,865 real-world software engineering t
 - **Patch scale predicts failure**: performance degrades monotonically with lines-changed and files-touched, giving practitioners a concrete predictor of where agents will fail in production (large, multi-file refactors).
 - **Top-model consistency vs small-model erraticism**: heterogeneity in per-repo variance has direct implications for model selection and scaffold design for coding agents working across diverse enterprise codebases.
 
+## SWE-Cycle extension and contamination challenge
+
+SWE-Cycle (arXiv 2605.13139) extends the Pro paradigm by adding Env (environment reconstruction) and TestGen (verification test generation) phases that SWE-bench Pro omits, while building its instance pool partly on Pro (~203 of 489 final instances). The end-to-end FullCycle reported solve rate (<14%) reveals that pre-configured environments — including Pro's Docker containers — mask substantial real agent friction. SWE-Cycle also raises an open contamination challenge: its dataset construction pipeline removes instances from Pro via a 5-gram match filter, citing ~35% match rates on reference patches even in Pro's GPL/private-repo pool. See [[conflicts/swe-bench-contamination]] for the open conflict between these positions.
+
 ## Source
 
 - `raw/research/weekly-2026-04-22/01-swe-bench-pro.md` (captured 2026-04-22 from https://labs.scale.com/leaderboard/swe_bench_pro_public)
@@ -44,3 +48,5 @@ SWE-bench Pro is a Scale AI benchmark of 1,865 real-world software engineering t
 - [[topology-taxonomy#long-horizon-context-loss]] — patch-scale degradation and the public-vs-private gap are the empirical anchor of the long-horizon-context-loss synthesis.
 - [[agents-md-eval]] — sister benchmark testing the *intervention* side (does adding AGENTS.md help?) where Pro tests the *contamination* side.
 - [[airs-bench]] — sister benchmark for autonomous research agents (full scientific pipeline); Pro is the coding-agent peer.
+- [[evaluation/swe-cycle]] — extends Pro with Env+TestGen phases, builds partly on Pro instances, and raises a contamination challenge.
+- [[conflicts/swe-bench-contamination]] — open conflict between Pro's contamination-resistance claim and SWE-Cycle's contamination filtering findings.

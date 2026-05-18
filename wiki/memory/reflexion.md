@@ -59,6 +59,12 @@ Subsequent systems extend the abstraction:
 - [[agentic-context-engineering]] (ACE, 2025) — applies the generate-reflect-curate playbook to context engineering itself: the agent reflects on what should persist in its working context across long-running sessions, not just on individual task trajectories.
 - [[anthropic-memory-tool]]'s recommended pattern of "as you make progress, record status / progress / thoughts etc in your memory" is the production-API expression of Reflexion's memory-write step at the agent-runtime level.
 
+## SDAR contrast and memory-evolution survey framing
+
+**SDAR contrast.** [[patterns/sdar]] (arXiv 2605.15155) is a post-training token-level RL method; Reflexion is inference-time verbal RL. Both use self-generated signals to improve agents, but at entirely different phases and granularities: Reflexion runs during task execution (verbal failure → reflection → episodic buffer → retry); SDAR runs during weight training (token-level sigmoid-gated distillation from privileged-context rollouts). The analogy is superficial — they do not compete at the same layer.
+
+**Memory-evolution survey framing.** The 2026 memory-evolution survey (arXiv 2605.06716, [[memory/memory-evolution-survey]]) classifies Reflexion in Table 1 as a **Reflection-stage** exemplar (Introspection sub-type): it transforms a single trajectory's errors intra-trajectory (F_ref(τ_i | φ) = m'_i) and retrieves past reflections for semantically similar tasks. The survey's **Experience stage** is distinct — it requires cross-trajectory abstraction into policy priors applicable to unseen scenarios without trajectory-level matching (F_exp(T_batch) = K). This is a framing nuance, not a factual conflict: Reflexion's per-episode reflection loop is trajectory-local, and the survey's taxonomy clarifies that cross-trajectory policy abstraction is an emergent frontier above it.
+
 ## Source
 
 - `raw/research/memory-management/06-02-reflexion.md` (captured 2026-04-26 from https://arxiv.org/pdf/2303.11366 via marker on CPU; figures preserved in `assets/02-reflexion/`)
@@ -71,3 +77,5 @@ Subsequent systems extend the abstraction:
 - [[anthropic-memory-tool]] — production-API expression of memory-write as a discipline.
 - [[ai-scientist-v2]] — uses VLM-as-quality-gate for generated figures, a domain-specific reflection mechanism.
 - [[topology-taxonomy#long-horizon-context-loss]] — Reflexion's per-trial reflection is a building block for the broader context-loss mitigation thread.
+- [[patterns/sdar]] — post-training token-level RL contrast: both self-improve via self-generated signals, at different phases.
+- [[memory/memory-evolution-survey]] — classifies Reflexion as Reflection-stage (Introspection); distinguishes it from Experience-stage cross-trajectory abstraction.

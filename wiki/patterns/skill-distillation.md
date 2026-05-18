@@ -99,6 +99,10 @@ The other four are remediation; this is elimination. They are not in conflict �
 - **A computable predictor.** F is not a heuristic — it's a metric-distance correlation with theoretical grounding (Theorem 3.1) and a strong empirical fit (r = −0.85). Practitioners can compute it from baseline runs before committing to architecture.
 - **Caching is structural, not incidental.** The paper's observation that MAS baselines get near-zero prompt-cache benefit (because of dynamic inter-agent messaging) is a separate, durable cost argument — independent of F — for revisiting MAS choices in cache-aware deployments.
 
+## SDAR: multi-turn RL instance of distillation-into-weights
+
+[[patterns/sdar]] (arXiv 2605.15155) is a concrete multi-turn-RL instantiation of the distillation-into-weights move: skills are retrieved and injected as privileged context for a teacher branch at training time, then internalized into policy weights via a token-level sigmoid gate — no skills are needed at inference. SDAR's "skills internalization" result (84.4% on ALFWorld-3B, outperforming skill-augmented Skill-GRPO* at 80.5% that *does* require skills at test time) is strong empirical evidence for the distillation-into-weights approach in multi-turn agentic settings.
+
 ## Source
 
 - `raw/research/long-horizon-context/13-12-skill-distillation-pdf.md` (captured 2026-04-25 from https://arxiv.org/pdf/2604.01608 via marker on CPU; figures preserved in `assets/12-skill-distillation-pdf/`)
@@ -114,3 +118,4 @@ The other four are remediation; this is elimination. They are not in conflict �
 - [[notion-token-town]] — manager-agent topology and "automate itself out of a job" framing as adjacent F-question (when does collapsing a multi-agent fleet via a manager-agent layer match the F-predictor's collapse decision?).
 - [[externalization-survey]] — situates skill-distillation within the survey's skills-as-externalization chapter (§4); its boundary conditions (semantic alignment, portability, staleness, context-dependent degradation) are conceptual cousins to F.
 - [[agentic-harness-engineering]] — both use evidence-driven attribution before mutating an architecture (F predictor vs change-manifest verification).
+- [[patterns/sdar]] — multi-turn RL instance of distillation-into-weights: skills used at training, internalized, not needed at inference.

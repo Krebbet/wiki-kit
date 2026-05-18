@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-11
+last_reviewed: 2026-05-18
 ---
 
 # Watchlist
@@ -8,6 +8,28 @@ last_reviewed: 2026-05-11
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
 
 ---
+
+## Week of 2026-05-18
+
+Surplus from this week's sweep — the 5 captured items are recorded in `wiki/log.md` (Anthropic context-engineering, SWE-Cycle 2605.13139, Memory-Evolution Survey 2605.06716, GroupMemBench 2605.14498, SDAR 2605.15155). Items below are strong-fit but did not make the cap: the SWE-* benchmark cluster is over-represented this week (one captured as the cluster anchor), the skills cluster is largely already in the wiki, and the rest are single-signal or product/conference posts.
+
+### Coding-agent evaluation
+- **SWE-Atlas — Benchmarking Coding Agents Beyond Issue Resolution (Scale AI, arXiv 2605.08366)** — https://arxiv.org/abs/2605.08366 — Three-task suite (Codebase Q&A, Test Writing, Refactoring); open code + HF dataset; institutional weight. Strongest of the watchlisted SWE-* set; capture if it becomes the de-facto beyond-issue-resolution standard or a leaderboard forms.
+- **SWE-Chain — Chained Release-Level Package Upgrades (arXiv 2605.14415)** — https://arxiv.org/abs/2605.14415 — 12 upgrade chains, 155 version transitions, 1,660 grounded requirements; long-horizon maintenance regime not covered by SWE-Cycle. Capture if cited as a distinct long-horizon-maintenance signal.
+- **SWE-WebDevBench — Coding-Agent Platforms as Virtual Software Agencies (arXiv 2605.04637)** — https://arxiv.org/abs/2605.04637 — 68-metric framework for vibe-coding/full-stack-generation platforms. Pairs with willison-vibe-agentic-convergence; capture if the vibe-coding-eval theme recurs.
+- **Workspace-Bench 1.0 — Agents on Workspace Tasks with File Dependencies (arXiv 2605.03596)** — https://arxiv.org/abs/2605.03596 — File-dependency-heavy office/workspace tasks; bridges repo-level and real workflows. Single-signal; flag if it gains traction.
+
+### Skills / self-evolving agents
+- **A Comprehensive Survey on Agent Skills (arXiv 2605.07358)** — https://arxiv.org/abs/2605.07358 — Consolidating survey defining skills as reusable procedural artifacts; would anchor the agent-skills/skillos/skill-distillation cluster. Capture if it becomes the canonical skills-survey citation (lower novelty than this week's captures).
+- **Swarm Skills — Portable Self-Evolving Multi-Agent System Spec (arXiv 2605.10052)** — https://arxiv.org/abs/2605.10052 — Extends the Anthropic Skills standard with multi-agent semantics; relevant to agent-skills + topology-taxonomy. Capture if multi-agent skill specs gain adoption.
+- **Skill1 — Unified Evolution of Skill-Augmented Agents via RL (arXiv 2605.06130)** *(carry-forward from 2026-05-11)* — https://arxiv.org/abs/2605.06130 — RL unified skill evolution; now part of the SkillOS/SDAR cluster. The comprehensive skills survey is the partial "comparison piece" trigger; capture Skill1 + survey together if a head-to-head against SkillOS/SDAR lands.
+
+### Multi-agent / topology
+- **Constraint Drift in LLM-Based Multi-Agent Systems (arXiv 2605.10481)** — https://arxiv.org/abs/2605.10481 — Names/formalizes safety-constraint erosion across long multi-agent trajectories; strong fit for topology-taxonomy long-horizon-loss + governance threads. Capture if a second source corroborates the failure mode.
+- **Predictive Maps of Multi-Agent Reasoning — Successor-Representation Spectrum for Communication Topologies (arXiv 2605.11453)** — https://arxiv.org/abs/2605.11453 — Diagnostic for choosing chain/star/mesh before inference; directly extends topology-taxonomy. Capture if topology-selection-as-method recurs.
+
+### Frameworks / product
+- **LangChain Interrupt 2026 + Deep Agents v0.6** — https://www.langchain.com/blog/deep-agents-0-6 — Delta channels (≈100× checkpoint-storage reduction), typed streaming, open-weight harness profiles (Kimi/Qwen/DeepSeek). Concrete shipped harness mechanics; changelog-grade. Capture if a full architecture writeup explains the delta-channel design.
 
 ## Week of 2026-05-11
 

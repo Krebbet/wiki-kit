@@ -71,6 +71,10 @@ Empirically: MemGPT with GPT-3.5 has significantly degraded document QA performa
 - **Letta is MemGPT productionised.** [[letta-memory-blocks]] reframes external context as two named stores (Recall + Archival) and adds memory blocks as user-editable schema; the runtime is the same paging logic.
 - **Codified Context is MemGPT hand-engineered.** [[codified-context]] applies the same hot/cold tiering as application infrastructure (660-line constitution + cold KB) instead of LLM-self-directed function calls.
 
+## Multi-party performance (GroupMemBench, collect-but-confirm)
+
+[[memory/groupmembench]] (arXiv 2605.14498, 2026-05-18) reports MemGPT at ~28.2% average accuracy on multi-party conversational corpora, below BM25's ~43.2%. A retrieval-vs-reasoning decomposition (Figure 5) shows MemGPT is **below the diagonal**: it retrieves adequately but answers far worse than retrieval recall predicts, indicating that its tiered representation degrades downstream reasoning on multi-party corpora. The failure mode is downstream of retrieval — MemGPT's paging and working-context structure apparently discards or obscures the speaker-identity and threading context needed for correct synthesis.
+
 ## Source
 
 - `raw/research/memory-management/05-01-memgpt.md` (captured 2026-04-26 from https://arxiv.org/pdf/2310.08560 via marker on CPU; figures preserved in `assets/01-memgpt/`)
@@ -83,3 +87,4 @@ Empirically: MemGPT with GPT-3.5 has significantly degraded document QA performa
 - [[codified-context]] — hand-engineered MemGPT-lineage at application-infrastructure level.
 - [[generative-agents]] — contemporaneous (2023) memory-stream paper; cited as related work; both papers are foundational to the modern memory-architecture vocabulary.
 - [[topology-taxonomy#long-horizon-context-loss]] — MemGPT is one of the earliest concrete mitigations for the long-horizon context-loss problem.
+- [[memory/groupmembench]] — reports MemGPT ~28% avg on multi-party corpora; retrieves adequately but answers below recall (below-diagonal); tiered representation degrades downstream reasoning.

@@ -92,6 +92,10 @@ The paper explicitly compares against three concurrent harness-engineering prima
 - **Empirical reinforcement of [[case-studies/anthropic-claude-code-postmortem]] Bug 3.** The postmortem found a single brevity instruction caused a 3% intelligence drop. AHE's "+system_prompt only −2.3 pp" finding is the second independent 2026 data point that prose-level prompt edits are fragile and underperform structural (tools/middleware/memory) edits.
 - **[[topology-taxonomy]] long-horizon-context-loss mitigation classes** gain a meta-class: *self-evolving harness via observability-driven evolution loop*. Applies on top of any of the existing classes (materialise-state, adaptive compression, tiered hot/cold, lift-into-substrate, eliminate-the-handoff, explicit-handoff-artefacts, VM-snapshotting). Could also slot as a refinement of "explicit handoff artefacts" since the artefacts are now machine-discovered.
 
+## SWE-Cycle benchmark framing for the autonomy gap
+
+SWE-Cycle (arXiv 2605.13139) provides a formal benchmark framing for the long-horizon coding-agent autonomy gap that observability-driven harness evolution tries to close. Its FullCycle task requires agents to handle environment reconstruction, implementation, and test generation in a single autonomous session without pre-configured scaffolding — exactly the coherence regime AHE's evolved middleware and memory components target. The reported <14% FullCycle solve rate quantifies how far agents remain from the full-lifecycle autonomy that AHE's harness evolution is designed to close.
+
 ## Related
 
 - [[effective-harnesses]] — Anthropic's hand-designed counterpart; AHE explicitly cites it (ref [29]).
@@ -104,6 +108,7 @@ The paper explicitly compares against three concurrent harness-engineering prima
 - [[langchain-deep-agents]] — peer harness pattern; AHE's seven NexAU component types extend deepagents' four.
 - [[memory-architectures]] — AHE's `LongTermMEMORY.md` is a machine-evolved instance of the *episodic + structured working memory* family.
 - [[evaluation/swe-bench-pro]] — eval ecosystem context (AHE reports SWE-bench-verified transfer numbers).
+- [[evaluation/swe-cycle]] — formal benchmark framing for the full-lifecycle autonomy gap AHE's harness evolution targets.
 - [[evaluation/airs-bench]] — peer 2026 long-horizon agent benchmark.
 - [[externalization-survey]] — places AHE under the "self-evolving harnesses" emerging direction (§8.3).
 - [[skillos]] — closest peer 2026 self-evolving system; same frozen-base + RL-on-external-structure pattern, scoped to skills only (vs whole-harness here). Different attribution mechanism (grouped-task downstream rewards vs change-manifest verification). Independent confirmation that **executor-grounded training matters more than curator scale** (8B-RL beats Gemini-2.5-Pro-without-RL) parallels AHE's structural-components-carry-the-lift finding.

@@ -191,6 +191,10 @@ The paper synthesizes four practitioner-facing implications from the empirical s
 
 The paper also notes that architectural pluralism in Agent harnesses is partly a consequence of "genuinely competing infrastructural commitments, not transient immaturity."
 
+## SWE-Judge as agent-side response to audit gaps
+
+SWE-Cycle (arXiv 2605.13139) introduces SWE-Judge — an execution-capable Agent-as-a-Judge combining static code review with dynamic execution and fault injection. SWE-Judge uses adaptive eval scripting in 34.6% of evaluations to probe edge-case behavior that static unit-test pass/fail misses. This is an agent-side response to the audit gaps this page documents: the 40% of harnesses with no audit capability at all, and the finding that structured audit reaches only 20% of the corpus. SWE-Judge's fault injection operationalizes the "tamper-evident" audit tier at eval time rather than at harness-design time.
+
 ## Related
 
 - [[patterns/topology-taxonomy]] — the five canonical patterns provide an empirically grounded five-class harness taxonomy that complements topology-taxonomy's multi-agent topologies; the Orchestrator-Worker subagent class maps directly onto the orchestrator-worker topology
@@ -203,3 +207,4 @@ The paper also notes that architectural pluralism in Agent harnesses is partly a
 - [[deployments/openai-symphony]] — Symphony's session-log distillation + agents.md context strategy sits at the Balanced CLI / Multi-Agent Orchestrator boundary (Pattern 2/3)
 - [[conflicts/agents-md-effectiveness]] — this paper's 40%-no-audit finding and Non-co-occurrence 3 add a further data point showing governance does not follow capability automatically
 - [[evaluation/agents-md-eval]] — scope-of-finding tension documented above; file-persistent context management is the corpus majority here while agents-md-eval found LLM-generated context files hurt performance
+- [[evaluation/swe-cycle]] — SWE-Judge's adaptive eval scripting and fault injection are an agent-side response to the audit gaps (40% no-audit) this page documents
