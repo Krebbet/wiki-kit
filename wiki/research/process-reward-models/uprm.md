@@ -32,6 +32,18 @@ Reward-hacking robustness: a supervised PRM collapses in <50 RL iterations on Qw
 - Structurally a self-training method (signal derived from the model itself) → relevant to [[../self-improvement/_overview]] and an unsupervised verifier candidate for [[../synthesis/test-time-scaling]].
 - Candidate dense, zero-annotation reward for the $R_w$ component in [[../synthesis/proposed-method]].
 
+## Is this just LLM-as-a-Judge?
+
+The training signal does originate from a frozen general-purpose LLM judging step correctness, so the *source* is judge-flavoured — and the paper benchmarks against an explicit LLM-as-a-Judge baseline. But uPRM is not LLM-as-a-Judge ([[../critique-self-correction/prometheus-2]] direct/pairwise evaluator; [[../self-improvement/self-rewarding-lm]] judge-on-own-outputs) in the operative sense. Five differences:
+
+1. **Amortised, not per-call.** The deployed reward is a *trained* PRM $r_\theta$ (LoRA + MLP, Eq. 9–11); the frozen LLM is only the training signal. A judge re-queries the LLM at every scoring call.
+2. **Probability read, not verdict generation.** The signal is the frozen LLM's next-token probabilities over "+"/"-" markers (Eq. 4, 6) — a decoding-time attribute extraction (GeDi/FUDGE-like, see §Where it sits), not a generated judgment.
+3. **Joint in-context calibration.** $N$ trajectories are concatenated and jointly scored (Eq. 7–8) so per-step judgments mutually calibrate — structurally unlike independent per-item judging.
+4. **No labels and no final answers.** Distinct PRM-taxonomy track vs supervised ([[lets-verify-step-by-step]]) and automated-MC ([[math-shepherd]], needs ground-truth answers).
+5. **RL-reward-hacking robust.** The operative differentiator: a supervised PRM collapses <50 RL iters on Qwen2.5-Math-7B; uPRM does not (§Results). A vanilla judge reward is notoriously hackable. uPRM also *beats* LLM-as-a-Judge on ProcessBench localisation by up to ~15 F1 — outperforming it on the judge's own task.
+
+Crisp framing: LLM-as-a-Judge = *use the model's verdict*; uPRM = *read the model's marker-probability distribution, jointly calibrate it, distil it into a cheap stable trained PRM that survives as an RL reward*. The residual judge-like risk is recorded in §Limitations #5 (single-backbone self-training, no ground-truth correction).
+
 ## Conflict / open tension
 
 uPRM §5.3 claims Qwen2.5-Math models train to completion on uPRM-only rewards with no RH — a meaningful **weakening** of the "RH is inevitable with PRM-only rewards" position (Cheng et al., PURE — not yet in wiki). Authors partly reconcile: it is "less frequent and less severe," not eliminated, and the Qwen2.5-7B *base* model still succumbs. Not a clean source-vs-wiki contradiction (PURE isn't on the wiki yet), so recorded here rather than as a conflict file; connects to [[../rlvr-mechanics/binary-rewards-rl-challenges]] — uPRM's softer distributional reward avoids the near-Dirac collapse mode Dymetman formalises. **Follow-up lead:** capture PURE (Cheng et al. — min-form credit assignment) and Razin et al. NeurIPS 2025 ("most accurate RM ≠ best teacher").
@@ -52,6 +64,8 @@ uPRM §5.3 claims Qwen2.5-Math models train to completion on uPRM-only rewards w
 - [[../rlvr-mechanics/learning-to-think]] — label-free process reward via Fisher/SVD; parallel goal
 - [[../rlvr-mechanics/binary-rewards-rl-challenges]] — softer reward avoids near-Dirac RH collapse
 - [[../self-improvement/_overview]] — uPRM as self-training
+- [[../self-improvement/self-rewarding-lm]] — LLM-as-judge-on-own-outputs; contrast in §"Is this just LLM-as-a-Judge?"
+- [[../critique-self-correction/prometheus-2]] — canonical evaluator-LM (LLM-as-Judge); contrast in §"Is this just LLM-as-a-Judge?"
 - [[../decoding-time-steering/_overview]] — next-token-probability read; "info already in the model"
 - [[../synthesis/test-time-scaling]] — unsupervised verifier for Best-of-N / DVTS
 - [[../synthesis/proposed-method]] — zero-annotation dense reward candidate for $R_w$

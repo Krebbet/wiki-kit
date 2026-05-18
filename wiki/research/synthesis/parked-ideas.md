@@ -30,9 +30,32 @@ Editorial scratch space. Ideas raised in conversation that are adjacent-but-not-
 
 **Promotion trigger.** Promote to a full synthesis page (or a `/research` run on agentic failure-attribution → concept decomposition) if (a) a second converging signal appears, or (b) the project moves toward a deployed-agent setting where the telemetry source becomes concrete.
 
+---
+
+## P2 — "Backtrack": interventional, prompt-level concept credit assignment
+
+*Parked 2026-05-18. Triggered by [[../process-reward-models/uprm]].*
+
+**The idea.** The shared bottleneck under uPRM, [[../rl-optimizers/ep-grpo]], [[../rlvr-mechanics/rethinking-rl-sparse-selection]], and the entire [[../process-reward-models/_overview]] theme is **identifying which parts of a token trace are responsible for a good rollout**. Two routes:
+
+1. **Concept-targeted do-over (re-elicitation).** After a correct rollout, re-prompt: *"you got this right before; we want to check you understood X — answer again and justify X."* If the model stays correct only when forced through concept X, X was load-bearing; if it stays correct without needing X, X was not. Credit assignment by *intervention on the re-prompt*, not by scoring the original steps.
+2. **Question-side self-play / rollout distillation.** (2a) Use perturbations of the *question itself* as a probe for which model regions / positions are responsible for the correct answer, then focus the gradient there. (2b) Distil the N rollouts of one question into a single *concentrated* question+trace that isolates the causal concept — a maximally-informative single training sample.
+
+**Why it's parked here.** It's *more core* than P1 (credit assignment is central to the wiki's RL themes), but it's a forming idea, not a worked proposal. Where it sits against existing machinery:
+
+- **Observational vs interventional is the axis.** Every captured credit-assignment method is *observational* — score the steps that happened: PAV ([[../process-reward-models/pav-rewarding-progress]], step-advantage under a complementary prover), Math-Shepherd (MCTS-rollout potential), uPRM (frozen-LLM marker probs), REASONMAXXER/EP-GRPO (entropy gating). "Backtrack" is *interventional* — re-elicit/re-question to test a causal hypothesis. The corpus has interventional credit assignment only at the **activation** level ([[../decoding-time-steering/iti]], [[../concept-evaluation/causal-abstraction]] IIA). **Interventional, prompt-level concept credit assignment is unowned in the corpus — this is the contribution.**
+- Route 1 is the *interventional* upgrade of [[../self-improvement/star]] rationalization (answer-as-hint re-derivation) and ExGRPO explanatory probes ([[../teacher-student-rl/rlt-followups-2026]]); the concept-conditioning is the [[../concept-evaluation/counterfactual-tasks]] / IIA idea applied to a re-prompt rather than an activation patch.
+- Route 2a is REASONMAXXER's entropy-gated contrastive + [[../catastrophic-forgetting/path-not-taken]] off-principal sparsity + [[../rlvr-mechanics/rl-sparse-subnetwork]], but with **question-perturbation as the attribution probe** (orthogonal to trace-side entropy — no captured paper uses it for attribution).
+- Route 2b is the *inverse* of [[../single-sample-rl-finetuning/critique-ft-one-problem]] (1 problem → 600 rows): compress many rollouts of one problem into one concentrated sample. Directly the single-sample core thesis; the concentrated question is also a precise deficit-targeting datum for P1.
+- Maps onto [[proposed-method]]: a sharper realisation of components **P1** (failure/uncertainty trigger), **V** (MDL-sibling concept test), and **S** (deficit map) — and a candidate dense inner-loop reward (see the uPRM flag in [[proposed-method]]).
+
+**Open sub-questions.** (a) Does the do-over's "still correct when forced through X" actually discriminate causal-X from spurious-X, or does the model confabulate a post-hoc X-justification regardless? (the [[../concept-evaluation/causal-abstraction]] confound). (b) Question-perturbation attribution needs a learnability/validity filter ([[../self-play/info-gain-self-play]] epiplexity) so you don't attribute to noise. (c) Distillation objective for 2b: what makes a rollout "concentrated" — minimal-description-length over the concept ([[../concept-learning/recursive-concept-evolution]] MDL) is the natural candidate.
+
+**Promotion trigger.** Promote to a full synthesis page if a second converging signal appears, or when the experiment proposal reaches the inner-loop-reward design decision (uPRM / interventional credit is flagged there — see [[proposed-method]]).
+
 ## Source
 
-Editorial. Idea raised by David in conversation 2026-05-16; connections to existing pages are this page's framing, not source claims.
+Editorial. Ideas raised by David in conversation (P1: 2026-05-16; P2: 2026-05-18). Connections to existing pages are this page's framing, not source claims.
 
 ## Related
 
@@ -40,4 +63,9 @@ Editorial. Idea raised by David in conversation 2026-05-16; connections to exist
 - [[proposed-method]] — components **P1** (failure trigger) and **S** (deficit map); this is their longitudinal form
 - [[../concept-evaluation/_overview]] — the battery that turns logged failures into a structured deficit list
 - [[../catastrophic-forgetting/_overview]] / [[../selective-finetuning/_overview]] / [[../moe-adapters/_overview]] — sequential deficit-targeting is skill-stacking; the three interference answers apply
-- [[../self-play/info-gain-self-play]] — epiplexity as the learnability filter before a deficit becomes a target
+- [[../self-play/info-gain-self-play]] — epiplexity as the learnability filter before a deficit becomes a target (P1 and P2)
+- [[../process-reward-models/uprm]] — P2 trigger; observational-credit foil to P2's interventional approach
+- [[../process-reward-models/pav-rewarding-progress]] — closest observational step-credit method P2 contrasts with
+- [[../rlvr-mechanics/rethinking-rl-sparse-selection]] / [[../rl-optimizers/ep-grpo]] — entropy-gated credit assignment; P2 route 2a builds on these
+- [[../single-sample-rl-finetuning/critique-ft-one-problem]] — P2 route 2b is its inverse (compress, not amplify)
+- [[../concept-evaluation/causal-abstraction]] — interventional (IIA) credit at activation level; P2 lifts it to the re-prompt level
