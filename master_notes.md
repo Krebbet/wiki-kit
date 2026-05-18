@@ -199,3 +199,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Candidate fix:** the kit link-graph checker (and `/lint`'s mechanical step) must model Obsidian resolution before flagging: (a) treat `[[#anchor]]` as same-file, never empty; (b) strip a single leading `\` before `|` inside table rows; (c) resolve non-unique basenames by same-directory proximity. Until then, `/lint`'s "Broken Links" section should be read as "candidate links to manually triage", not "defects". Promote with the 2026-05-15 entries on next `/harvest`.
 
 **Status:** open
+
+### 2026-05-17 — weekly-brief trend-scan re-flags already-ingested papers as "new"
+
+**Scope:** kit
+
+**Observation:** The 2026-05-17 `/weekly-brief` trend-scan subagent surfaced SGS (arXiv:2604.20209) as a top candidate "trending into the window" and it was captured — but SGS already had a full wiki page (`research/self-play/sgs`, filed 2026-05-03 by the prior sweep). It was caught at the ingest-aggregation step (cross-refs revealed an existing page) and dropped, but only after wasting one of the hard-capped 5 capture slots and a capture+ingest subagent. Root cause: the trend-scan's dedup is a manually-maintained "already covered" list embedded in the dispatch prompt; it cannot know what prior weekly sweeps committed to `wiki/` because those commits happen *after* the run (no-commit policy) and the list isn't regenerated from wiki state.
+
+**Candidate fix (any one):** before capture, the weekly-brief skill should cross-check each selected arXiv ID against existing wiki pages — grep `wiki/**/*.md` for the arXiv ID and against `wiki/index.md` titles — and auto-demote any hit to a "already on wiki" note rather than spending a capture slot. Cheap: one grep over the arXiv IDs in the candidate list at step 3, gated before step 4 captures. This also makes the hard cap of 5 meaningfully 5-*new*, not 5-minus-rediscoveries. Promote on next `/harvest`.
+
+**Status:** open

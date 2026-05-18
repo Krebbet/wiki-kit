@@ -44,6 +44,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/single-sample-rl-finetuning/data-efficiency-rft]] | Difficulty-targeted online data selection and rollout replay. |
 | [[research/single-sample-rl-finetuning/reft]] | ReFT — SFT warm-up + PPO on multiple sampled CoT paths per problem; +10–12% over SFT on math without external RM. |
 | [[research/single-sample-rl-finetuning/cbrl]] | CBRL (arXiv:2603.18953, March 2026) — curriculum of annealed few-shot demonstration prepending during RLVR; +1.3–22.3% over GRPO-only on ARC-1D, Word Sorting, others. |
+| [[research/single-sample-rl-finetuning/fest]] | FEST (arXiv:2605.15012) — demonstration-guided RLVR at the lowest trace floor: 128 *random* expert traces via semi-online DPO + GRPO on answer-only data; semi-online-DPO ≈ weighted-SFT + negative-REINFORCE. Raises [[conflicts/fest-tuned-rl-vs-demonstration-necessity]]. |
 
 ### RLVR mechanics
 
@@ -67,6 +68,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/process-reward-models/process-outcome-feedback]] | Uesato et al. — process feedback reduces reasoning errors even when outcome accuracy matches. |
 | [[research/process-reward-models/training-verifiers-gsm8k]] | Cobbe et al. — GSM8K + token-level verifier reranking. |
 | [[research/process-reward-models/pav-rewarding-progress]] | Setlur et al. — PAV: process advantage as step-level *progress* under a complementary prover; >8% search gain, 5–6× RL efficiency over outcome RM. |
+| [[research/process-reward-models/uprm]] | uPRM (Gadetsky et al., EPFL, arXiv:2605.10158) — fully unsupervised PRM from frozen-LLM next-token marker probabilities; no step labels or final answers; matches supervised PRMs on Best-of-8; markedly more reward-hacking-robust as an RL reward. |
 
 ### Self-improvement
 
@@ -99,6 +101,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/in-context-learning-theory/icl-as-gradient-descent]] | Linear attention implements gradient descent on an implicit in-context loss. |
 | [[research/in-context-learning-theory/icl-bayesian-inference]] | Distributional-level story: ICL is posterior inference over latent pretraining concepts. |
 | [[research/in-context-learning-theory/function-class-icl]] | Transformers trained from scratch in-context learn linear / sparse / NN / tree classes optimally. |
+| [[research/in-context-learning-theory/icl-conceptual-belief-space]] | Bigelow et al. (arXiv:2605.12412) — ICL as a trajectory through a low-dim conceptual belief space; behaviour ≅ activation manifold ($r=.92$); LLM emotion geometry ≅ human valence–arousal; steering entanglement ∝ manifold distance. |
 
 ### Meta-learning and few-shot
 
@@ -157,6 +160,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rl-optimizers/dapo]] | Yu et al. (ByteDance Seed + Tsinghua AIR, 2025) — Clip-Higher, Dynamic Sampling, Token-Level PG Loss, Overlong Reshape. 50 AIME'24 on Qwen2.5-32B. |
 | [[research/rl-optimizers/dr-grpo]] | Liu et al. (SAIL, COLM 2025) — *Understanding R1-Zero*. Identifies length and std biases in GRPO; removes them. |
 | [[research/rl-optimizers/gspo]] | Zheng et al. (Alibaba Qwen, 2025) — sequence-level importance ratio and clipping; stabilises MoE; powers Qwen3. |
+| [[research/rl-optimizers/ep-grpo]] | EP-GRPO (Song Yu et al., SWU, arXiv:2605.04960) — post-GRPO credit-assignment fix: entropy-gated outcome + implicit process signal from policy divergence + cumulative-entropy bucketing; no external PRM; +26.4% over GRPO at 3B; gradient = GRPO + entropy-weighted KL² (Thm VI.1). |
 | [[research/rl-optimizers/mcpo]] | Mastery-Consolidated PO (arXiv:2604.16972, April 2026) — hinge-KL on mastered prompts + advantage-denominator rescaling; shows Dr. GRPO's std-removal fix is incomplete. |
 | [[research/rl-optimizers/maspo]] | MASPO (arXiv:2602.17550) — unifying objective across Gradient Utilization, Probability Mass, Signal Reliability; subsumes DAPO Clip-Higher and BAPO. |
 | [[research/rl-optimizers/tsallis-loss-continuum]] | Lin & Ie / Google (arXiv:2604.25907) — $\mathcal{J}_Q$ family via Tsallis $q$-log; interpolates RLVR ($q=0$) ↔ log-marginal-likelihood ($q=1$) via per-instance amplification $P_\theta^{-q}$. GARL/PAFT estimators escape cold-start where GRPO yields zero gradient. PAFT at $q=1$ recovers TRICE EM E-step; STaR is hard-acceptance limit; VeriFree = GARL at $q=0$. |

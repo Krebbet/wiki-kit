@@ -19,6 +19,7 @@ The lineage of policy-optimisation algorithms used to post-train LLMs. This them
 - [[dapo]] — Yu et al. (ByteDance Seed + Tsinghua AIR, 2025). Open-source GRPO recipe: Clip-Higher, Dynamic Sampling, Token-Level PG Loss, Overlong Reward Shaping. 50 AIME'24 on Qwen2.5-32B.
 - [[dr-grpo]] — Liu et al. (SAIL, COLM 2025). *Understanding R1-Zero-Like Training*. Identifies length- and std-normalisation biases in GRPO; removes them.
 - [[gspo]] — Zheng et al. (Alibaba Qwen, 2025). Sequence-level importance ratio and clipping; stabilises MoE RL; powers Qwen3.
+- [[ep-grpo]] — Song Yu et al. (SWU, arXiv:2605.04960). Post-GRPO credit-assignment fix: entropy-gated outcome modulation + implicit process signal from policy divergence + cumulative-entropy bucketing; no external PRM. +26.4% over GRPO at 3B. Gradient = GRPO + entropy-weighted KL² (Thm VI.1).
 
 ## Family tree *(synthesis)*
 

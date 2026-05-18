@@ -9,6 +9,7 @@ Theme overview for PRM research: how to give a reward model credit signals that 
 - [[lets-verify-step-by-step]] — Lightman et al. 2023 (OpenAI). PRM800K; 800K human step labels on GPT-4 traces; PRM 78.2% on MATH-500; active learning 2.6x; PRM > ORM > majority at every N.
 - [[math-shepherd]] — Wang et al. 2023 (PKU/DeepSeek). MCTS-rollout automatic step labels (no humans); beats PRM800K on MATH at matched generator; step-by-step PPO lifts Mistral-7B 77.9 → 84.1% GSM8K.
 - [[pav-rewarding-progress]] — Setlur et al. 2024 (Google / DeepMind / CMU). PAV: process credit = step-level *advantage* under a complementary prover policy, not step correctness. >8% test-time search gain and 5–6× RL sample efficiency vs ORMs.
+- [[uprm]] — Gadetsky et al. 2026 (EPFL, arXiv:2605.10158). Fully **unsupervised** PRM: frozen-LLM next-token marker probabilities as a self-derived signal — no step labels, no final answers. Matches supervised PRMs on Best-of-8; substantially more reward-hacking-robust as an RL reward.
 
 ## Cross-cutting synthesis
 

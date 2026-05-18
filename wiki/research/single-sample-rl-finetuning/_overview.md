@@ -11,6 +11,7 @@ For David's concept-based, single-sample fine-tuning thesis this is the closest 
 - [[data-efficiency-rft]] — DOTS + Rollout Replay: online adaptive-difficulty selection (target $p\!=\!0.5$) with attention-based difficulty prediction, cutting GRPO time 23–62%.
 - [[deepseek-r1]] — Foundational pure-RLVR demo on DeepSeek-V3-Base: AIME pass@1 15.6 → 77.9 with no SFT; emergent self-reflection; the format reward and `<think>` scaffolding that later 1-shot work isolates.
 - [[reft]] — ReFT (Luong et al., ByteDance, 2024). SFT warm-up + PPO sampling many CoT paths per problem, learning from correct *and* incorrect rollouts; +10–12% over SFT on math from the same training data, no external RM.
+- [[fest]] — FEST (arXiv:2605.15012). Demonstration-guided RLVR at the lowest trace floor: 128 *random* expert traces via semi-online DPO + GRPO on answer-only data; semi-online-DPO ≈ weighted-SFT + negative-REINFORCE decomposition. Raises a conflict: tuned-LR pure RL is a formidable baseline ([[../../conflicts/fest-tuned-rl-vs-demonstration-necessity]]).
 
 ## Cross-cutting themes
 

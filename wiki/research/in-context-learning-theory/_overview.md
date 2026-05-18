@@ -8,6 +8,7 @@ ICL is the closest analogue in current LLMs to "single example imprints a concep
 - [[icl-as-gradient-descent]] — von Oswald et al. 2023 (Google/ETH). 1-layer LSA = 1 GD step on MSE; trained models match the construction; mesa-optimisation.
 - [[icl-bayesian-inference]] — Xie et al. 2022 (Stanford). HMM-mixture pretraining $\Rightarrow$ posterior concentration over latent concepts; ICL = implicit Bayes.
 - [[function-class-icl]] — Garg et al. 2022 (Stanford). Trained transformers in-context learn linear / sparse / NN / decision-tree classes at near-optimal rates.
+- [[icl-conceptual-belief-space]] — Bigelow et al. 2026 (arXiv:2605.12412). ICL as a smooth trajectory through a low-dim *conceptual belief space*; behaviour and residual-activation manifolds share geometry ($r=.92$); LLM emotion space ≅ human valence–arousal; steering entanglement ∝ manifold distance. Dynamical geometric complement to [[icl-bayesian-inference]].
 
 ## Cross-cutting synthesis
 
@@ -64,3 +65,4 @@ This overview synthesises the four pages above. No new external sources.
 - [[icl-as-gradient-descent]]
 - [[icl-bayesian-inference]]
 - [[function-class-icl]]
+- [[icl-conceptual-belief-space]]
