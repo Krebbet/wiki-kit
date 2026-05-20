@@ -36,6 +36,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[dream-to-fly]] | ETH RPG, ICRA 2026 — DreamerV3 pixel→control, no LiDAR, ≤9 m/s; Position-B for the lidar-vs-vision conflict. |
 | [[air-vla]] | First VLA benchmark for aerial manipulation (sim-only; best ~42/100; global-camera-dependent). |
 | [[dronevla]] | Binary-action VLA fetch-and-handover PoC; navigation real, VLA sim-only. |
+| [[canadian-drone-onshoring]] | State of Canadian capacity (thin, assembler-economy) + 2026 funding wave + gaps; consumer/dual-use scope. |
+| [[drone-manufacturing-supply-chain]] | Assembler-vs-OEM economy, IP erosion, three-C framework, named-company datapoints, component-level gaps. |
 | [[lidar-vs-vision-autonomy]] | **Conflict (OPEN):** is LiDAR necessary for drone autonomy, or do vision/event cameras suffice? |
 
 ---

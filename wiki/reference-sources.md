@@ -21,6 +21,16 @@ Replaces the skill's default signal hierarchy. Rank candidates by, in order:
 
 Skip: vendor product PR without technical depth, "drones will deliver everything by [year]" hype, regurgitated press releases, defence-vs-consumer narrative pieces.
 
+## Brief emphasis & exclusions
+
+Controls the *shape* of the email, not just source selection. The 2026-05-17 run drifted by giving regulatory/market/industrial-policy news headline billing — these rules close that.
+
+- **Headline-first = technical research.** The `# Trends` bullets and `# Top 3` MUST center this wiki's technical threads: onboard AI/autonomy, perception (VIO/SLAM/event/neuromorphic), aerial manipulation, multimodal locomotion, onboard compute/energy, and open conflicts. A paper/method, not a news item, should occupy every Top-3 slot whenever any technical candidate cleared the bar.
+- **Regulatory / market / onshoring = context only.** FAA/EASA/Transport-Canada rule status, market sizing, funding waves, and Canadian-onshoring news are legitimate *watchlist + at most ONE* `# Trends` context bullet — **never a Top-3 slot** and never more than one trends bullet, unless a concrete transferable *technology* is the story.
+- **Defence/geopolitics = watchlist-line max.** DJI/FCC-ban politics, NATO, "defence industrial strategy" qua politics, procurement programs: a single watchlist line at most, never a headline or Top-3, unless there is a specific consumer-transferable technical method. No defence-vs-consumer framing anywhere in the brief.
+- **Product-launch / vendor PR:** watchlist-line max; never a Top-3.
+- **Thin/quiet week → prefer the short empty-run email** over padding with market/regulatory news. If zero technical-research candidates clear the domain-fit + signal bar, send the 3-line empty-run note (skill step 9). Do not manufacture a full brief from news.
+
 ## Watched sources (trend-scan set — cheapest to most expensive)
 
 - **arXiv** `cs.RO` recent + `cs.CV`/`cs.LG` filtered for `UAV|drone|aerial|quadrotor|MAV` — primary signal.

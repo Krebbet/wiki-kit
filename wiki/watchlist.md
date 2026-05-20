@@ -45,7 +45,13 @@ The wiki's radar. `/weekly-brief` reads/extends this; the email's "Other watchli
 
 ## Manufacturing & onshoring
 
-- Canadian drone onshoring — ISED / NRC IRAP / AIAC / CCAA signals; component country-of-origin & supply-chain concentration (low-frequency, check monthly).
+- Canadian drone onshoring — main thread now ingested ([[canadian-drone-onshoring]], [[drone-manufacturing-supply-chain]]); ongoing monitoring of ISED / NRC IRAP / AIAC / CCAA signals.
+- Drone Innovation Hub operational status (Ottawa/Mirabel) — watch for facility opening, first cohort, actual $ allocation breakdown vs the announced $105M/3yr.
+- IRAP "Defence Industry Assist" $241M uptake — does dual-use/consumer SME money actually flow, or stay in defence primes?
+- Volatus Mirabel buildout — independent (non-Volatus-IR) corroboration of lease/equipment/first-article production.
+- Aeryon → FLIR acquisition primary documents — terms + IP disposition (currently only secondhand BetaKit).
+- BOM-level Canadian supply-chain audit (motors, batteries, optics, NPUs, comms radios, carbon fibre) — the component-by-component gap currently unmapped.
+- Canada BVLOS rule text — 2025 CARs reform / DAA standard (currently only signalled in Gowling; no captured rule text).
 
 <!-- weekly-brief appends overflow entries below, newest run first -->
 
