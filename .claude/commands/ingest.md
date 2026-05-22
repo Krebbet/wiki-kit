@@ -93,7 +93,14 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+   When summarising this source, flag:
+   - **Strategies** — any concrete betting or position-sizing strategy (Kelly variant, fractional-Kelly, bankroll rule, hedging or arbitrage scheme). State the conditions and assumptions under which it holds.
+   - **Modeling techniques** — any forecasting, aggregation, or calibration method (Bayesian update, logistic-regression calibration, isotonic regression, Brier-decomposition, market-maker pricing, no-trade theorem application, ML classifier for forecasting). Note the inputs required and computational cost.
+   - **Documented inefficiencies** — any specific mispricing pattern or edge demonstrated, with sample size, time period, platform, and effect size. Distinguish in-sample from out-of-sample evidence.
+   - **Calibration data** — any empirical calibration result for prediction markets or comparable forecasters. Always extract: sample size, time window, platform/scope, and the calibration metric used (Brier, log-loss, reliability diagram, ECE).
+   - **Resolution mechanism details** — UMA oracle dispute outcomes, ambiguous resolution criteria, edge cases that affected payout. For Polymarket-specific sources, capture the exact resolution criteria text.
+   - **Math and formulas** — any equation introduced. Capture the equation, define every symbol, and note the page/section it is derived in. Do not lift formulas out of context.
+   - **Conflicts with existing wiki content** — flag claims that contradict pages already in the wiki, especially: calibration findings, recommended Kelly fractions, oracle-design assumptions, and characterisations of market efficiency.
    <!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates

@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki are:** peer-reviewed papers in finance, economics, and prediction markets (Wolfers & Zitzewitz, Manski, Hanson, Berg–Forsythe–Nelson–Rietz, Snowberg & Wolfers, Page & Clemen, and similar); platform primary documentation (Polymarket docs, UMA whitepaper and dispute archives, Kalshi CFTC filings); arXiv preprints in q-fin, econ.GN, stat.ML, cs.LG; reputable practitioner sources with disclosed methodology (Robin Hanson / Overcoming Bias, Andrew Gelman on calibration, Pinnacle Betting Resources, established quant blogs); and standard textbook references for game theory and ML (Sutton & Barto, Murphy, Fudenberg & Tirole) plus lecture notes from MIT/Stanford/CMU. **Avoid:** crypto-Twitter hype threads, content that recaps a market without analysis, sportsbook marketing copy, anonymous aggregator sites, content-mill SEO posts, and Wikipedia for substantive claims (acceptable only as a pointer to primary sources).
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +52,13 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Domain-specific source handling:**
+   - **Polymarket markets and price data.** The site is JS-heavy; always pass `--js` to `capture_url`. Snapshot historical prices into `raw/markets/<market-slug>/` with date-stamped filenames (e.g., `2026-05-08.md`) so price-over-time can be reconstructed. Treat each snapshot as a distinct dated source, not an overwrite of the previous one. Capture the resolution criteria text and any visible UMA dispute history alongside the price snapshot.
+   - **Academic PDFs.** Use `capture_pdf` with the default `marker` engine — papers in this domain typically have figures, tables, and equations worth preserving. Prefer arXiv preprints over paywalled journal versions where both exist; the content is identical and arXiv captures cleanly.
+   - **Quant / practitioner blogs.** `capture_url` (no `--js` needed for most). Single-author blogs with disclosed methodology (Hanson, Gelman, Pinnacle Betting Resources, FiveThirtyEight methodology posts) count as practitioner-authoritative.
+   - **Books and long-form practitioner texts.** Ingest chapter-by-chapter; one capture per chapter under `raw/books/<title>/<chapter-slug>.md`.
+   - **Math and modeling reference (game theory, ML, Bayesian methods).** Academic PDFs preferred; lecture notes from reputable courses (MIT OCW, Stanford CS229/CS228, CMU 10-708) are acceptable. Capture into `raw/research/<technique-slug>/` and treat as foundation material — these typically support multiple wiki pages, not just one.
+   - **Financial news.** Use sparingly and only when context on a specific tracked market is needed. News is not authoritative on strategy or modeling — it provides event context, nothing more.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.

@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** Quant/analytical, math-heavy, terse, citation-dense. Assume the reader is the operator doing modeling work — never define basic terms (Kelly, log-loss, Brier, calibration, EV, ECE, no-arb). Show math inline (e.g. `f* = (bp - q) / b`, `BS = (1/N) Σ (p_i − o_i)²`) rather than describing equations in prose. Every substantive claim cites a `[[wiki-link]]` or `raw/...` source path. When evidence is thin, say so explicitly — flag sample size, out-of-sample status, time window, and platform/scope. No background filler. Strategy claims lead with the conditions under which they hold (liquidity regime, sample, costs assumed). Prefer dated snapshots over stale "current price" framing for any market data.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:
