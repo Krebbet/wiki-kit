@@ -37,6 +37,22 @@ How drones physically interact with real objects: grasping, carrying, opening do
 
 A foundation-model subfield is crystallising around language-conditioned aerial manipulation — *demoed in simulation, pre-commercial*. Two complementary 2026 works: [[air-vla]] is the first systematic **benchmark** (mainstream VLA/VLM models on a sim UAV+7-DoF arm; best model ~42/100, heavy reliance on an external global camera) and [[dronevla]] a narrow **system PoC** (binary-action VLA, navigation real but the VLA validated only in sim). Net: VLA transfer to aerial manipulation is feasible in simulation but the maturity gap — onboard inference, sim-to-real, the perennial external-camera/mocap dependency — is unclosed. Reinforces this page's core gap: the manipulation isn't the blocker, the perception/autonomy stack is.
 
+## Mechanism comparison — small-drone scope (palm-size to ~1 kg) *(added 2026-05-20 via /query)*
+
+Consolidated view across this wiki's detail pages — which mechanism wins for which interaction goal at small/consumer scale. Numbers + caveats live on the detail pages; this is the map.
+
+| Goal | Best mechanism | Exemplar | Detail |
+|---|---|---|---|
+| **Pick up a light object, fully onboard** (no mocap) | Soft tendon gripper + onboard vision | npj 2024 soft drone — 2.0 m/s vision-only, ~150 g | [[aerial-grasping]] |
+| **Pick up a heavier object** (≤217 g) where you can land | Pneumatic soft gripper + landing-gear dual-use | arXiv 2311.00390 — 217 g in-flight (mocap-bound) | [[aerial-grasping]] |
+| **Multi-task on one small platform** (transport + door + pinch + perch) | Hand-like multi-DOF tendon gripper | HI-ARM 556 g — broadest single-platform task set | [[drone-contact-and-door-tasks]] |
+| **Attach to a surface / perch-and-stare** | Electroadhesive / microspine / gecko / claws (mode per surface) | Electroadhesive pad: 1.3 kg on ceiling ~100 min vs ~7 min hover (~15× endurance) | [[aerial-perching]] |
+| **Manipulate an object heavier than the drone** | Anchor-then-tug, cooperative | FlyCroTug — palm-size, 40× body-mass via anchor (vs ~5× in flight), teleop | [[cooperative-aerial-manipulation]], [[drone-contact-and-door-tasks]] |
+| **Touch / press a surface** (button, switch, contact-inspection) | Contact-tolerant compliant morphology | Bumper Drone 700 g — sustained wall-push with PID only | [[drone-contact-and-door-tasks]] |
+| **Max payload-to-gripper-mass ratio** | Reconfigurable frame / passive quick-release | Frame-is-gripper: ~100% payload proportion; e.g. 9 g bistable gripper, 56 N from 0.5 kg hand | [[aerial-grasping]] |
+
+The recurring blocker across the table (consumer-deployable for indoor pick-and-place is 5–10+ years out): every indoor object/handle/surface pose comes from external motion-capture in the captured corpus — the gripper isn't what's missing, **onboard semantic perception is**. The mechanisms most defensible *today* are those that don't need it: contact-tolerant morphology and anchor-then-tug under teleoperation in structured/known environments.
+
 ## Source
 
 - `raw/research/aerial-manipulation/01-ollero-arm-survey.md` — canonical IEEE T-RO 2022 aerial-manipulation survey (taxonomy, gaps)
