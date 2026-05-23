@@ -45,6 +45,13 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[voice-intent-task]] | Voice→intent→task for drones: on-device STT + LLM grounding; real-flight benchmarks; latency/grounding/safety gaps. |
 | [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
 | [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
+| [[drone-commercial-verticals]] | Index of consumer/commercial verticals + cross-vertical gaps (BVLOS, unit economics, acceptance). |
+| [[drone-inspection-use-case]] | Infrastructure/energy/telecom inspection — Percepto@Chevron, Skydio Dock@utilities; shipping at scale. |
+| [[drone-delivery-use-case]] | Last-mile logistics — Zipline 2M+ deliveries; unit economics still subsidized (Amazon ~$63 vs $10 price). |
+| [[drone-agriculture-use-case]] | Precision ag/spraying — DJI Agras 600k units, XAG 20M+ ha; the clearest ROI-positive vertical. |
+| [[drone-mapping-surveying-use-case]] | Photogrammetry/survey — DroneDeploy/Pix4D/Propeller; most mature vertical, lowest reg friction. |
+| [[bvlos-regulation]] | US/Canada/EU BVLOS compared — Canada operationally ahead (in-effect Nov 2025); EASA SORA 2.5; FAA Part 108 slipped. |
+| [[drone-battery-energy]] | Energy-density futures — Amprius 450 Wh/kg, hydrogen BVLOS, hybrid; the propulsion-futures contest. |
 | [[lidar-vs-vision-autonomy]] | **Conflict (OPEN):** is LiDAR necessary for drone autonomy, or do vision/event cameras suffice? |
 
 ---

@@ -38,7 +38,7 @@ Per wiki rules: company/PR claims tagged `claimed/unverified` until independentl
 
 | Company | Locations | Manufacturing reality | Status / source |
 |---|---|---|---|
-| **Draganfly** | Saskatoon + Burnaby | **Assembly / integration / QC**, *not* full-stack component manufacture. Products: Heavy Lift, Commander 3 XL. Saskatoon facility announced Jul 2023. | *Operational* (2023 PR); publicly traded NASDAQ:DPRO / CSE:DPRO — financials verifiable on SEDAR+. (`10`) |
+| **Draganfly** | Saskatoon + Burnaby | **Assembly / integration / QC**, *not* full-stack component manufacture. Products: Heavy Lift, Commander 3 XL. Saskatoon facility announced Jul 2023. | *Operational* (2023 PR); publicly traded NASDAQ:DPRO / CSE:DPRO — financials verifiable on SEDAR+. (`10`) US Army Flex FPV contract awarded Sept 30 2025: supply Flex FPV drone systems + establish on-site manufacturing at overseas US Forces facilities; NDAA-compliant supply chain (`raw/research/company-status/06-draganfly-army-flexfpv.md` — company PR). ⚠ FY2025 going-concern / financial details (40-F): SEC.gov capture was blocked (`raw/research/company-status/05-draganfly-40f.md` — capture failed; re-verify via SEDAR+/EDGAR). |
 | **Volatus Aerospace** | Mirabel (planned) | 200,000 sq ft drone manufacturing hub announced (Oct 2025); serial production of proprietary + licensed platforms, "Canadian supply chain, full configuration control." | ⚠ **Claimed / unverified** — no operational reality, no construction timeline, no first-article date, no named platform models in the release. Independent corroboration required before any deployed-reality citation. (`08`) |
 | **Canadian UAVs (Calgary)** | Alberta | BVLOS reconnaissance / situational-awareness platform + intelligence suite; "cost-effective, long endurance" UAS. Recipient of $3M repayable RDII funding (May 2026, PrairiesCan). | *Funded / corroborated by gov source* (`05`). Dual-use hardware; consumer-relevant. |
 | **InDro Robotics** | Ottawa region | **InDro Forge** described as a rapid-prototyping / limited-production capability; **InDro Cortex Lite** described as a deployed dual-purpose autonomous brain. No volume / production-rate figures disclosed. | *Practitioner committee submission* (`09`) — policy advocacy, not a capacity disclosure. Volume claims need independent corroboration. |
@@ -74,6 +74,8 @@ The corpus does **not** contain a BOM-level supply-chain audit; this list is the
 - `raw/research/canadian-onshoring/13-walrus-canada-drone-race.md` — historical arc, three-C framework, software-over-hardware
 - `raw/research/canadian-onshoring/09-indro-defence-strategy-view.md` — practitioner policy-layer gaps (low evidentiary weight)
 - `raw/research/canadian-onshoring/10-draganfly-saskatoon-expansion.md` — Draganfly facility datapoint (verifiable)
+- `raw/research/company-status/06-draganfly-army-flexfpv.md` — Draganfly company PR (2025-09-30): US Army Flex FPV contract.
+- `raw/research/company-status/05-draganfly-40f.md` — SEC FY2025 40-F (capture blocked by SEC.gov; re-verify via EDGAR/SEDAR+).
 - `raw/research/canadian-onshoring/08-volatus-mirabel-hub.md` — Volatus Mirabel hub (claimed/unverified)
 - `raw/research/canadian-onshoring/05-alberta-defence-mfg-backgrounder.md` — Canadian UAVs $3M RDII datapoint
 - `raw/research/canadian-onshoring/07-gowling-2025-drones-canada.md` — DJI/supply-chain-security context
