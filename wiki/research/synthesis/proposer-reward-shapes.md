@@ -66,6 +66,12 @@ Phase-0 of [[recursive-concept-learning]] (modular multiplication, single concep
 - **Phase 1, sibling generation:** SQLM-style Goldilocks gate as a cheap quality filter.
 - **Phase 2, verifier independence:** SPELL-style three-role decomposition (separating the verifier-A1 deliverable from the existing $V$).
 
+## Candidates earmarked for self-play-inclusive proposals
+
+Watchlist items the user has tagged as strong self-play exemplars to evaluate (and likely ingest) **when any proposal that incorporates self-play is drafted**. Not yet ingested — pull in at proposal time; promotion already triggered by the user tag.
+
+- **Seirênes** (arXiv:2605.11636) — adversarial self-play with evolving in-loop distractors; shared-param verifiable-reasoning RL. User-tagged 2026-05-19 as a good self-play example. Source: [[../../watchlist#Self-play]] (full detail pending ingest).
+
 ## Source
 
 Editorial composition. All formulas, claims, and findings trace to:

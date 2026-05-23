@@ -18,7 +18,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 ## Self-play
 
 - Self-Distilled RLVR (RLSD, arXiv:2604.03128) — RLVR direction × self-distillation magnitude hybrid; OPSD-adjacent
-- Seirênes (arXiv:2605.11636) — adversarial self-play w/ evolving in-loop distractors; shared-param verifiable-reasoning RL
+- Seirênes (arXiv:2605.11636) — adversarial self-play w/ evolving in-loop distractors; shared-param verifiable-reasoning RL. **User-tagged load-bearing 2026-05-19: strong self-play exemplar — evaluate/ingest when building any self-play-inclusive proposal.** Promotion triggered (user tag) but deferred per instruction; pull in at proposal time. Hub pointer: [[research/synthesis/proposer-reward-shapes#Candidates earmarked for self-play-inclusive proposals]].
 
 ## Post-GRPO RL optimizers
 

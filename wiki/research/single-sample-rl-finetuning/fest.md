@@ -18,6 +18,8 @@ Joint objective $L = c \cdot L^E + L^I$:
 
 Three components are each ablated-necessary: supervised signal (expert guidance beyond binary RLVR), on-policy signal (mitigates exposure bias, expands the learning basis of the sparse $D^E$), decaying weight (prevents overfitting to 128 examples).
 
+**What is and isn't the centerpiece (clarification).** The salient-sounding mechanism — the per-rollout adaptive $\beta$ keyed to whether the model can solve *that* question (Eq. 5, three solvability tiers) — is a *robustness heuristic*, not the load-bearing contribution (Limitations #5; not in the ablated-necessary trio; $\beta$ is DPO's KL/temperature on the implicit-reward log-ratio, distinct from the global decaying weight $c$). The actual centerpiece is the **gradient decomposition** (semi-online DPO $\approx$ weighted-SFT $+$ negative-REINFORCE → FEST-GRPO) plus the **negative-RL-redistributes-mass** mechanism that is *why* 128 *randomly* selected traces beat curated-10K baselines. A reader meeting the adaptive-$\beta$-by-solvability first will tend to over-rank it.
+
 ## Headline results (Qwen2.5-Math-1.5B)
 
 | Metric | FEST-GRPO | Pure RL | Best demo-guided baseline |
