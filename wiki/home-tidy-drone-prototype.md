@@ -2,6 +2,67 @@
 
 A concrete consumer use-case integration: a single indoor drone that (R1) docks/recharges autonomously, (R2) learns and navigates a house, (R3) takes voice commands, and (R4) picks up and sorts household objects ("clean up the toys"). This page maps each requirement to wiki-demonstrated capability, flags the blockers, lists follow-up research, and — in a clearly-marked beyond-wiki section — a minimal-prototype build. **Headline verdict (synthesis):** R2 (navigation) and R1 (localization/landing primitives) are achievable today; R4 (manipulation) only for *known, light* objects in a structured setup; **R3 (voice) and fully-autonomous arbitrary-object cleanup are the frontier gaps.** A constrained lab prototype is buildable now; the consumer-grade version is this wiki's 5–10+ yr horizon.
 
+## Phase 1 — first prototype: core comms + autonomous navigation *(revised 2026-05-23)*
+
+Scope cut to **two goals**; manipulation / voice / dock / semantic cleanup deferred — but the WiFi link is architected so they bolt on later. **Thesis:** a drone that safely auto-navigates a household (take off → traverse → land at locations) *and* rides the home WiFi becomes the platform for every future feature (mapping, voice, objects). Software assumed open-source / self-built (ArduPilot/PX4, ROS 2, FAST-LIO2, OpenVINS/VINS-Fusion); established systems only where clearly best.
+
+### Phase-1 requirements
+- **P1 — Comms backbone:** companion computer joins home WiFi (station mode); bidirectional command + telemetry/feedback to a ground-station laptop; built to later offload mapping/voice/AI.
+- **P2 — Onboard SLAM + state estimation:** build & localize in GPS-denied indoor space, fully onboard.
+- **P3 — Autonomous position/movement control:** position hold, waypoints, safe **takeoff + landing** at chosen indoor spots.
+- **P4 — Safe near people/pets:** prop guards/ducts, low speed, hardware kill-switch, tethered first flights ([[safe-indoor-flight]]).
+- **P5 — WiFi is supervisory, not flight-critical:** nav must survive WiFi dropout (autonomy stays onboard).
+
+### Sensing decision *(wiki-sourced)*
+Indoor homes are the *worst case* for pure vision: blank walls + repetitive/symmetric rooms starve VIO features and variable lighting degrades cameras, while LiDAR scan-matching stays robust and catches thin obstacles (chair/table legs) cameras miss ([[indoor-cluttered-slam]], [[lidar-vs-vision-autonomy]], [[drone-sensors-for-autonomy]]). Camera depth (3–6.5 m) is plenty for rooms but texture/light-dependent ([[visual-inertial-slam]]).
+
+| Sensor | Pros (indoor) | Cons | Verdict |
+|---|---|---|---|
+| **Solid-state LiDAR (Livox MID360) + IMU → FAST-LIO2** | lighting-independent cm geometry; thin-obstacle detection; robust on blank walls | ~265 g, ~$1k; no colour/semantics | **Recommended for the nav/safety loop** |
+| **Depth+RGB camera (RealSense D455) + VIO** | cheaper/lighter; RGB for future features | blank-wall/low-light depth noise; IR washes out in window sun | budget alternative |
+| **Stereo/mono VIO only** | lightest/cheapest; rich semantics | weakest on featureless indoor; needs texture+light | not for safety-critical nav alone |
+
+**Recommendation:** **LiDAR (MID360) + IMU for the navigation/safety loop, plus a cheap RGB camera streamed over WiFi** as the substrate for future semantic features — decoupling the hard semantic-vision problem from Phase-1 nav. Budget path: D455 instead of LiDAR, accepting blank-wall/lighting fragility.
+
+### Architecture
+Flight controller (Pixhawk → ArduPilot/PX4) does low-level stabilisation + arming/RTL/kill. **Companion computer (Jetson Orin NX/Nano)** runs ROS 2 + SLAM and feeds external-vision pose to the FC EKF (MAVROS `vision_pose`), issuing setpoints ([[nano-drone-compute]] for the onboard-compute envelope). Companion joins home WiFi (station); ground-station laptop runs QGroundControl + ROS 2 over the same WiFi for commands/telemetry. **Nav loop is fully onboard; WiFi carries supervisory + future-offload traffic only.**
+
+### Revised buy list *(CAD; beyond-wiki — my recommendation; verify before purchase)*
+| Item | Pick | CAD | Note |
+|---|---|---|---|
+| Airframe | indoor-safe quad ~400–500 mm + prop guards (e.g. Holybro X500 V2 + guards) | ~$355 + guards | must lift ~600–800 g; smaller = safer but less payload |
+| Flight controller | Holybro Pixhawk 6C | ~$245 | ArduPilot/PX4 |
+| Companion compute | Jetson Orin NX 16 GB (budget: Orin Nano 8 GB) | ~$1,525 NX | runs FAST-LIO2 + ROS 2 |
+| LiDAR (nav) | Livox MID360 | **~$1,000** (≈$750 USD) | *corrects an earlier ~$5.8k mis-estimate* |
+| RGB cam (future features, WiFi-streamed) | CSI/USB cam (Arducam/RPi-cam class) | ~$40–80 | decoupled from nav loop |
+| WiFi | Jetson onboard WiFi or USB AX dongle | $0–40 | home-WiFi station mode |
+| Battery + charger | 4S/6S LiPo + balance charger | ~$120–150 | |
+| Ground station | your laptop + QGroundControl + ROS 2 | $0 | OSS |
+| Misc | guards, anti-vib mount, cables, 128 GB SD | ~$100–150 | |
+
+**Subtotal:** LiDAR path ≈ **$3,000–3,400 CAD**; budget (Orin Nano + D455, no LiDAR) ≈ **$2,200–2,700 CAD**.
+
+### Staged experiments / milestones
+1. **Safe-flight bench** — ArduPilot + QGC; prop guards; tethered manual hover; verify kill-switch ([[safe-indoor-flight]]).
+2. **Comms backbone (P1)** — Jetson on home WiFi; ROS 2 + MAVROS FC↔Jetson↔laptop; arm/takeoff from laptop + live telemetry.
+3. **SLAM handheld (no flight)** — MID360 + FAST-LIO2 on Jetson; walk the house; check map + drift.
+4. **Sim loop** — SITL + Gazebo/Isaac; vision-pose→setpoint loop before real flight.
+5. **Onboard position hold (P2+P3)** — SLAM pose → EKF external nav; GPS-denied hover.
+6. **Single-room autonomy** — waypoint + takeoff/land; obstacle stop.
+7. **Multi-room traverse** — land at named locations.
+8. **End-to-end thesis** — laptop sends "go to X" over WiFi → onboard nav executes.
+
+### Follow-up research to support the build
+- ROS 2 ↔ ArduPilot/PX4 external-vision-pose integration (MAVROS `vision_pose`, EKF3 ext-nav tuning).
+- FAST-LIO2 / Point-LIO / FAST-LIVO2 on Jetson Orin — config, compute load, indoor tuning ([[lidar-for-uav-autonomy]]).
+- Indoor local-planner / obstacle-avoidance stacks for ArduPilot/PX4 (ego-planner, Nav2, custom).
+- WiFi-station comms design — ROS 2 DDS / MAVLink-over-IP, dropout handling, latency.
+- Prop-guard / ducted-rotor low-kinetic-energy indoor safety configs ([[safe-indoor-flight]]).
+- GPS-denied precision takeoff/landing (optic-flow / fiducial) — seeds the later dock ([[precision-docking-recharging]]).
+- Payload/endurance budgeting for Jetson+LiDAR mass on the chosen frame ([[drone-power-budget]]).
+
+*This Phase-1 section supersedes the broad "Beyond the wiki" buy list below for the **first** build; the rest of the page remains the long-term scope.*
+
 ## Requirements
 
 | ID | Requirement | Implicit sub-requirements |
