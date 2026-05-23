@@ -11,7 +11,7 @@ The wiki's radar. `/weekly-brief` reads/extends this; the email's "Other watchli
 
 ## Open conflicts / decisions to track
 
-- LiDAR-vs-vision autonomy — OPEN conflict ([[conflicts/lidar-vs-vision-autonomy]]); watch for a head-to-head high-speed outdoor avoidance benchmark or solid-state-LiDAR unit-economics data that would resolve it.
+- LiDAR-vs-vision autonomy — OPEN conflict ([[lidar-vs-vision-autonomy]]); watch for a head-to-head high-speed outdoor avoidance benchmark or solid-state-LiDAR unit-economics data that would resolve it.
 - Non-cooperative detect-and-avoid standard — watch ASTM F38 / RTCA / FAA for a consensus performance MOPS; gates urban autonomous BVLOS.
 
 ## Autonomy & perception

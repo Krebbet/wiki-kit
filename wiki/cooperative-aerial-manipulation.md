@@ -6,13 +6,13 @@ Multiple drones combining force or dexterity to handle loads or tasks neither co
 
 Four architectures surveyed in arXiv 2403.14347 (2024):
 
-**Cable-suspended multi-UAV lift** — most researched. Two to four quadrotors share a rigid payload via cables. Demonstrated outdoors up to **4 kg**; quasi-static trajectories, adaptive controllers reaching max **1.6 m/s²**. [src:02-cooperative-aerial-manip §3.1]
+**Cable-suspended multi-UAV lift** — most researched. Two to four quadrotors share a rigid payload via cables. Demonstrated outdoors up to **4 kg**; quasi-static trajectories, adaptive controllers reaching max **1.6 m/s²**. (*demoed*, lab; mocap-bound) [src:02-cooperative-aerial-manip §3.1]
 
-**Multi-DoF cooperative arms** — two hexarotors each carrying a 2–3 DoF manipulator arm act in concert. Lab/Vicon only; RRT\*+DMP motion planning emerging but onboard execution is nascent. [src:02-cooperative-aerial-manip §3.2]
+**Multi-DoF cooperative arms** — two hexarotors each carrying a 2–3 DoF manipulator arm act in concert. Lab/Vicon only; RRT\*+DMP motion planning emerging but onboard execution is nascent. (*demoed*, lab) [src:02-cooperative-aerial-manip §3.2]
 
-**Rigid attachment** — quadrotors bolted or magnetically latched directly to payload faces. Up to **3.2 kg** demonstrated, lab setting. Simpler coordination but reconfiguration is manual. [src:02-cooperative-aerial-manip §3.3]
+**Rigid attachment** — quadrotors bolted or magnetically latched directly to payload faces. Up to **3.2 kg** demonstrated, lab setting. Simpler coordination but reconfiguration is manual. (*demoed*, lab) [src:02-cooperative-aerial-manip §3.3]
 
-**Flexible payload** — six quadrotors mounted on a flexible ring structure, LQR control, slow transport (~**0.13 m/s**). Highest redundancy; lowest agility. [src:02-cooperative-aerial-manip §3.4]
+**Flexible payload** — six quadrotors mounted on a flexible ring structure, LQR control, slow transport (~**0.13 m/s**). Highest redundancy; lowest agility. (*demoed*, lab) [src:02-cooperative-aerial-manip §3.4]
 
 ## The motion-capture wall
 
@@ -42,3 +42,5 @@ Timeline estimate: 5–10 years minimum before cooperative aerial manipulation r
 - [[drone-contact-and-door-tasks]] — FlyCroTug cooperative door-opening detail
 - [[drone-autonomy-state]] — manipulation autonomy maturity; mocap dependency documented
 - [[drone-sensors-for-autonomy]] — onboard estimation gap blocking markerless cooperative work
+- [[aerial-grasping]] — grasping mechanics underlying FlyCroTug gecko/microspine anchoring
+- [[aerial-perching]] — perching mechanics share the same gecko/microspine adhesion paradigm as FlyCroTug

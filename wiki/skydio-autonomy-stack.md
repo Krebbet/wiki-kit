@@ -2,6 +2,8 @@
 
 Skydio's "Spatial AI" system (*claimed*, vendor-2020) uses six fisheye 4K cameras for 360° obstacle avoidance with no LiDAR, ultrasonic, or event sensors — a deliberate vision-only architectural bet. The Skydio 2 runs all autonomy onboard an NVIDIA Jetson TX2 with no cloud dependency (*claimed*; product was shipping at time of source). This page is sourced entirely from Skydio marketing copy; treat all capability claims critically.
 
+*Country of origin: USA (NDAA-compliant). Source is a 2020 vendor blog (Skydio 2 / Jetson TX2); Skydio's consumer-product standing may have drifted toward enterprise — re-verify (lint 2026-05-23).*
+
 ## Sensor Architecture
 
 Six fisheye 4K cameras provide full 360° coverage with no blind spots (*claimed*). No LiDAR, no ultrasonic, no event cameras. The vision-only stack is the deliberate commercial differentiator — see [[lidar-vs-vision-autonomy]] for where this sits in the broader debate.

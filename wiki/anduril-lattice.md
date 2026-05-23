@@ -2,6 +2,8 @@
 
 Lattice is Anduril's software-defined command, control, and autonomous coordination platform, demonstrated live in a journalist-witnessed scenario (Nov/Dec 2024). It showed a single operator directing a coordinated multi-drone pipeline via discrete mouse clicks, fusing data across heterogeneous sensor types in real time. The platform ingests sensor data from 10+ partner hardware types (*claimed*). Its core techniques — single-operator-controls-many-assets autonomy, human-on-the-loop control, and multi-source sensor fusion — are defence-origin capabilities with potential transfer relevance to consumer and commercial drone fleet autonomy.
 
+*Country of origin: USA (Costa Mesa, CA). Defence-origin technology; included here only for consumer-transferable autonomy/sensor-fusion methods.*
+
 ## Demoed Pipeline (Reporter-Witnessed, Nov/Dec 2024)
 
 The following was observed by an MIT Tech Review journalist at Anduril's facility — not a combat deployment, but an independent press account rather than vendor self-reporting:

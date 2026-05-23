@@ -2,6 +2,8 @@
 
 FAA NPRM 14 CFR Part 108 (Docket FAA-2025-1908, Notice 25-07, ~731pp) is the first US regulatory framework proposing routine scalable commercial BVLOS drone operations, replacing the Part 107 waiver-by-waiver approach with a tiered permit/certificate structure. Issued under EO 14307 ("Unleashing American Drone Dominance," June 6 2025), the rule carries a ~240-day final-rule deadline (≈Feb 2026) with a 60-day public comment window (*requested comment*). All provisions below are *proposed rule* until finalized.
 
+**Status (as of 2026-05-23):** the EO-14307-mandated final rule (~Feb 2026 target) has not issued; this page reflects the NPRM stage. The deadline has slipped — re-verify before citing timeline claims.
+
 ## Scope and Physical Limits (*proposed rule*)
 
 - ≤400 ft AGL, ≤1,320 lb, ≤87 kt, ≤25 ft maximum dimension.

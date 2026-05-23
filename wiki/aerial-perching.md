@@ -26,7 +26,7 @@ Ollero's group models approach trajectories on eagle prey-intercept guidance —
 
 **Perch-then-roll hybrid** locomotion: land, fold rotors, roll on wheels to reposition, re-launch. Demonstrated. Cuts energy vs flying between inspection points on a structure.
 
-**Flapping-wing perching** prototype uses an event camera to suppress wing-beat motion blur during terminal approach — conventional frame cameras alias at flapping frequencies. Hovering on a flapping platform is described as "almost impossible"; perching replaces hover as the rest state. Full flapping-wing manipulation (ERC "Griffon" project) remains speculative.
+**Flapping-wing perching** prototype uses an [[event-cameras|event camera]] to suppress wing-beat motion blur during terminal approach — conventional frame cameras alias at flapping frequencies. Hovering on a flapping platform is described as "almost impossible"; perching replaces hover as the rest state. Full flapping-wing manipulation (ERC "Griffon" project) remains speculative.
 
 ## Why it matters for consumer use
 

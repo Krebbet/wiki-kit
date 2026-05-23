@@ -92,3 +92,4 @@ Even if device physics were production-ready today, drone deployment would still
 - [[neuromorphic-computing-for-drones]] — chip-level neuromorphic (Loihi 2, SpiNNaker); deployable today vs materials-layer TRL 2–3
 - [[nano-drone-compute]] — the actual near-term path: low-power MCU/NPU silicon (Hailo, Kneron, GAP9)
 - [[drone-autonomy-state]] — operational context; highlights the gap between lab demos and flight-ready autonomy
+- [[event-cameras]] — the event-driven sensor front-end these neuromorphic compute substrates pair with

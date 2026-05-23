@@ -2,6 +2,8 @@
 
 The structural / component layer that sits underneath [[canadian-drone-onshoring]]. Honest reading: **Canada's drone sector is an assembler economy, not an OEM economy.** Firms import the load-bearing subsystems (motors, batteries, carbon fibre, optics, NPUs/SoCs) and integrate them; no domestic supply chain exists for the components that actually determine performance. That structural fact — more than funding — is what gates a real Canadian drone industry.
 
+*Last verified: 2026-05-20. Transport Canada / NRC / company figures are time-sensitive — re-verify after ~2026-11.*
+
 ## Assembler vs OEM *(synthesis, anchored in `11`, `13`)*
 
 - Canadian drone firms predominantly **integrate foreign components**: motors, batteries, carbon fibre, cameras/optics, compute boards. The IP that matters (subsystems + airframe design) is mostly not built domestically (`11` — Ogden via BetaKit; ⚠ *sponsored feature* — use the framing, do not cite the "<20 manufacturers" count as hard fact).

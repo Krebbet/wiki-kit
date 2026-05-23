@@ -74,3 +74,5 @@ See [[drone-contact-and-door-tasks]] for the compliant-morphology contact result
 - [[drone-contact-and-door-tasks]] — Bumper Drone and compliant-morphology contact results; all indoor contact tasks rely on lab motion-capture, not onboard safety systems
 - [[aerial-manipulation]] — grasping mechanics that interact with compliant airframe design tradeoffs
 - [[drone-autonomy-state]] — onboard sensing stack; GPS-denied localisation directly sets fail-safe reliability bounds
+- [[faa-part-108-bvlos]] — the US BVLOS rulemaking; Operation-Over-People energy categories are upstream context
+- [[detect-and-avoid]] — sense-and-avoid, the airspace-safety counterpart to physical-contact safety

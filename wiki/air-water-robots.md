@@ -57,3 +57,4 @@ Near-zero today. Plausible someday use-cases: autonomous lake/reservoir water-qu
 - [[air-ground-hybrids]] — sibling hybrid class; shares the dual-propulsion energy trade-off problem
 - [[drone-power-budget]] — dual-mode energy budget (heating + propulsion + sensors) is an open measurement gap
 - [[drone-autonomy-state]] — GPS-denied underwater autonomy is the primary autonomy blocker for this class
+- [[visual-inertial-slam]] — GPS-denied positioning, the aerial analogue to the unsolved underwater-localization problem

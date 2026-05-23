@@ -2,6 +2,8 @@
 
 The state of Canadian domestic drone manufacturing and the 2026 push to onshore production. Honest synthesis: **Canada's domestic capacity is thin and structurally weak — fewer than ~20 manufacturers, predominantly assemblers of imported components — but a large federal funding wave landed in 2026.** The money is arriving; the structural gaps (component supply chain, IP retention, procurement reliability) are deep and the policy instruments are announced-not-proven. Scope note: the underlying corpus is heavily defence-framed (Defence Industrial Strategy / NATO / CAF procurement); this page extracts the **manufacturing, economic, supply-chain and dual-use commercialization** substance and deliberately excludes defence-procurement politics. Structural/component detail and named companies live on [[drone-manufacturing-supply-chain]].
 
+*Last verified: 2026-05-20. Transport Canada / NRC / company figures are time-sensitive — re-verify after ~2026-11.*
+
 ## The 2026 federal funding wave *(synthesis of gov primaries + trade-press corroboration)*
 
 | Instrument | Amount | Notes | Source |

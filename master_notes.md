@@ -26,6 +26,12 @@ Append entries using this structure:
 
 <!-- Entries appended during operation go below. -->
 
+### 2026-05-23 — lint should auto-flag elapsed time-relative claims
+**Scope:** kit
+**Observation:** The 2026-05-23 lint found `faa-part-108-bvlos` still describing a "~Feb 2026 deadline" as upcoming, and several pages with "as of <year>" benchmark claims now past the staleness window — while the *watchlist* had already recorded the deadline slip. The primary page lagged the watchlist; nothing mechanically caught it. Also: time-sensitive pages have no `last-verified` header, so freshness checks are all manual judgement.
+**Implication:** Two generic lint upgrades worth promoting to the kit: (a) a check that parses dated/relative claims ("by <month year>", "deadline", "as of <year>") and flags any whose date is now in the past without an update note — catches deadline-drift across any wiki; (b) a `last-verified: YYYY-MM-DD` frontmatter convention for time-sensitive pages, with `lint` flagging pages past their domain staleness threshold. Both generalise beyond this wiki.
+**Status:** open
+
 ### 2026-05-17 — /weekly-brief setup gate checks field presence, not value
 **Scope:** kit
 **Observation:** `/weekly-brief` step 0 says halt if `wiki/watchlist.md` "lacks a `setup_approved:` frontmatter field". That is a presence check — `setup_approved: false` satisfies it and the unattended run would proceed anyway. A drafted-but-unreviewed watchlist with the field present (even `false`) would not halt.
