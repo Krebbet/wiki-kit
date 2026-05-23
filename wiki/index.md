@@ -38,6 +38,13 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[dronevla]] | Binary-action VLA fetch-and-handover PoC; navigation real, VLA sim-only. |
 | [[canadian-drone-onshoring]] | State of Canadian capacity (thin, assembler-economy) + 2026 funding wave + gaps; consumer/dual-use scope. |
 | [[drone-manufacturing-supply-chain]] | Assembler-vs-OEM economy, IP erosion, three-C framework, named-company datapoints, component-level gaps. |
+| [[home-tidy-drone-prototype]] | Feasibility & build plan for an indoor dock+navigate+voice+pick-up drone; requirements→tech→gaps→buy list. |
+| [[onboard-grasp-perception]] | Open-vocab detection + grasp-pose for drones; aerial OVD ~28% F1, all onboard graspers category-specific (the central blocker). |
+| [[precision-docking-recharging]] | Industrial drone-in-a-box ships (RTK+fiducial); consumer-indoor IR-beacon/wireless docking far less mature. |
+| [[indoor-cluttered-slam]] | Indoor/home SLAM beyond outdoor demos: object-level, multi-floor, symmetric-room loop closure, 3DGS, dynamic movers. |
+| [[voice-intent-task]] | Voice→intent→task for drones: on-device STT + LLM grounding; real-flight benchmarks; latency/grounding/safety gaps. |
+| [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
+| [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
 | [[lidar-vs-vision-autonomy]] | **Conflict (OPEN):** is LiDAR necessary for drone autonomy, or do vision/event cameras suffice? |
 
 ---
