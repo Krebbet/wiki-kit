@@ -1,8 +1,10 @@
 # Claude Code Session Memory
 
-Claude Code's **automatic background system** for cross-session context — distinct from the manually-authored `CLAUDE.md` and from the API-level [[anthropic-memory-tool]] primitive. Session Memory watches the conversation, extracts important parts on a token-based cadence, and writes structured summaries to disk. The next session injects relevant past summaries into the new context with the explicit framing *"from PAST sessions that might not be related to the current task"* — used as background reference, not as instructions. The companion `/remember` command bridges Session Memory → `CLAUDE.local.md`, promoting recurring patterns into permanent project rules.
+> **⚠️ DISPUTED — read first (curator ruling 2026-05-23).** The wiki's working position is that **Claude Code does not have native session-to-session memory.** This contradicts the central claim of this page. The page is built entirely from a single community/practitioner blog (claudefa.st); its description of an "automatic background memory layer" is **not corroborated by any primary Anthropic source** and is contradicted by the MindStudio practitioner survey, whose FAQ states Claude Code has no native cross-session memory (`raw/research/cc-memory-ecosystem/06-mindstudio-comparison.md`). Treat everything below as *what that one blog claimed*, **not** as established Claude Code behaviour, pending a primary-source confirmation. The persistence approaches that practitioners actually rely on — `CLAUDE.md`, the markdown "memory bank", and external MCP-server stores — are catalogued at [[claude-code-memory-ecosystem]]; their existence is itself evidence that the gap this page describes as "filled" is in fact open.
 
-> **Source caveat**: this page is built from a community/practitioner blog (claudefa.st), not Anthropic's official docs — Anthropic's documentation on Claude Code's product-specific memory mechanisms is sparse. The mechanics descriptions (terminal messages, /remember behaviour, instant compaction) are consistent with observable Claude Code behaviour. Specific claims about Statsig flag names (`tengu_session_memory`, `tengu_sm_compact`), version numbers (v2.0.64, v2.1.30/2.1.31), and exact token thresholds (10k/5k) are practitioner-level claims not verifiable against Anthropic's official sources.
+This page (below the banner) records the now-disputed claim that Claude Code has an **automatic background system** for cross-session context — watching the conversation, extracting important parts on a token-based cadence, writing structured summaries to disk, and injecting relevant past summaries into new sessions with the framing *"from PAST sessions that might not be related to the current task"*, with a `/remember` command said to bridge Session Memory → `CLAUDE.local.md`. Per the curator ruling, **no native feature of this kind is treated as real by the wiki.**
+
+> **Original source caveat (retained):** this page is built from a community/practitioner blog (claudefa.st), not Anthropic's official docs. Specific claims about Statsig flag names (`tengu_session_memory`, `tengu_sm_compact`), version numbers (v2.0.64, v2.1.30/2.1.31), and exact token thresholds (10k/5k) are practitioner-level claims not verifiable against Anthropic's official sources — and, per the 2026-05-23 ruling, the existence of the feature itself is now in question.
 
 ## What you'll see in the terminal
 
@@ -81,6 +83,7 @@ The blog recommends:
 
 ## Related
 
+- [[claude-code-memory-ecosystem]] — the persistence approaches practitioners actually use *because* there is no native cross-session memory; the page that supersedes this one's premise.
 - [[anthropic-memory-tool]] — API-level primitive Session Memory is built on.
 - [[memgpt]] / [[letta-memory-blocks]] — paradigm ancestors; Session Memory's automated extraction + structured summary format echoes the working-context update discipline.
 - [[anthropic-internal-study]] — names the cold-start problem this feature operationally addresses.

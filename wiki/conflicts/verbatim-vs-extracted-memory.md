@@ -78,6 +78,18 @@ Knowledge-Update sub-result: Mem0 collapses to ~4.67% vs BM25 ~25.23% — Mem0's
 
 **Status remains OPEN** — GroupMemBench strengthens Position 1/3 empirically on multi-party corpora; the regime dependency (dyadic vs multi-party) means the conflict is not closed, only better bounded.
 
+### 2026-05-23: the doctrinal split as a Claude Code product choice
+
+*Note: the following is illustrative — these instances confirm the axis exists as a product-level choice, not new empirical evidence. They do not change the conflict's status.*
+
+The verbatim-vs-extract axis is now directly visible to practitioners as a choice between Claude Code memory plugins and tools. The positions map cleanly:
+
+- **Extract pole:** [[mem0]] (concrete CC lifecycle hooks — Pre-Compaction, Task-Completed — are the "extraction at named events" doctrine in product form) and [[claude-mem]] (AI compress-and-inject: tool-usage observations are AI-compressed and injected at SessionStart and PreToolUse:Read).
+- **Verbatim pole:** [[mempalace]] and mcp-knowledge-graph (verbatim entity/relation/observation triples stored and retrieved via keyword search, no extraction step).
+- **A distinct third stance — user-authored structured notes:** Basic Memory stores human-written markdown notes in a structured schema, neither machine-extracted nor raw-trace capture. This sits orthogonally to the verbatim/extract axis: the *content* is authoritative (user-authored), but the representation is structured, and retrieval is index-mediated.
+
+For the full practitioner landscape across these options, see [[claude-code-memory-ecosystem]]. Status remains OPEN; these product instances confirm the doctrinal axis has real-world traction but do not constitute a benchmark comparison.
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
@@ -93,6 +105,9 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[mem0]] (and `raw/research/memory-management/07-04-mem0.md` for the extraction-discipline argument and LOCOMO numbers)
 - [[longmemeval]] (and `raw/research/mempalace/11-longmemeval-paper.md` for the hybrid recommendation)
 - [[direct-corpus-interaction]] (and `raw/research/weekly-2026-05-11/05-beyond-semantic-similarity.md` for the no-index argument and BrowseComp-Plus / multi-hop QA numbers)
+- `raw/research/cc-memory-ecosystem/01-claude-mem-repo.md` — [[claude-mem]] as extract-pole CC plugin instance
+- `raw/research/cc-memory-ecosystem/04-basic-memory-cc.md` — Basic Memory as the user-authored third stance
+- `raw/research/cc-memory-ecosystem/05-mcp-knowledge-graph.md` — mcp-knowledge-graph as verbatim-pole CC plugin instance
 
 ## Related
 
@@ -104,3 +119,5 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[generative-agents]] — historical antecedent of the extraction position (memory-stream summaries via the recency × importance × relevance scoring formula).
 - [[memory/groupmembench]] — 2026-05-18 addition; first matched-corpus benchmark evidence for Position 1/3 (BM25 Pareto-dominates four of five extraction systems on multi-party corpora).
 - [[memory/memory-evolution-survey]] — 2026-05-18 addition; Storage→Reflection→Experience axis locates each position on an abstraction-depth continuum.
+- [[claude-code-memory-ecosystem]] — 2026-05-23 addition; practitioner landscape where the doctrinal split is visible as a product choice.
+- [[claude-mem]] — 2026-05-23 addition; extract-pole CC community plugin (AI-compress, ChromaDB+SQLite).

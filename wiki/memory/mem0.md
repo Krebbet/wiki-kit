@@ -88,9 +88,33 @@ The paper does not have a dedicated limitations section but flags:
 
 [[memory/groupmembench]] (arXiv 2605.14498, 2026-05-18) reports Mem0 underperforms BM25 on multi-party conversational corpora: ~25.7% average accuracy vs BM25 ~43.2%, and a collapse on Knowledge Update (~4.67% vs BM25 ~25.23%). The Knowledge-Update failure is attributed to Mem0's extractor appending new statements alongside obsolete ones without speaker-conditioned consolidation — a regime its ADD/UPDATE/DELETE/NOOP pipeline was not designed for. These numbers contrast with Mem0's favorable LOCOMO results (J=66.88, 26% improvement over OpenAI memory), which are dyadic. The two regimes are different enough that neither result invalidates the other; practitioners should note the multi-party degradation for any deployment spanning group conversations.
 
+## Claude Code integration
+
+The preceding sections document the Mem0 *paper* and open-source library. This section covers the *productised Claude Code integration* described at docs.mem0.ai/integrations/claude-code — a separate layer built on top of the same extraction-and-consolidation doctrine.
+
+**Three install paths:**
+- **Plugin marketplace** (recommended) — installs the MCP server, lifecycle hooks, and an SDK skill in a single step.
+- **MCP-only** (`claude mcp add` one-liner) — wires the MCP server without lifecycle hooks.
+- **Manual `.mcp.json` config** — for teams that manage MCP configuration declaratively.
+
+**Nine MCP tools exposed:** `add_memory`, `search_memories`, `get_memories`, `get_memory`, `update_memory`, `delete_memory`, `delete_all_memories`, `delete_entities`, `list_entities`.
+
+**Five lifecycle hooks** (plugin install only):
+1. **Session-Start** — loads relevant prior-session context before the agent begins.
+2. **per-User-Prompt** — injects relevant memories on each prompt; prompts shorter than 20 characters are skipped for latency.
+3. **Pre-Compaction** — stores a session summary immediately before Claude Code's context compaction event; this hook targets the same event discussed at [[claude-code-session-memory]].
+4. **Task-Completed** — extracts learnings: successful strategies, failed approaches, decisions taken, conventions adopted.
+5. **Session-End** — safety-net capture via REST API in case Task-Completed was skipped.
+
+**Platform vs OSS:** The cloud platform (`m0-` API key) is the default path. The docs tag the Claude Code integration `[Both]`, so the self-hosted OSS MCP server (`openmemory/api/`, FastAPI over Qdrant) also works as a drop-in backend.
+
+The Pre-Compaction and Task-Completed hooks are the concrete "extraction at named lifecycle events" form of Mem0's extract-and-consolidate doctrine — the same doctrinal axis examined at [[conflicts/verbatim-vs-extracted-memory]]. For the broader practitioner landscape of Claude Code memory options (including community plugins that operate on the same hooks), see [[claude-code-memory-ecosystem]]. The closest community-plugin peer on the extract-and-inject axis is [[claude-mem]].
+
 ## Source
 
 - `raw/research/memory-management/07-04-mem0.md` (captured 2026-04-26 from https://arxiv.org/pdf/2504.19413 via marker on CPU; figures preserved in `assets/04-mem0/`)
+- `raw/research/cc-memory-ecosystem/02-mem0-cc-integration.md` (https://docs.mem0.ai/integrations/claude-code)
+- `raw/research/cc-memory-ecosystem/03-mem0-cc-integration.md` (https://docs.mem0.ai/llms.txt — Platform-vs-OSS framing)
 
 ## Related
 
@@ -100,3 +124,5 @@ The paper does not have a dedicated limitations section but flags:
 - [[generative-agents]] — Mem0 is a production realisation of the retrieval-scored memory stream concept.
 - [[anthropic-memory-tool]] — Anthropic's API-level memory primitive; complementary rather than competing.
 - [[memory/groupmembench]] — reports Mem0 ~25.7% avg / ~4.67% Knowledge Update vs BM25 ~43.2% on multi-party corpora; different regime from LOCOMO.
+- [[claude-code-memory-ecosystem]] — practitioner landscape of Claude Code memory options; Mem0's CC integration is the commercial anchor.
+- [[claude-mem]] — closest community-plugin peer; same extract-and-inject doctrine, different implementation (AI-compress, ChromaDB+SQLite, open-source).
