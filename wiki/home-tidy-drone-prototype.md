@@ -2,7 +2,7 @@
 
 A concrete consumer use-case integration: a single indoor drone that (R1) docks/recharges autonomously, (R2) learns and navigates a house, (R3) takes voice commands, and (R4) picks up and sorts household objects ("clean up the toys"). This page maps each requirement to wiki-demonstrated capability, flags the blockers, lists follow-up research, and — in a clearly-marked beyond-wiki section — a minimal-prototype build. **Headline verdict (synthesis):** R2 (navigation) and R1 (localization/landing primitives) are achievable today; R4 (manipulation) only for *known, light* objects in a structured setup; **R3 (voice) and fully-autonomous arbitrary-object cleanup are the frontier gaps.** A constrained lab prototype is buildable now; the consumer-grade version is this wiki's 5–10+ yr horizon.
 
-## Phase 1 — first prototype: core comms + autonomous navigation *(revised 2026-05-23)*
+## Phase 1 — first prototype: core comms + autonomous navigation *(revised 2026-05-24 — fiducials-first staging)*
 
 Scope cut to **two goals**; manipulation / voice / dock / semantic cleanup deferred — but the WiFi link is architected so they bolt on later. **Thesis:** a drone that safely auto-navigates a household (take off → traverse → land at locations) *and* rides the home WiFi becomes the platform for every future feature (mapping, voice, objects). Software assumed open-source / self-built (ArduPilot/PX4, ROS 2, FAST-LIO2, OpenVINS/VINS-Fusion); established systems only where clearly best.
 
@@ -22,7 +22,7 @@ Indoor homes are the *worst case* for pure vision: blank walls + repetitive/symm
 | **Depth+RGB camera (RealSense D455) + VIO** | cheaper/lighter; RGB for future features | blank-wall/low-light depth noise; IR washes out in window sun | budget alternative |
 | **Stereo/mono VIO only** | lightest/cheapest; rich semantics | weakest on featureless indoor; needs texture+light | not for safety-critical nav alone |
 
-**Recommendation:** **LiDAR (MID360) + IMU for the navigation/safety loop, plus a cheap RGB camera streamed over WiFi** as the substrate for future semantic features — decoupling the hard semantic-vision problem from Phase-1 nav. Budget path: D455 instead of LiDAR, accepting blank-wall/lighting fragility.
+**Recommendation:** **LiDAR (MID360) + IMU for the navigation/safety loop, plus a cheap RGB camera streamed over WiFi** as the substrate for future semantic features — decoupling the hard semantic-vision problem from Phase-1 nav. Budget path: D455 instead of LiDAR, accepting blank-wall/lighting fragility. **But sequencing matters:** per the fiducials-first staging below, prove the flight/EKF/safety loop on optical-flow + AprilTags *before* bringing SLAM online — LiDAR is the target for marker-free traversal, not the first thing you debug in flight.
 
 ### Architecture
 Flight controller (Pixhawk → ArduPilot/PX4) does low-level stabilisation + arming/RTL/kill. **Companion computer (Jetson Orin NX/Nano)** runs ROS 2 + SLAM and feeds external-vision pose to the FC EKF (MAVROS `vision_pose`), issuing setpoints ([[nano-drone-compute]] for the onboard-compute envelope). Companion joins home WiFi (station); ground-station laptop runs QGroundControl + ROS 2 over the same WiFi for commands/telemetry. **Nav loop is fully onboard; WiFi carries supervisory + future-offload traffic only.**
@@ -42,24 +42,29 @@ Flight controller (Pixhawk → ArduPilot/PX4) does low-level stabilisation + arm
 
 **Subtotal:** LiDAR path ≈ **$3,000–3,400 CAD**; budget (Orin Nano + D455, no LiDAR) ≈ **$2,200–2,700 CAD**.
 
-### Staged experiments / milestones
-1. **Safe-flight bench** — ArduPilot + QGC; prop guards; tethered manual hover; verify kill-switch ([[safe-indoor-flight]]).
-2. **Comms backbone (P1)** — Jetson on home WiFi; ROS 2 + MAVROS FC↔Jetson↔laptop; arm/takeoff from laptop + live telemetry.
-3. **SLAM handheld (no flight)** — MID360 + FAST-LIO2 on Jetson; walk the house; check map + drift.
-4. **Sim loop** — SITL + Gazebo/Isaac; vision-pose→setpoint loop before real flight.
-5. **Onboard position hold (P2+P3)** — SLAM pose → EKF external nav; GPS-denied hover.
-6. **Single-room autonomy** — waypoint + takeoff/land; obstacle stop.
-7. **Multi-room traverse** — land at named locations.
-8. **End-to-end thesis** — laptop sends "go to X" over WiFi → onboard nav executes.
+### Staging principle — fiducials-first *(synthesis, added 2026-05-24)*
+Two mass-market precedents say *don't start with full SLAM*. Robot vacuums shipped on cheap 2D LiDAR + wheel dead-reckoning (and earlier, pure bump-and-random) before any VSLAM; Amazon/Kiva run 100,000s of robots on a **floor-fiducial grid + a central planner**, not per-robot autonomy ([[robot-vacuum-navigation]], [[warehouse-robot-navigation]]). A drone has no wheel odometry, but the lesson transfers: replace the unsolved indoor-localization problem with **printed AprilTag/ArUco markers + optical-flow hold** for V1 — which ArduPilot's optical-flow `Loiter`/`FlowHold` + precision-landing already support out of the box ([[gps-denied-hover-land]]). This de-risks the hard EKF-integration and flight-safety work ([[slam-fc-integration]]) on a *known-good* position source before SLAM enters the loop. MID360 + FAST-LIO2 ([[fast-lio-mid360-orin]]) stays the target for marker-free traversal — it's milestone **6**, not the first thing you debug in flight.
 
-### Follow-up research to support the build
-- ROS 2 ↔ ArduPilot/PX4 external-vision-pose integration (MAVROS `vision_pose`, EKF3 ext-nav tuning).
-- FAST-LIO2 / Point-LIO / FAST-LIVO2 on Jetson Orin — config, compute load, indoor tuning ([[lidar-for-uav-autonomy]]).
-- Indoor local-planner / obstacle-avoidance stacks for ArduPilot/PX4 (ego-planner, Nav2, custom).
-- WiFi-station comms design — ROS 2 DDS / MAVLink-over-IP, dropout handling, latency.
-- Prop-guard / ducted-rotor low-kinetic-energy indoor safety configs ([[safe-indoor-flight]]).
-- GPS-denied precision takeoff/landing (optic-flow / fiducial) — seeds the later dock ([[precision-docking-recharging]]).
-- Payload/endurance budgeting for Jetson+LiDAR mass on the chosen frame ([[drone-power-budget]]).
+### Staged experiments / milestones
+1. **Safe-flight bench** — ArduPilot + QGC; prop guards/ducts; tethered manual hover; verify kill-switch + failsafes ([[safe-indoor-flight]], [[prop-guard-failsafe]]).
+2. **Comms backbone (P1)** — Jetson on home WiFi; ROS 2 + MAVROS FC↔Jetson↔laptop; arm/takeoff from laptop + live telemetry. Solve DDS-over-WiFi discovery (Zenoh / FastDDS Discovery Server) + MAVLink-over-UDP routing early ([[drone-comms-wifi]]).
+3. **Fiducial + optical-flow hover (P2/P3, no SLAM)** — Matek 3901-L0X optical-flow `Loiter`; AprilTag/ArUco precision takeoff/land onto a printed pad ([[gps-denied-hover-land]]). **This is the fiducials-first V1** — proves the flight + EKF + safety loop without SLAM.
+4. **SLAM handheld (no flight)** — MID360 + FAST-LIO2 on Jetson; walk the house; check map + drift ([[fast-lio-mid360-orin]]).
+5. **Sim loop** — SITL + Gazebo/Isaac; vision-pose→setpoint loop before real flight.
+6. **Onboard SLAM position hold (P2+P3, marker-free)** — FAST-LIO2 pose → EKF3 external nav; GPS-denied hover with no fiducials ([[slam-fc-integration]]).
+7. **Single-room autonomy** — waypoint + takeoff/land; reactive obstacle stop ([[indoor-obstacle-avoidance]]).
+8. **Multi-room traverse** — land at named locations; confirm payload/endurance margin holds ([[payload-budget]]).
+9. **End-to-end thesis** — laptop sends "go to X" over WiFi → onboard nav executes.
+
+### Follow-up research — now ingested *(each has a page, 2026-05-24)*
+- ROS 2 ↔ ArduPilot/PX4 external-vision-pose integration (MAVROS `vision_pose`, EKF3 ext-nav, frames, divergence) → [[slam-fc-integration]].
+- FAST-LIO2 / Point-LIO on Jetson Orin + MID360 (driver, IMU quirks, calibration, compute) → [[fast-lio-mid360-orin]].
+- Indoor local-planner / obstacle-avoidance stacks (BendyRuler/Dijkstra, EGO-Planner, FASTER) → [[indoor-obstacle-avoidance]].
+- WiFi-station comms (DDS-over-WiFi discovery, MAVLink-over-IP, dropout) → [[drone-comms-wifi]].
+- Prop-guard / failsafe low-energy indoor safety → [[prop-guard-failsafe]].
+- GPS-denied precision takeoff/landing (optical-flow + fiducial; seeds the later dock [[precision-docking-recharging]]) → [[gps-denied-hover-land]].
+- Payload/endurance budgeting for Jetson+LiDAR mass on the frame → [[payload-budget]].
+- Precedent studies — how consumer & industrial robots already solve indoor nav → [[robot-vacuum-navigation]], [[warehouse-robot-navigation]].
 
 *This Phase-1 section supersedes the broad "Beyond the wiki" buy list below for the **first** build; the rest of the page remains the long-term scope.*
 

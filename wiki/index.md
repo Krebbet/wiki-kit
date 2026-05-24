@@ -52,6 +52,15 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[drone-mapping-surveying-use-case]] | Photogrammetry/survey — DroneDeploy/Pix4D/Propeller; most mature vertical, lowest reg friction. |
 | [[bvlos-regulation]] | US/Canada/EU BVLOS compared — Canada operationally ahead (in-effect Nov 2025); EASA SORA 2.5; FAA Part 108 slipped. |
 | [[drone-battery-energy]] | Energy-density futures — Amprius 450 Wh/kg, hydrogen BVLOS, hybrid; the propulsion-futures contest. |
+| [[slam-fc-integration]] | External SLAM/VIO pose fused into ArduPilot EKF3 / PX4 EKF2 via MAVROS vision_pose — frames, EK3_SRC params, delay tuning, divergence pitfalls. |
+| [[fast-lio-mid360-orin]] | Deploying FAST-LIO2 LiDAR-inertial odometry with a Livox MID360 on a Jetson Orin under ROS 2 — driver, IMU quirks, calibration, variants, compute. |
+| [[indoor-obstacle-avoidance]] | Two-tier indoor avoidance: FC-native reactive (ArduPilot BendyRuler/Dijkstra, PX4 Collision Prevention) + companion planners (EGO-Planner/Swarm, FASTER). |
+| [[drone-comms-wifi]] | Defeating DDS multicast-discovery failures over home WiFi (Discovery Server, Zenoh RMW/bridge) and routing MAVLink-over-UDP to multiple endpoints. |
+| [[prop-guard-failsafe]] | Build-level guard/failsafe choices for the indoor prototype: physical rotor guarding, FAA OOP energy ceiling, ArduPilot/PX4 failsafe params. |
+| [[gps-denied-hover-land]] | GPS-denied indoor build reference: optical-flow Loiter hold + AprilTag/ArUco precision landing; argues fiducials-first over LiDAR-SLAM for V1. |
+| [[payload-budget]] | Component masses, payload→flight-time trade, and thrust/throttle targets sizing the Phase-1 indoor drone's sensor+compute budget on the X500 V2. |
+| [[robot-vacuum-navigation]] | Precedent: mass-market robot-vacuum localization/mapping/coverage stacks (LDS-SLAM, VSLAM, ToF) and what transfers to a GPS-denied indoor drone. |
+| [[warehouse-robot-navigation]] | Precedent: Amazon/Kiva fleet nav — fiducial-grid + central planner beat per-robot autonomy at scale; lessons for a fiducials-first indoor drone V1. |
 | [[lidar-vs-vision-autonomy]] | **Conflict (OPEN):** is LiDAR necessary for drone autonomy, or do vision/event cameras suffice? |
 
 ---

@@ -79,3 +79,15 @@ Append entries using this structure:
 **Observation:** `capture_url` on a Canadian Science Publishing article (cdnsciencepub.com/doi/10.1139/dsa-2024-0005) hung at Playwright `networkidle` and produced no file, both with and without `--js`; `capture_pdf` on its open-access PDF endpoint returned 403. `preprints.org/manuscript/.../download` also returned 403. Both are open-access hosts that nonetheless bot-block our scripts — same failure class as MDPI/ScienceDirect already named in `research.md`.
 **Implication:** Add `cdnsciencepub.com` and `preprints.org` to the "Known bot-walled hosts" paragraph in `research.md` so future runs skip straight to the manual-download fallback instead of burning timeouts. Note these are *open-access* yet still walled — the heuristic "open access = capturable" is false; the wall is bot-detection, not paywall.
 **Status:** open
+
+### 2026-05-24 — capture_url can return wrong-but-right-sized content (silent topic swap)
+**Scope:** kit
+**Observation:** `capture_url` on an amazon.science publications URL returned an **Amazon Ads job posting**, not the MAPF-execution paper — full-sized (passed the >2 KB / not-thin heuristic and `audit_captures`), but the wrong document entirely. Only the ingest subagent reading the body caught it (it sourced the MAPF substance from the arXiv mirror instead and flagged the bad capture in-page). Distinct from bot-walls/captchas: the page is "real" content, just not the requested content (server-side redirect to a generic/marketing/listing page when the canonical URL isn't directly fetchable).
+**Implication:** Size/audit heuristics can't catch topic-swap. Cheap defenses worth adding: (a) `audit_captures` or a new check could compare the capture's title/`<h1>` against the requested slug/expected keywords and warn on low overlap; (b) `research.md` guidance — for publisher landing pages, prefer the arXiv/DOI-PDF mirror over the publisher HTML, which is both more capturable and less prone to redirect-to-listing. Recurring lesson: always have a second mirror for any single load-bearing source.
+**Status:** open
+
+### 2026-05-24 — page-writer subagents default to the folder-prefixed [[conflicts/x]] link form
+**Scope:** kit
+**Observation:** When briefed that a conflict page's slug is `conflicts/lidar-vs-vision-autonomy`, fresh page-writer subagents wrote `[[conflicts/lidar-vs-vision-autonomy]]`, but the established wiki convention (every existing content page) is the bare basename `[[lidar-vs-vision-autonomy]]` (Obsidian resolves both, but mixing is untidy and trips strict full-path link checkers). Had to normalize 5 pages post-hoc.
+**Implication:** (1) A strict link-integrity check should resolve `[[...]]` by **basename** (Obsidian semantics), not full relpath, or it floods with false positives for any page in a subdir like `conflicts/`. (2) `/ingest` + `/research` page-writer briefs should state the link convention explicitly: "link conflict pages by bare basename `[[slug]]`, not `[[conflicts/slug]]`." Worth baking into the shared subagent prompt template so it doesn't recur each batch.
+**Status:** open
