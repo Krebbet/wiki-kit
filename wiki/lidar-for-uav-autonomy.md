@@ -38,6 +38,7 @@ PULSAR is cited as the only successful self-rotating UAV platform; LiDAR handles
 - `raw/research/autonomy-and-sensors/01-lidar-uav-survey.md` — HKU MaRS Lab 2025 survey (arXiv 2509.10730) on LiDAR-based UAV autonomy algorithms and hardware
 
 ## Related
+- [[slam]] — overview hub: where LiDAR-inertial odometry sits in the SLAM picture
 - [[visual-inertial-slam]] — vision-only counterpoint; authors concede LiDAR depth range superiority
 - [[event-cameras]] — alternative sensing modality for agile low-light flight
 - [[drone-sensors-for-autonomy]] — cross-sensor comparison and SWaP tradeoffs

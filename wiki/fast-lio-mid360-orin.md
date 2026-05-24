@@ -73,6 +73,7 @@ No first-party Orin numbers in sources, but the FAST-LIO2 paper benchmarks bound
 - `raw/research/fast-lio-mid360-orin/11-point-lio-mid360.md` — Point-LIO-Mid360 fork; high-rate point-wise LIO, saturation params, IMU-units note — github.com/overloadsc/Point-LIO-Mid360
 
 ## Related
+- [[slam]]
 - [[lidar-for-uav-autonomy]]
 - [[home-tidy-drone-prototype]]
 - [[indoor-cluttered-slam]]

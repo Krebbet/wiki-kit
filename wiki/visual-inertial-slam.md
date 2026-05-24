@@ -43,6 +43,7 @@ Authors' own *claimed* concessions:
 - `raw/research/autonomy-and-sensors/03-vislam-no-lidar.md` — arXiv 2403.09596 (TUM/Imperial), stereo+IMU-only forest MAV autonomy, no LiDAR/GNSS
 
 ## Related
+- [[slam]] — overview hub: localization + mapping + loop-closure decomposition, VIO vs LIO
 - [[lidar-for-uav-autonomy]] — direct counterpart; HKU MaRS Lab argues LiDAR is necessary
 - [[event-cameras]] — alternative sensing for high-speed/low-light where stereo depth fails
 - [[lidar-vs-vision-autonomy]] — debate page this paper feeds

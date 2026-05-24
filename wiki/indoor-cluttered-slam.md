@@ -78,6 +78,7 @@ Classical VIO and LiDAR-inertial odometry (see [[visual-inertial-slam]], [[lidar
 
 ## Related
 
+- [[slam]] — overview hub for the SLAM cluster
 - [[home-tidy-drone-prototype]] — parent; research assignment #3
 - [[visual-inertial-slam]] — OKVIS2, FAST-LIO2 foundations cross-referenced here
 - [[lidar-for-uav-autonomy]] — LiDAR-inertial stack extended by cluttered-indoor constraints

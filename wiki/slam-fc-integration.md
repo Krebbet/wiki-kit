@@ -93,6 +93,7 @@ Low-cost IMUs drift too fast to hold position without an external velocity/posit
 
 ## Related
 
+- [[slam]]
 - [[home-tidy-drone-prototype]]
 - [[gps-denied-hover-land]]
 - [[visual-inertial-slam]]

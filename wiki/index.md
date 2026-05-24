@@ -52,6 +52,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[drone-mapping-surveying-use-case]] | Photogrammetry/survey — DroneDeploy/Pix4D/Propeller; most mature vertical, lowest reg friction. |
 | [[bvlos-regulation]] | US/Canada/EU BVLOS compared — Canada operationally ahead (in-effect Nov 2025); EASA SORA 2.5; FAA Part 108 slipped. |
 | [[drone-battery-energy]] | Energy-density futures — Amprius 450 Wh/kg, hydrogen BVLOS, hybrid; the propulsion-futures contest. |
+| [[slam]] | Hub: what SLAM is (localization + mapping + loop closure), VIO vs LiDAR-inertial front-ends, how pose reaches the FC, indoor failure modes. |
 | [[slam-fc-integration]] | External SLAM/VIO pose fused into ArduPilot EKF3 / PX4 EKF2 via MAVROS vision_pose — frames, EK3_SRC params, delay tuning, divergence pitfalls. |
 | [[fast-lio-mid360-orin]] | Deploying FAST-LIO2 LiDAR-inertial odometry with a Livox MID360 on a Jetson Orin under ROS 2 — driver, IMU quirks, calibration, variants, compute. |
 | [[indoor-obstacle-avoidance]] | Two-tier indoor avoidance: FC-native reactive (ArduPilot BendyRuler/Dijkstra, PX4 Collision Prevention) + companion planners (EGO-Planner/Swarm, FASTER). |
