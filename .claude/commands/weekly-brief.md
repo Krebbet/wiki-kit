@@ -117,7 +117,7 @@ The skill also still writes `/tmp/weekly-brief-<YYYY-MM-DD>.md` (same content as
 Write to `/tmp/weekly-brief-<YYYY-MM-DD>.md` AND `wiki/weekly-briefs/<YYYY-MM-DD>.md` with **exactly** this shape:
 
 ```markdown
-Subject: Weekly AI radar (<REPO_NAME>) — week of <YYYY-MM-DD>
+Subject: Weekly Radar (<REPO_NAME>) — week of <YYYY-MM-DD>
 
 ⚠ **Uncommitted changes on `<BRANCH>`.** On your next login, run:
 `cd <REPO_ROOT> && git add wiki/ raw/research/weekly-<YYYY-MM-DD>/ && git commit -m "weekly: <YYYY-MM-DD> radar sweep"`
@@ -180,7 +180,7 @@ The user reads mail in Outlook, so the brief must actually *send* to `david.hugh
   poetry run python -m tools.render_brief_html \
     --in /tmp/weekly-brief-$RUN_DATE.md \
     --out /tmp/weekly-brief-$RUN_DATE.html \
-    --title "Weekly AI radar ($REPO_NAME) — week of $RUN_DATE"
+    --title "Weekly Radar ($REPO_NAME) — week of $RUN_DATE"
   ```
 - **Primary: SMTP send (both bodies).** Plain-text markdown is the fallback alternative; HTML is what Outlook renders.
   ```bash
@@ -188,7 +188,7 @@ The user reads mail in Outlook, so the brief must actually *send* to `david.hugh
   if [ -n "${GMAIL_APP_PASSWORD:-}" ]; then
     MESSAGE_ID=$(cd "$REPO_ROOT" && poetry run python -m tools.send_email \
       --to david.hugh.mcnamee@outlook.com \
-      --subject "Weekly AI radar ($REPO_NAME) — week of $RUN_DATE" \
+      --subject "Weekly Radar ($REPO_NAME) — week of $RUN_DATE" \
       --body-file /tmp/weekly-brief-$RUN_DATE.md \
       --html-body-file /tmp/weekly-brief-$RUN_DATE.html)
     DELIVERY_KIND="sent"

@@ -123,6 +123,80 @@ The authors are explicit that a well-designed tool *could* defeat FP-Inconsisten
 
 The practical lesson: per-attribute rotation is insufficient. An obfuscation tool must model the *joint distribution* of real device configurations and ensure every spoofed attribute remains consistent with every other spoofed attribute, temporally and spatially. This is a materially harder engineering problem than the typical extension-level approach.
 
+## PETS 2026 defence cluster
+
+PETS 2026 (Calgary; April 2026) accepted-papers list landed a coordinated wave of fingerprint-defence research, with three papers carrying full **Available / Functional / Reproduced** artifact badges — the strongest reproducibility rating in the venue. Captured `weekly-2026-04-27/05-05-pets-2026-fingerprint-defenses.md`.
+
+### Layer-scoping note (Venugopalan 2024 vs. PETS 2026 defence papers)
+
+The FP-Inconsistent paper above (browser-attribute, JS-API layer) and the PETS 2026 defences (network-layer + application-stream layer) are **not in conflict** — they operate on different abstraction layers. FP-Inconsistent's "naive rotation defeated" finding applies to per-attribute spoofing of browser-exposed properties (`navigator.platform`, `screenResolution`, etc.). The PETS 2026 papers below operate on (a) network-traffic timing/sizing (Ephemeral, Dodge) and (b) voice/audio side-channels (PriVA-C). Different attack-surface, different defence-surface.
+
+### Defence papers with full Reproduced artifacts
+
+- ***Ephemeral Network-Layer Fingerprinting Defenses*** — Pulls, Korhonen, Witwer & Carlsson (Karlstad / Linköping). Network-layer ephemeral-rotation defences. Artifact: Available, Functional, Reproduced. Repository: `github.com/maybenot-io/popets-2026.1-ephemeral-defs-paper-artifacts` (maybenot framework family). The first PETS 2026 paper to demonstrate working defence against website-fingerprinting attacks at the network layer with a fully reproduced artifact.
+- ***Dodge: A Client-Side Framework for Application-Layer Video Fingerprinting Defenses*** — Witwer, Hasselquist, Pulls & Carlsson (Linköping / Sectra / Karlstad). Client-side framework for defeating video-stream traffic fingerprinting. Artifact: Available, Functional, Reproduced. Same lab group as Ephemeral — a coordinated research programme on ephemeral-rotation defences across network and application-stream layers.
+- ***PriVA-C: Defending Voice Assistants from Fingerprinting Attacks*** — Ahmed, Sabir, Zafar & Das (NC State). Voice-assistant fingerprinting defence. Artifact: Available.
+
+### Supporting empirical and theoretical papers (PETS 2026)
+
+- ***Analyzing Societal Awareness and Perception of Digital Fingerprinting and Fingerprinting Countermeasures*** — Schramm, Syrmoudis, Markou & Grossklags (TU Munich). Empirical baseline on public knowledge of fingerprinting and defences. Artifact: Available, Functional. Quantifies the awareness gap any consumer-side deployment effort must close.
+- ***An Improved Entropy Measure for Web Browser Fingerprinting Risk*** — Berke, Bacis & Syed (Google). New entropy-quantification method for browser-fingerprint risk. Note that the lead authors are at the dominant fingerprinting party — a signal that defence-side tooling must continue to track risk-quantification refinements from the watcher side.
+- ***EXADPrinter: Semi-Exhaustive Permissionless Device Fingerprinting Within the Android Ecosystem*** — Bouhenniche, Laperdrix & Rudametkin (Lille / Rennes / CNRS-Inria). Expands the attack surface on Android.
+- ***Redefining Website Fingerprinting Attacks with Multi-Agent LLMs*** — Song et al. (Rutgers). Attack-side; cross-cuts to [[adversarial-data-poisoning]]'s attack-vs-defence framing.
+
+### Adjacent platform-enforcement signal (PETS 2026)
+
+- ***On the Effectiveness of Manifest V3 Ad-Blockers*** — Lukic & Papadopoulos (Goethe). Documents how Google's Manifest V3 update in Chrome degrades the effectiveness of third-party ad-blocker extensions. Directly relevant to [[obfuscation|obfuscation's countermeasure-projection layer]]: platform-vendor capture is a real risk to extension-level obfuscation. Strengthens the case for *network-layer* defences (Ephemeral above) over *extension-layer* defences for durability against platform changes.
+
+### Implications for consumer counter-power
+
+*(editorial.)*
+
+- **Tier-2 obfuscation extension on [[strategies/data-disruption-strategy-map|the strategy map]] (joint-distribution fingerprint-spoof) now has two reproduced-artifact substrates** at the network and application-stream layers — Ephemeral and Dodge. The remaining gap is browser-attribute layer (where FP-Inconsistent above documents the difficulty); the PETS 2026 cluster does not close that gap.
+- **The maybenot framework (Ephemeral's repository) is a forkable starting point** for any consumer-side network-layer rotation tooling. A working substrate for the Tier-2 fingerprint-spoof lever; previously, the wiki had only theoretical anchors for that lever.
+- **Schramm et al.'s societal-awareness baseline is design input** for any deployment plan: the tooling exists, but quantified public awareness is the gating constraint on adoption — frames the problem as outreach + onboarding, not just engineering.
+
+### Watchlist-relevant adjacent papers
+
+PETS 2026 also accepted three counter-tracking / compliance-audit papers that don't fit the fingerprint-defence cluster but are tracked on [[transparency-tools]] and the watchlist:
+
+- *Exercising the CCPA Opt-out Right on Android: Legally Mandated but Practically Challenging* (Zimmeck et al., Wesleyan / Maastricht) — only 48 of 100 top-free Android apps implement CCPA opt-out; GPC signals largely ineffective at the OS level.
+- *A Year Under the DSA: Ad Transparency's Uneven Landscape* (Benzaamia, El fraihi, Abdelaziz, Goga; LIX / CNRS / Inria / École Polytechnique) — first systematic empirical audit of EU DSA ad-transparency regime one year on; large platforms comply unevenly.
+- *Ad Personalization and Transparency in Mobile Ecosystems: A Comparative Analysis of Google's and Apple's EU App Stores* (Breuer, Becker, Hollick; TU Darmstadt) — duopoly-app-store comparison of EU-mandated ad-transparency exposure.
+
+These extend the [[transparency-tools]] empirical landscape but do not introduce new defence mechanisms.
+
+## Case: *Phillips v. JetBlue Airways Corporation* — cookie / cache-based price personalisation alleged on commercial aviation
+
+*Phillips v. JetBlue Airways Corporation* (1:26-cv-02405, US District Court, filed April 22 2026; ClassAction.org coverage published April 29 2026) is the first US federal class-action complaint to allege **browser-tracking-based price personalisation** as the underlying mechanism of consumer-facing dynamic pricing — and the first to do so on commercial aviation specifically. Captured `weekly-2026-05-11/03-jetblue-class-action.md`. The case is wiki-relevant here because the *alleged mechanism* is precisely the cookie / cache / fingerprint stack this page catalogues.
+
+### Alleged mechanism (per the complaint)
+
+- **Cookie / cache tracking** that follows users across sessions on JetBlue.com and the mobile app.
+- **Third-party data sharing** with **PROS Holdings, Inc.** (algorithmic pricing vendor; PROS is also one of the recipients of the FTC's July 2024 6(b) surveillance-pricing orders — see [[surveillance-pricing-retail]]) and **FullStory, Inc.** (session-replay / behavioural-analytics vendor).
+- The alleged effect: returning users see *higher* fares than fresh-session users for the same itinerary at the same moment — i.e. **per-user price differentiation based on identifiability**.
+
+### The "clear your cache" tweet as platform-side admission
+
+The complaint's load-bearing factual anchor is JetBlue's own, since-deleted, social-media reply to a $230 fare-increase complaint: *"try clearing your cache and cookies or booking with an incognito window."* Per the complaint: *"effectively admitted in a since-deleted social media post in April 2026 that it uses so-called dynamic surveillance pricing."* JetBlue's later official statement denies surveillance pricing; the complaint cites the tweet, *"other public statements,"* and *"the website's back-end code"* as evidence to the contrary.
+
+This pattern — *platform's own customer-service advice to clear cookies/cache as a workaround to high prices* — is a watcher-side **self-disclosure signal** for cookie-based price personalisation that any audit-tool detector can be tuned to surface. The legal theory makes the tweet itself the evidence; the technical question of *which* cookies / fingerprint attributes carry the discriminating signal is left for discovery (no algorithm-level disclosure yet).
+
+### Why this case matters for fingerprinting defences
+
+- **The "clear cookies / use incognito" advice does not defeat fingerprinting** — only cookies. Incognito mode leaves Canvas, WebGL, AudioContext, font, screen, WebRTC and the rest of the active fingerprint stack intact. If JetBlue's pricing keys on a fuller fingerprint, the customer-recommended workaround is partial at best and may not produce the price reduction the customer expects. The complaint does not engage this technical nuance — it treats *"clear your cache and cookies or booking with an incognito window"* as a *de facto* admission of cookie-based tracking but does not allege fingerprinting specifically.
+- **Discovery in the case may surface algorithm-level disclosure** of what JetBlue's vendors actually key on, which would be the first US litigation-driven disclosure of an airline-RM-or-surveillance-pricing-vendor feature set. If the vendor stack (PROS + FullStory) includes any of the fingerprinting techniques catalogued above, the case becomes the first US judicial finding on browser-fingerprinting-as-pricing-input.
+- **The privacy-tort framing**: the complaint anchors on undisclosed data-collection rather than market harm. This is doctrinally distinct from the antitrust and consumer-protection paths that have dominated US dynamic-pricing litigation and is closer to the GDPR-style theory that [[noyb]] runs in the EU. If certified, it establishes a **US standing template** for cookie/fingerprint-based price-discrimination privacy claims — class-action plaintiff need only show undisclosed collection, not quantified overcharge.
+
+Cross-link to [[consumer-facing-dynamic-pricing|the JetBlue surveillance-pricing inflection-event section]] for the procedural/regulatory layer and to [[pricing-algorithm-taxonomy|Family 4 contested-claim note]] for what the case means for the "airline RM uses no individual identity features" question.
+
+### Tooling implications
+
+*(editorial.)*
+
+- **The "did this site price-discriminate against me?" audit tool** — paired-session detector (fingerprinted-state vs. clean-state, same itinerary, same moment) — would produce the evidence record the *Phillips v. JetBlue* class-recruitment effort needs. The detector's technical job is exactly the inverse of FP-Inconsistent: rather than identifying inconsistent fingerprints, it deliberately *constructs* two consistent-but-different fingerprints and compares the prices each is shown. The "blending in" paradox cuts both ways here — the clean-session fingerprint must be plausibly common for the price comparison to be valid evidence of *targeted* pricing rather than random variation.
+- **The PETS 2026 ephemeral-rotation defences above** (Ephemeral, Dodge) would, if deployed widely, reduce the per-user identifiability that surveillance-pricing keys on — converting the *Phillips* class theory from a litigated-redress lever into a pre-emptive technical defence. Per the layer-scoping note above: Ephemeral and Dodge operate on network and application-stream layers, not browser-attribute layer, so they would defeat *some* but not all surveillance-pricing fingerprinting paths.
+
 ## Regulatory context — Lawall 2024
 
 > "Despite stricter privacy laws like the GDPR in the EU, browser fingerprinting remains a grey area. Anti-fingerprinting techniques are limited and continually evolving to keep up with new tracking methods."
@@ -143,6 +217,8 @@ Germany's TTDSG (Telekommunikation-Telemedien-Datenschutzgesetz) is the most rec
 
 - `raw/research/obfuscation-deep-dive/04-09-fingerprinting-tracing-shadows.md` — Lawall, *Fingerprinting and Tracing Shadows: The Development and Impact of Browser Fingerprinting on Digital Privacy*, arXiv 2411.12045. Origin: academic survey. Purpose: catalogue fingerprinting techniques and legal context. Trust: high.
 - `raw/research/obfuscation-deep-dive/05-10-fp-inconsistent.md` — Venugopalan, Munir, King & Ahmed, *FP-Inconsistent: Measurement and Analysis of Fingerprint Inconsistencies in Evasive Bot Traffic*, arXiv 2406.07647. Origin: academic, defender-side measurement. Purpose: demonstrate cross-attribute inconsistency as detection signal. Trust: high — novel dataset of purchased bot traffic, cross-validation disclosed.
+- `raw/research/weekly-2026-04-27/05-05-pets-2026-fingerprint-defenses.md` — PETS 2026 (PoPETs / Calgary) accepted-papers list, captured April 2026 for the fingerprint-defence cluster (Ephemeral, Dodge, PriVA-C, Schramm et al. awareness baseline, Berke et al. entropy measure, EXADPrinter Android, Song et al. multi-agent LLM attack, MV3 ad-blocker effectiveness paper). Origin: peer-reviewed venue proceedings. Purpose: defence-side research disclosure. Trust: high — peer-reviewed; artifact badges (Available / Functional / Reproduced) independently assigned by the PETS artifact committee.
+- `raw/research/weekly-2026-05-11/03-jetblue-class-action.md` — ClassAction.org coverage (April 29 2026) of *Phillips v. JetBlue Airways Corporation* (1:26-cv-02405, US District Court, filed April 22 2026). Origin: plaintiff-aligned secondary reporting on a court-filed complaint. Purpose: report case caption, class scope, named third-party vendors (PROS Holdings, FullStory), and the complaint's "clear your cache" admission anchor. Trust: case-caption / docket / vendor-naming claims are checkable against the public docket; allegations are unproven pending discovery and class certification. Used here only for the *alleged-mechanism* layer of the case (cookie / cache-based pricing); not relied on for empirical claims about fingerprinting techniques.
 
 ## Related
 

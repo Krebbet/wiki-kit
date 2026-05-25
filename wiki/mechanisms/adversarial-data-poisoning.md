@@ -1,6 +1,6 @@
 # Adversarial Data Poisoning
 
-Adversarial data poisoning is the class of attacks where actors inject, modify, or delete training data to shift a deployed model's behaviour toward the attacker's goal. This page anchors the reference-layer evidence on **poisoning attacks against recommender systems** and **algorithmic collective action** — the two literatures most relevant to consumer-side counter-power against dynamic-pricing and surveillance-pricing models. Both literatures describe the same technical primitive — coordinated data modification at scale — but frame it differently: the RS literature treats it as an *adversary* to defend against; the collective-action literature treats it as *users reclaiming influence over models trained on their data*. See [[obfuscation]] for the client-side tool variant.
+Adversarial data poisoning is the class of attacks where actors inject, modify, or delete training data to shift a deployed model's behaviour toward the attacker's goal. This page anchors the reference-layer evidence on **poisoning attacks against recommender systems** and **algorithmic collective action** — the two literatures most relevant to consumer-side counter-power against dynamic-pricing and surveillance-pricing models. Both literatures describe the same technical primitive — coordinated data modification at scale — but frame it differently: the RS literature treats it as an *adversary* to defend against; the collective-action literature treats it as *users reclaiming influence over models trained on their data*. See [[obfuscation]] for the client-side tool variant. The political/coordinated-strategy framing of the same primitives is anchored on [[algorithmic-collective-action]] (Hardt et al. 2023 foundational + Baumann & Mendler-Dünner 2024 deployed-system empirics + Karan et al. 2025 multi-collective dynamics); the firm-side counter-perspective is collected on [[the-firms-view]].
 
 ## Two framings of the same mechanism
 
@@ -133,6 +133,9 @@ The Wang et al. attack taxonomy and the Solanki et al. ACA formalism together de
 
 ## Related
 
+- [[algorithmic-collective-action]] — the political/coordinated-strategy framing of the same primitives, anchored on Hardt et al. 2023 + Baumann 2024 + Karan et al. 2025
+- [[the-firms-view]] — firm-side counter-perspective on the same primitives (attack taxonomies + DP-as-counter + adaptive-pricing recovery + threshold-tightening)
+- [[strategic-classification]] — individual-level (uncoordinated) counterpart; same firm-side defensive literature
 - [[obfuscation]]
 - [[browser-fingerprinting]]
 - [[collective-bargaining-for-data]]
@@ -140,3 +143,4 @@ The Wang et al. attack taxonomy and the Solanki et al. ACA formalism together de
 - [[algorithmic-collusion]]
 - [[possible-strategic-levers]]
 - [[obfuscation-strategic-readout]]
+- [[federated-learning]] — substrate technology + dual-use Byzantine-robustness defences

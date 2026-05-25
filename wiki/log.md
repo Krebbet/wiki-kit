@@ -431,3 +431,322 @@ First /weekly-brief run on this wiki, immediately after the setup interview that
 **Brief output paths.** /tmp/weekly-brief-2026-04-23.md and wiki/weekly-briefs/2026-04-23.md (both written before email send).
 
 **Pre-existing uncommitted state at run start.** This wiki had substantial uncommitted work from earlier sessions (master_notes.md, several reference-layer pages, all the new mechanisms/organizations pages from the 2026-04-22 and 2026-04-23 research+ingest runs, lint-reports/, the merge-commit pull from main, and the just-written setup files). The weekly-brief diff is therefore mixed in with that backlog — flagged in the brief's run-notes section so the user can separate the two when committing.
+
+## [2026-04-25] query | ClawNet paper applied to wiki
+
+User `/query`: "take a look at the paper for an agentic method called clawnet. See how it could be applied in the context of this wiki."
+
+**External source.** Yang, Zhang, Jia, Song, Xue, Zhang & Guo. 2026. *ClawNet: Human-Symbiotic Agent Network for Cross-User Autonomous Cooperation*. arXiv 2604.19211. HKUST / HKGAI / HKBU. Not captured as a raw source; arXiv URL is the primary external reference.
+
+**Synthesis.** ClawNet is infrastructure (three governance primitives — identity binding, scoped authorization, action-level accountability), not a lever. It maps onto the multi-party-with-divergent-interests subset of the wiki's 29-lever inventory: Tier-1 #1 (DSAR coordination), levers #14 / #16 (commitment device — resolves [[data-disruption-strategy-map]] open Q#3), #1 (CBI agent representation), #4 (group-buy), #8 (probe-and-publish), #26 (consumer union). Architecturally incompatible with obfuscation / ACA cluster (#6 / #7 / #10 / #11) and adds nothing for Family 4 (airline RM) / Family 5 (RealPage) per [[pricing-algorithm-taxonomy]].
+
+**Five deployment risks** catalogued: (1) centralised operator trust = Honey extractive-drift pattern, (2) CFAA risk class 3 (authenticated-endpoint automation), (3) adversarial-training inoculation against the substrate signature, (4) DP-as-firm-counter from Solanki et al. 2025 unchanged, (5) cross-user contact graph privacy not addressed by the paper.
+
+**Net read.** A cooperatively-owned ClawNet-style substrate (orchestration governed under a [[platform-cooperatives|platform coop]] shell, not the original cloud-vendor configuration) could be the missing technical layer for the [[data-cooperatives]] / [[collective-bargaining-for-data]] / [[platform-cooperatives]] convergence — agent-mediated cross-consumer coordination as the substrate all three wiki-anchor mechanisms have separately needed but none has built.
+
+**Wiki updates.**
+- New strategy-layer page: `wiki/strategies/clawnet-readout.md`.
+- Cross-references added: `possible-strategic-levers.md` (new "Cross-cutting infrastructure (added 2026-04-25)" subsection); `data-disruption-strategy-map.md` (§L3 substrate note + open question #3 partial-answer annotation).
+- Index updates: `wiki/index.md`, `strategies/index.md`.
+- Revision row appended.
+
+**Surfacing for future work.** "Agent-mediated coordination" flagged as a candidate cross-cutting infrastructure pattern for the future strategy-layer pattern library subsection. If the synthesis grows into a development plan, the ClawNet paper itself warrants a formal `/ingest` capture into `raw/`.
+
+## [2026-04-26] research+ingest | clawnet-adjacent-methods
+
+User `/research`: scan for methods like ClawNet — agentic / algorithmic / DL / optimisation / network-graph approaches that relate to the wiki's core problems.
+
+**Sources captured (14 PDFs + 12 abs):** in `raw/research/clawnet-adjacent-methods/`. Originally attempted with marker engine; GPU OOM on parallel runs; switched to pymupdf — clean text extraction (text intact, broken-image-refs in known-issue category per past lint runs). 12 arXiv abs pages via `capture_url`.
+
+**Sources dropped (1):**
+- E2 *Social Learning with Complex Contagion* (PNAS 2024, doi 10.1073/pnas.2414291121): 403 bot-walled on both PDF and HTML routes. Per user ruling, skipped — Centola E1 chapter covers the foundational network-science layer adequately.
+
+**Sources captured by category:**
+- **Algorithmic Collective Action lineage:** Hardt, Mazumdar, Mendler-Dünner & Zrnic 2023 (foundational, ICML, arXiv 2302.04262); Baumann & Mendler-Dünner 2024 (ACA in recsys, arXiv 2404.04269); Karan, Karahalios, Vincent & Sundaram 2025 (multi-collective dynamics, arXiv 2505.00195).
+- **Strategic classification:** Hardt, Megiddo, Papadimitriou & Wootters 2016 (foundational, ITCS, arXiv 1506.06980); *Contextual Dynamic Pricing with Strategic Buyers* (arXiv 2307.04055); Milli, Miller, Dragan & Hardt 2019 (FAccT, arXiv 1808.08460).
+- **Federated learning:** Rahman 2025 survey (arXiv 2504.17703).
+- **Multi-agent LLM negotiation:** Liu, Gu & Song 2026 *AgenticPay* (arXiv 2602.06008); Abdelnabi et al. 2024 *LLM-Stakeholders Interactive Negotiation* (NeurIPS, arXiv 2309.17234); Louck, Stulman & Dvir 2025 *Improving A2A* (arXiv 2505.12490).
+- **Network science:** Centola *Complex Contagions* book chapter.
+- **Mechanism design:** OECD 2022 *Purchasing Power and Buyers' Cartels*; Agarwal, Dahleh & Sarkar 2019 *A Marketplace for Data* (EC, arXiv 1805.08125).
+- **Decentralised identity:** Garzon et al. 2025 *AI Agents with Decentralized Identifiers and Verifiable Credentials* (arXiv 2511.02841).
+
+**User rulings (2026-04-26):**
+1. Keep [[adversarial-data-poisoning]] as legitimate-weapon framing; create new [[the-firms-view]] page collecting firm-side counter-perspectives; both link bidirectionally.
+2. Reflect B2 (adaptive-pricing recovery) caveat in [[obfuscation-strategic-readout]] and [[the-firms-view]].
+3. (My choice) B3 disparate-impact externality — add as new section in [[obfuscation-strategic-readout]] §7, full treatment in [[strategic-classification]] + [[the-firms-view]] §4, new risk class 8 in [[data-disruption-strategy-map]].
+4. C1 (FL survey) — standalone [[federated-learning]] page with primary-citation pattern.
+5. E2 PNAS — skipped (bot-walled).
+6. (My choice) Antitrust treatment — handled as new "Antitrust treatment by lever" section on [[possible-strategic-levers]] + new [[buyer-cartels-antitrust]] mechanism page; not as new column on the summary table (cleaner separation).
+7. (My choice) ClawNet readout expansion — three new sections (empirical capability evidence, substrate dependencies, centralised vs decentralised comparison) added in-place; no separate comparison page.
+
+**Wiki pages created (10 mechanism-layer):** [[algorithmic-collective-action]], [[strategic-classification]], [[the-firms-view]], [[federated-learning]], [[complex-contagion]], [[buyer-cartels-antitrust]], [[data-market-mechanism-design]], [[decentralized-agent-identity]], [[agent-mediated-negotiation-empirics]], [[agent-interop-protocols]]. All under `wiki/mechanisms/`.
+
+**Wiki pages updated:** [[adversarial-data-poisoning]] (intro + Related — keep legitimate-weapon framing per user ruling, add cross-links); [[obfuscation-strategic-readout]] (renumbered weaknesses §6 → §8; added §6 adaptive-seller caveat + §7 disparate-impact externality; Related additions); [[clawnet-readout]] (added "Empirical capability evidence" + "Substrate dependencies" + "Centralised vs decentralised — ClawNet vs DID/VC" sections; Related additions); [[possible-strategic-levers]] (expanded Cross-cutting infrastructure from 1-entry to 12-entry table; added Antitrust-treatment-by-lever section; per-lever upgrade notes); [[data-disruption-strategy-map]] (risk class 7 + 8 added; Related additions); [[pricing-algorithm-taxonomy]] / [[data-cooperatives]] / [[collective-bargaining-for-data]] / [[consumer-collective-bargaining]] (Related cross-links + antitrust section in consumer-collective-bargaining); [[index]] / [[strategies/index]] (catalog updates); revisions.md row appended.
+
+**Open carry-overs:**
+- DID/VC × ClawNet hybrid architecture — flagged on [[clawnet-readout]] + [[decentralized-agent-identity]] as future research-queue topic.
+- Issuer-trust governance for DID/VC — unsolved problem flagged on [[decentralized-agent-identity]].
+- FL primary-citation capture — McMahan 2017, Bonawitz 2017, Abadi 2016, Zhu 2019, Blanchard 2017 referenced via the Rahman 2025 survey but not yet in `raw/`. Future research-queue topic.
+- Centola chapter bibliographic uncertainty (book of origin not definitively confirmed).
+- E2 PNAS *Social Learning with Complex Contagion* skipped — recapture if user wants the recent extension.
+
+**Kit-level findings logged to master_notes:**
+- Subagent prompts must explicitly forbid writing to disk. Two subagents in this run wrote scratch summaries to `wiki/sources/`, `structured-ingests/`, and `/tmp/` despite prompts asking for in-message returns. Cleaned up. Recommend updating standard subagent prompt template.
+- Marker engine OOMs under parallel invocation on shared GPU. `capture_pdf.py` could detect GPU pressure and auto-fall-back to pymupdf (or document the parallel-safety constraint clearly in the tool docstring). Currently the GPU OOM error path exits 0 (succeeds the script) but leaves no output file.
+
+## [2026-04-26] query | mechanism synthesis — novel applications across new mechanism set
+
+User `/query`: "with all the new methods now in the wiki being considered. How would you novelly apply technology/algorithms to enable some of our identified levers are there new avenues to consider?"
+
+**Synthesis output.** Cross-product of the 10 new mechanism pages (added earlier 2026-04-26) × the existing 29-lever inventory on [[possible-strategic-levers]]. Eight novel builds and five candidate new lever avenues identified.
+
+**Eight builds:**
+1. Federated Pricing Observatory — FL substrate + Markup probe-and-publish pattern → eliminates Citizen Browser's Trail-of-Bits redaction engineering as substrate-level property. Enables [[possible-strategic-levers|lever #8]] / [[data-disruption-strategy-map|Tier 1 #3]].
+2. Verifiable Mandate-Bound DSAR Pipeline — DID/VC + ClawNet + DSAR coordination → cryptographically-verifiable mandate at request time, anonymous aggregation at response time. Direct upgrade for [[possible-strategic-levers|lever #9]].
+3. Multi-Collective Adaptive-Pricing Disruption — Karan two-collectives + Contextual Pricing Strategic Buyers → aligned collectives with different manipulation rules defeat the seller's two-phase identification. Enables [[possible-strategic-levers|lever #10]]; partial mitigation of [[the-firms-view|§3]].
+4. Periphery-First Threshold Coordinator — Centola + Kickstarter + ClawNet → contact-graph-aware seeding with influencer down-weighting. Reformulates [[possible-strategic-levers|levers #14, #16, #28]].
+5. Lever-Selection Decision Tool — strategic-classification separability dichotomy + pricing-algorithm-taxonomy → ranks manipulation dimensions by durability per pricing algorithm family. Refines [[possible-strategic-levers|cluster #3, #6, #7, #10, #11]].
+6. Layered Cooperative Governance — Shapley external-sales + democratic strategic-decisions → resolves the documented governance tension on [[data-market-mechanism-design]].
+7. Dual-Use Byzantine-Robust Observatory — mirror firm-side defence to consumer-side observatory → defends Build #1 against firm-side counter-poisoning.
+8. Privacy Budget Marketplace — FL DP + data-market Shapley → ε-as-currency for queries + Shapley-as-currency for contribution attribution. New parallel institution.
+
+**Five candidate new lever avenues** (not yet on [[possible-strategic-levers]]): DSAR-as-a-Service for member-bound litigation orgs; Federated price-discrimination detector as public service; Multi-cooperative agent federation; Lever-tactics simulator; Privacy-budget marketplace as parallel institution.
+
+**Hard limits catalogued** (from new mechanism pages, not invalidating but bounding the builds): adaptive-seller recovery, disparate-impact externality, DP-as-firm-counter, LLM-negotiation buyer-disadvantage, antitrust risk concentration on lever #26, DID/VC issuer-trust governance unsolved.
+
+**Tier-1 build recommendation:** Build #2 (Verifiable Mandate-Bound DSAR Pipeline) sits highest — sidesteps LLM-negotiation buyer-disadvantage, aligned with [[data-disruption-strategy-map|Tier 1 #1]], risk class 1, existence-proof exists (Uber audit). Build #1 (Federated Pricing Observatory) and Build #4 (Periphery-First Threshold Coordinator) follow.
+
+**Wiki updates:**
+- New strategy-layer page: `wiki/strategies/mechanism-synthesis-readout.md`.
+- Index updates: `wiki/index.md` + `wiki/strategies/index.md`.
+- Revision row appended.
+
+**Open strategic questions surfaced** (preserved on the readout page): aggregator-governance for Builds #1/#7/#8; cross-collective coordination antitrust treatment; bootstrap path for Build #5 (catch-22 with Build #1); multi-cooperative federation governance; privacy-budget composition under repeated queries.
+
+**Carry-over for future inventory revision:** the five candidate new lever avenues should be considered for addition to [[possible-strategic-levers]] when the inventory next gets refreshed.
+
+## [2026-04-27] weekly-brief | second autonomous run
+
+Second `/weekly-brief` run. Window: past 7 days (since 2026-04-20). 4 trend-scan subagents dispatched in parallel across the 4 streams (counter-algorithmic tooling; platform/federation/coop builds; counter-power research/think-tank; extraction news + enforcement). Trend-scan output ranked into 5 captures and 10 watchlist overflow items per the local Selection priority on `wiki/reference-sources.md`.
+
+**5 captures:**
+1. **webXray California GPC compliance audit** via The Markup (Apr 21 2026) — 7,634 sites, Google 86% / Meta 69% / Microsoft 50% non-compliance with the Global Privacy Control opt-out signal. Replicates the noyb 83.5% GDPR Art.15 pattern cross-jurisdictionally. Slotted into [[counter-power/regulatory-responses]] as new "GPC compliance audit" subsection under §9; cross-jurisdictional empirical-pattern note added on [[organizations/noyb]].
+2. **Bharat Taxi Mumbai launch** (Apr 23 2026) — Indian state-sponsored driver cooperative under the Multi-State Co-op Societies Act, ~5.17 lakh drivers nationally, ~25K rides/day, EV-procurement and ₹5 lakh insurance bundling, zero-commission claim, passenger services slated for May. **Created new page** [[organizations/bharat-taxi]]; introduced **government-cooperative hybrid** as 5th typological category beyond the OECD four-type taxonomy on [[mechanisms/platform-cooperatives]].
+3. **EU DMA Google search-data FRAND sharing preliminary findings** (Apr 16 2026) — first regulated, priced commercial-search-intent-data access surface (ranking, query, click, view; AI chatbots explicitly named as eligible beneficiaries). Public consultation closes May 1; final decision expected July 27. New subsection under [[counter-power/regulatory-responses|§4 EU]]; flagged on [[strategies/mechanism-synthesis-readout|Build #1 substrate update]] as candidate substrate for the Federated Pricing Observatory.
+4. **JetBlue surveillance-pricing inflection event** (Apr 21–22 2026) — deleted-tweet incident → federal class action filed within 24h → FTC Chair Andrew Ferguson directed staff to examine new disclosure rules at Senate Commerce → multi-state legislative stack (NY/NJ/AZ/PA bills introduced). Activation curve compressed from years (RealPage / Live Nation arc 2022–2026) to one week. New "JetBlue Apr 2026 inflection event" subsection in [[industries/consumer-facing-dynamic-pricing|Airlines]]; FTC subsection in [[counter-power/regulatory-responses|§1]]; **Family 4 (airline RM) no-individual-features claim flagged contested** on [[mechanisms/pricing-algorithm-taxonomy]].
+5. **PETS 2026 fingerprint-defence cluster** (Calgary, Apr 21 2026) — Ephemeral Network-Layer Fingerprinting Defenses (Pulls et al., maybenot framework, Reproduced artifact) + Dodge Application-Layer Video Fingerprinting Defenses (Witwer et al., Reproduced) + PriVA-C voice-assistant defence + Schramm et al. societal-awareness baseline + Berke et al. Google-authored entropy measure + EXADPrinter Android + Song et al. multi-agent LLM attack + MV3 ad-blocker effectiveness. New "PETS 2026 defence cluster" section on [[mechanisms/browser-fingerprinting]] with layer-scoping note clarifying that the Reproduced defences operate at network/application-stream layers (not in conflict with Venugopalan 2024 browser-attribute layer).
+
+**Page-plan decisions made autonomously per the skill's policy:**
+- 1 new page (bharat-taxi) — distinct enough scale + hybrid typology to warrant its own org page; not absorbed into drivers-cooperative.
+- 7 existing-page updates — consolidating regulatory captures into [[regulatory-responses]] (already the landing page for this cluster), distributing JetBlue across consumer-facing-dynamic-pricing + pricing-algorithm-taxonomy + regulatory-responses, and the PETS 2026 cluster into browser-fingerprinting.
+- **No conflict files opened.** The 86% Google GPC tracking vs Google's compliance claim is a *factual dispute between audit and corporate position* (both documented in the source itself), not a wiki-internal conflict. The JetBlue contested-claim on airline-RM is handled via in-page contested-claim flag (per the watchlist's existing "reference-layer claims to monitor for counter-evidence" entry) rather than a separate conflict file.
+
+**Watchlist additions (10 overflow items):**
+1. OpenAI Privacy Filter — open-weight on-device PII redaction (frontier-lab trust-asymmetry)
+2. Drivers Cooperative Colorado RTD public-transit contract bid — decision imminent
+3. Radish Cooperative NYC expansion — federated multistakeholder governance template
+4. PETS 2026 CCPA-Android opt-out audit (Zimmeck et al.) — practical exercisability gap
+5. PETS 2026 DSA ad-transparency audit (Benzaamia et al.) — uneven year-1 compliance
+6. PETS 2026 Apple-vs-Google EU app-store ad-personalization comparison (Breuer et al.)
+7. PCC Solidarity Stack pre-conference — Bangkok submission deadline Apr 30
+8. FTC ANPRM grocery delivery fees — comments due May 18 2026
+9. WPP/Publicis/Dentsu brand-safety collusion settlement — algorithmic coordination via trade-association theory
+10. Berkman Klein Transparency Hub — terms-of-service surveillance database
+
+**Trend-scan signal observations** (preserved on the brief):
+- PETS 2026 dominates the counter-algorithmic-tooling stream this week (venue-event week, not organic dispersed trend).
+- Empirical compliance-failure data is becoming the cross-jurisdictional baseline (webXray + noyb pattern).
+- Driver-cooperative model going national-and-state-simultaneously, with an emergent gov-coop hybrid lens (Bharat Taxi vs Drivers Cooperative Colorado).
+- EU DMA produces the week's clearest new data-access surface; signals possible substrate for the wiki's Build #1.
+- The week's main signal is regulatory and litigation-side counter-power; consumer-side tool-release cadence from EFF / noyb / Mozilla / DAIR was zero this window.
+
+**Outputs:** brief written to `wiki/weekly-briefs/2026-04-27.md` + `/tmp/weekly-brief-2026-04-27.md`. Email rendered to HTML and dispatched via SMTP. All wiki/raw changes left uncommitted on `collective-consumer-action-wiki` per skill policy; user commits on next login.
+
+**Pre-existing uncommitted changes flagged at run start:** the working tree had substantial uncommitted work-in-progress carried from prior sessions (master_notes.md; wiki/index.md; wiki/log.md; wiki/mechanisms/* — 10 files modified or untracked; wiki/strategies/* — 4 files modified or untracked; wiki/reference-sources.md; wiki/revisions.md). Weekly-brief diff is layered on top — see brief's "Run notes" section for the separation.
+
+## [2026-05-04] weekly-brief | third autonomous run
+
+Third `/weekly-brief` run. Window: past 7 days (since 2026-04-27). 4 trend-scan subagents dispatched in parallel across the 4 streams (counter-algorithmic tooling; platform/coop/federation builds; counter-power research/think-tank; extraction news + enforcement). Slow week for tier-1 arXiv signal; solid platform-coop and enforcement material.
+
+**5 captures:**
+1. **Berkman Klein Center / ASML — Keyring open-source DID/VC mobile wallet** (launched April 16 2026; Harvard Gazette feature in window). On-device biometric auth + selective-disclosure proofs (age-band not birthdate; account-ownership not username); peer-to-peer trust graph; co-built with Linux Foundation Decentralized Trust Graph WG; GitHub `berkmancenter/keyring-wallet`. The first production-grade consumer reference implementation of the W3C DID/VC pattern documented at [[mechanisms/decentralized-agent-identity]]. ASML PI James Mickens + product team's incentive-misalignment admission ("incumbents benefit from owning your data") is the best-sourced public confirmation of the issuer-governance bottleneck the page already flags.
+2. **Bharat Taxi — passenger-side go-live (May 2026).** State change on the existing wiki page captured 2026-04-27. ZeeBiz second-source corroboration; introduces the **Sahakar Taxi Cooperative Limited** operating-entity name + MSCS Act registration date (June 6 2025) + the eight sponsoring cooperative-federation list (AMUL, IFFCO, KRIBHCO, NAFED, NDDB, NCEL, NCDC, NABARD); confirms initial six-city scope (Delhi, Mumbai, Bengaluru, Chennai, Hyderabad, Kolkata) + accessibility flag at booking + intercity / metro-linked modes.
+3. **PCC — Solidarity Stack framework (Trebor Scholz keynote, Cooperative AI Conference Istanbul, Nov 11 2025; PCC blog Apr–May 2026).** Seven-layer cooperatively-owned AI counter-architecture (Earth → Compute → Data → Algorithms → Labour → Application → Governance) plus a federation primitive (Solidarity Stack Circles → 2026 global online course → democratic planetary org), modelled on SWIFT as the working precedent for planetary-scale cooperative-protocol governance. Created **new strategy-layer page** [[strategies/solidarity-stack-readout]]. Three new research candidates flagged: African Tech Worker Cooperative, Sicredi Ouro Verde / Arla Foods, Hostsharing eG / Ashton Data Center Cooperative.
+4. **NY AG → Instacart algorithmic pricing demand letter (Jan 2026) under NY Algorithmic Pricing Disclosure Act (effective Nov 10 2025).** Mandated disclosure phrase verbatim ("THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA"); placement standard "clearly and conspicuously near prices" operationalised as a DOM-testable benchmark. Behavioral state change: Instacart ended all "item price tests" (partner-level promotion testing continues). Quantitative anchors from December 2025 Groundwork Collaborative + Consumer Reports field study: 437 shoppers / 4 cities / 73% of items at multiple prices / 13% avg differential / 23% max / ~$1,200/yr per family of four.
+5. **Pluralistic — HB0895 loophole assessment (Doctorow / Garofalo, Apr 30 2026).** Six-loophole carve-out taxonomy on Maryland HB0895 (the "load-bearing first-in-nation prohibition" already documented on the wiki): grocery-only scope; consent-via-clickwrap exemption; promotional/temporary-discount exemptions (undefined); loyalty-card exemption; subscription exemption; no private right of action + pre-emption of Maryland Consumer Protection Act. Functions as a six-point evaluation checklist for assessing future state surveillance-pricing bills (NY/NJ/AZ/PA, CA AB 2564, Colorado HB26-1210). The "first-in-nation prohibition" framing is qualified, not overturned.
+
+**Page-plan decisions made autonomously per the skill's policy:**
+- 1 new page (`strategies/solidarity-stack-readout`) — cross-layer narrative architecture justified by 6+ concrete cross-links into existing mechanism pages.
+- 4 existing-page extensions: `mechanisms/decentralized-agent-identity` (Keyring section), `organizations/bharat-taxi` (Passenger-side launch May 2026 section), `counter-power/regulatory-responses` (replace NY A3008 stub with substantive section + AG enforcement subsection; add HB0895 loophole assessment subsection), `industries/consumer-facing-dynamic-pricing` (Grocery delivery — Instacart subsection).
+- **No conflict files opened.** The HB0895 loophole assessment is a refinement not a contradiction; the Solidarity Stack regulatory-skepticism is editorial disagreement not falsifiable; no other wiki-internal contradictions surfaced.
+
+**Watchlist additions (10 overflow items):**
+1. Global Web, Local Privacy? (arXiv 2604.18633, Apr 18 2026) — cross-jurisdictional tracking audit replicating webXray/GPC pattern (50.5% fewer trackers in EU opt-in vs CA opt-out)
+2. APPSI-139 (arXiv 2604.27550) — privacy-policy summarization corpus; substrate for automated DSAR / disclosure-compliance audit pipelines
+3. Nightshade 1.1 release (Apr 20 2026) — bug-fix maintenance signal; SAND Lab cadence confirmed
+4. Boycat 3.1 Digital Risk Index — first consumer-facing tool combining boycott coordination + structured privacy-risk scoring
+5. May Day 2026 spending boycott (May 1 2026) — ~750 events / 500+ orgs targeting Amazon and Target; mobilisation-scale-vs-tool-sophistication gap
+6. WAO FareShare tool (Princeton; CSCW 2026 acceptance) — wage-audit tool for algorithmic deactivation; updates stale "drivers-seat-cooperative → watch WAO" entry
+7. FPF "The Price is Right" report (Apr 9 2026) — taxonomy of US data-driven-pricing legislation (70+ active bills) + vendor-due-diligence audit template
+8. EU DMA Google FRAND consultation closed May 1; final decision expected July 27 — ITIF filed comments opposing free-riding; Google demanded "reset"
+9. House Oversight Committee surveillance-pricing investigation (March 5 2026; document responses arriving in window)
+10. CA AB 2564 — full surveillance-pricing ban (broader than HB0895); CA AG CCPA-purpose-limitation CID sweep ongoing
+11. CMA AA Driving School DMCC Act first decision — already documented on regulatory-responses but worth tracking as compliance-floor benchmark for drip pricing
+
+**Trend-scan signal observations** (preserved on the brief):
+- Counter-algorithmic tooling pipeline went **quiet** this week — no in-window tier-1 arXiv hits or major tracked-tool releases.
+- Strongest material this week is on the **enforcement-applied-to-disclosure-laws** axis (NY APDA → Instacart halt) and the **prohibition-laws-have-loopholes** counter (HB0895 carve-out taxonomy).
+- The **Solidarity Stack** is the week's most consequential strategy-layer addition — gives the wiki its first cross-layer narrative architecture for cooperative AI infrastructure.
+- **Keyring** is the cleanest tooling-side capture: production-grade consumer DID/VC reference implementation answering the "is this user-deployable?" question Garzon et al. left open.
+- **May Day 2026 spending boycott** is the most-coordinated consumer collective action in current cycle but ran on Action Network + social-media coordination — the gap between mobilisation scale and tool sophistication is itself wiki-relevant evidence for the Tier-1 collective-timing coordinator build candidate.
+
+**Outputs:** brief written to `wiki/weekly-briefs/2026-05-04.md` + `/tmp/weekly-brief-2026-05-04.md`. Email rendered to HTML and dispatched via SMTP. All wiki/raw changes left uncommitted on `collective-consumer-action-wiki` per skill policy; user commits on next login.
+
+**Pre-existing uncommitted changes flagged at run start:** working tree carried substantial uncommitted work from prior sessions (master_notes.md; wiki/index.md; wiki/log.md; wiki/revisions.md; wiki/reference-sources.md; multiple wiki/mechanisms/* and wiki/strategies/* files modified or untracked from clawnet-adjacent-methods and 2026-04-27 weekly-brief runs; the 2026-04-27 weekly brief itself untracked). The 2026-05-04 weekly-brief diff is layered on top — see brief's "Run notes" section for the separation. **Recommend a single `git add wiki/ master_notes.md` + `git commit` to absorb the whole backlog** rather than separating weekly-brief's contribution.
+
+**Kit-level finding to log on `master_notes.md`:** the `/weekly-brief` template's poetry invocations (`poetry run python -m tools.capture_url ...`) assume `poetry` is on PATH for the harness's non-login shell. Under this Claude Code session the `~/.local/bin/poetry` binary was *not* on PATH; the first capture batch silently no-opped (`/bin/bash: line 1: poetry: command not found`). Workaround applied inline: `export PATH="/home/david/.local/bin:$PATH" && poetry run …`. Recommend the skill template either prepend `~/.local/bin` to PATH explicitly or invoke poetry via its full path. Generalises to any wiki-kit deployment using `pipx`-installed or user-local poetry.
+
+## [2026-05-11] weekly-brief-ingest | OpenCourier protocol
+
+Ingest of the **OpenCourier protocol** — the strongest find from the 2026-05-11 `/weekly-brief` trend scan. Platform Cooperativism Consortium blog post (`raw/research/weekly-2026-05-11/01-opencourier-protocol.md`) + corroborating arXiv 2511.02455 v2 vision paper (`raw/research/weekly-2026-05-11/07-opencourier-paper.md`) — Liu, Rao, Hwang, Vertesi & Monroy-Hernández, Princeton WAO, CHI '26 Extended Abstracts Barcelona.
+
+**Page-plan decision:** new dedicated page `wiki/mechanisms/opencourier-protocol.md` (not an extension of [[agent-interop-protocols]]). Justified by: distinct counter-party pair (courier ↔ instance ↔ requester vs A2A's agent ↔ agent); separate institutional anchor (PCC/Princeton WAO vs Google/Linux Foundation A2A); substantive ≥1.5KB content depth (3-layer architecture, federation primitive contrast with FairFare, distinction from Beckn, reference-implementation details, 11 wiki-anchor cross-links).
+
+**Substance captured:**
+- Three-layer architecture: **Registry** (instance discovery, multiple registries can exist), **App-Instance** (courier-side job management; reference Courier Client surfaces worker-preference collection), **Instance-Requester** (instance ↔ restaurant/retailer via quotes + data-disclosure to auditors).
+- Three goals (courier-facing translation of the wiki's info-asymmetry / power-imbalance / values-alignment framing): value alignment / correcting information asymmetries / reducing power imbalances.
+- **Federation primitive** (cross-instance courier mobility) — explicit architectural contrast with same team's prior centralised FairFare crowdsource; protocol-layer abstraction above [[coopcycle]]'s single-implementation federation; CoopCycle becomes one possible OpenCourier-compliant implementation.
+- **Distinction from Beckn**: complementary, not competing — Beckn = customer-vendor, OpenCourier = courier-facing. A composed Beckn+OpenCourier stack would form a complete decentralised gig-economy substrate.
+- Reference implementation: `opencourier.cs.princeton.edu` (dummy Courier Instance) + multiplatform mobile Courier Client + admin dashboard; open-source with explicit contributor call.
+- WAO connection: same Princeton team as [[drivers-seat-cooperative|FairFare]] (~1M rideshare trips crowdsourced) — OpenCourier is the substrate-layer evolution.
+
+**Cross-references added (11):** [[platform-cooperatives]], [[coopcycle]], [[drivers-cooperative]], [[drivers-seat-cooperative]], [[agent-interop-protocols]], [[decentralized-agent-identity]] (Registry-issuer trust gap mirrors DID/VC issuer-governance gap), [[solidarity-stack-readout]] (sits in Scholz's "Application" layer; first Application-layer cooperative protocol with reference implementation), [[mechanism-synthesis-readout]] (direct architectural input to Build #6 Layered Cooperative Governance), [[possible-strategic-levers]], [[bharat-taxi]] (grassroots-protocol path vs state-capitalised path — opposite institutional logics, same capital-conundrum answer), [[buyer-cartels-antitrust]] (open question: cross-instance pricing coordination antitrust posture).
+
+**Open questions flagged on the page:** (1) Registry governance unsolved; (2) courier identity/reputation portability across instances unspecified; (3) Beckn+OpenCourier composition undemonstrated; (4) antitrust posture for federated courier coops vs OECD safe-harbour thresholds open; (5) production-deployment numbers (courier earnings, fee structure, instance-switching) not yet measurable.
+
+**No conflicts noticed.** OpenCourier is a refinement/extension of the existing platform-cooperative + federation framing on the wiki, not a contradiction. Per skill policy, watchlist update deferred to orchestrator.
+
+**Outputs:** `wiki/mechanisms/opencourier-protocol.md` (new); `wiki/index.md` (catalog row); `wiki/revisions.md` (row appended).
+
+## [2026-05-11] weekly-brief-ingest | Connecticut SB4
+
+Autonomous subagent ingest from the 2026-05-11 weekly-brief trend-scan. Source: `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md` (CT Mirror, May 4 2026 — "Consumer data privacy bill gets final passage in CT House"). Supplementary: `raw/research/weekly-2026-05-11/06-md-hb0895-cfm-context.md` (Consumer Finance Monitor cross-state framing).
+
+**What CT SB4 does (three load-bearing mechanisms):**
+1. State-run **data-broker registry** at the CT Department of Consumer Protection; mandatory enrollment + mandatory fees; effective **Jan 1 2027**.
+2. **Centralized one-click deletion mechanism** at DCP spanning *all* registered brokers — **first cross-broker API-equivalent surface in US law**. Strongest tooling-hook of the week as a regulated single-endpoint substrate for the DSAR-coordination lever and [[strategies/mechanism-synthesis-readout|Build #2 Verifiable Mandate-Bound DSAR Pipeline]].
+3. Surveillance-pricing disclosure mandate for *retail sellers and third-party delivery services* (Instacart-class vertical).
+
+**Status:** House 141-6 May 4 2026 (Senate 31-4 April 23 2026); awaiting Gov Lamont (expected to sign). Builds on the Connecticut Data Privacy Act (2022).
+
+**Wiki pages updated (2):**
+- `wiki/counter-power/regulatory-responses.md` — new "Connecticut SB4" subsection added to §3 immediately before the MD HB0895 subsection. Contents: three-mechanism breakdown, tooling-hook framing, cross-state comparison table (NY APDA disclosure vs MD HB0895 prohibition vs CT SB4 disclosure+infrastructure), six-point Doctorow/Garofalo loophole checklist applied to CT (4 of 6 dimensions "not specified in capture" — flagged for follow-up via bill text), open enforcement-architecture question, MD-framing effect note. "Exists but weak" line on state regimes refined to characterise three distinct theories of the case (disclose / ban / build-infrastructure). Sources block extended with both 2026-05-11 captures.
+- `wiki/industries/consumer-facing-dynamic-pricing.md` — brief "State-legislative cluster update (May 2026)" note added to the Grocery delivery — Instacart subsection, pointing at the new regulatory-responses subsection.
+
+**No new pages.** Per the page-plan brief, CT SB4 is a regulatory artefact and fits within the existing regulatory-responses cluster.
+
+**Conflict-flag check.** CT's centralized-deletion API does **not** overturn the wiki's load-bearing MD HB0895 framing — that framing was already qualified by the Doctorow / Garofalo carve-out taxonomy, and CT/MD are doctrinally distinct (categorical-ban vs centralized-deletion-API). MD remains the first-in-nation categorical prohibition; CT becomes the first-in-nation centralized cross-broker deletion API. **No `wiki/conflicts/` file warranted** — refinement, not contradiction.
+
+**Open question for follow-up.** The CT Mirror capture does not specify SB4's enforcement architecture — AG-only (MD pattern), private-right-of-action (strongest), or DCP-led / shared. Binding question for whether the deletion API is operative at scale. Future capture from bill text or AG / DCP follow-up sources recommended.
+
+**Revisions row appended.** `wiki/revisions.md` updated with summary row + source pointers. Watchlist update deferred to the orchestrator per the ingest-brief directive.
+
+## [2026-05-11] weekly-brief-ingest | PIIGuard — publisher-side adversarial prompt-injection defense
+
+Ingest of capture 4 from the 2026-05-11 weekly-brief: Liu, Zha & Chen 2026, *PIIGuard: Mitigating PII Harvesting under Adversarial Sanitization*, arXiv 2605.03129 (cs.CR), submitted 4 May 2026.
+
+**Page-plan decision: new mechanism page.** PIIGuard introduces a distinct enough mechanism category — **publisher-side adversarial defense via repurposed indirect prompt injection** — that it anchors its own node rather than extending [[adversarial-data-poisoning]] (Glaze/Nightshade). Both are "adversarial publisher counter-tooling against scrapers" but operate on different objects (training-time image-pixel poisoning vs. inference-time scraper-LLM prompt steering) at different layers. Created `wiki/mechanisms/adversarial-prompt-injection-defense.md`.
+
+**Key claims captured.**
+- **Novelty framing.** The mechanism inverts indirect prompt injection from offensive primitive (the canonical attack on agentic systems, documented on [[agent-interop-protocols]] as a 60–100% leakage vector against A2A baseline) into a publisher-side **defensive** primitive. Same dual-use pattern as [[adversarial-data-poisoning]]'s offense/defense reframing — but at a different layer and with a different defender (webpage owner, not artist or recsys user).
+- **Threat model.** Defender = ordinary public-webpage owner. Attacker = browsing-enabled LLM assistant (GPT-5.4-nano, Claude-haiku-4.5, DeepSeek-chat v3.2) fetching pages on behalf of a user issuing contact-seeking queries at scale. Prior defenses sit at the model/service/agent layer (requires LLM-vendor cooperation); PIIGuard is the first **webpage-level** defense ordinary owners can deploy.
+- **Mechanism.** Optimised hidden HTML fragments. Three-component search loop: (1) rule-based leakage scoring, (2) evolutionary mutation over fragment text + insertion position, (3) judge-based recoverability assessment via a separate LLM judge. Fragment is hidden in the rendered page (specific hiding mechanism — CSS / ARIA / off-screen — deferred to PDF read; abstract does not specify).
+- **Evaluation.** Direct-HTML mode, three target models: defense success rate **≥97% (often 100%)** under both rule-based and judge-based leakage evaluation, while preserving benign same-page QA utility. Two harder settings: public-URL browsing and attacker-side LLM sanitization — paper's stated finding is that "page-side defensive fragments can remain effective in deployment for some model-position pairs, but robustness varies substantially across browsing interfaces and sanitizer prompts." Honest reading: not a closed defense against scraping pipelines that include an LLM-based sanitizer.
+- **Code-release status: NOT YET LINKED.** The arXiv abstract page (captured 2026-05-11) does not link to a code repository. The "Code, Data and Media Associated with this Article" panel lists only generic third-party services (alphaXiv, CatalyzeX, DagsHub, Hugging Face) with no paper-specific entries populated. Watch the arXiv listing for v2 with a `github.com/...` link, or a Hugging Face Space release. Until then, mechanism documented but not directly forkable.
+
+**Wiki-fit framing.** Per the wiki's two-layer mandate, this is reference-layer documentation of a new mechanism class. Strategy-layer implications (editorial bullets) flagged in the page's "Relevance for consumer counter-power" section: deployable today by [[noyb]]-class data-subject-rights organisations publishing contact pages; substrate for the publisher-side equivalent of consumer-side [[obfuscation]] tooling; Tier-3 build candidate (cooperative-platform-level deployment) pending code release; watch for the sanitizer-vs-injector arms-race follow-on literature.
+
+**Cross-refs added.** Page links into [[adversarial-data-poisoning]] (sibling on publisher-side counter-tooling axis), [[obfuscation]] (consumer-side equivalent), [[browser-fingerprinting]] (adjacent inference-time arms race from the consumer side), [[agent-interop-protocols]] (the offensive-use parallel — same primitive, opposite framing), [[agent-mediated-negotiation-empirics]] (Abdelnabi cooperative-collapse-under-adversary as the negotiation-domain analogue), [[noyb]] (deployment candidate), [[the-firms-view]] (publisher/firm-side adversarial-tooling frame). Three-row taxonomy table added clarifying defender / layer / attack-surface differences across the three publisher-side mechanisms now on the wiki.
+
+**No conflict file warranted.** PIIGuard does not contradict any wiki-internal load-bearing claim. The dual-use framing (offense ↔ defense of the same primitive) is harmonised with the existing dual-use framing on [[adversarial-data-poisoning]] (poisoning attacks as both threat and "response from below").
+
+**No watchlist update.** Per ingest-brief directive — orchestrator handles watchlist additions.
+
+**Outputs.** `wiki/mechanisms/adversarial-prompt-injection-defense.md` (new); `wiki/index.md` row added in mechanism cluster after `adversarial-data-poisoning`; `wiki/revisions.md` row appended; this log entry.
+
+## [2026-05-11] weekly-brief-ingest | Phillips v. JetBlue (ClassAction.org)
+
+Autonomous ingest subagent for /weekly-brief 2026-05-11. Source: `raw/research/weekly-2026-05-11/03-jetblue-class-action.md` — ClassAction.org coverage (published April 29 2026) of *Phillips v. JetBlue Airways Corporation*, case 1:26-cv-02405, US District Court, filed April 22 2026. Extends the existing JetBlue inflection-event capture from 2026-04-27 (Fortune-based).
+
+**New facts surfaced (vs. 2026-04-27 capture):**
+- Case caption and docket number (*Phillips v. JetBlue Airways Corporation*, 1:26-cv-02405). 45-page complaint.
+- National class scope: *"all natural individuals in the United States who used JetBlue's website and/or mobile application and whose communications and/or data were shared with third parties during the applicable statutory period."*
+- Third-party vendor identities: **PROS Holdings, Inc.** (pricing algorithm vendor — alleged to be *"using an algorithm to set prices based on consumer behavior"*; **also one of the eight FTC 6(b) order recipients from July 2024** — same vendor surfacing on both regulatory inquiry and civil complaint) and **FullStory, Inc.** (session-replay / behavioural analytics).
+- Privacy-tort framing rather than antitrust or price-discrimination: *"surveillance pricing is not illegal, [but] 'secretly' collecting consumer data without consent is."*
+- Coerced cookie-consent contradiction: JetBlue's privacy policy notes site features will not function unless all cookies accepted.
+
+**Page-plan decision (autonomous):** extend existing pages, no new dedicated page. Specifically:
+1. `wiki/industries/consumer-facing-dynamic-pricing.md` — added "May 2026 build — *Phillips v. JetBlue Airways Corporation* (ClassAction.org coverage)" subsection under existing Airlines § April 2026 inflection event. Captures case details + doctrinal-significance editorial (standing template for cookie/fingerprint-based price-discrimination as privacy harm — lowers standing threshold below quantified-overcharge bar) + tooling-hook editorial (direct demand for paired-session *"did this site price-discriminate against me?"* audit tool, Tier-1 build candidate adjacent to DSAR-coordination cluster on [[strategies/data-disruption-strategy-map]]). Source block extended with ClassAction.org capture.
+2. `wiki/mechanisms/browser-fingerprinting.md` — added "Case: *Phillips v. JetBlue Airways Corporation* — cookie / cache-based price personalisation alleged on commercial aviation" section before Regulatory context. Connects alleged mechanism (cookie / cache tracking + PROS + FullStory) to the fingerprint-defence literature: notes that incognito mode + cache-clearing only defeats cookies, not the active fingerprint stack; discovery in the case may produce the first US judicial finding on browser-fingerprinting-as-pricing-input if vendor stack includes any of the catalogued fingerprinting techniques. Tooling-implications subsection editorial: paired-session detector design is exactly the inverse of FP-Inconsistent (deliberately construct consistent-but-different fingerprints rather than identify inconsistent ones); the "blending in" paradox cuts both ways. Source block extended.
+3. `wiki/mechanisms/pricing-algorithm-taxonomy.md` — extended the existing Family 4 contested-claim flag with a "May 2026 strengthening" sub-block. PROS cross-appearance on FTC 6(b) order list + vendor self-description as consumer-behavioural-input pricing engine is non-trivial *circumstantial* evidence against the "no individual identity features" reading; FullStory session-replay data, if used as pricing input, would directly contradict the aggregate-population-mix-inference framing. **Wiki position update: contested marker remains *contested, not resolved-against-Williams*.** Evidence is (a) circumstantial (vendor identity + vendor self-description), (b) untested in discovery. No algorithm-level disclosure has happened. Continue to treat known-architecture Williams-style RM as identity-feature-free; treat post-2020 industry trend (Delta 3% → 20%, JetBlue's PROS deployment) as a separate sub-family whose identity-feature use is *open*.
+4. `wiki/index.md` — extended consumer-facing-dynamic-pricing summary entry with *Phillips v. JetBlue* mention.
+
+**Conflict-file decision (autonomous, per skill):** **no new conflict file opened.** Reasoning: per skill, conflict file requires ≥2 sources from the run touching the same theme; this is one source. Per orchestrator instruction, the existing contested-claim watchlist marker is strengthened in place via the pricing-algorithm-taxonomy.md edits above rather than escalated to a new `wiki/conflicts/airline-rm-individual-identity-features.md` file. **Recommend the orchestrator's brief flag the contested marker as strengthened but unresolved.** The case is still circumstantial (PROS vendor-identity overlap + FullStory naming) — algorithm-level disclosure has not happened. A conflict file (or a strengthened watchlist entry) would become warranted if (a) a second source in a future run produces algorithm-level disclosure, (b) class certification is granted (which materially shifts the doctrinal status), or (c) the case is dismissed (which materially shifts the contested marker back toward settled).
+
+**Watchlist update:** not done — orchestrator handles per skill.
+
+**Cross-refs added:** four-way internal cross-link cluster: consumer-facing-dynamic-pricing § May 2026 build ↔ browser-fingerprinting § Case ↔ pricing-algorithm-taxonomy § Family 4 contested ↔ surveillance-pricing-retail (FTC 6(b) PROS recipient list cross-ref). Tier-1 build candidate explicitly cross-linked to strategies/data-disruption-strategy-map.
+
+## [2026-05-11] weekly-brief-ingest | bharat-taxi multi-city expansion
+
+ThePrint May 2026 coverage on Bharat Taxi's multi-city expansion push. Source: `raw/research/weekly-2026-05-11/05-bharat-taxi-multicity.md`. Pure extension of existing `wiki/organizations/bharat-taxi.md` with new "Multi-city expansion (May 2026)" section + surgical update to `wiki/mechanisms/platform-cooperatives.md` government-cooperative-hybrid paragraph.
+
+**State-change captured.** First scale-out evidence for the wiki's emergent 5th-type government-cooperative-hybrid framing (flagged 2026-04-27 at founding; passenger-side go-live captured 2026-05-04; now first multi-city expansion). The question "will Bharat Taxi scale or stall at the Delhi pilot stage?" is being answered, but with substantial revisions to the launch-era scale claims.
+
+**Cities reconfirmed.**
+- *Operating*: Delhi NCR (Delhi / Gurugram / Noida); Gujarat (Ahmedabad / Rajkot / Somnath / Dwarka); Delhi airport pre-paid + app-based booking.
+- *Pilot (April 2026, full-scale by month-end)*: Lucknow, Chandigarh.
+- *Near-term (May 2026 → next 2–3 months)*: Jaipur (May), Mumbai + Pune (2–3 months).
+- *Long-term*: nationwide by 2029, positioned explicitly as Uber / Ola challenger.
+
+**Mumbai correction.** Apr 23 2026 onboarding event (captured 2026-04-27) was driver-side preparation; passenger-side operations in Mumbai still 2–3 months out per Gupta's May 2026 interview. This contradicts the ZeeBiz May 2026 "six initial cities at passenger go-live" framing — documented as scale drift on the page rather than escalated to a separate conflict file (single-discrepancy, already-stated low-moderate trust frame absorbs it).
+
+**Scale drift documented (table on the page).** Three sources, three different figures:
+- April 2026 Free Press Journal: ~5.17 lakh drivers / ~25K rides per day / Mumbai onboarding event.
+- May 2026 ZeeBiz: 51K+ in Delhi at passenger-side launch; six-city initial scope (Delhi / Mumbai / Bengaluru / Chennai / Hyderabad / Kolkata).
+- May 2026 ThePrint: ~3 lakh registered drivers nationwide / ~20K rides per day / ~29 lakh customers / Delhi NCR + Gujarat + pilots in Lucknow + Chandigarh only.
+
+Resolution rule applied: ThePrint May 2026 is the working baseline because (a) most recent, (b) non-launch-event interview context (Gupta speaking to ThePrint reporter, not a press release). April launch-event figures retained as historical record but flagged not-corroborated.
+
+**Pricing-model partial relaxation.** ThePrint reports a "nominal subscription fee per ride to cover operational costs" — the platform initially levied no fee, but operating costs are now partly covered through a per-ride charge. Fee amount and structure not disclosed. Page reframed: "partial-zero-commission with undisclosed fee structure" rather than pure zero-commission. The wiki's previous "zero-commission viability is not proven" caveat is now factually superseded — the platform itself has conceded the viability problem.
+
+**Governance scale-out structurally distinct.** Single multi-state cooperative entity (Sahakar Taxi Cooperative Limited, registered June 6 2025 under MSCS Act 2002) is the operating vehicle across all cities; not a federation of per-city or per-state cooperative entities. Replication across cities happens via institutional tie-ups (UP Metro Rail Corporation; traffic police; Delhi airport authority for Terminal 1 expansion) rather than new cooperative incorporations. This is structurally different from the [[coopcycle]] federation-of-local-coops pattern documented on [[platform-cooperatives]] — flagged for tracking as membership grows from one region to dozens (driver representation at the board level, currently two driver reps per ZeeBiz source, becomes more dilute structurally).
+
+**Sarathi-owner / Sarathi Didi framings captured.** Minister of Cooperation Amit Shah's March 2026 written reply in Parliament described the model as "a transition from the conventional 'driver-partner' model to a 'Sarathi-owner' model wherein drivers can become owner of the cooperative society, have representation in Board of Management and participate in profit sharing while having professional management to oversee operations." Sarathi Didi sub-programme: ~5,200 women drivers onboarded as of May 2026.
+
+**Open questions logged in-page** (not surfaced as new wiki-wide research candidates):
+1. Drivers-figure reconciliation (5.17 lakh April vs 3 lakh May 2026) — churn between announced-onboarding and actively-driving status? Different counting bases? Launch over-claiming? Or reporting inconsistency?
+2. Pricing-algorithm architecture — flat / fixed-rate-card vs surge / dynamic? Source describes "transparency through periodic reviews" which suggests fixed-rate, but no algorithm-level disclosure.
+3. Cost structure / take-rate transparency — what does "nominal subscription fee" mean numerically? How does it compare to incumbents' 25–40% commissions?
+
+**No new mechanism page; no conflict file.** Pure extension of existing reference-layer page (`organizations/bharat-taxi.md`) plus surgical update to `mechanisms/platform-cooperatives.md` government-cooperative-hybrid paragraph. Scale drift documented in-place rather than escalated, per CLAUDE.md's "in-page documentation is sufficient when the wiki's framing already anticipates the discrepancy" pattern.
+
+**Outputs.** `wiki/organizations/bharat-taxi.md` (Multi-city expansion section + Scale section restructure + Trust caveats rewrite + comparison-table row update + Source block extension); `wiki/mechanisms/platform-cooperatives.md` (government-cooperative-hybrid paragraph extended); `wiki/index.md` (bharat-taxi summary updated); `wiki/revisions.md` row; this log entry.
+
+## [2026-05-18] weekly-brief | ingest run
+
+**Sources ingested (7):** CO HB26-1210 (Colorado General Assembly bill page); DOJ Agri Stats press release; American Prospect Agri Stats critique (Dayen); noyb LinkedIn Art. 15 paywall complaint; Drivers Cooperative–Colorado Denverite feature; Battiloro et al. 2026 arXiv 2605.06749 ACA multiple-collectives preprint; Agri Stats proposed final judgment (D. Minn. 0:23-CV-03009).
+
+**Pages created (2):**
+- `counter-power/agristats-consent-decree.md` — reference-layer page for the DOJ + 6-state Agri Stats consent decree. Five-component remedy architecture (§IV/§VI/§VII/§VIII cites), comparison to RealPage remedy, criticism/remedy-efficacy subsection (Dayen/Hepner "laundering the cartel," ATPCO 1992 parallel, Tunney Act avenue).
+- `conflicts/information-sharing-remedy-efficacy.md` — first conflict file; open. Position A: DOJ open-access + anonymisation floor structurally disrupts coordination. Position B: Dayen/Hepner open-access expands revenue without blocking ranking reports or consulting relationships. Pending user ruling.
+
+**Pages extended (4):**
+- `counter-power/regulatory-responses.md` — (1) Colorado HB26-1210 subsection (dual pricing+wage scope; PWSA definition; AG-only enforcement; private right of action struck by Senate amendment — stated explicitly; worker data-access entitlements; four-state comparative table updated); (2) Agri Stats DOJ pointer paragraph with five-component summary and conflict-file cross-link.
+- `mechanisms/platform-cooperatives.md` — "Federation pattern — in-progress cases" section; Drivers Cooperative–Colorado (DCC) as second case alongside CoopCycle; Minsun Ji federation roadmap as load-bearing signal; RTD public-agency contract pending; fee-structure note (DCC 80% ≠ NYC DC 85%, neither canonical).
+- `mechanisms/algorithmic-collective-action.md` — "Multi-collective dynamics: statistical bounds (Battiloro et al. 2026)" subsection; Theorems 3.1/4.1; label alignment as dominant driver; computability hierarchy; regime-dependence annotation on Karan ≤75% figure.
+- `organizations/noyb.md` — "LinkedIn Art. 15 paywall complaint (May 2026)" section; legal theory (monetisation acknowledgement defeats data-protection-grounds refusal); model-complaint template value; DSAR-coordination Tier-1 build signal.
+
+**Bookkeeping:** `wiki/index.md` (regulatory-responses, platform-cooperatives, algorithmic-collective-action, noyb summaries updated; agristats-consent-decree entry added; Open conflicts section created); `wiki/revisions.md` (8 rows appended); `wiki/watchlist.md` (ACA multiple-collectives entry struck; 10 new overflow entries added).
+
+**Conflict opened:** `information-sharing-remedy-efficacy` — forward-looking remedy-efficacy dispute on the Agri Stats decree; pending user ruling.

@@ -48,6 +48,23 @@ Scope note: this page deliberately includes levers that would face legal frictio
 
 **Count:** 29 levers across 8 categories. As of 2026-04-23: 5 levers have no remaining research gap; 4 levers have partial reference-layer support with a specific remaining gap flagged; 20 levers still have an open research gap.
 
+### Antitrust treatment by lever (added 2026-04-26)
+
+OECD 2022 *Purchasing Power and Buyers' Cartels* — anchored on [[buyer-cartels-antitrust]] — classifies the wiki's buyer-side aggregation levers under three legal regimes: per se illegal, rule-of-reason defensible (with safe harbours EU < 15% / US < 20% / healthcare 35%), or affirmatively permitted (statutory authority). Per-lever readout for the levers OECD's framework directly classifies:
+
+| Lever | Antitrust class | Risk | Per-lever notes |
+|---|---|---|---|
+| #1 (CBI / data coop) | Joint purchasing of bargaining services | **Medium** | Rule-of-reason defensible if structured with cost efficiencies + market-share discipline. Risky if framed as price-fixing. |
+| #4 (group-buy / Tuángòu) | Joint purchasing | **Low-medium** | Structurally aligned with permitted joint purchasing; small per-transaction scale generally below scrutiny thresholds. |
+| #14 (demand-strike) | Coordinated abstention = collective boycott | **Medium-high** | Frame as advisory + political (not mandatory + commercial). Australia explicitly excludes mandatory collective boycotts from small-business exemption. |
+| #16 (threshold-triggered campaigns) | Conditional collective boycott | **Medium-high** | Same as #14. Threshold mechanism is structurally a credible-commitment device for boycott. |
+| #26 (consumer union with war chest) | Standing org coordinating litigation, alt-platform seed, lobbying, bounties, **potentially refusal-to-purchase** | **HIGHEST in the inventory** | Explicit collective boycott by purchasers per se illegal in many jurisdictions. [[noyb|NOYB]]'s strategic-litigation model is a defensible variant that avoids collective-boycott activity entirely. May need regulatory exemption (Australia-style class exemption). |
+| #29 (CCA-equivalent default opt-out) | Statutory authority | **None** | Affirmatively permitted via state statute. The legal-tractability winner of the inventory. |
+
+Levers not classified above (#2, #3, #5–13, #15, #17–25, #27–28) either operate at scales below scrutiny thresholds, do not coordinate purchasing decisions in the regulated sense, or are framed as information services or technical tools rather than buyer-side aggregation. They face other legal surfaces (CFAA, GDPR, etc.) catalogued elsewhere on the wiki.
+
+**Strategic implication.** The legal-tractability ranking inverts the buyer-power ranking: the most legally tractable levers (#29 CCA-style, #15 bounties, #20 time-banks, #21 repair) operate *outside* the buyer-cartel framework. Levers that are buyer-cartel-coded (#1, #4, #14, #16, #26) require careful structural framing. **Lever #26 in its strongest form (mandatory collective refusal) is the inventory's highest legal risk and should not be advanced as a development plan without targeted legal advice.**
+
 ### Working real-world implementations (added 2026-04-22)
 
 Reference-layer research run 2026-04-22 added 10 new reference-layer pages documenting **live, working implementations** of specific lever mechanisms — mostly outside the pricing domain. Pointer table:
@@ -63,6 +80,32 @@ Reference-layer research run 2026-04-22 added 10 new reference-layer pages docum
 | 29 | CCA-equivalent default opt-out | OregonSaves + CalSavers (state auto-IRA; 30-day opt-out; 5% default contribution) | [[auto-enrollment-opt-out]] |
 
 Research-needed flags on the main table above remain accurate — the new working-implementation pages are *case* evidence that the mechanism runs in the real world, not a replacement for the per-lever implementation research still needed for a pricing-domain build.
+
+### Cross-cutting infrastructure (added 2026-04-25, expanded 2026-04-26)
+
+A growing class of mechanism-layer pages document **infrastructure substrates** that cut across multiple levers in this inventory. They are not levers themselves, but they shape which levers are buildable, which face technical or legal headwinds, and which require additional substrate before they can be implemented.
+
+| Mechanism page | Cross-cutting role | Levers most affected |
+|---|---|---|
+| [[clawnet-readout]] | Agent-mediated cross-user coordination governance (identity binding + scoped authorization + action-level accountability). Substrate for multi-party-with-divergent-interests levers. | #1, #4, #9, #14, #16, #8, #26 |
+| [[decentralized-agent-identity]] | Decentralised W3C DID + VC alternative to ClawNet's centralised orchestrator. Eliminates single-operator trust risk. | Same as ClawNet |
+| [[agent-mediated-negotiation-empirics]] | Empirical capability evidence — frontier LLMs negotiate competently but show **universal buyer disadvantage** (20–40pt gap) and adversarial collapse (81%→27% under one greedy agent). Critical caveat for any agent-mediated lever. | All ClawNet-substrated levers |
+| [[agent-interop-protocols]] | A2A protocol substrate underneath ClawNet + DID/VC. Documents inherited security gaps (token lifetime, OAuth scope granularity, SCA absence, prompt-injection 60–100% leakage in baseline). | All ClawNet-substrated levers |
+| [[federated-learning]] | FL + secure aggregation lets data cooperatives train useful models without any party seeing raw member data. Addresses ClawNet's centralised-operator-trust risk for the data-pooling subset of levers. | #1, #9, #19 |
+| [[data-market-mechanism-design]] | Shapley-based mechanism for fairly distributing revenue among data-contributing members. Surfaces a documented tension with the democratic-governance framing on [[data-cooperatives]]. | #1, #19 |
+| [[algorithmic-collective-action]] | Foundational ACA programme (Hardt 2023 + Baumann 2024 + Karan 2025). The political/coordinated-strategy framing of the same primitives [[adversarial-data-poisoning]] documents from the security side. **Upgrades engineering pathway for #10.** | #9, #10 |
+| [[strategic-classification]] | Foundational game-theoretic frame for individual-level feature manipulation. Separable-vs-non-separable cost dichotomy tells you which spoofing dimensions firms can recover from cheaply. | #6, #7, #11 |
+| [[complex-contagion]] | Network-science layer for how collective behaviour actually spreads. **Inverts the influencer-targeting intuition** — periphery seeds, wide-bridges propagate, awareness-without-commitment backfires. Reformulates strategy guidance for threshold-coordination levers. | #14, #16, #28, #2 |
+| [[buyer-cartels-antitrust]] | OECD 2022-anchored legal-economic frame for buyer-side coordination. Per-jurisdiction safe harbours, per-se vs rule-of-reason treatment, mandatory-boycott risk. **See Antitrust column in summary table above.** | #1, #4, #14, #16, #26 |
+| [[the-firms-view]] | Cross-cutting documentary anchor for firm-side counter-perspectives — DP-as-counter, robust-pricing-via-explore-exploit, threshold-tightening with disparate impact, Byzantine-robust aggregation, adversarial-training inoculation. **Every consumer-side lever has a counterpart firm-side framing here.** | All |
+
+**Specific upgrades to the lever inventory from the 2026-04-26 research run** (`clawnet-adjacent-methods`):
+
+- **Lever #9 (collective training-data withdrawal):** upgraded from "research needed" to "build candidate" — ClawNet substrate + [[algorithmic-collective-action]] erasure-strategy formalism (Hardt 2023 Theorem 5) + [[data-disruption-strategy-map|Tier 1 #1]] DSAR-coordination architecture jointly close the engineering gap.
+- **Lever #10 (adversarial training-data injection):** engineering pathway clarified — [[algorithmic-collective-action]] provides foundational ACA framework; bandit / online-learning adaptation remains the engineering gap; DP-as-firm-counter risk persists.
+- **Lever #14 + #16 commitment-device design:** resolved by ClawNet's bilateral-approval + audit-log substrate (per [[clawnet-readout]] + [[data-disruption-strategy-map|open question #3 partial answer]]).
+- **Levers #6, #7, #11 (obfuscation cluster):** add the [[obfuscation-strategic-readout|adaptive-seller caveat (§6)]] and [[obfuscation-strategic-readout|disparate-impact externality (§7)]]. Obfuscation is high-effective against naive sellers, degrades against adaptive sellers; obfuscation-without-collective-leverage is regressive for disadvantaged groups.
+- **Levers #14, #16, #28 (threshold-coordination cluster):** [[complex-contagion|Centola]] inverts the influencer-targeting intuition. **Stop targeting influencers** — they are anti-catalysts for complex contagion. Seed in clustered network neighbourhoods; design for wide bridges; avoid awareness-without-commitment exposure (Google+ pattern). Strategy guidance for these levers needs updating accordingly.
 
 ---
 

@@ -57,6 +57,28 @@ For this wiki's strategic programme ([[possible-strategic-levers]]):
 - **Privacy-issue-bound.** NOYB's focus is explicitly privacy, not pricing or consumer-welfare-broadly. The legal-surface overlap with pricing extraction (surveillance pricing → personalisation → GDPR) is real but partial.
 - **Capture scope:** The captured Wikipedia source covers roughly 2017–2022 in depth; more recent cases (OpenAI GDPR complaint, cookie-banner enforcement 2022+) are referenced only in preamble. Load-bearing pre-2022 claims are strongly source-traced; post-2022 coverage is less thorough.
 
+## Cross-jurisdictional empirical pattern (April 2026)
+
+NOYB's empirical follow-up showing **83.5% of GDPR Article 15 access requests not properly answered** (April 16, 2026) and the webXray / The Markup California audit showing **80%+ Big Tech non-compliance with the Global Privacy Control opt-out signal** (Google 86%, Microsoft 50%, Meta 69% — April 21, 2026; see [[regulatory-responses]] § GPC compliance audit) form a cross-jurisdictional empirical baseline for compliance-failure under nominally enforced legal opt-out / access-rights regimes. Same structural pattern (high-rate non-compliance with statutory consumer-side data rights), two regulatory regimes (GDPR Art. 15 in EU; CCPA / CPRA + GPC in CA). The pair establishes that **paper rights underdeliver in production at industrial scale** is not a GDPR-specific finding — it generalises. This is load-bearing context for any strategic-litigation org operating against the same compliance surface.
+
+## LinkedIn Art. 15 paywall complaint (May 2026)
+
+noyb filed a complaint with the Austrian Data Protection Authority (DSB) in May 2026 alleging that LinkedIn (Microsoft) violates GDPR Article 15 by making profile-visitor data available for payment via LinkedIn Premium while refusing to supply the same data free of charge in response to a statutory access request.
+
+**Legal theory.** If a company (a) tracks a data category and (b) sells access to the resulting data as a commercial product, it cannot simultaneously invoke data-protection grounds to deny a free Article 15 access request for that same data. LinkedIn's two-track treatment — *you have no right to see who viewed your profile for free; you can pay Premium to see it* — is the contradiction noyb targets. The implicit acknowledgement that the data is accessible (it is sold) defeats the data-protection-grounds refusal.
+
+**Structural significance.** The complaint is a single filing on behalf of one user, but the template value is the load-bearing signal:
+
+1. **Model-complaint portability.** The legal structure (monetisation of data = implicit acknowledgement of accessibility → Art. 15 must be satisfied free of charge) is portable to any platform that paywalls personalised data. noyb has a documented precedent of repeating successful complaint structures at scale (Schrems I → Schrems II; the 101 Google Analytics / Facebook Connect complaint wave; the IMY Spotify action-forcing sequence). If the DSB upholds this theory, the next wave of complaints against other platforms paywalling access to personal data becomes available immediately.
+
+2. **DSAR-coordination design input.** A DSAR-coordination tool could incorporate a templated LinkedIn Art. 15 request citing this legal theory — converting a single noyb enforcement action into a mass-exercise infrastructure. This strengthens [[data-disruption-strategy-map|Tier-1 #1 (DSAR coordination)]] as a build candidate: the LinkedIn paywall complaint provides the first concrete legal theory pinning DSAR enforcement to a platform's own monetisation behaviour, making the entitlement more robust than a pure "data subject has rights" framing.
+
+3. **Tier-1 build signal.** The [[data-disruption-strategy-map]] already designates DSAR-coordination as a Tier-1 build candidate. This complaint strengthens that designation by demonstrating that the legal surface (Art. 15 + monetisation contradiction) is actionable with a filed complaint rather than merely theoretical.
+
+**Note on scope.** This page does not create a new `wiki/mechanisms/dsar-coordination.md` page at this time — single source, deferred by design. The complaint is documented here as an extension of noyb's case inventory.
+
+*(Source: `raw/research/weekly-2026-05-18/04-03-noyb-linkedin-art15.md` — noyb announcement of Austrian DPA complaint, May 2026. Trust tag: advocacy/litigant — factually thin (no full complaint text), normatively clear; primary source for noyb's legal theory but not a neutral legal analysis.)*
+
 ## Source
 
 - `raw/research/lever-implementations/09-09-wikipedia-noyb.md`
@@ -72,3 +94,4 @@ For this wiki's strategic programme ([[possible-strategic-levers]]):
 - [[consumer-collective-bargaining]]
 - [[regulatory-responses]]
 - [[collective-bargaining-for-data]]
+- [[data-disruption-strategy-map]]

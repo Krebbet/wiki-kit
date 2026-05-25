@@ -135,6 +135,16 @@ Consumer collective bargaining is the **oldest** counter-power mechanism in the 
   - **Purpose:** economic analysis of GPO monopsony / exclusionary / funding-mechanism concerns; concludes procompetitive.
   - **Trust:** peer-reviewed academic economics. Authors acknowledge the industry-hosting via HSCA. Neutral framing of competing literature (Elhauge critical; Hovenkamp supportive; Litan & Singer empirically critical; Schneller empirically supportive).
 
+## Antitrust treatment
+
+Consumer-side collective bargaining is structurally a buyer-side coordination activity and faces antitrust scrutiny. The OECD 2022 *Purchasing Power and Buyers' Cartels* framework — anchored on [[buyer-cartels-antitrust]] — distinguishes:
+
+- **Joint purchasing agreements** with documented cost efficiencies under safe-harbour thresholds (EU < 15%, US < 20%, healthcare 35%) → **rule-of-reason defensible**.
+- **Buyer cartels** coordinating on price-fixing or with combined market share above safe harbours → **per se illegal in US, EU, UK, Korea, Australia, Singapore**.
+- **No-poach / wage-fixing** agreements → criminally prosecuted in US since 2021 as labour-market buyers' cartels.
+
+GPOs operate under the rule-of-reason / safe-harbour treatment (especially the 35% healthcare safe harbour). Consumer cooperatives (Park Slope, REI) operate under joint-purchasing efficiency frame. Transactional group-buying platforms (Tuángòu / Pinduoduo) operate at small per-transaction scale generally below scrutiny thresholds. **Mandatory collective boycotts** carry materially higher legal risk — Australia's small-business class exemption explicitly excludes them. See [[buyer-cartels-antitrust]] for per-jurisdiction landscape and per-lever risk readout.
+
 ## Related
 
 - [[park-slope-food-coop]]
@@ -145,3 +155,5 @@ Consumer collective bargaining is the **oldest** counter-power mechanism in the 
 - [[collective-bargaining-for-data]]
 - [[transparency-tools]]
 - [[regulatory-responses]]
+- [[buyer-cartels-antitrust]] — antitrust frame for buyer-side coordination
+- [[complex-contagion]] — network-science layer for how consumer aggregation actually spreads (foundational for [[possible-strategic-levers|levers #14, #16, #28]])

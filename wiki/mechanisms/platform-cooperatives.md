@@ -24,6 +24,8 @@ Two orthogonal typologies appear across sources:
 3. **Multi-stakeholder cooperatives** — combine workers, users, partners (e.g. [[coopcycle]] — a federation bundling local worker coops with the technology commons).
 4. **Data cooperatives** — members pool their data for collective benefit, not investor monetisation (e.g. MIDATA.coop in Switzerland, jointly created by ETH Zurich and Bern University to govern personal health data).
 
+**Government-cooperative hybrid** *(emergent fifth type, flagged 2026-04-27; first scale-out evidence 2026-05-11).* The OECD four-type typology assumes the cooperative's *capital* comes from members (or in the federation case, member-coop dues). [[bharat-taxi]] (India, 2025–) is a structurally distinct case: state-sponsored under the Multi-State Co-operative Societies Act, with capital and bundled services (EV procurement, insurance) provided by the Union Ministry of Cooperation rather than by member contributions. This sidesteps the **capital conundrum** discussed in the next section but introduces *subsidy-dependency* and *political-life-cycle* risks that grassroots / member-financed cooperatives don't carry. Distinct from public-agency aggregation (e.g. [[community-choice-aggregation]]) because the entity is structured as a cooperative with stakeholder drivers, not as a public utility. The wiki tracks this as an emergent type rather than a settled typological category — the long-run viability and the actual revenue model behind the zero-commission claim are open questions on the [[bharat-taxi]] page. **Scale-out trajectory (May 2026)**: ThePrint coverage reports operations expanding from Delhi NCR + Gujarat to Lucknow / Chandigarh (April pilots) → Jaipur (May) → Mumbai / Pune (2–3 months), targeting nationwide by 2029. Notably, the scale-out is happening *within a single multi-state cooperative entity* (Sahakar Taxi Cooperative Limited), not as a [[coopcycle]]-style federation of local cooperatives — a structurally different governance trajectory that warrants tracking as the membership grows. A "nominal per-ride subscription fee" was also introduced by May 2026, partially relaxing the original zero-commission framing.
+
 ## Founding and institutional development
 
 - **December 2014** — Trebor Scholz publishes "Platform Cooperativism vs. the Sharing Economy" on Medium, coining the term.
@@ -74,6 +76,24 @@ Named in sources:
 - **Disaster response / mutual aid** — NeedsMap (Türkiye — coordinated solidarity during natural disasters and COVID-19).
 - **Public transportation** — Yatri and AuSa (India — supporting public transportation networks, per OECD Box 3.3).
 
+## Federation pattern — in-progress cases
+
+The federation-as-scaling-strategy hypothesis (OECD 2023; CoopCycle as the live template) has a second in-progress case from the rideshare sector.
+
+### CoopCycle (existing template)
+See [[coopcycle]] — 72 bike-delivery worker cooperatives across 12 countries; OECD's featured case for the second-level cooperative pattern (shared technology, marketing, and R&D at the federation layer; local co-ops own last-mile operations). The capital conundrum is addressed by pooling tech and financial infrastructure across member coops rather than raising VC capital against a centralised entity.
+
+### Drivers Cooperative–Colorado (DCC)
+Founded May 2023; app launched September 2024. Scale as of Denverite feature (2026): **~1,200 drivers, ~2,000 rides/month, ~20,000 rider app downloads**. Commission structure: 80% to driver / 20% platform — distinct from the NYC [[drivers-cooperative]] (85% to driver / 15% platform); neither is canonical for driver co-ops as a category.
+
+**The load-bearing signal** is executive director Minsun Ji's stated roadmap: a nationwide federation of driver co-ops sharing technology and financial infrastructure. This directly parallels CoopCycle's federation answer to the capital conundrum — local co-ops cannot individually absorb app development, compliance, and marketing costs, but a shared technology layer at the federation level makes unit economics viable. The DCC roadmap makes the federation hypothesis an active design intention in the rideshare sector, not merely an analogical extrapolation from bike delivery.
+
+**Demand-side anchor (replicable).** DCC has submitted a proposal to the Regional Transportation District (RTD) for a public-agency contract — the equivalent of a government-cooperative partnership that sidesteps the cold-start demand problem. If successful, this is a replicable model: public transit agencies as anchor customers for driver co-ops, removing the need to compete for riders against VC-subsidised platforms in the early growth phase. Status as of Denverite feature: pending.
+
+**UX gaps noted** (not design-input candidates per se, but concrete build targets if the wiki reaches implementation planning): no push notifications; voicemail-only driver contact channel. These are remediable at the app layer; they constrain current rider experience but are not structural to the cooperative model.
+
+*(Source: `raw/research/weekly-2026-05-18/06-06-dcc-federation-denverite.md` — Denverite (Denver local news nonprofit), firsthand reporting with on-record quotes and reporter-ridden trip. Trust: moderate — firsthand civic journalism; no primary financial data; no co-op affiliation disclosed.)*
+
 ## Relationship to the wiki's broader theme
 
 Platform cooperativism is the most developed **exit-pathway** counter-power mechanism against platform capitalism. It does not primarily work by regulating extractive platforms (see [[regulatory-responses]]) nor by helping consumers detect surveillance pricing (see [[surveillance-pricing-retail]]); it works by offering an ownership-level alternative. For the wiki's framing: dynamic and surveillance pricing are extractive *outputs* of platform capitalism; platform cooperatives are a structural exit from platform capitalism altogether. See [[dynamic-pricing-overview]] for the framing.
@@ -122,4 +142,5 @@ Surfaced during research, relevant to the user's "what could I build" interest:
 - [[drivers-cooperative]]
 - [[mondragon]]
 - [[coopcycle]]
+- [[bharat-taxi]]
 - [[consumer-facing-dynamic-pricing]]

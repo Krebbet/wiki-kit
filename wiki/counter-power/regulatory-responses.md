@@ -11,6 +11,32 @@ The most developed federal enforcement action. DOJ + 8 state AGs sued RealPage A
 
 **Reach:** works for the explicit-coordination variant. Does not reach tacit algorithmic collusion or asymmetric-frequency harm — see [[algorithmic-collusion]].
 
+### DOJ — Agri Stats (2026) — meat-processing data-exchange consent decree
+
+The second major U.S. algorithmic information-sharing antitrust decree, filed 2026 by DOJ + six state AGs (MN, CA, NC, TN, TX, UT) against Agri Stats, Inc. — a third-party benchmarking intermediary for the meat-processing industry (broiler chicken, pork, turkey). Structural parallel to RealPage: a hub-and-spoke data aggregator whose seller-only access model enabled coordinated pricing without explicit cartel communication. Full treatment at [[agristats-consent-decree]].
+
+The remedy architecture is distinct from RealPage's: where RealPage's decree emphasises data-aging and geographic pricing restrictions, the Agri Stats decree introduces a **mandatory open/non-discriminatory access requirement** — any U.S. person may purchase reports at processor-equivalent pricing — combined with an anonymisation floor (≥3 contributors, no single contributor >70%) and a ≥45-day average data lag. This open-access remedy is contested: the American Prospect / Lee Hepner (AELP) argue it expands Agri Stats' customer base without dismantling the processor-ranking reports that actually drive coordination (see [[information-sharing-remedy-efficacy]] for the open conflict file).
+
+**Mechanism:** Sherman Act Section 1 — information-sharing hub enabling tacit collusion. Differs from RealPage in that Agri Stats used explicit proprietary data-sharing (benchmarking reports), not ML-driven price recommendations.
+
+**Transferable template:** the five-component remedy architecture (sales-data prohibition, anonymisation floor, data-aging, open access, court monitor) is enumerated with §IV/§VI/§VII/§VIII cites on [[agristats-consent-decree]] and constitutes a replicable design spec for information-sharing antitrust decrees across industries.
+
+*(Sources: `raw/research/weekly-2026-05-18/02-02-agristats-doj-pr.md` — DOJ OPA press release; `raw/research/weekly-2026-05-18/09-09-agristats-proposed-final-judgment.md` — proposed final judgment text; `raw/research/weekly-2026-05-18/03-02b-agristats-prospect-critique.md` — American Prospect critique.)*
+
+### FTC — JetBlue surveillance-pricing examination (April 2026)
+
+The week of **April 21, 2026** produced the first federal regulatory response specifically on airline surveillance pricing. Trigger: a deleted JetBlue social-media reply to a customer complaining of a $230 fare increase, advising the customer to *"clear your cache and cookies or book with an incognito window"* — implicitly acknowledging cookie-based fare personalisation that JetBlue's official statement subsequently denied. *(See [[consumer-facing-dynamic-pricing|Airlines § JetBlue surveillance-pricing inflection event]] for full sequence.)*
+
+Sequence:
+- **April 21–22, 2026**: viral incident; federal class-action complaint filed in US District Court within 24 hours alleging surveillance pricing on commercial aviation — first such filing for the airline sector.
+- **FTC Chair Andrew Ferguson** directed staff at Senate Commerce Committee to examine whether new disclosure rules are needed for airline pricing personalisation.
+- **Multi-state legislative response**: surveillance-pricing prohibition / disclosure bills introduced in **NY, NJ, AZ, PA**. California Attorney General Rob Bonta's CCPA-purpose-limitation surveillance-pricing sweep (announced January 27, 2026) had named airlines among targeted sectors.
+- Congressional letters from **Sen. Ruben Gallego** (D-AZ) and **Rep. Greg Casar** (D-TX) requesting agency action.
+
+**Mechanism:** twin-track. (a) Federal class action under consumer-protection/state law theories testing surveillance-pricing as a deceptive/unfair practice. (b) FTC examination potentially leading to disclosure rulemaking. (c) State legislative stack pursuing prohibition or disclosure regimes per § 3 below.
+
+**Reach:** the activation curve compressed from years (RealPage / Live Nation arc 2022–2026) to one week. *(Source: `weekly-2026-04-27/04-04-jetblue-surveillance-pricing-class-action.md` — Fortune, April 21 2026.)*
+
 ### FTC — surveillance-pricing 6(b) study
 July 2024: FTC issued 6(b) orders to Mastercard, Revionics, Bloomreach, PROS, JPMorgan Chase, Task Software, Accenture, and McKinsey. January 2025: FTC released interim findings ("Issue Spotlight: The Rise of Surveillance Pricing" + redacted research summaries). Study ongoing. Full treatment at [[surveillance-pricing-retail]]. *(FTC Issue Spotlight; FTC Research Summaries.)*
 
@@ -58,8 +84,69 @@ Ten+ state AGs joined the DOJ's RealPage litigation; Washington State AG separat
 
 **DC AG separate consumer-protection track (April 2026).** A parallel — and structurally distinct — DC AG action against Live Nation resolved on April 21 2026 for **$9.9M** (up to $8.9M for affected DC consumers via claims process). DC AG Brian Schwalb's office found Live Nation violated the District's Consumer Protection Procedures Act from 2015 to May 2025 by: advertising deceptively low ticket prices that excluded mandatory fees until checkout; failing to disclose fee purpose / distribution / role in setting; and using a one-minute-inactive countdown clock with the message *"Tickets are selling fast. Get yours now before they're gone"* regardless of actual demand — a fake-scarcity dark pattern. Settlement terms require all-in pricing on the ticket-selection page (already partially implemented in response to the FTC's Rule on Unfair and Deceptive Fees) and itemised fee-purpose disclosure. **Pattern:** consumer-protection-statute liability runs in parallel to antitrust liability — same defendant, different doctrine, separate damages. *(Washington Times AI News Desk Apr 21 2026; OAG DC press release.)*
 
-### New York Bill A3008
-Enacted. Requires clear and conspicuous disclosure when a consumer is being offered a "personalised algorithmic price." First US state-level **disclosure** regime for personalised pricing. *(TechTarget via WebSearch / personalised-pricing research thread.)*
+### NY Algorithmic Pricing Disclosure Act (A3008) — AG enforcement action (Jan 2026)
+
+**Effective date: November 10, 2025.** Requires most companies that use algorithmic pricing — also called "surveillance pricing" — to disclose when customer personal data is used to set individualised prices. **Mandated disclosure phrase** (verbatim): *"THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA."* **Placement standard**: must be **clearly and conspicuously** displayed **near prices** — not buried in fine print or accessible only via a click-through page. First US state-level disclosure regime for personalised pricing; structurally distinct from Maryland HB0895's prohibition regime (next subsection) — NY says *tell the consumer this is personalised*; Maryland says *you may not personalise at all in this sector.*
+
+**First public enforcement action — Instacart demand letter (January 2026).** NY Attorney General **Letitia James** sent a public demand letter to Instacart citing the **December 2025 Groundwork Collaborative + Consumer Reports field study**:
+
+| Quantitative anchor | Value |
+|---|---|
+| Sample | 437 shoppers across 4 cities |
+| Methodology | shoppers added items to Instacart carts; prices recorded across the panel |
+| Items offered at multiple prices simultaneously | ~73% |
+| Average price differential between highest / lowest for the same item | 13% |
+| Maximum observed differential (same product, same store, same time) | **23%** |
+| Projected annual cost to a typical family of four | **~$1,200** |
+
+The AG letter argues that Instacart's existing disclosure — buried on a fine-print-linked page rather than displayed near prices — does not satisfy the Act's "clearly and conspicuously" standard. The letter demands documentation of (1) Instacart's agreements with retail and food-brand partners on price-setting and discount automation; (2) the automated tools used to adjust prices and discounts (and the role of consumer data); (3) the specific price experiments identified by the Groundwork/CR study; (4) Instacart and its partners' compliance efforts under the Act.
+
+**Behavioral state change.** Following the Groundwork/CR study's publication, **Instacart announced it was ending all "item price tests."** Carve-out: Instacart stated its retail and food-brand partners can still run "different types of promotions and discounts" — partner-level testing continues; only Instacart-level item price tests halted.
+
+**Mechanism:** State-statutory disclosure requirement with AG enforcement; the AG letter operationalises a vague "conspicuous" standard into a **DOM-testable benchmark**: any browser-side audit tool can verify whether the literal mandated phrase appears near displayed prices. This is the most concrete-and-testable disclosure-compliance standard captured on the wiki — directly relevant to **Design-input #4** (algorithm-disclosure request tool) and **Design-input #1** (consumer-side pricing observatory) in the design-input candidates section below.
+
+**Reach:** New York-only (jurisdictional). The behavioral evidence (Instacart halt) is the first documented case on this wiki of disclosure-law-plus-public-evidence shifting platform behaviour. Pairs with the [[noyb|NOYB cross-jurisdictional empirical pattern]] (83.5% Article 15 access-request failure in EU) as the empirical foil — disclosure laws underdeliver in production unless an enforcement actor takes a high-profile target.
+
+*(Source: `raw/research/weekly-2026-05-04/03-04-ny-ag-instacart-investigation.md` — NY AG press release; cross-link [[industries/consumer-facing-dynamic-pricing|Grocery delivery — Instacart subsection]] for the empirical study + behavioural halt detail.)*
+
+### Connecticut SB4 — data-broker registry + centralized deletion + surveillance-pricing disclosure (May 2026)
+
+**Status:** passed Senate 31-4 on April 23 2026; passed House **141-6 on May 4 2026**; awaiting Governor Ned Lamont's signature (expected). Builds on the Connecticut Data Privacy Act (2022; CT was the fifth state to enact a comprehensive privacy law). Registry provisions effective **January 1 2027**. Lead author: Sen. James Maroney (D-Milford), co-chair of the General Law Committee and the bipartisan AI Caucus. Co-passed alongside Connecticut SB5 (AI regulation).
+
+**Three load-bearing mechanisms:**
+
+1. **State-run data-broker registry.** Defines a data broker as *"a business that sells or licenses brokered personal data to another person."* Mandatory enrollment for all such businesses operating in or targeting CT residents; mandatory fees fund the registry. Registry implemented by the **Connecticut Department of Consumer Protection (DCP)**.
+
+2. **Centralized one-click deletion mechanism.** DCP is charged with creating a unified deletion mechanism spanning **all registered brokers** — a single consumer interface through which a CT resident can submit a deletion request that propagates to every enrolled broker. **First cross-broker API-equivalent surface in US law.** Structurally distinct from California's CPPA data-broker registry (separate per-broker deletion requests) and from prior state opt-out architectures (one-broker-at-a-time).
+
+3. **Surveillance-pricing disclosure mandate.** *"Retail sellers and third-party delivery services prohibited from engaging in surveillance pricing unless they disclose when an automated pricing system increases a price using a consumer's personal data."* Plus regulations on geolocation data, facial recognition, and streaming-ad volume.
+
+**Tooling-hook framing.** The centralized deletion mechanism is the load-bearing build target. A state-mandated cross-broker deletion API is exactly the substrate civil-society tooling has lacked: it shifts the "DSAR-coordination" lever (cf. [[strategies/data-disruption-strategy-map|Tier 1 #1]]; [[mechanisms/data-cooperatives]]) from per-broker bespoke pipelines (cf. [[organizations/noyb|noyb cross-jurisdictional 83.5% Article 15 failure]]) to a single regulated endpoint. Adjacent design-input: an automated submission tool (cf. **Design-input #4 — Algorithm-disclosure request tool** below) generalises directly onto this surface once DCP publishes the technical spec. The **Verifiable Mandate-Bound DSAR Pipeline** ([[strategies/mechanism-synthesis-readout|Build #2]]) gains a concrete first-target jurisdiction.
+
+**Cross-state comparison.** Among the three enacted / advanced 2026 state laws on surveillance pricing:
+
+| Statute | Architecture | Sectoral scope | Centralized data-rights infrastructure? | Enforcement |
+|---|---|---|---|---|
+| **NY APDA** (eff. Nov 10 2025) | **Disclosure** ("THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA") | All retail / surveillance-pricing sectors | No (per-platform self-implementation) | AG (proven operative — Instacart halt) |
+| **MD HB0895** (eff. Oct 1 2026) | **Prohibition** (categorical ban in sector) | Food retail >15,000 sq ft + 3rd-party delivery only | No | AG only; pre-empts MD CPA; no private right of action |
+| **CT SB4** (registry eff. Jan 1 2027) | **Disclosure + cross-broker deletion API + broker registry** | Retail sellers + 3rd-party delivery (surveillance-pricing); all data brokers (registry/deletion) | **Yes — centralized DCP deletion mechanism** | (not specified in capture — see open question below) |
+
+CT differs from MD on three dimensions: (a) it is **broader in scope** for the data-broker register/deletion (all sectors, not just food retail); (b) it has a **substantively different architecture** — the cross-broker deletion API is novel infrastructure, not just statutory text; (c) it adopts the **disclosure (not prohibition) approach** to surveillance pricing, aligning with NY rather than MD on that specific dimension. Together NY, MD, and CT establish that the state-legislative cluster is not converging on a single architectural pattern — three different theories of the case (disclose, ban, infrastructure-build) are running in parallel.
+
+**Loophole assessment versus HB0895.** Applying the six-point Doctorow / Garofalo checklist (next subsection) to CT SB4 from the capture in hand:
+
+- (a) **Scope beyond grocery** — yes; data-broker registry / deletion is **economy-wide**, not sectoral. Surveillance-pricing disclosure covers retail sellers + 3rd-party delivery (broader than MD's >15,000 sq ft food-retail floor; narrower than economy-wide).
+- (b) **Consent-via-clickwrap blocked** — not specified in capture.
+- (c) **Promotional / temporary-discount exemptions** — not specified in capture.
+- (d) **Loyalty-card and subscription exemptions** — not specified in capture; loyalty-card / subscription carve-outs were the principal HB0895 vehicle-of-evasion, so this is the highest-priority gap to close on the bill text itself.
+- (e) **Private right of action** — not specified in capture.
+- (f) **No pre-emption** of stronger existing consumer-protection rights — not specified; CT Data Privacy Act (2022) is the existing baseline and the bill explicitly "builds off" it (suggesting layering, not pre-emption).
+
+**Open question (enforcement architecture not captured).** The CT Mirror story is silent on enforcement mechanism — whether SB4 is AG-only (the MD pattern), private-right-of-action (the strongest), or shared with DCP (DCP runs the registry; it may also have enforcement authority). This is the binding question for whether the load-bearing deletion API is operative at scale. Flag for follow-up via bill text or AG / DCP follow-up sources.
+
+**Effect on the wiki's MD-HB0895 framing.** The "load-bearing first-in-nation prohibition" framing was already qualified by the Doctorow / Garofalo carve-out taxonomy (next subsection) — qualified, not overturned. CT SB4 further broadens the picture: **MD remains the first-in-nation categorical prohibition** (different doctrinal theory); **CT becomes the first-in-nation centralized cross-broker deletion API** (different doctrinal theory; the strongest tooling hook of the three). No `wiki/conflicts/` file is warranted — MD and CT are doctrinally distinct, not contradictory.
+
+*(Source: `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md` — CT Mirror, May 4 2026 — "Consumer data privacy bill gets final passage in CT House." Supplementary cross-state framing: `raw/research/weekly-2026-05-11/06-md-hb0895-cfm-context.md` — Consumer Finance Monitor, May 5 2026.)*
 
 ### Maryland HB0895 — Protection From Predatory Pricing Act (2026)
 Enacted April 2026; effective **October 1, 2026**. Cross-filed as SB0387; By Request of the Governor (Moore administration). 50+ House sponsors. **Substantive prohibition** (not disclosure):
@@ -74,6 +161,57 @@ Enacted April 2026; effective **October 1, 2026**. Cross-filed as SB0387; By Req
 
 **Reach:** Maryland-only (jurisdictional). The Colorado advance and the cross-filed SB0387 suggest replicability; food-retail-and-delivery scoping could be lifted by other state legislatures with minimal modification.
 
+#### HB0895 loophole assessment (Doctorow / Garofalo, Apr 30 2026)
+
+The "first-in-nation prohibition" framing is qualified by a substantive **loophole taxonomy** published by **Cory Doctorow** (Pluralistic, April 30 2026) synthesising **Pat Garofalo / American Economic Liberties Project** analysis of the bill text. Six named carve-outs, in the order Doctorow presents them:
+
+1. **Grocery-only scope.** The Act covers food retailers (>15,000 sq ft) and third-party delivery providers only. Excluded: car rentals, apartments, healthcare, taxi/rideshare, quick-service restaurants, and **all other sectors where surveillance pricing is active**. Also entirely silent on **algorithmic wage discrimination** (gig-platform desperation-premium pricing on workers — see [[mechanisms/pricing-algorithm-taxonomy|Family 6 (Uber per-trip opaque)]]).
+2. **Consent-based collection exemption.** Surveillance pricing is permitted if the purchaser "consents." In practice, consent is captured via clickwrap / ToS at the point of any *affiliated-service* interaction. Doctorow's example: a pet-care app owned by the same parent company as a grocer's pricing-tool vendor could capture consent to grocery surveillance pricing via a vet-appointment booking. Renders the prohibition subject to standard data-broker / cross-affiliate consent architecture — i.e. defeated by the **same consent-via-clickwrap problem documented for GDPR / GPC enforcement** (see § 9 webXray + NOYB pattern below).
+3. **Promotional offers and temporary discounts.** Both terms are exempted; **neither is defined in the bill text.** Since retail pricing almost universally uses "sale," "temporary," or "promotional" labelling, this exemption is a near-universal override. Doctorow: *"it effectively grants every grocer in the state an easy way to evade the law entirely."*
+4. **Loyalty-card exemption.** Explicitly carved out. Per Doctorow / Garofalo, **loyalty cards are already the dominant vehicle for surveillance pricing in grocery** (personalised pricing via membership tier, purchase-history inference, co-branded data-broker relationships). Exempting them removes coverage of the primary current form of the harm.
+5. **Subscription-based pricing exemption.** Explicitly carved out alongside loyalty cards. Subscription pricing is a related delivery vehicle — membership fees unlock "lower" headline prices, with the price differential funded by data extraction and behavioural targeting.
+6. **No private right of action + pre-emption of Maryland Consumer Protection Act.** Consumers cannot sue under HB0895; **only the Attorney General can enforce, and AG enforcement is discretionary.** Additionally, HB0895 **pre-empts existing rights under the Maryland Consumer Protection Act** — meaning Marylanders have *fewer* legal remedies for surveillance-pricing harm than before the bill was signed. Structurally the most consequential carve-out for enforcement reach.
+
+**Net effect on the wiki's framing.** The "load-bearing first-in-nation prohibition" position is *qualified, not overturned*: the prohibition exists on paper; its enforcement reach is materially narrower than the political framing implies. **No `wiki/conflicts/` file is warranted** — this is a refinement, not a contradiction.
+
+**Evaluation template for future state bills.** The carve-out taxonomy is a six-point checklist for assessing whether any future state surveillance-pricing bill (NY/NJ/AZ/PA, CA AB 2564, Colorado HB26-1210) is substantive or performative. Bills should be evaluated against:
+
+- (a) **Scope** beyond grocery — does it cover the full range of surveillance-pricing-active sectors?
+- (b) **Consent-via-clickwrap blocked** — does it require affirmative, granular, sector-specific consent?
+- (c) **Promotional / temporary-discount exemptions** absent, or narrowly defined with statutory definitions?
+- (d) **Loyalty-card and subscription exemptions** absent — covers the actual delivery vehicles?
+- (e) **Private right of action** included?
+- (f) **No pre-emption** of stronger existing consumer-protection rights?
+
+**Strategy-layer implication.** If HB0895 is largely unenforced post-Oct-1 due to these carve-outs, the regulatory-proxy lever's near-term practical impact is lower than the wiki's current framing implies. This shifts strategy-layer weight on [[strategies/data-disruption-strategy-map]] toward (i) enforcement-pressure pipelines (NOYB-style mass-complaint factories, per Tier-1 #3) and (ii) tooling-side disruption that doesn't depend on AG action. The **complement**: the NY APDA case above shows that disclosure-plus-AG-enforcement *can* produce behavioural change (Instacart halt) — the binding question is enforcement willingness, not statute existence.
+
+*(Source: `raw/research/weekly-2026-05-04/04-05-pluralistic-hb0895-loopholes.md` — Pluralistic / Cory Doctorow, "How not to ban surveillance pricing," April 30 2026, synthesising Pat Garofalo / American Economic Liberties Project analysis. Trust tag: moderate — editorially hostile but factual carve-out claims are specific and traceable to bill text; load-bearing legal characterisations should be cross-checked against the HB0895 text and Garofalo's primary piece for the strongest citations.)*
+
+### Colorado HB26-1210 — Prohibit Surveillance Price & Wage Setting Algorithm (May 2026)
+
+**Status:** Passed both chambers May 2026; pending Governor signature. Reengrossed (second-house amended) version is the operative text.
+
+**Dual scope — the novel feature of this bill.** Colorado HB26-1210 targets a "price or wage setting algorithm" (PWSA): an AI/ML-based system that analyses **surveillance data** to set individualised consumer prices **or** worker wages. This dual consumer-pricing-and-wage-setting scope is not present in MD HB0895 (food retail only, silent on wages) or NY APDA (consumer pricing disclosure only). Maryland's HB0895 loophole taxonomy (point 1 above) explicitly flags that HB0895 "is entirely silent on algorithmic wage discrimination" — Colorado HB26-1210 fills that gap, at least nominally, on its face.
+
+**"Surveillance data" definition.** The bill's definition covers: observation, inference, biometrics, online behaviours, and group/tier membership — explicitly targeting the data-brokerage and profiling layer, not just the pricing algorithm itself. This is a broader definition than the "personal data" framing in NY APDA.
+
+**Enforcement: AG-only under the Colorado Consumer Protection Act.** HB26-1210 is enforced as a deceptive trade practice under the CCPA, with AG rulemaking authority. **The original bill included a private right of action** ("a person aggrieved by a violation … may bring a civil action on behalf of themself or a group of similarly situated persons to recover damages, costs, and reasonable attorney fees") — this language was **struck by Senate amendment** and is not present in the enacted (reengrossed) bill. The enacted bill is AG-enforcement-only, structurally similar to the NY APDA enforcement model. This is a significant doctrinal limitation: collective litigation strategy is not enabled by this statute as enacted.
+
+**Worker data entitlements.** The bill imposes transparency and data-access obligations on PWSA operators: operators must publish accuracy procedures and give workers data-access and correction rights with respect to their own data used by the PWSA. This creates a DSAR-adjacent entitlement in Colorado — a lightweight audit obligation and a potential hook for DSAR-coordination tooling.
+
+**Doctrinal position.** Among enacted 2026 state laws:
+
+| Statute | Architecture | Scope | Wage-setting coverage | Enforcement |
+|---|---|---|---|---|
+| **NY APDA** (eff. Nov 10 2025) | Disclosure | All retail / surveillance-pricing sectors | No | AG (operative — Instacart halt) |
+| **MD HB0895** (eff. Oct 1 2026) | Prohibition | Food retail >15,000 sq ft + 3rd-party delivery | No | AG only; pre-empts MD CPA; no private right |
+| **CT SB4** (registry eff. Jan 1 2027) | Disclosure + cross-broker deletion API + registry | Retail + 3rd-party delivery (pricing); all data brokers (registry) | No | Not specified in capture |
+| **CO HB26-1210** (May 2026) | Prohibition | Consumer pricing AND worker wage-setting | **Yes — dual scope** | AG only via CCPA; no private right (struck by amendment) |
+
+Colorado aligns with Maryland on the prohibition model and with New York on AG-only enforcement, while adding the wage-setting axis that no prior state bill covers. The operative scope will be set by AG rulemaking — creating an advocacy target beyond the bill text itself.
+
+*(Source: `raw/research/weekly-2026-05-18/01-01-co-hb1210-bill.md` — Colorado General Assembly official bill page; reengrossed version. Trust tag: authoritative / primary — bill text and legislative record. Note: the reengrossed version incorporates Senate amendments; the private-right-of-action language visible in strikethrough form in the legislative record was explicitly removed.)*
+
 ### Municipal bans
 San Francisco, Philadelphia, and Minneapolis have moved to bar landlord use of algorithmic rent-setting software. *(ProPublica.)*
 
@@ -82,6 +220,26 @@ San Francisco, Philadelphia, and Minneapolis have moved to bar landlord use of a
 ### EU
 - **Digital Markets Act (DMA) and Digital Services Act (DSA)** — operational; framework for platform regulation. Not yet addressing algorithmic pricing collusion specifically per arXiv's survey.
 - **European Commission** — investigating Ticketmaster's dynamic pricing (parallel to UK CMA). *(Wikipedia.)*
+
+#### EU DMA — Google search-data sharing (April 16, 2026)
+
+The European Commission issued **preliminary findings** under DMA Article 6(11) requiring Google to share search data with third-party search engines on **fair, reasonable, and non-discriminatory (FRAND)** terms. The 29-page field-level specification is the **first regulated, priced access surface for commercial search-intent data**.
+
+**Scope of the proposed measures:**
+- **Eligible "data beneficiaries"** include third-party search engines and **AI chatbots with search functionality** (explicitly named).
+- **Data fields covered**: ranking signals, query data, click data, view data — the full behavioural training substrate for search relevance.
+- **FRAND pricing parameters** to be set by the Commission for the access regime.
+- **Anonymisation requirements** for personal data within the shared feed.
+- **Auditing and access processes** to govern beneficiary use.
+
+**Status / timeline:**
+- Preliminary findings published April 16, 2026.
+- **Public consultation closes May 1, 2026.**
+- **Final decision expected July 27, 2026.**
+
+**Mechanism:** state-mandated data-access regime functioning as a regulator-imposed alternative to the cooperative-pricing approach in [[mechanisms/data-market-mechanism-design]] (Shapley-based revenue allocation among voluntary contributors). FRAND is regulator-set and firm-facing; Shapley is cooperative and contributor-facing. The two **bracket the design space for priced data access** — regulated-price vs cooperative-price.
+
+**Strategic relevance.** If finalised, this is the first time commercial search-intent data is regulated-access-shared with third parties. Build #1 (Federated Pricing Observatory) on [[strategies/mechanism-synthesis-readout]] currently has no clean substrate; mandated FRAND access is a **candidate substrate**. Tier-1 #3 on [[strategies/data-disruption-strategy-map]] (probe-and-publish observatory) similarly gains a regulated-access surface that lowers adversarial data-acquisition cost. The public consultation is open — design-input opportunity for positioning cooperative access. *(Source: `weekly-2026-04-27/03-03-eu-dma-google-search-data-sharing.md` — EC DG COMP / DG CONNECT press release, April 16 2026.)*
 
 ### UK
 - **Competition and Markets Authority (CMA)** — investigating Ticketmaster's 2024 Oasis-tour dynamic pricing; concluded Ticketmaster "may have misled" fans. *(Wikipedia.)*
@@ -202,6 +360,23 @@ The orientation-toward-governance-or-bargaining lane. Where [[platform-cooperati
 - **Transactional group-buying** — per-deal aggregation via social platforms. Tuángòu origins in China; Pinduoduo integrated with WeChat is the live large-scale success. Groupon-era US daily-deal platforms collapsed: 500+ sites by 2010, Groupon revenue declined 80% from $3B in 2014 to $600M in 2022.
 - **Public-agency aggregation** — [[community-choice-aggregation]] (US electricity). 9 authorising states; **~15% of Americans served across 1,850+ municipalities as of 2024**. Opt-out default enrolment; governance by elected officials; California CCAs voluntarily procured 11 TWh of renewable electricity *above* state RPS mandates (2011–2018 per UCLA Luskin Center). The only authorising vehicle captured in this wiki that achieves large-scale default aggregation without membership recruitment.
 
+### Independent compliance audits — GPC enforcement gap (April 2026)
+
+**webXray California GPC audit** (published The Markup, April 21, 2026). Audit of **7,634 California-reachable websites** from a California IP, with the Global Privacy Control opt-out signal active. Methodology: dual-scan (signal-on / signal-off) with cookie inspection. Conducted by webXray (founded by former Google privacy engineer Tim Libert).
+
+| Tracker | Continued tracking despite GPC | Notes |
+|---|---|---|
+| Google | **86%** | Spokesperson rebuttal; Google claims compliance |
+| Meta | **69%** | "Fail to check for the signal at all" per audit; Meta no comment |
+| Microsoft | **50%** | Operational-necessity carve-out claim |
+| One unnamed third-party compliance vendor | **>90%** | Industry-wide pattern, not edge-case errors |
+
+**Penalty exposure:** webXray estimates that if the California Privacy Protection Agency (CPPA) fined every site found non-compliant, it could result in **billions of dollars in penalties**. CPPA Director Tom Kemp's response: *"While we don't have comment on the finding of this specific report, we do appreciate that the report brings visibility to the importance of opt-out rights."* No enforcement action announced.
+
+**Cross-jurisdictional empirical pattern.** The webXray finding is structurally parallel to NOYB's **83.5% GDPR Article 15 access-request failure** finding (April 16, 2026). Same structural pattern (high-rate non-compliance with statutory consumer-side data rights), two regulatory regimes (CCPA / GPC in CA; GDPR Art. 15 in EU). Together they establish: **paper rights underdeliver in production at industrial scale, generalising across jurisdictions and mechanisms.** This is the most quantified empirical baseline currently captured on the wiki for the regulatory-proxy lever cluster's enforcement-gap problem. *(Source: `weekly-2026-04-27/01-01-themarkup-webxray-california-gpc-audit.md` — The Markup, April 21 2026; cross-link [[noyb|NOYB cross-jurisdictional empirical pattern]] and [[browser-fingerprinting|PETS 2026 CCPA-Android opt-out paper]].)*
+
+**Strategic implication.** The "legal opt-out at scale" lever (GPC + statutory rights) is not currently operative at population scale. This shifts weight in [[strategies/data-disruption-strategy-map]] toward (a) mass-complaint enforcement-pressure pipelines (cf. NOYB) and (b) tooling-side disruption levers that don't depend on platform compliance with opt-out signals.
+
 ### Transparency / crowdsourced-audit tools
 
 The [[transparency-tools]] mechanism page is the anchor. Three functional sub-categories of live transparency tools:
@@ -257,7 +432,7 @@ The table is deliberately flat — it does not rank by leverage. For design-rank
 
 **Exists but weak:**
 - Federal legislation (Preventing Algorithmic Collusion Act introduced, not enacted).
-- State disclosure regimes (NY A3008 is the first-mover disclosure regime; Maryland HB0895 — see § 3 above — is a *categorically different* first-mover prohibition regime in food retail / delivery; Colorado HB26-1210 advancing similar prohibition with wage-setting addition. Cluster forming, but still under-replicated nationally).
+- State disclosure regimes (NY A3008 is the first-mover disclosure regime; Maryland HB0895 — see § 3 above — is a *categorically different* first-mover prohibition regime in food retail / delivery; Connecticut SB4 (May 2026) adds a third architecture — disclosure-plus-infrastructure, with the **first-in-nation centralized cross-broker deletion mechanism**; Colorado HB26-1210 advancing similar prohibition with wage-setting addition. Cluster forming around three distinct theories of the case (disclose, ban, build-infrastructure), but still under-replicated nationally).
 - EU platform rules (DMA/DSA) — scope covers the large platforms but does not specifically reach algorithmic pricing collusion.
 - **Platform cooperatives as an exit lane** — structurally viable ([[mondragon]] at ~70K workers, [[coopcycle]] at 72-coop federation) but the capital conundrum keeps the scale limited against VC-funded incumbents. Works best in sectors meeting Sundararajan's conditions (see [[platform-cooperatives]]).
 
@@ -328,6 +503,22 @@ Additional sources from the 2026-04-23 weekly-brief sweep:
 - `raw/research/weekly-2026-04-23/03-dc-ag-livenation-99m-settlement.md` — Washington Times AI News Desk, April 21 2026 (DC AG $9.9M consumer-protection settlement against Live Nation).
 - `raw/research/weekly-2026-04-23/04-omi-fair-prices-for-local-businesses-act.md` — Open Markets Institute press release, April 2026 (Sen. Murphy's Robinson-Patman revival bill).
 - `raw/research/weekly-2026-04-23/05-cma-direct-consumer-enforcement-one-year-on.md` — UK CMA blog, April 17 2026 (Year-1 direct-enforcement regime readout).
+
+Additional sources from the 2026-04-27 weekly-brief sweep:
+
+- `raw/research/weekly-2026-04-27/01-01-themarkup-webxray-california-gpc-audit.md` — The Markup / CalMatters, April 21 2026 (webXray California GPC compliance audit).
+- `raw/research/weekly-2026-04-27/03-03-eu-dma-google-search-data-sharing.md` — EU Commission DG COMP / DG CONNECT press release, April 16 2026 (DMA Google search-data FRAND access regime).
+- `raw/research/weekly-2026-04-27/04-04-jetblue-surveillance-pricing-class-action.md` — Fortune, April 21 2026 (JetBlue surveillance-pricing inflection event + federal class action + FTC examination).
+
+Additional sources from the 2026-05-04 weekly-brief sweep:
+
+- `raw/research/weekly-2026-05-04/03-04-ny-ag-instacart-investigation.md` — NY Office of the Attorney General press release (announcing Instacart demand letter under the NY Algorithmic Pricing Disclosure Act; references December 2025 Groundwork Collaborative + Consumer Reports field study).
+- `raw/research/weekly-2026-05-04/04-05-pluralistic-hb0895-loopholes.md` — Pluralistic / Cory Doctorow, *How not to ban surveillance pricing*, April 30 2026 (synthesises Pat Garofalo / American Economic Liberties Project loophole analysis of HB0895).
+
+Additional sources from the 2026-05-11 weekly-brief sweep:
+
+- `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md` — CT Mirror, May 4 2026 (Connecticut SB4 final House passage 141-6; data-broker registry + centralized DCP deletion mechanism + surveillance-pricing disclosure mandate; bill awaiting Governor Lamont).
+- `raw/research/weekly-2026-05-11/06-md-hb0895-cfm-context.md` — Consumer Finance Monitor (Ballard Spahr), May 5 2026 (MD HB0895 framing as "warning shot" for AI-driven pricing across financial services; cross-state legal-landscape context for the surveillance-pricing legislative cluster).
 
 Additional sources for section 9 (transparency tools and observatory infrastructure):
 

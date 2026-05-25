@@ -8,6 +8,40 @@
 - **Delta** announced plans to expand AI-driven dynamic pricing from 3% to 20% of domestic flights during 2025. *(Wikipedia.)*
 - Recent industry framing (OAG, 2025) emphasises shopping-data-driven "dynamic offers" rather than fare-class adjustment.
 
+### April 2026 — JetBlue surveillance-pricing inflection event
+
+The week of **April 21, 2026** crystallised the contested-claim status of whether US airline RM systems use individual identity features. Sequence:
+
+- A JetBlue customer (X user *@nuggetsince94*) tagged the airline over a **$230 fare increase in one day** while booking travel to a funeral. JetBlue's social media reply, since deleted, advised: *"try clearing your cache and cookies or booking with an incognito window. We're sorry for your loss."* The deleted-tweet incident was screenshotted and circulated; primary source: *Fortune*, April 21 2026.
+- **JetBlue's official statement** denied surveillance pricing: *"JetBlue fares on JetBlue.com and our mobile app are not determined by cached data or other personal information. Pricing is based on real-time availability and is managed through our reservation system. Fares can change at any moment as seats are purchased or as inventory is adjusted based on demand, and are not guaranteed until a purchase is completed."*
+- **Within 24 hours**, a federal class-action complaint was filed in US District Court alleging surveillance pricing on commercial aviation — the first such filing for the airline sector.
+- **FTC Chair Andrew Ferguson** directed staff to examine whether new disclosure rules are needed for airline pricing personalisation (statement to Senate Commerce Committee).
+- **Multi-state legislative response**: surveillance-pricing prohibition / disclosure bills introduced in **NY, NJ, AZ, PA**. California Attorney General Rob Bonta's surveillance-pricing sweep (announced Jan 27 2026 under CCPA purpose-limitation theory) is now also referenced as targeting airline pricing on state filings.
+- *(Source: `weekly-2026-04-27/04-04-jetblue-surveillance-pricing-class-action.md` — Fortune, April 21 2026.)*
+
+#### May 2026 build — *Phillips v. JetBlue Airways Corporation* (ClassAction.org coverage)
+
+The May 11 capture (`raw/research/weekly-2026-05-11/03-jetblue-class-action.md` — ClassAction.org, published April 29 2026) confirms case details that the original Fortune coverage did not name:
+
+- **Case caption:** *Phillips v. JetBlue Airways Corporation*, filed April 22, 2026, **1:26-cv-02405** (US District Court). 45-page complaint.
+- **Proposed class scope:** *"all natural individuals in the United States who used JetBlue's website and/or mobile application and whose communications and/or data were shared with third parties during the applicable statutory period."* National class, not jurisdiction-limited.
+- **Named third-party vendors:** **PROS Holdings, Inc.** and **FullStory, Inc.** The complaint alleges PROS *"using an algorithm to set prices based on consumer behavior."* PROS Holdings is one of the eight recipients of the FTC's July 2024 surveillance-pricing 6(b) orders (see [[surveillance-pricing-retail]]) — *the same vendor surfaces in both the FTC inquiry and the JetBlue civil complaint*.
+- **Causes of action framing:** the complaint distinguishes the *(legal)* practice of dynamic pricing from the *(allegedly illegal)* underlying conduct of "secretly collecting consumer data without consent." Verbatim from the complaint: *"surveillance pricing is not illegal, [but] 'secretly' collecting consumer data without consent is."* — privacy-tort theory, not antitrust or price-discrimination theory.
+- **Cookie-consent contradiction:** the complaint highlights JetBlue's own privacy policy noting *"aspects of the airline's website will not function properly unless a consumer accepts all cookies and tracking technologies"* — alleging coerced consent.
+- **Procedural state:** filed, not certified; class certification has not been ruled on. JetBlue has denied surveillance pricing.
+
+**Doctrinal significance — standing template.** *(editorial.)* If the *Phillips v. JetBlue* class is certified, it establishes a procedural template for consumer-facing dynamic-pricing class actions premised on **browser-history / cookie-based price personalisation as a privacy harm**, distinct from the antitrust (RealPage / Live Nation) and consumer-protection-statute (DC AG Live Nation) doctrines documented elsewhere on this page. The privacy-tort framing matters because it lowers the standing threshold: rather than proving overcharge or market harm, the complaint anchors on undisclosed data-collection-for-pricing as the cognisable injury. Cross-link to [[browser-fingerprinting|JetBlue case section]] for the technical-mechanism layer.
+
+**Tooling-hook framing.** A successful certification creates direct demand for a *"did this site price-discriminate against me?"* audit tool — i.e., a consumer-facing detector that captures the price shown to a user (with full cookie/IP/fingerprint state), compares it against the price shown to a control session (clean cookies / incognito / VPN), and produces an evidence record suitable for class-action enrolment. This is a Tier-1 build candidate adjacent to [[strategies/data-disruption-strategy-map|the strategy map's]] DSAR-coordination cluster — same legal-substrate (consumer-side evidence gathering for litigation amplification) but on the *detection* side rather than the *disclosure-request* side. The class-action's enrolment-recruitment apparatus would consume the tool's output directly.
+
+**Doctrinal status.** Two positions stand:
+- **JetBlue position**: airline RM uses no individual identity features; price changes are real-time inventory-driven (the long-documented Family 4 stochastic DP / yield-management family on [[pricing-algorithm-taxonomy|the pricing-algorithm-taxonomy page]]).
+- **Class-action and state-AG position**: alleges surveillance / personalised pricing using cached browsing data; treats the question as open and triable.
+
+The JetBlue case **does not resolve** the contested claim either way (no algorithm-disclosure has happened); but the formal institutional responses (federal class action, FTC examination, multi-state legislative stack) place the *"airline RM uses no individual identity features"* finding in **contested** rather than **settled** status. Cross-link [[pricing-algorithm-taxonomy|Family 4 contested-claim note]] for the algorithm-side flag.
+
+**Pattern observation.** The **viral consumer event → 24h class-action filing → FTC chair statement → multi-state legislative stack** sequence compressed into roughly one week. Compared with the multi-year RealPage / Live Nation arcs (ProPublica 2022 → DOJ 2024 → settlement / verdict 2025–2026), this is a much faster activation curve for a counter-power response. *(editorial — pattern observation across § 2026 outcomes on this page.)*
+
 ## Hotels and hospitality
 
 - Rooms priced in real time by occupancy, season, events, booking pace, and competitor pricing. *(Wikipedia; NBER.)*
@@ -95,6 +129,27 @@ Three distinct 2026 events established Live Nation/Ticketmaster as the canonical
 - ESLs enable algorithmic pricing in brick-and-mortar stores. An NBER case study of 225 North American retail locations documented ESL deployment. *(NBER.)*
 - Many regional grocery chains employ dynamic pricing on specific categories. *(Wikipedia; FTC 4–5 for the surveillance-pricing variant — see [[surveillance-pricing-retail]].)*
 
+### Grocery delivery — Instacart surveillance pricing (Groundwork/CR Dec 2025; Instacart halt)
+
+The first quantified field study of grocery-delivery surveillance pricing on the wiki. **Groundwork Collaborative + Consumer Reports**, December 2025: panel of **437 shoppers across 4 cities** added items to Instacart shopping carts; the prices displayed to each shopper were recorded and compared.
+
+| Metric | Finding |
+|---|---|
+| Items offered at multiple simultaneous prices | ~73% |
+| Average price differential (highest vs lowest, same item) | 13% |
+| Maximum observed differential (same product, same store, same time) | **23%** |
+| Projected annual cost to a typical family of four | **~$1,200** |
+
+**Mechanism documented**: per-shopper item price tests — i.e. **personalised pricing** (individualised pricing using consumer signals to vary the displayed price), not uniform real-time dynamic pricing. The price differentials were observed for the same product at the same store at the same time, ruling out time-of-day / inventory-driven dynamic-pricing explanations.
+
+**Behavioural state change.** Following the study's publication, **Instacart announced it was ending all "item price tests."** Carve-out: Instacart stated its retail and food-brand partners can still run *"different types of promotions and discounts"* on the platform — partner-level testing continues; only Instacart-level item-name-targeted price tests halted.
+
+**Pattern observation.** This is the first wiki-captured instance of an empirical field study + AG enforcement letter combining to produce a documented platform behavioural change on personalised pricing. Pairs with the [[counter-power/regulatory-responses|NY Algorithmic Pricing Disclosure Act AG enforcement subsection]] (the AG demand letter post-dates the study) and with the broader [[surveillance-pricing-retail]] vertical landscape. Per the [[mechanisms/pricing-algorithm-taxonomy]], Instacart's mechanism sits in the **Family 5 / hub-and-spoke** territory (platform aggregator running price experiments across multiple retailer-partner inventories), distinct from the airline RM (Family 4) and Uber per-trip opaque (Family 6) families.
+
+**State-legislative cluster update (May 2026).** **Connecticut SB4** (House-passed 141-6 May 4 2026; awaiting Governor Lamont) adds a third surveillance-pricing regime alongside NY APDA and Maryland HB0895 — explicitly covering *"retail sellers and third-party delivery services"* (the Instacart-class vertical). CT's distinctive feature is the **state-run cross-broker centralized deletion mechanism** (registry effective Jan 1 2027); the surveillance-pricing piece is a disclosure mandate similar to NY's, not a categorical ban. See [[counter-power/regulatory-responses|Connecticut SB4 subsection]] for full cross-state architecture comparison.
+
+*(Source: `raw/research/weekly-2026-05-04/03-04-ny-ag-instacart-investigation.md` — NY AG press release citing the December 2025 Groundwork Collaborative + Consumer Reports field study. CT SB4 captured in `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md`.)*
+
 ## Cross-industry consumer backlash as a pattern
 
 Backlash moments surface recurrently across sources:
@@ -129,6 +184,11 @@ These are individual episodes, not a coordinated movement. But they establish th
   - **Audience:** academics, legal scholars, policymakers.
   - **Purpose:** analyse consumer harm from algorithmic pricing and propose regulatory remedies.
   - **Trust:** HBS working-paper tier; used here for industry-deployment examples (Amazon, Uber, Lyft, hotels).
+- `raw/research/weekly-2026-05-11/03-jetblue-class-action.md`
+  - **Origin:** ClassAction.org news article (April 29 2026 — *Phillips v. JetBlue Airways Corporation*, 1:26-cv-02405).
+  - **Audience:** prospective class members, plaintiff-side attorneys, consumer-protection press.
+  - **Purpose:** report case caption, class scope, named third-party vendors, and the complaint's "clear your cache" admission anchor.
+  - **Trust:** plaintiff-aligned secondary reporting on a court-filed complaint; case-caption / docket / vendor-naming claims are checkable against the public docket; allegations are unproven pending discovery and class certification.
 
 ## Related
 

@@ -104,3 +104,9 @@ The two framings are complementary. Porat's empirics suggest individual bargaini
 - [[surveillance-pricing-retail]]
 - [[algorithmic-collusion]]
 - [[regulatory-responses]]
+- [[strategic-classification]] — formal frame for individual-level bargaining (Porat's strategic abstention is the consumer side of this game)
+- [[federated-learning]] — substrate technology that lets a CBI produce aggregate evidence without exposing per-member data
+- [[data-market-mechanism-design]] — mechanism-design layer for distributing bargained value back to members
+- [[buyer-cartels-antitrust]] — antitrust frame for CBI bargaining as joint purchasing of bargaining services
+- [[clawnet-readout]] — agent-mediated bargaining substrate
+- [[algorithmic-collective-action]] — coordinated counterpart to Porat's individual abstention

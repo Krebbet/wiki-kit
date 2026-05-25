@@ -101,3 +101,7 @@ The Ada Lovelace report emphasises that this model has "positive" rather than "n
 - [[platform-cooperatives]]
 - [[regulatory-responses]]
 - [[dynamic-pricing-overview]]
+- [[federated-learning]] — substrate technology that lets data cooperatives train useful models without any party seeing raw member data
+- [[data-market-mechanism-design]] — mechanism-design layer for fair revenue distribution among contributing members (Shapley-based, with documented governance tensions)
+- [[buyer-cartels-antitrust]] — antitrust frame for cooperative bargaining activity
+- [[clawnet-readout]] / [[decentralized-agent-identity]] — agent-mediated coordination substrates above the cooperative governance layer

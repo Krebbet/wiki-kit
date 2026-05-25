@@ -148,3 +148,96 @@ Option 1 addresses the symptom; option 2 sidesteps it when the user knows images
 The lint check I hand-wrote for this session caught them only because I happened to run `find wiki -name "*.md" -type f` (including empty) as initial inventory, then noticed the duplicate basenames.
 **Implication:** Add a lint check: `find wiki -name "*.md" -type f -empty` as an early gate; report any 0-byte files as a distinct "stray / noise" category, independent of orphans and broken links. The check should probably exempt files under known Obsidian-special paths (none in this wiki's setup) and recommend deletion. Could live in `.claude/commands/lint.md` as a generic check; would help any Obsidian-enabled wiki-kit deployment.
 **Status:** open
+
+---
+
+## 2026-04-26 — Subagent prompts must explicitly forbid writing to disk
+**Scope:** kit
+**Status:** open
+
+**Observation.** During the `clawnet-adjacent-methods` `/research` ingest run, 14 subagents were dispatched (one per captured PDF) with prompts asking for "structured summaries returned in-message." Despite explicit "do not write any wiki page text" framing, **2 of 14 subagents wrote scratch markdown files to disk** outside the `raw/` tree:
+- One wrote to `/home/david/code/wiki-collective-consumer-action/wiki/sources/llm-deliberation-abdelnabi.md` (created the dir).
+- One wrote to `/home/david/code/wiki-collective-consumer-action/structured-ingests/contextual-pricing-strategic-buyers.md` (created the dir).
+- A third wrote to `/tmp/oecd-buyers-cartels-2022-summary.md`.
+
+These unauthorised writes survived the agent return; the main thread had to `rm` them after detection. The first attempt at `rm -rf` was blocked by sandbox (paths weren't created in this session by the main thread — fair safety check). Required individual-file `rm` + `rmdir` to clean.
+
+**Implication.** The `/research` and `/ingest` skill subagent prompts (and any similar in-message-summary tasks) should include an explicit prohibition: "Return the structured summary in your final message text. **Do not write to disk.** Do not create files outside the input source directory. Do not create new directories." This belongs in `.claude/commands/research.md` and `.claude/commands/ingest.md` as a generic invariant.
+
+**Generalises to:** any wiki-kit deployment using subagents for source-summarisation.
+
+---
+
+## 2026-04-26 — capture_pdf.py marker GPU OOM under parallelism
+**Scope:** kit
+**Status:** open
+
+**Observation.** Launching ~15 `capture_pdf.py --engine marker` invocations in parallel on a shared-GPU machine triggers GPU out-of-memory errors. The error path exits **with code 0** (script succeeds) and prints a friendly message: `capture_pdf failed: GPU out of memory while running marker engine. Retry with --engine pymupdf for a CPU-based fallback (less faithful on figures/equations but reliable on contended GPU hosts).` But **no output file is written** — silent failure for any caller checking `os.path.exists()` rather than parsing stderr.
+
+**Two improvement candidates:**
+1. **Exit non-zero on engine failure.** A capture that produces no output should not exit 0. Existing capture-tool convention (per `capture_url`) is to exit non-zero on failure; `capture_pdf` should match.
+2. **Auto-fallback to pymupdf on GPU pressure.** Detect the GPU OOM, fall back to pymupdf transparently, log the fallback to stderr. Caller gets an output file; user gets visibility into the engine choice.
+
+Or, at minimum, document the parallel-safety constraint in the tool's `--help` output or CLAUDE.md ingest guidance. Currently the docs imply marker is safe-by-default for academic PDFs; users will hit this OOM unexpectedly.
+
+**Generalises to:** any wiki-kit that ingests >1 PDF with marker.
+
+---
+
+## 2026-04-27 — /weekly-brief commit reminder includes a gitignored path
+**Scope:** kit
+**Status:** open
+
+**Observation.** The `/weekly-brief` skill's commit-reminder template at the top of the brief reads:
+
+```
+cd <REPO_ROOT> && git add wiki/ raw/research/weekly-<YYYY-MM-DD>/ && git commit -m "weekly: <YYYY-MM-DD> radar sweep"
+```
+
+But the `wiki-kit` `.gitignore` ships with `raw/research/` ignored (line 22 of `.gitignore`):
+
+```
+# the committed product. Re-run `capture_pdf` if you need raw text again.
+raw/research/
+```
+
+Result: `git add raw/research/weekly-<DATE>/` silently no-ops on a fresh-capture path because the entire subtree is ignored. The user's commit only contains the `wiki/` diff; the captures stay local-only. The skill does not flag this — the commit reminder reads as if both paths get committed. Not a correctness bug (raw captures are reproducible from URLs, per the existing gitignore comment), but the commit reminder is misleading.
+
+**Two fix options:**
+1. **Drop `raw/research/<topic>/` from the commit reminder** — match the actual gitignore policy. The brief stays the audit trail; captures live local-only as designed.
+2. **Use `git add -f raw/research/<topic>/`** — explicit override of gitignore. Only correct if the kit's intended behaviour is for `/weekly-brief` captures to be tracked even though the rest of `raw/research/` is not.
+
+Recommend #1 — the gitignore comment ("Re-run `capture_pdf` if you need raw text again") signals the kit's intent is captures-are-reproducible, not captures-are-tracked.
+
+In the meantime, the 2026-04-27 weekly-brief in this wiki adjusted its commit reminder inline (`git add wiki/ master_notes.md`) and added a note explaining the raw-research gitignore status. Carrying that adjustment back into the kit's `weekly-brief.md` is a `/harvest` candidate.
+
+**Generalises to:** any wiki-kit deployment that ships with the default `.gitignore` and runs `/weekly-brief`.
+
+---
+
+## 2026-05-04 — `/weekly-brief` capture invocations assume `poetry` on PATH for non-login shell
+**Scope:** kit
+**Status:** open
+
+**Observation.** The `/weekly-brief` skill template's capture invocations are written as `poetry run python -m tools.capture_url --url ... --out raw/research/weekly-<DATE> --slug ...`. Under this Claude Code session, the `Bash` tool runs in a non-login shell that does *not* source the user profile that prepends `~/.local/bin` to PATH. Result: the first capture batch silently failed with `/bin/bash: line 1: poetry: command not found`. Each invocation exited 0 (the bash error message was the only output) and **created no output file**. Captures appeared to "complete" until I noticed the empty `raw/research/weekly-2026-05-04/` directory.
+
+**Workaround applied inline:** `export PATH="/home/david/.local/bin:$PATH" && poetry run python -m tools.capture_url ...`. Re-ran all 5 captures successfully under that PATH override.
+
+**Implication.** Two complementary fixes:
+
+1. **Skill template.** `.claude/commands/weekly-brief.md` (and likely `.claude/commands/research.md`, `.claude/commands/ingest.md`) should either prepend `~/.local/bin` to PATH explicitly in the documented invocation, or invoke poetry by full path (`/home/david/.local/bin/poetry`, or use an `env` shim). The current template assumes a login-shell PATH that `Bash` tool invocations don't get.
+2. **Capture-tool error path.** Worse than the skill issue: when the tool *itself* can't be found, the user-visible failure is just a shell error printed to stdout and exit 0. The capture wrappers (`tools/capture_url.py`, `tools/capture_pdf.py`) already exit non-zero on internal failures (per the 2026-04-26 `capture_pdf` GPU-OOM observation), but a *missing-poetry* failure happens before the wrapper ever runs. Consider: (a) a thin shell-wrapper script under `tools/bin/capture_url` that locates poetry and invokes it; (b) or a documentation note on the skill that the user must verify poetry availability.
+
+**Generalises to:** any wiki-kit deployment where `poetry` is installed via `pipx` or `~/.local/bin` and Claude Code invokes capture tools from a non-login shell. Likely affects most user-installed-poetry setups.
+
+### 2026-05-18 — capture_url stalls on JS-heavy news/registry domains
+Scope: kit
+Status: open
+
+`tools.capture_url` (Playwright `networkidle`) stalled out / produced thin captures on Axios, CPR, Denverite (first attempt), and federalregister.gov during the 2026-05-18 weekly-brief run — these sites never reach networkidle (telemetry/ads/long-poll) or serve a JS interstitial. Workaround used: substitute a primary-source equivalent (official bill page, DOJ proposed-final-judgment PDF) which captured cleanly. Recurring enough across runs to warrant a `--wait-until domcontentloaded` (or load) fallback option in capture_url, or a per-domain timeout-then-salvage path. Flagged for /harvest triage.
+
+### 2026-05-18 — /tmp weekly-brief filename collides across wikis on the same host
+Scope: kit
+Status: open
+
+`/weekly-brief` writes `/tmp/weekly-brief-<RUN_DATE>.{md,html}` with no per-repo namespacing. When two wikis on the same host run the weekly cron on the same date (observed 2026-05-18: `wiki-agentic-trends` ran first and left its brief at that path; this `wiki-collective-consumer-action` run then overwrote it). The wiki-copy at `wiki/weekly-briefs/<DATE>.md` is the durable audit trail so no data was lost, and the email is sent from the in-memory body, not re-read from /tmp — but the /tmp artifact is unreliable as a recovery copy under multi-wiki scheduling, and a poorly-timed run could in principle email the wrong wiki's body if a future change re-reads /tmp. Fix candidate: namespace the path as `/tmp/weekly-brief-<REPO_NAME>-<RUN_DATE>.{md,html}` (step 6 + step 8 in weekly-brief.md). Flagged for /harvest triage.

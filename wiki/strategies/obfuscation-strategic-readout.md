@@ -98,7 +98,38 @@ Applied to the wiki's broader mandate: obfuscation deployed *instead of* [[consu
 
 Practical read: **obfuscation belongs in the strategy portfolio as a tactical auxiliary to structural levers, not as the main game.** A specific use case: it makes sense as a *negotiation lever* — deploy it at scale to force the retailer/platform to *agree* to stop personalised pricing in exchange for the collective disabling the obfuscation. It makes less sense as a permanent state.
 
-### 6. The trust-in-confederates problem
+### 6. Adaptive sellers recover sublinear regret (added 2026-04-26)
+
+Naive contextual pricing using observed (manipulated) features incurs **linear regret Ω(T)** under strategic buyers — Theorem 1 of *Contextual Dynamic Pricing with Strategic Buyers* (arXiv 2307.04055; captured `raw/research/clawnet-adjacent-methods/18-contextual-pricing-strategic-buyers.md`). This is the formal proof that obfuscation works against an unsophisticated firm.
+
+**The qualification:** **adaptive sellers recover Õ(√T) regret** via a two-phase explore-then-exploit structure (Theorems 2 + 3):
+- Exploration uses uniform pricing (price independent of features → zero manipulation incentive → buyer reveals true features honestly).
+- Exploitation infers the buyer-equilibrium manipulation rule **x_t = x_t⁰ − A⁻¹β₀g'(·)** and prices accordingly.
+
+The cost-structure parameter (smallest eigenvalue λ_min(A) of the manipulation-cost matrix) determines the *regret penalty* — not whether learning succeeds. **Higher manipulation cost → smaller penalty for the seller, but learning still recovers sublinear regret.**
+
+Practical consequence for this readout's [[pricing-algorithm-taxonomy|Family 1 / Family 3]] effectiveness claim: obfuscation is high-effective against *naive* sellers; effectiveness *degrades over time* against sellers running adaptive multi-phase learning with repeat-buyer data. Tooling design should assume adaptive opponents and rotate manipulation strategies on a faster cadence than the seller's phase-cycle. See [[strategic-classification]] for the foundational framework and [[the-firms-view|§3]] for the firm-side framing.
+
+### 7. Disparate-impact externality of operator response (added 2026-04-26)
+
+The strongest theoretical argument *against* obfuscation as a sole-lever strategy. Source: Milli, Miller, Dragan & Hardt 2019 *The Social Cost of Strategic Classification* (FAccT '19; arXiv 1808.08460; captured `raw/research/clawnet-adjacent-methods/17-social-cost-strategic-classification.md`).
+
+**The mechanism.** When consumers obfuscate / game and the firm responds by tightening its decision threshold τ, the manipulation cost rises *for everyone* — and the *increment* falls hardest on those least able to pay it.
+
+**Three load-bearing theorems:**
+- **Theorem 3.1.** Institutional utility U_∆(τ) is quasiconcave in threshold τ; social burden B₊(τ) on positive (deserving) individuals is monotonically non-decreasing. Any increase in firm accuracy beyond the non-strategic optimum strictly increases the cost positive individuals must incur to be correctly classified. Unavoidable for outcome-monotonic cost functions.
+- **Theorem 4.1.** Under first-order stochastic dominance (disadvantaged group has lower outcome likelihoods conditional on being truly positive), the social *gap* G(τ) = B₊,b(τ) − B₊,a(τ) is positive and monotonically increasing in τ.
+- **Theorem 4.2.** With identical feature distributions but higher adaptation costs (κ ≥ 1), the social gap is non-negative and monotonically non-decreasing in τ.
+
+**FICO empirical anchor (n = 301,536):** with cost ratio κ = 2, threshold increase 60 → 70 multiplies the Black-white gap by ~2.5; κ = 3 gives ~4×.
+
+**Strategy-layer implication.**
+
+> Obfuscation-without-collective-leverage is a trap for disadvantaged groups. Individual-level strategic manipulation works for the wealthy. When firms respond by tightening, the manipulation cost rises for everyone — and the *increment* falls hardest on those who can't afford it. Aggregate consumer-side gaming therefore creates a **regressive equity externality** unless the lever is paired with collective constraint on firm response (regulation, antitrust, [[platform-cooperatives|exit pathway]]).
+
+This does not invalidate obfuscation as a lever — it bounds the conditions under which the lever is *durable for equity-conscious deployment*. A complete obfuscation strategy must pair the technical lever with collective-constraint mechanisms ([[noyb|strategic litigation]], [[buyer-cartels-antitrust|antitrust]]-aware framing, [[regulatory-responses|regulatory mobilisation]]) on firm response. The wiki's [[data-disruption-strategy-map]] platform-enforcement risk catalogue should add a new risk class for this externality. Cross-anchor: [[strategic-classification]] for the foundational framework, [[the-firms-view|§4]] for the firm-side framing.
+
+### 8. The trust-in-confederates problem
 
 Richards & Hartzog again: collective obfuscation "usually requires us to trust our confederates." A pricing-obfuscation co-op operator becomes the new single point of trust — what stops it from selling the member pool's real (pre-obfuscation) behavioural data to the very pricing operators it claims to counter? This is the same failure mode that made [[paypal-honey|Honey]] an extractive-drift case: tools positioned as consumer-side often become revenue-side.
 
@@ -256,9 +287,13 @@ This page is editorial synthesis of the reference-layer pages below. All substan
 
 - [[obfuscation]]
 - [[adversarial-data-poisoning]]
+- [[strategic-classification]] — foundational framework underpinning the §6 + §7 caveats added 2026-04-26
+- [[the-firms-view]] — firm-side framing of §6 (adaptive pricing) + §7 (threshold-tightening with disparate impact)
+- [[algorithmic-collective-action]] — coordinated-collective counterpart to individual-level obfuscation
 - [[browser-fingerprinting]]
 - [[possible-strategic-levers]]
 - [[lever-implementation-readout]]
 - [[collective-bargaining-for-data]]
 - [[data-cooperatives]]
 - [[regulatory-responses]]
+- [[buyer-cartels-antitrust]] — antitrust frame for any collective-constraint pairing of obfuscation
