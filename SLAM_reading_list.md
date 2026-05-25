@@ -20,7 +20,7 @@ Compiled 2026-05-24. Two tiers:
 5. **Depth Anything V2** (Part B §4) — closes our standing learned-monocular-depth gap; proven 40+ FPS on Orin NX via TensorRT.
 6. **NeRF/3DGS-SLAM survey** (Part B §8) — the map of the radiance-field-SLAM landscape; read to situate everything in §2/§3/§7.
 
-> **Landscape shift flagged for ingest:** our wiki currently states 3DGS-SLAM is desktop-GPU-only. The sweep found multiple real-time-on-Jetson results (GS-LIVO, RTGS, MemGS, VIGS-Fusion). This claim is **outdated and should be corrected once a source is captured** — see "Recommended ingests" at the end.
+> **Landscape shift — now ingested & corrected (2026-05-25):** our wiki previously stated 3DGS-SLAM is desktop-GPU-only. The sweep found multiple real-time-on-Jetson results (GS-LIVO, RTGS, MemGS, VIGS-Fusion). **GS-LIVO has been captured and ingested into [`wiki/learned-slam.md`](wiki/learned-slam.md), and the outdated claim has been corrected on [`wiki/slam.md`](wiki/slam.md) and [`wiki/indoor-cluttered-slam.md`](wiki/indoor-cluttered-slam.md)** (GS-LIVO: Jetson Orin NX, 48.3 ms/frame ≈ 20 Hz).
 
 ---
 
@@ -129,18 +129,18 @@ Web-sweep candidates. arXiv IDs confirmed unless flagged **(low-confidence — v
 
 ---
 
-## Recommended next step — capture & ingest the top candidates
+## Ingested (2026-05-25) → [`wiki/learned-slam.md`](wiki/learned-slam.md) ✅
 
-The sweep found URLs only (nothing captured). To turn the highest-value 🔎 items into wiki-grade, citable pages — and to **substantiate the 3DGS-on-edge correction** — the recommended `/research`-style ingest shortlist (edge-verified + sensor-matched first):
+The top-candidate shortlist below was captured and ingested into the new **[`wiki/learned-slam.md`](wiki/learned-slam.md)** synthesis page:
 
-1. **GS-LIVO** (2501.08672 + repo) — Jetson-verified LVI Gaussian SLAM; also the source that corrects our "3DGS desktop-only" claim.
-2. **Depth Anything V2** (2406.09414 + Jetson repo) — closes the learned-mono-depth gap with a real Orin deployment.
-3. **DPV-SLAM / DPVO** (2408.01654 + repo) — lightest learned visual SLAM to attempt on Orin.
-4. **iBTC** (HKU-MARS repo) + **IS-CAT** (Sensors) — learned place recognition for symmetric/featureless indoor (our hardest failure mode).
-5. **NeRF/3DGS-SLAM survey** (2402.13255) — anchors a future `learned-slam` synthesis page.
-6. **DFLIOM** (2410.02961) and **KN-LIO** (2501.04263) — the neural-LIO edge (verify repos).
+1. **GS-LIVO** (2501.08672 + repo) ✅ — Jetson-verified LVI Gaussian SLAM; corrected our "3DGS desktop-only" claim.
+2. **Depth Anything V2** (2406.09414 + Jetson repo) ✅ — closes the learned-mono-depth gap with a real Orin deployment.
+3. **DPV-SLAM / DPVO** (2408.01654 + repo) ✅ — lightest learned visual SLAM to attempt on Orin.
+4. **iBTC** (HKU-MARS repo) ✅ — learned place recognition for symmetric/featureless indoor. **IS-CAT** (Sensors/MDPI) ✗ — bot-walled; **manual-download follow-up** (download the PDF from mdpi.com/1424-8220/24/2/582 and drop into `raw/research/learned-slam/`).
+5. **NeRF/3DGS-SLAM survey** (2402.13255) ✅ — landscape framing in `learned-slam`.
+6. **DFLIOM** (2410.02961) and **KN-LIO** (2501.04263) ✅ — the neural-LIO edge.
 
-Say the word and I'll run the capture + ingest (drop the MDPI/ScienceDirect-hosted ones to manual-download, per known bot-walls) and fold them into the wiki — including correcting the 3DGS-edge claim on [`wiki/indoor-cluttered-slam.md`](wiki/indoor-cluttered-slam.md) and [`wiki/slam.md`](wiki/slam.md).
+**Still uncaptured (next candidates if you want to go deeper):** the §3 edge-3DGS cluster beyond GS-LIVO (RTGS, MemGS, VIGS-Fusion), the §4 depth models beyond DAv2 (Metric3D v2, UniDepth V2, Prompt Depth Anything), and the §7 open-vocab semantic-SLAM group (OVO-SLAM et al.). Say the word to capture any of these.
 
 ---
 

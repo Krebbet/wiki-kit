@@ -25,7 +25,7 @@ Event cameras are a third sensing path for high-speed/low-light regimes where st
 
 ## On a drone
 
-SLAM output is not the end — the estimated pose is fused into the flight controller's state estimator (ArduPilot EKF3 / PX4 EKF2 via MAVROS `vision_pose`) so the aircraft can hold position, fly waypoints, and take off / land GPS-denied ([[slam-fc-integration]]). Onboard compute gates which methods are deployable; dense (3DGS) SLAM still mostly runs on desktop GPUs, while semantic-landmark and LIO methods run on drone-class compute ([[nano-drone-compute]], [[fast-lio-mid360-orin]]).
+SLAM output is not the end — the estimated pose is fused into the flight controller's state estimator (ArduPilot EKF3 / PX4 EKF2 via MAVROS `vision_pose`) so the aircraft can hold position, fly waypoints, and take off / land GPS-denied ([[slam-fc-integration]]). Onboard compute gates which methods are deployable: LIO and semantic-landmark methods run on drone-class compute, and as of 2025 even dense 3D-Gaussian-Splatting SLAM has been *demoed* real-time on a Jetson Orin NX (GS-LIVO, ~20 Hz) — it is no longer desktop-only ([[learned-slam]], [[nano-drone-compute]], [[fast-lio-mid360-orin]]). Learning-based SLAM/odometry/depth methods are surveyed in [[learned-slam]].
 
 ## Maturity and indoor failure modes
 
@@ -46,4 +46,5 @@ Synthesis hub assembled from existing wiki pages (each carries its own raw-sourc
 - [[drone-sensors-for-autonomy]] — sensor SWaP/capability comparison
 - [[lidar-vs-vision-autonomy]] — the open LiDAR-vs-vision conflict
 - [[drone-autonomy-state]] — deployment-maturity context
+- [[learned-slam]] — the AI/learning-based methods layer (neural LIO, learned VIO, edge 3DGS-SLAM, depth foundation models, learned place recognition)
 - [[nano-drone-compute]] — onboard-compute envelope that gates SLAM methods

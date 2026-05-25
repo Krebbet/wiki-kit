@@ -50,7 +50,7 @@ Classical VIO and LiDAR-inertial odometry (see [[visual-inertial-slam]], [[lidar
 
 - **Multi-floor transition.** Elevator rides remove visual and LiDAR features simultaneously; IMU alone drifts in seconds. No published system handles the full continuous multi-floor trajectory reliably; the NUFR-M3F dataset documents this as an open problem. [07-arxiv-2306-08522]
 
-- **Onboard compute for dense methods.** 3DGS-SLAM variants (GLC-SLAM, VIGS SLAM) run on desktop GPUs (RTX 3090, RTX A5000); none demonstrated on drone-class compute. Semantic-landmark methods (SlideSLAM, Active MS-SLAM) run on Intel NUC i7 onboard but sacrifice map density. See [[nano-drone-compute]].
+- **Onboard compute for dense methods.** The RGB-D 3DGS-SLAM variants here (GLC-SLAM, VIGS SLAM) run on desktop GPUs (RTX 3090, RTX A5000). **Update (2025): no longer a blanket limit** — GS-LIVO has *demoed* real-time Gaussian-Splatting LiDAR-inertial-visual SLAM on a Jetson Orin NX 16 GB (48.3 ms/frame ≈ 20 Hz; 1.2–1.5 GB vs 17–21 GB for desktop GS-SLAM), albeit on a ground/handheld rig, not in flight ([[learned-slam]]). Semantic-landmark methods (SlideSLAM, Active MS-SLAM) run on Intel NUC i7 onboard but sacrifice map density. See [[nano-drone-compute]], [[learned-slam]].
 
 - **Lighting variability.** Sunlight through windows, glare, and exposure changes cause VIO front-end failures in grocery-store and library datasets; no tested system adapts exposure-robustly without manual tuning. [11-amazon-indoor-mapping]
 
