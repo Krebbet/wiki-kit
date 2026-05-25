@@ -191,6 +191,14 @@ The paper synthesizes four practitioner-facing implications from the empirical s
 
 The paper also notes that architectural pluralism in Agent harnesses is partly a consequence of "genuinely competing infrastructural commitments, not transient immaturity."
 
+## ADR-Bench empirical data for the safety dimension; Sensor as audit-gap response (2026-05-25)
+
+[[security/adr-uber-mcp-detection]] (arXiv 2605.17380, MLSys 2026 Industry Track) intersects this page on two axes.
+
+**Safety dimension — empirical benchmark data:** ADR-Bench evaluates harness-level threat detection across indirect prompt injection, tool shadowing, tool rug pull, control-flow hijacking, and Agent Flayer attack classes. It provides the first published benchmark specifically targeting the safety mechanisms dimension (§4 above) for MCP-connected harnesses. ADR-Bench absolute numbers are author-constructed/author-run — collect-but-confirm; treat as a directional calibration point for the safety dimension, not a settled external standard.
+
+**No-audit gap — Sensor as precision-first substrate:** The 40%-of-projects-have-no-audit finding (Table 8) names a structural gap. ADR's endpoint Sensor targets this gap directly: it reconstructs the full causal chain (user prompt → agent reasoning → MCP tool calls → environment context) by parsing Cursor/Cline/Claude Code local SQLite/JSONL caches, producing structured audit telemetry without requiring harness-level instrumentation. The system operates at a precision-first operating point — a two-tier LLM Detector (GPT-4o triage / Claude Sonnet 4 deep reasoning) — consistent with the enterprise / tamper-evident audit tier this page's Table 8 shows only 5% of harnesses reach. Production evidence (10+ months, 7,200+ endpoints, hundreds of credential exposures found) is credible as a deployment signal.
+
 ## SWE-Judge as agent-side response to audit gaps
 
 SWE-Cycle (arXiv 2605.13139) introduces SWE-Judge — an execution-capable Agent-as-a-Judge combining static code review with dynamic execution and fault injection. SWE-Judge uses adaptive eval scripting in 34.6% of evaluations to probe edge-case behavior that static unit-test pass/fail misses. This is an agent-side response to the audit gaps this page documents: the 40% of harnesses with no audit capability at all, and the finding that structured audit reaches only 20% of the corpus. SWE-Judge's fault injection operationalizes the "tamper-evident" audit tier at eval time rather than at harness-design time.
@@ -208,3 +216,4 @@ SWE-Cycle (arXiv 2605.13139) introduces SWE-Judge — an execution-capable Agent
 - [[conflicts/agents-md-effectiveness]] — this paper's 40%-no-audit finding and Non-co-occurrence 3 add a further data point showing governance does not follow capability automatically
 - [[evaluation/agents-md-eval]] — scope-of-finding tension documented above; file-persistent context management is the corpus majority here while agents-md-eval found LLM-generated context files hurt performance
 - [[evaluation/swe-cycle]] — SWE-Judge's adaptive eval scripting and fault injection are an agent-side response to the audit gaps (40% no-audit) this page documents
+- [[security/adr-uber-mcp-detection]] — ADR-Bench provides empirical safety-dimension benchmark data for MCP-connected harnesses (collect-but-confirm); Sensor addresses the no-audit gap with endpoint causal-chain telemetry at a precision-first operating point; deployed 10+ months across 7,200 endpoints

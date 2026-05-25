@@ -101,6 +101,32 @@ Cognition's Windsurf 2.0 integration with Devin canonizes the local-plan / cloud
 
 Source: `raw/research/weekly-2026-04-22/01-windsurf-devin-local-cloud-topology.md` (Cognition blog, 2026-04).
 
+## Extension: harness-state formality spectrum and topology-complexity inversion (2026-05-25)
+
+[[patterns/code-as-agent-harness]] (arXiv 2605.18747) contributes the most systematic topology treatment the wiki has ingested to date. Its central organising unit is not network shape but **shared-harness-state formality** — a four-level spectrum:
+
+1. **Implicit / file-only** — agents coordinate only through files or environment variables; no declared schema. Most common in the wild; root of brittleness.
+2. **Repository-based** — a shared code repository as coordination substrate (PR-driven state).
+3. **Execution-based** — objective oracle signals (test suites, linters, CI pass/fail) constitute the harness state; agents converge on green, not on agreement.
+4. **Blackboard / shared-state** — explicit shared memory with declared schema; most formal.
+
+**Key reframe for the topology taxonomy**: the survey finds that elaborate adaptive topologies — dynamic DAGs, workflow mutation, mid-run graph restructuring — are statistically concentrated in the implicit/file-only tier. The causal reading: **topology complexity inversely correlates with substrate formality**. Teams that lack a formal shared substrate compensate with increasingly elaborate topology. The implication is that what the field often treats as architectural sophistication (rich dynamic orchestration) is a symptom of a missing substrate, not an advance beyond it. This is a meaningful reframe: the four topologies above, and the mitigation classes below, should be read against the substrate-formality axis, not just against network shape.
+
+The survey also supplies two further taxonomies of practical use:
+
+- **Convergence-criteria taxonomy** — six families: *correctness* (test pass/fail), *security* (policy checks), *performance* (latency/throughput thresholds), *score-based* (LLM-as-judge or metric), *consensus* (majority vote across agents), *implicit* (no explicit criterion; stop on timeout or token budget).
+- **Multi-agent role taxonomy** — Manager / Planner / Coder / Reviewer / Tester / Executor, with the survey noting that the Manager and Reviewer roles are most often the substrate-formality bottleneck (they are the ones holding shared state in their context windows rather than in declared infrastructure).
+
+The harness-state convergence-criteria taxonomy subsumes the implicit convergence failure mode flagged under *Mitigation classes* above (the "declare-done-prematurely" failure in [[effective-harnesses]] is an implicit-convergence-criteria failure; AHE's change-manifest-verified-against-task-delta loop is a score-based + correctness hybrid). The role taxonomy cross-walks cleanly with the Anthropic five-patterns vocabulary: Manager → star hub; Planner → typically shared across a small mesh; Coder / Tester / Executor → leaf workers.
+
+**MOSS as a production data point for the self-evolving-harness mitigation class** (2026-05-25): [[patterns/moss-production-self-evolution]] (arXiv 2605.22794) is a concrete production instantiation of the eighth mitigation class ([[agentic-harness-engineering]]'s observability-driven self-evolution loop), moving beyond AHE's benchmark-gated development loop into a full deployment lifecycle:
+
+1. **Directed failure-batch curation** — instead of evolving against a static benchmark, MOSS accumulates structured failure batches from live traffic, weighted by severity and recency.
+2. **Ephemeral-container verification** — candidate harness changes are validated inside an isolated throwaway container before any production exposure; the container is the execution-based substrate in the survey's formality spectrum.
+3. **User-consent-gated in-place container swap with health-probe rollback** — accepted changes replace the live container in-place, but only after user consent; a health probe monitors post-swap; rollback is automatic on probe failure.
+
+MOSS is the first wiki entry that closes the loop from benchmark-validated self-evolution all the way through to production deployment with rollback. It sits squarely in the execution-based tier of the harness-state formality spectrum (CI/health-probe signals drive convergence) and demonstrates that the self-evolving-harness class is production-viable, not just lab-viable.
+
 ## Source
 
 - `raw/research/effective-agentic-patterns/08-arxiv-2601-12560-agentic-ai-taxonomy.md` — "Agentic Artificial Intelligence: Architectures, Taxonomies, and Evaluation of LLM Agents" (Arunkumar V, Anna University; Gangadharan G.R., NIT Tiruchirappalli; Rajkumar Buyya, University of Melbourne; arXiv 2601.12560, January 2026).
@@ -134,3 +160,5 @@ Source: `raw/research/weekly-2026-04-22/01-windsurf-devin-local-cloud-topology.m
 - [[notion-token-town]] — progressive tool disclosure + manager-agent topology + 5-rebuild data point on representation-fit
 - [[externalization-survey]] — unifying vocabulary (memory + skills + protocols + harness as cognitive environment)
 - [[alphaevolve-impact]] — single-agent + evaluator at vendor scale; positive data point for high-Metric-Freedom = single-agent
+- [[patterns/code-as-agent-harness]] — four-level harness-state formality spectrum; topology-complexity-inversely-correlates-with-substrate-formality reframe; convergence-criteria + role taxonomies (arXiv 2605.18747)
+- [[patterns/moss-production-self-evolution]] — production instantiation of the self-evolving-harness class: failure-batch curation → ephemeral-container verification → consent-gated container swap with health-probe rollback (arXiv 2605.22794)

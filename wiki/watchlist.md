@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-18
+last_reviewed: 2026-05-25
 ---
 
 # Watchlist
@@ -8,6 +8,30 @@ last_reviewed: 2026-05-18
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
 
 ---
+
+## Week of 2026-05-25
+
+Surplus from this week's sweep — the 5 captured items are recorded in `wiki/log.md` (Cursor cloud-agents; EvoMemBench 2605.18421; MOSS 2605.22794; ADR 2605.17380; Code-as-Agent-Harness survey 2605.18747). The dominant trend this week was an **agent-evaluation-validity** cluster (6+ papers questioning whether benchmarks/LLM-judges measure what they claim); one strong representative was captured indirectly via the methods captured, the rest are below. All arXiv IDs marked **(verified)** were curl-checked against arxiv.org titles this run; **(unverified)** IDs came from the trend-scanners and were not independently confirmed.
+
+### Agent-evaluation validity (the week's dominant academic trend)
+- **Can Agent Benchmarks Support Their Scores? — Evidence-Supported Bounds for Interactive-Agent Evaluation (arXiv 2605.10448, verified)** — https://arxiv.org/abs/2605.10448 — Wraps existing benchmarks (AndroidWorld, AgentDojo, AppWorld, τ-bench, MiniWoB) without modifying them, assigning Evidence Pass/Fail/Unknown labels and reporting uncertainty-bounded scores; catches benchmarks that check surface signals rather than real state changes. Directly load-bearing for the open [[conflicts/swe-bench-contamination]] (can solve-rate numbers be trusted?). Capture if it becomes the canonical benchmark-validity citation.
+- **Time to REFLECT — Can We Trust LLM Judges for Evidence-based Research Agents? (arXiv 2605.19196, verified)** — https://arxiv.org/abs/2605.19196 — Yale + IBM meta-eval benchmark; even the best LLM judges hit <55% accuracy on fine-grained agentic failure detection. Direct tension/companion for [[patterns/sierra-monitor-eval-of-evals]]'s "calibrate your monitors" thesis. Capture if a second LLM-judge-reliability source corroborates.
+- **Holistic Evaluation and Failure Diagnosis of AI Agents (arXiv 2605.14865, verified)** — https://arxiv.org/abs/2605.14865 — Pairs top-down agent-level diagnosis with bottom-up span-level evaluation on TRAIL/GAIA/SWE-bench; holds localisation accuracy as traces grow long (unlike baselines). Method-side complement to the two above. Capture if failure-diagnosis-as-a-method recurs.
+- **What Twelve LLM-Agent Benchmark Papers Disclose About Themselves — a Pilot Audit (arXiv 2605.21404, unverified)** — https://arxiv.org/abs/2605.21404 — Reproducibility/transparency audit of 12 canonical agent benchmarks + an open scoring schema; motivated by the same model+benchmark pair disagreeing across papers (echoes our own LoCoMo-ranking-flips finding). Verify ID before capture.
+
+### Multi-agent reliability / topology
+- **AgentCollabBench — Diagnosing When Good Agents Make Bad Collaborators (arXiv 2605.08647, verified)** — https://arxiv.org/abs/2605.08647 — 900 human-validated tasks isolating four topology-linked failure modes (instruction decay, false-belief contagion, context leakage, tracer durability); topology explains 7–40% of variance — scaling model intelligence is not sufficient. Strong fit for [[patterns/topology-taxonomy]]. Capture if a second source corroborates the topology-variance framing.
+- **TraceFix — Repairing Agent Coordination Protocols with TLA+ Counterexamples (arXiv 2605.07935, unverified)** — https://arxiv.org/abs/2605.07935 — Formal-methods angle: LLM synthesises a PlusCal protocol, TLA+ model-checker counterexamples drive repair until verification passes. Novel verification-first coordination angle absent from the wiki. Verify ID; capture if formal-verification-of-coordination gains a second signal.
+
+### Harness self-evolution / runtime adaptation (adjacent to this week's MOSS capture)
+- **Adapting the Interface, Not the Model — Runtime Harness Adaptation for Deterministic LLM Agents (arXiv 2605.22166, verified)** — https://arxiv.org/abs/2605.22166 — Claims 88.5% average relative improvement across 18 frozen LLM backbones / 7 benchmarks by adapting the harness runtime layer (collect-but-confirm on the headline number). Twin to [[patterns/moss-production-self-evolution]] on the adapt-the-harness-not-the-model axis. Capture if a comparison against MOSS/AHE lands.
+- **The Log is the Agent — Event-Sourced Reactive Graphs for Auditable, Forkable Agentic Systems (arXiv 2605.21997, verified)** — https://arxiv.org/abs/2605.21997 — Append-only event log as ground-truth agent state → deterministic replay + cheap forking (open-sourced as `activegraph`). Code-as-substrate / auditability angle adjacent to [[patterns/code-as-agent-harness]] and the new [[security/adr-uber-mcp-detection]] causal-chain telemetry. Capture if event-sourcing-for-agents recurs.
+
+### Coding-agent evaluation (carry-forward)
+- **SWE-Chain — Benchmarking Coding Agents on Chained Release-Level Package Upgrades (arXiv 2605.14415, verified)** *(carry-forward from 2026-05-18)* — https://arxiv.org/abs/2605.14415 — 9 packages, 155 version transitions; long-horizon continuous-maintenance regime not covered by [[evaluation/swe-cycle]]. Got a second signal this week. Capture if cited as the distinct long-horizon-maintenance benchmark.
+
+### Frameworks / agent-native infrastructure (vendor; Cursor cloud-agents captured as the anchor)
+- **Agent-native cloud/runtime cluster** — LangChain "Managed Deep Agents" (hosted Deep Agents runtime, https://www.langchain.com/blog/introducing-managed-deep-agents); Latent Space "Giving Agents Computers" (Daytona — 60ms cold-start, 850k sandboxes/day, https://www.latent.space/p/daytona); Latent Space "Railway: The Agent-Native Cloud" (https://www.latent.space/p/railway); Sierra τ³-Bench (knowledge + voice agent eval, https://sierra.ai/blog/bench-advancing-agent-benchmarking-to-knowledge-and-voice). Same-week vendor signal that agent-compute/runtime is becoming a distinct infra category — paired with this week's captured [[deployments/cursor-cloud-agents]]. Capture whichever gets a full architecture writeup first.
 
 ## Week of 2026-05-18
 

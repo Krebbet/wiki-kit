@@ -104,6 +104,16 @@ A wider scan of open-source agent-memory systems (`raw/research/oss-agent-memory
 
 **LoCoMo ranking flips by harness (2026-05-25):** the [[memori]] paper (arXiv 2603.19935) reports Zep at 79.09% overall on LoCoMo and Mem0 at 62.47% (Zep ≫ Mem0), with the competitor rows *borrowed from Du et al. 2025* rather than re-run. But [[mem0]]'s own LoCoMo table has Mem0 (J 66.88) marginally *ahead* of Zep (J 65.99). Same benchmark, two harnesses → not only different absolute numbers but a **reversed Mem0-vs-Zep winner.** This is the sharpest concrete case yet that cross-paper LoCoMo / LongMemEval rankings cannot be stacked; only matched-harness comparisons (same reader model, same retrieval budget, same judge) carry weight. The practical rule for the wiki: record each system's benchmark number *with its harness*, and never build a leaderboard across papers.
 
+### 2026-05-25: EvoMemBench — extraction-failure on knowledge tasks, recovery on execution tasks
+
+[[memory/evomembench]] (arXiv 2605.18421) benchmarks 15 agent-memory methods on a 2×2 axis: scope (in-episode / cross-episode) × content (knowledge-oriented / execution-oriented) across 6 datasets. All extraction-based methods use a DeepSeek-V3.2 backbone (a harness constraint — numbers are NOT comparable cross-backbone with GroupMemBench or LongMemEval; consistent with the recurring "record each number with its harness" rule).
+
+**On KNOWLEDGE tasks**, EvoMemBench is the second independent empirical data point for the no-extraction / verbatim-first pole (after [[memory/groupmembench]]): long-context LLM baselines (Gemini-3-Flash ranks #1 overall) and BM25 beat or match extraction-based general long-term memory (Mem0, A-MEM, MemOS). On easy cross-episode knowledge, extraction methods trail even the no-memory DeepSeek-V3.2 baseline — e.g., Mem0 44.6% / A-MEM 43.8% vs no-memory 52.1%. On the hardest multi-hop FactConsolidation task, all memory methods collapse to 1–7% vs Gemini-3-Flash 58%. Token cost: memory-augmented methods use 2–5× the tokens of the no-memory baseline.
+
+**Key nuance — EXECUTION tasks change the picture:** on execution-oriented tasks, procedural memory (ReasoningBank/AWM) and extraction-based methods ARE competitive or lead. The best memory method is +14.5 pp over the no-memory baseline at 16K context, shrinking to ~+8 pp at 128K. Memory helps most when context is tight; as context budgets grow, the extraction advantage erodes but does not vanish the way it does on knowledge tasks.
+
+**Implication for this conflict:** EvoMemBench refines rather than simply reinforces the verbatim/no-extraction pole. The knowledge task evidence supports Position 1/3 on the same terms GroupMemBench does. But the execution task evidence shows that extraction-based methods retain meaningful lift for *procedural* memory at constrained budgets — a regime distinction the reconciling-axes table's "Query type" row was gesturing at but lacked direct evidence for. The conflict remains OPEN; the new data tightens the "when" rather than resolving the "who wins."
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
@@ -137,3 +147,4 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[claude-mem]] — 2026-05-23 addition; extract-pole CC community plugin (AI-compress, ChromaDB+SQLite).
 - [[graphiti]] / [[cognee]] / [[supermemory]] / [[memori]] / [[mcp-memory-server]] — 2026-05-24; further extract-pole open-source instances (Graphiti adds bi-temporal automated conflict resolution; Memori extracts from agent execution). Illustrative, no new evidence.
 - [[claude-self-reflect]] — 2026-05-24; verbatim-with-index instance (conversation-history indexer) that also ships an optional extract layer — the straddle made concrete.
+- [[memory/evomembench]] — 2026-05-25; second independent empirical data point for no-extraction pole on knowledge tasks; first direct evidence that extraction-based methods retain lift on execution tasks at constrained context budgets — refines the conflict's "Query type" axis.

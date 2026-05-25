@@ -41,6 +41,16 @@ The MCP 2026 roadmap signals the protocol's transition from developer experiment
 
 The roadmap's *governance maturation* and *enterprise readiness* items are no longer theoretical; Agent 365 is the first vendor to treat them as shippable product. Architectural caveat: this is a vendor product spec, not an empirical performance result — the post is silent on agent-discovery accuracy, registry-sync latency, false-positive rates, or any throughput numbers (see [[microsoft-agent-365#what-the-post-does-not-say]]).
 
+## MCP-native threat surface and detection substrate (2026-05-25)
+
+[[security/adr-uber-mcp-detection]] (arXiv 2605.17380, MLSys 2026 Industry Track) provides two things this page's governance and audit-trail gap sections lack: a concrete enumeration of MCP-specific attack surface, and a deployed system that fills the observability hole.
+
+**MCP-native threat model enumerated by ADR:** indirect prompt injection via MCP response, Agent Flayer (agent-level context manipulation), tool shadowing (a malicious server registering a tool name that collides with a trusted one), tool rug pull (server swapping tool behavior post-registration), and control-flow hijacking via crafted tool output. These are not generic LLM threats — each exploits the MCP transport and tool-registration surface specifically.
+
+**Sensor as causal-chain telemetry substrate:** ADR's endpoint Sensor reconstructs the full causal chain — user prompt → agent reasoning → MCP tool calls → environment context — by parsing Cursor/Cline/Claude Code local SQLite/JSONL caches. This is precisely the audit-trail observability the enterprise readiness section names as missing from the MCP protocol. The Sensor operates at the endpoint rather than at a protocol layer, meaning it fills the gap without waiting for protocol-level audit standardization.
+
+**Production evidence:** Deployed 10+ months across 7,200+ corporate endpoints, 10k+ daily sessions; found hundreds of credential exposures. Deployment scope is credible (primary source, MLSys Industry Track). ADR-Bench absolute numbers are author-constructed/author-run — collect-but-confirm.
+
 ## Practitioner MCP-vs-CLIs framing (Notion + OpenAI Frontier, 2026)
 
 Two practitioner sources captured the week of 2026-05-04 surface explicit MCP-vs-CLI tradeoffs that the protocol roadmap does not engage:
@@ -71,3 +81,4 @@ Two practitioner sources captured the week of 2026-05-04 surface explicit MCP-vs
 - [[externalization-survey]] — protocols-as-externalization (§5); MCP as canonical agent-tool externalization.
 - [[direct-corpus-interaction]] — third (academic) data point alongside Notion + OpenAI Frontier in the MCP-vs-CLIs framing; reframes the question as **interface resolution** (does the abstracted retrieval surface preserve enough information for the agent to reason effectively?) rather than just token economics. Argues that for capable agents on workspace-scale corpora, raw `grep`/`bash` traversal beats top-k retrieval interfaces by +11 pp at lower cost. Implies MCP server design should expose `grep`/`find` primitives over data substrates rather than pre-mediated top-k APIs.
 - [[agent-development-lifecycle]] — Govern phase overlap (cost / tool-access / discoverability are the same gaps the 2026 MCP roadmap targets at the protocol layer).
+- [[security/adr-uber-mcp-detection]] — production MCP-security system that enumerates the MCP-specific attack surface (tool shadowing, rug pull, control-flow hijacking, Agent Flayer) and fills the audit-trail gap via endpoint Sensor causal-chain telemetry; deployed 10+ months across 7,200 endpoints.

@@ -96,6 +96,12 @@ The paper explicitly compares against three concurrent harness-engineering prima
 
 SWE-Cycle (arXiv 2605.13139) provides a formal benchmark framing for the long-horizon coding-agent autonomy gap that observability-driven harness evolution tries to close. Its FullCycle task requires agents to handle environment reconstruction, implementation, and test generation in a single autonomous session without pre-configured scaffolding — exactly the coherence regime AHE's evolved middleware and memory components target. The reported <14% FullCycle solve rate quantifies how far agents remain from the full-lifecycle autonomy that AHE's harness evolution is designed to close.
 
+## Extension note (2026-05-25)
+
+**MOSS as production counterpart** — MOSS (arXiv 2605.22794, [[patterns/moss-production-self-evolution]]) is the production-deployment counterpart to AHE. Both run an LLM-driven loop that evolves the agent harness itself, but the two systems diverge sharply on signal source and deployment model. AHE is observability-driven and benchmark-gated: the evolution loop runs against Terminal-Bench 2, uses minimal scaffolds, and produces no deployed artifact. MOSS is driven by directed real-user failure batches and carries a full production deployment lifecycle: ephemeral-container verification → user-consent-gated in-place container swap → 90-second health-probe rollback. MOSS rewrites harness source code (routing, hooks, state management); AHE evolves discrete harness components (tools, memory, middleware, system prompt) within a read-only-outside-workspace boundary.
+
+**Framing gap to note honestly.** MOSS's Table 1 claims no prior application-level self-evolving system touches the harness and does not cite AHE. AHE clearly does evolve the harness layer. The reconciliation MOSS implies is "academic minimal scaffolds (AHE) vs application-level production substrates (MOSS)" — a plausible distinction, but it leaves AHE as the academic-setting precedent that MOSS's novelty claim overlooks rather than engages.
+
 ## Related
 
 - [[effective-harnesses]] — Anthropic's hand-designed counterpart; AHE explicitly cites it (ref [29]).
@@ -113,3 +119,4 @@ SWE-Cycle (arXiv 2605.13139) provides a formal benchmark framing for the long-ho
 - [[externalization-survey]] — places AHE under the "self-evolving harnesses" emerging direction (§8.3).
 - [[skillos]] — closest peer 2026 self-evolving system; same frozen-base + RL-on-external-structure pattern, scoped to skills only (vs whole-harness here). Different attribution mechanism (grouped-task downstream rewards vs change-manifest verification). Independent confirmation that **executor-grounded training matters more than curator scale** (8B-RL beats Gemini-2.5-Pro-without-RL) parallels AHE's structural-components-carry-the-lift finding.
 - [[agent-development-lifecycle]] — vendor-side (LangChain) Build → Test → Deploy → Monitor framing; AHE is the machine-evolved automation of the Monitor → Iterate → Build feedback loop.
+- [[patterns/moss-production-self-evolution]] — production counterpart; same LLM-driven harness-evolution loop, failure-batch signal instead of benchmark, full container-swap deployment lifecycle. MOSS rewrites harness source code where AHE evolves discrete harness components.
