@@ -90,6 +90,20 @@ The verbatim-vs-extract axis is now directly visible to practitioners as a choic
 
 For the full practitioner landscape across these options, see [[claude-code-memory-ecosystem]]. Status remains OPEN; these product instances confirm the doctrinal axis has real-world traction but do not constitute a benchmark comparison.
 
+### 2026-05-24: more open-source instances (illustrative, not new evidence)
+
+*Note: as with the 2026-05-23 instances, these confirm the axis exists as a product choice; they add **no new matched-corpus evidence** and do not change the status.*
+
+A wider scan of open-source agent-memory systems (`raw/research/oss-agent-memory/`) adds instances on both poles:
+
+- **Extract pole (more instances):** [[graphiti]] (Zep's OSS core — LLM-extracted entities/relations carrying **bi-temporal** validity windows with automatic fact invalidation; a worked example of *automated conflict resolution* on this pole), [[cognee]] (graph+vector `cognify` transform), [[supermemory]] (fact extraction + static/dynamic user profiles + contradiction resolution; hosted engine), [[memori]] (LLM-extracted typed memory from agent *execution* + chat), and the official [[mcp-memory-server]] (the LLM decides what to write as atomic observations).
+- **Verbatim-with-index pole:** [[claude-self-reflect]] indexes raw `~/.claude` conversation JSONL into a local vector store and returns full conversations verbatim — the same posture as MemPalace's raw mode. The **conversation-history indexers** `claude-conversation-search-mcp` (Tantivy/BM25) and `cowork-history` (SQLite FTS5 + macOS Spotlight) are pure-keyword verbatim instances of the same pattern (catalogued at [[claude-code-memory-ecosystem]]) — BM25/FTS over raw transcripts with no extraction step, structurally [[direct-corpus-interaction]]-adjacent.
+- **The straddle made concrete:** claude-self-reflect ships *both* — verbatim base indexing **plus** an opt-in "AI Narratives" LLM-enrichment layer — demonstrating that verbatim and extract are composable layers, not a forced either/or.
+
+**Metric-comparability hazard (recurring):** [[supermemory]] claims "#1 LongMemEval 81.6%" (end-to-end QA, self-graded via its own MemoryBench framework) while [[mempalace]] claims 96.6% LongMemEval (recall@5). Different metrics, different harnesses — **not rankable against each other**, exactly the trap the *Metric* row of the reconciling-axes table warns about.
+
+**LoCoMo ranking flips by harness (2026-05-25):** the [[memori]] paper (arXiv 2603.19935) reports Zep at 79.09% overall on LoCoMo and Mem0 at 62.47% (Zep ≫ Mem0), with the competitor rows *borrowed from Du et al. 2025* rather than re-run. But [[mem0]]'s own LoCoMo table has Mem0 (J 66.88) marginally *ahead* of Zep (J 65.99). Same benchmark, two harnesses → not only different absolute numbers but a **reversed Mem0-vs-Zep winner.** This is the sharpest concrete case yet that cross-paper LoCoMo / LongMemEval rankings cannot be stacked; only matched-harness comparisons (same reader model, same retrieval budget, same judge) carry weight. The practical rule for the wiki: record each system's benchmark number *with its harness*, and never build a leaderboard across papers.
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
@@ -121,3 +135,5 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[memory/memory-evolution-survey]] — 2026-05-18 addition; Storage→Reflection→Experience axis locates each position on an abstraction-depth continuum.
 - [[claude-code-memory-ecosystem]] — 2026-05-23 addition; practitioner landscape where the doctrinal split is visible as a product choice.
 - [[claude-mem]] — 2026-05-23 addition; extract-pole CC community plugin (AI-compress, ChromaDB+SQLite).
+- [[graphiti]] / [[cognee]] / [[supermemory]] / [[memori]] / [[mcp-memory-server]] — 2026-05-24; further extract-pole open-source instances (Graphiti adds bi-temporal automated conflict resolution; Memori extracts from agent execution). Illustrative, no new evidence.
+- [[claude-self-reflect]] — 2026-05-24; verbatim-with-index instance (conversation-history indexer) that also ships an optional extract layer — the straddle made concrete.

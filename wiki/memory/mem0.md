@@ -110,11 +110,26 @@ The preceding sections document the Mem0 *paper* and open-source library. This s
 
 The Pre-Compaction and Task-Completed hooks are the concrete "extraction at named lifecycle events" form of Mem0's extract-and-consolidate doctrine — the same doctrinal axis examined at [[conflicts/verbatim-vs-extracted-memory]]. For the broader practitioner landscape of Claude Code memory options (including community plugins that operate on the same hooks), see [[claude-code-memory-ecosystem]]. The closest community-plugin peer on the extract-and-inject axis is [[claude-mem]].
 
+## AWS deployment (ElastiCache for Valkey + Neptune Analytics)
+
+The AWS Database Blog (`02-aws-mem0-persistent-memory.md`, AWS-official, 2026) documents a **self-managed** reference architecture for Mem0 Open Source on AWS storage — the concrete "AWS teams" deployment pattern for the doctrine above:
+
+- **Mem0 OSS** = the memory-orchestration layer (extraction, storage, retrieval, decay), unchanged from the paper.
+- **Amazon ElastiCache for Valkey** (requires Valkey 8.2+) = the managed in-memory **vector store** for semantic retrieval.
+- **Amazon Neptune Analytics** = the in-memory **graph store** for entity relationships + multi-hop traversal (the Mem0g role, on AWS infrastructure).
+- **Amazon Bedrock AgentCore Runtime** = framework-agnostic hosting (Bedrock / Claude / Gemini / OpenAI); the sample agent is built with **Strands Agents** (AWS's OSS agent framework, which has native Mem0 support).
+
+The post draws a **three-tier** choice: this self-managed stack (Mem0 on AWS-managed storage) vs **Mem0 Platform** (fully managed SaaS) vs **AgentCore Memory** (AWS-managed memory service). The sample use case is a GitHub-repo research agent (code in the `mem0ai/mem0` examples repo). Reported gains on one before/after run — ~70K→~6K tokens and ~9.25 s→~2 s ("12× fewer tokens, 3× faster") — are a single cached-query demo, not a controlled benchmark (**collect-but-confirm**); "microsecond-level" Valkey latency and "millions of requests" scale are vendor claims. This is the AWS-native answer in the [[claude-code-memory-ecosystem]] backend landscape.
+
+**Disambiguation — a separate AWS path.** AgentCore Memory is also AWS's *own first-party* managed memory service, **distinct from Mem0**. It exposes three built-in long-term strategies — `summaryMemoryStrategy`, `userPreferenceMemoryStrategy`, and `semanticMemoryStrategy` (FactExtractor) — all server-side extraction, and is wired into agents via the **open-source Strands Agents SDK** (`AgentCoreMemorySessionManager` for short-term; `MemoryClient` + strategies for long-term). The Strands SDK is OSS; the AgentCore Memory service itself is managed and not self-hostable. Operational gotcha worth noting: with `batch_size > 1`, buffered messages are lost unless the session is closed (use a context manager or explicit `close()`). So "agent memory on AWS" has two unrelated meanings — *Mem0 on AWS storage* (this section) vs *AgentCore's native memory via Strands* (`08-aws-strands-memory.md`).
+
 ## Source
 
 - `raw/research/memory-management/07-04-mem0.md` (captured 2026-04-26 from https://arxiv.org/pdf/2504.19413 via marker on CPU; figures preserved in `assets/04-mem0/`)
 - `raw/research/cc-memory-ecosystem/02-mem0-cc-integration.md` (https://docs.mem0.ai/integrations/claude-code)
 - `raw/research/cc-memory-ecosystem/03-mem0-cc-integration.md` (https://docs.mem0.ai/llms.txt — Platform-vs-OSS framing)
+- `raw/research/oss-agent-memory/02-aws-mem0-persistent-memory.md` (https://aws.amazon.com/blogs/database/build-persistent-memory-for-agentic-ai-applications-with-mem0-open-source-amazon-elasticache-for-valkey-and-amazon-neptune-analytics/ — AWS deployment pattern; captured 2026-05-24)
+- `raw/research/oss-agent-memory/08-aws-strands-memory.md` (https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/strands-sdk-memory.html — AgentCore Memory + Strands SDK, the distinct first-party AWS path; captured 2026-05-24)
 
 ## Related
 

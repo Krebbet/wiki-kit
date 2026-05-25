@@ -51,6 +51,11 @@ When file-based memory stops scaling, practitioners reach for an MCP server back
 | Basic Memory | Local markdown note-graph | Semantic | **User-authored** structured notes | *Third position* | MCP server, cloud or local (`04-basic-memory-cc.md`) |
 | mcp-knowledge-graph | Local JSONL entity/relation/observation KG | **Keyword** | Verbatim observations | Verbatim-ish | 10 `aim_*` MCP tools, project-local or global (`05-mcp-knowledge-graph.md`) |
 | [[mempalace]] | ChromaDB + SQLite KG (local) | Vector + closet/BM25 hybrid | **Verbatim** ("never summarize") | **Verbatim** | 19–29 MCP tools (version-sensitive) + Stop/PreCompact hooks |
+| [[claude-self-reflect]] | SQLite + in-process HNSW (v8 Rust binary, local) | Vector (+ optional AI-narrative) | Indexes raw `~/.claude` JSONL transcripts | **Verbatim** (+ optional extract) | 6 hooks + 12 MCP tools (`01-claude-self-reflect.md`) |
+| [[graphiti]] | Neo4j / FalkorDB / Kuzu / Neptune | Semantic + BM25 + graph traversal | LLM extract → **bi-temporal** KG | **Extract** (temporal) | Official MCP server (`03-zep-graphiti.md`) |
+| [[cognee]] | Graph (Neo4j/Falkor/Kuzu) + vector | Auto-routed semantic/graph | `cognify` extract → graph | **Extract/transform** | Plugin; 5 hooks incl. PreCompact (`04-cognee.md`) |
+| [[supermemory]] | Hosted commercial engine | Hybrid RAG + memory | LLM fact-extract + static/dynamic profiles | **Extract** | Plugin + MCP; cross-tool (`05-supermemory.md`) |
+| [[memori]] | BYODB or hosted cloud | (undisclosed) | LLM extract from agent **execution** + chat (8 typed categories) | **Extract** | HTTP MCP server; cross-tool (`07-memori.md`) |
 
 Notes per source:
 
@@ -60,6 +65,20 @@ Notes per source:
 - **[[mempalace]]** is the verbatim-discipline maximalist of this set; its in-practice behaviour and effectiveness questions are covered on its own page.
 
 Mem0 and Zep pricing context, from the danilchenko review (`10-danilchenko-review.md`, collect-but-confirm): Mem0 ~$19–249/mo, Zep ~$25+/mo; MemPalace/Basic-Memory/mcp-knowledge-graph are free/local.
+
+**2026-05-24 — the wider open-source landscape (`raw/research/oss-agent-memory/`).** Beyond the Claude-Code-specific tools, the broader OSS agent-memory field includes graph-based engines — [[graphiti]] (Zep's bi-temporal temporal-KG core) and [[cognee]] (graph+vector "memory control plane" with a 5-hook CC plugin) — and the hosted-engine [[supermemory]] (OSS plugins, but a *commercial* extraction API; the open-source boundary matters). A distinct **conversation-history-indexer** pattern indexes the agent's *own* raw `~/.claude` transcripts and retrieves them later: [[claude-self-reflect]] (local SQLite + HNSW, verbatim-first, v8 single Rust binary) is the leading instance — the closest tool to "a RAG that records everything you've said to Claude." Finally, the `mcp-knowledge-graph` row above is a community fork of the canonical [[mcp-memory-server]] (the official MCP knowledge-graph reference). Graphiti and Cognee are documented as standalone systems because they are used well beyond Claude Code.
+
+### Conversation-history indexers (2026-05-24 follow-up)
+
+A distinct family indexes the agent's *own* raw `~/.claude` transcript JSONL and exposes search — "find what we figured out before" rather than maintaining a curated memory store. All three are local, **verbatim pole** (no LLM extraction in the retrieval path), and give *both* the user and the agent (via MCP) search access:
+
+| Tool | Engine | Doctrine | Notable |
+|---|---|---|---|
+| [[claude-self-reflect]] | SQLite + HNSW **vector** (v8 Rust) | Verbatim + optional AI-narrative extract | Richest: 6 hooks, 12 tools, 90-day time-decay; the only one with a vector path |
+| claude-conversation-search-mcp (`ticpu`, MIT, Rust) | **Tantivy / BM25** keyword | Verbatim | "Smart filtering" skips `tool_result` file dumps, keeps text+thinking; 6 MCP tools; offloads summarisation to haiku |
+| cowork-history (`egoughnour`, MIT, Python) | SQLite **FTS5** + macOS **Spotlight** + optional Ollama vector | Verbatim (+ optional vector) | Triple-backend hybrid; covers Claude Code *and* "Cowork" stores; beta, minimal adoption |
+
+These are [[direct-corpus-interaction]]-adjacent on the verbatim pole: keyword/FTS over raw transcripts with no extraction step. Only [[claude-self-reflect]] is promoted to a standalone page (richest feature set + a vector path + the optional extract layer); the two BM25/FTS tools are catalogued here. The user-facing value is identical across all three: stop re-deriving what a past session already solved.
 
 ## Cross-source themes (editorial)
 
@@ -87,3 +106,9 @@ Mem0 and Zep pricing context, from the danilchenko review (`10-danilchenko-revie
 - [[conflicts/verbatim-vs-extracted-memory]] — the doctrinal axis these tools sit on.
 - [[direct-corpus-interaction]] — grep-over-files retrieval; the mechanism behind Levels 2–3 and the "markdown beats embeddings" practitioner claim.
 - [[effective-harnesses]] — progress-file/git-recovery discipline; the memory-bank pattern's engineered cousin.
+- [[claude-self-reflect]] — conversation-history indexer (verbatim-first, local SQLite+HNSW over `~/.claude`); the literal "records everything" tool.
+- [[graphiti]] — Zep's OSS temporal knowledge-graph core; bi-temporal extract pole.
+- [[cognee]] — graph+vector "memory control plane"; deepest CC-hook integration in the OSS batch.
+- [[supermemory]] — extract-pole engine with cross-tool plugins; OSS plugins but a hosted commercial core.
+- [[mcp-memory-server]] — the official MCP knowledge-graph reference; upstream of the `mcp-knowledge-graph` fork above.
+- [[memori]] — extract-pole memory layer (MemoriLabs); captures agent *execution* + chat into 8 typed categories; HTTP MCP server.
