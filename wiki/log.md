@@ -91,3 +91,11 @@ Ran the capture + ingest of the SLAM_reading_list "recommended ingests" shortlis
 - **Landscape:** Tosi NeRF/3DGS-SLAM survey (2402.13255).
 
 **Wiki correction (the load-bearing outcome):** our pages claimed 3DGS-SLAM is desktop-GPU-only / "none demonstrated on drone-class compute." GS-LIVO refutes this — *demoed* real-time Gaussian-Splatting LiDAR-inertial-visual SLAM on a Jetson Orin NX 16 GB at 48.3 ms/frame (~20 Hz), 1.2–1.5 GB vs 17–21 GB for desktop GS-SLAM (caveat: ground/handheld rig, not in flight). Corrected the claim on `slam` and `indoor-cluttered-slam`, citing [[learned-slam]]. Updated SLAM_reading_list.md to mark the shortlist ingested. Wiki now 54 content pages; link check clean. raw/research/learned-slam captures had 245 cosmetic pymupdf image-ref warnings (known kit bug, load-bearing audit clean).
+
+## [2026-05-25] weekly-brief | thin technical week, 1 capture (MIGHTY)
+
+Manual weekly sweep (window 7d, ~2026-05-18→05-25). Trend scan across arXiv cs.RO + 8 named groups (RPG, MAVLab, CAST, GRASP, LIS, Imperial, ASL, UTIAS) + IEEE Spectrum + DroneDJ/sUAS News: a sparse week — most "trending" aerial-robotics items were publicity waves for out-of-window preprints (WPI ultrasound-nav Science Robotics Mar; RPG event-radiance-field Feb; EvSLAM Apr; CLAK Mar). Only one inside-window technical candidate cleared the domain-fit + signal bar.
+
+1 captured + ingested → `mighty` (arXiv 2511.10822, MIT-ACL + UPenn): Hermite-spline UAV trajectory planner doing joint spatiotemporal optimization; −9.3% compute / −13.1% travel time vs MINCO, 100% sim success, 6.7 m/s onboard on a NUC 13 with Livox MID360 + DLIO; code released (mit-acl/mighty). Conflict call: linked to [[lidar-vs-vision-autonomy]] but NOT logged as Position-A (LiDAR-necessary) evidence — MIGHTY merely *uses* LiDAR and its own benchmark runs EGO-Swarm2 on a depth camera, so it's a LiDAR-used datapoint, not support for LiDAR necessity. Notably runs on our exact build sensor (MID360).
+
+3 watchlist additions (Autonomy & perception): EvSLAM (event-VO/VIO high-speed benchmark + challenge, conflict-relevant), Antigravity A1 (360° vision-only avoidance shipping in a consumer drone), GDU S400E (vision+mmWave-radar fusion, "fuse don't choose" datapoint). Wiki now 55 content pages. Email + Telegram dispatched; changes committed + pushed per the topic-branch contract.

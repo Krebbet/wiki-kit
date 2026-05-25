@@ -55,6 +55,12 @@ The wiki's radar. `/weekly-brief` reads/extends this; the email's "Other watchli
 
 <!-- weekly-brief appends overflow entries below, newest run first -->
 
+### Run 2026-05-25
+**Autonomy & perception**
+- EvSLAM — event-camera VO/VIO high-speed/extreme-lighting benchmark + challenge (RPG-amplified); directly tests whether event/vision suffices where LiDAR is argued necessary — conflict-relevant ([[lidar-vs-vision-autonomy]]). arXiv 2604.24033 (April, out-of-window).
+- Antigravity A1 firmware — 360° vision-only omnidirectional obstacle avoidance shipping in a consumer drone; datapoint that vision-only avoidance is reaching sub-prosumer hardware.
+- GDU S400E dual-fusion — binocular-vision + mmWave-radar power-line detection at 80 m + 10.4-TOPS onboard edge module; industry "fuse, don't choose" answer to the sensor debate.
+
 ### Run 2026-05-17
 **Regulation & operations**
 - FCC/DJI Covered List — comment deadline 11 May; FCC signalled no softening; ~96.7% US ops on DJI, market-structure inflection.

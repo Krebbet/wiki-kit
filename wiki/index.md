@@ -57,6 +57,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[slam-fc-integration]] | External SLAM/VIO pose fused into ArduPilot EKF3 / PX4 EKF2 via MAVROS vision_pose — frames, EK3_SRC params, delay tuning, divergence pitfalls. |
 | [[fast-lio-mid360-orin]] | Deploying FAST-LIO2 LiDAR-inertial odometry with a Livox MID360 on a Jetson Orin under ROS 2 — driver, IMU quirks, calibration, variants, compute. |
 | [[indoor-obstacle-avoidance]] | Two-tier indoor avoidance: FC-native reactive (ArduPilot BendyRuler/Dijkstra, PX4 Collision Prevention) + companion planners (EGO-Planner/Swarm, FASTER). |
+| [[mighty]] | MIT-ACL Hermite-spline UAV trajectory planner; joint spatiotemporal optimization, −9.3% compute / −13.1% travel vs MINCO, 6.7 m/s onboard (MID360+DLIO). |
 | [[drone-comms-wifi]] | Defeating DDS multicast-discovery failures over home WiFi (Discovery Server, Zenoh RMW/bridge) and routing MAVLink-over-UDP to multiple endpoints. |
 | [[prop-guard-failsafe]] | Build-level guard/failsafe choices for the indoor prototype: physical rotor guarding, FAA OOP energy ceiling, ArduPilot/PX4 failsafe params. |
 | [[gps-denied-hover-land]] | GPS-denied indoor build reference: optical-flow Loiter hold + AprilTag/ArUco precision landing; argues fiducials-first over LiDAR-SLAM for V1. |
