@@ -53,9 +53,34 @@ Editorial scratch space. Ideas raised in conversation that are adjacent-but-not-
 
 **Promotion trigger.** Promote to a full synthesis page if a second converging signal appears, or when the experiment proposal reaches the inner-loop-reward design decision (uPRM / interventional credit is flagged there — see [[proposed-method]]).
 
+---
+
+## P3 — VPO stochastic scalarization for component P4
+
+*Parked 2026-05-27. Triggered by [[../rl-optimizers/vpo]] (arXiv:2605.22817).*
+
+**The idea.** Replace P4's fixed-weight principle scalarization with the VPO set-level objective: Dirichlet-sampled per-rollout weight vectors + best-of-$m$ selection + GRPO advantage over rollout-sets. VPO demonstrates this produces reward-diverse candidate sets that support test-time search far better than scalar baselines (best@k gap widens with k; OpenEvolve unlocks problems GRPO cannot solve at any budget), with the gain predictable from the on-policy reward-component collinearity $\bar\rho$.
+
+**Why it's here and not directly in proposed-method.** VPO is validated on large training corpora (thousands of prompts, $n=8$ rollout-sets, $m=3$ answers per rollout). Proposed-method runs 1–100 exercises with a small group budget. Two pre-conditions must be checked before promoting this to a P4 design decision:
+
+1. **Non-collinearity.** VPO's advantage collapses when on-policy $\bar\rho \approx 1$ (UltraFeedback: $\bar\rho = 0.95$ → VPO hurts). For a textbook concept domain, whether the 5–10 sub-principles (e.g., "applies chain rule correctly," "identifies boundary condition," "writes clean notation") are non-collinear under the base model is unknown. Run the $\bar\rho$ diagnostic first.
+2. **Pass@1 vs best@k.** VPO explicitly degrades pass@1 (LCB: VPO < GRPO at pass@1, better at every best@k). If the concept-installation eval is single-shot correctness rather than search-augmented, VPO's stochastic scalarization is the wrong objective. Confirm the eval regime first.
+3. **Group size.** VPO requires $G > 1$ rollout-sets to compute a non-degenerate group advantage. Confirmed consistent with proposed-method component **G** (diversity injection, group size > 1), but rules out $G=1$ settings.
+
+**Additional caution — goal-conditioning failure.** VPO shows that conditioning the model on a text-encoded weight vector (goal-conditioned GRPO) mode-collapses — the model ignores the conditioning and best@k stalls. Any P4 design that relies on *explicit* principle-axis conditioning in the prompt (rather than in-context multi-answer exploration) is fragile.
+
+**Connection to existing machinery.**
+- Component **G** (diversity injection): VPO's multi-answer chain is the structural homologue of diversity injection at the in-context level rather than the group-rollout level. They are complementary, not substitutes.
+- Concept-evaluation battery ([[../concept-evaluation/_overview]]): the $\bar\rho$ check maps onto the question of whether the concept's sub-criteria are genuinely distinct axes, which the battery is designed to probe.
+- [[../rlvr-mechanics/binary-rewards-rl-challenges]]: formal substrate for the diversity collapse VPO addresses (I-projection mode collapse under scalar RL).
+
+**Promotion trigger.** Promote to a P4 design ruling when: (a) on-policy $\bar\rho$ diagnostic confirms sub-principles are non-collinear on target-domain exercises, and (b) the experiment frame confirms the eval regime is best@k or search-augmented rather than pass@1.
+
+---
+
 ## Source
 
-Editorial. Ideas raised by David in conversation (P1: 2026-05-16; P2: 2026-05-18). Connections to existing pages are this page's framing, not source claims.
+Editorial. Ideas raised by David in conversation (P1: 2026-05-16; P2: 2026-05-18). P3 triggered by [[../rl-optimizers/vpo]] (2026-05-27). Connections to existing pages are this page's framing, not source claims.
 
 ## Related
 

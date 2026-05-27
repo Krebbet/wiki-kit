@@ -20,6 +20,7 @@ The lineage of policy-optimisation algorithms used to post-train LLMs. This them
 - [[dr-grpo]] — Liu et al. (SAIL, COLM 2025). *Understanding R1-Zero-Like Training*. Identifies length- and std-normalisation biases in GRPO; removes them.
 - [[gspo]] — Zheng et al. (Alibaba Qwen, 2025). Sequence-level importance ratio and clipping; stabilises MoE RL; powers Qwen3.
 - [[ep-grpo]] — Song Yu et al. (SWU, arXiv:2605.04960). Post-GRPO credit-assignment fix: entropy-gated outcome modulation + implicit process signal from policy divergence + cumulative-entropy bucketing; no external PRM. +26.4% over GRPO at 3B. Gradient = GRPO + entropy-weighted KL² (Thm VI.1).
+- [[vpo]] — Bahlous-Boldi, Puri, Shenfeld et al. (MIT / Sakana AI, arXiv:2605.22817). Drop-in GRPO advantage replacement for *set-level diversity*: multi-answer chains + Dirichlet-sampled stochastic scalarizations → covers the Pareto frontier of vector rewards rather than collapsing to one mode. Matches/beats scalar GRPO on best@k; gap widens with k. Pass@1 degrades by design. Non-collinearity condition: $\bar\rho < {\sim}0.8$ on-policy.
 
 ## Family tree *(synthesis)*
 

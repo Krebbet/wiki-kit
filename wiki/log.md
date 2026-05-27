@@ -690,3 +690,18 @@ All actionable items from the 2026-05-15 lint report fixed. Headline: the HIGH r
 ## 2026-05-17 — Weekly sweep (autonomous /weekly-brief)
 
 Trend scan 2026-05-10→05-17 (alphaXiv/HF/Reddit/AK/Aran/Interconnects + arXiv listings). 15 candidates surfaced; 5 captured, 4 ingested, 1 dropped as duplicate. Theme of the week: **annotation-free / implicit process supervision** consolidating (uPRM unsupervised PRM; EP-GRPO implicit policy-divergence process signal; both join L2T/PAV as label-free process-reward family) and **the SFT-data floor for demonstration-guided RLVR collapsing** (FEST: 128 random traces, with a tuned-RL-baseline conflict). New pages: single-sample-rl-finetuning/fest, process-reward-models/uprm, rl-optimizers/ep-grpo, in-context-learning-theory/icl-conceptual-belief-space. Conflict opened: fest-tuned-rl-vs-demonstration-necessity. SGS (2604.20209) re-capture dropped — already on wiki since 2026-05-03 (trend scan mis-flagged as newly-trending). 8 watchlist additions (GRPO-process cluster, self-play, latent-reasoning, activation-steering cluster). All wiki + raw changes uncommitted on single-shot-training-wiki per no-commit policy; awaiting user commit on next login. Email + Telegram dispatched.
+
+## 2026-05-27 — /research: Vector Policy Optimization
+
+Captured arXiv:2605.22817 (VPO, MIT Improbable AI / Sakana AI). User trigger: flagging the paper for experiment proposals on reward weighting across concepts.
+
+**Capture:** `raw/research/vector-policy-optimization/01-vpo-paper.md` — 89KB, full paper, clean audit (0 broken image refs, 0 thin captures).
+
+**Pages written/updated:**
+- `wiki/research/rl-optimizers/vpo.md` (new) — full page: algorithm, non-collinearity condition, pass@1 tension, empirical results, wiki relevance
+- `wiki/research/rl-optimizers/_overview.md` — added VPO to pages list
+- `wiki/research/synthesis/proposed-method.md` — P4 row updated with VPO objective flag (2026-05-27)
+- `wiki/research/synthesis/parked-ideas.md` — P3 added (experiment-proposal: VPO stochastic scalarization for P4)
+- `wiki/index.md` — VPO entry added
+
+**Key finding:** VPO helps when on-policy reward components are non-collinear ($\bar\rho < {\sim}0.8$); degrades pass@1 by design. Non-collinearity of concept sub-principles on textbook exercises is the open empirical question before applying to P4.
