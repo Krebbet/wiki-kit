@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki are:** peer-reviewed papers (NeurIPS, ICML, ICLR, TMLR, ACL, EMNLP) and arXiv preprints from established ML labs. The field moves fast — preprints are fair game and should be captured rather than ignored, but every paper page must carry a credibility note covering: (1) venue and year, (2) code/weights availability, (3) ablation rigor (does the paper isolate the claimed contribution?), (4) replication status (independent reproductions, follow-up work that confirms or contradicts). Blog posts, lab writeups, GitHub READMEs, and conference / lecture talks are useful for *method discovery* but not for citation — when a secondary source mentions a method, find and ingest the underlying paper before quoting any claim. Avoid: marketing posts, results without ablations, and claims that don't survive scale or out-of-distribution evaluation.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +52,12 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Source-type handling for this wiki:**
+   - **Papers (arXiv, conference PDFs)** — primary, source of truth. Prefer arXiv over journal paywalls. Capture both the abstract page (HTML, via `capture_url`) and the PDF (via `capture_pdf`, default `marker` engine). For multi-version arXiv papers, capture the latest version unless an earlier version is being cited specifically.
+   - **Blog posts / lab writeups** — secondary, method-discovery only. Capture as markdown via `capture_url`. Always trace any claim back to the underlying paper before citing — never quote a blog post as evidence for an empirical claim.
+   - **GitHub repos** — capture the top-level README (and any `MODEL_CARD.md`, `REPRODUCING.md`, or `paper.md` if present) via `capture_url`. Used to assess reproducibility: code released? weights released? configs / training scripts present?
+   - **Conference / lecture talks (YouTube)** — `fetch_transcript` for the transcript. Treat as secondary — useful for intuition and unpublished follow-up commentary, but cite the paper, not the talk.
+   - **The user's own experiment notes** — if the user drops them under `raw/experiments/`, treat them as primary observations distinct from the literature, not as a third-party source.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.

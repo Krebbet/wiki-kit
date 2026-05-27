@@ -93,7 +93,29 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+## Method core
+<architectural delta from a vanilla transformer block, stated precisely. Use LaTeX for the routing function, parameter-allocation rule, training objective, gating expression, etc. Be specific about what is added, removed, or replaced relative to the standard `attn → MLP` block.>
+
+## Goal relevance
+<flag which of the wiki owner's three driving experiments this method bears on. Use these tags explicitly:
+- `G1` — block isolation / swappability (training a block in isolation and swapping it back into a stack while preserving generation quality).
+- `G2` — dynamic per-block parameter allocation (the block learns how many parameters it needs at different positions / for different tokens).
+- `G3` — token-conditional routing (a pool of blocks, with a router that selects which block(s) process which tokens, replacing the static n-layer flow).
+- `background` — relevant context but not directly aligned with G1/G2/G3.
+A single source can carry multiple tags. State *how* the method bears on each tagged goal in one line.>
+
+## Credibility
+- Venue / year: <NeurIPS 2023 / arXiv-only 2025-08 / workshop / blog / etc.>
+- Code released: <yes (link) / no / partial>
+- Weights released: <yes (link) / no / partial>
+- Ablation rigor: <strong (isolates the contribution with controlled comparisons) / partial / weak (no ablations or only headline numbers)>
+- Replication status: <independent reproductions known? follow-up work that confirms or contradicts? unknown?>
+
+## Empirical claims
+<headline numbers with their full evaluation context: model size, dataset, baseline, compute budget. Distinguish claims at scale from claims at toy scale. Note any conditions (sequence length, batch size, hardware) that look load-bearing for the result.>
+
+## Open questions / failure modes
+<what the paper does not answer, what conditions break the method, what the authors flag as future work. Anything that suggests the method might not transfer to the wiki owner's setup.>
    <!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates

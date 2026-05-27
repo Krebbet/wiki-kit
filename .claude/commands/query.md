@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** Terse and expert. The reader is a researcher fluent in transformer architectures, attention, MoE / routing, and training dynamics — skip background, do not explain what attention is or define MoE from scratch. Use LaTeX inline for equations (e.g., $\text{Router}(x) = \text{TopK}(\text{softmax}(W_r x))$, $y = \sum_{i} g_i(x) \cdot E_i(x)$). Cite every claim with `[[wiki-link]]`. When discussing a method, name it precisely (paper title or canonical name) on first mention. When a claim is contested, name both positions side by side and link to the relevant `wiki/conflicts/` page. Tag method discussions with the relevant driving-experiment goal (`G1` block isolation, `G2` dynamic param allocation, `G3` token-conditional routing) where applicable, so the reader can immediately see how the method bears on the active research program.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

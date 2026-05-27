@@ -29,7 +29,13 @@ Perform a health check of the wiki.
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+10. **Domain-specific checks:**
+    a. **Credibility block present** — every page sourced from a paper has a `## Credibility` section listing venue/year, code availability, weights availability, ablation rigor, and known replications (or "unknown"). Flag pages missing this section or with empty fields.
+    b. **Method vs. claim separation** — pages should distinguish *what the method does* (architectural / algorithmic description) from *what the paper claims it achieves* (empirical results). Empirical claims must be tagged with the eval setup (model size, dataset, baseline, compute). Flag pages where headline numbers appear without that context.
+    c. **Routing taxonomy consistency** — pages classifying routing strategies use a consistent vocabulary: token-choice vs. expert-choice, soft vs. hard, hash-based vs. learned. Flag pages mixing these terms inconsistently or coining new variants without defining them.
+    d. **Goal tagging** — every method page is tagged with which of the three driving experiments it bears on: `G1` (block isolation / swappability), `G2` (dynamic per-block parameter allocation), `G3` (token-conditional routing through a pool of blocks), or `background`. Flag pages missing tags or whose tag is inconsistent with the page body.
+    e. **Stub detection** — pages with only `## Source` and no synthesis are stubs; surface them with a promote-or-delete recommendation.
+    f. **Cross-link density between related methods** — closely related methods (e.g., Switch Transformer ↔ GShard ↔ Mixtral; MoR ↔ Hash Routing; PonderNet ↔ ACT ↔ early-exit) should mutually `[[link]]`. Flag missing links between obviously-adjacent pages.
 <!-- /DOMAIN-SLOT -->
 
 ## Output
