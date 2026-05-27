@@ -67,6 +67,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[research/huginn]] | 3.5B depth-recurrent decoder LM (prelude/core/coda); single shared core block iterated $r$ times; EXP1 router insertion point documented: after `core_block(s, e)`, observing $s_i \in \mathbb{R}^{n \times 5280}$ unnormalized. arXiv 2025. |
 | [[research/parcae]] | Stable middle-looped LM via spectral-norm ZOH recurrence; 140M–1.3B checkpoints at `SandyResearch/parcae-*`; loop scaling laws; Exp 1 fallback base if Huginn-3.5B exceeds VRAM. arXiv 2026. |
 | [[research/mechanistic-looped-lms]] | Cyclic fixed-point convergence within $k \approx 1$–$2$ recurrences post-prelude for input-injection LMs (Huginn); $h^{(k)}$ encodes no step signal after recurrence 2; directly confirms severity of Exp 1 Challenge 2. arXiv 2025. |
+| [[research/ouro]] | Pre-trained LoopLM family (1.4B/2.6B, 7.7T tokens); two-stage adaptive halting (entropy-KL pretraining + exit-gate fine-tune); matches Qwen3-4B/8B at 2–3× parameter efficiency; gains traced to knowledge manipulation (multi-hop), not capacity. arXiv Oct 2025 (ByteDance Seed). |
+| [[research/rltt]] | RLTT (Williams & Tureci, Princeton Feb 2026): distributes GRPO reward across all T_max latent loops instead of terminal loop only; +14.4% MATH-500, +16.6% AIME24, +18.7% GPQA over GRPO on Ouro-2.6B-Thinking. G3 High. |
+| [[research/looprpt]] | First RL pre-training for looped LMs: step-wise rewards via EMA teacher + difficulty-aware time penalty; entropy-based hard-token selection; Pareto dominance over Ouro baseline and Qwen3-1.7B CoT at 1.4B/2.6B. arXiv Mar 2026 (Harbin/Tsinghua). |
 
 ### Research — Adaptive / learned halting
 
@@ -75,6 +78,13 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[research/act]] | Original learned-halting for RNNs via accumulated halt probabilities + remainder trick + ponder cost; biased gradient at halting boundary; documented instability makes PonderNet preferred for Exp 1. arXiv 2016. |
 | [[research/pondernet]] | Adaptive halting via conditional geometric halt distribution + KL-vs-prior regularization; unbiased gradients over the full horizon; recommended halting mechanism for Exp 1. NeurIPS 2021 (DeepMind). |
 | [[research/repeat-rnn]] | Fixed-$\rho$ Repeat-RNN matches or beats ACT on parity/addition; adaptive halting adds no task-accuracy benefit at small scale; directly supports the trivial-solution concern for Exp 1 Challenge 5. arXiv 2017. |
+
+### Research — Latent / continuous reasoning
+
+| Page | Summary |
+|---|---|
+| [[research/coconut]] | Latent-mode reasoning feeding last hidden state $h_{t-1}$ as next embedding (bypassing decode+re-embed); differentiable continuous thought; implicit BFS over reasoning paths shown by probing; curriculum training required; matches CoT on ProntoQA/ProsQA, below CoT on GSM8K. arXiv Dec 2024 (Meta). |
+| [[research/etd]] | Encode-Think-Decode: partition a pretrained LLM into E/T/D blocks via angular-distance (Kneedle) analysis, loop only the T block $k$ times; +28.4% GSM8K, +36% MATH on OLMo-2 1B; ACT variant learns per-token halting; MATH degrades at $k>3$. arXiv Oct 2025. |
 
 ### Research — Knowledge distillation (offline / cached logits)
 

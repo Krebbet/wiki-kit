@@ -68,6 +68,14 @@ for i in range(r):
 
 **Code repo:** `seal-rg/recurrent-pretraining`. The HF-compatible inference file `recpre/raven_modeling_minimal.py` is the cleanest entry point; `recpre/model_dynamic.py` is the training version. Both expose the recurrence loop explicitly.
 
+**R4 anomaly warning — final step only.** The "observes $s_i$ unnormalized" spec above is correct for steps $i \in \{1, \ldots, r-1\}$. The final step ($i = r$, i.e., immediately after R4 on the last recurrence) is a special case. Because R4's hidden state serves a dual role — feeding both the next R1 input and the Coda C1 — its representational structure is incoherent under the standard logit lens at the router's insertion point. A simple MLP router reading raw $s_r$ may pick up this incoherent structure and make poorly grounded routing decisions specifically at the last step.
+
+*Recommended mitigations (either):*
+1. **Coda lens pass-through:** Before feeding $s_r$ to the router head, pipe it through Huginn's own Coda module (C1, C2). This is the representational basis R4 was trained to produce; it yields numerically interpretable tokens. This adds a forward pass through $l_C = 2$ frozen transformer layers.
+2. **Step-index conditioning:** Augment the router's input with a learned or one-hot step-index embedding so the router can learn step-specific projections, handling R4's dual-role output differently from R1–R3.
+
+The R4 anomaly is reported in [[latent-cot-huginn]] (arXiv:2507.02199); see that page once created. The anomaly does not affect the logical correctness of the insertion point for early-exit decisions at steps $i < r$; it is specifically the full-depth final step where the representational mismatch applies.
+
 ## Training details
 
 - **Data:** 800B tokens. Mixture skewed toward code and math with general webtext. All sources public; uploaded to `tomg-group-umd/huginn-dataset` (4096 parquet shards, one per GPU). BPE tokenizer (65536 vocab) trained on the instruction split of the pretraining corpus for domain efficiency.
@@ -133,11 +141,41 @@ Significantly surpasses early OLMo variants on math; code beats general-purpose 
 - **No per-token routing at train time:** Huginn trains with a single $r$ per micro-batch (locked-step sampling). A router that produces per-token exit decisions introduces gradient flow that was never seen in pretraining; the core block has no incentive to produce easily-routed signals.
 - **No official instruct/RLHF checkpoint:** The released weights are base pretraining only; downstream fine-tuning on Huginn has not been publicly documented.
 
+## Latent CoT probing — Lu et al. 2025
+
+Lu et al. (arXiv:2507.02199, Brown / Harvard, Jul 2025) probe whether Huginn's recurrent hidden states implement an interpretable latent chain-of-thought on arithmetic tasks. Code: `https://github.com/wenquanlu/huginn-latent-cot`.
+
+**No interpretable latent CoT.** Rank-trajectory analysis on arithmetic tasks shows no temporal separation between intermediate-result tokens and final-result tokens. Both token types descend together in early recurrent steps. The expected signature — intermediate token rises first, then falls as the final token rises — is absent. Latent recurrence computes differently from explicit CoT, not as a compressed version of it.
+
+**R4 dual-role anomaly.** Huginn's R4 block (the final of the four core layers, executed on the last recurrence step) feeds both the next recurrence cycle (back to R1) and the Coda (C1). This forces R4's hidden state to serve two representational masters simultaneously, producing a sharp interpretability inconsistency:
+
+- *Logit lens* applied to the raw R4 hidden state → incoherent tokens.
+- *Coda lens* (piping the identical R4 hidden state through C1–C2) → numerically interpretable tokens.
+- R1–R3 behave the *opposite*: logit lens is interpretable there; coda lens is not.
+
+No single lens is universally applicable. Interpretability is per-block and per-method. The paper terms this the "dual-role" anomaly of the final recurrent step.
+
+**Depth-scaling ceiling.** GSM8K accuracy without explicit CoT as a function of recurrence steps $T$:
+
+| $T$ | GSM8K (no CoT) |
+|-----|----------------|
+| 4 | 3.11% |
+| 8 | 4.47% |
+| 16 | 4.78% |
+| 32 | 4.93% |
+| 64 | 4.70% |
+| 128 | 4.93% |
+| 256 | 4.62% |
+
+Performance plateaus near 5% and degrades slightly at very high step counts. With explicit CoT, Huginn achieves 24.87% / 38.13% (strict/flexible) — roughly 5–8× higher than latent compute alone. This is consistent with the rapid fixed-point convergence finding in [[mechanistic-looped-lms]]: once $s_i$ converges to its attractor, additional steps cannot inject new information.
+
 ## Source
 
 - `raw/research/loop-computation/05-huginn-abs.md`
 - `raw/research/loop-computation/07-huginn-github.md`
 - `raw/research/loop-computation/13-huginn-pdf.md`
+- `raw/research/recurrent-reasoning/04-latent-cot-huginn-abs.md`
+- `raw/research/recurrent-reasoning/06-latent-cot-huginn-pdf.md`
 
 ## Related
 

@@ -4,6 +4,28 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-05-27] research+ingest | recurrent reasoning models
+
+Fourth research+ingest run, directed at recurrent reasoning / latent computation. Sources in `raw/research/recurrent-reasoning/` (6 abstracts + 6 PDFs, all text-only pymupdf captures; 32 broken image refs — acceptable). 5 new wiki pages written in parallel:
+
+- `[[research/ouro]]` — Ouro (Zhu et al., arXiv:2510.25741, Oct 2025; ByteDance Seed). Pre-trained LoopLM family (1.4B/2.6B) trained on 7.7T tokens. Two-stage adaptive halting: Stage I entropy-KL regularization (uniform prior) during pretraining prevents depth-collapse; Stage II freezes LM weights, fine-tunes a linear exit gate on loss-improvement binary cross-entropy. KV-cache analysis: last-step reuse preserves quality (4× memory overhead); first-step reuse catastrophic. Mechanistic finding: Capo experiment shows ≈2 bits/param information capacity regardless of loop count — gains come from manipulation (Mano task, +23%), not storage. Ouro-2.6B matches Qwen3-8B/Gemma3-12B. Stage II gate is the closest published analogue of Exp 1.
+- `[[research/rltt]]` — RLTT (Williams & Tureci, Princeton, arXiv:2602.10520, Feb 2026). Distributes GRPO reward across all T_max loops via per-loop weighting ω_t; three strategies (Exit PDF / Progressive / Uniform); +14.4% MATH-500, +16.6% AIME24, +18.7% GPQA zero-shot on Ouro-2.6B-Thinking. Not relevant to Exp 1 Phase 1 (frozen weights); becomes relevant for RL post-training phase.
+- `[[research/looprpt]]` — LoopRPT (Tang et al., arXiv Mar 2026; Harbin/Tsinghua/HKUST). First RL pre-training framework for looped LMs. Four components: (1) entropy-based hard-token selection via EMA teacher; (2) step-wise rewards R(k) = Δ_acc(k) − C(k) with difficulty-aware λ_t; (3) noisy rollouts via KV injection; (4) truncated REINFORCE without critic. Trains on OMNI-MATH competition math. Pareto dominance over Ouro baseline and Qwen3-1.7B CoT.
+- `[[research/coconut]]` — Coconut (Hao et al., arXiv:2412.06769, Dec 2024; Meta). Latent-mode reasoning: feeds h_{t-1} ∈ ℝ^d as next input embedding during `<bot>`/`<eot>` delimited segments, bypassing decode+re-embed. Multi-stage curriculum training (N+1 stages, optimizer reset between, loss masking). Implicit BFS emerges: step-1 broad candidate generation, step-2 narrowing. Key constraint: requires training from scratch (not post-hoc application to Huginn). Halting: binary `<eot>` classifier or fixed count (fixed count used in practice).
+- `[[research/etd]]` — ETD (Koishekenov et al., arXiv Oct 2025). Angular-distance (Kneedle algorithm) identifies E/T/D partition in a pretrained LLM; only T block loops k times; OLMo-2 1B: 7–4k–5 partition. +28.4% GSM8K, +36% MATH with k=3; MATH regresses at k>4 (unexplained). ACT variant learns per-token halting via sigmoid halt head; uses final T-block output (not weighted mixture). Key for Exp 1: ETD shows angular distance as a cheap, post-hoc way to identify "thinker layers" without re-pretraining — could identify where Huginn's core block should be re-entered.
+
+New index section: "Research — Latent / continuous reasoning" (coconut, etd). Ouro and LoopRPT added to "Research — Loop / recurrent-depth architectures". huginn.md updated with R4 anomaly warning and Latent CoT probing section (Lu et al. arXiv:2507.02199) — EXP1_INSERTION_POINT flag for final step.
+
+Notable G3 relevance: Ouro's Stage II (freeze LM + train exit gate on loss-improvement) is the direct precedent for Exp 1's halting mechanism. Ouro-1.4B/2.6B are lighter Exp 1 base candidates vs Huginn-3.5B. ETD's angular-distance partition analysis could identify "natural" thinker layers in any pretrained LLM, useful for deciding which layers to loop.
+
+---
+
+## [2026-05-27] new page | wiki/research/rltt.md
+
+User-directed page write: RLTT (Rewarding Latent Thought Trajectories in Looped Language Models), Williams & Tureci, Princeton preprint arXiv:2602.10520, Feb 2026. Sources: `raw/research/recurrent-reasoning/02-rltt-abs.md` and `07-rltt-pdf.md`. Page covers: core credit-assignment mismatch (GRPO rewards only terminal loop P_θ^(Tmax)); full RLTT gradient formula in LaTeX; three weighting strategies (Exit PDF, Progressive, Uniform) with ablation finding that the RLTT–GRPO gap dominates weighting-strategy differences; memory overhead (halved ppo_max_token_len_per_gpu to 8192, 10% wall-clock savings from emergent length shortening); benchmark results (MATH-500 +14.4%, AIME24 +16.6%, BeyondAIME +10.0%, GSM8K +34.3%, GPQA +18.7% zero-shot); loop-level analysis (largest gains at 1–2 loops); Exp 1 relevance note (not applicable in Phase 1, becomes relevant when Huginn weights unfrozen for RL post-training). G3 High, G1 Low, G2 N/A.
+
+---
+
 ## [2026-04-30] research+ingest | selective replacement and training (non-quantization)
 
 User-directed second research run: "methods that focus on selectively replacing parts of a network and training the piece, less concentrated on quantization." 15 candidate papers proposed across 5 buckets (insert-and-train PEFT; replace/grow-and-train function-preserving; train-then-compose; find-and-retrain; concept-anchor-and-queued-G3-targets), all 15 approved. Captured to `raw/research/selective-replacement-and-training/` (15 PDFs via marker engine, CPU-forced; 15 arXiv abstracts as backup). audit_captures clean.
@@ -78,3 +100,15 @@ Third research+ingest run, directed at Experiment 1 technical challenges. Source
 Experiment proposal updated: Challenge 2 severity upgraded from "empirical unknown" to "confirmed severe — mitigation known"; Prop 4.1 cited; LoopFormer step conditioning identified as required fix. Research queue: universal-transformers, act, pondernet, depth-adaptive-transformer struck; looped-transformers, block-recurrent-transformers, deq remain.
 
 Notable findings for implementation: (1) Huginn's prelude injects e read-only — the router must never modify e; (2) two consecutive KV cache copies needed for AdaPonderLM-style Option B routing (manageable per-layer overhead); (3) RSKD storage for 100B-token corpus ≈ 3.6 TB (borderline for single workstation — plan for streaming or subset caching).
+
+---
+
+## [2026-05-27] page update | huginn.md — Latent CoT probing + R4 anomaly warning
+
+Added two blocks to `wiki/research/huginn.md` from Lu et al. arXiv:2507.02199 (Brown/Harvard, Jul 2025):
+
+1. **"## Latent CoT probing — Lu et al. 2025"** (inserted before ## Source): no interpretable latent CoT in rank-trajectory analysis on arithmetic tasks; R4 dual-role anomaly (logit lens on raw R4 hidden state → incoherent; coda lens on same state → interpretable; R1–R3 are opposite); depth-scaling ceiling ~5% GSM8K w/o CoT across T=4..256 with slight degradation at very high steps. Consistent with mechanistic-looped-lms fixed-point convergence finding.
+
+2. **R4 anomaly warning in EXP1_INSERTION_POINT**: the "observes $s_i$ unnormalized" spec is correct for steps i=1..r-1; the final step (i=r, after R4) has an incoherent representational state under raw logit lens due to R4's dual-role. Recommended mitigations: coda-lens pass-through (pipe $s_r$ through C1–C2 before router head) or step-index conditioning. Cross-references arXiv:2507.02199 pending a dedicated wiki page.
+
+Sources added to huginn.md: `raw/research/recurrent-reasoning/04-latent-cot-huginn-abs.md`, `raw/research/recurrent-reasoning/06-latent-cot-huginn-pdf.md`.
