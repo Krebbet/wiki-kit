@@ -19,10 +19,10 @@ Indoor homes are the *worst case* for pure vision: blank walls + repetitive/symm
 | Sensor | Pros (indoor) | Cons | Verdict |
 |---|---|---|---|
 | **Solid-state LiDAR (Livox MID360) + IMU → FAST-LIO2** | lighting-independent cm geometry; thin-obstacle detection; robust on blank walls | ~265 g, ~$1k; no colour/semantics | **Recommended for the nav/safety loop** |
-| **Depth+RGB camera (RealSense D455) + VIO** | cheaper/lighter; RGB for future features | blank-wall/low-light depth noise; IR washes out in window sun | budget alternative |
+| **Depth+RGB camera (RealSense D435) + VIO** | cheaper/lighter; RGB for future features; best close-range accuracy (<1 cm at ≤1 m on household objects per [[close-range-depth-sensors]]) | blank-wall/low-light depth noise; IR washes out in window sun | budget alternative |
 | **Stereo/mono VIO only** | lightest/cheapest; rich semantics | weakest on featureless indoor; needs texture+light | not for safety-critical nav alone |
 
-**Recommendation:** **LiDAR (MID360) + IMU for the navigation/safety loop, plus a cheap RGB camera streamed over WiFi** as the substrate for future semantic features — decoupling the hard semantic-vision problem from Phase-1 nav. Budget path: D455 instead of LiDAR, accepting blank-wall/lighting fragility. **But sequencing matters:** per the fiducials-first staging below, prove the flight/EKF/safety loop on optical-flow + AprilTags *before* bringing SLAM online — LiDAR is the target for marker-free traversal, not the first thing you debug in flight.
+**Recommendation:** **LiDAR (MID360) + IMU for the navigation/safety loop, plus a cheap RGB camera streamed over WiFi** as the substrate for future semantic features — decoupling the hard semantic-vision problem from Phase-1 nav. Budget path: D435 instead of LiDAR, accepting blank-wall/lighting fragility. D435 preferred over D455 for this build: empirical benchmarking shows D435 achieves <1 cm error at ≤1 m on curved household objects and works down to ~16 cm range; D455 is worse at close range and has a 0.6 m minimum range that excludes the final grasp-approach envelope (see [[close-range-depth-sensors]]). **But sequencing matters:** per the fiducials-first staging below, prove the flight/EKF/safety loop on optical-flow + AprilTags *before* bringing SLAM online — LiDAR is the target for marker-free traversal, not the first thing you debug in flight.
 
 ### Architecture
 Flight controller (Pixhawk → ArduPilot/PX4) does low-level stabilisation + arming/RTL/kill. **Companion computer (Jetson Orin NX/Nano)** runs ROS 2 + SLAM and feeds external-vision pose to the FC EKF (MAVROS `vision_pose`), issuing setpoints ([[nano-drone-compute]] for the onboard-compute envelope). Companion joins home WiFi (station); ground-station laptop runs QGroundControl + ROS 2 over the same WiFi for commands/telemetry. **Nav loop is fully onboard; WiFi carries supervisory + future-offload traffic only.**
@@ -40,7 +40,7 @@ Flight controller (Pixhawk → ArduPilot/PX4) does low-level stabilisation + arm
 | Ground station | your laptop + QGroundControl + ROS 2 | $0 | OSS |
 | Misc | guards, anti-vib mount, cables, 128 GB SD | ~$100–150 | |
 
-**Subtotal:** LiDAR path ≈ **$3,000–3,400 CAD**; budget (Orin Nano + D455, no LiDAR) ≈ **$2,200–2,700 CAD**.
+**Subtotal:** LiDAR path ≈ **$3,000–3,400 CAD**; budget (Orin Nano + D435, no LiDAR) ≈ **$2,100–2,600 CAD** (D435 ~$100 cheaper than D455).
 
 ### Staging principle — fiducials-first *(synthesis, added 2026-05-24)*
 Two mass-market precedents say *don't start with full SLAM*. Robot vacuums shipped on cheap 2D LiDAR + wheel dead-reckoning (and earlier, pure bump-and-random) before any VSLAM; Amazon/Kiva run 100,000s of robots on a **floor-fiducial grid + a central planner**, not per-robot autonomy ([[robot-vacuum-navigation]], [[warehouse-robot-navigation]]). A drone has no wheel odometry, but the lesson transfers: replace the unsolved indoor-localization problem with **printed AprilTag/ArUco markers + optical-flow hold** for V1 — which ArduPilot's optical-flow `Loiter`/`FlowHold` + precision-landing already support out of the box ([[gps-denied-hover-land]]). This de-risks the hard EKF-integration and flight-safety work ([[slam-fc-integration]]) on a *known-good* position source before SLAM enters the loop. MID360 + FAST-LIO2 ([[fast-lio-mid360-orin]]) stays the target for marker-free traversal — it's milestone **6**, not the first thing you debug in flight.
@@ -127,7 +127,7 @@ Canadian retail prices (CAD, May 2026; firm = found at a Canadian retailer, *est
 | Airframe — payload | Holybro X500 V2 ARF (+ prop guards) | ~$355 *est* (ARF sold out; frame-only ~$170 + motors/ESC ~$120–150) | payload class for R4 |
 | Compute | NVIDIA Jetson Orin NX 16 GB (dev kit / module) | ~$1,525 *est* / module **$1,539 firm** (DigiKey CA) | onboard SLAM + perception |
 | Flight controller | Holybro Pixhawk 6C (PX4/ArduPilot) | **$245 firm** (epicfpv.ca) | autopilot + RTL primitives |
-| Depth camera | Intel RealSense D455 | **$685 firm** (DigiKey CA, in stock) | R2 depth |
+| Depth camera | Intel RealSense D435 | ~$580 *est* (D455 was $685 firm; D435 ~$100 less) | R2 depth; preferred over D455 for close-range manipulation (<1 cm at ≤1 m, works to ~16 cm min range vs D455's 0.6 m floor) — see [[close-range-depth-sensors]] |
 | VIO camera | **T265 is discontinued (EOL 2022)** → Stereolabs ZED Mini | **$579 firm** (Stereolabs CA) | R2 VIO; ROS 2 + Jetson |
 | LiDAR (alt route) | Livox MID-360 | ~$5,850 *est* (no CA distributor; US reseller + ~$200 import) | alt R2; pick per [[lidar-vs-vision-autonomy]] |
 | Gripper (DIY) | servo + silicone/foam + tendon + print | ~$50 *est* | R4, light known objects (~150 g) |
@@ -136,7 +136,7 @@ Canadian retail prices (CAD, May 2026; firm = found at a Canadian retailer, *est
 | Misc | cables, mounts, 128 GB SD, Wi-Fi | ~$80–100 *est* | — |
 | Software | ROS 2 + SLAM (OKVIS2-/FAST-LIO-class *(wiki)*) + off-the-shelf open-vocab detector | $0 (OSS) | ties it together |
 
-**Subtotals:** nano/bench path (Crazyflie + Jetson + D455 + ZED Mini, no LiDAR) ≈ **$3,050–3,350 CAD**; full payload + LiDAR path ≈ **$8,900–9,500 CAD** (the MID-360 dominates). Discontinued: RealSense T265 → ZED Mini substitute. Firm prices: Jetson module, Pixhawk 6C, D455, ZED Mini (DigiKey/epicfpv/Stereolabs CA); the rest are USD-converted estimates.
+**Subtotals:** nano/bench path (Crazyflie + Jetson + D435 + ZED Mini, no LiDAR) ≈ **$2,950–3,250 CAD**; full payload + LiDAR path ≈ **$8,800–9,400 CAD** (the MID-360 dominates). Discontinued: RealSense T265 → ZED Mini substitute. Firm prices: Jetson module, Pixhawk 6C, ZED Mini (DigiKey/epicfpv/Stereolabs CA); D435 price is USD-converted estimate — verify before purchase.
 
 **Honest expectation (beyond-wiki):** a v1 that docks, maps a room, takes a phone voice command, and relocates *known, tagged, sub-150 g* objects to a *tagged* bin is achievable as a lab build. "Autonomously clean up arbitrary toys by voice" is the consumer end-state and depends on the six research assignments above — it is *not* buildable from current wiki-attested capability.
 

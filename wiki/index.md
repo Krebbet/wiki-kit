@@ -13,6 +13,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[drone-autonomy-state]] | Synthesis: narrow autonomy shipping, agile autonomy demoed, BVLOS regulation still being written. |
 | [[drone-sensors-for-autonomy]] | Reference map — sensor → purpose → maturity → tradeoff (camera, event, LiDAR, IMU, GNSS, radar, ADS-B, acoustic). |
 | [[lidar-for-uav-autonomy]] | LiDAR sensor classes (2D/mechanical/solid-state/FMCW), LIO algorithm lineage, benchmarks; LiDAR-necessary position. |
+| [[close-range-depth-sensors]] | Sensor landscape for 0.5–2 m depth perception (stereo RGB-D, dense ToF, miniature ToF arrays); quantitative benchmarks; implications for drone grasp-approach perception. |
 | [[event-cameras]] | Event-camera fundamentals: µs latency, >120 dB DR, vendors, algorithm families. |
 | [[event-cameras-for-uavs]] | UAV-specific event-vision applications, dataset map, neuromorphic-on-drone results. |
 | [[eth-rpg-scaramuzza]] | ETH/UZH RPG (Scaramuzza) lab profile — demoed event-camera drone results, latency figures, AI-vs-human race. |
@@ -38,6 +39,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[dronevla]] | Binary-action VLA fetch-and-handover PoC; navigation real, VLA sim-only. |
 | [[canadian-drone-onshoring]] | State of Canadian capacity (thin, assembler-economy) + 2026 funding wave + gaps; consumer/dual-use scope. |
 | [[drone-manufacturing-supply-chain]] | Assembler-vs-OEM economy, IP erosion, three-C framework, named-company datapoints, component-level gaps. |
+| [[system-architecture]] | Full cognitive-stack architecture for the home-tidy drone: all subsystems, critique, missing components (perception pipeline, safety arbiter, exploration mode), phased roadmap, and 6 critical challenges. |
 | [[home-tidy-drone-prototype]] | Feasibility & build plan for an indoor dock+navigate+voice+pick-up drone; requirements→tech→gaps→buy list. |
 | [[onboard-grasp-perception]] | Open-vocab detection + grasp-pose for drones; aerial OVD ~28% F1, all onboard graspers category-specific (the central blocker). |
 | [[precision-docking-recharging]] | Industrial drone-in-a-box ships (RTK+fiducial); consumer-indoor IR-beacon/wireless docking far less mature. |

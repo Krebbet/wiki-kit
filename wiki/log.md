@@ -92,7 +92,24 @@ Ran the capture + ingest of the SLAM_reading_list "recommended ingests" shortlis
 
 **Wiki correction (the load-bearing outcome):** our pages claimed 3DGS-SLAM is desktop-GPU-only / "none demonstrated on drone-class compute." GS-LIVO refutes this — *demoed* real-time Gaussian-Splatting LiDAR-inertial-visual SLAM on a Jetson Orin NX 16 GB at 48.3 ms/frame (~20 Hz), 1.2–1.5 GB vs 17–21 GB for desktop GS-SLAM (caveat: ground/handheld rig, not in flight). Corrected the claim on `slam` and `indoor-cluttered-slam`, citing [[learned-slam]]. Updated SLAM_reading_list.md to mark the shortlist ingested. Wiki now 54 content pages; link check clean. raw/research/learned-slam captures had 245 cosmetic pymupdf image-ref warnings (known kit bug, load-bearing audit clean).
 
+## [2026-05-28] research+ingest | close-range depth sensors (3 papers, 1 failed datasheet)
+
+Research question: close-range, narrow-FOV depth sensors suited for drone manipulation / grasp pose estimation at 0.5–2 m, where the Livox MID360 gives too-sparse returns on small objects.
+
+Fidelity audit: clean (0 issues across 3 captures). VL53L5CX datasheet capture failed (ST.com timeout) — noted in Source section, partial specs reconstructed from cross-citations.
+
+3 papers ingested:
+1. Sifferman et al. (arXiv 2509.16122, RA-L 2025) — arm-mounted AMS TMF8820 miniature ToF for proximity detection; self-detection problem solved via transient-histogram probabilistic model; 2.08 cm distance error, 78.9% TPR; 3.5 Hz frame rate limited by I²C bandwidth.
+2. Rustler et al. (arXiv 2501.07421, IEEE Access 2025) — D435 vs D455 vs ZED 2 vs OAK-D Pro; D435 best for complex objects at <100 cm (the manipulation range); D455 worse than D435 on curved objects at close range but better at flat-surface/longer-range nav; ZED 2 overall best but requires CUDA GPU (incompatible with drone SWaP); OAK-D Pro produces quantised depth layers unsuitable for complex shapes.
+3. Cai et al. (arXiv 2412.15040, ETH Zurich, IEEE 2024) — PMD Flexx2 ToF noise model (axial KL div 0.015 nats — excellent Gaussian fit); 13 g, 570–680 mW, 0.1–7 m range, 60 fps; developed for quadruped RL sim-to-real; applicable to drone manipulation.
+
+New page: `close-range-depth-sensors.md`. index.md updated (row inserted after lidar-for-uav-autonomy). revisions.md updated.
+
+Mild conflict surfaced with `home-tidy-drone-prototype`: D455 was chosen as the budget depth camera, but D455 has 0.6 m minimum range and is worse than D435 on complex curved household objects — the core manipulation target. Flagged as open question in the new page (dual-camera vs. D455 + miniature ToF).
+
 ## [2026-05-25] weekly-brief | thin technical week, 1 capture (MIGHTY)
+
+2026-05-28. Architecture design session. User proposed 8 subsystems for the full home-tidy drone cognitive stack; recorded, critiqued, extended. New page: system-architecture.md. Added 5 missing components: perception pipeline, safety arbiter, exploration/map-init mode, task sequencer, user interface. Proposed 6-phase roadmap (Phase 0 = current prototype plan; Phases 1–5 build up to open-vocabulary autonomous tidying). Called out 6 critical challenges in priority order; C1 (onboard manipulation perception without mocap) identified as the single likeliest architectural pivot-point. index.md and revisions.md updated.
 
 Manual weekly sweep (window 7d, ~2026-05-18→05-25). Trend scan across arXiv cs.RO + 8 named groups (RPG, MAVLab, CAST, GRASP, LIS, Imperial, ASL, UTIAS) + IEEE Spectrum + DroneDJ/sUAS News: a sparse week — most "trending" aerial-robotics items were publicity waves for out-of-window preprints (WPI ultrasound-nav Science Robotics Mar; RPG event-radiance-field Feb; EvSLAM Apr; CLAK Mar). Only one inside-window technical candidate cleared the domain-fit + signal bar.
 
