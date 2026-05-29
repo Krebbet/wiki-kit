@@ -177,3 +177,52 @@ Read 6 captured papers on dual-mode ground-aerial robots and wrote new `wiki/gro
 - TidyBot++ uses Kinova Gen3 arm (Canadian supply-chain note)
 
 **Conflicts with existing wiki:** None.
+
+## [2026-05-29] research+ingest | Learned Point Cloud Registration (5 sources)
+
+5 papers ingested. New page: `wiki/learned-point-cloud-registration.md`.
+
+**Sources:**
+- arXiv 2404.13830 (Zhang et al. Apr 2024/Feb 2025) — comprehensive DL-PCR survey, 100+ methods, unified 3DMatch/KITTI benchmarks
+- arXiv 2409.10824 (Yang et al. Sep 2024) — RobustLOL: 18 corruption types × 5 LiDAR odometry systems; DL degrades to 80% error
+- arXiv 2603.16273 (Mar 2026) — GenZ-LIO: adaptive classical LIO; 0% divergence on 42 sequences across 10 datasets
+- arXiv 1905.03304 (Wang & Solomon ICCV 2019) — Deep Closest Point: foundational DL registration (RMSE(R) 1.1° on ModelNet40)
+- arXiv 2507.17531 (Dannaoui et al. Jul 2025) — ICP in evolving environments; point-to-plane consistently outperforms point-to-point; both fail at symmetric corridors and featureless ground
+
+**Key findings:**
+- DL-PCR achieves impressive benchmarks (PARE-Net 94.2% on 3DMatch) but no method has deployed on embedded UAV hardware at scan rate
+- Learning-based odometry systems are *more* sensitive to real-world corruptions than classical ICP: degradation up to 80% RPEtrans under 18 corruption types
+- The generalization gap is structural: training on ModelNet40 or 3DMatch does not transfer to outdoor LiDAR; category-split DCP-v2 RMSE(R) degrades 2.8×
+- GenZ-LIO (Mar 2026) closes key deployment gaps through adaptive voxelization + hybrid error metric — without learned registration
+- Fine-tuning DeLORA on corrupted data recovers 35.8% of degradation — viable as a deployment engineering step once corruption profile is known
+
+**Conflicts with existing wiki:** None. Consistent with learned-slam.md framing (classical LIO dominates current deployment). Extends fast-lio-mid360-orin.md by explaining *why* FAST-LIO2 is classical (ICP-family) and what the alternatives look like.
+
+## [2026-05-29] research+ingest | TidyBot deep dive
+
+Full deep-dive page on TidyBot v1 and TidyBot++ from 12 captured source files. Created `wiki/tidybot-deep-dive.md`.
+
+**Sources used:**
+- arXiv 2305.05658 — TidyBot v1 paper (*Autonomous Robots* 2023)
+- arXiv 2412.10447 — TidyBot++ paper (CoRL 2024)
+- tidybot.cs.princeton.edu project page
+- tidybot2.github.io project page
+- Both GitHub READMEs (v1 + v++)
+- IROS 2023 camera-ready PDF
+- Kinova Gen3 product page (JS-walled — no parseable specs)
+- UFACTORY xArm page (specs recovered: $5,299–5,494, 5 kg payload, 700 mm reach)
+- UFACTORY Lite 6 page (specs recovered: $2,999, 0.6 kg payload, 440 mm reach)
+- Hello Robot Stretch 3 (404 — unavailable)
+- arXiv 2507.15693 (Forte low-cost arm paper) — **source 09 mislabelled** as "arm comparison paper"; is actually a novel 3D-printed arm design. Contains a reference table with Kinova Gen3 Lite as a datapoint but is not a comparison of the arms in the table. Flagged in page and revisions.
+
+**Key findings per source:**
+- v1 paper: complete pipeline docs, 85% real-world result with per-component breakdown, LLM comparison table, explicit limitation of hard-coded receptacles + top-down grasps only
+- v++ paper: holonomic vs differential controlled experiment (9/10 vs 4/10), full hardware specs table vs competitors, 50-demo sufficiency finding, external GPU architectural constraint stated explicitly
+- v++ README: ZMQ port 5555, RTX 4080 Laptop 115 ms inference latency, PolicyWrapper latency-hiding mechanism, real robot architecture diagram
+- v++ project page: confirms 6 officially supported arms (Kinova, Franka, ARX5, xArm, UR5, ViperX)
+
+**Conflicts with existing wiki:** None. home-tidying-robots.md covers the landscape; this page deepens TidyBot specifically. No factual conflicts found.
+
+**Open questions for user:**
+1. The arm-comparison source (09-10-arm-comparison-paper.md) is mislabelled — it's the Forte arm paper, not the comparative review originally intended. Was there a specific arm-comparison paper you wanted captured? The pre-extracted data in the brief included arm specs (Franka ~$25k, UR5e ~$35k, Stretch ~$25k) that I cannot directly trace to this source — these appear to be pre-extracted estimates in the brief itself rather than data confirmed in any source file.
+2. Phase-2 hardware recommendation (§7) assumes a ground-first approach. If the project pivots to aerial-first (drone as primary actor, no ground arm), the TidyBot++ base recommendation is moot. Worth confirming direction before acting on it.

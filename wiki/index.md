@@ -50,6 +50,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
 | [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
 | [[home-tidying-robots]] | State-of-the-art ground-robot tidying systems (TidyBot, TidyBot++, WRC2020, benchmarks); personalisation methods; gap table vs our aerial approach. |
+| [[tidybot-deep-dive]] | Full deep-dive on TidyBot v1 + v++: hardware BOM, arm comparison table, external-GPU inference constraint, LLM vs diffusion-policy methods, and alignment with/gaps against our project. |
 | [[drone-commercial-verticals]] | Index of consumer/commercial verticals + cross-vertical gaps (BVLOS, unit economics, acceptance). |
 | [[drone-inspection-use-case]] | Infrastructure/energy/telecom inspection — Percepto@Chevron, Skydio Dock@utilities; shipping at scale. |
 | [[drone-delivery-use-case]] | Last-mile logistics — Zipline 2M+ deliveries; unit economics still subsidized (Amazon ~$63 vs $10 price). |
@@ -59,6 +60,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[drone-battery-energy]] | Energy-density futures — Amprius 450 Wh/kg, hydrogen BVLOS, hybrid; the propulsion-futures contest. |
 | [[slam]] | Hub: what SLAM is (localization + mapping + loop closure), VIO vs LiDAR-inertial front-ends, how pose reaches the FC, indoor failure modes. |
 | [[learned-slam]] | AI/learning-based SLAM layer: neural LIO, learned VIO, edge 3DGS-SLAM (GS-LIVO on Orin), monocular metric-depth foundation models, learned place recognition. |
+| [[learned-point-cloud-registration]] | DL methods for point cloud registration (DCP→GeoTransformer→PARE-Net): benchmark SOTA, deployment gap analysis (generalization, corruption robustness, latency), GenZ-LIO as classical gap-closer. |
 | [[slam-fc-integration]] | External SLAM/VIO pose fused into ArduPilot EKF3 / PX4 EKF2 via MAVROS vision_pose — frames, EK3_SRC params, delay tuning, divergence pitfalls. |
 | [[fast-lio-mid360-orin]] | Deploying FAST-LIO2 LiDAR-inertial odometry with a Livox MID360 on a Jetson Orin under ROS 2 — driver, IMU quirks, calibration, variants, compute. |
 | [[indoor-obstacle-avoidance]] | Two-tier indoor avoidance: FC-native reactive (ArduPilot BendyRuler/Dijkstra, PX4 Collision Prevention) + companion planners (EGO-Planner/Swarm, FASTER). |

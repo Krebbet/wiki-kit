@@ -42,6 +42,27 @@ Semantic object-location memory is a persistent spatial representation that enco
 
 ---
 
+## Instance-level object fingerprinting *(architectural proposal)*
+
+The existing scene-graph literature (Hydra, ConceptGraphs, HOV-SG) tracks object *categories* and *locations* but does not maintain per-instance identity across sessions. A stronger architecture for the home-tidy use case:
+
+**Discovery phase:** when the drone first encounters an object, run a lightweight visual embedding model (candidates: DINOv2, SigLIP, MobileNet-class) on the RGB crop. Store the embedding vector as the object's **fingerprint** alongside its properties: estimated location, category label, grasp history, difficulty notes, "belongs to" assignment, last-seen timestamp.
+
+**Operations phase:** when the drone observes an object in real time, embed it and run nearest-neighbour search against the fingerprint library. A match retrieves all accumulated properties for that specific instance — not just its category. Example: "this is the round red ball from Charlie's room; previous attempts found it hard to grasp because it rolls; it belongs in the blue toy bin."
+
+**Why this matters over category-only memory:**
+- Two identical-looking objects (two red balls) can have different ownership, location, and grasp history
+- Properties from prior inspections (weight estimate, surface texture, graspability, known difficulty) improve real-time execution without re-learning
+- The library compounds over time: each successful or failed grasp enriches the record for that instance
+
+**Implementation sketch:**
+- Embedding model: DINOv2-small or SigLIP-base — both run on Jetson Orin NX at real-time rates
+- Vector store: FAISS (CPU, in-memory for a household-scale library of ~1k–10k objects) or SQLite-vec
+- Properties record: JSON blob per object (category, room, bin/destination, grasp_attempts, grasp_success_rate, difficulty_notes, owner)
+- Sync: fingerprint library lives in the COMMAND CENTER; a compressed "working set" for the current room is pushed to IMMEDIATE TASK LOAD before each task
+
+This is complementary to scene-graph approaches (Hydra, ConceptGraphs): the scene graph tracks spatial relationships; the fingerprint library tracks per-instance identity and accumulated experience. See [[system-architecture]] (COMMAND CENTER, WORLD MAP) and [[home-tidying-robots]] (TidyBot personalisation — category-level; this extends to instance-level).
+
 ## Key gaps
 
 - **Memory and compute cost at scale.** Dense open-vocabulary maps (per-point CLIP embeddings) do not scale to large or multi-room environments; Tag Map reduces storage by orders of magnitude but loses relational structure. No method cleanly solves the memory-vs-richness tradeoff for a resource-constrained drone. [`06-arxiv-2501-05750`; `11-arxiv-2409-15451`]
