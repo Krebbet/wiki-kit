@@ -33,6 +33,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[cooperative-aerial-manipulation]] | Multi-drone lift/force; industrial-leaning + the FlyCroTug consumer-scale glimpse. |
 | [[multimodal-locomotion]] | Drones that also drive/walk/swim; air-ground hybrids buy ~10–40× endurance; AirCrab/M4 exist. |
 | [[air-ground-hybrids]] | Energy spine: passive-wheel 77%, Roller-Quadrotor 41×, Tilt-Ropter 92.8%; AirCrab arm+wheels; M4. |
+| [[ground-aerial-robots]] | Ground-primary burst-flight platforms: DoubleBee (2.78 kg bicopter+wheels), Duawlfin (800 g unified actuation, 30× energy ratio), ATMO (5.5 kg mid-air morphing), M4 primary paper + autonomy pipeline; RL stair-climbing (38% power reduction, 3/5 hardware success); all demoed but mocap-dependent. |
 | [[air-water-robots]] | Amphibious hybrids — research-curiosity maturity (≥200 s mode-switch, ~0.08 m/s swim). |
 | [[dream-to-fly]] | ETH RPG, ICRA 2026 — DreamerV3 pixel→control, no LiDAR, ≤9 m/s; Position-B for the lidar-vs-vision conflict. |
 | [[air-vla]] | First VLA benchmark for aerial manipulation (sim-only; best ~42/100; global-camera-dependent). |
@@ -42,11 +43,13 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[system-architecture]] | Full cognitive-stack architecture for the home-tidy drone: all subsystems, critique, missing components (perception pipeline, safety arbiter, exploration mode), phased roadmap, and 6 critical challenges. |
 | [[home-tidy-drone-prototype]] | Feasibility & build plan for an indoor dock+navigate+voice+pick-up drone; requirements→tech→gaps→buy list. |
 | [[onboard-grasp-perception]] | Open-vocab detection + grasp-pose for drones; aerial OVD ~28% F1, all onboard graspers category-specific (the central blocker). |
+| [[tactile-manipulation]] | Tactile sensing for manipulation: sensor classes (GelSight/DIGIT, taxel skins, F/T), FARM diffusion policy, NeuralFeels visuotactile SLAM, TacSL sim-to-real, zero-shot unknown-object grasping; relevance to land-then-grasp drone architecture. |
 | [[precision-docking-recharging]] | Industrial drone-in-a-box ships (RTK+fiducial); consumer-indoor IR-beacon/wireless docking far less mature. |
 | [[indoor-cluttered-slam]] | Indoor/home SLAM beyond outdoor demos: object-level, multi-floor, symmetric-room loop closure, 3DGS, dynamic movers. |
 | [[voice-intent-task]] | Voice→intent→task for drones: on-device STT + LLM grounding; real-flight benchmarks; latency/grounding/safety gaps. |
 | [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
 | [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
+| [[home-tidying-robots]] | State-of-the-art ground-robot tidying systems (TidyBot, TidyBot++, WRC2020, benchmarks); personalisation methods; gap table vs our aerial approach. |
 | [[drone-commercial-verticals]] | Index of consumer/commercial verticals + cross-vertical gaps (BVLOS, unit economics, acceptance). |
 | [[drone-inspection-use-case]] | Infrastructure/energy/telecom inspection — Percepto@Chevron, Skydio Dock@utilities; shipping at scale. |
 | [[drone-delivery-use-case]] | Last-mile logistics — Zipline 2M+ deliveries; unit economics still subsidized (Amazon ~$63 vs $10 price). |

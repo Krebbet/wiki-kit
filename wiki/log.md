@@ -116,3 +116,64 @@ Manual weekly sweep (window 7d, ~2026-05-18→05-25). Trend scan across arXiv cs
 1 captured + ingested → `mighty` (arXiv 2511.10822, MIT-ACL + UPenn): Hermite-spline UAV trajectory planner doing joint spatiotemporal optimization; −9.3% compute / −13.1% travel time vs MINCO, 100% sim success, 6.7 m/s onboard on a NUC 13 with Livox MID360 + DLIO; code released (mit-acl/mighty). Conflict call: linked to [[lidar-vs-vision-autonomy]] but NOT logged as Position-A (LiDAR-necessary) evidence — MIGHTY merely *uses* LiDAR and its own benchmark runs EGO-Swarm2 on a depth camera, so it's a LiDAR-used datapoint, not support for LiDAR necessity. Notably runs on our exact build sensor (MID360).
 
 3 watchlist additions (Autonomy & perception): EvSLAM (event-VO/VIO high-speed benchmark + challenge, conflict-relevant), Antigravity A1 (360° vision-only avoidance shipping in a consumer drone), GDU S400E (vision+mmWave-radar fusion, "fuse don't choose" datapoint). Wiki now 55 content pages. Email + Telegram dispatched; changes committed + pushed per the topic-branch contract.
+
+## [2026-05-29] research+ingest | tactile-manipulation (8 papers)
+
+8 captured papers on tactile robotic manipulation ingested → new `tactile-manipulation.md` page.
+
+Papers:
+1. Lepora, "Tactile Robotics: Past and Future" (IJRR 2025 survey) — 45-year historical arc, sensor class taxonomy, commercial landscape
+2. Donato et al., "Sensorimotor Control Strategies for Tactile Robotics" (2025 review) — slip detection, tactile servoing, friction-informed control architectures
+3. Suresh et al., "NeuralFeels" (Science Robotics 2024) — visuotactile SLAM on Allegro+DIGIT; 81% F-score, 4.7 mm drift, 94% improvement under occlusion
+4. Li et al., "ManiSkill-ViTac 2025" (ICRA 2025 workshop) — first standardised visuotactile benchmark; FEM-based simulation; dual GelSight Mini platform
+5. Helmut et al., "FARM" (IEEE preprint 2025) — diffusion policy + force distribution action space; 100% screw-tightening (vs 0% vision-only)
+6. Akinola et al., "TacSL" (NVIDIA, IEEE T-RO 2025) — GPU-parallelised tactile sim (200×+ speedup); 91.4% zero-shot peg placement on real Franka
+7. Kasolowsky & Bäuml, "Fine Manipulation with Tactile Skin" (IROS 2024) — 4×4 taxel skin; <1 mm marble tracking vs 5 mm without tactile; zero-shot DLR-Hand II
+8. ByteDance Seed, "Closing the Reality Gap" (Dec 2025) — 12-DoF xHand; force-adaptive grasping of unknown objects; 25.1 consecutive in-hand rotations with tactile vs 1.1 without
+
+Key synthesis finding: land-then-grasp removes the aerial-manipulation barrier — all these results apply directly once the drone is on the ground. GelSight Mini (~25 g) is payload-compatible with a lightweight drone gripper. Gel lifespan under drone vibration is an open question.
+
+No conflicts with existing pages. Confirms and extends the [[onboard-grasp-perception]] finding that vision-only is the central blocker.
+
+## [2026-05-29] research+ingest | ground-aerial-robots
+
+Read 6 captured papers on dual-mode ground-aerial robots and wrote new `wiki/ground-aerial-robots.md`. Also updated `wiki/air-ground-hybrids.md` (added pointer, upgraded M4 entry to primary paper citation).
+
+**Sources processed:**
+1. arXiv 2503.00609 (Caltech, Mar 2025) — ATMO, 5.5 kg, mid-air morphing via single worm-gear actuator, MPC transition controller, ground-effect aerodynamics characterised, slope landing at 25°
+2. arXiv 2505.13836 (UC Berkeley, May 2025) — Duawlfin, ~800 g, unified actuation via one-way bearings + differential drivetrain, 30× ground/flight energy ratio at 1 m/s, 0.1 s mode switch, 30° slope climbing
+3. arXiv 2303.05075 (NTU, IROS 2023) — DoubleBee, 2.78 kg, bicopter+2 active wheels, decoupled control scheme (thrust controls pitch, wheels control translation), lowest energy in bicopter class
+4. arXiv 2603.26687 (CMU+NTU, Mar 2026) — Energy-aware RL on DoubleBee: 4× energy reduction in sim vs propellers-only; 38% average power reduction on hardware 8 cm gap-climbing (3/5 success); emergent thrust-assisted driving
+5. PMC10300070 / Nature Comms 2023 (Caltech) — M4 MorphoBot primary paper (reCAPTCHA blocked capture; data from thesis source)
+6. arXiv 2308.13972 (Northeastern, Aug 2023) — M4 autonomy: traversability CNN + modified 3D A* path planner; 60:1 aerial-to-ground energy ratio assumed; 92% energy reduction vs pure aerial in maze scenario (simulation); CNN too slow for Jetson real-time (excluded from scope)
+
+**Key findings:**
+- 60:1 aerial-to-ground energy cost ratio (M4 model assumptions) — the strongest data point for ground-primary architecture
+- Real stair-climbing on hardware: 8 cm step, 3/5 trials, 38% power reduction vs rule-based controller
+- Full staircase autonomy: simulation-only, no hardware demonstration
+- All platforms mocap-dependent for state estimation; no onboard autonomy at mode-switch time
+- Duawlfin at 800 g is the lightest viable platform; 30× energy ratio is empirically measured (not modelled)
+- RL policy (CMU) is the only system where "burst flight" emerges naturally from optimisation rather than discrete mode switching — closest to the desired architecture
+
+**Conflicts with existing wiki:** None. Complements [[air-ground-hybrids]] without contradicting it. M4 entry in air-ground-hybrids upgraded from journalism source to primary paper citation.
+
+## [2026-05-29] ingest | Home Tidying Robots (5 sources)
+
+5 papers ingested. New page: `wiki/home-tidying-robots.md`.
+
+**Sources:**
+- TidyBot (arXiv 2305.05658, Stanford/Princeton/Google 2023) — LLM personalisation, 85% real-world success
+- TidyBot++ (arXiv 2412.10447, Princeton/Stanford Dec 2024) — open-source $5–6k holonomic base, 60–100% on 6 real tasks
+- WRC2020 Partner Robot (arXiv 2207.10106, U. Tokyo 2022) — competition benchmark, 65% grasp, 56 s/object
+- ManiSkill-HAB (arXiv 2412.13211, UCSD/Hillbot ICLR 2025) — GPU sim benchmark with realistic grasping
+- LLM-Personalize (arXiv 2404.14285, Microsoft/Edinburgh 2024) — ReST fine-tuning, >30% improvement in sim
+- 1X NEO (FAILED CAPTURE — JS-wall, only marketing fragment; noted as commercial humanoid)
+
+**Key findings:**
+- Nothing is commercially shipping for general home tidying
+- TidyBot's few-shot LLM summarisation (91.2% benchmark, 85% real-robot) is state-of-the-art for personalised tidying — directly applicable to our COMMAND CENTER concept
+- Best real-robot ground manipulator achieves 65–100% depending on task complexity; our aerial grasping is the main gap
+- All existing systems are ground-only; aerial tidying literature is absent
+- TidyBot++ uses Kinova Gen3 arm (Canadian supply-chain note)
+
+**Conflicts with existing wiki:** None.

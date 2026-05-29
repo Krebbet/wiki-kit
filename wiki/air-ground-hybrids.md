@@ -2,6 +2,8 @@
 
 Rolling beats hovering by 10–40× in power draw, translating directly to 40× longer ground operating time on the same battery. Air-ground hybrids exploit this gap by adding wheels (passive or driven) to multirotor frames, trading brief flight capability for practical ground endurance. The field spans minimal passive-wheel add-ons through fully-actuated tilt-rotor platforms and appendage-repurposing morphobots, but universal lab-only (mocap) localisation and weight overhead remain the blocking gaps for consumer deployment.
 
+For platforms that go further — ground-primary robots that use flight as a burst capability for stairs and obstacles — see [[ground-aerial-robots]] (DoubleBee, Duawlfin, ATMO, M4 primary paper, RL stair-climbing).
+
 ## The Endurance Case
 
 [[multimodal-locomotion]] establishes the core principle: aerial locomotion is energetically expensive, and any platform that can roll on a surface instead of hover gains massive endurance. The empirical numbers are unambiguous. A single 20 g passive nylon wheel on a 1950 g bi-copter saves 77% battery while stationary and 61% while rolling versus continuous hover [05-single-passive-wheel, arXiv 2003.09242]. A driven unicycle wheel extends ground range to ~2.8× aerial and operating time to ~41× aerial on the same pack [03-roller-quadrotor, arXiv 2303.00668]. This asymmetry — not payload, not speed — is the consumer-relevant heart of the hybrid concept.
@@ -23,7 +25,7 @@ Rolling beats hovering by 10–40× in power draw, translating directly to 40× 
 
 **TiltRopter** [04-tilt-ropter, arXiv 2602.01700, 2026] is current SOTA: unified NMPC with wrench estimator (no F/T sensor, no VIO required), aerial position RMSE 0.052 m / ground 0.145 m / transition 0.125 m at ≤1.5 m/s. Supersedes the underactuation limits of [03] and [05]; no endurance or payload figure published.
 
-**M4 MorphoBot** [13-m4-morphobot, Nature Comms 2023, Caltech] achieves 8 modes (fly, roll, crawl, crouch, balance, tumble, scout, loco-manipulate) via appendage repurposing; 45° slope capability (WAIR-style). MM-PRM + A* onboard planning. Only UGV↔UAS autonomous mode switching demoed — 8-mode autonomy is declared future work. The 1600 g tire assembly illustrates the weight-overhead cost of flexibility.
+**M4 MorphoBot** [13-m4-morphobot, Sihite et al., *Nature Communications* 14:3323, 2023, Caltech — primary paper PMC10300070] achieves 8 modes (fly, roll, crawl, crouch, balance, tumble, scout, loco-manipulate) via appendage repurposing; 45° slope capability (WAIR-style). MM-PRM + A* onboard planning. Only UGV↔UAS autonomous mode switching demoed — 8-mode autonomy is declared future work. The 1600 g tire assembly illustrates the weight-overhead cost of flexibility. Autonomy pipeline (traversability CNN + 3D A* path planner, simulation-only) documented in Rajput 2023 MS thesis, Northeastern [arXiv 2308.13972]. See [[ground-aerial-robots]] for the primary paper citation and autonomous mode-switching details.
 
 ## Multimodal + Manipulation
 
@@ -55,13 +57,15 @@ Ground power savings interact directly with battery sizing and flight-time calcu
 - `raw/research/multimodal-locomotion/05-single-passive-wheel.md` — arXiv 2003.09242 (2020); passive-wheel bi-copter, foundational minimal design, empirical energy savings
 - `raw/research/multimodal-locomotion/03-roller-quadrotor.md` — arXiv 2303.00668 (2023); unicycle-driven quadrotor, 41× ground time, full energy/CoT breakdown
 - `raw/research/multimodal-locomotion/04-tilt-ropter.md` — arXiv 2602.01700 (2026); SOTA fully-actuated tilt-rotor+wheel, NMPC, 92.8% ground power reduction
-- `raw/research/multimodal-locomotion/13-m4-morphobot.md` — Nature Comms 2023 (Caltech); 8-mode appendage-repurposing morphobot, landmark platform
+- `raw/research/multimodal-locomotion/13-m4-morphobot.md` — Nature Comms 2023 (Caltech); 8-mode appendage-repurposing morphobot, landmark platform (journalism/secondary source; primary paper is PMC10300070, captured in `raw/research/dual-mode-robots/01-05-pmc-m4-nature-comms.md`)
+- `raw/research/dual-mode-robots/02-06-arxiv-2308-13972.md` — arXiv 2308.13972 (Northeastern, 2023); M4 autonomy thesis — traversability CNN + 3D A* path planner (simulation)
 - `raw/research/multimodal-locomotion/07-aircrab.md` — arXiv 2403.15805, IROS 2024; wheel+arm quadrotor, Egret posture, manipulation accuracy numbers
 - `raw/research/multimodal-locomotion/09-fstar-techcrunch.md` — TechCrunch journalism; Ben-Gurion FSTAR shared-actuator concept, context only
 - `raw/research/multimodal-locomotion/12-spectrum-leonardo.md` — IEEE Spectrum journalism; Caltech LEONARDO leg-rotor bipedal, no primary in corpus
 
 ## Related
 
+- [[ground-aerial-robots]] — deeper detail on ground-primary burst-flight platforms (DoubleBee, Duawlfin, ATMO, M4 primary paper, RL stair-climbing)
 - [[multimodal-locomotion]] — parent topic covering the full locomotion-mode landscape
 - [[aerial-manipulation]] — arm-equipped aerial platforms; AirCrab bridges both
 - [[aerial-grasping]] — grasping mechanics relevant to M4 loco-manipulate and AirCrab
