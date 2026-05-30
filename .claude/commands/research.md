@@ -50,7 +50,7 @@ $ARGUMENTS — the topic to research.
      ```bash
      poetry run python -m tools.capture_pdf --src <URL-or-path> --out raw/research/<topic-slug> --slug <short-slug>
      ```
-     Default engine is `marker` (best for papers). For simple PDFs or to skip the model weight download, add `--engine pymupdf`.
+     Default engine is `marker` — always use it for papers (image extraction is load-bearing). If the GPU is contended, force CPU with `CUDA_VISIBLE_DEVICES="" poetry run …`. Only fall back to `--engine pymupdf` if marker fails on CPU too; the "simple PDFs" / "skip model download" carve-out has burned us repeatedly because pymupdf drops figure binaries.
 
    - **YouTube video:**
      ```bash
