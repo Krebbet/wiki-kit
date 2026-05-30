@@ -28,15 +28,17 @@ Perform a health check of the wiki.
 
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
+10. **Watched-source evolution (radar)** — the watch list tracks the wiki's evolving subject, not a frozen bootstrap snapshot. Review the sources cited by pages added or changed since the last lint report (`wiki/lint-reports/`), plus any high-signal venues encountered while reading the wiki this run. Identify sources the wiki should watch going forward that aren't yet pinned in `wiki/reference-sources.md`. Append confirmed new sources to the appropriate watched-source section of `wiki/reference-sources.md` (with a one-line relevance note), and drop any that have gone stale. Record the current watched-source set in the **Trend Radar** output section and the additions/removals made this run in the **Radar Evolution** section.
+
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — AI research trends (LLM/SLM training, fine-tuning, RL, architectures, CV, evolutionary LLMs):
+11. **Domain-specific checks** — AI research trends (LLM/SLM training, fine-tuning, RL, architectures, CV, evolutionary LLMs):
     a. **Results present** — every method/technique page has a `## Results` or `## Metrics` section with concrete numbers (benchmark scores, parameter counts, compute, sample efficiency, etc.) or an explicit note that the source reported none.
     b. **Paper identifier + links** — every page derived from a paper cites venue and year, and includes the arXiv ID / DOI plus links to the code repo and paperswithcode entry when they exist.
     c. **Code/weights availability noted** — technique pages state whether code, weights, or a paperswithcode entry are available and link them. Absence is noted explicitly (not left silent).
     d. **Conflict pages primary-sourced** — pages in `wiki/conflicts/` state the contested claim precisely and cite at least one primary source per side.
     e. **Method-family cross-linking** — technique pages link to at least one sibling method in the same family (e.g., MoE variants, RLHF-adjacent methods, SSM/attention hybrids, diffusion-for-LMs, evolutionary-LLM approaches). Orphan technique pages are flagged for cross-linking.
 
-11. **Trend radar sweep** — read `wiki/reference-sources.md`. For each source with status `active` or `probation`:
+12. **Trend radar sweep** — read `wiki/reference-sources.md`. For each source with status `active` or `probation`:
 
     a. **Fetch recent activity.** Use the right tool per channel:
        - **GitHub awesome-lists** → fetch the README or recent commits/changelog via `capture_url` (no `--js` needed on github.com). Diff against last-seen state if available; otherwise note items added since the last lint (use `wiki/revisions.md` to infer timing).
