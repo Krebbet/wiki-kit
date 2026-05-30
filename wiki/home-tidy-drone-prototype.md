@@ -2,6 +2,51 @@
 
 A concrete consumer use-case integration: a single indoor drone that (R1) docks/recharges autonomously, (R2) learns and navigates a house, (R3) takes voice commands, and (R4) picks up and sorts household objects ("clean up the toys"). This page maps each requirement to wiki-demonstrated capability, flags the blockers, lists follow-up research, and — in a clearly-marked beyond-wiki section — a minimal-prototype build. **Headline verdict (synthesis):** R2 (navigation) and R1 (localization/landing primitives) are achievable today; R4 (manipulation) only for *known, light* objects in a structured setup; **R3 (voice) and fully-autonomous arbitrary-object cleanup are the frontier gaps.** A constrained lab prototype is buildable now; the consumer-grade version is this wiki's 5–10+ yr horizon.
 
+## Phase 1 pivot — ground robot for perception/nav prototype *(added 2026-05-30)*
+
+**Platform:** Pivoted from aerial drone to a ground robot chassis for Phase 1 iteration. Aerial drone remains the long-term target; ground platform eliminates flight-safety, endurance, and vibration constraints so the perception / nav / world-model stack can be validated quickly and cheaply. Findings transfer directly — the sensor stack, SLAM pipeline, ROS 2 architecture, and server-side world brain are identical. The drone replaces the chassis in Phase 2.
+
+**Sensor in hand:** SVPRO 1080P 60FPS USB stereo camera (3840×1080 side-by-side, UVC). Passive stereo — no active IR; depth via stereo matching. Usable for fiducial detection, passive visual odometry, and 2D object detection today. Metric depth for manipulation requires adding D435 (see [[close-range-depth-sensors]]).
+
+### Four workstreams
+
+Phase 1 splits into four independently buildable workstreams:
+
+**(A) Robot-side** — sensor drivers, localization (visual SLAM / wheel odometry), local map publisher, object detector (YOLO-World on RGB), navigation executor (receives goal poses from server, runs local path planner).
+
+**(B) Server-side world view** — map store (persists geometric map across sessions), object registry (known objects, expected vs actual locations), scene diff engine (present / missing / moved), static/dynamic classifier, world state API.
+
+**(C) Robot ↔ server comms** — pose stream (robot → server, ~10 Hz), detection events (robot → server on new detection), map increments, goal commands (server → robot), state sync on reconnect, heartbeat/watchdog. Protocol: ROS 2 DDS for robot-local topics; thin MQTT or gRPC bridge to server. See [[drone-comms-wifi]] for DDS-over-WiFi failure modes.
+
+**(D) User communication layer** — voice entry point (phone) → STT (Whisper) → intent parser (Claude Haiku) → command router → drone-core API → TTS response. Entirely separate repo (`drone-app`); calls server world API. See [[user-comms-layer]].
+
+### Repo split
+
+| Repo | Contains | Can build in isolation |
+|---|---|---|
+| `drone-core` | `robot/` (ROS 2 packages), `server/` (world brain service), `shared/` (message/API schemas) | No — robot and server share interface definitions |
+| `drone-app` | Voice, intent, router, feedback | Yes — mock drone-core API with a stub server |
+
+### What can start now (SVPRO camera in hand, no robot chassis)
+
+| Task | Block |
+|---|---|
+| AprilTag / ArUco fiducial detection + pose | A |
+| Stereo camera calibration (intrinsics + extrinsics) | A |
+| UVC → ROS 2 camera node (`usb_cam` / `v4l2_camera`) | A |
+| Object detection pipeline (YOLO-World on RGB, laptop) | A |
+| Passive stereo depth test (SGBM / RAFT-Stereo, textured scenes) | A |
+| Object registry schema + DB design | B |
+| Scene diff engine (mock detections) | B |
+| World state API design | B |
+| ROS 2 topic schema + message type definitions | C |
+| MQTT/gRPC bridge design | C |
+| STT → intent parser → router pipeline (mock drone-core) | D |
+
+### What is blocked on chassis hardware
+
+Navigation executor, wheel odometry / IMU fusion, full SLAM-to-nav closed loop, live detection → registry updates, real-time comms testing.
+
 ## Phase 1 — first prototype: core comms + autonomous navigation *(revised 2026-05-24 — fiducials-first staging)*
 
 Scope cut to **two goals**; manipulation / voice / dock / semantic cleanup deferred — but the WiFi link is architected so they bolt on later. **Thesis:** a drone that safely auto-navigates a household (take off → traverse → land at locations) *and* rides the home WiFi becomes the platform for every future feature (mapping, voice, objects). Software assumed open-source / self-built (ArduPilot/PX4, ROS 2, FAST-LIO2, OpenVINS/VINS-Fusion); established systems only where clearly best.

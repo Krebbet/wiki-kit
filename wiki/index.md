@@ -13,7 +13,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[drone-autonomy-state]] | Synthesis: narrow autonomy shipping, agile autonomy demoed, BVLOS regulation still being written. |
 | [[drone-sensors-for-autonomy]] | Reference map — sensor → purpose → maturity → tradeoff (camera, event, LiDAR, IMU, GNSS, radar, ADS-B, acoustic). |
 | [[lidar-for-uav-autonomy]] | LiDAR sensor classes (2D/mechanical/solid-state/FMCW), LIO algorithm lineage, benchmarks; LiDAR-necessary position. |
-| [[close-range-depth-sensors]] | Sensor landscape for 0.5–2 m depth perception (stereo RGB-D, dense ToF, miniature ToF arrays); quantitative benchmarks; implications for drone grasp-approach perception. |
+| [[close-range-depth-sensors]] | Sensor landscape for 0.05–2 m depth perception: D405 (7–50 cm arm specialist), OAK-D SR (30 cm–1 m + onboard AI), D435/D455/ZED 2/OAK-D Pro, PMD Flexx2, miniature ToF arrays; D3RoMa for transparent/specular surfaces; two-camera ground-robot recommendation. |
 | [[event-cameras]] | Event-camera fundamentals: µs latency, >120 dB DR, vendors, algorithm families. |
 | [[event-cameras-for-uavs]] | UAV-specific event-vision applications, dataset map, neuromorphic-on-drone results. |
 | [[eth-rpg-scaramuzza]] | ETH/UZH RPG (Scaramuzza) lab profile — demoed event-camera drone results, latency figures, AI-vs-human race. |
@@ -47,6 +47,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[precision-docking-recharging]] | Industrial drone-in-a-box ships (RTK+fiducial); consumer-indoor IR-beacon/wireless docking far less mature. |
 | [[indoor-cluttered-slam]] | Indoor/home SLAM beyond outdoor demos: object-level, multi-floor, symmetric-room loop closure, 3DGS, dynamic movers. |
 | [[voice-intent-task]] | Voice→intent→task for drones: on-device STT + LLM grounding; real-flight benchmarks; latency/grounding/safety gaps. |
+| [[user-comms-layer]] | User communication layer: entry points (phone/speaker), STT, LLM intent parser, command router, response/TTS; prototype build order and drone-app repo structure. |
 | [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
 | [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
 | [[home-tidying-robots]] | State-of-the-art ground-robot tidying systems (TidyBot, TidyBot++, WRC2020, benchmarks); personalisation methods; gap table vs our aerial approach. |

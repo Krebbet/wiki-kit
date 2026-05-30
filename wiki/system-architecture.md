@@ -2,7 +2,7 @@
 
 Top-down design of all subsystems required for a home-tidy autonomous drone. The goal state: a consumer indoor drone that learns a house, accepts voice commands, and autonomously completes household tidying tasks. This page records the proposed architecture, critiques it, adds missing components, proposes a revised phased roadmap, and surfaces the hardest unsolved problems.
 
-For the Phase-1 physical build (flight + SLAM + comms), see [[home-tidy-drone-prototype]].
+For the Phase-1 physical build, see [[home-tidy-drone-prototype]]. **Note (2026-05-30):** Phase 1 has pivoted to a ground robot chassis for rapid perception/nav/world-model validation; aerial drone is Phase 2+. The cognitive stack on this page is platform-agnostic.
 
 ---
 
@@ -192,15 +192,32 @@ How does the user actually interact with this system? The architecture focuses o
 
 ---
 
+### 8. USER COMMUNICATION LAYER *(missing — now specified)*
+
+> *How does the user give commands and receive feedback? Entry point → voice capture → intent parsing → command routing → robot/server API → response.*
+
+**What's right.** The original architecture names voice commands as a requirement but leaves the implementation completely unspecified, noting it as a gap. The design decision to make this a separate subsystem — and a separate repo — is correct. The boundary between COMMAND CENTER (task planning) and USER COMMUNICATION LAYER (I/O) must be explicit: the command layer should receive structured intents, not raw voice audio.
+
+**Architecture.** Five layers: (1) Entry point (phone app, smart speaker, Sonos); (2) STT (Whisper local or cloud); (3) Intent parser (LLM-grounded against world registry — rooms, known objects); (4) Command router (maps structured intent to drone-core API: navigate, find_object, query_state, cancel); (5) Response synthesizer + TTS. See [[user-comms-layer]] for the full specification.
+
+**Gaps and concerns.**
+
+- *LLM latency is not a flight-safety path.* Intent parsing via LLM adds 200–800 ms round-trip. This is acceptable for task-level commands ("go to kitchen") but must never be in the control loop. The router must be able to issue an emergency stop without LLM involvement.
+- *Grounding degrades as the world grows.* The intent parser is grounded against the world registry. As the object count grows (100s of items), the grounding prompt grows and latency + cost increase. A hybrid (LLM intent + registry lookup for entity resolution) scales better than pure LLM.
+- *Entry-point coverage vs complexity tradeoff.* Phone app covers the prototype. Smart speakers (Alexa/Google) require cloud skills and add privacy cost. Sonos has no microphone. Supporting all three in production requires an adapter layer — design for it in the prototype even if only phone is wired up.
+- *Feedback loop is underspecified in the original design.* The original architecture has no return path: the user fires a command and has no visibility into what the robot is doing. Status updates ("heading to kitchen", "found 2 items out of place") are as important as the command path. The response synthesizer + a live status feed are first-class features, not afterthoughts.
+
+---
+
 ## Revised phased roadmap
 
 Building on the [[home-tidy-drone-prototype]] Phase-1 plan (flight + SLAM + comms, fiducials-first), here is the full-stack phasing:
 
 | Phase | Core subsystems built | Milestone | Key dependency |
 |---|---|---|---|
-| **Phase 0 (current)** | SAFETY ARBITER, STATE UNDERSTANDING (fiducials/SLAM), AUTONOMOUS NAVIGATION (room-scale), INTERNAL HEALTH CHECK (basic) | Drone autonomously navigates from A→B in known room over WiFi; safe failsafe | LiDAR + SLAM + FC integration (see [[home-tidy-drone-prototype]]) |
+| **Phase 0 (current)** | SAFETY ARBITER, STATE UNDERSTANDING (visual SLAM / odometry), AUTONOMOUS NAVIGATION (room-scale), INTERNAL HEALTH CHECK (basic), WORLD MAP (geometric), SERVER WORLD VIEW (object registry + scene diff) | **Ground robot** navigates A→B in known room; server tracks object state; robot ↔ server comms working | Ground chassis + SVPRO camera; see [[home-tidy-drone-prototype]] Phase-1 pivot |
 | **Phase 1** | EXPLORATION / MAP INIT, WORLD MAP (geometric), PERCEPTION PIPELINE (nav-track: traversability labels) | Drone builds map of whole flat; correctly labels doorways, furniture, floor; re-navigates without re-mapping | SLAM + semantic nav perception |
-| **Phase 2** | COMMAND CENTER (v1, LLM), TASK COMMUNICATION LOOP (v1), USER INTERFACE (voice commands) | User says "go to the kitchen" → drone navigates and confirms; Command Center holds room-level world state | Off-drone LLM + WiFi task loop + voice-to-intent |
+| **Phase 2** | COMMAND CENTER (v1, LLM), TASK COMMUNICATION LOOP (v1), USER COMMUNICATION LAYER (voice→intent→command) | User says "go to the kitchen" → robot navigates and confirms; Command Center holds room-level world state | Off-drone LLM + WiFi task loop + voice-to-intent ([[user-comms-layer]]) |
 | **Phase 3** | ACTIONS EXECUTION (gripper), TASK SEQUENCER, IMMEDIATE TASK LOAD (v1), PERCEPTION PIPELINE (manipulation-track: known objects + grasp poses) | Drone picks up a known tagged toy and places it in a tagged bin, reports completion with photo | Gripper + onboard manipulation perception [[onboard-grasp-perception]] |
 | **Phase 4** | WORLD MAP (dynamic objects), INTERNAL HEALTH CHECK (full capability monitoring), COMMAND CENTER (object memory, task history) | "Tidy 3 toys" → drone autonomously completes multi-object sequence; remembers object locations across sessions | Semantic object memory [[semantic-object-memory]] + grasp verification |
 | **Phase 5** | PERCEPTION PIPELINE (arbitrary objects — open-vocab), COMMAND CENTER (learning from difficulty, LLM reasoning over object properties) | Open-vocabulary tidying: handles novel household objects without prior tagging | Zero-shot grasp-pose estimation — current research frontier |
