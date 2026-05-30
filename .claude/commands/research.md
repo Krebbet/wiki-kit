@@ -17,7 +17,7 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki are:** academic papers — both peer-reviewed venues (NeurIPS, ICML, ICLR, TMLR, JMLR, etc.) and arXiv preprints are equally valid; evaluate on technical merit, not venue. Textbooks are welcome for deeper foundations (attention, neural-net theory, graph learning, neuroscience, cognition). Adjacent-field sources from neuroscience and psychology are welcome when they offer conceptual grounding for modularity, routing, or specialization — flag them explicitly as analogical rather than direct technical sources. Avoid marketing or product blog posts, uncited explainer articles (Medium/LinkedIn), and search-result snippets. When in doubt, prefer the source that cites primary literature.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +52,12 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **For this wiki:**
+   - **Academic papers are the dominant source type.** Prefer arXiv PDFs when available — they're paywall-free, capture cleanly, and the abs/PDF URL pair is stable. When a paper exists on both arXiv and a journal site, capture the arXiv version.
+   - **Use `capture_pdf` with the default `marker` engine for papers.** `marker` preserves equations, figure refs, and table structure far better than `pymupdf`. Reserve `--engine pymupdf` for simple/short PDFs or when the marker model download is a blocker.
+   - **Textbook chapters:** capture per-chapter, not the whole book, and slug by chapter (e.g., `--slug bishop-ch04-graphs`). Whole-book PDFs choke downstream ingest.
+   - **Neuroscience / psychology sources:** tag the slug or the `## Source` entry so it's obvious the page is analogical grounding, not a technical claim about transformers (e.g., `--slug neuro-<paper>` or add an "analogical grounding" note in the ingested page). This keeps `/lint`'s analogical-vs-mechanistic check honest.
+   - **No YouTube / podcast / blog captures expected** in normal operation. If the user explicitly brings one in, handle it with the matching capture tool; don't go looking for them.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.

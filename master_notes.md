@@ -25,3 +25,10 @@ Append entries using this structure:
 ## Notes
 
 <!-- Entries appended during operation go below. -->
+
+### 2026-04-24 — /research silently fails when poetry venv not synced
+**Scope:** kit
+**Observation:** First `/research` run on a fresh wiki clone (this wiki) fired all 10 `capture_pdf` invocations before any of them could run — each exited immediately with `ModuleNotFoundError: No module named 'httpx'`. The venv existed at `~/.cache/pypoetry/virtualenvs/wiki-kit-*-py3.13` but `poetry install` had never been run, so declared deps weren't installed. The failure mode is fast and cheap (no network, no marker weights) but the orchestration still walked through all 10 captures producing identical errors before stopping.
+**Implication:** `/research` (or `/bootstrap`) should smoke-check the venv before firing captures — either an `import` probe (`poetry run python -c "import httpx, marker, playwright"`) or a one-shot `poetry install` at the top of `/research` on its first invocation per session. Alternatively, `capture_pdf.py` / `capture_url.py` could catch `ModuleNotFoundError` and print a pointed hint ("run `poetry install`") rather than a raw traceback. The kit-level fix is cheaper than every new wiki tripping over the same gap.
+**Status:** open
+

@@ -19,7 +19,7 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** terse and expert. Reader is the user, working solo — assume ML / DL fluency and familiarity with transformers, attention, standard training setups, and common terminology (MoE, routing, attention heads, residual streams, etc.). Skip background and derivations unless the user explicitly asks. Cite every non-trivial claim with `[[wiki-link]]`. When evidence is weak, contested, or the wiki is silent on some part of the question, say so explicitly rather than extrapolating or hedging with vague language — a crisp "the wiki does not cover X" is more useful than a paragraph of filler.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

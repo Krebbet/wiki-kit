@@ -29,7 +29,17 @@ Perform a health check of the wiki.
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+10. **Domain-specific checks** — run the following checks tailored to this wiki's subject (transformer architectural modularity, routing, looped computation):
+
+    a. **Claim traceability.** Every technical claim about an architecture mechanism (routing behaviour, specialization result, iteration benefit, hybrid integration result) must cite either a paper via the page's `## Source` section or link another wiki page that does. Flag uncited technical claims.
+
+    b. **Routing / specialization specificity.** Any page describing a routing or specialization mechanism must state all three of: (i) soft vs. hard routing, (ii) what signal drives the dispatch decision, (iii) whether specialization emerges from training or is enforced by construction. Flag pages missing any of the three.
+
+    c. **Hybrid-architecture integration point.** Pages describing a non-attention block (CNN, GNN, SSM, etc.) inside a transformer must state *where* the foreign block sits in the architecture: replaces an attention block, runs in parallel, pre-processes inputs, or interleaves with attention. Flag pages that are ambiguous or silent on this.
+
+    d. **Analogical vs. mechanistic tagging.** Pages drawing on neuroscience or psychology sources must mark whether the claim is direct-transfer (the biological mechanism is argued to literally apply) or inspiration-only. Flag pages where this is unclear.
+
+    e. **Scale / benchmark anchoring.** Architectural claims ("X outperforms Y", "routing specializes", "iteration helps") must be anchored to the model size, dataset, and/or compute regime where they were validated. Flag unanchored claims — they guard against the "bitter lesson" failure mode of treating small-scale results as general.
 <!-- /DOMAIN-SLOT -->
 
 ## Output

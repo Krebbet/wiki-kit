@@ -93,7 +93,15 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
+## Key takeaways
+When reading this source, flag:
+- **Block-level specialization** — does the source propose or evaluate a non-attention block (CNN, GNN, SSM, conv-attention hybrid, etc.) inside a transformer? Capture its role: does it replace an attention block, run in parallel, pre-process inputs, or interleave?
+- **Routing / dispatch mechanisms** — if any routing exists, capture (a) what signal drives the dispatch decision, (b) soft or hard routing, (c) learned vs. hand-designed, (d) does specialization actually emerge in practice, or does it collapse / become ensembling in disguise?
+- **Iteration / recurrence / looping structure** — any repeated application of the same (or similar) block. Capture the stopping rule, whether weights are shared across iterations, and whether iteration beats a depth-scaled non-iterative baseline.
+- **Biological or cognitive analogies** — note explicitly when the source frames a mechanism as brain- or cognition-inspired. Distinguish *direct-transfer* claims (the biological mechanism is argued to literally apply) from *inspiration-only* framing.
+- **Negative results / failure modes** — especially experiments that contradict the thesis: monolithic transformers matching or exceeding specialized / routed variants at scale, routing schemes that collapse or fail to specialize, hybrid blocks that degrade with scale.
+- **Scale / benchmark anchoring** — for every substantive architectural claim, note the model size, dataset, and compute regime where it was validated. Claims untethered from scale are suspect.
+- **Authors' open questions** — the "future work" and "limitations" sections are load-bearing for this wiki. Capture what the authors themselves flag as unresolved; these feed the experimental plan.
    <!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates
