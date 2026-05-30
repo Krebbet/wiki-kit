@@ -40,7 +40,7 @@ $ARGUMENTS — the topic to research.
      ```bash
      poetry run python -m tools.capture_pdf --src <URL-or-path> --out raw/research/<topic-slug> --slug <short-slug>
      ```
-     Default engine is `marker` (best for papers). For simple PDFs or to skip the model weight download, add `--engine pymupdf`.
+     Default engine is `marker` — always use it for papers (image extraction is load-bearing). If the GPU is contended, force CPU with `CUDA_VISIBLE_DEVICES="" poetry run …`. Only fall back to `--engine pymupdf` if marker fails on CPU too; the "simple PDFs" / "skip model download" carve-out has burned us repeatedly because pymupdf drops figure binaries.
 
    - **YouTube video:**
      ```bash
@@ -74,7 +74,7 @@ $ARGUMENTS — the topic to research.
 
    > — research captures done; transitioning to ingest —
 
-   Then proceed with `/ingest` on `raw/research/<topic-slug>`: read the raw files, discuss takeaways, wait for user input on emphasis, write wiki pages with source-traceable claims, and update tracking files. When the ingest phase ends and you move to the final report (step 7), announce that boundary too:
+   Then proceed with `/ingest` on `raw/research/<topic-slug>`: dispatch one subagent per captured source (so raw source bodies stay out of the main context), aggregate their structured summaries, and present a single consolidated review packet covering page plan, cross-references, conflicts, and low-value candidates. Wait for the user's rulings on the packet, then write wiki pages with source-traceable claims and update tracking files. When the ingest phase ends and you move to the final report (step 7), announce that boundary too:
 
    > — ingest complete; finalising research report —
 

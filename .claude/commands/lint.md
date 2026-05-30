@@ -28,8 +28,10 @@ Perform a health check of the wiki.
 
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
+10. **Watched-source evolution (radar)** — the watch list tracks the wiki's evolving subject, not a frozen bootstrap snapshot. Review the sources cited by pages added or changed since the last lint report (`wiki/lint-reports/`), plus any high-signal venues encountered while reading the wiki this run. Identify sources the wiki should watch going forward that aren't yet pinned in `wiki/reference-sources.md`. Append confirmed new sources to the appropriate watched-source section of `wiki/reference-sources.md` (with a one-line relevance note), and drop any that have gone stale. Record the current watched-source set in the **Trend Radar** output section and the additions/removals made this run in the **Radar Evolution** section.
+
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — apply the following to every wiki page:
+11. **Domain-specific checks** — apply the following to every wiki page:
     1. **Food-science terms defined on first use** — any non-trivial food-science term (rheology, hydrocolloid, Maillard reaction, emulsion stability, Bostwick, shear thinning, etc.) is defined inline on first appearance, or linked to a page that defines it. The reader is ML-fluent but new to food science; undefined jargon is a bug.
     2. **Generation vs. evaluation separation** — method pages are explicit about whether they address candidate *generation*, *evaluation/scoring*, or both. Conflation of the two is a common failure mode; flag pages that discuss "a method" without making this distinction clear.
     3. **Food-science claims are cited** — any mechanistic or empirical claim about food behavior traces to a paper, textbook, or authoritative wiki page (via `[[wiki-link]]` or `## Source`). Floating assertions about ingredient behavior or property dependencies are a lint failure.
@@ -69,6 +71,12 @@ Produce a structured lint report:
 - ...
 
 ### Capture Fidelity (raw/)
+- ...
+
+### Trend Radar
+- ...
+
+### Radar Evolution
 - ...
 ```
 
