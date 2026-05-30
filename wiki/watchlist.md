@@ -25,7 +25,7 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - House Oversight surveillance-pricing investigation — March 5 2026 letters; document responses arriving
 - CA AB 2564 — full surveillance-pricing ban (broader than HB0895); CA AG CCPA CID sweep complement
 - HB0895 first enforcement actions — effective Oct 1 2026; loophole-bound enforcement reach predicted
-- Connecticut SB4 — Lamont signature watch; data-broker registry effective Jan 1 2027
+- Connecticut PA 26-64 — signed May 14 2026; broker registry Jan 2027, deletion portal Jul 2028 — captured 2026-05-25
 - DOJ-RealPage Tunney Act final judgment — court-monitor + algorithm-certification regime entering effect
 - Camden Property Trust $53M — preliminary approval target May 15 2026
 
@@ -178,3 +178,18 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - EU TTBER revision — first data-licensing framework
 - PCC 2026 "Solidarity AI" conference — Bangkok Nov 12-15
 - ~~Adobe early-cancellation-fees CMA investigation~~ — *moved to "Active enforcement / cases"*
+
+## Recent additions (2026-05-25 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- Agri Stats data-hub consent decree (May 7 2026) — RealPage-pattern replication in food/ag
+- OFN DFC API federated interoperability launch (June 2026 milestone) — federation build milestone
+- Privacy Badger GPC-default bug #2695 — opt-out signal reliability watch
+- AdNauseam Chrome dead-end / MV3 rewrite — browser-extension chokepoint battleground
+- Mozilla Firefox built-in VPN (May 19 2026) — consumer privacy tool at scale
+- arXiv 2605.06340 (compliance-gaming benchmark, Python code) — auditor-gaming formalism
+- arXiv 2605.24307 (GPPI privacy preference bank) — DSAR-design substrate
+- Drivers Cooperative Colorado 620+ members / "Driver Systems" federation build — scaling
+- Pluralistic "No honor among ad-tech thieves" (May 25) — Cox Media Active Listening false claims
+- Camden Property Trust + $218M RealPage batch preliminary approval filed ~May 15 — class-action milestone

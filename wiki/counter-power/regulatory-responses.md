@@ -109,44 +109,56 @@ The AG letter argues that Instacart's existing disclosure — buried on a fine-p
 
 *(Source: `raw/research/weekly-2026-05-04/03-04-ny-ag-instacart-investigation.md` — NY AG press release; cross-link [[industries/consumer-facing-dynamic-pricing|Grocery delivery — Instacart subsection]] for the empirical study + behavioural halt detail.)*
 
-### Connecticut SB4 — data-broker registry + centralized deletion + surveillance-pricing disclosure (May 2026)
+### Connecticut PA 26-64 (SB4) — data-broker registry + centralized deletion + surveillance-pricing disclosure (May 2026)
 
-**Status:** passed Senate 31-4 on April 23 2026; passed House **141-6 on May 4 2026**; awaiting Governor Ned Lamont's signature (expected). Builds on the Connecticut Data Privacy Act (2022; CT was the fifth state to enact a comprehensive privacy law). Registry provisions effective **January 1 2027**. Lead author: Sen. James Maroney (D-Milford), co-chair of the General Law Committee and the bipartisan AI Caucus. Co-passed alongside Connecticut SB5 (AI regulation).
+**Status:** **Signed into law May 14, 2026 as Public Act 26-64.** Passed Senate 31-4 on April 23 2026; passed House 141-6 on May 4 2026. Builds on the Connecticut Data Privacy Act (2022; CT was the fifth state to enact a comprehensive privacy law). Lead author: Sen. James Maroney (D-Milford), co-chair of the General Law Committee and the bipartisan AI Caucus. Co-passed alongside Connecticut SB5 (AI regulation).
 
-**Three load-bearing mechanisms:**
+**Phased rollout (three stages):**
+
+| Date | Milestone |
+|---|---|
+| **January 1, 2027** | Data broker registration with DCP required; registry goes live |
+| **July 1, 2028** | Centralized one-request deletion portal operational (DCP builds and operates) |
+| **October 1, 2028** | Brokers required to begin processing deletion requests from the portal; 45-day mandatory check cadence begins |
+
+Note: the "effective Jan 1 2027" shorthand captures only the registration deadline. The consumer-facing deletion mechanism is two years behind, and mandatory processing begins three years out.
+
+**Five load-bearing provisions:**
 
 1. **State-run data-broker registry.** Defines a data broker as *"a business that sells or licenses brokered personal data to another person."* Mandatory enrollment for all such businesses operating in or targeting CT residents; mandatory fees fund the registry. Registry implemented by the **Connecticut Department of Consumer Protection (DCP)**.
 
-2. **Centralized one-click deletion mechanism.** DCP is charged with creating a unified deletion mechanism spanning **all registered brokers** — a single consumer interface through which a CT resident can submit a deletion request that propagates to every enrolled broker. **First cross-broker API-equivalent surface in US law.** Structurally distinct from California's CPPA data-broker registry (separate per-broker deletion requests) and from prior state opt-out architectures (one-broker-at-a-time).
+2. **Centralized one-request deletion mechanism ("kill switch").** DCP builds and operates a unified deletion portal spanning **all registered brokers** — a single authenticated consumer request propagates to every enrolled broker simultaneously. Operational July 2028; mandatory broker processing begins October 2028 with a 45-day check cadence. **First cross-broker API-equivalent surface in US law.** Structurally analogous to California's DELETE Act (SB 362) registry/portal architecture, but Connecticut adds surveillance-pricing and geolocation-sale prohibitions that California lacks. Distinct from prior state opt-out architectures (one-broker-at-a-time); the 45-day mandatory cadence ensures deletion signals propagate rather than going unprocessed.
 
-3. **Surveillance-pricing disclosure mandate.** *"Retail sellers and third-party delivery services prohibited from engaging in surveillance pricing unless they disclose when an automated pricing system increases a price using a consumer's personal data."* Plus regulations on geolocation data, facial recognition, and streaming-ad volume.
+3. **Surveillance-pricing disclosure mandate.** Retail sellers and third-party delivery services prohibited from engaging in surveillance pricing unless they disclose when an automated pricing system uses consumer personal data to increase a price. Enforcement via **CUTPA (Connecticut Unfair Trade Practices Act) and DCP**. *Caution: no private right of action confirmed for this provision specifically — source implies CUTPA/DCP enforcement, not a standalone consumer PRA; verify against PA text.*
 
-**Tooling-hook framing.** The centralized deletion mechanism is the load-bearing build target. A state-mandated cross-broker deletion API is exactly the substrate civil-society tooling has lacked: it shifts the "DSAR-coordination" lever (cf. [[strategies/data-disruption-strategy-map|Tier 1 #1]]; [[mechanisms/data-cooperatives]]) from per-broker bespoke pipelines (cf. [[organizations/noyb|noyb cross-jurisdictional 83.5% Article 15 failure]]) to a single regulated endpoint. Adjacent design-input: an automated submission tool (cf. **Design-input #4 — Algorithm-disclosure request tool** below) generalises directly onto this surface once DCP publishes the technical spec. The **Verifiable Mandate-Bound DSAR Pipeline** ([[strategies/mechanism-synthesis-readout|Build #2]]) gains a concrete first-target jurisdiction.
+4. **Hard ban on selling precise geolocation data.** Outright prohibition on monetising consumer location data within a 1,750-foot radius. No consent-based workaround — unlike the surveillance-pricing provision, this is a categorical prohibition, not a disclosure regime.
 
-**Cross-state comparison.** Among the three enacted / advanced 2026 state laws on surveillance pricing:
+5. **Facial recognition restrictions.** Signage requirements and restrictions on facial recognition use; source confirms no private right of action under CTDPA for facial recognition violations — enforcement runs through the Attorney General.
+
+**Tooling-hook framing.** The centralized deletion portal is the load-bearing build target. A state-mandated cross-broker deletion endpoint shifts the "DSAR-coordination" lever (cf. [[strategies/data-disruption-strategy-map|Tier 1 #1]]; [[mechanisms/data-cooperatives]]) from per-broker bespoke pipelines (cf. [[organizations/noyb|noyb cross-jurisdictional 83.5% Article 15 failure]]) to a single regulated endpoint. Until October 2028, the existing per-broker DSAR coordination workflow remains the only mechanism for Connecticut residents — the portal creates a sunset horizon for manual per-broker tooling in this jurisdiction. Triennial independent broker audits (starting July 2031) are a future transparency lever for enforcement strategy. The **Verifiable Mandate-Bound DSAR Pipeline** ([[strategies/mechanism-synthesis-readout|Build #2]]) gains a concrete first-target jurisdiction.
+
+**Cross-state comparison.** Among the enacted 2026 state laws on surveillance pricing / data rights:
 
 | Statute | Architecture | Sectoral scope | Centralized data-rights infrastructure? | Enforcement |
 |---|---|---|---|---|
 | **NY APDA** (eff. Nov 10 2025) | **Disclosure** ("THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA") | All retail / surveillance-pricing sectors | No (per-platform self-implementation) | AG (proven operative — Instacart halt) |
 | **MD HB0895** (eff. Oct 1 2026) | **Prohibition** (categorical ban in sector) | Food retail >15,000 sq ft + 3rd-party delivery only | No | AG only; pre-empts MD CPA; no private right of action |
-| **CT SB4** (registry eff. Jan 1 2027) | **Disclosure + cross-broker deletion API + broker registry** | Retail sellers + 3rd-party delivery (surveillance-pricing); all data brokers (registry/deletion) | **Yes — centralized DCP deletion mechanism** | (not specified in capture — see open question below) |
+| **CT PA 26-64** (signed May 14 2026; registry Jan 2027; portal Jul 2028) | **Disclosure + centralized deletion portal + broker registry + geolocation ban** | Retail sellers + 3rd-party delivery (surveillance-pricing); all data brokers (registry/deletion) | **Yes — centralized DCP deletion portal (Jul 2028)** | CUTPA / DCP (AG); no confirmed PRA for surveillance-pricing provision |
 
-CT differs from MD on three dimensions: (a) it is **broader in scope** for the data-broker register/deletion (all sectors, not just food retail); (b) it has a **substantively different architecture** — the cross-broker deletion API is novel infrastructure, not just statutory text; (c) it adopts the **disclosure (not prohibition) approach** to surveillance pricing, aligning with NY rather than MD on that specific dimension. Together NY, MD, and CT establish that the state-legislative cluster is not converging on a single architectural pattern — three different theories of the case (disclose, ban, infrastructure-build) are running in parallel.
+CT differs from MD on three dimensions: (a) it is **broader in scope** for the data-broker register/deletion (all sectors, not just food retail); (b) it has a **substantively different architecture** — the cross-broker deletion portal is novel infrastructure, not just statutory text; (c) it adopts the **disclosure (not prohibition) approach** to surveillance pricing, aligning with NY rather than MD on that specific dimension. Together NY, MD, and CT establish that the state-legislative cluster is not converging on a single architectural pattern — three different theories of the case (disclose, ban, infrastructure-build) are running in parallel.
 
-**Loophole assessment versus HB0895.** Applying the six-point Doctorow / Garofalo checklist (next subsection) to CT SB4 from the capture in hand:
+**Loophole assessment versus HB0895.** Applying the six-point Doctorow / Garofalo checklist (next subsection) to PA 26-64:
 
 - (a) **Scope beyond grocery** — yes; data-broker registry / deletion is **economy-wide**, not sectoral. Surveillance-pricing disclosure covers retail sellers + 3rd-party delivery (broader than MD's >15,000 sq ft food-retail floor; narrower than economy-wide).
-- (b) **Consent-via-clickwrap blocked** — not specified in capture.
-- (c) **Promotional / temporary-discount exemptions** — not specified in capture.
-- (d) **Loyalty-card and subscription exemptions** — not specified in capture; loyalty-card / subscription carve-outs were the principal HB0895 vehicle-of-evasion, so this is the highest-priority gap to close on the bill text itself.
-- (e) **Private right of action** — not specified in capture.
-- (f) **No pre-emption** of stronger existing consumer-protection rights — not specified; CT Data Privacy Act (2022) is the existing baseline and the bill explicitly "builds off" it (suggesting layering, not pre-emption).
+- (b) **Consent-via-clickwrap blocked** — not confirmed in capture.
+- (c) **Promotional / temporary-discount exemptions** — not confirmed in capture.
+- (d) **Loyalty-card and subscription exemptions** — not confirmed in capture; loyalty-card / subscription carve-outs were the principal HB0895 vehicle-of-evasion, so this is the highest-priority gap to assess against the PA text.
+- (e) **Private right of action** — not confirmed for surveillance-pricing provision; explicitly absent for facial recognition (CTDPA); verify whether CUTPA enforcement on surveillance pricing has PRA-adjacent standing.
+- (f) **No pre-emption** of stronger existing consumer-protection rights — not specified; CT Data Privacy Act (2022) is the existing baseline and the bill explicitly builds on it (suggesting layering, not pre-emption).
 
-**Open question (enforcement architecture not captured).** The CT Mirror story is silent on enforcement mechanism — whether SB4 is AG-only (the MD pattern), private-right-of-action (the strongest), or shared with DCP (DCP runs the registry; it may also have enforcement authority). This is the binding question for whether the load-bearing deletion API is operative at scale. Flag for follow-up via bill text or AG / DCP follow-up sources.
+**Effect on the wiki's MD-HB0895 framing.** **MD remains the first-in-nation categorical prohibition** (different doctrinal theory); **CT PA 26-64 becomes the first-in-nation centralized cross-broker deletion portal** (different doctrinal theory; the strongest tooling hook of the three). No `wiki/conflicts/` file is warranted — MD and CT are doctrinally distinct, not contradictory.
 
-**Effect on the wiki's MD-HB0895 framing.** The "load-bearing first-in-nation prohibition" framing was already qualified by the Doctorow / Garofalo carve-out taxonomy (next subsection) — qualified, not overturned. CT SB4 further broadens the picture: **MD remains the first-in-nation categorical prohibition** (different doctrinal theory); **CT becomes the first-in-nation centralized cross-broker deletion API** (different doctrinal theory; the strongest tooling hook of the three). No `wiki/conflicts/` file is warranted — MD and CT are doctrinally distinct, not contradictory.
-
-*(Source: `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md` — CT Mirror, May 4 2026 — "Consumer data privacy bill gets final passage in CT House." Supplementary cross-state framing: `raw/research/weekly-2026-05-11/06-md-hb0895-cfm-context.md` — Consumer Finance Monitor, May 5 2026.)*
+*(Sources: `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md` — CT Mirror, May 4 2026 — "Consumer data privacy bill gets final passage in CT House." `raw/research/weekly-2026-05-25/05-connecticut-sb4-pa26-64.md` — PrivacyLawMap, May 2026 — PA 26-64 signed May 14 2026; phased rollout, geolocation ban, facial recognition provisions. Supplementary cross-state framing: `raw/research/weekly-2026-05-11/06-md-hb0895-cfm-context.md` — Consumer Finance Monitor, May 5 2026.)*
 
 ### Maryland HB0895 — Protection From Predatory Pricing Act (2026)
 Enacted April 2026; effective **October 1, 2026**. Cross-filed as SB0387; By Request of the Governor (Moore administration). 50+ House sponsors. **Substantive prohibition** (not disclosure):

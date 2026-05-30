@@ -158,6 +158,18 @@ Honest constraints from the new pages that bound what's buildable. These do not 
 
 The candidate new lever avenues (especially #1, #2, #3) are worth treating as draft additions to [[possible-strategic-levers]] when the inventory next gets revised.
 
+**Comparative dependency profile of Tier 1 builds** *(synthesis — 2026-05-27)*
+
+When choosing where to start, the three Tier 1 builds have meaningfully different dependency ceilings:
+
+| Build | Regulatory dependency | Data pooling required | Algorithm coverage | Blocking dependencies |
+|---|---|---|---|---|
+| #2 DSAR Pipeline | High (state compliance + issuer-trust governance) | No | Highest per user (DSAR leverage) | Issuer-trust governance gap [[decentralized-agent-identity]] |
+| #1 Pricing Observatory | None | Yes (FL panelist flywheel) | Broad | Panelist recruitment cold-start |
+| #4 Threshold Coordinator | None | No (contact-graph optional) | Broad (L2 covers 4/6 families) | Contact-graph access if full seeding intelligence wanted |
+
+The simpler L2 form — coordinated consumer behaviour / demand-strike without contact-graph seeding — requires **no regulatory infrastructure, no data pooling, and no governance solved**; it is risk-class 1 ([[data-disruption-strategy-map|pure consumer choice]]) and covers 4 of 6 pricing-algorithm families. Build #4 is an enhancement on top; the stripped L2 baseline is even lower barrier. By dependency profile alone it is the easiest Tier 1 entry point, though it delivers less per-user leverage than Build #2's DSAR substrate once the regulatory machinery is in place.
+
 ---
 
 ## Open strategic questions surfaced by this synthesis

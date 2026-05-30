@@ -750,3 +750,30 @@ Resolution rule applied: ThePrint May 2026 is the working baseline because (a) m
 **Bookkeeping:** `wiki/index.md` (regulatory-responses, platform-cooperatives, algorithmic-collective-action, noyb summaries updated; agristats-consent-decree entry added; Open conflicts section created); `wiki/revisions.md` (8 rows appended); `wiki/watchlist.md` (ACA multiple-collectives entry struck; 10 new overflow entries added).
 
 **Conflict opened:** `information-sharing-remedy-efficacy` — forward-looking remedy-efficacy dispute on the Agri Stats decree; pending user ruling.
+
+---
+
+## 2026-05-25 — /weekly-brief autonomous run
+
+**Trigger:** Weekly cron (local), branch `collective-consumer-action-wiki`.
+
+**Trend scan:** 4 parallel subagents covering arXiv cs.CY/cs.CR, GitHub trending + tracked tool repos, platform.coop + cooperative infrastructure, EFF + AlgorithmWatch + enforcement news. Window: 2026-05-18 to 2026-05-25.
+
+**Captures attempted / succeeded:** 5 / 4
+- `01-data-broker-compliance-california-2026` — succeeded (pymupdf; broken image refs, text complete)
+- `02-apple-dp-audit-sp2026` — succeeded (pymupdf; broken image refs, text complete)
+- `03-barriers-to-evidence-faccT2026` — succeeded (pymupdf)
+- `04-doj-realpage-tunney-final-2026` — **FAILED** (DOJ 404 — Biden-era press release removed by Trump administration)
+- `05-connecticut-sb4-pa26-64` — succeeded (capture_url)
+
+**Pages written:** 3 new, 1 extended
+- `wiki/mechanisms/dsar-and-data-deletion.md` — new (fills lint gap "data-broker page absent")
+- `wiki/counter-power/dp-audit-methodology.md` — new (Apple DP audit)
+- `wiki/mechanisms/barriers-to-evidence.md` — new (FAccT 2026 algorithmic evidence barriers)
+- `wiki/counter-power/regulatory-responses.md` — extended (Connecticut PA 26-64 section)
+
+**Watchlist updates:** Connecticut SB4 item updated (signed; phased rollout corrected). 10 overflow entries added.
+
+**Conflict opened:** `dp-deployment-trustworthiness` — Apple DP audit vs watchlist "DP-as-firm-counter" framing. Pending user ruling.
+
+**Bookkeeping:** `wiki/index.md` (3 new page entries added; 2nd open conflict added); `wiki/revisions.md` (entries appended); `wiki/watchlist.md` (SB4 item updated; 10 overflow entries added).
