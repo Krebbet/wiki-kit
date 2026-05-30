@@ -209,3 +209,9 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Candidate fix (any one):** before capture, the weekly-brief skill should cross-check each selected arXiv ID against existing wiki pages — grep `wiki/**/*.md` for the arXiv ID and against `wiki/index.md` titles — and auto-demote any hit to a "already on wiki" note rather than spending a capture slot. Cheap: one grep over the arXiv IDs in the candidate list at step 3, gated before step 4 captures. This also makes the hard cap of 5 meaningfully 5-*new*, not 5-minus-rediscoveries. Promote on next `/harvest`.
 
 **Status:** open
+
+### 2026-05-30 — capture_pdf arXiv abs-URL returns HTML not PDF (pymupdf engine)
+**Scope:** kit
+**Observation:** Using `arxiv.org/abs/<ID>` URLs with `--engine pymupdf` captures the abstract HTML page (200 lines of navigation + 3 PNG renders of the HTML), not the paper text. The correct URL for arXiv PDFs is `arxiv.org/pdf/<ID>`. The error is silent: no exception, audit's thin-captures check passes because the HTML renders to ~200 lines. Detected when inspecting capture text: "Skip to main content / We gratefully acknowledge support from the Simons Foundation..." Wasted 5 captures (immediately cleaned up and rerun with /pdf/ URLs; second run succeeded cleanly at 1150+ lines each).
+**Implication:** weekly-brief and /ingest should always use `/pdf/` URLs for arXiv. Candidate fix: `capture_pdf.py`'s `_resolve_source` auto-rewrite `arxiv.org/abs/<ID>` → `arxiv.org/pdf/<ID>` before download. Safe since arXiv always serves a PDF at `/pdf/`.
+**Status:** open

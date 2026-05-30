@@ -69,6 +69,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/process-reward-models/training-verifiers-gsm8k]] | Cobbe et al. — GSM8K + token-level verifier reranking. |
 | [[research/process-reward-models/pav-rewarding-progress]] | Setlur et al. — PAV: process advantage as step-level *progress* under a complementary prover; >8% search gain, 5–6× RL efficiency over outcome RM. |
 | [[research/process-reward-models/uprm]] | uPRM (Gadetsky et al., EPFL, arXiv:2605.10158) — fully unsupervised PRM from frozen-LLM next-token marker probabilities; no step labels or final answers; matches supervised PRMs on Best-of-8; markedly more reward-hacking-robust as an RL reward. |
+| [[research/process-reward-models/corver-verifiable-rewards-factual]] | CorVer (Fan et al., UIC, arXiv:2605.29648) — corpus-grounded sentence-level reward for factual QA via Wikipedia co-occurrence (Infini-gram), no neural verifier; +4.1 pp TriviaQA avg; beats 4 baselines in 18/20 cells at 4.8–8.4× lower training cost. |
 
 ### Self-improvement
 
@@ -146,6 +147,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/teacher-student-rl/co-evolving-policy-distillation]] | CoPD (Gu et al., arXiv:2604.27083) — alternating GRPO + bidirectional mutual on-policy distillation across parallel branches. Top-$k$ overlap held >0.90 ($r=0.89$ to absorption efficiency). Surpasses every single-expert ceiling on Qwen3-VL-4B; empirical challenge to fixed-teacher MOPD orthodoxy. |
 | [[research/teacher-student-rl/opsd-compresses-rlvr]] | arXiv:2605.06188 (May 2026) — OPSD as compaction not correction: Correct-only OPSD −29% length, ~0 accuracy; Incorrect-only −7 to −10pp. Pipeline: SFT → RLVR → OPSD; OPSD cannot create new reasoning states the student doesn't already support. |
 | [[research/teacher-student-rl/mad-opd]] | arXiv:2605.01347 (Alibaba/HUST, May 2026) — multi-agent debate ensemble breaks single-teacher OPD ceiling: 4B student under 14B+8B debate exceeds 14B teacher alone on LCB-v6 (+4.26% pass@1). Task-adaptive divergence (JSD agentic / reverse-KL code) derived from privileged-context gradient analysis. OPAD step-level extension. |
+| [[research/teacher-student-rl/esr-early-stopping-opd]] | arXiv:2605.27028 (UCLA, May 2026) — Early Stopping Rollout (ESR). Diagnoses Off-policy Teacher Decay at late positions (teacher accuracy drops from 65.3% to 51.75% at 300 student tokens); fixes by truncating rollout to first N tokens. 24× wall-clock speedup, 4× memory reduction; outperforms full-rollout OPD across all tested families/scales. Cascading Alignment + Sub-mode Commitment explain why prefix-trained student can beat the teacher. |
+| [[research/teacher-student-rl/sgsd-skill-gated-distillation]] | arXiv:2605.28791 (May 2026) — Skill-Conditioned Gated Self-Distillation (SGSD). Replaces trusted reference answers with a skill bank of reasoning principles + mistake patterns; polarity-gated distillation filters uncertain signals; +6.2 pp over GRPO on Qwen3-1.7B math, no reference answers required. Code released. |
 
 ### RL optimisers
 
@@ -214,6 +217,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/curriculum-and-decomposition/curriculum-survey]] | Soviany, Ionescu, Rota, Sebe (IJCV 2022) — taxonomy across 200+ curriculum-learning papers. |
 | [[research/curriculum-and-decomposition/acl-deep-rl-survey]] | Portelas, Colas, Weng, Hofmann, Oudeyer (2020) — RL-specific curriculum survey (LP, ALP-GMM, teacher-student bandits). |
 | [[research/curriculum-and-decomposition/poet]] | Wang, Lehman, Clune, Stanley (2019) — co-evolving environments + agents with transfer attempts; emergent stepping-stone curriculum. |
+| [[research/curriculum-and-decomposition/scrl-curriculum-credit-assignment]] | Jiang et al. 2026 (SCRL, Tsinghua/LeapLab) — subproblem curriculum RL that decomposes hard problems into K=4 verifiable subproblems from reference solutions; subproblem-level normalization + progress-aware correction + mixed-group training. +4.1/+1.9 avg over GRPO on Qwen3-4B/14B; metric-recovery theory proves Ω(1/δ) gradient recovery over dead-zone original problem. |
+| [[research/curriculum-and-decomposition/metis-curriculum-judgment]] | Zheng, Ma et al. 2026 (METIS, MIT/Amazon AGI, arXiv:2605.11235) — internalizes curriculum selection into the policy via ICL over a K=3 calibration memory of recent prompt–reward-variance pairs; closed loop tracks the competence frontier without an external selector; up to 67% wall-clock reduction vs external-curriculum baseline (PCL). |
 
 ### Self-play
 

@@ -19,6 +19,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - Self-Distilled RLVR (RLSD, arXiv:2604.03128) — RLVR direction × self-distillation magnitude hybrid; OPSD-adjacent
 - Seirênes (arXiv:2605.11636) — adversarial self-play w/ evolving in-loop distractors; shared-param verifiable-reasoning RL. **User-tagged load-bearing 2026-05-19: strong self-play exemplar — evaluate/ingest when building any self-play-inclusive proposal.** Promotion triggered (user tag) but deferred per instruction; pull in at proposal time. Hub pointer: [[research/synthesis/proposer-reward-shapes#Candidates earmarked for self-play-inclusive proposals]].
+- DUEL (arXiv:2605.24794) — adversarial self-play for VLMs: Challenger generates hard negative image-grounded claims; Solver verifies; extends self-play to multimodal without human annotation
+- CoSPlay (arXiv:2605.23491) — cooperative test-time self-play: model proposes code + unit tests, self-verifies correctness
 
 ## Post-GRPO RL optimizers
 
@@ -27,6 +29,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Reinforcement-Aware Knowledge Distillation (RLAD, arXiv:2602.22495) — Trust Region Ratio Distillation replaces KL anchor
 - Adaptive Power-Mean Policy Optimization (APMPO, arXiv:2605.04066) — generalised power-mean objective + feedback-adaptive clipping; +3.0pp over GRPO
 - Search-driven Reward Function Optimization (arXiv:2605.02073) — frames reward-function specification itself as a search target; meta reward shaping
+- LambdaPO (arXiv:2605.19416) — semantic precision-recall alignment of reasoning traces as dense GRPO reward signal
 
 ## Process reward models
 
@@ -43,6 +46,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Uni-OPD (arXiv:2605.03677) — unifying LLM/MLLM OPD via dual-perspective student-exploration + teacher-order-consistency; 16-benchmark sweep
 - Near-Policy OPD (arXiv:2605.05940) — async generation + Δ-IFD selective packing; 8.1× speedup over RL-based OPD
 - UniSD (arXiv:2605.06597) — systematic ablation of self-distillation components (EMA / contrastive / feature-matching) across 6 benchmarks/models
+- EGRSD (arXiv:2605.13255) — self-uncertainty gate in OPD: entropy-confidence threshold selects teacher vs pure-RL signal per token
+- ATESD (arXiv:2605.11458) — adaptive Beta-policy teacher reveal ratio; discounted learning-progress reward for delayed credit in OPD
+- Fast and effective OPD from reasoning prefixes (arXiv:2602.15260) — prefix-level policy divergence minimization; concurrent to ESR, different target (base-model bootstrapping)
 
 ## RLVR mechanics
 
@@ -59,6 +65,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 ## Test-time training and curriculum
 
 - Test-Time Curricula for Targeted RL (TTC-RL, arXiv:2510.04786) — automatic task-specific test-time curricula; 1.8× AIME25; ICLR 2026 re-surfacing
+- VCRL (arXiv:2509.19803) — variance-based curriculum RL; gradient variance as difficulty signal; GRPO-compatible
+- SPEED-RL (arXiv:2506.09016) — online curriculum scheduling for faster reasoning model training
 
 ## Variable-granularity / concept-level architectures
 
@@ -88,5 +96,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-05-17]] — most recent weekly sweep
-- [[weekly-briefs/2026-05-10]] — prior weekly sweep
+- [[weekly-briefs/2026-05-30]] — most recent weekly sweep
+- [[weekly-briefs/2026-05-17]] — prior weekly sweep

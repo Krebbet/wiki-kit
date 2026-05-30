@@ -705,3 +705,67 @@ Captured arXiv:2605.22817 (VPO, MIT Improbable AI / Sakana AI). User trigger: fl
 - `wiki/index.md` — VPO entry added
 
 **Key finding:** VPO helps when on-policy reward components are non-collinear ($\bar\rho < {\sim}0.8$); degrades pass@1 by design. Non-collinearity of concept sub-principles on textbook exercises is the open empirical question before applying to P4.
+
+- `wiki/research/synthesis/concept-curriculum-method.md` — added §Experimental tracking dimensions (11 dimensions, 2026-05-29). Dims 7–11 (concept installation fidelity, prior coverage, behavioral interference, reward hacking rate, format drift) extend the initial 6 to cover memorization vs generalization, RLVR coverage wall, cross-concept behavioral effects, reward gaming, and format degradation.
+
+---
+
+## [2026-05-30] ingest | CorVer (arXiv:2605.29648)
+
+Ingested CorVer — corpus-grounded sentence-level factuality reward for GRPO. Source: `raw/research/weekly-2026-05-30/05-corver-verifiable-rewards-factual.md`.
+
+**Pages written/updated:**
+- `wiki/research/process-reward-models/corver-verifiable-rewards-factual.md` (new) — full page: pipeline, reward formula, ablations, gain attribution analysis, cost comparison, practical findings, limitations
+- `wiki/research/process-reward-models/_overview.md` — added CorVer to papers list
+- `wiki/index.md` — CorVer entry added to process-reward-models section
+
+---
+
+**2026-05-30 — Ingest: SCRL (arXiv:2605.22074)**
+
+Ingest of SCRL (Subproblem Curriculum Reinforcement Learning) from Tsinghua/LeapLab. Source: `raw/research/weekly-2026-05-30/02-scrl-curriculum-credit-assignment.md`.
+
+**Page written:** `wiki/research/curriculum-and-decomposition/scrl-curriculum-credit-assignment.md`
+
+Key contributions captured: subproblem decomposition from reference solutions (offline, external LLM), subproblem-level normalization (per-position group normalization), progress-aware correction (consecutive-prefix gate on reward vector), mixed-group training. Theoretical metric-recovery result (Fisher–Rao lifted manifold, Ω(1/δ) recovery ratio). Empirical results on 7 math benchmarks across Llama3.2-3B / Qwen3-4B / Qwen3-14B.
+
+**Index and revisions:** updated.
+
+---
+
+## [2026-05-30] ingest | ESR (arXiv:2605.27028)
+
+Ingested ESR — Early Stopping Rollout for On-Policy Distillation. Source: `raw/research/weekly-2026-05-30/01-esr-early-stopping-opd.md`.
+
+**Pages written/updated:**
+- `wiki/research/teacher-student-rl/esr-early-stopping-opd.md` (new) — full page: Off-policy Teacher Decay diagnosis, ESR loss formulation, results table, efficiency numbers, Cascading Alignment + Sub-mode Commitment analysis, comparison to concurrent work
+- `wiki/index.md` — ESR entry added to teacher-student-rl section
+- `wiki/revisions.md` — entry added
+
+**Conflict check:** Consistent with *Rethinking OPD* (arXiv:2604.13016) late-token instability finding already in rlt-followups-2026.md. No conflicts.
+
+---
+
+## [2026-05-30] ingest | METIS (arXiv:2605.11235)
+
+Ingested METIS — Internalizing Curriculum Judgment for LLM Reinforcement Fine-Tuning. Source: `raw/research/weekly-2026-05-30/03-metis-curriculum-judgment.md`.
+
+**Page written:** `wiki/research/curriculum-and-decomposition/metis-curriculum-judgment.md`
+
+Key contributions: ICL over K=3 calibration memory of recent prompt–reward-variance pairs replaces external curriculum selectors; self-supervised calibration reward ($\lambda=0.01$) jointly optimized with task loss; up to 67% wall-clock reduction vs PCL baseline; 3.9% per-step overhead. Index and revisions updated.
+
+---
+
+## [2026-05-30] ingest | SGSD (arXiv:2605.28791)
+
+Ingested SGSD — Skill-Conditioned Gated Self-Distillation for LLM Reasoning. Source: `raw/research/weekly-2026-05-30/04-sgsd-skill-gated-distillation.md`.
+
+**Page written:** `wiki/research/teacher-student-rl/sgsd-skill-gated-distillation.md`
+
+Key contributions: skill bank replaces trusted reference answers (principles + mistake patterns); polarity-gated distillation filters uncertain signals; +6.2 pp GRPO on Qwen3-1.7B math under strictly weaker supervision assumption. Code released. Index and revisions updated.
+
+---
+
+## [2026-05-30] weekly-brief | 2026-05-30 sweep
+
+Autonomous weekly sweep. 5 papers captured and ingested (SCRL, METIS, ESR, SGSD, CorVer). 7 watchlist additions. Brief written to `wiki/weekly-briefs/2026-05-30.md`. Email sent to david.hugh.mcnamee@outlook.com.
