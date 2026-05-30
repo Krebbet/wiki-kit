@@ -16,6 +16,14 @@ Moonlake's proposed alternative is a hybrid: coarse explicit 3D meshes + neutral
 
 **No source captured.** Awaiting an ingest of a Sora-class or Genie-class paper that argues large-scale video diffusion alone produces persistent 3D-coherent generation. Capturing one is the next step to make this conflict resolvable.
 
+### B (partial, static-3D-priors-from-2D-generation) — [[vision-banana]] (Google DeepMind, arXiv:2604.20329, 2026-04-23)
+
+**Claim (partial counter):** Pure 2D *image* generation pretraining encodes structured 3D priors strongly enough to recover **metric depth without camera intrinsics** at zero-shot SOTA quality (avg δ1 = 0.929 on NYU/ETH3D/DIODE-Indoor/KITTI, vs Depth Anything V3 0.918), and surface normals at near-specialist quality (NYU mean angle error 15.549° vs Lotus-2 16.558°), without sacrificing generation fidelity.
+
+**Why partial:** Moonlake's claim is specifically about **interactive** simulation (action-conditioned next-frame prediction, multi-step rollout, object permanence under occlusion). Vision Banana shows static 3D priors — depth, normals, segmentation — recoverable from a 2D-image generator. Static-prior recoverability is a necessary precondition for the harder interactive claim, but not sufficient. The strength of the static result (+6-8 pp δ1 over specialist models, no intrinsics) is hard to dismiss as incidental; it is the strongest empirical evidence on the "2D generation has 3D structure" side this conflict has seen.
+
+**Implication:** Moonlake's "ill-posed task" framing is too strong as stated for the static case. The conflict's resolution path now requires distinguishing *static priors recoverable from 2D generation pretraining* (Vision Banana shows: yes) from *interactive simulation with action conditioning* (still open).
+
 ## Caveat — Moonlake is a position post
 
 Moonlake's claim has **no quantitative results, no benchmarks, no code, no comparison tables**. It's a research-direction signal from a frontier lab, not a paper. Position B may already exist in published form; the conflict only becomes substantive once a primary pure-video-scaling source is captured and compared on shared evals (camera consistency over time, object identity across occlusion, action-conditional rollout fidelity).
@@ -26,6 +34,6 @@ Define "interactive world simulator" precisely (action-conditioned next-frame pr
 
 ## Related
 
-- [[moonlake-world-models]], [[sharp-view-synthesis]] (adjacent CV cluster).
+- [[moonlake-world-models]], [[sharp-view-synthesis]], [[vision-banana]] (adjacent CV cluster).
 - [[conflicts/regression-vs-diffusion-view-synthesis]] — adjacent debate, different scope.
-- [[watchlist]] — Sora, Genie, Gen3C, ViewCrafter not captured.
+- [[watchlist]] — Sora, Genie, Gen3C, ViewCrafter, World-R1, PERSIST, Tuna-2 not captured.

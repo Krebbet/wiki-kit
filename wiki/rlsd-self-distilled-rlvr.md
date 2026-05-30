@@ -94,8 +94,13 @@ Very recent (April 2026). No citation count or community adoption signal visible
 
 - `raw/research/weekly-2026-04-22/02-self-distilled-rlvr.md` — Self-Distilled RLVR paper PDF (arXiv:2604.03128). Captured 2026-04-22.
 
+## Comparison: AntiSD (Anti-Self-Distillation)
+
+[[anti-self-distillation]] (arXiv:2605.11609, 2026-05-25) finds that *standard* self-distillation **underperforms GRPO** on every model tested (e.g. Qwen3-8B 30.6 vs 57.4) and proposes reversing the divergence direction (JSD ascent + an entropy gate over deliberation tokens). This is **not** a contradiction of RLSD: AntiSD's "default SD" is the naïve KL-descent instantiation, whereas RLSD already discards SD's magnitude signal — keeping only the verifier-reward *direction* and using the teacher/student evidence ratio as a scalar weight. The two agree the naïve SD objective is harmful; they diverge on the fix (RLSD decouples direction from magnitude; AntiSD inverts the divergence). Both beat GRPO with fewer steps (RLSD@200 > GRPO@400; AntiSD in 2–10× fewer steps, +11.5 pts AIME).
+
 ## Related
 
+- [[anti-self-distillation]] — independently finds default SD underperforms GRPO; inverts the divergence direction rather than decoupling direction/magnitude. See Comparison above.
 - [[eggroll]] — both papers engage with the question of what can replace or augment GRPO for post-training reasoning. RLSD argues GRPO's *direction* signal is the reliable anchor and improves only the magnitude; EGGROLL argues ES can *replace* GRPO at scale. Parallel debate about GRPO's role.
 - [[conflicts/grpo-vs-evolution-strategies]] — the broader RL post-training landscape RLSD inhabits; RLSD's stance reinforces Position A (gradient-RL remains the direction anchor).
 - [[watchlist]] — OPSD, SDPO, TRRD referenced but not captured.

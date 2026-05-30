@@ -49,3 +49,85 @@ Page plan applied:
 Cluster page [[test-time-training]] **not** extended — Hyperloop and Mamba-3 are TTT-adjacent (loop-as-depth-RNN; SSM-vs-MIRAS framing) but not TTT methods themselves. Per-page `Related` links carry the "see also" connection.
 
 All changes left uncommitted on `ai-trends-wiki` per skill contract.
+
+## [2026-05-04] weekly-brief | autonomous run (uncommitted)
+
+Third weekly-brief run under the SMTP+HTML+watchlist-centric contract. Trend scan via sonnet subagent: alphaXiv trending / arXiv cs.LG-cs.CL-cs.CV May 1-4 listings / HuggingFace Papers / MarkTechPost / r/MachineLearning hot / ICLR 2026 oral+poster schedule / @CSVisionPapers surfaced 15 candidates; selection heuristic (multi-signal + technical novelty + wiki-fit + conflict-load-bearing + repro-positive) picked **5 for capture** and **10 for watchlist**.
+
+Captures (`raw/research/weekly-2026-05-04/`, all `--engine pymupdf`, all clean on `audit_captures`): `01-tempo-test-time-rl.md` (2604.19295), `02-latent-grpo.md` (2604.27998), `03-vision-banana.md` (2604.20329), `04-agentflow.md` (2510.05592 ICLR Oral), `05-ssm-tool-use-length-generalization.md` (2510.14826 ICLR Oral). pymupdf engine still writes repo-root-relative image paths — applied the documented `sed` workaround (kit bug from 2026-04-22 still open). Two of the five picks (AgentFlow, To Infinity and Beyond) are 2510.x arXiv IDs trending *this* week due to ICLR 2026 oral acceptance — multi-signal + conflict-load-bearing per heuristic.
+
+Ingest: subagent-per-source (5 parallel `general-purpose` Agents, sonnet). All 5 summaries parsed clean against `parse_summary`. Aggregator's DOMAIN-SLOT-token spurious merge_candidates still surfaced (kit bug from 2026-04-22, ignored per autonomous one-page-per-source policy).
+
+Page plan applied:
+- **5 new paper pages**: [[tempo-test-time-rl]], [[latent-grpo]], [[vision-banana]], [[agentflow]], [[ssm-tool-use-length-generalization]].
+- **2 conflicts extended**:
+  - [[conflicts/fixed-state-ssm-long-context]] gains the formal proof of Position A (Apple paper Theorem 2.1) **and** a new tool-augmented Position-B variant (Theorem 2.2 — interactive tool-use as third escape, distinct from Mamba-3's hybrid path). Three Position-B paths now on file: hybrid-with-attention (Mamba-3, partial), tool-augmented (this week), and the orthodox pure-fixed-state defence (still uncaptured).
+  - [[conflicts/pure-video-vs-3d-world-models]] gains a partial Position-B (static-3D-priors-from-2D-generation) via Vision Banana's δ1=0.929 zero-shot depth without intrinsics. Conflict's framing is now: static priors recoverable from 2D generation (yes per Vision Banana) vs interactive simulation with action conditioning (still open).
+- **10 watchlist additions** across architectures (MoDr looped-Transformer-MoE; SDVG speculative-decoding-for-AR-video), latent-reasoning sibs (LEPO, Thinking Without Words), reward-modeling theme (ThinkPRM, Reward-Models-Are-Value-Functions), RL systems (Spec-RL rollout acceleration), CV/3D world-models (World-R1, PERSIST, Tuna-2).
+
+No new conflict files opened this run — every flagged contradiction extended an existing open conflict. No cluster-page extensions: TEMPO is a strong fit for [[test-time-training]] cluster but autonomous policy requires ≥2 sources sharing the cluster page in a single run; cross-link via `Related:` only.
+
+All changes left uncommitted on `ai-trends-wiki` per skill contract.
+
+## [2026-05-11] weekly-brief | autonomous run (uncommitted)
+
+Fourth weekly-brief run. Trend-scan subagent (sonnet) surveyed alphaXiv trending / arXiv cs.LG-cs.CL-cs.CV May 5-11 / HuggingFace Papers / papers.cool / r/MachineLearning hot / ICLR 2026 Outstanding-Paper announcements / RLVR & DLM awesome-list activity; 15 candidates surfaced. Selection heuristic picked **5 for capture** and **10 for watchlist**.
+
+Captures (`raw/research/weekly-2026-05-11/`, all `--engine pymupdf`, all clean on `audit_captures`): `01-reasonmaxxer.md` (2605.06241), `02-sst-v2.md` (2605.00206), `03-scalelogic.md` (2605.06638), `04-memagent.md` (2507.02259 ICLR Oral), `05-coladlm.md` (2605.06548). pymupdf image-path workaround applied as documented (kit bug from 2026-04-22, still open). MemAgent is a July 2025 arXiv submission trending now post-ICLR-2026.
+
+Ingest via subagent-per-source (5 parallel `general-purpose` Agents, sonnet). All 5 summaries parsed clean against `parse_summary`. Aggregator DOMAIN-SLOT spurious merge_candidates surfaced as expected (kit bug 2026-04-22); ignored per autonomous one-page-per-source policy.
+
+Page plan applied:
+- **5 new paper pages**: [[reasonmaxxer]], [[sst-v2]], [[scalelogic]], [[memagent]], [[coladlm]].
+- **1 new conflict file**: [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] — ReasonMaxxer's "1–4% reranked positions causally reproduce RL accuracy" finding directly contradicts the premise of [[token-gradient-cancellation]]'s DFPO line that fixing gradient cancellation across many tokens is the load-bearing problem.
+- **2 conflicts extended**:
+  - [[conflicts/fixed-state-ssm-long-context]] gains **Position C** (Transformer + nonlinear horizontal state, via [[sst-v2]]) and **Position B (RL-trained memory overwrite)** (via [[memagent]]). The Apple Theorem 2.1 scope (GSSMs with linear or near-linear dynamics) does not directly bind either path.
+  - [[conflicts/long-context-attention-vs-recurrent-memory]] gains MemAgent as a third-path alternative (RL-trained explicit memory overwrites with a Transformer backbone, escaping the binary).
+- **10 watchlist additions**: Joint Latent DLM, Break the Block (diffusion-LM cluster siblings of ColaDLM); FLUID (ODE-based hybrid attention/CT-RNN); IOP-GSPO (outcome→process supervision); RAO (recursive agent self-delegation); UCPO (diversity-preserving RLVR); ResRL (SVD-projection negative-sample gradient surgery); Tool-Calling-Linearly-Readable (mechanistic interp of tool selection); ICLR 2026 Outstanding "Transformers are Inherently Succinct"; ICLR 2026 Honorable "Polar Express" (Muon optimizer theory).
+
+ColaDLM ingest subagent over-stepped its scope and updated `index.md`, `log.md`, `revisions.md` with manual-write entries for ColaDLM-only; orchestrator reconciled by replacing with this weekly-brief block covering all 5 pages, and adding the other 4 papers to index.md. Flagged for `master_notes.md` as a kit-level prompt-template issue (subagent scope must be tightened to "write the named page only — don't touch meta files").
+
+All changes left uncommitted on `ai-trends-wiki` per skill contract.
+
+## [2026-05-18] weekly-brief | autonomous run (uncommitted)
+
+Fifth weekly-brief run. Trend-scan subagent (sonnet) surveyed alphaXiv weekly trending / HuggingFace Daily+Trending Papers (AK proxy) / arXiv cs.LG-cs.CL-cs.CV May 11–18 / paperswithcode→HF redirect; 15 candidates surfaced. Reddit r/MachineLearning + r/LocalLLaMA fetch was gated (no subreddit signal this week — noted). Candidate #10 (ReasonMaxxer 2605.06241) dropped as already covered ([[reasonmaxxer]], 2026-05-11 run). Selection heuristic picked **5 for capture** and **10 for watchlist**.
+
+Captures (`raw/research/weekly-2026-05-18/`, all `--engine pymupdf`): `01-elf-embedded-language-flows.md` (2605.10938), `02-delta-mem.md` (2605.12357), `03-orthrus.md` (2605.12825), `04-asymflow.md` (2605.12964), `05-sensenova-u1.md` (2605.12500). `audit_captures` load-bearing checks clean (0 thin, 0 missing-source, 0 collisions); the 107 "broken image refs" are the known pymupdf image-path kit bug (open in `master_notes.md` since 2026-04-22) — cosmetic for text-only ingest, all extractions substantial (883–2768 lines). Proceeded as prior 4 runs did.
+
+Ingest via subagent-per-source (5 parallel `general-purpose` Agents, sonnet). All 5 summaries parsed clean against `parse_summary`; run.json status ok ×5. Aggregator DOMAIN-SLOT spurious merge_candidates (domain/prompts/slot/takeaway) surfaced as expected (kit bug 2026-04-22); ignored per autonomous one-page-per-source policy.
+
+Page plan applied:
+- **5 new paper pages**: [[elf-embedded-language-flows]], [[delta-mem]], [[orthrus]], [[asymflow]], [[sensenova-u1]].
+- **1 new conflict file**: [[conflicts/pixel-space-vs-latent-space-generation]] — [[sensenova-u1]] (pixel-space, no VAE; 32× compression matches FLUX.1-dev VAE PSNR at 8×) + [[asymflow]] (AsymFLUX.2 pixel-finetune beats FLUX.2-klein latent base; ImageNet FID 1.57) vs the existing [[coladlm]] latent-VAE-is-the-scaling-direction claim. Load-bearing (2 new sources + existing wiki anchor, direct contradiction with an existing page claim); resolution rule scoped per-domain, CoLa-DLM's high-compute claim flagged unrefuted at its own scale.
+- **2 conflicts extended** with δ-mem ([[delta-mem]]): [[conflicts/long-context-attention-vs-recurrent-memory]] gains Position C′ (hybrid: frozen full-attention backbone + gated delta-rule online state; supplies the memory-skeptical critique the empty Position-B slot wanted, answers it against attention-scaling); [[conflicts/fixed-state-ssm-long-context]] gains Position C′ (fixed 8×8 state, not a GSSM, outside Apple Theorem 2.1 scope — distinguished from sst-v2's FFN state and memagent's RL overwrite).
+- **[[tidar]] comparison**: added "Comparison: Orthrus" subsection (frozen-backbone KL-distilled lossless vs adapted-backbone rejection-sampling; speedup-figure gap is a setup/metric difference, explicitly *not* a conflict ruling).
+- **ELF "continuous beats discrete DLM"**: forward-looking, no existing wiki contradiction, no open conflict on that theme → discarded per skill's no-speculative-weekly-conflict policy (noted as a positioned claim within [[elf-embedded-language-flows]] only).
+- **10 watchlist additions**: Mean Mode Screaming, MatryoshkaLoRA, SU-01, SDAR, Geometry Conflict, Darwin Family (low-confidence, flagged for follow-up), AnyFlow, SANA-WM, Causal Forcing++, MinT.
+
+Page-writer subagents given tight scope ("write ONLY the named page; do not touch meta files") in response to the 2026-05-11 ColaDLM scope-overstep; orchestrator handled all conflict files + index/log/revisions/watchlist itself. No scope oversteps observed this run.
+
+Pre-existing uncommitted changes at run start (prior 2026-05-04 + 2026-05-11 weekly-brief output not yet committed by the user): flagged separately in the email run-notes so this week's diff is distinguishable. This run further extended two conflict files already among that pre-existing set (unavoidable — skill requires extending open conflict files).
+
+All changes left uncommitted on `ai-trends-wiki` per skill contract — fifth run.
+
+## [2026-05-25] weekly-brief | autonomous run (uncommitted)
+
+Sixth weekly-brief run. Trend-scan subagent (sonnet) surveyed alphaXiv weekly trending + HuggingFace Daily Papers (AK proxy, May 18–25) + web-search verification; ~18 candidates surfaced. Reddit (r/MachineLearning, r/LocalLLaMA) gated again (old.reddit blocked); X/AK direct inaccessible (AK routed via HF). Selection picked **5 for capture**, **10 for watchlist**.
+
+Captures (`raw/research/weekly-2026-05-25/`, all `--engine pymupdf`): `01-gated-deltanet-2` (2605.22791), `02-hrm-text` (2605.20613), `03-gram-recursive-reasoning` (2605.19376), `04-anti-self-distillation` (2605.11609), `05-delta-token-credit` (2605.21467). All 5 downloaded + converted clean (67–98 KB). `audit_captures` load-bearing checks clean (0 thin / 0 missing-source / 0 collisions); 25 broken image refs = known pymupdf image-path kit bug (`master_notes.md` since 2026-04-22), cosmetic for text ingest. Note: `poetry` was not on the non-login-shell PATH this run — used `~/.local/bin/poetry` (prior runs had it on PATH; session-specific, not a kit bug).
+
+Ingest via subagent-per-source (5 parallel `general-purpose` Agents, sonnet). All 5 summaries parsed clean against `parse_summary`; run.json ok ×5. Aggregator DOMAIN-SLOT spurious merge_candidates (domain/prompts/slot/takeaway) surfaced as expected (kit bug 2026-04-22); ignored per one-page-per-source policy.
+
+Page plan applied:
+- **5 new paper pages** (page-writer subagents, tight scope): [[gated-deltanet-2]], [[hrm-text]], [[gram-recursive-reasoning]], [[anti-self-distillation]], [[delta-token-credit]]. No scope oversteps.
+- **2 conflicts extended** (orchestrator): [[conflicts/fixed-state-ssm-long-context]] gains "B (decoupled-gate fixed-state recurrent)" — GDN-2 in pure-recurrent mode beats Mamba-2/GDN/KDA/Mamba-3 SISO+MIMO at 1.3B and on MK-NIAH retrieval; ablation shows decoupling the erase gate (not enlarging state) is the lever → nearest thing yet to the long-vacant orthodox Position-B slot, but wins via update rule not state size. [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] gains Position C — DelTA's discriminator view (shared/formatting tokens dominate both centroids; bottom-λ tokens *actively collapse* training, i.e. net-negative not merely inert); bridges Position A (sparse) and B (cancellation) with a distinct surrogate-reweighting fix.
+- **2 comparison notes** (orchestrator, not conflict files): [[mamba-3]] "Comparison: Gated DeltaNet-2" (GDN-2 displaces it as recurrent SOTA at 1.3B; rebuts mamba-3's hybrid concession); [[rlsd-self-distilled-rlvr]] "Comparison: AntiSD" (AntiSD finds *default* SD underperforms GRPO — but RLSD's decoupled SD is a different instantiation; both beat GRPO faster, different fixes, same diagnosis).
+- **No new conflict files**: HRM-Text's "instruction-pairs-only-from-scratch challenges Chinchilla raw-text scaling" and GRAM's stochastic-RRM framing are forward-looking with no current wiki contradiction and no open conflict on those themes → captured in-page only, per the no-speculative-weekly-conflict policy.
+- **10 watchlist additions**: Equilibrium Reasoners, Full Attention Strikes Back, ConvexTok, Vector Policy Optimization, Memory-R2, HINT-SD, GoLongRL, Rethinking Muon (arXiv ID unverified — flagged), WorldKV, OScaR.
+
+Trend read this week: recurrent-depth / latent-fixed-point reasoning surged (GRAM + HRM-Text + Equilibrium Reasoners); per-token RL credit-assignment cluster deepened (AntiSD + DelTA + Vector Policy Optimization); delta-rule linear attention reasserted over selective-SSM SOTA (GDN-2 vs Mamba-3).
+
+Pre-existing uncommitted changes at run start: prior 2026-05-04 / 2026-05-11 / 2026-05-18 weekly-brief output never committed by the user — flagged separately in the email run-notes so this week's diff stays distinguishable. This run again unavoidably extended conflict/index/log/revisions/watchlist files already in that pre-existing set (skill requires extending open conflict + meta files).
+
+All changes left uncommitted on `ai-trends-wiki` per skill contract — sixth run.

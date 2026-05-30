@@ -42,9 +42,14 @@ Training and inference kernels released at https://github.com/state-spaces/mamba
 
 - `raw/research/weekly-2026-04-27/01-mamba-3.md` — arXiv:2603.15569.
 
+## Comparison: Gated DeltaNet-2
+
+[[gated-deltanet-2]] (NVIDIA, arXiv:2605.22791, 2026-05-25) **displaces Mamba-3 as recurrent SOTA at 1.3B.** At matched 1.3B / 100B FineWeb-Edu, GDN-2 beats both Mamba-3 SISO and MIMO on aggregate LM + commonsense (recurrent avg 53.11 vs Mamba-3 MIMO 52.39) and decisively on multi-key retrieval (recurrent MK-NIAH-1 @4K 37.8 vs ≤28.0 for every baseline). Where Mamba-3 *concedes* "natural retrieval-based weaknesses of fixed state-size" (§4.1.2) and shifts the battle to hybrids, GDN-2 argues the weakness is the **update rule**: decoupling Gated DeltaNet/KDA's single scalar gate into channel-wise erase (key-axis) and write (value-axis) gates recovers most of the retrieval gain via the erase gate alone — at fixed state size. See [[conflicts/fixed-state-ssm-long-context]].
+
 ## Related
 
 - [[titans-miras]], [[nested-learning]] — MIRAS framing tension; Mamba-3 explicitly positions outside the associative-memory lineage.
+- [[gated-deltanet-2]] — beats Mamba-3 SISO/MIMO as recurrent SOTA at 1.3B; attributes the gap to the delta-rule update, not state capacity.
 - [[in-place-ttt]] — both improve recurrent/SSM behaviour at deployment; In-Place TTT adapts pretrained Transformers, Mamba-3 is from-scratch SSM.
 - [[test-time-training]] — §5.4 contrasts SSM viewpoint vs TTT/linear-attention "associative memory" framing.
 - [[conflicts/fixed-state-ssm-long-context]], [[conflicts/ssm-vs-associative-memory-taxonomy]].

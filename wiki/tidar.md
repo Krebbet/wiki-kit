@@ -50,10 +50,15 @@ Paper is the only artifact referenced. **No GitHub URL, no Hugging Face weights,
 
 Fresh NVIDIA paper (Nov 2025). Author roster (Molchanov, Kautz) suggests probable integration into NVIDIA's inference stack and likely community attention. Method explicitly positioned against the diffusion-LLM line (LLaDA, Dream, Block Diffusion, Fast-dLLM, SBD, EAGLE-3, DeepSeek-V3 MTP) and frames itself as the new Pareto frontier — likely to draw responses.
 
+## Comparison: [[orthrus]]
+
+[[orthrus]] (arXiv:2605.12825, May 2026) is the closest architectural parallel — also a single-model AR + masked-diffusion hybrid sharing one KV cache. Key difference: Orthrus keeps the AR backbone **strictly frozen** and trains only injected diffusion Q/K/V projections (~16% of params) by **KL distillation against the live AR teacher**, giving a *mathematically guaranteed lossless* output distribution. TiDAR instead continually-pretrains (adapts) the base weights and verifies via rejection sampling against the joint distribution (high-fidelity, not formally lossless-by-construction). Reported speedups differ — Orthrus peaks **7.83×** (Pseudo2code, Qwen3-8B, T=0; avg ~5.36×) vs TiDAR's **4.71×–5.91×** vs Qwen base AR — but this is **not a genuine contradiction**: different setups, models, and metrics (Orthrus reports Tokens-Per-Forward-pass; TiDAR measured T/s vs EAGLE-3), plus the frozen-vs-adapted-backbone distinction. Treat as parallel methods on the same frontier, not a conflict ruling.
+
 ## Source
 
 - `raw/research/radar-2026-04/03-tidar.md` — TiDAR paper PDF (arXiv:2511.08923). Captured 2026-04-22.
 
 ## Related
 
+- [[orthrus]] — frozen-backbone lossless AR+diffusion sibling (see Comparison above).
 - [[watchlist]] — Block Diffusion, EAGLE-3, LLaDA, Dream, Apple MTP, DeepSeek-V3 MTP referenced but not captured.
