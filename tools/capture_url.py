@@ -83,11 +83,21 @@ def _extract(url: str, force_js: bool) -> tuple[str | None, str]:
 
 
 def _extract_with_playwright(url: str) -> tuple[str | None, str]:
-    from playwright.sync_api import sync_playwright
+    from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
-        page.goto(url, wait_until="networkidle", timeout=30_000)
+        # Many modern docs/SPA hosts ship continuous telemetry beacons, so
+        # `networkidle` never fires and times out the whole capture. Use
+        # `domcontentloaded` as the hard gate (60s), then *opportunistically*
+        # wait for networkidle for up to 5s and swallow the timeout. This
+        # gives quiet sites a chance to settle without blocking noisy ones.
+        page.goto(url, wait_until="domcontentloaded", timeout=60_000)
+        try:
+            page.wait_for_load_state("networkidle", timeout=5_000)
+        except PlaywrightTimeoutError:
+            pass
+        page.wait_for_timeout(1_000)
         title = page.title()
         html = page.content()
         browser.close()
@@ -98,14 +108,23 @@ def _extract_with_playwright(url: str) -> tuple[str | None, str]:
 
 
 def _main_content_html(html: str) -> str:
-    """Extract the outermost <article> or <main> element. Falls back to full HTML."""
+    """Extract the outermost <article> or <main> element. Falls back to full HTML.
+
+    Strips <script>/<style>/<noscript> tags at the BeautifulSoup layer before
+    handing off to markdownify. markdownify's `strip=["script", "style"]` has
+    been observed to leak inline-script *text content* (as escaped chars) on
+    Mintlify-style SPA docs hosts whose `<main>` contains hydration scripts.
+    Decomposing here ensures the script bodies never reach the markdown layer.
+    """
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(html, "html.parser")
+    for tag in soup.find_all(["script", "style", "noscript"]):
+        tag.decompose()
     for tag_name in ("article", "main"):
         el = soup.find(tag_name)
         if el:
             return str(el)
-    return html
+    return str(soup)
 
 
 def _rewrite_images(body: str, assets_dir: Path, source_url: str) -> str:
