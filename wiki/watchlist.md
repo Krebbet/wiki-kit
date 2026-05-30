@@ -1,3 +1,8 @@
+---
+setup_approved: true
+last_reviewed: 2026-05-30
+---
+
 # Watchlist — Identified But Not Captured
 
 Papers and projects referenced in radar-2026-04 summaries that *would* deserve their own page once captured. Each entry: 1–2 sentences on why it matters and what page in this wiki cites it. Promote to a full ingest with `/research` when an entry becomes load-bearing for a follow-on question.
