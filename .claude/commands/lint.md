@@ -28,8 +28,10 @@ Perform a health check of the wiki.
 
    The tool checks: (a) every image ref in each captured markdown resolves to a real file, (b) every captured markdown has a paired source PDF in `pdfs/`, (c) markdown size is sane vs source PDF page count, (d) no image filename is referenced by more than one markdown (cross-paper overwrite indicator). Include any non-zero issues in the lint report under the **Capture Fidelity** section. Captures with broken refs or thin extractions are likely silent failures of `capture_pdf` and need re-capture before downstream synthesis can be trusted.
 
+10. **Watched-source evolution (radar)** — the watch list tracks the wiki's evolving subject, not a frozen bootstrap snapshot. Review the sources cited by pages added or changed since the last lint report (`wiki/lint-reports/`), plus any high-signal venues encountered while reading the wiki this run. Identify sources the wiki should watch going forward that aren't yet pinned in `wiki/reference-sources.md`. Append confirmed new sources to the appropriate watched-source section of `wiki/reference-sources.md` (with a one-line relevance note), and drop any that have gone stale. Record the current watched-source set in the **Trend Radar** output section and the additions/removals made this run in the **Radar Evolution** section.
+
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-10. **Domain-specific checks** — research-wiki for LLM fine-tuning method development:
+11. **Domain-specific checks** — research-wiki for LLM fine-tuning method development:
     a. **Paper identifier present** — every page citing a paper has the ArXiv ID (e.g., `arXiv:2401.12345`) or DOI in its `## Source` section.
     b. **Conceptual cross-links** — method pages link to at least one related-method page, not only papers they cite. The conceptual graph matters as much as the citation graph.
     c. **Quantitative claims cite figures** — pages making numeric claims ("X% improvement", "Y× more sample-efficient") cite the specific table or figure number from the source.
