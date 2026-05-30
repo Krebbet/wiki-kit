@@ -78,6 +78,19 @@ Bessemer Venture Partners' 2026 thesis declares the centre of gravity in AI infr
 
 **YC W26 overlap**: [[runanywhere]] (on-device inference, claimed fastest on Apple Silicon) fits the edge / on-device cluster; not a BVP 2026 pick but directionally consistent.
 
+**Update 2026-05-03 — agentic-web-search-as-API tier emerges as a sibling category, not in BVP's roadmap.** Parallel Web Systems (Sequoia $100M Series B / $2B post-money, 2026-04-29; Parag Agrawal, ex-Twitter CEO) sells web-search and research APIs purpose-built for AI-agent consumption, with named anchor customers Harvey, Notion, Clay, Opendoor + undisclosed banks / hedge funds and >100k developers. See [[../startups/parallel-web-systems|parallel-web-systems]]. This is a distinct infra-tier from inference / harness / training-data: it sits between agent harnesses (Cursor, Claude Code) and the public web. Competitors include Tavily, Exa, Linkup, Brave Search API. BVP's 2026 roadmap omits the category — first-tier-validation gap. Track for additional rounds in this space over Q3 2026.
+
+**Update 2026-05-10 — agent governance / control-plane consolidation around seat-based-SKU vendors.** BVP's harness-frontier framing (above) named Bigspin / Braintrust / Judgment Labs as 2026 picks. The shipping reality this week: governance / control-plane is consolidating around vendors with **existing seat-based monetisation**, bundled at near-zero marginal cost to the buyer:
+
+- **Microsoft Agent 365 GA (2026-05-01)** — bundled in M365 E7 or USD 15/user/month standalone. Discovers / observes / governs agents across Microsoft + non-Microsoft estates (AWS Bedrock + Google Cloud registry sync in preview). See [[../platforms/microsoft|microsoft]].
+- **Salesforce Agent Fabric** (2026-04-15 launch; covered in [[../platforms/salesforce|salesforce]]) — multi-vendor agent control plane bundled into Agentforce.
+- **Google GEAP Agent Gateway + Agent Identity + Registry** (2026-04-22; see [[google-cloud-next-2026-day2]]) — bundled in GEAP.
+- **ServiceNow AI Control Tower** (Knowledge 2026, 2026-05-05; not separately captured) — agent kill switches + 30 new cloud integrations + Traceloop acquisition for runtime observability.
+
+The pattern: governance + observability ships as a **bundled feature** of the existing platform, not a separate startup purchase. **Pure-play harness/eval startups** (Bigspin, Braintrust, Judgment Labs, Traceloop pre-acquisition) face a structural pricing and distribution disadvantage against the bundled-into-existing-SKU pattern. BVP's harness-frontier picks may be **acquihire-targets rather than standalone-revenue plays** through 2026-2027 — Traceloop's ServiceNow acquisition (2026-05-05) is the first concrete data point in this direction.
+
+Adjacent signal: **MCP isolation** is now load-bearing inside the governance bundle — see [[mcp-rce-supply-chain-2026-05]] for why Model Armor / Agent Fabric / Agent 365 Defender controls / Cortex sandboxing now have a dual-purpose framing (governance AND CVE-inheritance defence). Pure-play harness vendors without an MCP-isolation story face an uphill differentiation battle.
+
 ## 5. World models
 
 **Category:** AI systems trained on real-world sensor / video / GPS data that simulate how the world evolves given a state and action — a substrate for physical-AI intelligence analogous to what LLMs are for text reasoning (BVP 2026).
@@ -109,6 +122,9 @@ Bessemer Venture Partners' 2026 thesis declares the centre of gravity in AI infr
 ## Source
 
 - `raw/research/emerging-agentic-startups-2026/06-bessemer-infra-roadmap.md`
+- `raw/research/weekly-2026-05-03/03-parallel-web-systems-series-b.md`
+- `raw/research/weekly-2026-05-10/03-microsoft-agent-365-ga.md` (Microsoft Security Blog, 2026-05-01 — agent control-plane consolidation)
+- `raw/research/weekly-2026-05-10/04-mcp-rce-vulnerability.md` (The Hacker News citing OX Security, 2026-05-08 — MCP isolation as governance layer)
 
 ## Related
 
@@ -118,4 +134,7 @@ Bessemer Venture Partners' 2026 thesis declares the centre of gravity in AI infr
 - [[ai-apps-layer-2026]]
 - [[yc-w26-ai-batch]]
 - [[runanywhere]]
+- [[../startups/parallel-web-systems|parallel-web-systems]]
+- [[../platforms/microsoft|microsoft]] (agent governance bundling)
+- [[mcp-rce-supply-chain-2026-05]]
 - [[open-questions-2026-04]]

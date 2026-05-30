@@ -111,6 +111,29 @@ After the HN threads above surfaced the "SaaS becomes infrastructure" strand of 
 
 Open question arising from Headless 360: does "everything as MCP / API / CLI" become an industry norm? See [[open-questions-2026-04]] C17. If yes, the "internal dev eats SaaS" branch loses evidence; if no, Salesforce is alone.
 
+## Sierra: narrow-deep customer-experience vertical at scale (2026-05-04)
+
+**[[../startups/sierra|Sierra]]** ($950M Series D / $15B+ post-money, Tiger Global + GV) is the cleanest 2026 instantiation of "narrow-deep vertical wedge" thesis. Bret Taylor + Clay Bavor founders; Sierra reports **$150M ARR (Feb 2026)** across customer-experience agents handling mortgage refinancing, insurance claims processing, product returns, and nonprofit fundraising — at a self-reported 40%+ Fortune 50 penetration. Bret Taylor's "people never need to navigate complex systems" framing is the cleanest public articulation of the **"services as software"** wedge (Sequoia thesis, recirculated heavily in this run).
+
+Why Sierra fits this page's thesis:
+
+- **Narrow-deep, regulated workflows** (refinancing, claims) — exactly the cohort the "wide-shallow + PE-owned + renewal-hiking SaaS" displacement thesis predicts is *underserved*, not threatened.
+- **Multi-vertical-template library** (Ghostwriter, April 2026) generalises across domains via productised orchestration logic, not generic agents.
+- **Largest pure-play vertical-agent raise to date** — establishes a category-leader benchmark for customer-experience subcategory under [[../landscape/ai-app-categories-2025|ai-app-categories-2025]].
+- **Strongest non-coding agent-vertical scale data point** — extends [[../conflicts/open-questions-2026-04|C8]]'s generalisation-side argument with concrete revenue across regulated verticals (vendor self-reported, weight at 0.7).
+
+Caveats: ARR figures are vendor self-reported; Bret Taylor's dual role as Sierra CEO and OpenAI chairman is a conflict-of-interest surface; "billions of interactions" framing is unaudited.
+
+## Three-way enterprise-agent-platform race (2026-04-22 → 2026-05-03)
+
+Three same-week vendor bets on different agent-platform shapes:
+
+- **OpenAI [[../llms/openai|Workspace Agents]] (2026-04-22)** — horizontal, admin-builder, Codex cloud runtime, credit pricing. The "Custom GPTs successor" play.
+- **Microsoft [[../platforms/microsoft|Agent 365 GA]] (2026-05-01)** — multi-vendor governance / control plane, bundled in M365 E7 SKU. The "win the rent on every agent in the M365 estate" play.
+- **Anthropic [[../llms/anthropic-claude-family|Claude Finance Agents]] (2026-05-03)** — first vertical-platform play, financial services templates + M365 add-ins + data-partner ecosystem (Moody's MCP app + 8 named partners). The "vertical-deep with proprietary data partners" play.
+
+These are vendor *bets* on non-coding agent traction, not yet evidence of scale (early testers + named-customer quotes only). Together with Sierra's actual revenue data, they bracket the question: **which agent-platform shape captures durable revenue?** The wiki position remains tilted toward the practitioner-grounded read: **vertical-deep narrow agents work at scale within regulated workflows; horizontal-general agents and governance-bundled control planes have not yet proven scale outside coding.** Track for Q3 2026 ARR / customer-count disclosures from all three.
+
 ## Implications for the conflicts page
 
 - Directly **contradicts** the "AGI for near-term enterprise tasks" claim in [[ai-apps-layer-2026]] (see [[open-questions-2026-04]] C8). Concrete counter-evidence: AI fails on ERP book-closing, maintenance tracking, timezone-aware business logic.
@@ -124,10 +147,51 @@ Open question arising from Headless 360: does "everything as MCP / API / CLI" be
 - Author of the eat-SaaS submitted article is himself a commenter (explicitly self-identifies); his peer-group anecdotes about >$100k/yr ERP replacements are single-source — treat as illustrative, not quantitative.
 - Concrete numbers ("$200/mo Max = 3 hours/day", cancellation sizes) are unsourced practitioner claims — carry forward with a 2026-04 date stamp and an "unverified" marker.
 
+## Three thesis stress-tests (2026-05)
+
+Three 2026-05 data points bear on the page's core argument structure. None resolves the central question but each tightens or complicates a specific sub-claim.
+
+### 1. AgentCore Payments (AWS + Coinbase/Stripe, x402/USDC) — payment rail removes one bottleneck, not all of them
+
+AWS launched Amazon Bedrock AgentCore Payments in preview (2026-05-17), giving agents a managed micropayment loop: an HTTP 402 response from a paid endpoint triggers stablecoin settlement (USDC via Coinbase CDP or Stripe Privy wallet), session-scoped spending limits enforced at platform layer, no bespoke billing integration required per endpoint. Named early testers include Warner Bros. Discovery (premium content commerce) and Heurist AI (crypto research agent in production). Vendor-curated quotes only; no independent stress-test data at preview.
+
+**Bearing on this page's bottleneck taxonomy:** The "Bottleneck taxonomy" section above identifies distribution and trust as the blockers for autonomous-agent commercial viability — not intelligence, not payment plumbing. AgentCore Payments directly removes the *payment-plumbing* item that was conspicuously absent from that list: agents can now transact against API endpoints and content paywalls without a human in the loop on each transaction. This is not nothing — it closes a friction surface that genuinely blocked narrow-workflow agents (e.g., an agent that needs to buy data from a third-party API on the fly).
+
+What it does not remove: the trust/governance bottleneck. AgentCore's own design acknowledges this — end-user must explicitly authorise agent wallet access, and per-session spend limits are enforced at the infra layer. The rail exists; the human-authorisation requirement remains. The "distribution is not solvable by intelligence" point is untouched. Broader commerce (flights, hotels, merchant purchases) is explicitly deferred to a later milestone (2026-05-17 source). "Agentic economy" framing in the AWS launch post is aspirational — source itself states the infrastructure to support it at scale doesn't exist yet.
+
+Read alongside [[../landscape/agentic-compute-pricing-2026-04]]: per-call micropayment rails are the natural pricing model for agent compute workloads that break flat subscription economics; AgentCore Payments is the infrastructure response. See [[landscape/agentcore-payments-x402-2026-05]].
+
+### 2. SAP + Anthropic — incumbent-embeds-agent, not incumbent-displaced-by-agent
+
+SAP announced (2026-05-17, SAP Sapphire) a partnership to embed Claude as the primary reasoning/agentic engine in the SAP Business AI Platform, executing multi-step workflows (book close, supplier rerouting, HR leave queries, CFO briefings) inside Joule agents across S/4HANA, SuccessFactors, and Ariba. Connectivity via MCP. No GA date, no pricing, no named customer deployments — press release / announcement, weight accordingly (2026-05-17).
+
+**Bearing on the narrow-deep vs wide-shallow axis:** SAP is exactly the kind of ERP incumbent this thesis flags as "at risk" in the wide-shallow PE-owned SaaS cohort. The SAP/Anthropic partnership is counter-evidence to the naive displacement read: instead of agents displacing SAP, Anthropic embeds *inside* SAP and gains distribution via SAP's 400,000+ customer base. This is the **embed-not-replace** pattern — the same flavour as Salesforce Headless 360 ("become-the-infrastructure") and Google Cloud's GSI agent catalog (incumbents shipping as agents inside a hyperscaler runtime), but at the model-vendor layer rather than the platform layer. For enterprises already on SAP, the implication is the opposite of displacement: Claude's reasoning arrives inside existing trusted workflows with SAP's compliance controls intact.
+
+Note: The SAP RISE/GROW migration stalling datum (HN 2026-04, above) described customers keeping SAP as system of record while modernising surround apps. That remains an open displacement vector for the *surround* layer; the core ERP is reinforced, not weakened, by this partnership.
+
+MCP caveat: [[landscape/mcp-rce-supply-chain-2026-05]] documents 11+ unpatched CVEs in the MCP STDIO layer as of 2026-05. This is the exact connectivity mechanism named in the SAP/Anthropic announcement for regulated enterprise workflows. Enterprises evaluating should flag the security posture before MCP proliferates into ERP data paths. See [[landscape/anthropic-enterprise-distribution-2026-05]].
+
+### 3. OpenAI Deployment Company (DeployCo) — vendor verticalises into the deployment-labour layer
+
+OpenAI launched "OpenAI Deployment Company" (DeployCo, 2026-05-11): majority-OpenAI-owned JV, $4B raised, $10B valuation, 19 GSI/investment-firm partners, sells enterprise AI deployment consulting and engineering. Simultaneously announced acquisition of applied AI consultancy Tomoro (~150 engineers, pending close). Additional acquisitions planned. No customer names or revenue at launch; all claims are vendor/PR-sourced (2026-05-11).
+
+**Bearing on agents-displacing-services:** The practitioner threads above position *distribution* and *trust* as human-social resources that agents cannot acquire by themselves. DeployCo is OpenAI's explicit acknowledgment of that ceiling: self-service model API adoption is hitting a wall, and converting enterprise prospects to production deployments requires bespoke human effort embedded at the customer. The forward-deployed-engineer (FDE) model (same pattern as Palantir, Scale AI) is OpenAI owning the deployment-labour layer rather than just selling models.
+
+This is a significant shift in the competitive topology. Previously the thesis was "agents displace SaaS, model vendors sell APIs." DeployCo makes OpenAI a systems integrator — a direct entrant into the professional-services/SI layer that previously belonged to Accenture, Deloitte, and the GSIs in Google's $750M partner fund. Anthropic is reportedly doing the same (hundreds of engineers + consultants per the DeployCo source). If both frontier labs verticalise into deployment labour, the marginal GSI/SI offering loses differentiation faster than the model APIs mature; but the labs also inherit the same scaling-people constraint they sell against.
+
+Lock-in implication: deep workflow integration via OpenAI-aligned SIs would entrench OpenAI models in exactly the regulated, high-switching-cost enterprise workflows the thesis identifies as durable SaaS moats. The counter-move is not agent intelligence — it is vendor-supplied human labour. See [[landscape/openai-deployment-company-2026-05]].
+
 ## Source
 
 - `raw/research/emerging-agentic-startups-2026/04-hn-agents-eat-saas.md`
 - `raw/research/emerging-agentic-startups-2026/05-hn-agents-make-money.md`
+- `raw/research/weekly-2026-05-10/01-sierra-950m-series-d.md` (TechCrunch, 2026-05-04)
+- `raw/research/weekly-2026-05-10/02-anthropic-finance-agents.md`
+- `raw/research/weekly-2026-05-10/03-microsoft-agent-365-ga.md`
+- `raw/research/weekly-2026-05-10/05-openai-workspace-agents.md`
+- `raw/research/weekly-2026-05-17/.ingest/01-agentcore-payments-x402-2026-05.summary.md`
+- `raw/research/weekly-2026-05-17/.ingest/02-sap-anthropic-business-ai-2026-05.summary.md`
+- `raw/research/weekly-2026-05-17/.ingest/05-openai-deployment-company-2026-05.summary.md`
 
 ## Related
 
@@ -137,4 +201,11 @@ Open question arising from Headless 360: does "everything as MCP / API / CLI" be
 - [[yc-w26-ai-batch]]
 - [[lio]]
 - [[trace]]
+- [[../startups/sierra|sierra]]
+- [[../llms/openai|openai]]
+- [[../llms/anthropic-claude-family|anthropic-claude-family]]
+- [[../platforms/microsoft|microsoft]]
 - [[open-questions-2026-04]]
+- [[landscape/agentcore-payments-x402-2026-05]]
+- [[landscape/anthropic-enterprise-distribution-2026-05]]
+- [[landscape/openai-deployment-company-2026-05]]

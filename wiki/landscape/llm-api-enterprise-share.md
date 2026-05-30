@@ -45,6 +45,14 @@ Cross-check: a16z's Yipit-panel data shows **~85% OpenAI** and **~55% Anthropic*
 
 Combined read: the "direct-to-labs" signal that C3 tracks is real at the *procurement surface* (who you sign the contract with) but obscures the underlying compute substrate, which is hyperscaler-locked by the lab-CSP structured deals. The useful question is no longer "direct or CSP?" but "which hyperscaler's iron are you renting, and via which billing surface?"
 
+**Update 2026-05-03 (weekly brief):** the "single-CSP capture" reading is itself wrong — both top-2 frontier labs are now multi-CSP-distributed at material scale.
+
+1. **Microsoft ↔ OpenAI partnership amended (2026-04-27).** Microsoft's IP license is now **non-exclusive** through 2032; Microsoft's outbound revenue share to OpenAI eliminated; Azure remains primary first-launch venue but **OpenAI can serve all products to customers across any cloud provider**. See [[openai-microsoft-restructure-2026-04]].
+2. **GPT-5.5 + OpenAI frontier family on AWS Bedrock (2026-04-28)** — limited preview, GA "within weeks". OpenAI now lives on Azure (primary, first-launch) + AWS Bedrock + direct API.
+3. **Google → Anthropic up-to-$40B + 5 GW Google Cloud (2026-04-24).** Adds GCP-substrate compute commit on top of Anthropic's existing AWS Trainium $100B / 5 GW deal. Anthropic now runs on **Trainium AND TPU AND general-purpose hyperscaler iron** at material scale. See [[google-anthropic-40b-2026-04]].
+
+The 2026 procurement read settles: **multi-CSP lab distribution is the durable model**; lab-CSP coupling is real at the financing layer (equity-plus-compute structured deals) but **not exclusive at the distribution layer**. Enterprises can buy any frontier lab through any of the top-3 hyperscalers within 6 months. The "which hyperscaler's iron?" question framed in the 2026-04-23 update remains the right framing — but with the caveat that **the same lab now runs on multiple iron substrates across CSPs**, so the answer can be a procurement choice rather than a forced consequence.
+
 ## Wallet-share shift (OpenAI → Anthropic / Gemini)
 
 - Anthropic posted the largest share increase of any frontier lab since May 2025, **growing +25% in enterprise penetration** (a16z 2026-04).
@@ -81,6 +89,32 @@ Combined read: the "direct-to-labs" signal that C3 tracks is real at the *procur
 - **Outcome-based pricing is hyped but CIOs reject it in practice** — concerns over unclear outcome definitions, unpredictable costs, and attribution (a16z 2025-05).
 - Inference cost trend: **~10x / 12 months down** per a16z's "LLMflation" framing (a16z 2025-05). xAI Grok 3 mini and Gemini 2.5 Flash cited as price-to-performance leaders at the small / mid tier.
 
+## Anthropic enterprise wallet-share via OEM + hyperscaler-native distribution (2026-05)
+
+Two signals from May 2026 show Anthropic gaining enterprise spend-share through platform-level embedding and hyperscaler billing integration — distribution channels that are structurally distinct from direct API consumption. No revenue figures were disclosed in either announcement.
+
+**SAP Business AI Platform — Claude OEM-embedded in Joule (announced 2026-05-17, forward-looking)**
+
+SAP and Anthropic announced at SAP Sapphire (2026-05-17) that Claude will serve as the primary reasoning and agentic engine inside SAP's Joule assistant across S/4HANA, SuccessFactors, and Ariba. The integration uses MCP as the connectivity bus to heterogeneous SAP and external systems, and embeds within SAP's existing governance/approval workflows rather than running in parallel to them.
+
+Wallet-share read: for enterprises already on SAP's stack — 400,000+ customers, per SAP — Claude arrives bundled inside a platform they already pay for. The consumption pattern is OEM (Anthropic is a component vendor to SAP) rather than an enterprise buying Anthropic API directly. This inflates Anthropic's effective enterprise reach without necessarily showing up in direct-API spend-share metrics.
+
+Caveats: source is a press release / announcement post (2026-05-17). All capability claims are forward-looking ("plans to expand," "will collaborate"). No GA date, no pricing, no named customer deployments, no benchmark data disclosed. SAP simultaneously states an "open ecosystem" (any model supported) — the "primary" designation creates switching friction but is not an exclusive lock.
+
+Note: MCP is also the connectivity layer in this deployment; the OX Security RCE disclosure (2026-05-08, 11+ CVEs across 7,000+ MCP servers) applies directly to enterprise risk assessment of this integration path — see [[mcp-rce-supply-chain-2026-05]].
+
+**Claude Platform on AWS — AWS-billed distribution path (GA 2026-05-11)**
+
+Anthropic's full-feature Claude Platform API went GA on AWS on 2026-05-11. It delivers complete Anthropic feature parity (Managed Agents, Skills, MCP connector, Files API, code execution, prompt caching, citations, batch) under AWS IAM authentication, CloudTrail audit logging, and AWS consolidated billing. Critically, spend retires against the enterprise's existing AWS commitments — same mechanism that GPT-5.5-on-Bedrock uses (limited preview as of 2026-04-28, per [[openai-microsoft-restructure-2026-04]]). Both are competing for the same AWS-committed enterprise budget, within weeks of each other.
+
+The path is distinct from Amazon Bedrock: Anthropic operates the service; data is processed outside the AWS boundary (Anthropic's infrastructure, not AWS's). This matters for regulated workloads (HIPAA, FedRAMP, EU data sovereignty) — those require Bedrock, not this path. The AWS billing integration is a procurement-friction reducer, not a data-residency guarantee.
+
+Same-day feature parity with the native Claude API is an explicit commitment (vs. Bedrock's historically slower rollout) — a meaningful differentiator for teams chasing bleeding-edge agent capabilities.
+
+Wallet-share read: the AWS commitment-retirement mechanism lowers procurement friction and creates billing-surface retention (switching vendors triggers procurement overhead once commitments are being retired). Combined with the existing Bedrock presence and Google Cloud Model Garden availability (2026-04-22), Anthropic is now distributed across all three major hyperscaler billing surfaces simultaneously — a structural multi-CSP distribution position that mirrors what OpenAI achieved via the amended Microsoft deal (2026-04-27). See also [[google-anthropic-40b-2026-04]] for the Google Cloud compute substrate context.
+
+**Combined read (2026-05):** Anthropic is gaining enterprise wallet-share through two distinct channels that do not show up cleanly in direct-API spend metrics: (a) OEM embeds inside dominant enterprise platforms (SAP, and previously Finance Agents verticals), where consumption is platform-mediated; and (b) hyperscaler-billed paths (AWS consolidated billing, Bedrock, GCP Model Garden) that let enterprises buy Anthropic within existing cloud commitments. The "direct API vs. CSP" dichotomy is increasingly unhelpful — Anthropic is on all of them.
+
 ## Source
 
 - `raw/research/enterprise-ai-landscape-2026/01-a16z-arms-race-2026.md`
@@ -88,6 +122,10 @@ Combined read: the "direct-to-labs" signal that C3 tracks is real at the *procur
 - `raw/research/enterprise-ai-landscape-2026/05-a16z-cio-2025.md`
 - `raw/research/weekly-2026-04-23/01-google-cloud-next-2026-day2.md`
 - `raw/research/weekly-2026-04-23/05-anthropic-aws-5b-100b-2026-04.md`
+- `raw/research/weekly-2026-05-03/01-openai-microsoft-restructure.md`
+- `raw/research/weekly-2026-05-03/02-google-anthropic-40b.md`
+- `raw/research/weekly-2026-05-17/.ingest/02-sap-anthropic-business-ai-2026-05.summary.md`
+- `raw/research/weekly-2026-05-17/.ingest/03-claude-platform-on-aws-2026-05.summary.md`
 
 ## Related
 
@@ -99,4 +137,9 @@ Combined read: the "direct-to-labs" signal that C3 tracks is real at the *procur
 - [[google-cloud-agentic-partner-fund-2026-04]]
 - [[../llms/anthropic-claude-family|anthropic-claude-family]]
 - [[agentic-compute-pricing-2026-04]]
+- [[openai-microsoft-restructure-2026-04]]
+- [[google-anthropic-40b-2026-04]]
+- [[../llms/deepseek|deepseek]]
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]]
+- [[anthropic-enterprise-distribution-2026-05]]
+- [[mcp-rce-supply-chain-2026-05]]

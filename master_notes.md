@@ -56,3 +56,21 @@ Append entries using this structure:
 **Implication:** Research (and any other command that runs independent captures in parallel) should either dispatch one-by-one or instruct the agent to wrap each parallel capture in `|| true` / trailing `; echo ok` to prevent cascade. Worth adding a sentence to `research.md` step 4 so future agents don't lose a batch to one bot-walled URL.
 **Status:** open
 
+
+### 2026-05-10 — VentureBeat capture intermittently 429s on image assets
+**Scope:** kit
+**Observation:** `capture_url` against venturebeat.com returns "Page.goto: Timeout 30000ms exceeded" without `--js`; with `--js` the markdown captures cleanly but image asset downloads return 429 Too Many Requests on `/_next/image` URLs. Ran into this on the 2026-05-10 weekly-brief OpenAI Workspace Agents capture. Audit ran clean despite the 429s (image refs in the markdown still resolved against the assets dir for the few that succeeded). Reproducible — VentureBeat throttles their next/image proxy, especially on `--js` runs that load all images at once.
+**Implication:** Document VentureBeat as a known intermittent-429-on-images host (similar tier to OpenAI blog's networkidle timeout). Consider (a) adding `--js` as the default fallback when `networkidle` times out, (b) downloading assets sequentially with a rate-limit when the host is on a known-throttling list, or (c) skipping image asset download entirely on hosts in this list (the markdown is the load-bearing artifact for ingest summaries; images are nice-to-have). This is a low-severity issue — the captures still produce usable summaries — but worth surfacing alongside the existing OpenAI / GeekWire / MDPI / ScienceDirect / McKinsey known-bot-walled list.
+**Status:** open
+
+### 2026-05-11 — /weekly-brief brief shape has no override mechanism for required sections
+**Scope:** kit
+**Observation:** User asked for future weekly briefs to additionally include a roundup of new startups, funding rounds, and product launches (independent of the ≤5-captures cap). The kit's `/weekly-brief` only honours overrides for `## Scope`, `## Selection priority`, and `## Local conventions` in `wiki/reference-sources.md` (per step-0 instructions). The brief template in step 6 is hardcoded — no override hook for adding required sections. Worked around by (a) adding a `## Required briefing coverage` section to this wiki's `reference-sources.md`, (b) editing the local copy of `.claude/commands/weekly-brief.md` step 6 template to inject a `# New entrants, funding flows, launches` section. The local-command edit only affects this wiki, but the override mechanism gap remains.
+**Implication:** Kit should grow a `## Required briefing coverage` (or `## Brief shape additions`) override section name in `reference-sources.md`, and step 6 of `/weekly-brief` should read that section and slot the additional content into the brief template before the "Other watchlist references" section. Without this, every wiki that wants additional standing sections has to fork the local command file — fragile across kit updates and a clear `/harvest` target.
+**Status:** open
+
+### 2026-05-17 — /weekly-brief assumes `poetry` on PATH; not present in non-interactive harness shell
+**Scope:** kit
+**Observation:** During the 2026-05-17 autonomous sweep, every `poetry run python -m tools.*` invocation (capture, audit, ingest_plan) failed with `poetry: command not found`. `poetry` lives at `$HOME/.local/bin/poetry`, which is not on the PATH of the non-interactive shell the harness spawns (the Bash tool initialises from profile but `~/.local/bin` was absent). Worked around by prefixing every tooling call with `export PATH="$HOME/.local/bin:$PATH"`. The cron line (`claude -p "/weekly-brief"`) may inherit a login shell where poetry resolves, so this may be invisible in cron but bites interactive/test runs and any environment where `~/.local/bin` isn't on PATH.
+**Implication:** `/weekly-brief` (and `/research`, `/ingest`, `/lint` — anything invoking `poetry run`) should either (a) resolve poetry robustly (e.g. `command -v poetry || export PATH="$HOME/.local/bin:$PATH"`) in a documented preamble, or (b) the kit should document a required PATH/venv bootstrap. Low-severity (clean workaround exists) but a clear `/harvest` candidate since it affects every poetry-invoking command across all wikis.
+**Status:** open

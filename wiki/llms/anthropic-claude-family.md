@@ -67,9 +67,13 @@ Running page for Anthropic's Claude model family — release timeline, per-model
 - **Modest regression vs Opus 4.6 on controlled-substance harm-reduction responses** — worth flagging as a release-to-release safety delta rather than an absolute regression.
 - **Cyber Verification Program** required for legitimate pentesting / red-team use after new automatic cyber-use blocking.
 
-## Compute infrastructure — Amazon deal (2026-04-20)
+## Compute infrastructure — Amazon deal (2026-04-20) and Google deal (2026-04-24)
 
-Announced 2026-04-20: Amazon adds **$5B** to its Anthropic stake (cumulative: **$13B**) in exchange for a **10-year, $100B AWS cloud commitment** covering up to **5 GW of compute** for Claude training and inference.
+Within five days, Anthropic stacked **two material hyperscaler compute deals** that together commit >10 GW of compute capacity over 5–10 years across two substrates (AWS Trainium + Google Cloud / TPU). Combined notional spend at retail rates >$130B+. See [[../landscape/google-anthropic-40b-2026-04|google-anthropic-40b-2026-04]] for the Google-side detail.
+
+### Amazon deal (2026-04-20)
+
+Amazon adds **$5B** to its Anthropic stake (cumulative: **$13B**) in exchange for a **10-year, $100B AWS cloud commitment** covering up to **5 GW of compute** for Claude training and inference.
 
 ### Deal terms
 
@@ -89,11 +93,140 @@ Announced 2026-04-20: Amazon adds **$5B** to its Anthropic stake (cumulative: **
 - **C3 "direct-to-labs" re-read.** If Claude training *and* inference ride on AWS Trainium, enterprises buying "direct from Anthropic API" are running on AWS compute regardless of procurement channel. The lab-vs-CSP dichotomy in C3's 80% figure likely masks this substrate dependence. Direct-API and Bedrock buyers both sit on AWS iron — only the billing surface differs. See [[../landscape/llm-api-enterprise-share|llm-api-enterprise-share]] and [[open-questions-2026-04]] C3.
 - **Model cadence tied to Trainium roadmap.** Trainium3 GA Dec 2025; Trainium4 pending. Future Claude frontier models' timing is now a function of Amazon's silicon schedule, not purely Anthropic's research cadence.
 
-### Open questions
+### Open questions (Amazon deal)
 
 - Revenue-share terms: not disclosed.
-- Whether Anthropic retains the ability to train on non-Trainium substrate (e.g. continued NVIDIA or Google TPU access via GCP) at scale: article language suggests preference, not exclusivity, but unclear.
+- Whether Anthropic retains the ability to train on non-Trainium substrate (e.g. continued NVIDIA or Google TPU access via GCP) at scale: article language suggested preference, not exclusivity. **Resolved partial 2026-04-24:** the Google deal answers it — Anthropic does retain non-Trainium scale, materially.
 - Inference-capacity floor across the 10-year term: 5 GW is the ceiling; commitment on delivery timing not specified.
+
+### Google deal (2026-04-24)
+
+Per TechCrunch citing Bloomberg (2026-04-24):
+
+| Element | Detail |
+|---|---|
+| Headline figure | "Up to $40B" |
+| Committed now | $10B at $350B Anthropic valuation |
+| Contingent | $30B on milestone-hit (terms not disclosed) |
+| Compute | 5 GW Google Cloud capacity over 5 years (with room to scale further) |
+| TPU | Adds to a prior Anthropic ↔ Google ↔ Broadcom partnership for "multiple gigawatts" of TPU starting 2027 (Broadcom 8-K cited 3.5 GW) |
+| Distribution | Anthropic Claude Opus / Sonnet / Haiku already live in Google Cloud Model Garden via GEAP (2026-04-22) — see [[../landscape/google-cloud-next-2026-day2|google-cloud-next-2026-day2]] |
+| Adjacent valuation signal | Bloomberg reports $800B+ secondary-market interest mid-April; CNBC reports $900B-valuation talks 2026-04-29; potential IPO as soon as October |
+
+### Combined compute footprint (after both deals)
+
+- AWS Trainium: up to **5 GW**, 10-yr horizon, training preferred.
+- Google Cloud: up to **5 GW** general-purpose, 5-yr horizon.
+- Google ↔ Broadcom TPU partnership: ≥3.5 GW from 2027.
+- CoreWeave: separate datacenter capacity deal in early April (terms not captured).
+- Total contracted capacity ceiling: **>13 GW** over 5–10 years.
+
+### Implication for C3 ("direct-to-labs" hosting model)
+
+The 2026-04-23 update read this as "lab-CSP coupling tightens; substrate determines billing surface." That's now too narrow:
+
+- Anthropic is multi-CSP-distributed by design.
+- Both top-2 frontier labs (Anthropic, OpenAI) are multi-CSP within the same fortnight.
+- The right enterprise procurement question is now "**which lab on which CSP via which billing surface and at what price/perf?**" — no exclusivity to claim either way.
+
+See [[../conflicts/open-questions-2026-04|C3]] for the full reinterpretation, [[../landscape/openai-microsoft-restructure-2026-04|openai-microsoft-restructure-2026-04]] for the parallel OpenAI move.
+
+## Vertical platforms — Claude Finance Agents (2026-05-03)
+
+Anthropic's **first vertical-platform play**, launched 2026-05-03 (announced via news.anthropic.com/news/finance-agents). Marks the move from foundation-model-API to vertical-stack: ten ready-to-run agent templates + Microsoft 365 add-ins + expanded data-partner ecosystem.
+
+### Ten agent templates (all distributed via Claude Cowork plugins, Claude Code plugins, OR Claude Managed Agent cookbooks)
+
+KYC screening, pitchbook building, earnings review, financial model building, market research, valuation review, GL reconciliation, month-end close, statement audit, meeting prep.
+
+### Architecture (per Anthropic 2026-05-03)
+
+Each agent template packages **three components**:
+
+1. **Skills** — instructions and domain knowledge for the task.
+2. **Connectors** — governed, real-time access to partner data.
+3. **Subagents** — additional Claude models called by the main agent for sub-tasks (e.g., comparables selection, methodology checks).
+
+Plus distribution-side features:
+- **MCP apps** (e.g., Moody's) — embed provider tools directly inside Claude. Differentiated tier above plain connectors.
+- **Claude Managed Agents** — long-running sessions (multi-hour deal close), per-tool permissions, managed credential vaults, full audit log in Claude Console. Public beta on the Claude Platform.
+- **Microsoft 365 add-ins** — Excel, PowerPoint, Word (GA); Outlook coming soon. Context carries automatically across M365 apps.
+- **Dispatch feature** — voice or text in Claude Cowork, off-desk task assignment.
+
+### Data-partner ecosystem (2026-05-03)
+
+| Existing partners | New (this launch) | Special tier |
+|---|---|---|
+| FactSet, S&P Capital IQ, MSCI, PitchBook, Morningstar, Chronograph, LSEG, Daloopa | Dun & Bradstreet, Fiscal AI, Financial Modeling Prep, Guidepoint (100K+ expert transcripts), IBISWorld, SS&C Intralinks (DealCenter AI data rooms), Third Bridge, Verisk | **Moody's MCP app** — credit ratings + 600M+ public/private companies |
+
+### Vendor-cited benchmark
+
+Anthropic claims Claude Opus 4.7 leads the **Vals AI Finance Agent benchmark at 64.37%**. Vendor-cited; Vals's independence not separately verified in this run; flag for cross-confirmation.
+
+### Named customers (2026-05-03)
+
+Citadel (Excel coverage models), FIS (AML investigations from days to minutes; credit decisioning, fraud prevention, deposit retention agents), BNY (Eliza + Claude "digital employees"), Carlyle (firm-wide), Mizuho (meeting prep, client insights), Travelers (Claude Code, engineering productivity), Walleye Capital (100% of 400 employees on Claude Code), Hg (Excel for due diligence and financial modeling).
+
+### Strategic timing
+
+Launches **8 days** after the Microsoft–OpenAI exclusivity restructure (2026-04-27) and **2 days** after Microsoft Agent 365 GA (2026-05-01). Anthropic distributing inside Microsoft 365 estate (Excel/PowerPoint/Word add-ins) is **operational confirmation** that the restructure was strategic prep enabling third-party AI distribution on M365 — not a punitive event. See [[../landscape/openai-microsoft-restructure-2026-04|openai-microsoft-restructure-2026-04]] for the operational-signals discussion.
+
+Same-week parallelism with [[openai|OpenAI Workspace Agents]] (2026-04-22) and [[../platforms/microsoft|Microsoft Agent 365 GA]] (2026-05-01) defines the **three-way enterprise-agent-platform race** (vertical / horizontal / governance).
+
+### Pricing
+
+Not disclosed in source. Plans referenced: all paid Cowork/Code plugin tiers; Managed Agents in public beta on Claude Platform.
+
+### Hype-vs-reality
+
+- "Ten ready-to-run templates" — each is explicitly a **reference architecture** requiring firm-specific adaptation (modeling conventions, risk policies, approval flows). "Ready-to-run" is aspirational for production use.
+- Vals Finance Agent benchmark is vendor-cited; no third-party replication.
+- M365 integration described as cross-app context carry — not clear whether this is deep API integration or surface-level add-in (same class as Microsoft Copilot add-ins).
+- Moody's MCP app coverage figure (600M+ public and private companies) — sourced from Anthropic announcement, not independently verified.
+
+### Build-vs-buy signals
+
+For mid-market financial firms:
+- **Anthropic Finance Agents** — fastest to deploy if already on Claude; broad data-partner ecosystem; Moody's MCP app is a genuine lock-in surface.
+- **[[../platforms/salesforce|Salesforce Agentforce]] / Financial Services Cloud** — same-week-class Agentforce Operations GA (2026-04-29); deep Salesforce CRM data advantage; different workflow surface.
+- **Microsoft Copilot Studio** — incumbent in M365, but Anthropic now competes directly in Excel/PowerPoint/Word/Outlook.
+- **In-house on Claude API** — maximum control, months of engineering.
+
+Lock-in surfaces for Anthropic: Moody's MCP app data exclusivity (unconfirmed), Claude Platform credential vaults, Claude Console audit log (compliance workflow dependency).
+
+## Enterprise distribution — OEM and platform expansion (week of 2026-05-11)
+
+Three new distribution datapoints in the same week; all vendor-sourced, none independently verified.
+
+### SAP Business AI Platform / Joule (announced 2026-05-17, SAP Sapphire)
+
+SAP named Claude as the **primary reasoning and agentic engine** for the new SAP Business AI Platform, embedded inside Joule for finance, HR, procurement, and supply chain workflows. Architecture: Claude-powered agents coordinate across S/4HANA, SuccessFactors, Ariba, and external systems via MCP. Described verticals include public sector, healthcare, life sciences, utilities.
+
+**Caveat:** Source is a joint press release (2026-05-17). All claims are forward-looking — "plans to expand," "will collaborate." No GA date, no pricing, no named customer deployments. "Hours of manual effort now takes minutes" is unsubstantiated vendor copy. SAP retains an "open ecosystem" position (any model supported), but designating Claude as "primary" creates switching friction. MCP as the integration layer carries the supply-chain RCE risk documented at [[../landscape/mcp-rce-supply-chain-2026-05|mcp-rce-supply-chain-2026-05]] — relevant for any enterprise pursuing regulated SAP workflows over MCP.
+
+Pattern note: the SAP partnership (ERP) and the Finance Agents launch (2026-05-03) together establish a recurring OEM-embed distribution model distinct from direct-API consumption. See [[../landscape/llm-api-enterprise-share|llm-api-enterprise-share]] for wallet-share implications.
+
+### Claude Platform on AWS — GA (2026-05-11)
+
+Anthropic's own managed-agent stack (not Bedrock) is now GA on AWS. Full feature set: Claude Managed Agents (beta), Advisor strategy (beta), Web search + Fetch, Code execution (Python in-API), Files API (beta), Skills (beta), MCP connector (beta), Prompt caching, Citations, Batch. Models available at GA: **Opus 4.7, Sonnet 4.6, Haiku 4.5**. Billing via AWS invoice, retires against existing AWS commitments; supports most AWS commercial regions plus global and U.S. inference geographies.
+
+**Key non-obvious constraint:** data is **processed outside the AWS boundary** — Anthropic is the data processor, not AWS. Workloads requiring all data to stay inside AWS infrastructure (HIPAA, FedRAMP, EU data sovereignty) must use the Bedrock path, not this one. Vendor blog frames this as a "choice"; it is a hard limitation for regulated industries.
+
+Distribution angle: AWS billing integration (commit retirement) lowers procurement friction without Marketplace-grade reseller overhead. Same-day feature parity vs. Bedrock's historically slower rollout is a meaningful differentiator for teams chasing bleeding-edge agent capabilities. Bedrock customers seeking migration must contact account executives — existing private-offer discounts cannot be applied retroactively.
+
+**Caveat:** Source is an Anthropic launch post (2026-05-11); no independent customer quotes or pricing specifics.
+
+### Lyrie.ai — Anthropic Cyber Verification Program (CVP) acceptance (2026-05-11)
+
+Lyrie.ai (OTT Cybersecurity LLC, Dubai; $2M pre-seed, stealth exit 2026-05-11) was accepted into **Anthropic's Cyber Verification Program (CVP)** — the same dual-use security researcher program introduced with Opus 4.7's automatic cyber-use blocking. CVP acceptance is a lightweight Anthropic endorsement signal for agent-security tooling; not a partnership or certification. Lyrie's core artifact is the **Agent Trust Protocol (ATP)**, an MIT-licensed open standard for agent identity, scope, attestation, delegation, and revocation submitted to IETF. See [[../startups/lyrie|lyrie]].
+
+## Governance signal — declined to fix MCP STDIO RCE (2026-05-08)
+
+OX Security disclosed a by-design RCE in Anthropic's MCP reference SDKs (Python/TypeScript/Java/Rust) affecting **>7,000 publicly accessible servers, >150M downloads**, with **11+ CVEs** assigned this disclosure batch and **5 prior independent disclosures of the same root cause** stretching back >12 months. **Anthropic declined to modify the protocol architecture, citing the behaviour as "expected."**
+
+This is the load-bearing fact for Anthropic-vendor-risk discussion: the protocol shepherd is positioning STDIO-config-to-command as intended behaviour. Defence falls to implementers (sandboxing, network isolation, untrusted-input handling). Combined with vendor-provided MCP-isolation tooling shipping into the same enterprise estate ([[../platforms/microsoft|Microsoft Agent 365]] Defender controls, [[../landscape/google-cloud-next-2026-day2|GEAP Model Armor]], [[../platforms/salesforce|Salesforce Agent Fabric]]), the durable read is "**MCP-fluency-with-isolation**" rather than "MCP-fluency."
+
+See [[../landscape/mcp-rce-supply-chain-2026-05|mcp-rce-supply-chain-2026-05]] for the full incident page.
 
 ## Techniques worth stealing
 
@@ -119,6 +252,9 @@ Announced 2026-04-20: Amazon adds **$5B** to its Anthropic stake (cumulative: **
 
 - `raw/research/weekly-2026-04-22/02-anthropic-opus-4-7.md`
 - `raw/research/weekly-2026-04-23/05-anthropic-aws-5b-100b-2026-04.md` (TechCrunch, 2026-04-20)
+- `raw/research/weekly-2026-05-03/02-google-anthropic-40b.md` (TechCrunch citing Bloomberg, 2026-04-24)
+- `raw/research/weekly-2026-05-10/02-anthropic-finance-agents.md` (Anthropic news, 2026-05-03)
+- `raw/research/weekly-2026-05-10/04-mcp-rce-vulnerability.md` (The Hacker News citing OX Security, 2026-05-08)
 
 ## Related
 
@@ -129,4 +265,10 @@ Announced 2026-04-20: Amazon adds **$5B** to its Anthropic stake (cumulative: **
 - [[../landscape/ai-infrastructure-frontiers-2026|ai-infrastructure-frontiers-2026]]
 - [[../landscape/google-cloud-agentic-partner-fund-2026-04|google-cloud-agentic-partner-fund-2026-04]]
 - [[../landscape/agentic-compute-pricing-2026-04|agentic-compute-pricing-2026-04]]
+- [[../landscape/mcp-rce-supply-chain-2026-05|mcp-rce-supply-chain-2026-05]]
+- [[../platforms/microsoft|microsoft]] (Agent 365 governs Anthropic finance agents in M365)
+- [[../platforms/salesforce|salesforce]] (competitor for financial-services agents)
+- [[openai|openai]]
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]]
+- [[../landscape/anthropic-enterprise-distribution-2026-05|anthropic-enterprise-distribution-2026-05]]
+- [[../startups/lyrie|lyrie]]

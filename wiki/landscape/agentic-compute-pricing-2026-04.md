@@ -48,6 +48,61 @@ The Anthropic Claude Code / Pro-plan test was not captured in this batch (HN thr
 
 - Anthropic's Opus and OpenAI's high-tier models have pricing power at the premium tier and nowhere else. This shifts revenue mix away from flat-fee reseller channels toward **direct API consumption** — which reinforces [[llm-api-enterprise-share]] enterprise direct-relationships patterns, not against them.
 
+## Update 2026-05-03 — pressure compounds from above and below
+
+Two follow-on signals tighten the structural read:
+
+**Above the premium tier:** Cursor 3.2 (2026-04-24) ships **`/multitask` async parallel subagents** plus expanded worktrees and multi-root workspaces (see [[../startups/cursor|cursor]]). Default workflow is now N parallel subagents per developer-hour rather than one serialized agent. Compute consumption per developer rises commensurately. The Pro+/Enterprise pricing tier carries this load — expected upward pricing pressure on harness-class subscriptions through 2026.
+
+**Below the subscription tier:** DeepSeek V4 Pro/Flash (2026-04-24) ships **MIT-licensed, 1M context, MoE** at **$0.14 / $0.28 per M tokens (Flash)** and **$1.74 / $3.48 (Pro)** — see [[../llms/deepseek|deepseek]]. Frontier-adjacent capability at **~1/30th the input cost** of GPT-5.5 / Opus 4.7. Combined with Qwen3.6-27B (Apache 2.0, single-GPU 16.8 GB Q4 quantization, 77.2% SWE-bench Verified — see [[../watchlist|watchlist]] 2026-04-23 entry), the open-weight tier has materialised into a **viable substitute for specific enterprise workloads** at <1/10th the per-token economics.
+
+**Refined three-tier read:**
+
+| Tier | Workload | Price point | Pressure direction |
+|---|---|---|---|
+| Open-weight self-hosted | Cost-sensitive coding, ETL agents, internal tooling | ~$0.14/M tokens or self-host fixed cost | **Compresses subscription floor** |
+| Premium subscription / direct API | Mainstream agentic coding, integration-heavy workflows | $20–$200/dev/month + variable | **Stable but tiering up to Pro+ levels** |
+| Hyperscaler-routed enterprise | Compliance / data-residency / multi-CSP procurement | Rebated long-term contracts | **Multi-CSP distribution is durable** (see [[openai-microsoft-restructure-2026-04]], [[google-anthropic-40b-2026-04]]) |
+
+The pricing-economics question "**at what price point does coding-agent compute commoditize?**" is starting to get a layered answer: open-weight tier sets the floor, premium tier captures variance, and hyperscaler distribution captures enterprise procurement.
+
+## Update 2026-05-10 — third pricing pattern: credit-based agent pricing
+
+**OpenAI Workspace Agents** (launched 2026-04-22 in ChatGPT Enterprise; free trial through 2026-05-06; **credit-based pricing thereafter**) introduces a third pricing pattern alongside the existing two:
+
+| Pattern | Vendor examples | Mechanism |
+|---|---|---|
+| **Flat tiered subscription** | GitHub Copilot Pro/Pro+, Anthropic Claude Pro/Max, Cursor Pro/Pro+ | Seat-based with usage caps; tiering captures variance |
+| **Burst-API metering** | Direct API consumption (Anthropic, OpenAI, Google) | Per-token billing |
+| **Credit-based agent pricing** *(NEW)* | OpenAI Workspace Agents (ChatGPT Enterprise) | Agent credits sit *on top of* seat cost; finance teams must model agent-credit consumption distinct from seat consumption |
+
+**Microsoft Agent 365 GA (2026-05-01)** takes a different path — bundling **governance** (not agent execution) into M365 E7 SKU at no separate per-agent cost; standalone at USD 15/user/month per "individual who manages or sponsors agents." See [[../platforms/microsoft|microsoft]]. Distinct from the three execution-pricing patterns above; positions governance as a fourth seat-based monetisation layer.
+
+**Refined four-tier read** (replaces the 2026-05-03 three-tier):
+
+| Tier | Workload | Price point | Pressure direction |
+|---|---|---|---|
+| Open-weight self-hosted | Cost-sensitive coding, ETL agents, internal tooling | ~$0.14/M tokens or self-host fixed cost | **Compresses subscription floor** |
+| Premium subscription / direct API | Mainstream agentic coding, integration-heavy workflows | $20–$200/dev/month + variable | **Stable, tiering up to Pro+** |
+| **Credit-based agent execution** *(NEW)* | Enterprise non-coding agents (admin builder, vertical agents) | Seat cost + agent credit metering | **Decouples agent cost from seat cost** — finance-team-friendly |
+| Hyperscaler-routed enterprise | Compliance / data-residency / multi-CSP procurement | Rebated long-term contracts | **Multi-CSP distribution durable** (see [[openai-microsoft-restructure-2026-04]], [[google-anthropic-40b-2026-04]]) |
+| Governance bundle | Agent control-plane / observability | Bundled into existing seat SKU (M365 E7) or USD 15/seat | **Governance monetised separately from execution** |
+
+The credit-pattern is particularly notable because it **separates agent unit-economics from seat unit-economics** — this is the budget primitive enterprise CFOs have been asking for. Watch whether Microsoft Copilot, Salesforce Agentforce, or Anthropic Managed Agents adopt similar credit metering through 2026-Q3.
+
+## Update 2026-05 — infrastructure response: per-call micropayment rails (x402 / AgentCore Payments)
+
+**Amazon Bedrock AgentCore Payments** (preview, 2026-05-17) is the infrastructure-side response to the flat-subscription-economics-breaking thesis this page documents. The mechanism: when an agent hits an HTTP 402 from a paid endpoint, AgentCore authenticates, executes a stablecoin micropayment via the x402 protocol (USDC on Base via Coinbase CDP wallet or Stripe Privy wallet), attaches payment proof, and returns the content — without interrupting the agent's reasoning loop. Session-scoped spending limits enforced at the platform layer (not the agent layer). Paid-endpoint discovery via the Coinbase x402 Bazaar MCP server.
+
+**Where this fits the four-tier read.** x402-style micropayment settlement is not a fifth pricing tier — it is an enabling primitive for two existing tiers:
+
+- *Credit-based agent execution* (tier 3): per-call stablecoin settlement is the same unit-economics logic as credit metering, pushed down to the transport layer and made machine-native. Agents can now pay for external services the same way they already pay for model tokens.
+- *Hyperscaler-routed enterprise* (tier 4): AgentCore Payments sits inside AWS's managed agent platform; enterprise procurement of the rail happens through the same channel as the rest of AgentCore. Adds a spend-governance dimension (per-session limits) that enterprise CFOs will want.
+
+The HTTP 402 / x402 primitive is notable independent of the AWS wrapper: a standardised machine-readable payment signal requires no bespoke billing integration per endpoint — any service that wants to monetise agent traffic can emit a 402. Google's AP2 protocol (Cloud Next '26, 2026-04-22) is a parallel/competing standard for the same class of agent-to-service commerce; x402 positions as the open-protocol alternative (x402 Foundation), with AgentCore as a managed implementation.
+
+**Caveats.** Source is the AWS first-party launch blog (2026-05-17); no independent corroboration at preview. Pricing for the payment rail itself not disclosed. "First managed end-to-end payment capabilities for agents" claim (AWS) is contested by Google's AP2 timeline — the distinction between protocol and managed platform is load-bearing and not fully resolved. Fiat payments, broader commerce flows, and additional protocols (ACP, MPP) are roadmap items, not preview scope. See [[landscape/agentcore-payments-x402-2026-05]] for full detail.
+
 ## Conflict-flag cross-refs
 
 - **C8** — "Coding agents = AGI for near-term enterprise tasks." GitHub's signup pause is *evidence agents are being used productively at scale by individual developers*, not just enterprise. This strengthens the C8 position A (coding agents are working). The counter (still fails on long-horizon / integration-heavy enterprise work) remains — the failure mode has shifted from "do agents work?" to "can we afford to run them?"
@@ -56,6 +111,10 @@ The Anthropic Claude Code / Pro-plan test was not captured in this batch (HN thr
 ## Source
 
 - `raw/research/weekly-2026-04-23/04-github-copilot-pro-plan-2026-04.md` (GitHub Changelog, 2026-04-21)
+- `raw/research/weekly-2026-05-03/04-cursor-3-2-multitask.md` (Futurum Research, 2026-04-29)
+- `raw/research/weekly-2026-05-03/05-deepseek-v4.md` (Simon Willison, 2026-04-24)
+- `raw/research/weekly-2026-05-10/05-openai-workspace-agents.md` (VentureBeat, 2026-04-22 — credit-pricing third pattern)
+- `raw/research/weekly-2026-05-10/03-microsoft-agent-365-ga.md` (Microsoft Security Blog, 2026-05-01 — governance bundle pattern)
 
 Adjacent (not captured in this batch):
 - Simon Willison, "Claude Code confusion," 2026-04-22 — https://simonwillison.net/2026/Apr/22/claude-code-confusion/
@@ -68,5 +127,10 @@ Adjacent (not captured in this batch):
 - [[llm-api-enterprise-share]]
 - [[../thesis/agents-eating-saas|agents-eating-saas]]
 - [[../llms/anthropic-claude-family|anthropic-claude-family]]
+- [[../llms/openai|openai]] (Workspace Agents credit pricing)
+- [[../platforms/microsoft|microsoft]] (Agent 365 governance bundle)
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]] (C8, C13)
 - [[../watchlist|watchlist]] (Qwen3.6-27B open-weight tier)
+- [[../startups/cursor|cursor]] (3.2 multitask)
+- [[../llms/deepseek|deepseek]]
+- [[landscape/agentcore-payments-x402-2026-05]]

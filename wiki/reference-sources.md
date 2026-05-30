@@ -37,6 +37,18 @@ Overrides the kit default (which is paper-focused). Applied in order when pickin
 
 **Hard skip:** pure vendor-PR without independent corroboration; research-only papers with no shipping-product angle; consumer-hardware AI.
 
+## Required briefing coverage
+
+Independent of the ≤5-captures cap, every weekly brief **must** carry a scannable ledger of three sub-categories — even when individual items don't clear the novel-mechanism bar for full capture. The cap throttles deep-write work; this section is a roundup so the user sees the week's flow.
+
+1. **New startups surfaced** — companies appearing for the first time on this wiki's radar (YC launches, seed/Series-A out-of-stealth, hyperscaler-spinout labs). Cap ~5/week.
+2. **Funding & M&A** — rounds (Series-A and up), acquisitions, structured compute-equity deals. Cap ~5/week. Include round size, lead investor, post-money where disclosed.
+3. **Product launches** — net-new products or material feature shipments from tracked platforms / startups. Cap ~5/week.
+
+Each item: one line, format `**<entity>** — <fact> — <1-line significance>`. No multi-paragraph descriptions; if an item warrants depth it earns a full capture under the ≤5 rule instead.
+
+**Why this section exists:** the captures filter is novel-mechanism-biased and silently discards the 47th vertical-agent seed round, but the user wants funding-flow and product-launch ambient awareness regardless. This roundup is the channel for that signal without polluting the captures cap.
+
 ## Local conventions
 
 - **Voice:** terse, expert, facts-first, no hedging. Lead with the conclusion (buy / build / watch / avoid) when a question admits one, then the evidence.
