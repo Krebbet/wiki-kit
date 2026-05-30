@@ -31,14 +31,16 @@ Each wiki is its own clone with its own topic branch. The kit's `main` is the te
 ...
 ```
 
-When you fix a kit-level bug or improve a command while working on a topic wiki, use `/harvest` to promote the generic parts back to `main` without dragging content along. Other topic wikis then `git pull origin main` + merge to pick up the improvement.
+When you fix a kit-level bug or improve a command while working on a topic wiki, use `/harvest` to promote the generic parts back to `main` without dragging content along. Other topic wikis pick up the improvement via `/apply-harvests` (a separate skill, run independently per wiki when the user is ready).
+
+**Topic branches are isolated feature branches.** They commit and push to their own remote ref regularly. They never merge with `main`. Kit propagation between `main` and a topic branch happens file-by-file through `/harvest` and `/apply-harvests`, never via `git merge`.
 
 The loop:
 
-1. Work in a topic wiki.
+1. Work in a topic wiki — commit and push the topic branch normally as you go.
 2. Notice a generic fix/improvement (or find one in `master_notes.md`).
-3. Run `/harvest` — it classifies your diff, promotes only kit paths (and only the non-`DOMAIN-SLOT` parts of commands), merges to `main`, pushes.
-4. In every other topic wiki: `git pull origin main && git merge origin/main`.
+3. Run `/harvest` — fetches `main`, walks every proposed change with you, promotes approved kit changes to `main` (direct push, no PR), and applies the same changes back to the active topic branch via file-level checkout.
+4. In every other topic wiki, when the user wants the kit update: run `/apply-harvests` — fetches `main`, presents incoming kit changes, applies the approved set to that branch, pushes the branch.
 
 ## Repo tour
 

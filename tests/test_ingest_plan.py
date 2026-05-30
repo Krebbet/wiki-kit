@@ -11,6 +11,7 @@ import pytest
 from tools.ingest_plan import (
     INGEST_SCHEMA_VERSION,
     SummarySchemaError,
+    _parse_page_shape,
     aggregate,
     compute_dispatch_list,
     load_run_state,
@@ -251,3 +252,42 @@ def test_compute_dispatch_list_force_redispatches_all(tmp_path):
     to_dispatch, cached = compute_dispatch_list(tmp_path, [s1], force=True)
     assert [p.name for p in to_dispatch] == ["01-foo.md"]
     assert cached == []
+
+
+@pytest.mark.parametrize(
+    "line,expected_title,expected_just",
+    [
+        # canonical forms (must keep working — backward compat)
+        ("- New page: foo-method — because reasons", "foo-method", "because reasons"),
+        ("- New page: foo-method", "foo-method", ""),
+        ("- New page: baz-preference-method", "baz-preference-method", ""),
+        # emphasis-wrapped forms (the 2026-05-04 / 2026-05-15 kit bug)
+        ("- **New page: patterns/agent-skills** — vendor hub", "patterns/agent-skills", "vendor hub"),
+        ("- **New page** `patterns/agent-personas`", "patterns/agent-personas", ""),
+        ("- _New page_: research/foo — why", "research/foo", "why"),
+        ("- New page: `patterns/foo` — why", "patterns/foo", "why"),
+    ],
+)
+def test_parse_page_shape_new_tolerates_emphasis(line, expected_title, expected_just):
+    """`_PAGE_SHAPE_NEW_RE` must parse bold/backtick/underscore-wrapped directives."""
+    shape = _parse_page_shape(f"## Proposed page shape\n{line}\n")
+    assert shape["kind"] == "new"
+    assert shape["title"] == expected_title
+    assert shape["justification"] == expected_just
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        '- extend [[memory-architectures]] with section "Reading path"',
+        '- OR: extend [[memory-architectures]] with section "Reading path"',
+        '- **extend [[memory-architectures]] with section "Reading path"**',
+        '- extend [[memory-architectures]] with section “Reading path”',  # curly quotes
+    ],
+)
+def test_parse_page_shape_extend_tolerates_emphasis_and_quotes(line):
+    """`_PAGE_SHAPE_EXTEND_RE` must parse emphasis/curly-quote variants."""
+    shape = _parse_page_shape(f"## Proposed page shape\n{line}\n")
+    assert shape["kind"] == "extend"
+    assert shape["title"] == "memory-architectures"
+    assert shape["section"] == "Reading path"
