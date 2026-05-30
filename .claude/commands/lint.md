@@ -32,12 +32,12 @@ Perform a health check of the wiki.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
 11. **Domain-specific checks.**
-    2. **Stale facts** — flag any page containing pricing, adoption numbers, feature claims, or model-capability statements older than 6 months without a re-verification note. Pricing and features in this domain change monthly; anything undated or >6 months old is suspect.
-    3. **Unverified vendor claims** — flag pages where a superiority claim ("best-in-class", "leading", "state-of-the-art", performance numbers) or an adoption claim (customer logos, revenue, usage counts) sits without an independent cross-check — at minimum one of: G2 review, Hacker News / Reddit thread, independent benchmark, practitioner blog post describing real use.
-    4. **Missing build-vs-buy spine** — for any offering page, flag if it is missing any of: deployment model, customization hooks, running costs, hard limits. These are the four fields that make a page useful for client advisory; a page without them is radar-only.
-    5. **Orphan offerings** — offering pages not linked from any category overview / landscape map page. Either link them from an overview or note that no overview yet exists for their category (possible new page needed).
-    6. **Stuck hype-vs-reality conflicts** — entries in `wiki/conflicts/` older than 30 days with no resolution entry or no new evidence appended. These either need a ruling or should be closed as unresolved with a note on why.
-    7. **Marketing-voice leakage** — flag pages containing vendor adjectives like "industry-leading", "state-of-the-art", "best-in-class", "cutting-edge", "revolutionary" without scare quotes or a source attribution. The wiki's voice is terse and factual; unquoted marketing copy is a regression.
+    1. **Stale facts** — flag any page containing pricing, adoption numbers, feature claims, or model-capability statements older than 6 months without a re-verification note. Pricing and features in this domain change monthly; anything undated or >6 months old is suspect.
+    2. **Unverified vendor claims** — flag pages where a superiority claim ("best-in-class", "leading", "state-of-the-art", performance numbers) or an adoption claim (customer logos, revenue, usage counts) sits without an independent cross-check — at minimum one of: G2 review, Hacker News / Reddit thread, independent benchmark, practitioner blog post describing real use.
+    3. **Missing build-vs-buy spine** — for any offering page, flag if it is missing any of: deployment model, customization hooks, running costs, hard limits. These are the four fields that make a page useful for client advisory; a page without them is radar-only.
+    4. **Orphan offerings** — offering pages not linked from any category overview / landscape map page. Either link them from an overview or note that no overview yet exists for their category (possible new page needed).
+    5. **Stuck hype-vs-reality conflicts** — entries in `wiki/conflicts/` older than 30 days with no resolution entry or no new evidence appended. These either need a ruling or should be closed as unresolved with a note on why.
+    6. **Marketing-voice leakage** — flag pages containing vendor adjectives like "industry-leading", "state-of-the-art", "best-in-class", "cutting-edge", "revolutionary" without scare quotes or a source attribution. The wiki's voice is terse and factual; unquoted marketing copy is a regression.
 <!-- /DOMAIN-SLOT -->
 
 ## Output
