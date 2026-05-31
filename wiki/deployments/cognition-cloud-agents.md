@@ -55,6 +55,20 @@ The post does not disclose seat count, concurrency footprint, or per-session cos
 - **Three-orchestration-challenges framing parallels [[mcp-infrastructure]].** Both posts converge on a thesis that 2026-era enterprise adoption of agents requires serious governance and orchestration investment beyond the agent itself.
 - **Practitioner-side counterpart in [[willison-cognitive-cost]].** The bottleneck Willison names — review and testing overload — is the human-side manifestation of the Phase-2 process redesign Cognition describes.
 
+## From the Latent Space Interview (May 2026)
+
+In a May 28 2026 Latent Space episode, Walden Yan provided richer primary-source detail on several architectural topics not covered in the original engineering post. The full treatment is in [[case-studies/latent-space-async-agents]]; key additions:
+
+### Harness Architecture: Brain/Machine Separation
+
+Devin separates the "brain" (LLM inference and decision logic, running on a separate control plane) from the "machine" (the sandbox VM that executes tool calls). This is the "out of the box" harness pattern. The practical security benefit: secrets scoped to the machine are inaccessible from the brain, and per-user GitHub app permission scoping is trivially enforced. The trade-off is additional state-management complexity across the control plane/sandbox boundary.
+
+### Memory and Always-On Agents
+
+Devin's memory system is called Knowledge. ~95% of memories are auto-generated (collect-but-confirm): when the user corrects Devin, it prompts to save the correction. Generation quality (avoiding over-generalisation from one-off requests) and retrieval precision (not flooding context from a large memory store) are the two active engineering problems. Cognition is exploring rebuilding memory as a file system the agent navigates natively, citing models' improving capability at file-system interfaces.
+
+An emerging use case beyond coding: always-on agents as permanent product owners — maintaining a `memory.md`, triaging tickets, tagging humans on recurring priorities, and creating issues that humans or other agents then execute. Walden's framing: "How can we upstream above the engineering process?"
+
 ## Caveats
 
 - Cognition is the vendor. The post is a primary engineering source on Devin's infrastructure choices but is not independent.
@@ -63,6 +77,7 @@ The post does not disclose seat count, concurrency footprint, or per-session cos
 
 ## Related
 
+- [[case-studies/latent-space-async-agents]] — May 2026 Latent Space episode with Walden Yan; richer primary-source detail on brain/machine architecture, memory, multi-agent regime, and enterprise use cases.
 - [[anthropic-effective-harnesses]] — peer Anthropic source on the same long-running-agent problem from the harness-design side rather than the infrastructure side.
 - [[topology-taxonomy]] — adds *async-gap state continuity* as an axis to the long-horizon-context-loss synthesis.
 - [[anthropic-internal-study]] — the engineer-as-orchestrator role shift this Phase-2 framing rebuilds processes around.

@@ -70,6 +70,14 @@ Two from the agentic-skills-personalities research sweep; neither opens a new co
 
 - **[[../patterns/agent-personas]] (Zheng et al. 2311.10054; Hu et al. 2603.18507)** — a system-prompt-layer empirical data point that *sharpens* the prompt-layer-fragility thread (Bug 3, AHE +system_prompt −2.3 pp). Adding a persona to the system prompt is net-negative on knowledge tasks (MMLU 68 vs 71.6), net-positive on alignment/safety generation, and ≈ zero on mixed workloads (the gains and losses cancel — which is *why* the older study found an aggregate null). The reconciliation (Hu et al.) is that the effect is **task-type dependent**, recoverable only via conditioned routing (PRISM), not a static prompt addition. This is the cleanest empirical statement yet that prose added at the system-prompt layer is regime-dependent and fragile — consistent with, and independent corroboration of, the conflict's existing "prose-level system-prompt additions hurt at the margin" characterisation.
 
+## New data points (week of 2026-05-31)
+
+One source from the 2026-05-31 weekly sweep adds a major institutional data point without resolving the effectiveness question.
+
+- **[[../governance/aaif]] (OpenAI blog, 2026-05-31)** — OpenAI, Anthropic, and Block co-founded the Agentic AI Foundation under the Linux Foundation, with AGENTS.md donated by OpenAI as one of three inaugural projects. This is the clearest vendor-institutional position to date: AGENTS.md is framed as essential production infrastructure for agentic AI interoperability, and the format's direction is now governed by a neutral foundation rather than a single company. The announcement cites 60,000+ open-source project adoptions since August 2025, alongside named adopters across every major coding-agent tool (Cursor, Devin, GitHub Copilot, Gemini CLI, VS Code, Jules, Amp, Factory, Codex). The adoption numbers are vendor-stated and do not address effectiveness.
+
+**What this adds to the conflict:** AAIF formalization is a vendor-institutional commitment to context files as production infrastructure. This significantly raises the cost of the field settling on "omit context files" as a general recommendation — large-scale adoption and Linux Foundation governance create ecosystem momentum that is independent of benchmark effectiveness. The conflict now has a new axis: **adoption/governance momentum** (AAIF position: context files are load-bearing, open-standard infrastructure) versus **controlled benchmark results** (AGENTbench: LLM-generated context files reduce success ~3% and inflate cost >20%). The AAIF announcement does not engage the benchmark evidence; the benchmark evidence does not engage the production adoption scale. The conflict remains open.
+
 ## What's still genuinely open
 
 - **No empirical bridge between the regimes.** The AGENTS.md eval does not test 100k+ line repos. Codified Context does not test what would happen if its KB were stripped or auto-generated. A paper that runs AGENTbench-style controls against a Codified-Context-style infrastructure at scale would resolve this directly.
@@ -102,6 +110,7 @@ Use this table as a starting position, not a conclusion. The conflict remains op
 - `raw/research/weekly-2026-05-04/02-notion-token-town.md` — added 2026-05-04, proposes representation-fit-to-model-priors as a newly surfaced (untested) reconciling axis.
 - `raw/research/agentic-skills-personalities/01-01..04-04` (Anthropic Skills primary sources) — added 2026-05-15 via [[../patterns/agent-skills]]; vendor articulation of the favorable-regime preconditions + progressive disclosure as a reconciling lever.
 - `raw/research/agentic-skills-personalities/05-05-helpful-assistant-personas.md`, `06-06-prism-expert-personas.md` — added 2026-05-15 via [[../patterns/agent-personas]]; system-prompt-layer fragility corroboration (persona effect is task-type-dependent, ≈ zero naive net).
+- `raw/research/weekly-2026-05-31/05-openai-agentic-ai-foundation.md` — added 2026-05-31; AAIF institutionalises AGENTS.md as a vendor-neutral open standard; adds adoption/governance-momentum axis to the conflict.
 
 ## Related
 
@@ -116,3 +125,5 @@ Use this table as a starting position, not a conclusion. The conflict remains op
 - [[../case-studies/notion-token-town]] — representation-fit-to-model-priors as a newly surfaced reconciling axis.
 - [[../patterns/agent-skills]] — vendor articulation of the favorable-regime preconditions; progressive disclosure as a candidate reconciling lever (2026-05-15).
 - [[../patterns/agent-personas]] — system-prompt-layer fragility corroboration; persona effect is task-type-dependent (2026-05-15).
+- [[../governance/aaif]] — AAIF formalises AGENTS.md as an open standard under the Linux Foundation; the institutional commitment adds an adoption/governance-momentum axis to the conflict (2026-05-31).
+- [[../patterns/agents-md]] — dedicated page on the AGENTS.md format, design rationale, and governance trajectory.

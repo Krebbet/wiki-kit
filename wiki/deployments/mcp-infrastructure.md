@@ -60,6 +60,16 @@ Two practitioner sources captured the week of 2026-05-04 surface explicit MCP-vs
 
 **This is the first practitioner-economics data point on this page** — the existing roadmap-and-protocol view does not engage per-turn token cost, cache-window economics, or the auto-compaction interaction. Both sources converge on: MCP for narrow, lightweight, tightly-permissioned, long-tail third-party connectors; CLI / native code for capability-heavy, self-debug-required, per-turn-cost-sensitive surfaces. Worth surfacing in any future MCP roadmap discussion of token economics and cache-window interaction.
 
+## AAIF governance transfer (May 2026)
+
+MCP governance transferred from Anthropic-steered to vendor-neutral in May 2026 when Anthropic donated the protocol to the [[governance/aaif|Agentic AI Foundation]] (AAIF) under the Linux Foundation.
+
+- **Previous governance:** Anthropic as sole steward; the 2026 roadmap's governance maturation item explicitly named the all-maintainer SEP review bottleneck as a risk.
+- **New governance:** AAIF directed fund, co-founded with OpenAI and Block, with Google, Microsoft, AWS, Bloomberg, and Cloudflare as supporting members. No single company controls the protocol's direction.
+- **Practical implication:** the governance bottleneck risk this page identified is structurally addressed; the Linux Foundation model brings proven neutral infrastructure governance at scale (Linux Kernel, Kubernetes, Node.js, PyTorch precedents).
+
+The protocol-level roadmap items (transport scalability, async lifecycle, enterprise readiness) continue under AAIF stewardship. See [[governance/aaif]] for the full membership and project portfolio.
+
 ## Source
 
 - `raw/research/weekly-2026-04-22/02-mcp-infrastructure-maturity.md` (captured 2026-04-22 from https://thenewstack.io/model-context-protocol-roadmap-2026/)
@@ -82,3 +92,4 @@ Two practitioner sources captured the week of 2026-05-04 surface explicit MCP-vs
 - [[direct-corpus-interaction]] — third (academic) data point alongside Notion + OpenAI Frontier in the MCP-vs-CLIs framing; reframes the question as **interface resolution** (does the abstracted retrieval surface preserve enough information for the agent to reason effectively?) rather than just token economics. Argues that for capable agents on workspace-scale corpora, raw `grep`/`bash` traversal beats top-k retrieval interfaces by +11 pp at lower cost. Implies MCP server design should expose `grep`/`find` primitives over data substrates rather than pre-mediated top-k APIs.
 - [[agent-development-lifecycle]] — Govern phase overlap (cost / tool-access / discoverability are the same gaps the 2026 MCP roadmap targets at the protocol layer).
 - [[security/adr-uber-mcp-detection]] — production MCP-security system that enumerates the MCP-specific attack surface (tool shadowing, rug pull, control-flow hijacking, Agent Flayer) and fills the audit-trail gap via endpoint Sensor causal-chain telemetry; deployed 10+ months across 7,200 endpoints.
+- [[governance/aaif]] — AAIF is now the upstream governance body for MCP; the all-maintainer bottleneck risk this page identified is structurally addressed by Linux Foundation neutral stewardship.

@@ -1,11 +1,36 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-25
+last_reviewed: 2026-05-31
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-05-31
+
+Surplus from this week's sweep — the 5 captured items: Latent Space "Age of Async Agents" (Cognition episode); arXiv 2605.26112 (harness-scaling-position paper); arXiv 2605.17634 (prompt-injection-impossibility); Willison PMF post (May 27); OpenAI/AAIF announcement. Dominant trends: harness-vs-model-scaling debate crystallizing; async agents entering production; open standardization (AAIF/AGENTS.md/MCP). Items below did not make the capture cap.
+
+### Harness engineering / system scaling
+- **Continual Harness: Online Adaptation for Self-Improving Foundation Agents (arXiv 2605.09998, verified)** — https://arxiv.org/abs/2605.09998 — Self-improving harness that auto-refines prompts, sub-agents, and memory from trajectory data without human intervention; Gemini/Pokémon benchmark result claimed. Twin to MOSS on the adaptation axis; capture if a comparative study against AHE/MOSS surfaces.
+- **Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents (arXiv 2605.20173, verified)** — https://arxiv.org/abs/2605.20173 — Six runtime patterns organized around Coordination, State, and Control; introduces stochastic-deterministic boundary as a first-class architectural object. Directly extends [[patterns/harness-design-space]] and [[patterns/topology-taxonomy]]; capture if it becomes the canonical runtime-patterns reference.
+- **Hermes Agent v2026.5.16** — https://github.com/NousResearch/hermes-agent — ~99K GitHub stars in 8 weeks (fastest-growing OSS agent framework of 2026 per Dealroom); built-in learning loop + three-layer memory system. Watch for a primary technical writeup explaining the architecture; capture if one appears.
+
+### Agent security / reliability
+- **Reframing LLM Agent Security as an Agent-Human Interaction Problem (arXiv 2605.24309, verified)** — https://arxiv.org/abs/2605.24309 — Systematic review of 59 papers + 21 production systems; identifies mismatch between academic security research and production mechanisms. Extends the agent-security cluster started by [[security/adr-uber-mcp-detection]]; capture when a second security source corroborates the agent-human-interaction framing.
+
+### Benchmark movements / evaluation
+- **GAIA scaffold gap (30-50pp)** — https://huggingface.co/spaces/gaia-benchmark/leaderboard — Claude Sonnet 4.5 leads scaffolded at ~74.6%; system-level approaches at ~92%. The gap between bare-model and scaffolded performance has become a major evaluation-methodology debate point: framework value may dwarf model differences. Capture a primary analysis if one lands.
+- **UiPath Screen Agent (Claude Opus 4.5) — #1 OSWorld-Verified at 67.1%** — https://ir.uipath.com/news/detail/424/uipath-screen-agent-powered-by-claude-opus-4-5-receives-top-ranking-on-osworld-verified-benchmark — First enterprise RPA tool at #1 on a verified computer-use benchmark; signals enterprise computer-use agents entering production. Capture if a full architecture writeup explains how.
+
+### Model releases
+- **Claude Opus 4.8 release (Anthropic, May 28 2026)** — https://www.anthropic.com/news/claude-opus-4-8 — New flagship model with stronger coding and agentic performance. Relevant as backbone for the coding-agent and harness pages; capture a primary engineering blog on agentic improvements if Anthropic publishes one.
+- **Anthropic $65B Series H at ~$965B valuation (May 28 2026)** — https://www.anthropic.com/news/series-h — Industry-shaping event; signals coding-agent products (Claude Code, Managed Agents) at commercial inflection. Track for a primary investor-deck or use-case disclosure that makes this load-bearing for the wiki.
+
+### Multi-agent topology
+- **RGAO — Retrieval-Conditioned Topology Selection for Multi-Agent Code Generation (arXiv 2605.05657, verified)** — https://arxiv.org/abs/2605.05657 — Complexity-conditioned routing selects orchestration topology based on codebase structure analysis, with formal budget conservation guarantees. Extends [[patterns/topology-taxonomy]] on the topology-selection-as-method axis; capture if a second source corroborates the budget-conservation framing.
 
 ---
 
