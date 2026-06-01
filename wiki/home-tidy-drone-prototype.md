@@ -6,7 +6,7 @@ A concrete consumer use-case integration: a single indoor drone that (R1) docks/
 
 **Platform:** Pivoted from aerial drone to a ground robot chassis for Phase 1 iteration. Aerial drone remains the long-term target; ground platform eliminates flight-safety, endurance, and vibration constraints so the perception / nav / world-model stack can be validated quickly and cheaply. Findings transfer directly — the sensor stack, SLAM pipeline, ROS 2 architecture, and server-side world brain are identical. The drone replaces the chassis in Phase 2.
 
-**Sensor in hand:** SVPRO 1080P 60FPS USB stereo camera (3840×1080 side-by-side, UVC). Passive stereo — no active IR; depth via stereo matching. Usable for fiducial detection, passive visual odometry, and 2D object detection today. Metric depth for manipulation requires adding D435 (see [[close-range-depth-sensors]]).
+**Sensor in hand:** SVPRO 1080P 60FPS USB stereo camera (3840×1080 side-by-side, UVC). Passive stereo — no active IR; depth via stereo matching. Usable for fiducial detection, passive visual odometry, and 2D object detection today. Metric depth for manipulation requires adding D435 (see [[close-range-depth-sensors]]). **Hands-on characterization (measured, not spec-sheet):** see *"SVPRO characterization (measured)"* under *What can start now* below — enumerates at 3840×1080 SBS MJPG @**30 fps over USB 2.0** (not the spec'd 60), baseline ≈57.8 mm, ~48% indoor depth coverage.
 
 ### Four workstreams
 
@@ -46,6 +46,24 @@ Phase 1 splits into four independently buildable workstreams:
 ### What is blocked on chassis hardware
 
 Navigation executor, wheel odometry / IMU fusion, full SLAM-to-nav closed loop, live detection → registry updates, real-time comms testing.
+
+### SVPRO characterization (measured) *(drone-prototype Session 1, 2026-06-01)*
+
+First hands-on validation of the SVPRO against the visual front-end (capture → calibrate → metric depth). Source: `drone-prototype` repo — `docs/prototype-diary.md` (2026-06-01), `docs/parked.md` P-001/P-002. These are *measured* facts that correct/extend the spec-sheet line above; tag maturity = **demonstrated at toy scale**.
+
+**Device & stream (measured):**
+- Enumerates as `3D USB Camera` USB id **`32e4:0035`** (a non-integrated UVC device; appears as a single `/dev/videoN` capture node + a sibling non-capture node).
+- Delivers true **3840×1080 side-by-side stereo, MJPG, @30 fps** at full native resolution — *not* the spec-sheet 60 fps, because the working data path runs at **USB 2.0 (480 Mbit/s)**. 30 fps is adequate for handheld mapping.
+- Mounted **upside-down** in this rig; because the frame is side-by-side, a single full-frame 180° rotation both un-inverts *and* swaps L/R correctly (an inverted rig puts the physical-left camera in the raw-right half). Handle orientation once, centrally, then split at midpoint.
+- **Stereo baseline ≈ 57.8 mm** (recovered from calibration; metric scale cross-checked to within +3.3–3.7 % of tape at ~1.14 m).
+- Calibration achievable to prototype grade: **mono RMS ≈ 0.8 px, stereo RMS ≈ 1.9–2.45 px** (5-coeff distortion model; the wide-lens `CALIB_RATIONAL_MODEL` diverges without many more edge-covering poses). Not yet metrology-grade — see P-002.
+
+**Passive-stereo indoor reality (the failure regime, measured):**
+- Dense SGBM depth gives **~48 % pixel coverage** on a real cluttered room scene (range ~0.5–15 m), good on textured surfaces.
+- **Drops out entirely on blank walls / ceiling / bright windows** (no-depth black holes) — the expected passive-stereo indoor Achilles' heel (consistent with [[indoor-cluttered-slam]]).
+- **Spurious *far* depth on textureless far surfaces** is the dangerous mode: a blank wall can read ~19 m ("clear ahead" where there is actually an obstacle) — safety-relevant; active depth ([[close-range-depth-sensors]]) is the production answer.
+
+**USB data-path gotcha (integration risk → P-001):** the camera ships with a USB-C→USB-A cable, but a USB-C-only laptop (TB4) + a naive USB-A→USB-C adapter produces **zero kernel events** (a silently non-data path). It only enumerated through a **powered USB-C dock** (Belkin 6-in-1), and even then the camera↔dock link **dropped off the bus unprompted under load** and recovered on replug. A robot using this sensor needs a pinned, mechanically-secured, known-data USB/power path plus a sensor-dropout watchdog (the INTERNAL HEALTH CHECK subsystem in [[system-architecture]]).
 
 ## Phase 1 — first prototype: core comms + autonomous navigation *(revised 2026-05-24 — fiducials-first staging)*
 

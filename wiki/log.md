@@ -226,3 +226,18 @@ Full deep-dive page on TidyBot v1 and TidyBot++ from 12 captured source files. C
 **Open questions for user:**
 1. The arm-comparison source (09-10-arm-comparison-paper.md) is mislabelled — it's the Forte arm paper, not the comparative review originally intended. Was there a specific arm-comparison paper you wanted captured? The pre-extracted data in the brief included arm specs (Franka ~$25k, UR5e ~$35k, Stretch ~$25k) that I cannot directly trace to this source — these appear to be pre-extracted estimates in the brief itself rather than data confirmed in any source file.
 2. Phase-2 hardware recommendation (§7) assumes a ground-first approach. If the project pivots to aerial-first (drone as primary actor, no ground arm), the TidyBot++ base recommendation is moot. Worth confirming direction before acting on it.
+
+## [2026-06-01] prototype-feedback | SVPRO measured characterization
+
+First hands-on validation of the in-hand SVPRO stereo camera folded back from the `drone-prototype` repo (Phase-1 prototype portfolio, Session 1, librarian close-out). Updated `wiki/home-tidy-drone-prototype.md` only — added a "SVPRO characterization (measured)" subsection under *What can start now*, and corrected the spec-sheet "60FPS" line to point at measured reality.
+
+**Source (not web — a sibling prototype repo):** `drone-prototype/docs/prototype-diary.md` (2026-06-01 entries), `drone-prototype/docs/parked.md` (P-001 USB flakiness, P-002 calibration tightness). Code-reviewer re-ran the pipeline and confirmed the numbers reproduce from committed frames.
+
+**Measured facts captured (maturity = demonstrated at toy scale):**
+- Enumerates as `3D USB Camera` `32e4:0035`; delivers true 3840×1080 side-by-side MJPG **@30 fps over USB 2.0** — not the spec-sheet 60 fps (USB 2.0 bandwidth ceiling on the working data path).
+- Mounted upside-down; a single full-frame 180° rotation un-inverts and correctly swaps L/R for a side-by-side rig (handle once, then split at midpoint).
+- Stereo **baseline ≈ 57.8 mm**; calibration to prototype grade (mono RMS ≈0.8 px, stereo RMS ≈1.9–2.45 px, 5-coeff model; `CALIB_RATIONAL_MODEL` diverges without more edge poses). Metric scale cross-checked within +3.3–3.7 % of tape.
+- Passive-stereo indoor reality: ~48 % dense-depth coverage; **no depth on blank walls/ceiling/bright windows**; **spurious far depth on textureless far surfaces** (a wall reads ~19 m — false "clear ahead", safety-relevant).
+- USB data-path gotcha (→ P-001): USB-A cable + USB-C-only laptop = silently non-data via a naive adapter; only a **powered USB-C dock** enumerated it, and the link dropped under load. Production needs a pinned, watchdogged USB path.
+
+**Conflicts with existing wiki:** the prior spec-sheet "1080P 60FPS" line overstated achievable frame rate on USB 2.0 — corrected in place to point at the measured 30 fps. No other conflicts; this is the first empirical data on a sensor previously described only from its spec sheet.
