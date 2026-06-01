@@ -51,6 +51,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[slam-toolbox]] | SLAM Toolbox: default ROS 2 2D SLAM; graph-based pose-graph over OpenKarto + Ceres; sync/async/pure-localization modes; multi-session mapping; 24,000 m² real-time on mobile CPU. |
 | [[2d-lidar-slam]] | 2D LiDAR SLAM hardware (RPLiDAR S2/A3 specs) + Cartographer architecture (BBS loop closure, SPA) + algorithm comparison table; ATE benchmark numbers for indoor ground robot navigation. |
 | [[user-comms-layer]] | User communication layer: entry points (phone/speaker), STT, LLM intent parser, command router, response/TTS; prototype build order and drone-app repo structure. |
+| [[map-then-navigate]] | Two-phase indoor robot autonomy: DWFE frontier exploration → save map → AMCL localization → semantic traversal. Pipeline, DWFE algorithm (7.8% more area, 12% less distance), greedy TSP revisit, F1 80–100% on indoor objects. |
+| [[dynamic-object-handling]] | Dynamic objects in three timescales: DynaSLAM (clean map building, 93–97% ATE improvement), STVL vs. object-oriented grid (real-time costmap), POCD (between-session change detection, 80% precision), iRobot lifelong maps (1.41% failure rate, production-deployed). |
 | [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
 | [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
 | [[home-tidying-robots]] | State-of-the-art ground-robot tidying systems (TidyBot, TidyBot++, WRC2020, benchmarks); personalisation methods; gap table vs our aerial approach. |
