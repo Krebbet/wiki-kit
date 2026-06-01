@@ -80,6 +80,8 @@ SLAM Toolbox shows **minimal performance improvement from adding a pre-built map
 
 [src: slam-toolbox-joss]
 
+See [[2d-lidar-slam]] for the Cartographer architecture deep-dive (BBS loop closure, SPA, submap structure) and RPLiDAR hardware options for the Phase-1 ground robot BOM.
+
 ---
 
 ## Notes on 3D LiDAR vs 2D LiDAR for indoor use

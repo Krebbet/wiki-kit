@@ -49,6 +49,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[voice-intent-task]] | Voice→intent→task for drones: on-device STT + LLM grounding; real-flight benchmarks; latency/grounding/safety gaps. |
 | [[ros2-nav2]] | ROS 2 Nav2 full architecture: BT navigator, 5 action servers, costmap layers (STVL), TEB controller, SLAM integration, marathon benchmark (37.4 mi, 0 collisions); SLAM method comparison for indoor navigation. |
 | [[slam-toolbox]] | SLAM Toolbox: default ROS 2 2D SLAM; graph-based pose-graph over OpenKarto + Ceres; sync/async/pure-localization modes; multi-session mapping; 24,000 m² real-time on mobile CPU. |
+| [[2d-lidar-slam]] | 2D LiDAR SLAM hardware (RPLiDAR S2/A3 specs) + Cartographer architecture (BBS loop closure, SPA) + algorithm comparison table; ATE benchmark numbers for indoor ground robot navigation. |
 | [[user-comms-layer]] | User communication layer: entry points (phone/speaker), STT, LLM intent parser, command router, response/TTS; prototype build order and drone-app repo structure. |
 | [[safe-indoor-flight]] | Human/pet-proximate safety: ducted/caged props, collision-tolerant/inflatable/tensegrity, FAA OOP energy limits. |
 | [[semantic-object-memory]] | Semantic 3D scene graphs + "where things belong" (Hydra/ConceptGraphs/Housekeep); mostly ground-robot, transfer to drones. |
