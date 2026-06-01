@@ -8,7 +8,7 @@ Semantic object-location memory is a persistent spatial representation that enco
 
 **3D scene graphs — ground-robot results (drone-relevance by transfer)**
 
-- *demoed* **Hydra** (MIT SPARK, 2022) builds a real-time hierarchical 3D scene graph (mesh → places → rooms → buildings) incrementally from visual-inertial input using a local ESDF and community-detection room segmentation; loop-closure corrects all layers simultaneously via embedded deformation graphs; evaluated in apartment, office, and subway environments. **Ground-robot.** [`01-arxiv-2201-13360`]
+- *demoed* **Hydra** (MIT SPARK, 2022) builds a real-time hierarchical 3D scene graph (mesh → places → rooms → buildings) incrementally from visual-inertial input using a local ESDF and persistent homology room segmentation *(corrected 2026-06-01 from journal paper arXiv:2305.07154 — the RSS 2022 conference paper used community detection; the IJRR 2024 journal version uses persistent homology on the places graph + flood-fill)*; loop-closure corrects all layers simultaneously via embedded deformation graphs; evaluated in apartment, office, and subway environments. **Ground-robot.** [`01-arxiv-2201-13360`]
 
 - *demoed* **Kimera-Multi** (MIT SPARK, 2021) extends metric-semantic SLAM to multi-robot teams; each agent builds a local semantic mesh; distributed graduated non-convexity merges maps under limited bandwidth; evaluated on outdoor ground-robot trajectories up to 800 m per robot; produces globally consistent semantic 3D mesh. **Ground-robot.** [`02-arxiv-2106-14386`]
 
@@ -62,6 +62,8 @@ The existing scene-graph literature (Hydra, ConceptGraphs, HOV-SG) tracks object
 - Sync: fingerprint library lives in the COMMAND CENTER; a compressed "working set" for the current room is pushed to IMMEDIATE TASK LOAD before each task
 
 This is complementary to scene-graph approaches (Hydra, ConceptGraphs): the scene graph tracks spatial relationships; the fingerprint library tracks per-instance identity and accumulated experience. See [[system-architecture]] (COMMAND CENTER, WORLD MAP) and [[home-tidying-robots]] (TidyBot personalisation — category-level; this extends to instance-level).
+
+See [[scene-graph-world-model]] for a full technical deep-dive on both systems plus DovSG (dynamic updates) and HOV-SG (query routing architecture).
 
 ## Key gaps
 
