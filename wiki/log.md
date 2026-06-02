@@ -4,6 +4,16 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-02] synthesis | passive-stereo-robustification
+
+Librarian synthesis pass (dispatched from `drone-prototype`). The prototyper + human worked out, over the last few sessions, a full strategy for making **passive stereo robust enough for indoor SLAM without expensive LiDAR** — the consumer-product cost tenet. The knowledge was scattered across `visual-inertial-slam`, `indoor-cluttered-slam`, `learned-slam`, `close-range-depth-sensors` and the prototyper's personal log; consolidated into one cited page `passive-stereo-robustification`.
+
+Covers: the honest hard limit (passive stereo starves on white walls / glass / glossy floors; no vision-only SLAM clears it without help; IMU bridging < 1 s [src: indoor-cluttered-slam 07-arxiv-2306-08522 / 11-amazon-indoor-mapping]); the consumer-cost tenet (stereo OR cheap LiDAR, never MID360-class); the consumer-cost-ranked robustifier ladder (cheap IMU→VIO; dense RGB-D vs sparse VO; learned front-end SuperPoint/LightGlue/DPV-SLAM; robustness engineering — health-tracker + DBoW2 relocalization; active-assisted stereo); active stereo explained (a "dumb" uncalibrated projector adds artificial texture, SGBM unchanged because only the two cameras' geometry matters → projector can be independent/fixed for a prototype, with shadow + range² coverage caveat, vs a co-mounted fingernail VCSEL+DOE IR module <1 W for a product); the pattern-as-calibration-**validator** insight (can't replace the checkerboard, but dense L↔R matches give an epipolar/rectification check + a flat-wall planarity test cf. RealSense "Tare" → candidate to retire parked **P-002**); and the hardware ladder with prices (visible pico/star-laser ~$12–70 → IR-convert the SVPRO + IR DOE → **Arducam OV9281 NoIR global-shutter stereo ~$26/cam + IR DOE $20–50 ≈ $80–150** → **D435i $334** turnkey active IR stereo + BMI055 IMU + factory cal; skip OAK-D Pro $399 — *more* than the D435i). Step-4 implication: run baseline passive stereo first, characterize the failure regime, then aim the projector at exactly that.
+
+Cross-links added into `slam`, `indoor-cluttered-slam`, `home-tidy-drone-prototype` Related sections; index/revisions updated. Sources: `drone-prototype` `docs/prototyper-log.md` (2026-06-01 19:00 / 19:30, 2026-06-02), `docs/00-framing.md` Product tenet, plus the four source wiki pages (each carrying its own raw citations).
+
+---
+
 ## [2026-06-01] research | cheap-lidar-pricing-guide
 
 Researched cheap LiDAR options for a commercially viable indoor tidy bot. Captured 9 sources (Unitree L1 official shop, Robotika.cz independent L1 review, kaiaai 2D LiDAR list, budget comparison guides, Hesai JT16 CES 2025 launch, RPLIDAR C1 specs, OpenELAB 3D comparison). Key finding: Unitree L1 confirmed at $249 USD (3D, 360°×90°, explicitly targets sweeping robots) — price dropped ~$100 since late-2024 reviews. New page `cheap-lidar-pricing-guide` created with full pricing tier table and commercial viability thresholds. Updated `home-tidy-drone-prototype` to recommend L1 for Phase-1 ground robot; MID-360 remains Phase-2 UAV target. Updated `2d-lidar-slam` with retail pricing for budget 2D options. Added vacuum LDS salvage (~$16) to `robot-vacuum-navigation`. YouTube vacuum-LDS tutorial skipped (429 rate limit × 2).

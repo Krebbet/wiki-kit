@@ -80,6 +80,7 @@ Classical VIO and LiDAR-inertial odometry (see [[visual-inertial-slam]], [[lidar
 
 - [[slam]] — overview hub for the SLAM cluster
 - [[home-tidy-drone-prototype]] — parent; research assignment #3
+- [[passive-stereo-robustification]] — consumer-cost ladder for surviving the featureless-surface limit this page documents (IMU→VIO, dense RGB-D, learned front-end, active IR stereo)
 - [[visual-inertial-slam]] — OKVIS2, FAST-LIO2 foundations cross-referenced here
 - [[lidar-for-uav-autonomy]] — LiDAR-inertial stack extended by cluttered-indoor constraints
 - [[lidar-vs-vision-autonomy]] — sensor trade-offs relevant to featureless-wall failure modes

@@ -220,3 +220,4 @@ Canadian retail prices (CAD, May 2026; firm = found at a Canadian retailer, *est
 - [[drone-autonomy-state]] — control-model paradigms; demoed ≠ shipping ≠ legal
 - [[drone-power-budget]] — endurance ceiling driving the dock requirement
 - [[lidar-vs-vision-autonomy]] — the open sensor-architecture conflict this prototype must pick a side of
+- [[passive-stereo-robustification]] — consumer-cost ladder for making the SVPRO passive stereo robust enough for the anchor map (robustifiers → active IR stereo; cheaper-than-D435i hardware path)

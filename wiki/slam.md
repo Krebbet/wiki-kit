@@ -66,4 +66,5 @@ Synthesis hub assembled from existing wiki pages (each carries its own raw-sourc
 - [[lidar-vs-vision-autonomy]] — the open LiDAR-vs-vision conflict
 - [[drone-autonomy-state]] — deployment-maturity context
 - [[learned-slam]] — the AI/learning-based methods layer (neural LIO, learned VIO, edge 3DGS-SLAM, depth foundation models, learned place recognition)
+- [[passive-stereo-robustification]] — consumer-cost ladder to make passive stereo survive indoor texture starvation (IMU→VIO → dense RGB-D → learned front-end → active IR stereo)
 - [[nano-drone-compute]] — onboard-compute envelope that gates SLAM methods
