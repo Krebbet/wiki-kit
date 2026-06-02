@@ -4,6 +4,12 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-01] research | cheap-lidar-pricing-guide
+
+Researched cheap LiDAR options for a commercially viable indoor tidy bot. Captured 9 sources (Unitree L1 official shop, Robotika.cz independent L1 review, kaiaai 2D LiDAR list, budget comparison guides, Hesai JT16 CES 2025 launch, RPLIDAR C1 specs, OpenELAB 3D comparison). Key finding: Unitree L1 confirmed at $249 USD (3D, 360°×90°, explicitly targets sweeping robots) — price dropped ~$100 since late-2024 reviews. New page `cheap-lidar-pricing-guide` created with full pricing tier table and commercial viability thresholds. Updated `home-tidy-drone-prototype` to recommend L1 for Phase-1 ground robot; MID-360 remains Phase-2 UAV target. Updated `2d-lidar-slam` with retail pricing for budget 2D options. Added vacuum LDS salvage (~$16) to `robot-vacuum-navigation`. YouTube vacuum-LDS tutorial skipped (429 rate limit × 2).
+
+---
+
 ## [2026-05-14] bootstrap | AI × drones
 
 Initial bootstrap. Schema and commands tailored for the AI × drone intersection, with R&D, manufacturing / Canadian onshoring, and physical-interaction (manipulation / perching / contact / payload / tethered) included as in-scope topics. Authoritative-source list seeded with named research groups (incl. UTIAS, McGill, Sherbrooke Createk on the Canadian side) and primary Canadian policy bodies (ISED, Transport Canada, DND/PSPC, NRC IRAP, AIAC, CCAA). Domain lint checks added for regulatory and benchmark staleness, intersection coverage, evidence-strength tagging, country-of-origin tagging, and Canadian-onshoring tracker freshness. Ready to receive first source.

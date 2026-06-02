@@ -3,6 +3,7 @@
 Concise record of all wiki modifications. One row per logical change.
 
 | Date | Action | Pages Touched | Summary |
+| 2026-06-01 | research+ingest | cheap-lidar-pricing-guide (new), home-tidy-drone-prototype, 2d-lidar-slam, robot-vacuum-navigation, index | Cheap LiDAR research: 9 sources captured; new pricing guide page; Unitree L1 ($249) added as Phase-1 ground-robot recommendation replacing MID-360; MID-360 price updated to $480–550 USD; 2D LiDAR pricing added to SLAM page; vacuum LDS salvage (~$16) noted. |
 |---|---|---|---|
 | 2026-05-14 | bootstrap | CLAUDE.md, commands, index.md | Initial bootstrap: AI × drones, with R&D, manufacturing/Canadian onshoring, and physical-interaction modalities in scope. |
 | 2026-05-15 | research+ingest | 11 pages + 1 conflict, index.md | autonomy-and-sensors: ingested 10 sources into 11 topical/synthesis pages + conflicts/lidar-vs-vision-autonomy (OPEN). |

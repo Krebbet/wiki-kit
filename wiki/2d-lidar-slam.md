@@ -17,12 +17,17 @@
 
 ## Hardware — RPLiDAR options
 
-| Model | Technology | Range | Sample rate | Scan freq | Notable | BOM notes |
-|---|---|---|---|---|---|---|
-| **S2** | dToF | 30 m (90% refl.) / 10 m (10% refl.) | 32,000 Hz | 10 Hz | IP65 outdoor-capable; angular resolution 0.1125°; S2E variant adds network port + intensity output | Backward-compatible interface with A-series [src: rplidar-s2-specs] |
-| **A3** | Laser triangulation + RPVision | 25 m (optimized) | 16,000 Hz | Configurable (brushless OPTMAG motor, 5+ yr lifespan) | Dual-mode indoor/outdoor | Backward-compatible interface with A-series [src: rplidar-a3-specs] |
+| Model | Technology | Range | Sample rate | Scan freq | Price (USD) | Notable | BOM notes |
+|---|---|---|---|---|---|---|---|
+| **YDLIDAR X3** | Triangulation | 0.12–8 m | 3 KHz | 5–10 Hz | ~$65 [src: kaiaai-2d-lidar-list] | Cheapest viable; 135 g | Budget entry for ground robot prototyping |
+| **YDLIDAR X4** | Triangulation | 0.12–10 m | 5 KHz | 6–12 Hz | ~$70–90 [src: kaiaai-2d-lidar-list, budget-lidar-under-100] | 180 g; ROS2 driver | Good range/price ratio for SLAM Toolbox |
+| **LDROBOT D500** | dToF | 0.2–30 m | — | 8–12 Hz | ~$70–90 [src: budget-lidar-under-100] | 120 g, 70 mm dia × 40 mm; USB-CDC | dToF better on reflective floors vs triangulation |
+| **RPLIDAR A1** | Triangulation | 0.2–12 m | 8 KHz | 5.5–10 Hz | ~$99 [src: budget-lidar-under-100] | — | Long-standing budget benchmark; rplidar_ros |
+| **RPLIDAR C1** | DTOF fusion | 0–12 m | 5 KHz | 10–20 Hz | ~$94–96 (Amazon/Waveshare) | Reflectivity + 2.5D output | New SLAMTEC DTOF targeting home robots; Class 1 laser |
+| **S2** | dToF | 30 m (90% refl.) / 10 m (10% refl.) | 32,000 Hz | 10 Hz | — [not in retail comparison sources] | IP65; angular res 0.1125°; S2E adds network port | Backward-compatible with A-series [src: rplidar-s2-specs] |
+| **A3** | Triangulation + RPVision | 25 m (optimized) | 16,000 Hz | Configurable | — [not in retail comparison sources] | Brushless OPTMAG motor; dual indoor/outdoor | Backward-compatible with A-series [src: rplidar-a3-specs] |
 
-**Notes:** Neither spec sheet includes weight or pricing. Both S2 and A3 share the interface port with the A-series, providing a backward-compatible upgrade path [src: rplidar-s2-specs, rplidar-a3-specs]. ROS 2 driver: the `rplidar_ros` package supports A1/A2/A3/S1/S2/S3 [src: rplidar-a3-specs].
+**Notes on pricing:** Prices added 2026-06-01 from `raw/research/cheap-lidar/` captures. S2 and A3 pricing was not in the budget comparison sources; check SLAMTEC distributor pricing directly. Both S2 and A3 share the interface port with the A-series [src: rplidar-s2-specs, rplidar-a3-specs]. ROS 2 driver: `rplidar_ros` supports A1/A2/A3/S1/S2/S3 [src: rplidar-a3-specs]. See [[cheap-lidar-pricing-guide]] for the full cross-vendor pricing table including 3D options.
 
 *(synthesis)* For the Phase-1 ground robot, the **A3** (triangulation, 25 m, brushless motor for longevity) is the budget-standard choice for indoor SLAM. The **S2** (dToF, 30 m, IP65) adds outdoor capability and a higher sample rate (32k vs 16k Hz) for a modest price premium. Both are well below the weight and cost of the Livox MID360 and are sufficient for 2D occupancy grid SLAM. The S2's dToF technology is less affected by surface reflectivity than triangulation-based sensors, which may matter for glossy floors.
 

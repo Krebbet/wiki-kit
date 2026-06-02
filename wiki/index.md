@@ -80,5 +80,6 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[robot-vacuum-navigation]] | Precedent: mass-market robot-vacuum localization/mapping/coverage stacks (LDS-SLAM, VSLAM, ToF) and what transfers to a GPS-denied indoor drone. |
 | [[warehouse-robot-navigation]] | Precedent: Amazon/Kiva fleet nav — fiducial-grid + central planner beat per-robot autonomy at scale; lessons for a fiducials-first indoor drone V1. |
 | [[lidar-vs-vision-autonomy]] | **Conflict (OPEN):** is LiDAR necessary for drone autonomy, or do vision/event cameras suffice? |
+| [[cheap-lidar-pricing-guide]] | Full pricing tier table ($16 vacuum salvage → $249 Unitree L1 → $550 Livox MID-360); commercial viability thresholds for a tidy bot; 2D vs 3D tradeoff analysis. |
 
 ---
