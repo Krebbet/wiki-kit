@@ -777,3 +777,42 @@ Resolution rule applied: ThePrint May 2026 is the working baseline because (a) m
 **Conflict opened:** `dp-deployment-trustworthiness` — Apple DP audit vs watchlist "DP-as-firm-counter" framing. Pending user ruling.
 
 **Bookkeeping:** `wiki/index.md` (3 new page entries added; 2nd open conflict added); `wiki/revisions.md` (entries appended); `wiki/watchlist.md` (SB4 item updated; 10 overflow entries added).
+
+---
+
+## [2026-06-01] extend | organizations/algorithmwatch.md
+
+Added new section "DSA Article 40.4 data access mechanism (2026)" to `wiki/organizations/algorithmwatch.md` from capture `raw/research/weekly-2026-06-01/05-algorithmwatch-dsa-art40-audit.md`.
+
+**Section covers:** what Art.40.4 is (non-commercial org data access requests against VLOPs/VLOSEs for systemic-risk investigation; 20-month implementation delay from Feb 2024 target); the Google AI Overviews case (AlgorithmWatch + NGO/publisher alliance complaint to German DSC; Art.40.4 request for click-through vs. AI Overview retention metrics; documented Scholz factual error); counter-power replicability (any qualifying org can file; DSAR structural analogue at platform-accountability level); AlgorithmWatch-noted limitations (weak enforcement, X violations pending sanctions, dependency on enforcement follow-through).
+
+**Source entry:** `raw/research/weekly-2026-06-01/05-algorithmwatch-dsa-art40-audit.md` added to page Source section.
+
+**Related:** `[[algorithmwatch-dsa-art40-audit]]` added to Related section.
+
+## [2026-06-01] weekly-brief-ingest | 2026-06-01 radar sweep
+
+Weekly scan covering May 25–June 1, 2026. ~40 sources scanned across 4 tiers.
+
+**Captures attempted / succeeded:** 5 / 4
+- `big-bird-dp-privacy-budget` (arXiv 2506.05290v3) — succeeded (capture_url)
+- `fairness-testing-algorithmic-pricing` (arXiv 2605.11614) — succeeded (capture_url)
+- `phreesia-health-data-dark-patterns` (The Markup, May 27) — succeeded (capture_url)
+- `algorithmwatch-dsa-art40-audit` — succeeded (capture_url)
+- `data-broker-compliance-audit` (arXiv 2605.21376) — **skipped**: already ingested as [[dsar-and-data-deletion]] 2026-05-25
+
+**Note:** arXiv PDF captures (capture_pdf --engine pymupdf) captured abstract navigation pages rather than paper content; re-captured via capture_url. No content loss; broken image refs (pymupdf fallback) are cosmetic. Logged as ongoing known issue.
+
+**Wiki pages created (3 new):**
+- `wiki/tools/fairness-testing-algorithmic-pricing.md` — statistically correct audit for discriminatory pricing; all 34 IL auto insurers fail corrected test
+- `wiki/tools/big-bird-dp-privacy-budget.md` — Firefox DP budget manager for W3C Attribution API; Sybil-depletion defense
+- `wiki/mechanisms/health-data-opt-out-dark-patterns.md` — Phreesia/Privia/athenahealth healthcare intake dark patterns; new wiki sector
+
+**Wiki pages extended (1):**
+- `wiki/organizations/algorithmwatch.md` — DSA Art.40.4 Google AI Overviews investigation; first active use of the mechanism
+
+**Watchlist:** 12 entries updated (8 overflow added, 4 captures struck through).
+
+**No new conflict files.** Existing open conflict [[dp-deployment-trustworthiness]] unresolved (pending user ruling).
+
+**Brief:** `wiki/weekly-briefs/2026-06-01.md` + `/tmp/weekly-brief-2026-06-01.md`. Email sent to david.hugh.mcnamee@outlook.com.

@@ -179,6 +179,23 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - PCC 2026 "Solidarity AI" conference — Bangkok Nov 12-15
 - ~~Adobe early-cancellation-fees CMA investigation~~ — *moved to "Active enforcement / cases"*
 
+## Recent additions (2026-06-01 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- ~~arXiv 2605.11614 Fairness Testing for Algorithmic Pricing~~ — *captured 2026-06-01*
+- ~~arXiv 2506.05290v3 Big Bird DP Privacy Budget~~ — *captured 2026-06-01*
+- ~~AlgorithmWatch DSA Art.40.4 Google investigation~~ — *captured 2026-06-01 (algorithmwatch page extended)*
+- ~~Phreesia/health-data-opt-out-dark-patterns~~ — *captured 2026-06-01*
+- DAIR Luddite Lab (May 20 2026) — worker AI-resistance resource hub launch
+- noyb ORF.at cookie banner equalization ruling (May 21 2026) — court-mandated accept/reject symmetry precedent
+- Captain Compliance DROP Act DSAR automation (May 27 2026) — commercial DSAR-automation tool launch ahead of Aug 1 Delete Act deadline
+- BusPatrol school-bus ALPR expansion — 40K+ school buses in 24 states converting to roaming ALPR; law-enforcement data sharing planned June 2026
+- ILO Platform Worker Convention — first binding global labor standard for platform workers; negotiations opened June 1–11 Geneva ILC-114
+- Pluralistic "Carneyism without Carney" (May 30 2026) — structural counter-power defunding pattern: progressive policy signal + enforcement mechanism gutted
+- UK CMA hotel algorithmic pricing investigation (STR/CoStar hub) — UK first; names data intermediary (not just operators); mirrors RealPage pattern in hospitality
+- RealPage Tunney Act final judgment imminent — court-monitor + algorithm-certification regime entering effect; defines scrapeable algorithmic pricing compliance standard
+
 ## Recent additions (2026-05-25 weekly-brief overflow)
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
