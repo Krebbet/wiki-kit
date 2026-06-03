@@ -50,6 +50,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[feasibility/geopolitical-date-ladder]] | YES with conditions. Iran cluster dominates 10:1; Saguillo term-structure monotonicity (airspace 8pp / uranium 5pp); IMF Portwatch = Hormuz resolution oracle; UMA dispute risk HIGH on consensus markets. |
 | [[feasibility/scenario-grid]] | Conditional YES — LIVE MISPRICING. D-Senate+R-House composite at 1.45¢ vs ~3.0¢ (~2× underpriced); P(D House) gap 33.5pp composite vs binary; binding $112K liq → $15–30K position. May-13 −12% candidate was capture artifact. |
 | [[feasibility/lp-yield-farming]] | Meta-strategy; structurally sound at right scale. Starmer cluster $200–400/day with $98–129K deployed; A-S quoting with inventory skew; fourth yield layer `holdingRewardsEnabled` discovered. |
+| [[kalshi-market-maker-program]] | Two-track Kalshi LP program: formal MM Agreement (98%/hr quoting, 80+ products, bilateral Schedule II, not self-signup) and open Liquidity Incentive Program (proximity-weighted scoring, $10–$1,000/day/market pool, Sep 2025–Sep 2026, no agreement required). Mutually exclusive. Whelan et al. structural maker advantage: makers −9.64% vs takers −31.46%; makers ≥50¢ earn +2.6% average (pre-April 2025 zero-fee maker regime). |
+| [[prediction-market-house-edge]] | Platform fee comparison across Kalshi, Polymarket, sportsbooks. Kalshi taker fee = `0.07·P·(1−P)` (pre-Apr 2025); Polymarket V2 taker fee at p=0.50 ≈ 0.75% (Geopolitics fee-free). Sportsbook 4.5–5% hold. Favorite–longshot bias data from Whelan et al. across price bands. Post-Apr 2025 maker-fee regime on Kalshi not captured. |
 
 ---
 

@@ -201,3 +201,4 @@ TRM: ~840,000 unique wallets/month (multi-platform) by Feb 2026, **tripled in th
 - [[snapshots/polymarket-top-markets-2026-05-13]]
 - [[snapshots/polymarket-crypto-category-2026-05-13]]
 - [[conflicts/wash-trading-share]]
+- [[kalshi-market-maker-program]] — Kalshi LP program structure (MM Agreement + LIP) and structural maker advantage

@@ -7,7 +7,7 @@ Meta-review of the 10 theme-level feasibility assessments. Produced 2026-05-16 a
 | Rank | Theme | Verdict | Rubric | Capital tier | Time-to-edge |
 |---|---|---|---|---|---|
 | 1 | [[feasibility/mention-markets]] | **GO** | **16/20** | Low ($2K–$5K/bin) | Days (CZ regime-shift live) |
-| 2 | [[feasibility/youtube]] | **GO** | **15/20** | Very low ($200–$500/leg) | Days (MrBeast May 31/Jun 30 milestones live) |
+| 2 | [[feasibility/youtube]] | **GO** | **15/20** | Very low ($200–$500/leg) | Edge captured on Jun 30 sub legs; next video view brackets live |
 | 3 | [[feasibility/movies]] | Conditional YES | 15/20 | Low ($2K–$5K/film) | 1–2 weeks first build; days post-build |
 | 4 | [[feasibility/geopolitical-date-ladder]] | YES with conditions | (Iran cluster strongest) | Med ($500–$5K via $500 CLOB ceiling) | Days (airspace 8pp watchlist) |
 | 5 | [[feasibility/ai-tech-milestones]] | YES (two modes) | (mixed) | Med ($2K–$10K) | 4–6 weeks (Gemini ladders + Figure May 21) |
@@ -31,17 +31,30 @@ Slug `cz-binance-of-tweets-may-19-may-26-2026` just opened ($1.2K vol). CZ caden
 
 Live mispricing at 1.45¢ vs ~3.0¢ implied by chamber-control binaries (~2× underpriced). Bind on $112K liquidity → ~$15–30K effective position → ~$200–$400 gross/round-trip. Hedge with Republican House binary short. Set up Gamma API gap_house monitor. See [[feasibility/scenario-grid]].
 
-### 3. MicroStrategy BTC sale May 31 leg (corporate binaries) — 2 WEEKS
+### 3. MicroStrategy BTC sale May 31 leg (corporate binaries) — EXPIRED
 
-Live 59.5% Yes; on-chain MSTR treasury wallets are public. Set Arkham/Etherscan alert immediately. BTC outflow detected → buy YES; no outflow by May 25 → consider NO on May 31 leg. Size ≤$20K. See [[feasibility/corporate-event-binaries]].
+May 31 resolution leg has passed (as of 2026-06-03); this specific trade is closed. The broader MSTR on-chain monitoring infrastructure (Arkham/Etherscan wallet alert) remains useful for any subsequent sale-ladder legs if new markets are listed. The structural approach (on-chain BTC outflow detection → price adjustment before oracle resolution) is still the correct method. See [[feasibility/corporate-event-binaries]].
 
 ### 4. Iran cluster monotonicity watchlist (geopolitical date-ladder) — DAILY
 
 Airspace ladder 8pp slack (tightest); uranium 5pp. Any 4–5pp adverse move closes the gap → direct Long MRA. Daily Gamma API pull + Portwatch 7-day MA for Hormuz. Also: Portwatch 7-day MA approaching 60 in final 7–10 days converts Hormuz binary to near-certain — days-of-advance signal. See [[feasibility/geopolitical-date-ladder]].
 
-### 5. MrBeast subscriber June 30 milestone (YouTube) — 6 WEEKS
+### 5. MrBeast subscriber June 30 milestone (YouTube) — ~4 WEEKS / EDGE CAPTURED
 
-500M sub at 26% / 497M at 62%. Linear regression on Social Blade 90-day history at ~8M/mo gain → simple model expects >85% on 497M. Build YouTube Data API + Social Blade poller; position size $200–$500/leg given thin market. See [[feasibility/youtube]].
+**Current state (2026-06-03):** ~495M subscribers (web search); gaining ~300–455K/day based on the resolved-market ladder (480–484M on April 30 → ~495M on June 3 = ~10–15M in 33 days).
+
+**Live Polymarket prices (June 3):**
+| Bracket | YES price | Status |
+|---|---|---|
+| 485M / 488M / 491M / 494M by Jun 30 | 1.00 | Resolved YES (already crossed) |
+| **497M by Jun 30** | **0.995** | Near-certain |
+| **500M by Jun 30** | **0.939** | Very likely |
+
+**Model reprice:** At ~495M + ~300K/day × 27 days ≈ **503M expected on June 30**. The 500M leg at 93.9¢ is consistent with the current data — the market has updated correctly. The original edge (May 16: 497M at 62% vs model ≥85%, ~23pp gap) has been fully captured by the market.
+
+**Implication:** No meaningful mispricing in the subscriber legs as of June 3. The structural approach (linear extrapolation vs bracket PMF) surfaced a real edge in May; that edge is now priced in. No new entry recommended unless a growth-rate shock (viral video sub spike) creates intra-period repricing on the 500M leg. Note: MrBeast is currently running a major video (Day 3 views at ~49–50M) that may accelerate subscriber growth — monitor 500M leg for temporary underpricing if the spike is not yet reflected.
+
+See [[feasibility/youtube]].
 
 ## Recurring model archetypes (cross-theme synthesis)
 
@@ -53,7 +66,7 @@ Five model classes repeat across the 10 themes. Ranked by `breadth × evidence �
 
 **Model:** `N ~ Poisson(λ)` or `NegBin(r,p)` fit on trailing 8–12 wks; `P(bracket) = F(b_high) − F(b_low−1)`; mid-period Bayesian posterior `P(bracket|k obs in t/7) ∝ Poisson(k; λ·t/7)·prior`. View counts: `log(views) ~ N(μ,σ²)`. Closed-form, sub-second per event.
 
-**Edge:** Non-Elon tweet markets carry stale priors not updating intra-period; CZ Q3 2025 regime shift uncontested; MrBeast 497M sub at 62% vs linear model >85% (~23pp). Mid-period posterior collapses sharply at day 4-of-7 → pre-vs-post-update repricing lag.
+**Edge:** Non-Elon tweet markets carry stale priors not updating intra-period; CZ Q3 2025 regime shift uncontested; MrBeast subscriber edge was 497M at 62% vs linear model >85% on May 16 — now captured (495M current, market repriced to 99.5%). Active edge: view-count brackets on new videos and intra-period posterior collapse (day 4-of-7 repricing lag).
 
 **Conditions:** Stable cadence; X API free-tier sufficient for 8 non-Elon speakers; sample-size adequate but flag regime-break overfit risk.
 
@@ -175,11 +188,11 @@ Cross-cutting facts confirmed across the 10 runs:
 **Tier 1 — start immediately:**
 - CZ tweet-count regime-shift trade (same-week entry window).
 - D-Senate + R-House composite leg position with hedge (live mispricing).
-- MSTR Arkham/Etherscan alert (zero cost; 2-week resolution).
+- MSTR Arkham/Etherscan alert for any new sale-ladder legs (May 31 leg expired; monitor for new listings).
 - Iran airspace + uranium daily monotonicity Σ-check (zero modeling).
 
 **Tier 2 — build pipeline this week:**
-- YouTube Data API v3 + Social Blade for MrBeast June 30 milestones.
+- YouTube Data API v3 + Social Blade for MrBeast June 30 milestones (~4 weeks; re-check current prices before entry).
 - X API v2 backfill for 8 non-Elon tweet speakers; Poisson/NegBin fit.
 - Hansard last-10-PMQs scrape; per-keyword base-rates for Starmer 30 sub-markets.
 - Bracket Σ-check automation across all `tag_slug=tweets-markets`.

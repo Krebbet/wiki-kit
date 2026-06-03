@@ -4,6 +4,18 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-03] new page + lint v2 | prediction-market-house-edge + full wiki health check
+
+New page `prediction-market-house-edge.md` created from 5 primary sources in `raw/research/house-edge-and-market-making/`. Covers: (1) explicit platform fees — Kalshi formula `γ×P×(1−P)`, Polymarket V2 Sports 0.75% peak, sportsbook 4.5–5% implicit hold; (2) structural FLB-driven disadvantage from Whelan et al. 2026 (taker −31.46%, maker −9.64%, maker ≥50¢ +2.6%; 1–10¢ taker losses >60%); (3) per-platform fee comparison table (DeFiRate Feb 2026); (4) venue ranking by effective cost; (5) strategic implications. Dataset caveat (pre-April 2025, predates maker fees on Kalshi) clearly flagged throughout.
+
+Lint v2 run (v1 earlier today covered kalshi-market-maker-program). Key findings: prediction-market-house-edge and kalshi-market-maker-program are thinly-linked orphans needing more inbound links; 02-kalshi-fees-help.md absorbed as Sources citation; 43 broken image refs in polymarket-types-and-opportunities remain unfixed (pre-existing); feasibility-review stale time-sensitive trades flagged (MSTR May 31 + MrBeast Jun 30 have passed). Report: `lint-reports/2026-06-03-v2.md`.
+
+## [2026-06-03] new page + lint | kalshi-market-maker-program + full wiki health check
+
+New page `kalshi-market-maker-program.md` created from 6 raw sources in `raw/research/house-edge-and-market-making/`. Covers: MM Agreement (CFTC Apr 2025 filing), Liquidity Incentive Program (help center + CFTC Feb 2026 amendment), covered products table (80 product codes), LIP scoring formula, and Whelan et al. 2026 structural maker-advantage analysis (−9.64% maker vs −31.46% taker; +2.6% on ≥50¢; pre-April 2025 fee regime caveat).
+
+Lint run: 1 orphan (reference-sources — recommend exempt), 0 broken wiki-links, 2 format fixes applied (## Related on new page + prediction-market-house-edge), 52 pre-existing broken image refs in polymarket-types-and-opportunities + polymarket-market-trends-and-llm-edge raw dirs (PDF extraction failures, non-blocking for wiki rendering). New watched source added: Kalshi regulatory notices (Tier 2, active). Report: `lint-reports/2026-06-03.md`.
+
 ## [2026-05-08] bootstrap | edge-finding in immature prediction markets
 
 Initial bootstrap. Domain: Polymarket as primary platform (subject + data source for market definitions and historical prices), Kalshi as comparison point; applied focus on betting strategies, modeling techniques (Bayesian, ML calibration, game theory), and market microstructure for identifying and back-testing exploitation of mispriced markets.
@@ -290,3 +302,36 @@ Pages written (11):
 - wiki/feasibility/scenario-grid.md
 - wiki/feasibility/lp-yield-farming.md
 - wiki/feasibility-review.md
+
+## 2026-06-03 — Research: House Edge and Market Making
+
+**Trigger:** User directive — investigate house advantage on Polymarket and other platforms, identify low-edge markets, assess market-making opportunities.
+
+**Sources captured (10):** `raw/research/house-edge-and-market-making/`
+1. `01-kalshi-economics-voxeu-2026.md` — VoxEU column, Bürgi/Deng/Whelan 2026
+2. `02-kalshi-fees-help.md` — Kalshi Help Center fees overview
+3. `03-kalshi-mm-program-help.md` — Kalshi Help Center market maker program
+4. `04-kalshi-liq-incentive-help.md` — Kalshi Help Center LIP
+5. `05-pm-vs-sportsbooks-vig.md` — tech-insider May 2026 sportsbook comparison
+6. `06-polymarket-trading-fees-v2.md` — Polymarket Help Center fees V2
+7. `07-defirate-pm-fees-comparison.md` — DeFiRate multi-platform fee table (Feb 2026)
+8. `08-kalshi-liq-incentive-cftc-2026.md` — CFTC filing: Kalshi LIP Feb 2026 amendment
+9. `09-kalshi-mm-program-cftc-2025.md` — CFTC filing: Kalshi MM Program April 2025
+10. `10-kalshi-economics-whelan-2026.md` — Whelan, Bürgi & Deng (2026), 85KB academic PDF
+
+**Failed capture:** Kalshi fee schedule PDF (https://kalshi.com/docs/kalshi-fee-schedule.pdf) — 429 rate-limited. Fee formula recovered from Whelan paper instead.
+
+**New wiki pages (2):**
+- `prediction-market-house-edge.md` — fee structures + FLB-driven structural disadvantage across platforms
+- `kalshi-market-maker-program.md` — MM Agreement (professional track) + LIP (retail track) + Whelan maker-advantage quantification
+
+**Key findings:**
+- Kalshi taker post-fee return: −31.46%; maker: −9.64% (Whelan 2026, pre-Apr 2025 regime)
+- Makers on contracts ≥50¢ earn +2.6% average return (positive)
+- The −20% pre-fee average return is a behavioral artifact (FLB), not platform extraction
+- Polymarket Geopolitics = cheapest venue (fee-free); Polymarket US 0.10% flat; Kalshi standard max 1.75% at p=0.50
+- Sportsbooks embed 4.5–5% implicit hold vs prediction markets' explicit 0–2% fee
+- Kalshi MM Agreement requires 98%/hr quoting on 80+ products, 10× min-size capital, bilateral agreement
+- LIP (open retail track) runs Sep 2025–Sep 2026; $10–$1,000/day/market pool; excludes MM agreement holders
+
+**Open gap:** Kalshi fee schedule PDF (post-Apr 2025 maker fees). Kalshi Schedule II (exact spread widths, min sizes, fee rebate amounts per product) not public.

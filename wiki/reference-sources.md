@@ -91,6 +91,7 @@ No dedicated capture tool yet — monitor for volume/liquidity deltas and struct
 | **Polymarket docs** | https://docs.polymarket.com | resolution-rule + oracle schema changes | 2026-05-25 | active |
 | **Kalshi blog** | https://kalshi.com/blog | structural patterns, accuracy findings, fee changes | 2026-05-25 | probation |
 | **Kalshi docs** | https://docs.kalshi.com | market-type + settlement schema changes | 2026-05-25 | probation |
+| **Kalshi regulatory notices** | https://kalshi.com/regulatory/notices | CFTC program filings — MM Agreement changes, LIP amendments, fee-schedule updates; source of 09-kalshi-mm-program-cftc-2025 and 08-kalshi-liq-incentive-cftc-2026 | 2026-06-03 | active |
 | **UMA / oracle** | https://docs.uma.xyz | optimistic-oracle dispute mechanics (see [[uma-optimistic-oracle]]) | 2026-05-25 | probation |
 
 ## Tier 3 — Research feeds
