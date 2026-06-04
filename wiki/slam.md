@@ -27,6 +27,12 @@ Event cameras are a third sensing path for high-speed/low-light regimes where st
 
 SLAM output is not the end — the estimated pose is fused into the flight controller's state estimator (ArduPilot EKF3 / PX4 EKF2 via MAVROS `vision_pose`) so the aircraft can hold position, fly waypoints, and take off / land GPS-denied ([[slam-fc-integration]]). Onboard compute gates which methods are deployable: LIO and semantic-landmark methods run on drone-class compute, and as of 2025 even dense 3D-Gaussian-Splatting SLAM has been *demoed* real-time on a Jetson Orin NX (GS-LIVO, ~20 Hz) — it is no longer desktop-only ([[learned-slam]], [[nano-drone-compute]], [[fast-lio-mid360-orin]]). Learning-based SLAM/odometry/depth methods are surveyed in [[learned-slam]].
 
+## Prototype baseline: RTAB-Map (stereo)
+
+The `drone-prototype` uses **RTAB-Map** (Labbé & Michaud, Sherbrooke) as its SLAM **back-end** — passive USB stereo, CPU-only, metric maps stored as `.db` files. Its relocalization pipeline is two sequential gates: (1) **DBoW2 appearance-based place recognition** (proposes candidate map locations) and (2) **ORB→RANSAC→PnP geometric verification** (confirms pose). Measured: gate 1 clears ~97% on covered paths; gate 2 **fails catastrophically — 88% of right-place matches return 0 PnP inliers**, end-to-end cross-session rate **~2–4%**, and this is **map-agnostic** (~2.1–4.1% no matter how the map is built — EDA006/009).
+
+**The wall is the FRONT-END, not calibration** — proven, not guessed. Swapping in a learned front-end (**hloc: SuperPoint + LightGlue + NetVLAD → COLMAP SfM → pycolmap PnP**) on the *same* maps and the *same* **fixed** calibration lifts cross-session reloc to **82.6–96%** with the 0-inlier mode **eliminated** (EDA003/004). Because intrinsics were held fixed (the control), the gain isolates the learned feature/matcher/geometry — RTAB-Map's brittle ORB→PnP was the bottleneck, not the prototype-grade calibration (which earlier reports had blamed; now demoted, P-002). The forward path is **keep RTAB-Map's proven metric save/reload back-end and put the learned front-end under it**. Best anchor maps come from **pooling several overlapping passes into one SfM** ([[anchor-map-protocol]]). Full analysis: [[relocalization-method-bakeoff]], [[methods-reading-list]], [[anchor-map-protocol]].
+
 ## Two-phase architecture: map-then-localize
 
 Full SLAM runs two modes that serve different purposes and should not be conflated:
@@ -67,6 +73,7 @@ Synthesis hub assembled from existing wiki pages (each carries its own raw-sourc
 - [[drone-autonomy-state]] — deployment-maturity context
 - [[learned-slam]] — the AI/learning-based methods layer (neural LIO, learned VIO, edge 3DGS-SLAM, depth foundation models, learned place recognition)
 - [[passive-stereo-robustification]] — consumer-cost ladder to make passive stereo survive indoor texture starvation (IMU→VIO → dense RGB-D → learned front-end → active IR stereo)
-- [[relocalization-method-bakeoff]] — SOTA visual-SLAM / relocalization survey + the 2 picks (hloc SuperPoint+LightGlue; MASt3R-SLAM) to bench against RTAB-Map's failing PnP gate, with ready-to-run plans
+- [[relocalization-method-bakeoff]] — the relocalization bake-off, now **decided with measured data**: hloc (SuperPoint+LightGlue) beats RTAB-Map's failing ORB→PnP gate 82.6–96% vs ~2–4%; metric scale validated −1.9% vs tape-measured GT
+- [[anchor-map-protocol]] — how to **build** a good navigation-anchor map: pool several overlapping passes into one SfM (93.6% reloc, no density/coverage trade-off); forward map-build recommendations
 - [[camera-calibration-and-self-calibration]] — offline wide-FOV stereo calibration (focal/baseline degeneracy and how to break it) + online/self-correcting calibration survey (OpenVINS, OKVIS2-X, Kalibr, photometric)
 - [[nano-drone-compute]] — onboard-compute envelope that gates SLAM methods

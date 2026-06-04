@@ -1,37 +1,49 @@
 # Relocalization Method Bake-Off (Passive-Stereo, Marker-Free, Indoor)
 
-A focused SOTA survey + **decision** for the `drone-prototype` make-or-break problem: build an
-indoor room map from a **passive USB stereo** camera, save it, then in a **fresh pass recover
-absolute pose** (marker-free relocalization). The current method (**RTAB-Map stereo**) *works*
-but at low robustness — and the prototype has now **isolated exactly which gate fails**, which
-changes what an alternative must beat. This page surveys the 2023–2026 candidates, **selects the
-2 best to actually run against our recorded data**, and gives each a concrete "ready to run"
-plan (Docker/install + data adapter + comparison metric). *(synthesis — survey of cited external
-sources + the prototype's own measured failure decomposition.)*
+The `drone-prototype` make-or-break problem: build an indoor room map from a **passive USB stereo**
+camera, save it, then in a **fresh pass recover absolute pose** (marker-free relocalization). The
+prototype isolated exactly which gate of RTAB-Map's pipeline failed, picked the right alternative,
+**and has now RUN it** — so this page is no longer a plan: it carries the **measured outcome
+(EDA003–EDA009)**. Bottom line: **the bake-off is decided — a learned relocalization front-end
+(hloc) clears the wall, and pooling several mapping passes builds the best anchor map.** *(synthesis
+— cited external sources + the prototype's own measured results; sources in `docs/experiments-log.md`
+EDA003–009 + each `eda/EDA00N-*/major-findings.md`.)*
 
-## TL;DR — the 2 picks
+## TL;DR — the result (proven, not planned)
 
-1. **hloc (SuperPoint + LightGlue + NetVLAD retrieval)** — a learned **relocalization front-end**.
-   It attacks the *exact* gate the prototype isolated as binding: **geometric pose verification
-   (PnP inliers)**. Same build-map→localize-query→PnP-with-inliers flow we already measure, but
-   with learned features + a learned matcher that produce dense, geometrically-consistent
-   correspondences where ORB+RANSAC returns 0 inliers. Lightweight (SuperPoint+LightGlue ≈ 14M
-   params, < 2 GB VRAM — **fits our 4 GB GPU, and is CPU-runnable offline**), pip-installable,
-   bundles `pycolmap`. Can stand alone *or* slot under RTAB-Map. **Lowest-risk, highest-relevance.**
-2. **MASt3R-SLAM** — a learned **full-SLAM** alternative (CVPR 2025). Its premise is robust *dense
-   pointmap* matching from a 3D-reconstruction foundation model, which **bypasses the brittle
-   sparse-feature→triangulate→PnP geometry** that fails for us; it has built-in image-retrieval
-   relocalization + loop closure, ingests an image folder + `intrinsics.yaml`, and we can hand it
-   metric scale from our calibrated stereo baseline. **Caveat (honest):** built/benchmarked on an
-   RTX 4090; on our 4 GB GPU it is **offline-only at reduced resolution** — fine for a bake-off
-   (we don't need real-time), but the heavier, higher-risk pick.
+- **The wall was the FRONT-END, not calibration.** RTAB-Map's classical ORB→RANSAC→PnP geometric
+  verification collapses: **88% of right-place matches return 0 PnP inliers → ~2–4% cross-session
+  reloc**, and it is **map-agnostic** (~2.1–4.1% no matter how the map is built — EDA006/009). Swap
+  in **hloc (SuperPoint + LightGlue + NetVLAD → COLMAP SfM → pycolmap PnP)** on the *same* maps and
+  the *same* fixed calibration, and the wall is gone: **EDA003 96%**, **EDA004 82.6% on fresh
+  out-of-sample data**, with the 0-inlier failure mode **eliminated outright (0/910)**. Because
+  intrinsics were held FIXED (no recalibration — the control), the gain isolates the learned
+  feature/matcher/geometry front-end. **P-002 (calibration) demoted; pick #1 = hloc.**
+- **Metric scale recovered AND validated against ground truth.** EDA005 recovered scale
+  (≈0.833 m/SfM-unit, stable ~2%; ~34 cm GT-free loop-closure drift). EDA008 then validated it
+  **absolutely against the human's tape measurement**: room **width 2.99 m vs GT 3.048 m = −1.9%**
+  (~6 cm on 3 m) → the map is **metrically trustworthy to ~⅓ m**. **P-005 RESOLVED.**
+- **Best anchor map = several overlapping passes POOLED into one SfM.** EDA006 found a single broad
+  fixed-stride sweep is zero-sum (closes the coverage tail 52→87% but thins the body 96→72%, net
+  −6 pp). **EDA009 resolved it: pool sweep4 ∪ sweep7 into ONE SfM → 93.6% overall (+11 pp), body
+  96% AND tail 88%, no trade-off** — and the two same-room passes **co-registered automatically**
+  (944/947 via NetVLAD), no explicit cross-session loop closure. See [[anchor-map-protocol]].
 
-**What to install/run:** `pip install -e` hloc (+ its InLoc/SfM pipeline) and MASt3R-SLAM (conda,
-torch 2.5.1/CUDA 11.8, downloads MASt3R weights). Both consume the KITTI-style folders we already
-produce (`make_kitti_dataset.py`). Comparison metric = **cross-session relocalization rate**
-(fraction of held-out probe frames that recover a correct absolute pose) on the *same*
-`s3_map` + `reloc_test2` pair RTAB-Map scored, plus **PnP / pose-verification inlier counts** on
-the right-place matches (the number RTAB-Map gets 0 on 88% of the time).
+**Measured comparison metric:** cross-session relocalization rate (fraction of held-out probe
+frames recovering a correct absolute pose) + PnP-inlier distribution on right-place matches, on the
+*same* map/probe pairs RTAB-Map scored. Full numbers in §"Measured results" below.
+
+## The 2 picks (as decided going in — pick #1 ran and won; pick #2 demoted)
+
+1. **hloc (SuperPoint + LightGlue + NetVLAD retrieval)** — a learned **relocalization front-end**
+   attacking the binding gate (geometric PnP verification). Same build-map→localize-query→PnP flow,
+   learned features + matcher producing dense geometrically-consistent correspondences where
+   ORB+RANSAC returns 0 inliers. ~14M params, < 2 GB VRAM (fits our 4 GB GPU, CPU-runnable offline),
+   pip-installable, bundles `pycolmap`. **RAN — EDA003/004/006/009 (see below). Won decisively.**
+2. **MASt3R-SLAM** — a learned **full-SLAM** alternative (CVPR 2025); dense-pointmap matching that
+   bypasses sparse-triangulate→PnP. **DEMOTED, not run:** hloc already cleared the wall, so the
+   higher-risk 4090-class full-stack contrast was unnecessary. Still the queued cross-check if a
+   fundamentally-different geometry estimator is ever wanted (offline-only on our 4 GB GPU).
 
 ## Source
 
@@ -61,15 +73,18 @@ the right-place matches (the number RTAB-Map gets 0 on 88% of the time).
 - [src: rtabmap-superpoint] introlab/rtabmap issue #1221 + #957: using SuperPoint/SuperGlue inside
   RTAB-Map requires OpenCV built **with CUDA + Torch**; otherwise it silently falls back to GFTT/ORB
   and the Torch feature "cannot be used." https://github.com/introlab/rtabmap/issues/1221
-- Prototype measured failure decomposition: `drone-prototype/docs/mapping-report-v1.md` §4c–4e
-  (overlap-then-geometry sequential gates; **88% of right-place matches get 0 PnP inliers** once
-  overlap is achieved), `docs/parked.md` P-002 (calibration), [[passive-stereo-robustification]].
+- Prototype measured failure decomposition + the run results: `drone-prototype/docs/mapping-report-v1.md`
+  §4c–4e (overlap-then-geometry sequential gates; **88% of right-place matches get 0 PnP inliers**);
+  **`docs/experiments-log.md` EDA003–009** + each `eda/EDA00N-*/major-findings.md` (the measured
+  bake-off — hloc 82.6–96% vs RTAB ~2–4%, multi-sweep 93.6%, metric scale validated −1.9% vs GT);
+  `docs/eda-mapping-state.md` (map-artifact + integration analysis); `data/ground-truth/room-dims.md`
+  (the tape-measured GT); `docs/parked.md` (P-002 demoted, P-005 resolved); [[passive-stereo-robustification]].
 
 ## Related
 
-[[slam]] · [[methods-reading-list]] · [[learned-slam]] · [[visual-inertial-slam]] · [[indoor-cluttered-slam]] ·
-[[map-then-navigate]] · [[passive-stereo-robustification]] · [[slam-toolbox]] · [[2d-lidar-slam]] ·
-[[home-tidy-drone-prototype]] · [[system-architecture]]
+[[anchor-map-protocol]] · [[slam]] · [[methods-reading-list]] · [[learned-slam]] · [[visual-inertial-slam]] ·
+[[indoor-cluttered-slam]] · [[map-then-navigate]] · [[passive-stereo-robustification]] · [[slam-toolbox]] ·
+[[2d-lidar-slam]] · [[imu-vio-integration-reality]] · [[home-tidy-drone-prototype]] · [[system-architecture]]
 
 ---
 
@@ -96,7 +111,36 @@ failure to a specific stage, and a candidate is only interesting if it moves *th
 texture, prototype-calibration conditions** — either by (a) better local features + matcher that
 survive where ORB dies (front-end swap), or (b) a fundamentally different geometry estimator that
 doesn't lean on sparse triangulated points (dense-pointmap full SLAM). The two picks are exactly
-one of each.
+one of each. **The prototype ran (a) — hloc — and it cleared the bar; the measured results are
+in §1b.**
+
+## 1b. Measured results — hloc vs RTAB-Map, on our own data (EDA003–EDA009)
+
+The bake-off was **run**, on the prototype's recorded living/dining-room sweeps. Every row holds
+intrinsics FIXED to our rectified calibration (the control that isolates the front-end); RTAB-Map
+and hloc see the same rectified pixels. Sources: `docs/experiments-log.md` (EDA003–009) +
+`eda/EDA00N-*/major-findings.md`.
+
+| EDA | Map → probe (held-out) | hloc reloc | RTAB-Map reloc | Right-place 0-PnP-inlier (hloc) | What it proved |
+|---|---|---|---|---|---|
+| **003** | sweep3 → reloc_test2 | **96.0%** (311/324) | ~2% | **0%** (0/324), median 295 inliers | The wall is the ORB→PnP **front-end**, not calibration — same map+calib, ~48× lift. |
+| **004** | sweep4 → sweep6 (fresh) | **82.6%** (753/912) | **4.1%** | **0%** (0/910), median 82 | Breakthrough **generalizes** out-of-sample (~20×). Residual fails = a **coverage** tail (seg7-9 36–62%), not blur (r≈−0.13). |
+| **006** | sweep7 (broad) → sweep6 | 76.6% (699/912) | **2.1%** | 0%, mean reproj 1.48 px | Broad sweep **closes the tail (52→87%)** but **thins the body (96→72%)** → net −6 pp. Density became the live variable. RTAB **map-agnostic**. |
+| **009** | **sweep4 ∪ sweep7 pooled** → sweep6 | **93.6%** (854/912) | — (settled) | 0% (0/911), median 198 | **Pooling sweeps wins outright:** body 96% **AND** tail 88%, +11 pp; the two passes **co-register automatically** (944/947). |
+
+**Metric scale (EDA005 → EDA008):** the hloc SfM is up-to-scale; aligning it to RTAB-Map's
+stereo-metric frame recovers **≈0.833 m/SfM-unit** (stable ~2%), GT-free **loop-closure drift ~34 cm**
+(median, p90 56). EDA008 then anchored it to the human's **tape measurement**: room **width 2.99 m
+vs GT 3.048 m = −1.9%** — *consistency was correctness*, no hidden scale bias; the anchor is good to
+~⅓ m, adequate for room-level navigation. (`data/ground-truth/room-dims.md`; **P-005 RESOLVED**.)
+
+**Reading:** for **mandate-1 (a reusable navigation-anchor map), relocalization is essentially
+proven.** The front-end that was the wall is solved (0-inlier mode eliminated), the rate is high
+(93.6% on the best map), the map is metrically trustworthy, and the recipe for building a good
+anchor is known (pool overlapping passes — [[anchor-map-protocol]]). Open: online/under-RTAB-Map
+integration (offline batch SfM today) + permissive weights (research-only SuperPoint/SuperGlue →
+DISK/ALIKED for product). The detailed map-artifact + integration analysis is in
+`drone-prototype/docs/eda-mapping-state.md`.
 
 ## 2. Survey — the 2023–2026 candidate field
 
@@ -226,8 +270,9 @@ Watch VRAM with `nvidia-smi`; drop `--img-size` on OOM.
 
 ## 5. The comparison — same data, same metric as RTAB-Map
 
-Run both picks on the **identical** map/probe pair RTAB-Map already scored, so numbers are directly
-comparable to `mapping-report-v1.md` §4e:
+*(This was the plan; it was executed — see §1b for the actual measured numbers. Kept here for the
+methodology.)* Run both picks on the **identical** map/probe pair RTAB-Map already scored, so numbers
+are directly comparable to `mapping-report-v1.md` §4e:
 
 | Map (reference) | Probe (held-out) | Why |
 |---|---|---|
@@ -247,20 +292,24 @@ limited geometry) is confirmed and the front-end swap is the fix.
 **Tertiary (if metric scale wired):** absolute pose error (cm) of relocalized frames vs the
 map-frame ground-truth trajectory.
 
-## 6. Decision summary + sequencing
+## 6. Decision summary + outcome
 
-- **Run hloc first** (low-risk, fits hardware, directly measures the failing PnP gate). If it lifts
-  the relocalization rate and the inlier distribution, the prototype's central open problem has a
-  concrete cure — and the path is *swap the feature/matcher front-end* (keep RTAB-Map's proven
-  save/reload back-end, per [[passive-stereo-robustification]] rung-3), not abandon RTAB-Map.
-- **Then MASt3R-SLAM** (higher-risk full-stack contrast; the VRAM fit is itself a consumer-cost
-  finding). If dense-pointmap geometry clears the gate where sparse PnP can't, that's evidence the
-  geometry — not just the calibration — is the lever.
+- **hloc ran first and WON** (EDA003/004/006/009): it lifted relocalization from ~2–4% to 82.6–96%
+  and **eliminated the 0-inlier failure mode** (0/910). The cure is confirmed: *swap the
+  feature/matcher front-end* (keep RTAB-Map's proven metric save/reload back-end, per
+  [[passive-stereo-robustification]] rung-3), **not** abandon RTAB-Map and **not** grind
+  calibration. The forward path is the **online integration** — put SuperPoint+LightGlue under
+  RTAB-Map's live back-end (or run hloc as an offline-map + live-localize service) with permissive
+  weights. Map-build recipe in [[anchor-map-protocol]].
+- **MASt3R-SLAM demoted, not run:** hloc already cleared the wall, so the higher-risk 4090-class
+  full-stack contrast was unnecessary. Keep as the queued cross-check if a fundamentally-different
+  geometry estimator is ever wanted; the 4 GB VRAM fit would itself be a consumer-cost finding.
 - **Not run (and why):** DPV-SLAM / DROID-SLAM (VRAM > 4 GB), ORB-SLAM3 (same sparse-PnP family,
-  custom build to swap features = same cost as fixing RTAB-Map), VIO stacks (no IMU yet; off-axis),
-  3DGS/LiDAR (outside passive-stereo + 4 GB envelope). All parked, not dead — revisit when an IMU
-  lands on the rig or compute grows.
+  custom build to swap features = same cost as fixing RTAB-Map), VIO stacks (no IMU yet; off-axis —
+  see [[imu-vio-integration-reality]]), 3DGS/LiDAR (outside passive-stereo + 4 GB envelope). All
+  parked, not dead — revisit when an IMU lands on the rig or compute grows.
 
-*Cross-refs: `drone-prototype/docs/mapping-report-v1.md` §4c–4e (failure decomposition),
-`docs/parked.md` P-002, `docs/data-collection-todo.md`, [[passive-stereo-robustification]],
-[[learned-slam]].*
+*Cross-refs: `drone-prototype/docs/experiments-log.md` (EDA003–009), `eda/EDA00N-*/major-findings.md`,
+`docs/eda-mapping-state.md` (map-artifact + integration analysis), `docs/mapping-report-v1.md` §4c–4e
+(original failure decomposition), `docs/parked.md` (P-002 demoted, P-005 resolved),
+[[anchor-map-protocol]], [[passive-stereo-robustification]], [[learned-slam]].*

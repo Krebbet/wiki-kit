@@ -86,13 +86,33 @@ request another view. Threshold is per-embedder.
 enrollment on min mask area + min depth-confidence, prefer clean isolated views,
 down-weight low-confidence observations. Open issue.
 
-## Prototype status (de-risking)
+## Prototype status (de-risking) — measured (EDA007 + DINOv2 swap-in)
 
-`drone-prototype:src/objmem/` runs the full loop end-to-end on synthetic multi-view
-samples with a **classical placeholder embedder** (HSV histogram + ORB BoVW) — ~67%
-single-view / ~88% multi-view re-ID, deliberately mediocre to expose why DINOv2 is
-needed. DINOv2 + real segmenters are stubbed behind clean interfaces (env had
-transformers 4.29 / no torchvision). Next step: real SVPRO captures + DINOv2 swap-in.
+`drone-prototype:src/objmem/` runs the full re-ID loop end-to-end. The per-instance loop is
+**real and de-risked** — multi-view re-ID **88% reproduces exactly** (classical embedder),
+stubs raise honestly, hnswlib ≡ brute-force (8/8), schema round-trips (EDA007).
+
+**DINOv2 is now swapped in** (ViT-S/14, 21M params, 384-dim, Apache-2.0, in a dedicated
+`third_party/objmem-venv`) behind the same `Embedder` interface. On the SAME synthetic samples
+it lifts **recall-at-precision-1.0 from 0.58 → 0.96** and multi-view re-ID 88% → 100%
+(same-object cosine: classical mean 0.59 / min 0.012 → DINOv2 mean 0.93 / min 0.73). Provisional
+precision-favouring threshold **0.75 for DINOv2** (placeholder — calibrate on real captures).
+
+**Validation status — honest (EDA007):**
+- **Synthetic data saturates the metric.** The 4 synthetic objects are colour-distinct, so a
+  colour histogram already separates them and the leave-one-out re-ID *rate* is 100% for BOTH
+  embedders — synthetic data **under-tests instance-level features**. The discriminating case (two
+  same-category, same-colour instances) is **not** exercised yet.
+- **The documented "same-colour confusion" was unverified** and is corrected: a same-colour
+  distractor scored ~0 to its lookalike; the *real* failure mode is same-object **viewpoint/lighting
+  collapse** (classical min same-object sim 0.012), which DINOv2 largely fixes.
+- **Single-view re-ID is held-out-set-dependent** — both the diary's 67% (enroll v0 / query v1-3)
+  and 75% (held-out v2,3) reproduce; it's a query-set choice, not a regression.
+- **OBJMEM-7 (real same-colour captures) is the pending human-gated validation** — the #1 follow-up;
+  the cosine threshold can only be truly calibrated there. The real-capture `capture_object.py` crash
+  (a `Dimensions` field-name mismatch) was **fixed (PR #8)**.
+
+Source: `eda/EDA007-object-detection-state/major-findings.md`; `drone-prototype:docs/parked.md` P-004.
 
 ## Source
 
