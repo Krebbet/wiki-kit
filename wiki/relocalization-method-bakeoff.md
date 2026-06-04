@@ -67,7 +67,7 @@ the right-place matches (the number RTAB-Map gets 0 on 88% of the time).
 
 ## Related
 
-[[slam]] · [[learned-slam]] · [[visual-inertial-slam]] · [[indoor-cluttered-slam]] ·
+[[slam]] · [[methods-reading-list]] · [[learned-slam]] · [[visual-inertial-slam]] · [[indoor-cluttered-slam]] ·
 [[map-then-navigate]] · [[passive-stereo-robustification]] · [[slam-toolbox]] · [[2d-lidar-slam]] ·
 [[home-tidy-drone-prototype]] · [[system-architecture]]
 
