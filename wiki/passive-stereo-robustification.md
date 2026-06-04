@@ -13,7 +13,7 @@ Synthesis page; the load-bearing facts are cited inline to their home pages and 
 
 ## Related
 
-[[sensor-weaknesses-and-fixes]] · [[slam]] · [[indoor-cluttered-slam]] · [[visual-inertial-slam]] · [[imu-vio-integration-reality]] · [[learned-slam]] · [[close-range-depth-sensors]] · [[camera-calibration-and-self-calibration]] · [[map-then-navigate]] · [[slam-toolbox]] · [[2d-lidar-slam]] · [[cheap-lidar-pricing-guide]] · [[home-tidy-drone-prototype]] · [[system-architecture]]
+[[sensor-weaknesses-and-fixes]] · [[slam]] · [[indoor-cluttered-slam]] · [[visual-inertial-slam]] · [[imu-vio-integration-reality]] · [[learned-slam]] · [[close-range-depth-sensors]] · [[camera-calibration-and-self-calibration]] · [[map-then-navigate]] · [[slam-toolbox]] · [[2d-lidar-slam]] · [[cheap-lidar-pricing-guide]] · [[home-tidy-drone-prototype]] · [[system-architecture]] · [[stereo-dense-reconstruction]]
 
 > **Companion page:** [[sensor-weaknesses-and-fixes]] isolates the *sensor-rooted* (not software-fixable) causes of the relocalization geometry failure — ranked sensor weaknesses → ranked cheap sensor upgrades → the single highest-leverage change (active stereo / D435i). This page is the *software/algorithm* ladder; that page is the *hardware* lens on the same problem.
 

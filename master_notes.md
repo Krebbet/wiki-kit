@@ -92,6 +92,18 @@ Append entries using this structure:
 **Implication:** (1) A strict link-integrity check should resolve `[[...]]` by **basename** (Obsidian semantics), not full relpath, or it floods with false positives for any page in a subdir like `conflicts/`. (2) `/ingest` + `/research` page-writer briefs should state the link convention explicitly: "link conflict pages by bare basename `[[slug]]`, not `[[conflicts/slug]]`." Worth baking into the shared subagent prompt template so it doesn't recur each batch.
 **Status:** open
 
+### 2026-06-04 — capture_pdf --engine marker fails on NumPy ≥ 2.0 environments
+**Scope:** kit
+**Observation:** `python3 -m tools.capture_pdf --src <arxiv_pdf_url> --engine marker` exits 137 (OOM/killed) after a NumPy 2.x / PyArrow / sklearn ABI incompatibility cascade (pyarrow `_ARRAY_API not found`). The marker engine imports sklearn → pandas → pyarrow, all of which were compiled against NumPy 1.x. The OOM kill occurs because the process loads conflicting .so files, corrupts memory, and is then killed by the OOM killer. **Update (2026-06-04, stereo-dense-reconstruction session):** The OOM kill with marker actually occurred when CUDA was available (CUDA_VISIBLE_DEVICES not set). Running the SAME marker engine with `CUDA_VISIBLE_DEVICES=""` (forcing CPU) succeeded and produced full captures with extracted images — marker on CPU works fine; the GPU path + NumPy ABI mismatch is the failure point.
+**Implication:** On systems with NumPy ≥ 2.0 / old CUDA driver (seen: NVIDIA driver version 12020): first retry is `CUDA_VISIBLE_DEVICES="" python3 -m tools.capture_pdf --engine marker`, NOT `--engine pymupdf`. CPU marker produces images; pymupdf does not. Only fall back to pymupdf if CPU marker also fails. Update the `/research` skill guidance to try `CUDA_VISIBLE_DEVICES="" marker` before the pymupdf fallback.
+**Status:** open
+
+### 2026-06-04 — bostondynamics.com and 1x.tech are reliably bot-walled (both trafilatura and Playwright)
+**Scope:** kit
+**Observation:** Six separate `capture_url` attempts on bostondynamics.com blog/product pages (with and without `--js`) returned 23-line navigation fragments — not real article content. 1x.tech similarly returned 12-line near-empty extractions. Both domains defeat both the trafilatura extraction path and the Playwright JS path. Content appears to be gated behind React/Next.js hydration that doesn't execute in the headless browser, or the servers detect the Playwright UA and serve a stripped template.
+**Implication:** Add `bostondynamics.com` and `1x.tech` to the "Known bot-walled hosts" section in `research.md`. Manual-download fallback is needed: open the page in a real browser, use "Save as" or "Copy text", and drop into `raw/research/<topic>/` as a `.txt` or `.md` file. The Robot Report and Robotics 24/7 articles *about* these companies capture cleanly — they are a viable secondary-primary fallback when vendor pages are walled.
+**Status:** open
+
 ### 2026-05-28 — capture/ingest work should be dispatched to subagents, not run in the main context
 **Scope:** kit
 **Observation:** During a `/research` run, four `poetry run python -m tools.capture_pdf` commands were run directly in the main conversation context instead of being delegated to a subagent. This bloats the main context window with capture progress output, ties up the main thread, and wastes a larger model on mechanical execution work. The user flagged this explicitly.

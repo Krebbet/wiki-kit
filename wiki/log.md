@@ -4,6 +4,69 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-04] research+ingest | humanoid-robot-indoor-perception
+
+Topic: perception stacks for commercially deployed / near-deployed mobile manipulation robots — Figure 02/03, 1X NEO/EVE, Boston Dynamics Spot + Orbit, Agility Digit, Apptronik Apollo.
+
+18 captures attempted; 11 substantive (Boston Dynamics blog pages and 1x.tech bot-walled throughout — navigation fragments only). Usable: GraphNav Tech Summary / Map Structure / Localization primary SDK docs; Figure Helix 02 + Helix v1 vendor blog posts; Orbit 5.0 Robot Report; Agility Digit botinfo deep-dive; arXiv:2501.05750 semantic mapping survey (pymupdf, text intact); Robotics 24/7 Spot/Orbit update; BD-DeepMind Gemini integration; Apptronik Apollo Robot Report.
+
+Key findings: (1) Spot/GraphNav is the only publicly documented persistent-map architecture — waypoint/edge topological graph, fixed at record time, no global frame, visual+geometric feature localization ≥2 Hz, LOST failure mode. (2) Orbit 5.0 uses VLP prompts at inspection points; Gemini Robotics-ER 1.6 integration adds language-driven task planning. (3) Figure Helix 02: 6 RGB cameras + fingertip tactile, no LiDAR, no persistent map, fully onboard dual GPU, zero-shot object picking. (4) Agility Digit: torso LiDAR + 4× RealSense depth + force sensors, logistics-first, Amazon + GXO deployment. (5) Apollo: stereo cameras + force sensing, undisclosed stack.
+
+New page: `humanoid-robot-indoor-perception.md`. Index and revisions updated.
+
+---
+
+## [2026-06-04] research+ingest | tidy-benchmarks
+
+Benchmark landscape for home tidying/rearrangement. 8 sources captured to `raw/research/tidy-benchmarks/` using pymupdf engine (marker engine OOM on this system — numpy/pyarrow conflict). Captures: BEHAVIOR-1K (arXiv 2403.09227, 162KB), HomeRobot OVMM (arXiv 2306.11565, 131KB), AI2-THOR Rearrangement/RoomR (arXiv 2103.16544, 61KB), TEACh (arXiv 2110.00534, 99KB), ALFRED (arXiv 1912.01734, 112KB), HomeRobot NeurIPS 2023 challenge lessons (arXiv 2407.06939, 69KB), Housekeep (arXiv 2205.10712, 114KB), AI2-THOR challenge page (2KB — thin but usable for 2022 challenge winner result). All text substantive; images not extracted (pymupdf limitation, not a blocker). Audit: 253 broken image refs (expected, pymupdf), 0 thin captures, 0 PDF collisions.
+
+New page `tidy-benchmarks.md` written. Key deliverables: (1) 4-type task definition taxonomy; (2) per-benchmark SOTA success rate table with source-traceable numbers; (3) HomeRobot OVMM identified as only benchmark with real-robot track; (4) perception stack per benchmark (Housekeep uses privileged segmentation; HomeRobot RGB-D + open-vocab); (5) BEHAVIOR-1K sim-to-real gap measured: 40% sim → 22% real-optimal → 0% real-learned; grasping = 40% of real failures; (6) TidyBot 85% real-hardware metric documented (internal evaluation, not public benchmark). Editorial synthesis sections clearly labelled.
+
+---
+
+## [2026-06-04] research+ingest | ov3d-instance-seg
+
+Open-vocabulary 3D instance segmentation research. 8 sources captured to `raw/research/ov3d-instance-seg/` using pymupdf engine (marker engine OOM due to numpy/pyarrow conflict on this system). All captures >10 KB; audit: 0 issues. New page: `ov3d-instance-seg.md`. Key findings: FOLK (Oct 2025) is SOTA at AP50 35.7 / 3.6 s/scene on ScanNet200; none of the methods runs on 4 GB GPU live; FOLK inference (~Mask3D+MLP only) is the closest with estimated ≥4–6 GB; passive-stereo ~48% coverage is the binding constraint before GPU budget.
+
+---
+
+## [2026-06-04] research+ingest | language-3d-scene-representations
+
+Research on language-embedded 3D scene representations (LERF, LangSplat, Feature3DGS, ConceptFusion, OpenGaussian, OpenLex3D). 6 primary arXiv PDFs captured via pymupdf engine (marker engine OOM on this system — numpy/pyarrow version conflict). New page: `language-3d-scene-representations.md`.
+
+Key findings: LangSplat (CVPR 2024) is 2024/2025 practical leader — 84.3% localization, 0.28 s/query, ~4 GB GPU on small scenes. ConceptFusion (RSS 2023) most compute-accessible (no per-scene training, incremental online build, multi-modal text/image/audio/click queries). OpenGaussian (NeurIPS 2024) best for 3D robotics tasks (lossless CLIP, handles occlusion). OpenLex3D (NeurIPS 2025 D&B) shows no single method dominates segmentation + retrieval across Replica/ScanNet++/HM3D. Key conclusion: language fields and the explicit DINOv2 fingerprint bank are **complementary** — language field for novel-object discovery, object library for per-instance identity + cheap dynamic updates. 4 GB GPU is barely feasible for LangSplat on small scenes; not multi-room.
+
+---
+
+## [2026-06-04] research+ingest | consumer-robot-vacuum-mapping
+
+Research on production robot vacuum floor mapping 2023–2026 (Roborock S8 MaxV Ultra, Dreame L20/X40 Ultra, iRobot j9+, Dyson 360 Vis Nav, Ecovacs X5 Pro). 11 valid captures (5 bot-walled). New page: `consumer-robot-vacuum-mapping`. Covers room segmentation (RoomsSeg watershed + ROSE² DFT academic SOTA), furniture-move timeline (2–5 runs), multi-floor architecture (independent 2D maps), obstacle classification (SLAM layer cannot distinguish table leg from wall), and gap vs SLAM Toolbox (comparable raw accuracy, gap is semantic labels + map update policy).
+
+## [2026-06-04] research+ingest | commercial-home-robots-perception
+
+Research on perception/mapping stacks of commercial home robots beyond robot vacuums. 10 sources captured and ingested. New page: `commercial-home-robots-perception`.
+
+Key findings by robot:
+- **Astro:** V-SLAM confirmed (Amazon Science primary posts); visual odometry → loop closure → bundle adjustment, 6-DOF on-device; sensor fusion with wheel encoders + IMU; deep-learning for lighting-invariant representations; multi-layer long-term map (room-level to object-level); person-following with proxemics; 2D obstacle map pushed to cloud only at end of exploration run.
+- **Dyson 360 Vis Nav:** 360° fisheye-only SLAM (no LiDAR confirmed by both Dyson primary and independent reviewer); 26 sensors for obstacle avoidance and dust detection (separate from nav camera); 71mm position accuracy; nav layer / collision layer definitively separate (camera NOT used for cable/pet avoidance).
+- **Matic:** 5 RGB+IR cameras, no IMU, no LiDAR; Jetson Orin Nano 4GB; image-to-voxel NN producing 1cm³ voxels; absolute map (dock is just a landmark); night operation via IR LEDs; full on-device for privacy+latency; co-founder AMA is unusually detailed primary source.
+- **Ballie:** spatial LiDAR confirmed (TechCrunch CES 2024); front+rear cameras; floor plan mapping; repeated delays, not yet shipping.
+- **Servi:** LiDAR+cameras, classical structured-environment nav, cloud fleet management; restaurant context, not transferable to home.
+
+Transfer lessons for home tidying robot: Matic's stack is most transferable; Astro's multi-layer map is the right conceptual model; nav/collision layer separation is universal pattern; absolute maps strictly better than relative-to-dock; semantic room understanding is shallow user-labelled in all commercial systems (still a research frontier).
+
+---
+
+## [2026-06-04] research+ingest | apple-roomplan
+
+Researched Apple RoomPlan parametric room scanning and Vision Pro spatial computing. 9 sources captured; 7 substantive (2 WWDC stubs discarded). Rich algorithmic primary source from Apple ML Research article (`machinelearning.apple.com/research/roomplan`).
+
+**New page `apple-roomplan`** covers: (1) what RoomPlan produces — parametric `CapturedRoom` struct with typed 2D `Surface` and 3D `Object` cuboids, USD export, not a point cloud; (2) Room Layout Estimation algorithm — two-stage: bird's-eye U-Net on semantic+Z-sliced point cloud (512×512×12, 3 cm×30 cm voxels, supports up to 15 m×15 m rooms) producing corner+edge maps → line proposals → line-verification → lifted to 3D; orthographic EfficientNet for door/window detection on per-wall projections; (3) 3DOD pipeline — local 48×32×24 frustum 3D Conv U-Net (15 cm voxels, 35 features/voxel) + global scene detector for large objects + box fusion with wall snapping; (4) 16-category furniture taxonomy with category breakdown; (5) all three NNs run on Apple Neural Engine (ANE), quantized/pruned to avoid thermal throttling in 5-minute scans; (6) stated accuracy: 95%/95% walls, 90%/90% doors, 91%/90% 3DOD at 30% IoU; practical accuracy ±5 cm per wall, 37 cm accumulated on 6.45 m room; (7) known limitations: no ceiling, 16 cm wall thickness, rectangular simplification, mirror/glass failures, single floor; (8) iOS 17 MultiRoom — StructureBuilder API for merging multiple rooms, ARWorldMap relocalization or continuous ARSession for shared coordinate frame; (9) Vision Pro uses mesh+plane detection (not RoomPlan — RoomPlan not available on visionOS); (10) §8 transfer lessons for our passive-stereo + 2D LiDAR design — bird's-eye line detection ≈ SLAM Toolbox analogy, object bounding box schema identical to our object library, wall-snap fusion useful, vertical dimension gap (2D LiDAR = one horizontal slice), production ceiling quantified.
+
+Sources: Apple ML Research article, WWDC22 session 10127 transcript, WWDC23 session 10192 transcript, it-jim practitioner review, it-jim API guide, Apple developer overview.
+
+---
+
 ## [2026-06-02] synthesis | passive-stereo-robustification
 
 Librarian synthesis pass (dispatched from `drone-prototype`). The prototyper + human worked out, over the last few sessions, a full strategy for making **passive stereo robust enough for indoor SLAM without expensive LiDAR** — the consumer-product cost tenet. The knowledge was scattered across `visual-inertial-slam`, `indoor-cluttered-slam`, `learned-slam`, `close-range-depth-sensors` and the prototyper's personal log; consolidated into one cited page `passive-stereo-robustification`.
@@ -257,3 +320,48 @@ First hands-on validation of the in-hand SVPRO stereo camera folded back from th
 - USB data-path gotcha (→ P-001): USB-A cable + USB-C-only laptop = silently non-data via a naive adapter; only a **powered USB-C dock** enumerated it, and the link dropped under load. Production needs a pinned, watchdogged USB path.
 
 **Conflicts with existing wiki:** the prior spec-sheet "1080P 60FPS" line overstated achievable frame rate on USB 2.0 — corrected in place to point at the measured 30 fps. No other conflicts; this is the first empirical data on a sensor previously described only from its spec sheet.
+
+## [2026-06-04] research | room-segmentation-floor-plan
+
+Research run on room segmentation and doorway detection from 2D occupancy grids.
+
+**Sources captured (7 new, in raw/research/room-segmentation/):**
+- `05-05-rose2-room-seg.md` — arXiv 2203.03519 (IEEE RAL 2022), ROSE², Luperto et al. Politecnico di Milano / Aalto. Geometry-only DFT-based clutter removal + wall detection; benchmark: 73.3 IoU vs Voronoi 28.65 on cluttered maps.
+- `06-06-selros-llm-room-seg.md` — arXiv 2403.12920 (2024), SeLRoS, Kim & Min Purdue. VRF geometric seg + Detic object detection + LLM hierarchical query; over-segmentation correction; 30 ProcTHOR environments.
+- `07-07-semantic-regions-no-obj-recog.md` — arXiv 2403.07076 (ICRA 2024), Bigazzi et al. Stanford ASL. Finetuned CLIP region classifier; appearance-based semantic mapping without object detection; HM3D/Matterport sim.
+- `08-08-rethinking-semantic-classification.md` — arXiv 2603.08512 (2026), Mozos et al. Orebro / Carlos III. VGG16 + object histogram confusion-based sub-room labelling; object search task improvement; 3-page workshop paper, real environments.
+- `09-09-topology-visual-room-seg-icra2025.md` — ICRA 2025, Bao et al. CUHK Shenzhen / AIRS. Active room segmentation: ray-casting door candidates + DNN visual refinement + within-room frontier + topology map; +10.2% precision vs Voronoi on Gibson.
+- `10-10-roborock-room-seg-patent.md` — US patent US20220051459A1. Roborock (claimed): NN pixel classification (room-inside/outside/type) + flood-fill propagation + camera-based door/window/object detection for semantic labels. *(patent — claims, not confirmed deployed reality)*
+- `11-11-door-status-detection.md` — arXiv 2203.03959 (2022), Antonazzi et al. University of Milan. General DNN trained on robot-viewpoint simulation + environment-specific fine-tuning ("qualification"); open/closed detection; same group as ROSE².
+
+**Key findings:**
+- ROSE² is the drop-in answer for the prototype: ROS nodes, no training, any SLAM backend. 73.3 IoU on real cluttered office maps. LiDAR-only (2D occupancy grid input only).
+- All semantic labelling methods require a camera pass. There is no published method for assigning kitchen/bedroom labels from a 2D occupancy grid without visual observation.
+- Doorway detection: geometry-only (Voronoi critical-points) gives candidates with high false-positive rate from furniture. Visual refinement (DNN on RGB) reduces false positives but requires camera.
+- Shipping products (Roborock patent) use NN + flood-fill + camera — confirming camera is necessary in practice. Manual user labelling remains dominant for room names in all shipping consumer products.
+- Open-floor-plan failure is shared across research and shipping: no wall = no segmentation boundary. Approaches: (a) user-drawn dividers, (b) CLIP appearance classifier (Stanford ASL), (c) object-location routing without hard boundaries.
+- SeLRoS LLM pipeline (simulation only) shows the LLM can use architectural priors + object lists to correct over-segmentation and label rooms. Real-world deployment not demonstrated.
+
+**Conflicts with existing wiki:** None. The wiki's [[scene-graph-world-model]] covers Hydra's room layer and HOV-SG's Watershed BEV segmentation, both of which require 3D mesh input — heavier than 2D grid. This new page fills the 2D-only gap those pages leave.
+
+**Open questions for user:** None requiring ruling. ROSE² is clearly the right first step for the prototype. The semantic labelling question is "camera sweep then LLM" — consistent with the existing [[map-then-navigate]] pattern.
+
+## 2026-06-04 — research+ingest: stereo-dense-reconstruction
+
+Research question: dense 3D reconstruction (TSDF/mesh/dense point cloud) from passive stereo — quality gap vs RGB-D, compute requirements, per-object on-demand feasibility, VPP coverage fix, active speckle projector gap closure.
+
+8 sources captured to `raw/research/stereo-dense-reconstruction/` (marker engine, CPU-only due to CUDA OOM on first attempt):
+- 01: Bartolomei et al. IJCV 2024 (VPP journal) — arXiv 2406.04345
+- 02: Bartolomei et al. ICCV 2023 (VPP conference) — arXiv 2309.12315
+- 03: Shi et al. ICRA 2024 (ASGrasp) — arXiv 2405.05648
+- 04: Fan et al. 2024 (InstantSplat) — arXiv 2403.20309
+- 05: vppstereo.github.io project page (thin)
+- 06: Open3D TSDF integration docs
+- 07: Wolf et al. 2024 (GS2Mesh) — arXiv 2404.01810
+- 08: Guo et al. 2023 (depth completion) — arXiv 2303.15840
+
+Audit: 0 issues. All captures valid.
+
+New wiki page: [[stereo-dense-reconstruction]]. Index updated.
+
+Note: marker engine was OOM-killed (exit 137) on first attempt with CUDA_VISIBLE_DEVICES unset. Resolved by running with CUDA_VISIBLE_DEVICES="" on subsequent captures. This is a kit-level learning (logged to master_notes.md).

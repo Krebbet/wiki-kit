@@ -24,6 +24,16 @@ The disagreement narrows once mission regime is fixed — it is closer to a scop
 - **Vision/event wins:** SWaP-constrained and cost-sensitive platforms, agile low-latency reaction, GNSS-denied where weight matters, consumer/prosumer unit economics.
 - Both concede the other's strong regime. The genuinely contested middle is **high-speed obstacle avoidance in unstructured outdoor environments**, where 01 says vision's depth range is disqualifying and 03 + the RPG work say it is not.
 
+## Commercial home robots — additional evidence *(from [[commercial-home-robots-perception]])*
+
+The commercial home robot field (2021–2025) shows the same split at product level:
+
+- **Vision-only camp (Position B):** Dyson 360 Vis Nav (fisheye-only SLAM, shipping), Matic (5-camera no-IMU/LiDAR, Jetson Orin 4GB, shipping). Both successful for the indoor slow-navigation regime.
+- **LiDAR camp (Position A):** Samsung Ballie (spatial LiDAR, not yet shipped), Bear Robotics Servi (LiDAR+cameras, shipping commercially in restaurants).
+- **Undisclosed:** Amazon Astro (V-SLAM confirmed, sensor modalities undisclosed).
+
+Neither camp has a decisive commercial win in home robots. The indoor slow-navigation regime (< 0.5 m/s, structured home environment) is distinctly easier than high-speed outdoor avoidance — Vision-only *works* here (Dyson, Matic), but this doesn't resolve the contested outdoor/high-speed middle.
+
 ## What would resolve it
 
 - A head-to-head benchmark on the contested middle (high-speed outdoor avoidance) with matched platforms.
@@ -44,3 +54,4 @@ The disagreement narrows once mission regime is fixed — it is closer to a scop
 
 - [[lidar-for-uav-autonomy]] · [[visual-inertial-slam]] · [[event-cameras]] · [[event-cameras-for-uavs]] · [[eth-rpg-scaramuzza]] · [[skydio-autonomy-stack]]
 - [[drone-sensors-for-autonomy]] · [[drone-autonomy-state]] — where this tension propagates
+- [[commercial-home-robots-perception]] — commercial evidence for both camps in the home robot domain (2021–2025)

@@ -202,6 +202,7 @@ Each layer builds on the one below. The anchor (pose graph + sparse cloud) is th
 - [[slam]] — SLAM hub; RTAB-Map two-gate architecture and per-frame mapping pipeline
 - [[slam-toolbox]] — the recommended 2D LiDAR SLAM for clean floor plans
 - [[ros2-nav2]] — Nav2 architecture; STVL for Tier 1 voxel occupancy; TaskSLAM-Bench results
+- [[stereo-dense-reconstruction]] — TSDF/mesh methods from passive stereo: why the coverage gap blocks Tier 2 room-scale, VPP fix, GS2Mesh per-object path, compute envelope
 - [[scene-graph-world-model]] — ConceptGraphs / HOV-SG / DovSG for the object library
 - [[semantic-object-memory]] — persistent object-location memory design
 - [[dynamic-object-handling]] — DynaSLAM (clean map building) + POCD (between-session change detection)
