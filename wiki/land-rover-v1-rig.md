@@ -322,6 +322,10 @@ sided foam tape (mount modules), needle-nose pliers.
 **Likely already have:** USB-C **data** cable (flash the ESP32), printer (calibration checkerboard).
 
 ### Assembly order
+> 📖 **Full step-by-step walkthrough with wiring diagrams + the reasoning for each step:**
+> [[land-rover-v1-build-guide]] (beginner-friendly build companion). The checklist below is the
+> summary; the build guide is the do-this-then-that.
+
 1. Assemble chassis (motors, wheels, deck).
 2. Solder headers on the 2× TB6612; wire motor + power leads.
 3. Power distribution: Deans pigtail → lever connectors → TB6612 / buck / hub-feed (+ cap). **Multimeter-check 5 V + polarity before connecting the ESP32.**
