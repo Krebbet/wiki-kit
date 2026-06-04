@@ -4,6 +4,16 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-03] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-06-03). Sources scanned: Reddit r/MachineLearning+r/LocalLLaMA+r/MLScaling, HuggingFace Papers trending, arXiv cs.LG/cs.CL, Import AI #459. 5 papers captured and ingested; 10 added to watchlist.
+
+**Captured and ingested:** [[skillopt]] (arXiv:2605.23904, Microsoft, top HF trending — text-space skill optimizer), [[high-entropy-tokens-rlvr]] (arXiv:2506.01939, NeurIPS 2025 — forking-token gradient masking), [[spurious-rewards-rlvr]] (arXiv:2506.10947 — GRPO clipping bias with random rewards yields +21pp), [[llamarl]] (arXiv:2505.24034, Meta — async RL framework 10.7× speedup at 405B), [[seal-self-adapting]] (arXiv:2506.10943, MIT/Harvard — RL-trained self-edit generation for weight updates).
+
+**Conflict extended:** [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] — added Position D ([[spurious-rewards-rlvr]]: clipping bias amplifies pretrained behaviors regardless of reward correctness; model-family-dependent).
+
+---
+
 ## [2026-04-21] bootstrap | AI research and engineering trends
 
 Initial bootstrap. Schema and commands tailored for AI research trends (LLM/SLM training, fine-tuning, RL, architectures, CV, evolutionary LLMs). Ready to receive first source.
@@ -131,3 +141,12 @@ Trend read this week: recurrent-depth / latent-fixed-point reasoning surged (GRA
 Pre-existing uncommitted changes at run start: prior 2026-05-04 / 2026-05-11 / 2026-05-18 weekly-brief output never committed by the user — flagged separately in the email run-notes so this week's diff stays distinguishable. This run again unavoidably extended conflict/index/log/revisions/watchlist files already in that pre-existing set (skill requires extending open conflict + meta files).
 
 All changes left uncommitted on `ai-trends-wiki` per skill contract — sixth run.
+
+---
+2026-06-01 — /research openclaw-memory
+
+Topic: OpenClaw as a memory system for Claude Code.
+Sources captured: 8 (2 failed — learnopenclaw.ai SSL cert expired, milvus.io 403 bot-wall).
+Pages written: [[openclaw]], [[openclaw-claude-code-memory]].
+New index section: "Agent frameworks & memory".
+Key findings: OpenClaw's four-layer Markdown-based memory (bootstrap / JSONL transcript / context window / SQLite retrieval index); Hindsight as the shared-bank bridge to Claude Code; Anthropic explicitly rejected subscription-scale always-on third-party agents (Apr 2026) — production pattern is a dedicated API harness, not Claude Code subscription.

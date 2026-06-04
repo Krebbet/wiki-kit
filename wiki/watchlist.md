@@ -9,6 +9,9 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 ## Architectures & sequence models
 
+- **LoopMDM: Looped Diffusion Language Models (arXiv:2605.26106)** — Selectively loops early-middle DiT layers in masked diffusion models; 3.3× fewer training FLOPs to match standard MDM performance, +8.5 pp GSM8K; loop count varied at inference for flexible compute scaling. Extends [[hyperloop-transformers]] cluster to the diffusion-LM domain. *(weekly-brief 2026-06-03.)*
+- **Depth-Attention: Cross-Layer Value Mixing (arXiv:2606.05014)** — Lets each attention layer query across keys from all previous layers at the same token position; zero added parameters, <0.01% extra FLOPs; up to +2.3 accuracy across 360M–3B models. *(weekly-brief 2026-06-03.)*
+- **"Do Language Models Need Sleep?" (Lee, McLeish, Goldstein, May 2026)** — Offline recurrence / memory consolidation pass for fast-weight Transformers; 'sleep' phase integrates across-context memory outside inference; novel framing of in-context vs. consolidated memory. *(weekly-brief 2026-06-03.)*
 - **Mamba-2 (Dao & Gu 2024)** — State-space-model line; fixed-size recurrent state. Cited as a baseline by Titans/Hope, framed as the "fixed-state-suffices" position [[titans-miras]] contests. *(Cited in: titans-miras, nested-learning, eggroll, in-place-ttt.)*
 - **Gated DeltaNet** — Linear-recurrent baseline beaten by Titans. *(titans-miras, nested-learning, in-place-ttt.)*
 - **DeltaNet / RWKV-7 / GLA / RetNet / Comba** — Modern-RNN / linear-attention family that Hope and In-Place TTT compete against on long-context benchmarks. RWKV-7 is also EGGROLL's workhorse model (constant state + huge inference batch). *(eggroll, nested-learning, in-place-ttt.)*
@@ -51,6 +54,10 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 ## RL / post-training
 
+- **GURU: Revisiting RL for LLM Reasoning from a Cross-Domain Perspective (arXiv:2506.14965, ACL 2026)** — 92K verifiable RL examples across 6 domains (Math, Code, Science, Logic, Simulation, Tabular); open dataset release; challenges assumption that RLVR only elicits pre-trained knowledge. Trending on HF Papers this week. *(weekly-brief 2026-06-03.)*
+- **Faster Synchronous On-Policy RL via Straggler-Aware Group Sizing (arXiv:2606.02218)** — Addresses DAPO/GRPO training wall-clock bottleneck caused by slow rollout stragglers; adaptive group sizing keeps synchronous on-policy competitive with async approaches. *(weekly-brief 2026-06-03.)*
+- **MemTrain: Self-Supervised Memory Agent Training (arXiv:2606.03197)** — GRPO-trained memory agents on unlabeled Wikipedia via masked entity reconstruction + memory recall proxy tasks; +17.67 pp over task-specific post-training on long-text QA without labeled data. *(weekly-brief 2026-06-03.)*
+- **MHGPO: Multi-Agent Heterogeneous Group Policy Optimization (arXiv:2506.02718, ACL 2026)** — Estimates relative advantages across heterogeneous agent-group rollouts; shifts optimization from per-agent to global system success; outperforms critic-network baselines at lower compute. *(weekly-brief 2026-06-03.)*
 - **DAPO (Yu 2025) / DCPO (Yang 2025) / SSPO (Yang 2025)** — Token-level reweighting fixes for GRPO; DFPO unifies the underlying failure mode (gradient non-cancellation) and proposes simpler stop-gradient transforms. *(token-gradient-cancellation.)*
 - **TEPO: Token-Level Policy Optimization (arXiv:2604.12736)** — Sequence-level likelihood bridge between group reward and per-token KL mask; stabilizes GRPO. Adjacent to RLSD and DFPO. *(weekly-brief 2026-04-27.)*
 - **GSPO (Zheng 2025)** — Sequence-coupled multiplicative-weight GRPO variant that DFPO identifies as structurally non-cancelling. *(token-gradient-cancellation.)*
@@ -96,6 +103,9 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 ## Self-improving agents
 
+- **BES: Self-Improving LMs with Bidirectional Evolutionary Search (arXiv:2605.28814, Harvard/MIT)** — Couples forward evolutionary search (recombining partial trajectories) with backward goal decomposition into checkable subgoals; provides dense intermediate feedback; +3.8% on multi-hop reasoning for Llama-3.1-8B-Instruct. *(weekly-brief 2026-06-03.)*
+- **GrepSeek: Training Search Agents for Direct Corpus Interaction (arXiv:2605.29307, UMass Amherst)** — Trains compact LLMs to search corpora via shell commands (grep/find) rather than index-based retrieval; 7.6× acceleration via parallel execution; competitive with RAG on 7 QA benchmarks. *(weekly-brief 2026-06-03.)*
+- **PEFT Scaling: Towards Million Personal Models of Trillion Parameters (arXiv:2606.02437)** — Reframes LoRA-style adapters not as a budget substitute but as persistent personal model state; argues PEFT can scale to millions of distinct personalized instances on shared trillion-parameter foundations. *(weekly-brief 2026-06-03.)*
 - **Darwin Gödel Machine (DGM, Zhang 2025a, arXiv:2505.22954)** — HGM's primary baseline; greedy-benchmark-score parent selection that HGM replaces with CMP. *(huxley-godel-machine.)*
 - **Self-Improving Coding Agent (SICA, Robeyns 2025, arXiv:2504.15228)** — HGM's secondary baseline. *(huxley-godel-machine.)*
 - **Gödel Machine (Schmidhuber 2003)** — Theoretical anchor HGM claims to approximate under Assumption 1. *(huxley-godel-machine.)*

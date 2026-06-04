@@ -55,6 +55,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[scalelogic]] | ScaleLogic (arXiv:2605.06638). Controlled synthetic benchmark for RL reasoning scaling: power-law T ∝ D^γ holds with R² > 0.99 across 5 logical-expressiveness levels and 3 RL algorithms (DAPO/GRPO/GSPO); γ ranges 1.04 (implication-only) → 2.60 (+quantification). Training on the most-expressive curriculum transfers +10.66 pp across 8 math/reasoning benchmarks; simpler curricula plateau at +2–3 pp. "What you train on dominates how much." |
 | [[anti-self-distillation]] | AntiSD (Xiaohongshu/CAS, arXiv:2605.11609). PMI identity (Lemma 2): default on-policy self-distillation equals conditional PMI, so it structurally suppresses high-entropy deliberation tokens. Fix: *ascend* JSD (bounded advantage) + entropy-gated activation; potential-based shaping (optimum-invariant). Reaches GRPO accuracy in 2–10× fewer steps, up to +11.5 pp (Qwen3-4B 51.3→62.8); default SD collapses below base on every model. Code + WandB. Distinct SD instantiation from [[rlsd-self-distilled-rlvr]]. |
 | [[delta-token-credit]] | DelTA (Renmin U / Ant Intl, arXiv:2605.21467). Reframes GRPO/DAPO updates as a linear discriminator over token-gradient vectors; shared formatting/entity tokens dominate both centroids and dilute reward-separating directions. Fix: per-token discriminative-contrast coefficients λ∈[0.8,1.2] reweight the DAPO surrogate. +3.26 pp (Qwen3-8B-Base) / +2.62 pp (14B) on 7 hard-math benchmarks; top-50% λ tokens beat full-token DAPO, bottom-50% collapse training. Code released. Third frame in [[conflicts/sparse-policy-selection-vs-gradient-cancellation]]. |
+| [[high-entropy-tokens-rlvr]] | Alibaba/Qwen (Wang et al., NeurIPS 2025, arXiv:2506.01939). Restricting RLVR gradient updates to the ~20% highest-entropy "forking" tokens matches or beats full-gradient training; gains scale with model size: +11.04 AIME'25 and +7.71 AIME'24 at Qwen3-32B. Active training-time intervention complementary to [[reasonmaxxer]]'s post-hoc observation. |
+| [[spurious-rewards-rlvr]] | (arXiv:2506.10947, June 2025). GRPO with random or negatively-correlated rewards yields +21.4 pp MATH-500 on Qwen2.5-Math-7B (vs +29.1 real rewards); gain attributed to GRPO clipping bias amplifying high-prior pretrained behaviors, not reward learning. Fourth frame in [[conflicts/sparse-policy-selection-vs-gradient-cancellation]]; model-family-dependent (fails for Llama3/OLMo2). |
+| [[llamarl]] | Meta (arXiv:2505.24034, May 2025). Production async RL framework for Llama 3 post-training: single-controller PyTorch design decouples rollout from update via colocated offloading + async off-policy training + RDMA weight sync. 10.7× speedup over DeepSpeed-Chat-like synchronous systems on 405B policy; formal proof of async speedup. First RL infrastructure page in this wiki. |
 
 ## Self-supervised learning
 
@@ -68,6 +71,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[huxley-godel-machine]] | KAUST/Schmidhuber HGM: tree-search self-improving coding agent that scores parents by *clade* (descendant-aggregated) success rate (CMP) instead of own benchmark score. Approximates Gödel Machine under stated assumptions. SWE-bench Verified 61.4%, top-10. |
+| [[skillopt]] | Microsoft Research (arXiv:2605.23904, May 2026). First systematic text-space optimizer for agent skills: a separate optimizer model proposes bounded add/delete/replace edits to a skill document, accepted only on strict validation improvement. Best-or-tied on all 52 (model × benchmark × harness) cells; +24.8 pp GPT-5.5 in Codex; skills transfer across models and harnesses. Zero deployment overhead. |
+| [[seal-self-adapting]] | MIT/Harvard (SEAL, arXiv:2506.10943, June 2025). LLMs generate their own fine-tuning data and training directives ("self-edits") then apply gradient-based weight updates; outer RL loop trains the model to produce effective self-edits via downstream task performance reward. Only approach where adaptation strategy itself is a learned RL behavior. |
 
 ## Computer vision / 3D
 
@@ -77,6 +82,15 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[moonlake-world-models]] | Moonlake position post: pure 2D video diffusion cannot yield interactive world simulators; proposes hybrid pipeline binding *neutral information-free latent codes* to coarse 3D mesh patches as scaffolds for video diffusion. Position only — no benchmarks. |
 | [[asymflow]] | Stanford (arXiv:2605.12964). Rank-asymmetric flow-matching velocity: full-rank data term, low-rank PCA-subspace noise term — lets a vanilla DiT model pixel space unmodified. ImageNet-256 FID **1.57** (best plain-transformer pixel diffusion); Procrustes latent→pixel lift makes AsymFLUX.2 beat the FLUX.2-klein latent base. Pixel-side evidence in [[conflicts/pixel-space-vs-latent-space-generation]]. |
 | [[sensenova-u1]] | SenseNova-U1 / NEO-unify (arXiv:2605.12500). End-to-end unified multimodal (8B dense, 30B-A3B MoE) with **no VE and no VAE**: single MoT backbone, AR cross-entropy (language) + pixel-space flow matching (vision). Top open-source GenEval 0.91 / OpenING 9.16 / RealUnify 52.4; 32× pixel compression matches FLUX.1-dev VAE PSNR at 8×. Pixel-side anchor of [[conflicts/pixel-space-vs-latent-space-generation]]; parallels [[vision-banana]]. |
+
+---
+
+## Agent frameworks & memory
+
+| Page | Summary |
+|---|---|
+| [[openclaw]] | OpenClaw: MIT-licensed, local-first AI agent runtime (formerly Moltbot/ClawdBot). Four-layer memory architecture (bootstrap files / session transcript / context window / retrieval index); plain-Markdown workspace; 70/30 vector/BM25 hybrid search; dreaming consolidation; providence labels (Apr 2026). |
+| [[openclaw-claude-code-memory]] | Giving Claude Code persistent memory via OpenClaw-derived patterns: Hindsight shared banks (bidirectional cross-tool recall), Channels/Telegram (always-on agent), Mem0 plugin (drop-in replacement). Known constraint: Anthropic stated Claude Code is not designed for always-on third-party agents at scale — production use should build a dedicated API harness. |
 
 ---
 
@@ -92,7 +106,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[conflicts/regression-vs-diffusion-view-synthesis]] | SHARP claims feedforward regression Pareto-dominates diffusion for nearby-view single-image synthesis. Awaiting diffusion-side defence (Gen3C, etc.). |
 | [[conflicts/pure-video-vs-3d-world-models]] | Moonlake claims pure video diffusion cannot yield interactive world simulators. Awaiting Sora-class pure-scaling defence. |
 | [[conflicts/ssm-vs-associative-memory-taxonomy]] | Mamba-3 (§5.4) argues complex-state SSM dynamics aren't expressible inside MIRAS; [[nested-learning]] presents MIRAS as a unifier. Framing-level dispute about which lens designs new models. |
-| [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] | [[reasonmaxxer]] shows RL touches only ~1–4% of tokens, all in base top-5, all at high-entropy positions (rank-32 LoRA suffices). Directly contradicts [[token-gradient-cancellation]]'s premise that the bottleneck is gradient flow across many shared tokens. [[delta-token-credit]] adds a discriminator-view third frame: most tokens are net-negative, not inert. |
+| [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] | Four-way mechanistic debate on why RLVR works. A: [[reasonmaxxer]] (sparse 1–4% high-entropy tokens drive gains). B: [[token-gradient-cancellation]] (gradient cancellation across shared tokens is the bottleneck). C: [[delta-token-credit]] (most tokens net-negative, discriminator reweighting fixes). D: [[spurious-rewards-rlvr]] (GRPO clipping bias amplifies pretrained behaviors regardless of reward correctness; model-family-dependent). |
 | [[conflicts/pixel-space-vs-latent-space-generation]] | [[sensenova-u1]] + [[asymflow]] argue the VAE/encoder latent bottleneck is unnecessary (pixel-space matches latent at higher compression; AsymFLUX.2 pixel-finetune beats FLUX.2-klein latent base). Contradicts [[coladlm]]'s latent-VAE-is-the-scaling-direction bet. Resolved per-domain; CoLa-DLM's high-compute claim unrefuted at its own scale. |
 
 ---

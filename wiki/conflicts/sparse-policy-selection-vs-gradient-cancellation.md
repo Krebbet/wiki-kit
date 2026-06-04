@@ -1,6 +1,6 @@
 # Sparse Policy Selection vs Token-Gradient Cancellation
 
-**Status:** open. Both positions captured 2026-05-11.
+**Status:** open. Positions A+B+C captured 2026-05-11; Position D added 2026-06-03.
 
 ## Position A — RL touches ~1–4% of tokens; the rest is inert
 
@@ -40,6 +40,23 @@
 - *Agrees with Position B (cancellation):* "shared/formatting tokens dominate the centroids" is a discriminator-space restatement of the gradient-cancellation pathology — the same shared-token problem in different math.
 - *Beyond both:* Position A treats the ~97% as **inert** and Position B treats shared tokens as merely needing to **cancel to zero**; DelTA's bottom-λ-collapses-training result says a large fraction of tokens is **net-negative**, not neutral. The remedy differs accordingly — surrogate *reweighting* (DelTA) vs gradient *orthogonalization* (DFPO) vs entropy-gated subset *selection* (ReasonMaxxer): three distinct fixes for one underlying "most tokens shouldn't be updated equally" observation.
 
+## Position D — reward signal is partially or wholly spurious; clipping bias drives gains
+
+**Source:** [[spurious-rewards-rlvr]] (arXiv:2506.10947, June 2025).
+
+**Claim:** GRPO training with random or negatively-correlated rewards still yields +21.4 pp MATH-500 on Qwen2.5-Math-7B (vs. +29.1 pp from real rewards). The gain does not come from learning the reward signal. It comes from a clipping bias in GRPO's PPO surrogate that systematically amplifies behaviors already present in the base model's pretrained distribution — the clip term pushes high-prior behaviors further regardless of reward label.
+
+**Basis:** Three reward conditions (ground-truth, random, negatively-correlated) × two model families (Qwen, Llama3/OLMo2). Qwen2.5-Math-7B gains under random rewards; Llama3 and OLMo2 do not. Case study: "code reasoning" frequency (65% → >90%) rises under spurious rewards — it is a high-prior Qwen behavior being amplified, not a learned reward response.
+
+**Implication:** A significant fraction of reported Qwen-family RLVR results may reflect clipping-driven amplification of pretrained behaviors, not genuine policy improvement from reward learning. RLVR benchmarks cannot be attributed to reward-signal learning without a spurious-reward ablation across model families.
+
+**How it cuts across A, B, and C:**
+- *Contradicts Position A:* Position A (ReasonMaxxer) frames RL as selecting better policy choices from meaningful signal at 1–4% of tokens. Position D says the signal can be noise and gains still appear — undermining the premise that RL is discovering genuinely better choices.
+- *Contradicts Position B:* Position B (DFPO) attributes gains to gradient exchangeability; if reward correctness is irrelevant, fixing cancellation cannot be the primary mechanism either.
+- *Consistent with Position C flavor:* DelTA's discriminator view implies shared tokens are net-negative; Position D is consistent if the "amplifiable behaviors" are driven primarily by the few high-discriminator tokens anyway — but Position D doesn't require token-level analysis; clipping operates at the trajectory level.
+
+**Critical caveat:** Model-family-dependent. Effect requires a base model with amplifiable high-prior behaviors (Qwen2.5-Math has them; Llama3/OLMo2 do not). Position D may co-exist with Positions A/B/C in model families where spurious rewards produce no gain.
+
 ## What the conflict is really about
 
 Three live readings, both papers consistent with each:
@@ -57,6 +74,6 @@ Two concrete tests, in order of cost:
 
 ## Related
 
-- [[reasonmaxxer]], [[token-gradient-cancellation]], [[delta-token-credit]] (discriminator-view third frame), [[rlsd-self-distilled-rlvr]] (also questions standard GRPO from a different angle).
+- [[reasonmaxxer]], [[token-gradient-cancellation]], [[delta-token-credit]] (discriminator-view third frame), [[spurious-rewards-rlvr]] (clipping-bias fourth frame), [[rlsd-self-distilled-rlvr]] (also questions standard GRPO from a different angle).
 - [[gepa-reflective-prompt-evolution]] — parallel "RL was over-engineering" argument from prompt-space.
 - [[conflicts/grpo-vs-evolution-strategies]] — adjacent (RL-vs-non-RL debate at the algorithm level rather than the per-token level).
