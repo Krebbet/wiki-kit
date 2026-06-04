@@ -13,7 +13,9 @@ Synthesis page; the load-bearing facts are cited inline to their home pages and 
 
 ## Related
 
-[[slam]] · [[indoor-cluttered-slam]] · [[visual-inertial-slam]] · [[learned-slam]] · [[close-range-depth-sensors]] · [[map-then-navigate]] · [[slam-toolbox]] · [[2d-lidar-slam]] · [[cheap-lidar-pricing-guide]] · [[home-tidy-drone-prototype]] · [[system-architecture]]
+[[sensor-weaknesses-and-fixes]] · [[slam]] · [[indoor-cluttered-slam]] · [[visual-inertial-slam]] · [[imu-vio-integration-reality]] · [[learned-slam]] · [[close-range-depth-sensors]] · [[camera-calibration-and-self-calibration]] · [[map-then-navigate]] · [[slam-toolbox]] · [[2d-lidar-slam]] · [[cheap-lidar-pricing-guide]] · [[home-tidy-drone-prototype]] · [[system-architecture]]
+
+> **Companion page:** [[sensor-weaknesses-and-fixes]] isolates the *sensor-rooted* (not software-fixable) causes of the relocalization geometry failure — ranked sensor weaknesses → ranked cheap sensor upgrades → the single highest-leverage change (active stereo / D435i). This page is the *software/algorithm* ladder; that page is the *hardware* lens on the same problem.
 
 ---
 
@@ -71,6 +73,8 @@ But the dense left↔right correspondences a speckle produces on an otherwise-bl
 - **Flat-wall planarity test** — project speckle on a known flat wall, reconstruct the 3D points, and check they form a plane at the right distance. This is the standard depth-camera QA step (cf. Intel RealSense **"Tare"** / on-target calibration). It's a one-tool acceptance check that the metric depth is true.
 
 **→ Candidate path to retire P-002.** Adding the flat-wall planarity test as a calibration-QA tool (when the projector arrives) is a concrete way to validate/tighten the calibration that the checkerboard solve left at prototype grade. Logged as a follow-up in the prototyper log (2026-06-02). *(synthesis.)*
+
+**See [[camera-calibration-and-self-calibration]]** for the full calibration treatment: why the prototype's offline solve hit a focal/baseline degeneracy (fronto-parallel poses) and how tilt+depth coverage + a known-distance anchor break it, plus the survey of **online / self-correcting calibration** (OpenVINS, OKVIS2-X, VINS-Fusion, Kalibr-as-reference, DSO photometric) for a robot that should tighten its own calibration over its life.
 
 ## 6. Hardware ladder — getting to active stereo, cheaply
 

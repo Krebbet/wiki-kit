@@ -6,6 +6,11 @@ A concrete consumer use-case integration: a single indoor drone that (R1) docks/
 
 **Platform:** Pivoted from aerial drone to a ground robot chassis for Phase 1 iteration. Aerial drone remains the long-term target; ground platform eliminates flight-safety, endurance, and vibration constraints so the perception / nav / world-model stack can be validated quickly and cheaply. Findings transfer directly — the sensor stack, SLAM pipeline, ROS 2 architecture, and server-side world brain are identical. The drone replaces the chassis in Phase 2.
 
+> **Cheap v1 rig (2026-06-02):** the concrete, minimal ground-rover build — tethered camera +
+> ESP32 motor teleop, no onboard computer, ~$275–320 CAD — is specced in [[land-rover-v1-rig]],
+> which **supersedes the aerial-oriented buy list below for the first ground build**. The buy
+> list below remains the heavier Jetson+LiDAR path for later/aerial use.
+
 **Sensor in hand:** SVPRO 1080P 60FPS USB stereo camera (3840×1080 side-by-side, UVC). Passive stereo — no active IR; depth via stereo matching. Usable for fiducial detection, passive visual odometry, and 2D object detection today. Metric depth for manipulation requires adding D435 (see [[close-range-depth-sensors]]). **Hands-on characterization (measured, not spec-sheet):** see *"SVPRO characterization (measured)"* under *What can start now* below — enumerates at 3840×1080 SBS MJPG @**30 fps over USB 2.0** (not the spec'd 60), baseline ≈57.8 mm, ~48% indoor depth coverage.
 
 ### Four workstreams

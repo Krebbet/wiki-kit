@@ -67,4 +67,6 @@ Synthesis hub assembled from existing wiki pages (each carries its own raw-sourc
 - [[drone-autonomy-state]] — deployment-maturity context
 - [[learned-slam]] — the AI/learning-based methods layer (neural LIO, learned VIO, edge 3DGS-SLAM, depth foundation models, learned place recognition)
 - [[passive-stereo-robustification]] — consumer-cost ladder to make passive stereo survive indoor texture starvation (IMU→VIO → dense RGB-D → learned front-end → active IR stereo)
+- [[relocalization-method-bakeoff]] — SOTA visual-SLAM / relocalization survey + the 2 picks (hloc SuperPoint+LightGlue; MASt3R-SLAM) to bench against RTAB-Map's failing PnP gate, with ready-to-run plans
+- [[camera-calibration-and-self-calibration]] — offline wide-FOV stereo calibration (focal/baseline degeneracy and how to break it) + online/self-correcting calibration survey (OpenVINS, OKVIS2-X, Kalibr, photometric)
 - [[nano-drone-compute]] — onboard-compute envelope that gates SLAM methods

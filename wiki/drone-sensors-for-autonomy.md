@@ -41,6 +41,7 @@ A reference map of the sensors used on AI-navigated and autonomous (or partially
 
 ## Related
 
+- [[sensor-weaknesses-and-fixes]] — sensor-rooted causes of the prototype's relocalization geometry failure (passive-stereo spurious-far depth, rolling shutter, calibration scale, no-IMU) and the cheapest fix (active stereo / D435i), with the depth-precision law and ranked upgrades
 - [[drone-autonomy-state]] — what these sensors enable, by maturity
 - [[lidar-vs-vision-autonomy]] — the central LiDAR-vs-vision sensor debate
 - [[lidar-for-uav-autonomy]] — LiDAR sensor classes and SLAM stack

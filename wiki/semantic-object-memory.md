@@ -63,6 +63,8 @@ The existing scene-graph literature (Hydra, ConceptGraphs, HOV-SG) tracks object
 
 This is complementary to scene-graph approaches (Hydra, ConceptGraphs): the scene graph tracks spatial relationships; the fingerprint library tracks per-instance identity and accumulated experience. See [[system-architecture]] (COMMAND CENTER, WORLD MAP) and [[home-tidying-robots]] (TidyBot personalisation — category-level; this extends to instance-level).
 
+**Concrete model + method choices** (segmenter, embedder, schema, re-ID match flow, threshold calibration) — firmed up and de-risked with a runnable prototype — live in [[object-fingerprint-memory]]. Headline: **DINOv2 ViT-S/14** (21M, 384-dim, Apache-2.0) for the re-ID embedding (instance-level, beats CLIP which is category-biased); **Grounding-DINO + MobileSAM** (primary) or **YOLO11n-seg** (fallback) for cut-out; multi-view storage + max-over-views cosine matching; hnswlib/FAISS index.
+
 See [[scene-graph-world-model]] for a full technical deep-dive on both systems plus DovSG (dynamic updates) and HOV-SG (query routing architecture).
 
 ## Key gaps
