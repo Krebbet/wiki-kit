@@ -310,6 +310,7 @@ If the drone can't reliably know whether a grasp succeeded (did the object actua
 
 ## Related
 
+- [[world-model-architecture]] — the WORLD MAP subsystem (§1) made concrete: the layered world-model form factor (anchor + object layer + change-detection loop) grounded in what the prototype proved; addresses §1 staleness + C2 (lost-vs-changed)
 - [[home-tidy-drone-prototype]] — Phase-1 physical build plan; buy list; fiducials-first staging
 - [[slam]] · [[fast-lio-mid360-orin]] · [[indoor-cluttered-slam]] — STATE UNDERSTANDING detail
 - [[onboard-grasp-perception]] — PERCEPTION PIPELINE, manipulation track (the C1 blocker)

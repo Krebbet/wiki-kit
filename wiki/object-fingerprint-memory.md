@@ -125,6 +125,8 @@ Source: `eda/EDA007-object-detection-state/major-findings.md`; `drone-prototype:
 
 ## Related
 
+[[world-model-architecture]] — **how this bank becomes Layer 2 of the home-tidy world model:** anchor
+each instance with a metric map-frame pose (now possible via EDA008 scale) + the revisit change-detection loop.
 [[semantic-object-memory]] — parent; high-level fingerprint proposal this page makes concrete.
 [[scene-graph-world-model]] — complementary world-model layer (category + spatial relations).
 [[onboard-grasp-perception]] — open-vocab detector domain-gap context; consumes fingerprints at grasp time.

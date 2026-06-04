@@ -109,7 +109,8 @@ front-end doing the frame→pose. That is the documented integration path
 
 [[relocalization-method-bakeoff]] · [[map-then-navigate]] · [[slam]] · [[system-architecture]] ·
 [[methods-reading-list]] · [[passive-stereo-robustification]] · [[indoor-cluttered-slam]] ·
-[[home-tidy-drone-prototype]]
+[[home-tidy-drone-prototype]] · [[world-model-architecture]] (this anchor is Layer 1 of the
+home-tidy world model — how objects + change layer on top)
 
 ---
 
