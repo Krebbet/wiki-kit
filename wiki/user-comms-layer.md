@@ -1,134 +1,231 @@
 # User Communication Layer
 
-How users interact with the home robot system. Sits entirely outside `drone-core` — a separate prototype repo (`drone-app`) that calls the server-side world brain via a well-defined API. See [[system-architecture]] § User Interface and [[voice-intent-task]] for the NLU research landscape.
+How the five system entities communicate with each other and with the user. The core transport is the home WiFi LAN; internet connects to cloud services. For prototype scope, cloud is stubbed locally.
+
+## Related
+
+[[system-architecture]] · [[voice-intent-task]] · [[ros2-server-bridge]] · [[drone-comms-wifi]] · [[comms-prototype-mandate]]
 
 ---
 
-## Pipeline architecture
+## Five entities
 
 ```
-Entry Point
-    ↓
-Voice Capture / STT
-    ↓
-Intent Parser  ←── world registry (rooms, known objects)
-    ↓
-Command Router
-    ↓
-drone-core API (robot nav goals / world queries)
-    ↓
-Response Synthesizer
-    ↓
-Entry Point (TTS / screen)
+┌──────────────┐     WiFi LAN     ┌──────────────────────────────┐
+│    DRONE     │◄────────────────►│      WORLD BRAIN             │
+│  (robot)     │  rosbridge/MQTT  │   (laptop / workstation)     │
+└──────────────┘                  │   SLAM · maps · object lib   │
+                                  │   REST API · WebSocket push  │
+                                  └──────────┬───────────────────┘
+                                             │ HTTP REST
+                                             │ WebSocket (status)
+                                  ┌──────────▼───────────────────┐
+                                  │       APP LAYER              │
+                                  │  STT · intent · router · TTS │
+                                  │  web UI · webhook adapters   │
+                                  └──────┬────────────┬──────────┘
+                                         │            │
+                          ┌──────────────▼──┐  ┌─────▼──────────┐
+                          │   USER / PHONE  │  │  GOOGLE HOME   │
+                          │  push-to-talk   │  │  voice command │
+                          │  status display │  │  webhook POST  │
+                          └─────────────────┘  └────────────────┘
+
+                                   ┌────────────────┐
+                                   │    CLOUD       │
+                                   │  (stub in V1)  │
+                                   │  model updates │
+                                   │  remote access │
+                                   └────────────────┘
 ```
 
 ---
 
-## Layer 1 — Entry points
+## Entity roles and data ownership
 
-Where voice commands originate. Each has a different integration cost.
-
-| Entry point | Mic access | Integration | Notes |
+| Entity | Runs on | Owns | Communicates via |
 |---|---|---|---|
-| **Phone app** (iOS/Android) | Direct, push-to-talk or wake-word | Low | Can also show map + status; prototype target |
-| **Smart speaker** (Alexa / Google Home) | Wake-word | High — custom Skill/Action, cloud routing | Adds ~300–800 ms cloud latency; privacy cost |
-| **Sonos speaker** | None (output only) | Medium — Sonos HTTP Control API (LAN) | Good for TTS playback; no microphone in most models |
-| **Web dashboard** | Browser mic or text | Low | Manual override, monitoring, no STT needed |
-
-**Prototype target:** phone web-app (push-to-talk, no cloud dependency, no app-store friction for early iteration).
+| **Drone** | Robot onboard (Pi/laptop tether) | Sensor streams, current pose, task queue | rosbridge WebSocket → World Brain |
+| **World Brain** | Home laptop / workstation | Maps, object library, user preferences, room labels, task history | REST API (app ↔ brain), rosbridge (brain ↔ robot) |
+| **App Layer** | Same machine as World Brain (prototype) | STT pipeline, intent parser, Google Home webhook, web UI server | HTTP REST + WebSocket to World Brain; WebSocket to phone browser |
+| **User / Phone** | Phone browser | — | WebSocket (status) + HTTP (commands + audio upload) |
+| **Google Home** | Google cloud | — | HTTPS POST webhook → App Layer |
+| **Cloud** | Remote (stub in prototype) | Model weights, backup maps, remote access | HTTPS (app → cloud) |
 
 ---
 
-## Layer 2 — Voice capture / STT
+## Data hierarchy — what lives where
 
-| Option | Latency | Privacy | Notes |
+| Data | Owner | Storage | Update frequency |
 |---|---|---|---|
-| **Whisper small (local)** | ~0.5 s | Full | Runs on laptop/server; prototype target |
-| Whisper medium (local) | ~2 s | Full | Better accuracy, acceptable for non-realtime queries |
-| Deepgram (cloud) | ~200 ms | Cloud | Lower latency; requires internet |
-| Google STT (cloud) | ~300 ms | Cloud | Battle-tested; quota costs |
-| Porcupine (wake word only) | <100 ms | Full | Offline wake-word detection; pairs with any STT |
+| Occupancy grid (2D floor plan) | World Brain | Local disk (`.pgm`) | Per mapping session |
+| SLAM pose graph | World Brain | Local disk (RTAB-Map `.db`) | Real-time during nav |
+| Object library (labels, 3D bbox, DINOv2 embeddings) | World Brain | Local DB (SQLite / JSON) | Per semantic sweep |
+| Room labels and layout | World Brain | Local config | User-set, persists across sessions |
+| User preferences ("socks go in bedroom") | World Brain | Local config | User-set |
+| Current robot pose | Drone → World Brain | In-memory (World Brain) | ~10 Hz continuous |
+| Robot status (battery, task, mode) | Drone → World Brain | In-memory | ~1 Hz + events |
+| Active task queue | Drone | On-robot memory | Per task dispatch |
+| Voice audio | Phone → App | Transient (not stored) | On command |
+| Parsed intent | App | Transient | On command |
+| Task history / completion log | World Brain | Local DB | Per task |
+| Cloud model weights | Cloud → World Brain | Local cache | Rare (async) |
+| Remote map backup | World Brain → Cloud | Cloud storage | Per session (opt-in) |
 
-**Prototype target:** Whisper small on the home server. Wake word optional for V1; PTT avoids it.
+**On-robot minimum:** current map tile for local obstacle avoidance + active task queue. Everything else lives in World Brain. Drone must be safe at WiFi dropout — it holds its last task state and pauses/RTL rather than continuing blind.
 
 ---
 
-## Layer 3 — Intent parser
+## Communication channels
 
-Maps free-form text to a structured command. Three approaches:
+### Drone ↔ World Brain (rosbridge WebSocket)
 
-- **LLM-based** (Claude Haiku): flexible, handles novel phrasings; grounded via system prompt containing current room list and known objects from world registry. Best for prototype — adapts without retraining as the world model grows.
-- **Rule-based NLU** (Rasa, Snips): deterministic, ~10ms latency, poor generalization. Only viable once the command set is frozen.
-- **Hybrid**: LLM for intent + rule-based slot filling for known entities. Production path.
+Primary bridge for prototype. rosbridge runs on robot; World Brain connects as a WebSocket client. JSON messages — no CDR decoder needed for prototype.
 
-**Output schema:**
+Topics the World Brain subscribes to from robot:
+- `/robot/pose` → PoseStamped (10 Hz, throttled)
+- `/robot/battery` → BatteryState (1 Hz)
+- `/robot/status` → String (task, mode, error)
+- `/robot/camera/compressed` → CompressedImage (throttled, app preview only)
+
+Topics World Brain publishes to robot:
+- `/robot/goal` → PoseStamped (navigate to room centroid)
+- `/robot/cmd` → String (stop, cancel, dock)
+
+See [[ros2-server-bridge]] for rosbridge vs MQTT vs Zenoh tradeoff — prototype uses rosbridge; production path uses MQTT (Mosquitto on home server).
+
+### World Brain ↔ App Layer (HTTP REST + WebSocket)
+
+The explicit contract boundary. App Layer is in a separate process (or repo) and must not know ROS internals.
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/command` | POST | Structured intent → robot action |
+| `/robot/stop` | POST | Emergency stop (bypasses all queuing) |
+| `/world/state` | GET | Full world state (rooms, objects, poses) |
+| `/world/rooms` | GET | Room list with labels |
+| `/world/objects` | GET | Object library snapshot |
+| `/world/objects/{name}` | GET | Single object by label |
+| `/robot/status` | GET | Current robot pose + task + battery |
+| `/ws/status` | WebSocket | Push: robot status at 1 Hz + events |
+
+Command schema (POST /command):
 ```json
 {
-  "intent": "navigate" | "find_object" | "query_state" | "cancel" | "report",
+  "intent": "navigate" | "find_object" | "query_state" | "cancel" | "report" | "tidy_room",
   "target": { "type": "room" | "object" | "location", "name": "kitchen" },
-  "params": {}
+  "params": {},
+  "source": "phone" | "google_home" | "dashboard"
 }
 ```
 
-**Prototype target:** Claude Haiku with system-prompt grounding from world registry. Schema validated at parse time; malformed output → ask for clarification, never guess.
+### Phone ↔ App Layer
+
+- **Voice**: browser records audio (PTT) → base64 → `POST /voice/upload` → Whisper STT → Claude intent → `/command`
+- **Status**: WebSocket `/ws/status` → live robot position, task, battery on phone screen
+- **Map**: `GET /world/map` → PNG floor plan with robot position overlay
+
+### Google Home ↔ App Layer
+
+Simplest path: **Google Home Routine → local webhook**.
+
+1. Create a Google Home Routine triggered by "Hey Google, [phrase]"
+2. Routine action: call webhook URL `https://<local-ip>/google-home/webhook` (or ngrok tunnel during dev)
+3. Webhook body: Google sends `{"query": "tidy the living room"}`
+4. App Layer extracts `query`, runs same Claude intent pipeline as phone voice
+5. Routes to `/command`
+
+This requires:
+- App Layer running on HTTPS (self-signed cert OK for dev; `uvicorn --ssl-*` or ngrok)
+- Google Home app configured with the Routine on the user's Google account
+- No Google Actions SDK, no OAuth, no cloud deployment needed
+
+Alternative path (proper, for production): Google Home Action with local fulfillment SDK — enables "Hey Google, ask [app name] to…" but requires Actions project + OAUTH2 + cloud endpoint. Deferred to post-prototype.
+
+### Cloud ↔ World Brain (stub in prototype)
+
+Not built in prototype. World Brain has stub endpoints that mimic cloud behaviour returning canned responses. Production targets:
+- `POST /cloud/maps/sync` — upload floor plan backup
+- `GET /cloud/models/check` — check for model weight updates
+- `GET /cloud/remote/status` — remote monitoring dashboard
 
 ---
 
-## Layer 4 — Command router
+## Voice pipeline
 
-Maps parsed intent to a `drone-core` API call. This layer is the explicit contract between `drone-app` and `drone-core`; the interface is defined in `drone-core/shared/`.
+```
+User speaks
+    │
+    ▼ (phone PTT / Google Home wake-word)
+Audio capture
+    │
+    ▼
+STT — Whisper small (local, ~0.5s)
+    │  input: wav bytes
+    │  output: text transcript
+    ▼
+Intent parser — Claude Haiku
+    │  system prompt: current room list + known object names
+    │  input: transcript
+    │  output: structured intent JSON (validated against schema)
+    ▼
+Command router
+    │  maps intent → POST /command to World Brain
+    ▼
+World Brain executes → publishes to robot via rosbridge
+    │
+    ▼
+Response synthesizer
+    │  template ("Heading to kitchen") or Haiku one-liner for queries
+    ▼
+TTS — browser Web Speech API
+    │
+    ▼
+User hears response
+```
 
-| Intent | API call | Notes |
-|---|---|---|
-| `navigate` | `POST /robot/navigate { goal: room_name }` | Server converts room name → pose; dispatches to robot |
-| `find_object` | `GET /world/object/{name}` → navigate to last-seen location | Two-step: query then nav |
-| `query_state` | `GET /world/state?room={name}` | Returns expected vs actual, missing/moved objects |
-| `cancel` | `POST /robot/stop` | Robot halts and holds position |
-| `report` | `GET /world/recent_changes` | What changed since last session |
+Latency budget (phone → response):
+- Audio upload: ~100 ms (LAN)
+- Whisper small: ~500 ms
+- Claude Haiku intent: ~300–600 ms
+- Command routing: ~50 ms
+- Robot acknowledgment: ~100 ms
+- TTS: ~200 ms
+- **Total: ~1.3–1.6 s** (LAN, no cloud STT)
 
-Protocol for V1: HTTP REST. Production path: MQTT pub/sub (same topics the robot already uses).
-
----
-
-## Layer 5 — Response synthesizer + TTS
-
-Converts API responses to natural language.
-
-- **Template-based** for navigation confirmations: "Heading to the kitchen."
-- **LLM-generated** for rich state queries: "The living room has 3 items out of place: ..."
-- **TTS options:** pyttsx3 (local, ~50ms, robotic), ElevenLabs (cloud, high quality), browser Web Speech API (no install).
-
-**Prototype target:** template strings for nav; Claude Haiku one-liner for state queries; browser TTS.
+Emergency stop (`cancel` intent) must bypass the LLM — direct `POST /robot/stop` from router as soon as intent is classified, before full pipeline completes.
 
 ---
 
 ## Prototype build order
 
-1. **Mock drone-core** — stub REST server that returns canned responses. Decouples app development from robot hardware entirely.
-2. **STT → intent parser → router** — phone mic → Whisper → Claude → HTTP POST to stub. Full pipeline working on a laptop.
-3. **Live drone-core integration** — swap stub for real world API once drone-core has a running server.
-4. **Entry point expansion** — add Sonos TTS output, smart speaker wake word, dashboard view.
+**Phase 1 — Prove the layer (no hardware)**
+1. World Brain stub server (FastAPI) with canned world state
+2. Stub robot process: publishes fake pose/battery on schedule, accepts goals
+3. Phone web-app: PTT → Whisper → Claude → command → response display
+4. WiFi benchmark suite: latency, throughput, reliability measurements
+
+**Phase 2 — Add voice entry points**
+5. Google Home webhook endpoint on app layer (ngrok for dev)
+6. Sonos TTS output via HTTP Control API (LAN only)
+7. Live status WebSocket push to phone
+
+**Phase 3 — Live robot integration**
+8. Swap stub robot for real rosbridge connection to Land Rover v1
+9. World Brain connects to real RTAB-Map world model
+10. Map preview on phone (floor plan + robot dot)
+
+**Phase 4 — Entry point hardening**
+11. Google Home Routine tested end-to-end
+12. Multi-command session (clarification round-trip)
+13. Mid-task override tested (stop during navigation)
 
 ---
 
 ## Open questions
 
-- **Multi-user commands:** whose command wins? Single-user assumed for prototype; priority queue with last-in-wins is the simplest policy.
-- **Ambiguous commands** ("tidy up" without a room): LLM should respond with a clarification question, not a guess. Clarification round-trip adds ~1–2 s; acceptable.
-- **Mid-task override:** "stop" must reach the robot within one control cycle regardless of what the app layer is doing. The `POST /robot/stop` path must bypass any queuing.
-- **Sonos mic integration:** most Sonos devices have no mic. Voice-from-Sonos requires an Alexa/Google device in the same room, or a phone as the mic and Sonos as the speaker only.
-
----
-
-## Repo: drone-app
-
-Directory structure:
-```
-drone-app/
-  voice/        # STT, wake word, entry-point adapters
-  intent/       # LLM/NLU parser + schema validation
-  router/       # maps parsed intent to drone-core API calls
-  feedback/     # response synthesis + TTS
-```
-
-Interface contract lives in `drone-core/shared/` — `drone-app` consumes it, does not define it.
+- **Google Home latency:** webhook path adds Google cloud round-trip (~200–500 ms) before reaching local server. Acceptable for task commands; not for stop.
+- **Multi-user:** last-in-wins for prototype; priority queue policy deferred.
+- **WiFi dropout mid-task:** robot must RTL or hold-position; World Brain must checkpoint task state.
+- **Audio privacy:** Whisper runs locally; Google Home wake-word goes through Google cloud. If that's unacceptable, phone PTT is the fallback.
+- **ngrok vs router port-forward:** ngrok is simplest for dev but requires account and internet. Router port-forward + DDNS is the production path for local-only operation.
