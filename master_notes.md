@@ -215,3 +215,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Observation:** Using `arxiv.org/abs/<ID>` URLs with `--engine pymupdf` captures the abstract HTML page (200 lines of navigation + 3 PNG renders of the HTML), not the paper text. The correct URL for arXiv PDFs is `arxiv.org/pdf/<ID>`. The error is silent: no exception, audit's thin-captures check passes because the HTML renders to ~200 lines. Detected when inspecting capture text: "Skip to main content / We gratefully acknowledge support from the Simons Foundation..." Wasted 5 captures (immediately cleaned up and rerun with /pdf/ URLs; second run succeeded cleanly at 1150+ lines each).
 **Implication:** weekly-brief and /ingest should always use `/pdf/` URLs for arXiv. Candidate fix: `capture_pdf.py`'s `_resolve_source` auto-rewrite `arxiv.org/abs/<ID>` → `arxiv.org/pdf/<ID>` before download. Safe since arXiv always serves a PDF at `/pdf/`.
 **Status:** open
+
+### 2026-06-05 — audit_captures falsely reports broken image refs for repo-root-relative paths
+
+**Scope:** kit
+
+**Observation:** `tools/audit_captures.py` resolves image refs as `(md.parent / ref).resolve()`. When `capture_pdf` writes image refs as repo-root-relative paths (e.g. `raw/research/weekly-2026-06-05/assets/slug/source.pdf-0-0.png`), the audit resolves them relative to the markdown file's parent directory, producing a non-existent path. The images physically exist; the audit produces 15 false "broken" flags per run (3 per capture × 5 captures). The images are actually at `{repo_root}/raw/research/weekly-2026-06-05/assets/slug/` — correct path from repo root, not from markdown parent.
+
+**Candidate fix:** audit should resolve image paths relative to repo root (i.e. `git rev-parse --show-toplevel`) when the ref starts with `raw/` or any non-`./` prefix. Alternatively, `capture_pdf.py` should write relative refs (`assets/slug/img.png` relative to the markdown file) rather than repo-root-absolute refs. The latter is a one-line fix in `_write_markdown`. Promote on next `/harvest`.
+
+**Status:** open
