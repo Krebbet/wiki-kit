@@ -22,6 +22,7 @@ TidyBot (2023) and its open-source successor TidyBot++ (CoRL 2024) are the most 
 - [[home-tidying-robots]] — landscape overview placing TidyBot in context
 - [[semantic-object-memory]] — object fingerprinting, Housekeep benchmark
 - [[system-architecture]] — our COMMAND CENTER / ACTIONS EXECUTION design
+- [[affordable-robot-arms]] — full arm tier table including AhaRobot ($1k), Nori Bot ($947), XLeRobot ($660), and all arms TidyBot++ supports
 - [[tactile-manipulation]] — tactile sensing for manipulation
 - [[home-tidy-drone-prototype]] — our Phase-1 build
 
