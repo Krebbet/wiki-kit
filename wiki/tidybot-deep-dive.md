@@ -228,6 +228,8 @@ v++ discards the modular LLM-perception-primitive pipeline entirely and learns a
 
 **Inference architecture.** Policy runs on a GPU laptop, not onboard. The `PolicyWrapper` class initiates the next inference step 200 ms in advance to hide the 115 ms latency on an RTX 4080 Laptop GPU, ensuring a fresh action sequence is ready when the current one is exhausted [src: 03-04-tidybot2-github-readme.md].
 
+**Transfer note (drone-app):** The `PolicyWrapper` prefetch pattern is worth adopting when we add a policy inference server. The pattern: before the current action chunk is exhausted, issue the next inference call so the result is ready before it's needed. This hides GPU latency without tight timing in the control loop. In our architecture, this would live in `server/bridge/` as a prefetch wrapper around any future ZMQ/gRPC inference server — keeping the real-time control path clean from the slow inference path, the same split TidyBot++ uses between the NUC and the GPU laptop.
+
 **Real-world task results** (10 rollouts per task, real apartment home) [src: 02-02-arxiv-2412-10447.md]:
 
 | Task | Success |
