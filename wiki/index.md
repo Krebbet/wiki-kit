@@ -19,6 +19,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 | Page | Summary |
 |---|---|
+| [[cosmos-3]] | NVIDIA Cosmos 3: omnimodal world model family (4B/16B/64B) with dual-tower MoT architecture; #1 open-weight T2I/T2V/I2V/robot-policy as of June 2026; first strong empirical evidence for Position B in [[conflicts/pure-video-vs-3d-world-models]]. |
+| [[deepseek-v4]] | DeepSeek-V4-Pro: 1.6T-param MoE (49B active, 1M context) with hybrid CSA+HCA attention (10% V3 KV cache, 27% V3 FLOPs), mHC residual connections, Muon optimizer; SOTA open-source LiveCodeBench 93.5, SWE-Verified 80.6. |
 | [[titans-miras]] | Google Research Titans (deep-MLP long-term memory module with gradient-driven "surprise" updates) + MIRAS (taxonomy of sequence models as associative-memory optimizers). Beats GPT-4 on BABILong claim. |
 | [[nested-learning]] | Behrouz et al. NeurIPS 2025: unifying paradigm casting architectures and optimizers as nested associative-memory systems. Hope = self-modifying Titans + Continuum Memory System; M3 = multi-scale Muon. Holds 10M context on BABILong. |
 | [[in-place-ttt]] | ByteDance/PKU Apr-2026: drop-in TTT for pretrained LLMs by repurposing gated-MLP `W_down` as fast weights with NTP-aligned target. Qwen3-4B RULER-64k 74.3 → 78.7 with no architecture change. |
@@ -44,6 +46,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[eggroll]] | Oxford/MILA/NVIDIA Evolution Strategies at hyperscale: low-rank LoRA-style perturbations + counter-based PRNG → ~100× ES throughput. Beats GRPO on 14B RWKV-7 reasoning where GRPO is infeasible (Adam state). Pure-int8 RNN pretraining at population 2^20. |
+| [[polar-rl-harness]] | NVIDIA Polar: harness-agnostic async rollout framework for agentic RL via provider-compatible proxy; prefix-merging reconstruction; +22.6pt SWE-Bench Verified on Qwen3.5-4B with GRPO via Codex harness. |
+| [[rlvr-incentivizes-reasoning]] | Microsoft/PKU/CUHK: formal proof (Theorem 1) that GRPO monotonically increases correct-CoT probability; introduces CoT-Pass@K metric revealing persistent RLVR advantage at all K; Position E in [[conflicts/sparse-policy-selection-vs-gradient-cancellation]]. |
+| [[mai-thinking-1]] | Microsoft MAI-Thinking-1: 35B-active MoE (~1T total) trained with zero synthetic/distilled third-party data; 97.0% AIME 2025; positions against distillation-heavy reasoning model methodology. Announcement-only; no paper/weights. |
 | [[rlsd-self-distilled-rlvr]] | IIE/CAS + JD.COM: fixes on-policy self-distillation's privileged-info leakage by decoupling direction (verifier reward, same as GRPO) from magnitude (teacher/student evidence ratio as scalar weight). +2.32% avg over GRPO on Qwen3-VL-8B across 5 multimodal-reasoning benchmarks; RLSD@200 steps beats GRPO@400. |
 | [[token-gradient-cancellation]] | Alibaba/Tsinghua: formal "gradient exchangeability" condition for stable GRPO-style RL — shared/template tokens must cancel across trajectories. DFPO (Min-Replace or Adv-Orthogonal stop-gradient transforms) restores cancellation. +5.6 / +6.9 / +5.6 pp avg@32 (AIME25 / LiveCodeBench v6 / HMMT25) over GSPO at Qwen3-32B; gain grows with group size. |
 | [[neural-garbage-collection]] | Stanford/Goodman lab: end-to-end RL training of KV-cache eviction *jointly* with chain-of-thought, using outcome reward only. 2–3× cache compression with minimal accuracy loss on AMC/AIME; first method to unify eviction and token gradients under one signal. Replay attention mask corrects off-policyness from dynamic cache mutation. |

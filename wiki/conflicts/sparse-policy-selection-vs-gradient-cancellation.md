@@ -1,6 +1,6 @@
 # Sparse Policy Selection vs Token-Gradient Cancellation
 
-**Status:** open. Positions A+B+C captured 2026-05-11; Position D added 2026-06-03.
+**Status:** open. Positions A+B+C captured 2026-05-11; Position D added 2026-06-03; Position E added 2026-06-06.
 
 ## Position A — RL touches ~1–4% of tokens; the rest is inert
 
@@ -57,6 +57,28 @@
 
 **Critical caveat:** Model-family-dependent. Effect requires a base model with amplifiable high-prior behaviors (Qwen2.5-Math has them; Llama3/OLMo2 do not). Position D may co-exist with Positions A/B/C in model families where spurious rewards produce no gain.
 
+## Position E — Standard Pass@K is confounded; RLVR genuinely improves CoT quality (metric-validity argument)
+
+**Source:** [[rlvr-incentivizes-reasoning]] (Microsoft Research Asia / PKU / CUHK / UCLA, arXiv:2506.14245, June 2025).
+
+**Claim:** The "sampling efficiency only" result (Yue et al., 2025 and related work) relies on standard Pass@K, which is **confounded on math benchmarks** because base LLMs can guess correct short integer answers with incorrect CoTs. The CoT-Pass@K metric (Pass@K conditioned on LLM-verified chain correctness) reveals a **persistent RLVR advantage at all K up to 1024** on AIME 2025 (post-base-model-cutoff, no contamination).
+
+**Formal basis — Theorem 1:** Under a Logic Prior assumption (correct CoTs yield correct answers with probability α, incorrect CoTs with β, α > β), the expected GRPO advantage satisfies:
+- E[Â | correct CoT] = (1−p_c)(α−β)/σ > 0
+- E[Â | incorrect CoT] = −p_c(α−β)/σ < 0
+
+Therefore GRPO monotonically increases p_c (correct-CoT probability). The driver is the gap α−β > 0, which amplifies with training.
+
+**How it cuts across A–D:**
+- *Reconciles with Position D (spurious rewards):* Position D's Qwen-family gain under random rewards is now attributable partly to guessing artifacts in Pass@K, not purely to clipping-bias amplification of pretrained behaviors. The metric-invalidity argument provides a complementary explanation.
+- *Strengthens Position A direction:* The paper shows RL improvements are real (not just efficiency re-weighting), consistent with Position A's claim that correct tokens at high-entropy positions are being improved. The formal advantage for correct CoTs (+) vs incorrect CoTs (−) gives mathematical grounding to the "sparse selection matters" intuition.
+- *Neither confirms nor refutes Position B:* The theorem operates at the CoT level, not the token level. Whether gradient flow through many tokens is required to find which CoTs to reinforce is not addressed.
+- *Consistent with Position C:* Token-level discriminative reweighting (DelTA) and CoT-level logic-prior selection are orthogonal mechanisms — both may contribute.
+
+**Failure mode:** Logic Prior violation (base model makes fatal reasoning errors, e.g., language mixing in R1-Zero training on Chinese data) causes the α−β gap to collapse and RLVR behavior to degrade. Residual P(CC|CA)(q) ≈ 0.70 at end of training — 30% incorrect CoTs remain even after full optimization.
+
+**Key empirical finding:** SFT on RLVR-generated CoTs nearly matches RLVR pass@1 (i.e., RLVR is generating qualitatively better CoTs than the base model, not just re-sampling from a fixed distribution).
+
 ## What the conflict is really about
 
 Three live readings, both papers consistent with each:
@@ -74,6 +96,6 @@ Two concrete tests, in order of cost:
 
 ## Related
 
-- [[reasonmaxxer]], [[token-gradient-cancellation]], [[delta-token-credit]] (discriminator-view third frame), [[spurious-rewards-rlvr]] (clipping-bias fourth frame), [[rlsd-self-distilled-rlvr]] (also questions standard GRPO from a different angle).
+- [[reasonmaxxer]], [[token-gradient-cancellation]], [[delta-token-credit]] (discriminator-view third frame), [[spurious-rewards-rlvr]] (clipping-bias fourth frame), [[rlvr-incentivizes-reasoning]] (metric-validity fifth frame), [[rlsd-self-distilled-rlvr]] (also questions standard GRPO from a different angle).
 - [[gepa-reflective-prompt-evolution]] — parallel "RL was over-engineering" argument from prompt-space.
 - [[conflicts/grpo-vs-evolution-strategies]] — adjacent (RL-vs-non-RL debate at the algorithm level rather than the per-token level).

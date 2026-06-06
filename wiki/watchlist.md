@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-30
+last_reviewed: 2026-06-06
 ---
 
 # Watchlist — Identified But Not Captured
@@ -152,3 +152,10 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **YaRN** — RoPE-extension method used for Qwen3 long-context in In-Place TTT runs. *(in-place-ttt.)*
 - **MinT: Managed Infrastructure for Training & Serving Millions of LLMs (arXiv:2605.13779, May 2026)** — LoRA-as-a-service at trillion-parameter scale: base model kept resident while LoRA adapter revisions cycle through rollout/update/export/evaluation/serving/rollback; validated beyond 1T total params incl. MLA + DSA attention paths; rank-1 adapters <1% of base size. Production-infra gap academic RL work doesn't cover; code closed. *(weekly-brief 2026-05-18.)*
 - **OScaR: Occam's Razor for Extreme KV Cache Quantization (arXiv:2605.19660, May 2026)** — Canalized Rotation + Omni-Token Scaling for near-lossless INT2 KV quantization; 5.3× memory reduction, 4.1× throughput. KV-efficiency complement to [[triattention]] and WorldKV. *(weekly-brief 2026-05-25.)*
+- **KVarN: Variance-Normalized KV-Cache Quantization (arXiv:2606.03458, June 2026)** — Calibration-free 3–5× KV cache compression at FP16 accuracy; Hadamard rotation + dual-scaling variance normalization; ships as native vLLM backend. Complement to OScaR and [[triattention]]. *(weekly-brief 2026-06-06.)*
+- **Nemotron-Cascade 2 (arXiv:2603.19220, NVIDIA)** — 30B-A3B MoE with cascade RL + multi-domain on-policy distillation; second open model at IMO 2025 + IOI + ICPC gold level; outperforms Qwen3.5-35B-A3B. RL post-training sibling to [[deepseek-v4]]. *(weekly-brief 2026-06-06.)*
+- **SAM 3D (arXiv:2511.16624, CVPR 2026 Best Paper)** — Extends SAM paradigm to grounded 3D reconstruction from single images; 5:1 human-preference win rate on real-world objects. Extends SAM2 cluster into 3D; adjacent to [[sharp-view-synthesis]] and [[cosmos-3]]. *(weekly-brief 2026-06-06.)*
+- **MLEvolve (arXiv:2606.06473, ICML 2026)** — LLM-based multi-agent that outperforms AlphaEvolve on math algorithm optimization; Progressive Monte Carlo Graph Search + retrospective memory. Evolutionary AutoML; extends [[huxley-godel-machine]] / [[eggroll]] evolutionary line. *(weekly-brief 2026-06-06.)*
+- **ProRL Agent (arXiv:2603.18815, Microsoft Research)** — Decouples RL rollout from training loop; supports rootless HPC sandboxing; predecessor to [[polar-rl-harness]]; validated on SWE/math/STEM. Foundational infra paper for the agentic RL wave. *(weekly-brief 2026-06-06.)*
+- **Rethinking Continual Experience Internalization (arXiv:2606.04703, June 2026)** — Identifies "progressive capability collapse" in multi-iteration experience learning; principle-level > instance-level experience and step-wise > global injection. Continual post-training methodology; adjacent to [[huxley-godel-machine]] / [[seal-self-adapting]]. *(weekly-brief 2026-06-06.)*
+- **Flash-WAM (arXiv:2606.05254, June 2026)** — 23× speedup on joint video+action diffusion models via modality-aware consistency distillation; enables real-time robot control from World Action Models. Robotics distillation adjacent to [[cosmos-3]] policy mode. *(weekly-brief 2026-06-06.)*

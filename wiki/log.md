@@ -4,6 +4,16 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-06] weekly-brief | 5 captured, 8 watchlisted
+
+Autonomous weekly sweep (week of 2026-06-06). Sources scanned: HuggingFace Papers trending, arXiv cs.LG/cs.CL/cs.CV, Reddit r/MachineLearning+r/LocalLLaMA+r/MLScaling, alphaXiv trending, CVPR 2026 announcements. 5 papers captured and ingested; 8 added to watchlist.
+
+**Captured and ingested:** [[cosmos-3]] (arXiv:2606.02800, NVIDIA — omnimodal MoT world model, #1 open T2I/T2V/I2V/robot-policy), [[polar-rl-harness]] (arXiv:2605.24220, NVIDIA — harness-agnostic async RL rollout, +22.6pt SWE-Bench), [[rlvr-incentivizes-reasoning]] (arXiv:2506.14245, MSRA/PKU — formal proof GRPO increases correct-CoT probability, CoT-Pass@K metric), [[deepseek-v4]] (HF model card — 1.6T MoE, hybrid CSA+HCA attention, mHC, Muon, SOTA open-source coding), [[mai-thinking-1]] (microsoft.ai announcement — 35B-active MoE, zero synthetic distillation, 97% AIME 2025).
+
+**Conflicts updated:** [[conflicts/pure-video-vs-3d-world-models]] — added [[cosmos-3]] as Position B (interactive simulation without 3D scaffolds); [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] — added Position E ([[rlvr-incentivizes-reasoning]]: CoT-Pass@K resolves metric-invalidity concern, formal theorem for GRPO incentivization).
+
+---
+
 ## [2026-06-03] weekly-brief | 5 captured, 10 watchlisted
 
 Autonomous weekly sweep (week of 2026-06-03). Sources scanned: Reddit r/MachineLearning+r/LocalLLaMA+r/MLScaling, HuggingFace Papers trending, arXiv cs.LG/cs.CL, Import AI #459. 5 papers captured and ingested; 10 added to watchlist.

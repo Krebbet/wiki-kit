@@ -12,9 +12,15 @@
 
 Moonlake's proposed alternative is a hybrid: coarse explicit 3D meshes + neutral information-free latent codes bound to mesh patches → conditioning a video diffusion transformer.
 
-## Position B — Pure video scaling solves coherence
+## Position B — Pure video + action diffusion achieves interactive world simulation
 
-**No source captured.** Awaiting an ingest of a Sora-class or Genie-class paper that argues large-scale video diffusion alone produces persistent 3D-coherent generation. Capturing one is the next step to make this conflict resolvable.
+### B (strong, interactive) — [[cosmos-3]] (NVIDIA, arXiv:2606.02800, 2026-06-03)
+
+**Claim:** Action-conditioned interactive world simulation — forward dynamics, inverse dynamics, and robot policy — is achievable at scale via a pure video+action diffusion model (no explicit 3D mesh scaffolds). Cosmos 3 reaches Physics-IQ V2V 63.4 (WMReward+BoN), DROID PSNR 26.04 dB (vs Ctrl-World 22.99 dB), and RoboLab-120 39.7% task success (vs π0.5 28.1%) without 3D scaffolding. Also #1 open-weight T2I (UniGenBench 91.36), T2V (PAIBench-G 80.0, beats Veo-3.1), and I2V (PAIBench-G 82.8) — strongest empirical counter to Position A to date.
+
+**Why this fills Position B:** Cosmos 3 uses action tokens as conditioning and a VAE latent space — so it is not *unconditioned* video scaling, but it does not use explicit 3D mesh scaffolds. Whether action tokens + VAE latents constitute "implicit structure" that softens Position A's claim is an open ruling question. The interactive benchmarks (FD/ID/policy) are the key — static 3D priors recoverable from 2D generation ([[vision-banana]]) were only a precondition; Cosmos 3 directly addresses the interactive case.
+
+**No source captured.** Awaiting an ingest of a Sora-class or Genie-class paper that argues large-scale video diffusion alone produces persistent 3D-coherent generation *without action conditioning*. Cosmos 3 partially fills this gap but the "pure unconditioned video scaling" sub-position remains open.
 
 ### B (partial, static-3D-priors-from-2D-generation) — [[vision-banana]] (Google DeepMind, arXiv:2604.20329, 2026-04-23)
 
@@ -23,6 +29,10 @@ Moonlake's proposed alternative is a hybrid: coarse explicit 3D meshes + neutral
 **Why partial:** Moonlake's claim is specifically about **interactive** simulation (action-conditioned next-frame prediction, multi-step rollout, object permanence under occlusion). Vision Banana shows static 3D priors — depth, normals, segmentation — recoverable from a 2D-image generator. Static-prior recoverability is a necessary precondition for the harder interactive claim, but not sufficient. The strength of the static result (+6-8 pp δ1 over specialist models, no intrinsics) is hard to dismiss as incidental; it is the strongest empirical evidence on the "2D generation has 3D structure" side this conflict has seen.
 
 **Implication:** Moonlake's "ill-posed task" framing is too strong as stated for the static case. The conflict's resolution path now requires distinguishing *static priors recoverable from 2D generation pretraining* (Vision Banana shows: yes) from *interactive simulation with action conditioning* (still open).
+
+## Update — Cosmos 3 changes the conflict state (2026-06-06)
+
+**Status:** still open, but materially narrowed. Cosmos 3 provides the first strong empirical evidence for Position B on the interactive case. The conflict now needs a ruling on whether action tokens + VAE latents count as "explicit 3D structure" in Moonlake's sense. If yes → Position A (3D structure is still required, just implicit); if no → Position B wins the interactive sub-case.
 
 ## Caveat — Moonlake is a position post
 
