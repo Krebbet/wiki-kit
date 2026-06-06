@@ -4,6 +4,12 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-05] weekly-brief | 2026-06-05 sweep
+
+Autonomous weekly sweep. 5 papers captured and ingested (Spurious Rewards RLVR, Latent Concept Disentanglement, Self-Play Theorem Proving Theory, E2H Curriculum RL, SDPG). 4 watchlist additions. Brief written to `wiki/weekly-briefs/2026-06-05.md`. Email sent to david.hugh.mcnamee@outlook.com.
+
+---
+
 ## [2026-04-19] bootstrap | LLM fine-tuning research wiki
 
 Initial bootstrap. Schema and commands tailored for a research wiki supporting development of a novel fine-tuning method for small LLMs (1–40B params) emphasising single-sample, concept-based learning. Ready to receive first source.

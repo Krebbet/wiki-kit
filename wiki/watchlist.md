@@ -49,6 +49,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - EGRSD (arXiv:2605.13255) — self-uncertainty gate in OPD: entropy-confidence threshold selects teacher vs pure-RL signal per token
 - ATESD (arXiv:2605.11458) — adaptive Beta-policy teacher reveal ratio; discounted learning-progress reward for delayed credit in OPD
 - Fast and effective OPD from reasoning prefixes (arXiv:2602.15260) — prefix-level policy divergence minimization; concurrent to ESR, different target (base-model bootstrapping)
+- AMR-SD (arXiv:2605.18529) — token-level credit via asymmetric meta-reflective self-distillation in RLVR
+- OPD Survey (arXiv:2604.00626) — systematic f-divergence OPD survey; design-axes reference for the teacher-student RL theme
+- Learning from Language Feedback via VPD (arXiv:2605.15113) — variational distillation from language-feedback teacher; addresses stale-teacher in OPD
 
 ## RLVR mechanics
 
@@ -67,6 +70,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Test-Time Curricula for Targeted RL (TTC-RL, arXiv:2510.04786) — automatic task-specific test-time curricula; 1.8× AIME25; ICLR 2026 re-surfacing
 - VCRL (arXiv:2509.19803) — variance-based curriculum RL; gradient variance as difficulty signal; GRPO-compatible
 - SPEED-RL (arXiv:2506.09016) — online curriculum scheduling for faster reasoning model training
+- TACLer (arXiv:2601.21711) — tailored multi-stage curriculum RL; 50% compute, 42% inference-token reduction over GRPO
 
 ## Variable-granularity / concept-level architectures
 
@@ -96,5 +100,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-05-30]] — most recent weekly sweep
-- [[weekly-briefs/2026-05-17]] — prior weekly sweep
+- [[weekly-briefs/2026-06-05]] — most recent weekly sweep
+- [[weekly-briefs/2026-05-30]] — prior weekly sweep

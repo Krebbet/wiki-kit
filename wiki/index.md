@@ -57,6 +57,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rlvr-mechanics/structured-fisher-optimizer]] | Gong et al. — structured FIM approximation (RACS, Alice) unifying Adam/Shampoo/grad-norm; 2× Adam speedup at LLaMA scale. |
 | [[research/rlvr-mechanics/rethinking-rl-sparse-selection]] | Akgul et al. (arXiv:2605.06241) — token-level dissection: RL reranks 1.0–4.1% positions, 0% shifted outside base top-5, mean rank 2.14–2.39; oracle intervention at reranked positions exactly recovers RL pass@1; rank-32 LoRA at 0.27–0.49% params suffices; **REASONMAXXER** matches/exceeds RL at $4–25 vs $200–$103k. |
 | [[research/rlvr-mechanics/binary-rewards-rl-challenges]] | Dymetman (arXiv:2605.02375) — information-geometric account of binary-RLVR diversity collapse: filtered model $p^*$ as I-projection of base; KL-RLVR converges in forward KL but $\text{KL}(p^\beta\|p^*)=+\infty$; misspecification + small $\beta$ drives near-Dirac collapse (Eq. 10). Formal substrate for Yue's pass@k inversion. |
+| [[research/rlvr-mechanics/spurious-rewards-rlvr]] | Shao et al. (arXiv:2506.10947, UW/Allen AI) — GRPO clip-bias amplifies high-prior pretraining behaviours independent of reward signal; random rewards yield 73% of ground-truth RLVR gains (+21.4 pp vs +29.1 pp on MATH-500) on Qwen2.5-Math-7B but zero on Llama3/OLMo2; amplified behaviour is "code reasoning" (CoT in code syntax, 65% → >90%). |
 
 ### Process reward models
 
@@ -103,6 +104,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/in-context-learning-theory/icl-bayesian-inference]] | Distributional-level story: ICL is posterior inference over latent pretraining concepts. |
 | [[research/in-context-learning-theory/function-class-icl]] | Transformers trained from scratch in-context learn linear / sparse / NN / tree classes optimally. |
 | [[research/in-context-learning-theory/icl-conceptual-belief-space]] | Bigelow et al. (arXiv:2605.12412) — ICL as a trajectory through a low-dim conceptual belief space; behaviour ≅ activation manifold ($r=.92$); LLM emotion geometry ≅ human valence–arousal; steering entanglement ∝ manifold distance. |
+| [[research/in-context-learning-theory/latent-concept-disentanglement]] | Hong et al. (arXiv:2506.16975) — mechanistic interpretability showing transformers infer discrete latent concepts for step-by-step transitive reasoning and recover low-dim residual-stream subspaces whose geometry mirrors numerical concept parameterisation, both from a handful of in-context demonstrations. |
 
 ### Meta-learning and few-shot
 
@@ -170,6 +172,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rl-optimizers/tsallis-loss-continuum]] | Lin & Ie / Google (arXiv:2604.25907) — $\mathcal{J}_Q$ family via Tsallis $q$-log; interpolates RLVR ($q=0$) ↔ log-marginal-likelihood ($q=1$) via per-instance amplification $P_\theta^{-q}$. GARL/PAFT estimators escape cold-start where GRPO yields zero gradient. PAFT at $q=1$ recovers TRICE EM E-step; STaR is hard-acceptance limit; VeriFree = GARL at $q=0$. |
 | [[research/rl-optimizers/latent-grpo]] | Latent-GRPO (arXiv:2604.27998) — first stable GRPO on continuous (vocabulary-superposition) latent reasoning. Three fixes: invalid-sample masking, one-sided Gumbel + STE, optimal-correct-path first-token selection. +4.27 Pass@1 vs explicit GRPO with 3.31× shorter chains. Documents Latent Mixture Non-Closure failure mode. |
 | [[research/rl-optimizers/bolt-kl-rlvr-boltzmann]] | BOLT (Shu et al., arXiv:2605.02469) — unique reference-sampled weighted-SFT objective matching KL-RLVR target = prompt-normalised Boltzmann density-ratio (Theorems 3, 4). Finite one-shot saturation $\beta\log(1/\pi^*(S_N|x))$ (Theorem 6); coverage–ESS frontier (Theorem 7); iterative BOLT = KL policy mirror descent (Theorem 11). Matches/exceeds GRPO at 75–85% less wall-clock. |
+| [[research/rl-optimizers/sdpg-self-distilled-policy-gradient]] | arXiv:2606.04036 (Liu, Zhang, Zhang, Gu; UCLA, Jun 2026) — SDPG augments GRPO with full-vocabulary on-policy self-distillation (student-to-teacher reverse-KL, same model under unconditional vs. solution-conditioned context) + reference-policy KL regularisation; improves stability and performance over standalone RLVR and self-distillation baselines. |
 
 ### Catastrophic forgetting (expanded to full theme 2026-05-16)
 
@@ -219,6 +222,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/curriculum-and-decomposition/poet]] | Wang, Lehman, Clune, Stanley (2019) — co-evolving environments + agents with transfer attempts; emergent stepping-stone curriculum. |
 | [[research/curriculum-and-decomposition/scrl-curriculum-credit-assignment]] | Jiang et al. 2026 (SCRL, Tsinghua/LeapLab) — subproblem curriculum RL that decomposes hard problems into K=4 verifiable subproblems from reference solutions; subproblem-level normalization + progress-aware correction + mixed-group training. +4.1/+1.9 avg over GRPO on Qwen3-4B/14B; metric-recovery theory proves Ω(1/δ) gradient recovery over dead-zone original problem. |
 | [[research/curriculum-and-decomposition/metis-curriculum-judgment]] | Zheng, Ma et al. 2026 (METIS, MIT/Amazon AGI, arXiv:2605.11235) — internalizes curriculum selection into the policy via ICL over a K=3 calibration memory of recent prompt–reward-variance pairs; closed loop tracks the competence frontier without an external selector; up to 67% wall-clock reduction vs external-curriculum baseline (PCL). |
+| [[research/curriculum-and-decomposition/e2h-curriculum-rl]] | arXiv:2506.06632 (Parashar et al., Texas A&M, 2025) — E2H Reasoner: curriculum GRPO with Gaussian/cosine difficulty-fading schedules over four task levels; proves sample-complexity advantage over direct hard-task RL; Countdown OOD +10 pp on Qwen 1.5B, AIME24 Pass@32 +6.7 pp; orthogonal to SCRL's within-rollout subproblem decomposition. |
 
 ### Self-play
 
@@ -245,6 +249,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/self-play/spin]] | Chen, Deng, Yuan, Ji, Gu / UCLA (ICML 2024) — iterative DPO with $\pi_{\theta_t}$ as moving reference; synthetic negatives are the model's own outputs. Fixed-point $= p_\text{data}$. Not load-bearing: no curriculum, no concept foils, bounded by training distribution. |
 | [[research/self-play/sppo]] | Wu, Sun, Yuan, Ji, Yang, Gu / UCLA-CMU (2024) — Nash-convergent preference optimisation; per-response $L_2$ regression drives winner and loser log-ratios independently. Not load-bearing: fixed external preference model, no concept-specific signal. |
 | [[research/self-play/sgs]] | Bailey, Wen, Dong, Hashimoto, Ma / Stanford (arXiv:2604.20209) — tripartite Conjecturer/Solver/Guide; frozen-LLM Guide scores synthetic problems on relevance + elegance to prevent Conjecturer reward-hacking collapse. 7B beats 671B pass@4 on Lean4 after 200 rounds. Tenth proposer-reward shape; uses REINFORCE$^{1/2}$ (grouped objectives starve Conjecturer signal). |
+| [[research/self-play/self-play-theorem-proving-theory]] | arXiv:2606.01861 (Chen & Li, 2026) — theoretical framework for self-play theorem proving: exponential proved-set growth under reversible random-walk conjecturing on well-connected theorem graphs; diffusion-similarity diversity measure (contrastive embedding) counters conjecturer collapse to artificially complex non-fundamental theorems. Theory-only. |
 
 ### Concept evaluation
 

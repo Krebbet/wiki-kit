@@ -3,6 +3,12 @@
 Concise record of all wiki modifications. One row per logical change.
 
 | Date | Action | Pages Touched | Summary |
+| 2026-06-05 | ingest | wiki/research/rlvr-mechanics/spurious-rewards-rlvr.md (new), wiki/index.md | Spurious Rewards (arXiv:2506.10947, Shao et al., UW/Allen AI) — GRPO clip-bias amplifies high-prior pretraining behaviours independent of reward; random rewards yield 73% of ground-truth RLVR gains on Qwen2.5-Math-7B but zero on Llama3/OLMo2. |
+| 2026-06-05 | ingest | wiki/research/in-context-learning-theory/latent-concept-disentanglement.md (new), wiki/index.md | Latent Concept Disentanglement (arXiv:2506.16975, Hong et al.) — transformers infer discrete latent concepts for transitive ICL reasoning and recover low-dim residual-stream subspaces mirroring numerical concept parameterisation. |
+| 2026-06-05 | ingest | wiki/research/self-play/self-play-theorem-proving-theory.md (new), wiki/index.md | Self-Play Theorem Proving Theory (arXiv:2606.01861, Chen & Li) — exponential proved-set growth under reversible random-walk conjecturing; diffusion-similarity diversity counters conjecturer collapse. |
+| 2026-06-05 | ingest | wiki/research/curriculum-and-decomposition/e2h-curriculum-rl.md (new), wiki/index.md | E2H Reasoner (arXiv:2506.06632, Parashar et al., Texas A&M) — curriculum GRPO with Gaussian/cosine difficulty-fading; convergence bounds; +10 pp Countdown OOD, +6.7 pp AIME24 Pass@32. |
+| 2026-06-05 | ingest | wiki/research/rl-optimizers/sdpg-self-distilled-policy-gradient.md (new), wiki/index.md | SDPG (arXiv:2606.04036, Liu et al., UCLA) — GRPO augmented with full-vocabulary on-policy self-distillation (reverse-KL, same model unconditional vs. solution-conditioned) + reference-policy KL regularisation. |
+| 2026-06-05 | weekly-brief | wiki/watchlist.md, wiki/weekly-briefs/2026-06-05.md (new), 5 new pages, wiki/index.md, wiki/revisions.md, wiki/log.md | Autonomous 2026-06-05 weekly sweep. 5 captures + ingests; 4 watchlist additions. |
 |---|---|---|---|
 | 2026-04-19 | bootstrap | CLAUDE.md, commands | Initial bootstrap: research wiki for novel single-sample concept-based LLM fine-tuning method (1–40B params) |
 | 2026-04-20 | research | raw/research/single-sample-llm-learning/ | Captured 30 papers across 8 topic clusters (A–H) on single-sample / concept-based LLM learning; audit clean. |
