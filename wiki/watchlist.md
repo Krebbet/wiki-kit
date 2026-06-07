@@ -1,11 +1,35 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-31
+last_reviewed: 2026-06-07
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-06-07
+
+Surplus from this week's sweep — the 5 captured items: arXiv 2606.03895 (Agent libOS), arXiv 2605.26252 (GEM memory framework), arXiv 2606.04306 (OCL governance), arXiv 2606.05548 (ADK Arena), arXiv 2606.04329 (memory poisoning / MPBench). Dominant trends: agent runtime infrastructure research (OS-layer abstractions); memory security as a distinct threat class; first ecosystem-wide ADK comparison; GEM memory formalism. Items below did not make the capture cap.
+
+### Agent runtime / harness engineering
+- **Agent Planning Benchmark (arXiv 2606.04874, verified)** — https://arxiv.org/abs/2606.04874 — Diagnostic framework decomposing planning into sub-capabilities (goal decomposition, tool selection, constraint reasoning, infeasibility detection); fills an evaluation gap for the planning dimension specifically. Capture when it becomes a leaderboard anchor or is cited as the canonical planning-eval methodology.
+- **DeployBench (arXiv 2606.05238, verified)** — https://arxiv.org/abs/2606.05238 — 51-task multi-domain benchmark for autonomous research-artifact deployment agents; SOTA pass rates 7.8–51%, revealing the hard frontier for agentic DevOps. Capture if a leaderboard forms or if deployment-agent capability gains a second signal.
+
+### Benchmark movements
+- **SWE-bench Verified: Claude Mythos Preview at 93.9% / SWE-bench Pro at 77.8%** — https://www.swebench.com — Benchmark frontier reached near-saturation on Verified; the contamination-gap debate between Verified (93.9%) and Pro (77.8%) is itself the signal. Capture a primary analysis of the contamination-gap if one lands; extend [[evaluation/swe-bench-pro]] when a reliable primary source appears.
+- **OSWorld: Coasty at 82%, Simular Agent S2 first to cross human baseline (72.36%)** — https://os-world.github.io — Computer-use benchmark shows 2× spread between leaders and major-lab baselines; first time open-weight surpasses human performance on verified computer-use. Capture if a full architecture writeup explains how the leaders achieve this.
+- **GAIA scaffold gap: Claude Sonnet 4.5 scaffolded 74.6% vs top 92%** — https://huggingface.co/spaces/gaia-benchmark/leaderboard — The gap between bare-model and scaffolded performance has become a major evaluation-methodology debate point: framework value may dwarf model differences. Capture a primary analysis if one lands.
+
+### Ecosystem / tooling
+- **MCP 2026 roadmap: stateless core, Extensions SEPs, Tasks extension, MCP Apps** — https://modelcontextprotocol.io — MCP moving to stateless protocol layer for horizontal scaling; new Extensions framework and MCP Apps (sandboxed UI). Capture when the RC specification or release notes are published at a stable URL. Extend [[deployments/mcp-infrastructure]].
+- **LangChain Deep Agents v0.6.7 (released 2026-05-30)** — https://www.langchain.com/blog/deep-agents-0-6 — DeltaChannel (≈100× checkpoint-storage reduction), typed streaming, open-weight harness profiles (Kimi/Qwen/DeepSeek), Code Interpreter runtime, ContextHubBackend for versioned skill/policy storage. Capture if a full architecture writeup explains the DeltaChannel design.
+- **Windsurf rebrand to Devin Desktop + Agent Client Protocol (ACP, Apache 2.0)** — https://cognition.ai/blog — Cognition rebrands Windsurf as Devin Desktop; Agent Command Center; ACP enables Codex/Claude/Gemini as first-class peer agents in one IDE. Extend [[deployments/cognition-cloud-agents]] if a primary technical writeup on ACP architecture lands.
+
+### Model releases / commercial signals
+- **Claude Mythos Preview (security-focused model, ~93.9% SWE-bench Verified)** — https://www.anthropic.com — Security-specialized Claude model; first model to approach saturation on SWE-bench Verified. Capture if Anthropic publishes a primary technical writeup on the agentic architecture improvements (coding + reasoning engine).
+- **Anthropic Agentic Coding Trends Report 2026** — Anthropic-published industry report cited in multiple contexts: 80% of developers using AI coding agents, 57.3% orgs with agents in production, multi-agent adoption projected +67% by 2027. Capture when a stable URL to the primary report is confirmed.
 
 ---
 
