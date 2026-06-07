@@ -365,3 +365,7 @@ Audit: 0 issues. All captures valid.
 New wiki page: [[stereo-dense-reconstruction]]. Index updated.
 
 Note: marker engine was OOM-killed (exit 137) on first attempt with CUDA_VISIBLE_DEVICES unset. Resolved by running with CUDA_VISIBLE_DEVICES="" on subsequent captures. This is a kit-level learning (logged to master_notes.md).
+
+New wiki page: [[home-gateway-client-isolation]] (prototype-feedback from drone-app EXP002). Bell Home Hub client-isolation finding + workaround ladder. Index + revisions updated.
+
+New wiki page: [[home-iot-connectivity-patterns]] (research + prototype-feedback from drone-app). Comparative smart-home connectivity patterns; backs the onboard-realtime/cloud-relay architecture pivot. Cross-linked from [[home-gateway-client-isolation]]; index + revisions updated.
