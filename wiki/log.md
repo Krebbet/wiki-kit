@@ -816,3 +816,28 @@ Weekly scan covering May 25–June 1, 2026. ~40 sources scanned across 4 tiers.
 **No new conflict files.** Existing open conflict [[dp-deployment-trustworthiness]] unresolved (pending user ruling).
 
 **Brief:** `wiki/weekly-briefs/2026-06-01.md` + `/tmp/weekly-brief-2026-06-01.md`. Email sent to david.hugh.mcnamee@outlook.com.
+
+## [2026-06-08] weekly-brief-ingest | 2026-06-08 radar sweep
+
+Weekly scan covering June 1–8, 2026. ~40 sources scanned across 4 tiers (arXiv cs.CY/cs.CR, platform-coop/org tier, editorial tier, enforcement/GitHub tier).
+
+**Captures attempted / succeeded:** 5 / 4
+- `dpagent-dark-patterns` (arXiv 2606.06914) — succeeded (capture_pdf, pymupdf)
+- `ghost-unlearnable-trajectories` (arXiv 2606.03711) — succeeded (capture_pdf, pymupdf)
+- `eudi-wallet-credential-disclosure` (arXiv 2606.06354) — succeeded (capture_pdf, pymupdf)
+- `ilo-platform-worker-convention` (ILO committee page) — succeeded (capture_url)
+- `lpr-bluetooth-device-fusion` (404 Media, June 8) — **skipped**: paywalled capture — only 2-sentence excerpt extracted; moved to watchlist
+
+**Note:** Broken image refs (28 total) on dpagent and eudi-wallet pymupdf captures — cosmetic only (figures not extracted); text content intact (2679 and 2209 lines respectively). Not treated as thin extractions per audit logic.
+
+**Wiki pages created (4 new):**
+- `wiki/tools/dpagent-dark-pattern-repair.md` — browser agent detecting + repairing dark patterns; AI grooming threat model; arXiv 2606.06914
+- `wiki/mechanisms/unlearnable-trajectories.md` — GHOST on-manifold location-data poisoning; extends Nightshade/Glaze to sequential data; arXiv 2606.03711
+- `wiki/mechanisms/credential-disclosure-assistants.md` — EUDI Wallet oversharing + Credential Assistant nudge; collective norms audit mechanism; arXiv 2606.06354
+- `wiki/regulatory/ilo-platform-worker-convention.md` — ILO ILC-114 first binding platform-work Convention; algorithmic management transparency + collective bargaining provisions
+
+**Watchlist:** 10 overflow entries added under "Recent additions (2026-06-08 weekly-brief overflow)".
+
+**No new conflict files.** Existing open conflicts [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] unresolved (pending user ruling).
+
+**Brief:** `wiki/weekly-briefs/2026-06-08.md` + `/tmp/weekly-brief-2026-06-08.md`. Email sent to david.hugh.mcnamee@outlook.com.

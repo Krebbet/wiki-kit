@@ -191,10 +191,25 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - noyb ORF.at cookie banner equalization ruling (May 21 2026) — court-mandated accept/reject symmetry precedent
 - Captain Compliance DROP Act DSAR automation (May 27 2026) — commercial DSAR-automation tool launch ahead of Aug 1 Delete Act deadline
 - BusPatrol school-bus ALPR expansion — 40K+ school buses in 24 states converting to roaming ALPR; law-enforcement data sharing planned June 2026
-- ILO Platform Worker Convention — first binding global labor standard for platform workers; negotiations opened June 1–11 Geneva ILC-114
+- ~~ILO Platform Worker Convention~~ — *captured 2026-06-08 ([[regulatory/ilo-platform-worker-convention]])*
 - Pluralistic "Carneyism without Carney" (May 30 2026) — structural counter-power defunding pattern: progressive policy signal + enforcement mechanism gutted
 - UK CMA hotel algorithmic pricing investigation (STR/CoStar hub) — UK first; names data intermediary (not just operators); mirrors RealPage pattern in hospitality
 - RealPage Tunney Act final judgment imminent — court-monitor + algorithm-certification regime entering effect; defines scrapeable algorithmic pricing compliance standard
+
+## Recent additions (2026-06-08 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- LPR + Bluetooth/device-ID fusion (404 Media, June 8 2026) — ALPR cameras + SignalTrace sweeping device BT/WiFi IDs; paywalled capture this week
+- Crowding Out The Noise: ACA Under DP (arXiv 2505.05707) — group coordinated data-modification lower bounds vs DP-protected ML; ACA collective theory
+- AlgorithmWatch AI Climate Hoax report (June 1 2026) — Big Tech AI greenwashing audit; accountability artefact
+- Federating Governance: Mastodon Instances (arXiv 2606.05069) — empirical governance rule evolution in federated cooperatives; platform-coop scaling evidence
+- The Dignity-Centric Stack (arXiv 2606.06083) — commons-governed 6-layer federated AI architecture; cooperative/mutualist federation blueprint
+- Online Safety Regulation Increases Privacy Risk (arXiv 2606.05273) — UK OSA milestones → +100/217/415% VPN adoption; consumer tool demand as counter-response evidence
+- uBlock Origin Lite 2026.607.1724 (June 7 2026) — MV3-compliant update; Chromium tracking-block survival
+- AdNauseam 3.28.6 — uBlock Origin v1.71.0 merge; MV3 implementation ongoing
+- FTC seeks comment on X Corp petition to weaken 2022 privacy/security consent order — consent-order rollback precedent
+- noyb Schibsted "Pay or Okay" complaint (June 3 2026) — Norwegian media giant; accept/reject symmetry complaint; follow-on to ORF.at ruling
 
 ## Recent additions (2026-05-25 weekly-brief overflow)
 
