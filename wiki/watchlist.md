@@ -30,6 +30,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Adaptive Power-Mean Policy Optimization (APMPO, arXiv:2605.04066) — generalised power-mean objective + feedback-adaptive clipping; +3.0pp over GRPO
 - Search-driven Reward Function Optimization (arXiv:2605.02073) — frames reward-function specification itself as a search target; meta reward shaping
 - LambdaPO (arXiv:2605.19416) — semantic precision-recall alignment of reasoning traces as dense GRPO reward signal
+- OPRD (arXiv:2606.06021) — on-policy representation distillation in hidden-state space; eliminates output-space sampling variance
+- Rethinking Divergence Regularization / DRPO (arXiv:2606.09821) — TV-aligned smooth regularizer replaces hard GRPO clipping; stable gradients
+- Multi-Layer GRPO (arXiv:2506.04746) — two-layer GRPO recycles rollouts for self-correction signal
 
 ## Process reward models
 
@@ -60,6 +63,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - ~~Learning from Less (arXiv:2604.18381)~~ — paper-not-ingest; **datasets retained as test-data references** (Counting / Graph Reasoning / Spatial Reasoning, all programmatic + verifiable). See [[research/concept-evaluation/_overview#Test-dataset references]]. Capture: `raw/research/dataset-references/01-learning-from-less.md`. (2026-05-14)
 - ResRL (arXiv:2605.00380) — SVD projection of negative-sample gradients orthogonal to positive subspace; +9.4 Avg@16 over NSR
 - FREIA (arXiv:2605.04065) — Free-Energy-Principle unsupervised RL reasoning, no external reward; consensus + novelty terms; pairs w/ uPRM
+- RLVR Implicitly Incentivizes Correct Reasoning (arXiv:2506.14245) — theory: GRPO gradients provably incentivize correct CoT in base models
+- Learning What RL Can't (arXiv:2506.07527) — interleaved SFT+RL for hardest questions; 1.5% SFT + 20.4% RL data of prior SOTA
 
 ## Self-improvement
 
@@ -71,11 +76,14 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - VCRL (arXiv:2509.19803) — variance-based curriculum RL; gradient variance as difficulty signal; GRPO-compatible
 - SPEED-RL (arXiv:2506.09016) — online curriculum scheduling for faster reasoning model training
 - TACLer (arXiv:2601.21711) — tailored multi-stage curriculum RL; 50% compute, 42% inference-token reduction over GRPO
+- RACES / LEGO Bricks (arXiv:2606.12373) — recursive composition of verifiable envs for automatic RL curriculum scaling
+- DOTS+RR (arXiv:2506.05316, NeurIPS 2025) — adaptive difficulty targeting + rollout replay; cuts RL compute without accuracy loss
 
 ## Variable-granularity / concept-level architectures
 
 *Seeded 2026-05-13 by [[research/synthesis/concept-granularity-architecture]] hypothesis. Watchlist targets are categorical (entire research lines) rather than specific arxiv IDs; promote individual papers as they surface. Closest current coverage: [[research/rl-optimizers/latent-grpo]].*
 
+- Demystifying Hidden-State Recurrence (arXiv:2606.13106) — RL-trained discrete latent-mode switch with mechanistic analysis; switchable latent reasoning
 - Funnel Transformer / hierarchical-pooling LMs — variable-length internal representations
 - Mixture-of-Tokens / Mixture-of-Depths — differentiable per-position compute routing
 - Token-merging in language (ToMe-style, beyond vision) — merge/split primitives mid-stack
@@ -100,5 +108,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-06-05]] — most recent weekly sweep
-- [[weekly-briefs/2026-05-30]] — prior weekly sweep
+- [[weekly-briefs/2026-06-12]] — most recent weekly sweep
+- [[weekly-briefs/2026-06-05]] — prior weekly sweep

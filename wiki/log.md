@@ -775,3 +775,59 @@ Key contributions: skill bank replaces trusted reference answers (principles + m
 ## [2026-05-30] weekly-brief | 2026-05-30 sweep
 
 Autonomous weekly sweep. 5 papers captured and ingested (SCRL, METIS, ESR, SGSD, CorVer). 7 watchlist additions. Brief written to `wiki/weekly-briefs/2026-05-30.md`. Email sent to david.hugh.mcnamee@outlook.com.
+
+---
+
+## [2026-06-12] ingest | RLCSD (arXiv:2606.11709)
+
+Ingested RLCSD — Reinforcement Learning with Contrastive On-Policy Self-Distillation. Source: `raw/research/weekly-2026-06-12/02-rlcsd.md`.
+
+**Page written:** `wiki/research/teacher-student-rl/rlcsd.md`
+
+Key contributions: diagnoses privilege-induced style drift in OPSD (teacher's correct-hint distribution shifts toward shorter outputs, KL signal lands on style not task tokens); fix: compute teacher–student KL under both correct and wrong hints, subtract to isolate task signal. Drop-in modular; improves cross-model OPD. Third position in the KnowRL vs RLT hint-design debate. Index and revisions updated.
+
+---
+
+## [2026-06-12] ingest | FlowTracer (arXiv:2606.10646)
+
+Ingested FlowTracer — How Does Reasoning Flow? Tracing Attention-Induced Information Flow for Targeted RL in LLMs. Source: `raw/research/weekly-2026-06-12/03-reasoning-flow.md`.
+
+**Page written:** `wiki/research/rlvr-mechanics/flowtracer-attention-credit.md`
+
+Key contributions: attention-induced DAG with flow conservation; prunes to answer-region paths; per-token throughput shapes RL reward. Identifies hub/aggregation-checkpoint tokens as concept-learning mechanistic bottlenecks. ICML 2026. Contributes to invisible-leash-vs-spiral-transfer operationalisation.
+
+---
+
+## [2026-06-12] ingest | RREDCoT (arXiv:2606.06475)
+
+Ingested RREDCoT — Segment-Level Reward Redistribution for Reasoning Models. Source: `raw/research/weekly-2026-06-12/05-rredcot.md`.
+
+**Page written:** `wiki/research/process-reward-models/rredcot.md`
+
+Key contributions: RUDDER-adapted return-decomposition for CoT MDP; optimal redistribution = Q-value difference between consecutive segments; estimated via importance-sampling over reference-solution bank; no extra model, no step labels. AIME24 90.8% on Qwen3-4B (+5.8 pp over GRPO).
+
+---
+
+## [2026-06-12] ingest | GRAIL (arXiv:2606.04889)
+
+Ingested GRAIL — Gradient-Reweighted Advantages for Reinforcement Learning with Verifiable Rewards. Source: `raw/research/weekly-2026-06-12/06-grail.md`.
+
+**Page written:** `wiki/research/rl-optimizers/grail.md`
+
+Key contributions: replaces GRPO's uniform per-token advantage with gradient-activation saliency weights; +3.60 pp accuracy, +3.05 pp Pass@3 over GRPO across 5 model families; orthogonal to std-normalization (DR-GRPO) and sampling fixes (DAPO). Adds a nuance to the mcpo-vs-dr-grpo-std-fix conflict.
+
+---
+
+## [2026-06-12] ingest | SG-OPD (arXiv:2606.09304)
+
+Ingested SG-OPD — Sign-Gated On-Policy Distillation via Sign-Consistency Gating and Phased Teacher Sampling. Source: `raw/research/weekly-2026-06-12/07-sg-opd.md`.
+
+**Page written:** `wiki/research/teacher-student-rl/sg-opd.md`
+
+Key contributions: two failure modes in OPD (trajectory misalignment, non-uniform token reliability); two fixes (phased teacher sampling at cold-start, sign-consistency gate per token); +1.98 per-sample / +7.50 per-question over OPD. Weakly corroborates KnowRL selective-trust framing.
+
+---
+
+## [2026-06-12] weekly-brief | 2026-06-12 sweep
+
+Autonomous weekly sweep. 5 papers captured and ingested (RLCSD, FlowTracer, RREDCoT, GRAIL, SG-OPD). 10 watchlist additions. Brief written to `wiki/weekly-briefs/2026-06-12.md`. Email sent to david.hugh.mcnamee@outlook.com.
