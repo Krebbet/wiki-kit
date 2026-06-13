@@ -9,6 +9,7 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 ## Architectures & sequence models
 
+- **Fisher-MoE / Less is MoE: Trimming Experts in MoE LMs (arXiv:2606.05538)** — Fisher importance identifies and prunes FFN intermediate dimensions in MoE models without collapsing performance; compact domain-specialist MoE variant. *(weekly-brief 2026-06-13.)*
 - **LoopMDM: Looped Diffusion Language Models (arXiv:2605.26106)** — Selectively loops early-middle DiT layers in masked diffusion models; 3.3× fewer training FLOPs to match standard MDM performance, +8.5 pp GSM8K; loop count varied at inference for flexible compute scaling. Extends [[hyperloop-transformers]] cluster to the diffusion-LM domain. *(weekly-brief 2026-06-03.)*
 - **Depth-Attention: Cross-Layer Value Mixing (arXiv:2606.05014)** — Lets each attention layer query across keys from all previous layers at the same token position; zero added parameters, <0.01% extra FLOPs; up to +2.3 accuracy across 360M–3B models. *(weekly-brief 2026-06-03.)*
 - **"Do Language Models Need Sleep?" (Lee, McLeish, Goldstein, May 2026)** — Offline recurrence / memory consolidation pass for fast-weight Transformers; 'sleep' phase integrates across-context memory outside inference; novel framing of in-context vs. consolidated memory. *(weekly-brief 2026-06-03.)*
@@ -54,6 +55,11 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 ## RL / post-training
 
+- **DRPO: Rethinking Divergence Regularization in LLM RL (arXiv:2606.09821, Tencent Hunyuan + UIUC + NUS)** — Replaces PPO/GRPO's hard ratio-clipping mask with a smooth advantage-weighted quadratic regularizer, providing continuous gradient corrections; trending on HF this week. Extends the [[token-gradient-cancellation]] / [[delta-token-credit]] credit-assignment cluster. *(weekly-brief 2026-06-13.)*
+- **Learning to Reason Across Parallel Samples / SSA (arXiv:2506.09014)** — Compact "Sample Set Aggregator" (3B) trained with RL to synthesize answers from multiple parallel samples; beats majority voting by 8% on MATH and outperforms a 72B process reward model. Test-time compute investment path orthogonal to [[reasonmaxxer]]. *(weekly-brief 2026-06-13.)*
+- **RuleReasoner: Reinforced Rule-based Reasoning via Domain-aware Dynamic Sampling (arXiv:2506.08672, ICLR 2026)** — Domain-aware RL sampling lets small reasoning models match frontier LRMs; outperforms OpenAI o1 by 4.1% in-distribution and 10.4% OOD; GitHub: bigai-nlco. *(weekly-brief 2026-06-13.)*
+- **Rewarding the Unlikely: Lifting GRPO Beyond Distribution Sharpening (arXiv:2506.02355, CMU)** — Identifies "rank bias" in GRPO (rare-but-correct solutions neglected); "unlikeliness reward" up-weights them; 3× sample efficiency on AIME 2024. Extends [[token-gradient-cancellation]] / [[delta-token-credit]] line. *(weekly-brief 2026-06-13.)*
+- **Generalization Hacking (ICML 2026, Bosch Research / KIT)** — RL-trained models can exploit behavioral generalization failures to achieve high task rewards without true generalization; adversarial failure mode for the RLVR-for-agents line. *(weekly-brief 2026-06-13.)*
 - **GURU: Revisiting RL for LLM Reasoning from a Cross-Domain Perspective (arXiv:2506.14965, ACL 2026)** — 92K verifiable RL examples across 6 domains (Math, Code, Science, Logic, Simulation, Tabular); open dataset release; challenges assumption that RLVR only elicits pre-trained knowledge. Trending on HF Papers this week. *(weekly-brief 2026-06-03.)*
 - **Faster Synchronous On-Policy RL via Straggler-Aware Group Sizing (arXiv:2606.02218)** — Addresses DAPO/GRPO training wall-clock bottleneck caused by slow rollout stragglers; adaptive group sizing keeps synchronous on-policy competitive with async approaches. *(weekly-brief 2026-06-03.)*
 - **MemTrain: Self-Supervised Memory Agent Training (arXiv:2606.03197)** — GRPO-trained memory agents on unlabeled Wikipedia via masked entity reconstruction + memory recall proxy tasks; +17.67 pp over task-specific post-training on long-text QA without labeled data. *(weekly-brief 2026-06-03.)*
@@ -100,6 +106,7 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **Schlag-Irie-Schmidhuber linear-transformers-as-fast-weight-programmers** — Theoretical ancestor to all of TTT. *(in-place-ttt, nested-learning.)*
 - **Schmidhuber self-referential weight matrix (1993)** — Earliest self-modifying-architecture lineage; cited by NL. *(nested-learning.)*
 - **MAML (Finn 2017)** — Meta-learning baseline NL absorbs as a special case. *(nested-learning.)*
+- **EASE-TTT: Evidence-Aligned Selective Test-Time Training for Long-Context QA (arXiv:2606.06906, UIUC/Harvard/FSU)** — Within-context retrieval-augmented TTT; converts retrieved evidence chunks to soft attention supervision targets; best macro-average across 6 LongBench QA tasks on small decoder-only LMs. Extends [[in-place-ttt]] cluster to long-context QA. *(weekly-brief 2026-06-13.)*
 
 ## Self-improving agents
 
@@ -124,6 +131,7 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 ## Computer vision / 3D
 
+- **Robust-U1 (arXiv:2606.08063, ICML 2026)** — Multimodal LLM with three-stage pipeline (SFT reconstruction → RL with dual pixel/semantic rewards → multimodal reasoning); SOTA on real-world visual corruption benchmarks. RL-for-multimodal-robustness use case. *(weekly-brief 2026-06-13.)*
 - **3D Gaussian Splatting (Kerbl 2023, SIGGRAPH)** — De-facto representation underpinning SHARP. *(sharp-view-synthesis.)*
 - **Depth Pro (Bochkovskii 2025, ICLR)** — Apple's depth backbone used by SHARP (low-res image encoder unfrozen). *(sharp-view-synthesis.)*
 - **In Depth We Trust (arXiv:2604.05715, Apr 2026)** — Reliable monocular-depth supervision for 3DGS; addresses scale ambiguity + multi-view inconsistency. *(weekly-brief 2026-04-27.)*

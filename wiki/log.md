@@ -160,3 +160,14 @@ Sources captured: 8 (2 failed — learnopenclaw.ai SSL cert expired, milvus.io 4
 Pages written: [[openclaw]], [[openclaw-claude-code-memory]].
 New index section: "Agent frameworks & memory".
 Key findings: OpenClaw's four-layer Markdown-based memory (bootstrap / JSONL transcript / context window / SQLite retrieval index); Hindsight as the shared-bank bridge to Claude Code; Anthropic explicitly rejected subscription-scale always-on third-party agents (Apr 2026) — production pattern is a dedicated API harness, not Claude Code subscription.
+
+---
+2026-06-13 — /weekly-brief (weekly radar sweep)
+
+Sources scanned: ~18 (HF Papers trending, arXiv cs.LG/cs.CL, Reddit r/ML+r/LocalLLaMA, alphaXiv, web search).
+Candidates surfaced: 18; selected 5 for capture.
+Captures attempted / succeeded: 5 / 5 (magistral, spurious-rewards-rlvr, reinforcement-pretraining, high-entropy-tokens-rlvr, rl-teachers).
+Note: audit_captures flagged 15 "broken image refs" for pymupdf captures — assets DO exist at raw/research/weekly-2026-06-13/assets/<slug>/; the tool is checking from the wrong base directory (kit-level issue, logged to master_notes.md).
+Pages written: 3 new (magistral, reinforcement-pretraining, rl-teachers); 2 already existing (spurious-rewards-rlvr, high-entropy-tokens-rlvr — no new pages needed).
+Watchlist additions: 8 (DRPO, SSA, RuleReasoner, EASE-TTT, Fisher-MoE, Rewarding-the-Unlikely, Robust-U1, Generalization-Hacking).
+Conflicts extended: none (Magistral's pure-RL result is supportive of existing Position A/E in sparse-policy-selection conflict; not a new position).
