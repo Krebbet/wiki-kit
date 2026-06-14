@@ -9,6 +9,30 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-06-14
+
+Surplus from this week's sweep — the 5 captured items: arXiv 2606.05405 (ALE benchmark), arXiv 2606.07297 (SWE-Explore), arXiv 2606.06448 (agent memory systems), arXiv 2606.13662 (EurekAgent), arXiv 2606.07448 (coding agent adoption). Dominant trends: benchmark landscape disaggregating (ALE/SWE-Explore/SWE-bench harness divergence); coding-agent adoption now default for new projects; memory cost characterization (BM25 wins on J/correct); environment engineering thesis gaining empirical grounding. Items below did not make the capture cap.
+
+### Coding agent benchmarks / capability
+- **SWE-bench Verified SOTA ≥95% (Claude Fable 5, June 9)** — new model generation pushes past 95% on SWE-bench Verified; simultaneously GPT-5.4 leads on SWE-bench Pro standardized harness at 59.1% — the vendor/standardized-harness divergence is now a first-class measurement problem. Capture when the model is fully public and a primary source confirms the Fable 5 naming and score.
+- **OSWorld: Coasty commercial agent at 82%, above human baseline (72.36%)** — https://coasty.ai/blog/osworld-benchmark-2026-82-percent-vs-everyone-else — first commercial product (not a lab model) leading OSWorld; Claude Sonnet 4.6 at 73%. Capture if Coasty publishes a technical teardown or the leaderboard is updated on the official site.
+- **SWE-bench Pro standardized harness** — https://llm-stats.com/benchmarks/swe-bench-pro — GPT-5.4 at 59.1% leads the standardized harness (29 models); Claude Opus 4.6 thinking at 51.9%. Capture when a primary paper or leaderboard update covers this divergence explicitly.
+
+### Benchmark frontier
+- **Agents' Last Exam (ALE) — ALE-Claw reference implementation** — the paper (captured this week) references OpenClaw/ALE-Claw as its GCUA reference implementation. A follow-up post or OpenClaw blog coverage on ALE-Claw specifically would be high value for the coding-agents cluster.
+- **Terminal-Bench 2.1 — GPT-5.5 + Codex at 83.4%** — new version released with results; GPT-5.5 beats Claude Code + Opus 4.8 (78.9%) on terminal task completion; paired with ALE showing terminal-bench score is not predictive of ALE-CLI performance. Worth capturing if Terminal-Bench 2.1 publishes a methods paper or code update.
+
+### Agent deployment / ecosystem
+- **Claude Agent SDK billing restructure (June 15)** — Anthropic separating agent SDK billing into dedicated Pro/Max 5x/Max 20x credit tiers; MCP tunnel for private networks in research preview; self-hosted sandboxes GA. Signals Anthropic treating agent workloads as a distinct product tier. Capture the Anthropic release notes page when billing change is confirmed live.
+- **MCP ecosystem: 17,990+ servers, Microsoft mcp-gateway, MCPJungle** — https://www.pulsemcp.com/servers — ecosystem crossed ~18K servers; enterprise-grade additions (mcp-gateway from Microsoft, MCPJungle self-hosted registry) signal shift from individual dev MCPs toward enterprise governance. Capture if Microsoft publishes a technical post on mcp-gateway or PulseMCP publishes a milestone report.
+- **OpenAI AgentKit + Agent Builder deprecation** — Agent Builder EOL November 30, 2026; AgentKit positioned as successor. Signals OpenAI's strategic bet on code-first agent development over visual builders; relevant to enterprise deployment track. Capture if AgentKit publishes a technical API spec or migration guide.
+
+### Agent memory / systems
+- **arXiv 2606.10677 — Infini Memory: topic-structured long-term LLM agent memory** — proposes text-based persistent memory as topic-structured documents rather than vector indexes or extraction pipelines; could extend or challenge the five-family memory taxonomy. Capture if it gains citations or if a leaderboard comparison against Mem0/GEM appears.
+- **arXiv 2606.09122 — Autonomous Incident Resolution at Hyperscale: Agentic AI for Network Ops** — production multi-agent orchestration for network operations (detect/diagnose/remediate); strong fit for enterprise deployment cluster and parallels the Cognition cloud agents framing. Capture if a deployment case study or follow-on paper appears.
+
+---
+
 ## Week of 2026-06-07
 
 Surplus from this week's sweep — the 5 captured items: arXiv 2606.03895 (Agent libOS), arXiv 2605.26252 (GEM memory framework), arXiv 2606.04306 (OCL governance), arXiv 2606.05548 (ADK Arena), arXiv 2606.04329 (memory poisoning / MPBench). Dominant trends: agent runtime infrastructure research (OS-layer abstractions); memory security as a distinct threat class; first ecosystem-wide ADK comparison; GEM memory formalism. Items below did not make the capture cap.
