@@ -201,15 +201,23 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
 
 - LPR + Bluetooth/device-ID fusion (404 Media, June 8 2026) — ALPR cameras + SignalTrace sweeping device BT/WiFi IDs; paywalled capture this week
-- Crowding Out The Noise: ACA Under DP (arXiv 2505.05707) — group coordinated data-modification lower bounds vs DP-protected ML; ACA collective theory
+- ~~Crowding Out The Noise: ACA Under DP (arXiv 2505.05707)~~ — *captured 2026-06-15 ([[mechanisms/aca-dp-lower-bounds]])*
 - AlgorithmWatch AI Climate Hoax report (June 1 2026) — Big Tech AI greenwashing audit; accountability artefact
 - Federating Governance: Mastodon Instances (arXiv 2606.05069) — empirical governance rule evolution in federated cooperatives; platform-coop scaling evidence
-- The Dignity-Centric Stack (arXiv 2606.06083) — commons-governed 6-layer federated AI architecture; cooperative/mutualist federation blueprint
-- Online Safety Regulation Increases Privacy Risk (arXiv 2606.05273) — UK OSA milestones → +100/217/415% VPN adoption; consumer tool demand as counter-response evidence
+- ~~The Dignity-Centric Stack (arXiv 2606.06083)~~ — *captured 2026-06-15 ([[mechanisms/dignity-centric-stack]])*
+- ~~Online Safety Regulation Increases Privacy Risk (arXiv 2606.05273)~~ — *captured 2026-06-15 ([[counter-power/osa-vpn-privacy-paradox]])*
 - uBlock Origin Lite 2026.607.1724 (June 7 2026) — MV3-compliant update; Chromium tracking-block survival
 - AdNauseam 3.28.6 — uBlock Origin v1.71.0 merge; MV3 implementation ongoing
 - FTC seeks comment on X Corp petition to weaken 2022 privacy/security consent order — consent-order rollback precedent
 - noyb Schibsted "Pay or Okay" complaint (June 3 2026) — Norwegian media giant; accept/reject symmetry complaint; follow-on to ORF.at ruling
+
+## Recent additions (2026-06-15 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- NY One Fair Price Act (passed NY legislature June 4 2026) — surveillance-pricing ban; Hochul desk; third state after MD + CT; AG enforcement + private right of action
+- DOJ criminal algorithmic-pricing-collusion signal (May 14 2026 DOJ remarks) — acting criminal division head explicitly named algorithmic conduct as criminally actionable; no case yet; first criminal framing
+- Nearby Glasses Android app (March 2026, open-source) — detects Ray-Ban/Snap Bluetooth signatures; warns user of nearby smart glasses; counter-surveillance tool; zero data collection
 
 ## Recent additions (2026-05-25 weekly-brief overflow)
 

@@ -841,3 +841,31 @@ Weekly scan covering June 1–8, 2026. ~40 sources scanned across 4 tiers (arXiv
 **No new conflict files.** Existing open conflicts [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] unresolved (pending user ruling).
 
 **Brief:** `wiki/weekly-briefs/2026-06-08.md` + `/tmp/weekly-brief-2026-06-08.md`. Email sent to david.hugh.mcnamee@outlook.com.
+
+**2026-06-15 — ingest: meta-raybans-nametag-surveillance**
+
+New page: `wiki/mechanisms/meta-raybans-nametag-surveillance.md`. Two EFF sources (June 2026): NameTag FRT code confirmed in Meta AI app via static analysis, 48-hour rollback after public disclosure. Dual framing: extraction mechanism (dormant biometric infrastructure on 50M Ray-Ban devices, timed for civil-society distraction) + counter-tool technique (adversarial binary auditing as pre-activation disclosure). Index updated.
+
+## [2026-06-15] weekly-brief-ingest | 2026-06-15 radar sweep
+
+Weekly scan covering June 8–15, 2026. ~35 sources scanned across 4 tiers (arXiv cs.CY/cs.CR, EFF/AlgorithmWatch/platform-coop tier, editorial tier, enforcement/GitHub tier).
+
+**Captures attempted / succeeded:** 6 / 5
+- `eff-meta-raybans-nametag` + `eff-meta-nametag-rollback` (EFF Deeplinks, June 2026) — succeeded (capture_url x2); combined into single wiki page
+- `dignity-centric-stack` (arXiv 2606.06083) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only, text intact)
+- `osa-vpn-privacy-risk` (arXiv 2606.05273) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only)
+- `ghost-tool-calls` (arXiv 2606.02483) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only)
+- `aca-under-dp` (arXiv 2505.05707) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only)
+
+**Wiki pages created (5 new):**
+- `wiki/mechanisms/meta-raybans-nametag-surveillance.md` — EFF Threat Lab static analysis confirmed dormant NameTag FRT in Meta AI app (50M+ Ray-Ban devices); 48-hour rollback after public disclosure; dual framing: extraction mechanism + adversarial binary auditing counter-technique
+- `wiki/mechanisms/dignity-centric-stack.md` — arXiv 2606.06083: commons-governed 6-layer federated AI architecture; "civic battery" capital-control decoupling; formal capture-resistance proof
+- `wiki/counter-power/osa-vpn-privacy-paradox.md` — arXiv 2606.05273: UK OSA age-verification → +100/217/415% VPN adoption spikes; regulation-as-extraction-vector confirmed empirically
+- `wiki/mechanisms/ghost-tool-calls.md` — arXiv 2606.02483: LLM agent speculative tool calls leak intent pre-authorization; Speculative Tool Privacy Contracts as issue-time fix; first formalization
+- `wiki/mechanisms/aca-dp-lower-bounds.md` — arXiv 2505.05707 (ACM 2026): formal lower bounds on ACA success under DP-SGD; critical-mass inversely proportional to privacy budget
+
+**Watchlist:** 3 new overflow entries added; 3 prior overflow items marked captured (dignity-centric-stack, osa-vpn-privacy-paradox, aca-dp-lower-bounds).
+
+**No new conflict files.** Existing open conflicts [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] unresolved (pending user ruling).
+
+**Brief:** `wiki/weekly-briefs/2026-06-15.md` + `/tmp/weekly-brief-2026-06-15.md`. Email sent to david.hugh.mcnamee@outlook.com.

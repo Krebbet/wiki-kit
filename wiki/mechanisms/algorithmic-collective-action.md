@@ -111,6 +111,7 @@ arXiv 2605.06749. Harvard/Mila/ISTA preprint (Battiloro, Greiner, Rancati et al.
 
 - [[the-firms-view]] — the firm-side framing of the same technical primitives (attack taxonomies + DP-as-counter + adaptive learning + threshold-tightening)
 - [[adversarial-data-poisoning]] — sister page; technical attack taxonomy (Wang et al. 2024) + DP-as-firm-counter (Solanki et al. 2025)
+- [[aca-dp-lower-bounds]] — focused page on Solanki et al. 2025: formal lower bounds on collective success under DP-SGD, critical-mass inflation, and strategy implications
 - [[strategic-classification]] — alternative formal frame: individual-level strategic response by users to a firm's classifier (Hardt et al. 2016 + extensions)
 - [[obfuscation]] — adjacent counter-power lever (per-user, not coordinated)
 - [[possible-strategic-levers]] — strategy-layer lever inventory
