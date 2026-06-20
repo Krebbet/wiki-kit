@@ -95,6 +95,14 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Continuous Latent Contexts (arXiv:2605.09867) — constant-depth transformers implement weighted-majority / Q-learning via latent context tokens
 - When to Think, When to Speak (arXiv:2605.03314) — RL-trained private/public disclosure policy; "silence tax"; tested on MoE Qwen3-30B-A3B
 
+## RLVR theory and analysis
+
+- FreePRM (arXiv:2506.03570) — PRM training with only outcome labels via pseudo-labeling; +24.1% F1 over supervised baseline on ProcessBench; addresses PRM annotation bottleneck
+- Reshaping Reasoning via Pattern Selection (arXiv:2506.04695) — **captured 2026-06-19**; see [[research/rlvr-mechanics/rlvr-pattern-selection-theory]]
+- Critique-GRPO (arXiv:2506.03106, ICML 2026 Spotlight) — GRPO variant with natural-language critique as additional reward signal; +15–21% Pass@1 on AIME 2024
+- KDRL (arXiv:2506.02208) — unified KD (reverse-KL to teacher) + GRPO (verifiable reward) in single policy-gradient objective; outperforms RL-only and KD-only with better token efficiency
+- VibeThinker-3B (arXiv:2606.16140) — 3B curriculum SFT + multi-domain RL + offline self-distillation; AIME'26 94.3, matching flagship models; proposes Parametric Compression-Coverage Hypothesis
+
 ## Decoding-time / activation steering
 
 *Seeded 2026-05-12; promoted to full theme 2026-05-13 via /research run. Theme now lives at [[research/decoding-time-steering/_overview]] with 13 per-paper pages + theme overview + [[research/synthesis/decoding-time-shapes]] synthesis. Watchlist entries cleared into corresponding wiki pages; only the still-open deep-dive remains.*
@@ -108,5 +116,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-06-12]] — most recent weekly sweep
-- [[weekly-briefs/2026-06-05]] — prior weekly sweep
+- [[weekly-briefs/2026-06-19]] — most recent weekly sweep
+- [[weekly-briefs/2026-06-12]] — prior weekly sweep

@@ -9,7 +9,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | Theme | Summary |
 |---|---|
 | [[research/single-sample-rl-finetuning/_overview]] | Empirical and mechanistic account of one-example RLVR on capable base LLMs — post-training amplifies latent reasoning rather than installing new skills. |
-| [[research/rlvr-mechanics/_overview]] | GRPO, sparse-subnetwork effects of RL, and information-gain process rewards — the mechanics under RLVR, where the sample-efficiency bottleneck is the reward, not the optimiser. **Update 2026-05-10:** RL-as-selection-not-learning now token-level operationalised (Rethinking-RL: 0% shifted outside base top-5; rank-32 LoRA at 0.27–0.49% params replicates RL) and structurally grounded (Binary-Rewards: filtered model $p^*$ I-projection, forward-vs-reverse-KL asymmetry, misspecification-driven mode collapse). |
+| [[research/rlvr-mechanics/_overview]] | GRPO, sparse-subnetwork effects of RL, and information-gain process rewards — the mechanics under RLVR, where the sample-efficiency bottleneck is the reward, not the optimiser. **Update 2026-05-10:** RL-as-selection-not-learning now token-level operationalised (Rethinking-RL: 0% shifted outside base top-5; rank-32 LoRA at 0.27–0.49% params replicates RL) and structurally grounded (Binary-Rewards: filtered model $p^*$ I-projection, forward-vs-reverse-KL asymmetry, misspecification-driven mode collapse). **Update 2026-06-19:** Pattern-selection theory (Chen et al. 2506.04695) adds the formal theoretical account at pattern-distribution level; entropy-gated gradient restriction (Wang et al. 2506.01939, NeurIPS 2025) is the prescriptive counterpart showing top-20% entropy tokens drive all effective gradient signal (+11 pp on Qwen3-32B). |
 | [[research/process-reward-models/_overview]] | Step-level credit assignment: PRM800K, Math-Shepherd, process- vs outcome-based feedback, GSM8K verifiers. |
 | [[research/self-improvement/_overview]] | Models training on self-generated data: STaR, Self-Rewarding LM, rStar-Math. |
 | [[research/critique-self-correction/_overview]] | Textual critiques as a substitute for dense labels: Self-Refine, Reflexion, Constitutional AI. |
@@ -45,6 +45,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/single-sample-rl-finetuning/reft]] | ReFT — SFT warm-up + PPO on multiple sampled CoT paths per problem; +10–12% over SFT on math without external RM. |
 | [[research/single-sample-rl-finetuning/cbrl]] | CBRL (arXiv:2603.18953, March 2026) — curriculum of annealed few-shot demonstration prepending during RLVR; +1.3–22.3% over GRPO-only on ARC-1D, Word Sorting, others. |
 | [[research/single-sample-rl-finetuning/fest]] | FEST (arXiv:2605.15012) — demonstration-guided RLVR at the lowest trace floor: 128 *random* expert traces via semi-online DPO + GRPO on answer-only data; semi-online-DPO ≈ weighted-SFT + negative-REINFORCE. Raises [[conflicts/fest-tuned-rl-vs-demonstration-necessity]]. |
+| [[research/single-sample-rl-finetuning/concept-aware-finetuning]] | Chen et al. (arXiv:2506.07833) — CAFT: redefines fine-tuning units as multi-token concept-spanning sequences (not individual tokens); concept-granular training signal stronger for concept-level generalization; code public. First post-training method to instantiate the concept-unit fine-tuning primitive the wiki thesis calls for. |
 
 ### RLVR mechanics
 
@@ -59,6 +60,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rlvr-mechanics/binary-rewards-rl-challenges]] | Dymetman (arXiv:2605.02375) — information-geometric account of binary-RLVR diversity collapse: filtered model $p^*$ as I-projection of base; KL-RLVR converges in forward KL but $\text{KL}(p^\beta\|p^*)=+\infty$; misspecification + small $\beta$ drives near-Dirac collapse (Eq. 10). Formal substrate for Yue's pass@k inversion. |
 | [[research/rlvr-mechanics/spurious-rewards-rlvr]] | Shao et al. (arXiv:2506.10947, UW/Allen AI) — GRPO clip-bias amplifies high-prior pretraining behaviours independent of reward signal; random rewards yield 73% of ground-truth RLVR gains (+21.4 pp vs +29.1 pp on MATH-500) on Qwen2.5-Math-7B but zero on Llama3/OLMo2; amplified behaviour is "code reasoning" (CoT in code syntax, 65% → >90%). |
 | [[research/rlvr-mechanics/flowtracer-attention-credit]] | arXiv:2606.10646 (ICML 2026, SJTU/Alibaba) — FlowTracer: attention-induced DAG with flow conservation; prunes to answer-region paths; per-token flow throughput shapes RL reward. Identifies hub/aggregation-checkpoint tokens as mechanistic concept-learning bottlenecks. Contributes to invisible-leash-vs-spiral-transfer operationalisation. |
+| [[research/rlvr-mechanics/rlvr-pattern-selection-theory]] | Chen, Li, Zou (arXiv:2506.04695, v2 Sep 2025) — Theoretical + empirical account of RLVR dynamics at the reasoning-pattern level: patterns have stable success rates; RL shifts *which patterns are used*, not pattern competence. Two-regime RLVR theory (easy vs hard-optimisation, gated by base model reasoning quality). First formal theoretical account in the RL-as-selection cluster; extends token-level empirics to pattern-distribution theory. |
+| [[research/rlvr-mechanics/high-entropy-minority-tokens]] | Wang et al. (arXiv:2506.01939, NeurIPS 2025) — Only top-20% entropy "fork" tokens drive effective RLVR gradient signal; restricting policy gradient updates to them matches Qwen3-8B full-gradient and +4.79/+5.21 (14B) and +11.04/+7.71 (32B) on AIME'25/'24. Low-entropy 80% actively hurts when trained on exclusively. Drop-in gradient mask; strong positive scaling trend at 1–40B range. Complementary prescriptive counterpart to rethinking-rl-sparse-selection. |
 
 ### Process reward models
 
@@ -228,6 +231,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/curriculum-and-decomposition/scrl-curriculum-credit-assignment]] | Jiang et al. 2026 (SCRL, Tsinghua/LeapLab) — subproblem curriculum RL that decomposes hard problems into K=4 verifiable subproblems from reference solutions; subproblem-level normalization + progress-aware correction + mixed-group training. +4.1/+1.9 avg over GRPO on Qwen3-4B/14B; metric-recovery theory proves Ω(1/δ) gradient recovery over dead-zone original problem. |
 | [[research/curriculum-and-decomposition/metis-curriculum-judgment]] | Zheng, Ma et al. 2026 (METIS, MIT/Amazon AGI, arXiv:2605.11235) — internalizes curriculum selection into the policy via ICL over a K=3 calibration memory of recent prompt–reward-variance pairs; closed loop tracks the competence frontier without an external selector; up to 67% wall-clock reduction vs external-curriculum baseline (PCL). |
 | [[research/curriculum-and-decomposition/e2h-curriculum-rl]] | arXiv:2506.06632 (Parashar et al., Texas A&M, 2025) — E2H Reasoner: curriculum GRPO with Gaussian/cosine difficulty-fading schedules over four task levels; proves sample-complexity advantage over direct hard-task RL; Countdown OOD +10 pp on Qwen 1.5B, AIME24 Pass@32 +6.7 pp; orthogonal to SCRL's within-rollout subproblem decomposition. |
+| [[research/curriculum-and-decomposition/adaback-adaptive-rationale]] | ArXiv:2506.18110 — AdaBack: per-sample adaptive curriculum that reveals partial solution prefixes (rationale hints) based on each sample's reward history; hint grows on failure, shrinks on success. Solves tasks where both SFT and pure RL fail (synthetic parity/hard-explore). Novel axis: curriculum in hint-level, not task-difficulty. Hybrid RL + teacher-student. |
 
 ### Self-play
 
@@ -270,6 +274,12 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/concept-evaluation/causal-abstraction]] | Geiger et al. (JMLR 2025) — IIA as non-behavioural concept-fidelity metric; complements MDL. |
 | [[research/concept-evaluation/control-tasks-probes]] | Hewitt & Liang (EMNLP 2019) — selectivity = probe accuracy − random-label control; floor for any probing-based concept claim. |
 | [[research/concept-evaluation/embers-autoregression]] | McCoy et al. (PNAS 2024) — task / output / input probability shape LLM accuracy; the diagnostic prior. |
+
+### Variable-granularity / concept-level architectures (added 2026-06-19)
+
+| Page | Summary |
+|---|---|
+| [[research/variable-granularity/hierarchical-reasoning-model]] | Wang et al. (arXiv:2506.21734, v3 Aug 2025) — HRM: 27M-param recurrent two-module architecture (slow/abstract + fast/detailed) achieves near-perfect Sudoku/maze reasoning from 1000 training samples; no pre-training, no CoT; single forward pass; outperforms larger models on ARC. Architectural inductive bias substitutes for data volume. Direct evidence for the concept-granularity architecture hypothesis. |
 
 ### Decoding-time and activation-steering (added 2026-05-13)
 

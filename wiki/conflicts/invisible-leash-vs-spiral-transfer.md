@@ -68,6 +68,7 @@ Earlier refinement (2026-05-01) via [[../research/self-play/two-stage-dynamic]] 
 - Position A remains the user's chosen working frame (per memory `feedback_self_play_design_choices.md`), now refined: gains live within base-model latent capacity in Stage 1; Stage 2 *may* extend the support, but extracting Stage-2 dynamics requires explicit entropy preservation (e.g. game-self-play, [[../research/self-play/info-gain-self-play]]'s epiplexity criterion).
 - Conflict remains **open** on the residual question: does SPIRAL's opponent-adaptation add something beyond standard Stage-2 RLVR, or is it fully accounted for?
 - **2026-05-10 update:** Position A is now token-level-sharp ([[../research/rlvr-mechanics/rethinking-rl-sparse-selection|Rethinking-RL]] sparse selection) and structurally-grounded ([[../research/rlvr-mechanics/binary-rewards-rl-challenges|Binary-Rewards]] forward-vs-reverse-KL asymmetry). The residual question — whether game-self-play's transfer is genuinely outside Position A's bound or just a Stage-2 instantiation of it — now turns squarely on whether **SPIRAL extends the support** (Position-B-specific) or merely **rebalances within it** (Position A consistent). Neither has yet directly tested this with token-level support diagnostics on SPIRAL training.
+- **2026-06-19 update:** [[../research/rlvr-mechanics/rlvr-pattern-selection-theory|Chen et al. (2506.04695)]] adds the **reasoning-pattern-level** theoretical dimension: reasoning patterns have stable success rates under RL training; RL shifts *which patterns are used*, not pattern competence. This is Position A's first formal theoretical account (not just empirical), operating at a higher level of abstraction than token-level reranking. It also provides the RLVR convergence gating result: base model reasoning quality determines whether RLVR converges at all — directly relevant to the single-sample viability question. Position A now has: (i) token-level empirics (Rethinking-RL), (ii) information-geometric structure (Binary-Rewards), and (iii) pattern-level theory (Chen et al.). The residual gap remains: no paper tests SPIRAL training specifically for support extension diagnostics.
 
 ## Related
 
@@ -82,6 +83,7 @@ Earlier refinement (2026-05-01) via [[../research/self-play/two-stage-dynamic]] 
 - [[../research/single-sample-rl-finetuning/rlvr-incentivizes-reasoning]] — Wen et al. (2506.14245): **counter-evidence to A** (corrected 2026-05-16 — previously mislabelled "Shao et al., sympathetic to A"). Uses CoT-Pass@K to argue RLVR genuinely extends the reasoning boundary, contra the pure-reweighting reading. Strengthens the case that the A/B conflict is unresolved, not settled for A.
 - [[../research/rlvr-mechanics/rethinking-rl-sparse-selection]] — token-level sharp evidence for Position A (2026-05-10)
 - [[../research/rlvr-mechanics/binary-rewards-rl-challenges]] — formal collapse mechanism for Position A (2026-05-10)
+- [[../research/rlvr-mechanics/rlvr-pattern-selection-theory]] — pattern-level theoretical account of Position A; base model quality gates RLVR convergence (2026-06-19)
 
 ## Source
 

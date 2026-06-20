@@ -831,3 +831,59 @@ Key contributions: two failure modes in OPD (trajectory misalignment, non-unifor
 ## [2026-06-12] weekly-brief | 2026-06-12 sweep
 
 Autonomous weekly sweep. 5 papers captured and ingested (RLCSD, FlowTracer, RREDCoT, GRAIL, SG-OPD). 10 watchlist additions. Brief written to `wiki/weekly-briefs/2026-06-12.md`. Email sent to david.hugh.mcnamee@outlook.com.
+
+---
+
+## [2026-06-19] ingest | rlvr-pattern-selection-theory (arXiv:2506.04695)
+
+Ingested "Reshaping Reasoning in LLMs: A Theoretical Analysis of RL Training Dynamics through Pattern Selection" (Chen, Li, Zou). Source: `raw/research/weekly-2026-06-19/01-rlvr-pattern-selection-theory.md`.
+
+**Page written:** `wiki/research/rlvr-mechanics/rlvr-pattern-selection-theory.md`
+
+Key contributions: first formal theoretical account of RL-as-selection at reasoning-pattern level; patterns have stable success rates, RL shifts which patterns are used; two RLVR convergence regimes gated by base model quality; RLIF degrades with continued training. Added 2026-06-19 update to [[conflicts/invisible-leash-vs-spiral-transfer]] — Position A now has empirical (token), information-geometric (structure), and pattern-distribution (theory) accounts.
+
+---
+
+## [2026-06-19] ingest | adaback-adaptive-rationale (arXiv:2506.18110)
+
+Ingested "RL for Reasoning by Adaptively Revealing Rationales" (AdaBack). Source: `raw/research/weekly-2026-06-19/02-adaback-adaptive-rationale.md`.
+
+**Page written:** `wiki/research/curriculum-and-decomposition/adaback-adaptive-rationale.md`
+
+Key contributions: per-sample adaptive hint curriculum via rationale prefix revealing; curriculum axis is hint-level not task-difficulty; solves tasks where both SFT and pure RL fail (hard-explore parity tasks); hybrid RL + teacher-student framing.
+
+---
+
+## [2026-06-19] ingest | concept-aware-finetuning (arXiv:2506.07833)
+
+Ingested "Improving Large Language Models with Concept-Aware Fine-Tuning" (CAFT). Source: `raw/research/weekly-2026-06-19/03-concept-aware-finetuning.md`.
+
+**Page written:** `wiki/research/single-sample-rl-finetuning/concept-aware-finetuning.md`
+
+Key contributions: multi-token concept-spanning sequences as fine-tuning unit (not individual tokens); first post-training instantiation of concept-unit loss; directly relevant to the wiki thesis's concept-level training primitive gap. Code: https://github.com/michaelchen-lab/caft-llm
+
+---
+
+## [2026-06-19] ingest | hierarchical-reasoning-model (arXiv:2506.21734)
+
+Ingested "Hierarchical Reasoning Model" (HRM; Wang et al.). Source: `raw/research/weekly-2026-06-19/04-hierarchical-reasoning-model.md`. New theme directory `wiki/research/variable-granularity/` created.
+
+**Page written:** `wiki/research/variable-granularity/hierarchical-reasoning-model.md`
+
+Key contributions: two-module recurrent architecture (slow/abstract + fast/detailed) achieves near-perfect Sudoku/maze with 1000 training samples and 27M params; no pre-training, no CoT; outperforms larger models on ARC. Conflict flag: architectural counter-argument to CoT-based approaches; different regime from large pre-trained backbone assumption.
+
+---
+
+## [2026-06-19] ingest | high-entropy-minority-tokens (arXiv:2506.01939)
+
+Ingested "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning" (Wang et al., NeurIPS 2025). Source: `raw/research/weekly-2026-06-19/05-high-entropy-minority-tokens.md`.
+
+**Page written:** `wiki/research/rlvr-mechanics/high-entropy-minority-tokens.md`
+
+Key contributions: top-20% entropy tokens carry all effective RLVR gradient signal; entropy-gated gradient restriction matches Qwen3-8B full-gradient and +4.79/+11.04 on 14B/32B (AIME'24/25); strong positive scaling trend; drop-in gradient mask. Complementary prescriptive counterpart to rethinking-rl-sparse-selection (post-hoc → prospective).
+
+---
+
+## [2026-06-19] weekly-brief | 2026-06-19 sweep
+
+Autonomous weekly sweep. 5 papers captured and ingested (rlvr-pattern-selection-theory, adaback-adaptive-rationale, concept-aware-finetuning, hierarchical-reasoning-model, high-entropy-minority-tokens). 5 watchlist additions (new "RLVR theory and analysis" section). Brief written to `wiki/weekly-briefs/2026-06-19.md`. Conflict file updated: invisible-leash-vs-spiral-transfer gains 2026-06-19 Position A update. New wiki theme: variable-granularity/.
