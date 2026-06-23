@@ -43,9 +43,17 @@ This is a materially different theory of harm from collusion. It implies that *s
 
 See [[regulatory-responses]] for the state of proposed and enacted legislation.
 
+## Deep-RL convergence speed (Frick 2026)
+
+arXiv 2604.15825 (Frick, Cornell, April 2026) closes the convergence-speed open problem for deep RL pricing agents. Prior theory left unanswered *how quickly* RL agents converge to collusive outcomes; Frick shows that a modern deep RL model reaches collusive prices in a timeframe that matches empirical market observations. The convergence is sustained by a learned reward-punishment mechanism: any agent that defects from the collusive price faces coordinated retaliation in subsequent periods, making defection unprofitable even without explicit coordination.
+
+**Implications for enforcement.** If convergence is fast and empirically calibrated, the "wait for the market to self-correct" assumption fails. Enforcement agencies have a narrow window between algorithm deployment and collusive equilibrium; the Tunney Act monitoring regime entering into force for RealPage (see [[rental-housing-algorithmic-pricing]]) is one model for maintaining visibility during that window.
+
+**Detection implication.** The reward-punishment mechanism is a detectable signal if price-series data are available: a competing seller's defection (temporary price cut) followed by coordinated margin recovery among rivals is a statistical signature that price-series monitoring tools can flag.
+
 ## Open questions
 
-- No comprehensive theory predicts when learning algorithms converge to Nash equilibrium, cycle, diverge, or land on collusive-looking equilibria. This is the central open problem named by arXiv 2504.16592.
+- **[Updated 2026-06-22]** Convergence speed for deep RL agents is now empirically bounded by Frick 2026 — matching observed market dynamics. The open problem narrows to: (a) whether the result holds across market structures beyond repeated Bertrand competition, and (b) whether the learned reward-punishment scheme is detectable in live market data at sufficient statistical power.
 - Empirical evidence outside the German gasoline market is limited — industry-level data on algorithmic-pricing adoption and prices is hard to get.
 - The boundary between "non-collusive" asymmetric-frequency harm (HBS) and tacit collusion (arXiv) is blurry in practice; a firm using an algorithm that observes competitor prices and credibly reacts is simultaneously using a commitment device and engaging in something that looks like signalling.
 
@@ -68,6 +76,11 @@ See [[regulatory-responses]] for the state of proposed and enacted legislation.
   - **Purpose:** interdisciplinary survey of algorithmic collusion theory, experiments, and open problems.
   - **Trust:** preprint accepted at peer-reviewed venue.
 - `raw/research/dynamic-pricing-landscape/01-doj-realpage-lawsuit.md` — used here as the empirical anchor for the explicit-coordination variant (full treatment at [[rental-housing-algorithmic-pricing]]).
+- `raw/research/weekly-2026-06-22/03-rl-collusion-convergence.md`
+  - **Origin:** arXiv 2604.15825 (Frick, Cornell, April 2026). Economics preprint.
+  - **Audience:** Economists and AI-policy researchers.
+  - **Purpose:** Close the open question about deep RL convergence speed in oligopolistic repeated competition.
+  - **Trust:** Preprint, single author, methodology not fully readable from abstract alone. Moderate trust pending full-text; result is consistent with existing theoretical expectations.
 
 ## Related
 

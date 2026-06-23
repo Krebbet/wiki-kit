@@ -211,6 +211,18 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - FTC seeks comment on X Corp petition to weaken 2022 privacy/security consent order — consent-order rollback precedent
 - noyb Schibsted "Pay or Okay" complaint (June 3 2026) — Norwegian media giant; accept/reject symmetry complaint; follow-on to ORF.at ruling
 
+## Recent additions (2026-06-22 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- Privacy Badger 2026.6.16 (June 17 2026) — maintenance release; tracker-blocking + accessibility updates; tracked-tool cadence confirmed
+- Kiji Privacy Proxy (open-source, May 2026) — on-premise PII masking before external AI APIs; 16+ PII categories; Dataiku/Apache-2.0
+- CMA Digital Markets Act 2025: interim algorithmic-pricing investigation powers (June 2026) — UK CMA can now compel algorithm docs, training data, pricing logic, source code; hotel sector investigation active
+- Platform 6 Co-operative soft launch (2026) — UK platform-coop with Loomio-based democratic governance; federation-build candidate
+- arXiv 2506.11947 (Intractable Cookie Crumbs, June 2025) — nexus of stateful consent banners + tracking cookies; tracking-defense substrate
+- OFN DFC API federated interoperability (June 2026 milestone) — *carried from May 25 overflow; signal confirmed*
+- NY One Fair Price Act — *Hochul signature pending; update from June 15 overflow; watch for signature/veto by Dec 31 2026*
+
 ## Recent additions (2026-06-15 weekly-brief overflow)
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*

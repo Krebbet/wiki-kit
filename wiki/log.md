@@ -869,3 +869,27 @@ Weekly scan covering June 8–15, 2026. ~35 sources scanned across 4 tiers (arXi
 **No new conflict files.** Existing open conflicts [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] unresolved (pending user ruling).
 
 **Brief:** `wiki/weekly-briefs/2026-06-15.md` + `/tmp/weekly-brief-2026-06-15.md`. Email sent to david.hugh.mcnamee@outlook.com.
+
+## [2026-06-22] weekly-brief-ingest | 2026-06-22 radar sweep
+
+Weekly scan covering June 15–22, 2026. ~30 sources scanned across 4 tiers (arXiv cs.CY/cs.CR, tools/platforms tier, civil society tier, enforcement/editorial tier).
+
+**Captures attempted / succeeded:** 4 / 4
+- `fairfare` (arXiv 2502.11273, ACM Trans. CHI 2026) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only, text intact)
+- `acoda-obfuscation` (arXiv 2606.11755, June 2026) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only)
+- `rl-collusion-convergence` (arXiv 2604.15825, April 2026) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only)
+- `uk-duaa-dsar-complaints` (UK legislation.gov.uk) — succeeded (capture_url)
+
+**Wiki pages created / extended (4):**
+- `wiki/tools/fairfare.md` (new) — FairFare crowdsourced rideshare data tool; 76K+ trips with Colorado union; CO SB 24-75 output; ACM Trans. CHI 2026; Tier-1 build-or-adapt template
+- `wiki/mechanisms/acoda-code-obfuscation.md` (new) — GA-optimised adversarial code obfuscation against LLM analysis; captured for methodological transfer value; primary application is developer IP protection
+- `wiki/mechanisms/algorithmic-collusion.md` (extended) — "Deep-RL convergence speed (Frick 2026)" section added; closes convergence-speed open problem; updates open questions
+- `wiki/regulatory/uk-duaa-dsar-complaints.md` (new) — UK DUA Act 2025 s.103 in force 19 June 2026; mandatory DSAR complaint procedure with ICO reporting trigger
+
+**Watchlist:** 7 new overflow entries added (Privacy Badger 2026.6.16, Kiji Privacy Proxy, CMA interim algorithmic pricing powers, Platform 6 Co-op, Cookie Crumbs arXiv, OFN DFC API, NY One Fair Price Act status).
+
+**No new conflict files.** Acoda ASR vs browser-fingerprinting adaptive-adversary tension noted in page; not a true conflict (different adversary contexts). RL collusion convergence "conflicts" with algorithmic-collusion "open question" — resolved by updating the open questions section directly (this is a resolution, not a contradiction).
+
+**Existing open conflicts unresolved:** [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] still pending user ruling.
+
+**Pre-existing uncommitted at run start:** HANDOFF.md (untracked, left untouched).
