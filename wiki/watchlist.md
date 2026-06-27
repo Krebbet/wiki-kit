@@ -55,6 +55,11 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - AMR-SD (arXiv:2605.18529) — token-level credit via asymmetric meta-reflective self-distillation in RLVR
 - OPD Survey (arXiv:2604.00626) — systematic f-divergence OPD survey; design-axes reference for the teacher-student RL theme
 - Learning from Language Feedback via VPD (arXiv:2605.15113) — variational distillation from language-feedback teacher; addresses stale-teacher in OPD
+- TGPO (arXiv:2605.13230) — teacher-guided policy optimization preserving exploration benefits of on-policy sampling; OPD variant
+
+## Process reward models
+
+- ProcessThinker (arXiv:2606.11209) — rollout-based PRM without step labels; scores per-step via rollout success; annotation-free PRM extension
 
 ## RLVR mechanics
 
@@ -65,10 +70,12 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - FREIA (arXiv:2605.04065) — Free-Energy-Principle unsupervised RL reasoning, no external reward; consensus + novelty terms; pairs w/ uPRM
 - RLVR Implicitly Incentivizes Correct Reasoning (arXiv:2506.14245) — theory: GRPO gradients provably incentivize correct CoT in base models
 - Learning What RL Can't (arXiv:2506.07527) — interleaved SFT+RL for hardest questions; 1.5% SFT + 20.4% RL data of prior SOTA
+- Revisiting RL for LLM Reasoning Cross-Domain (arXiv:2506.14965) — empirical study whether RLVR gains transfer across math/code/science; tests single-sample generalisation claim
 
 ## Self-improvement
 
 - Reflect, Retry, Reward (arXiv:2505.24726) — reward self-reflection tokens on retry-success; up to +34.7%, no synthetic data
+- ReSum (arXiv:2606.13316) — RLVR for compressing/organising reasoning trajectories via self-summarisation; novel self-improvement signal orthogonal to GRPO variants
 
 ## Test-time training and curriculum
 
@@ -116,5 +123,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-06-19]] — most recent weekly sweep
-- [[weekly-briefs/2026-06-12]] — prior weekly sweep
+- [[weekly-briefs/2026-06-26]] — most recent weekly sweep
+- [[weekly-briefs/2026-06-19]] — prior weekly sweep

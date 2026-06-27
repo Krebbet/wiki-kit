@@ -46,6 +46,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/single-sample-rl-finetuning/cbrl]] | CBRL (arXiv:2603.18953, March 2026) — curriculum of annealed few-shot demonstration prepending during RLVR; +1.3–22.3% over GRPO-only on ARC-1D, Word Sorting, others. |
 | [[research/single-sample-rl-finetuning/fest]] | FEST (arXiv:2605.15012) — demonstration-guided RLVR at the lowest trace floor: 128 *random* expert traces via semi-online DPO + GRPO on answer-only data; semi-online-DPO ≈ weighted-SFT + negative-REINFORCE. Raises [[conflicts/fest-tuned-rl-vs-demonstration-necessity]]. |
 | [[research/single-sample-rl-finetuning/concept-aware-finetuning]] | Chen et al. (arXiv:2506.07833) — CAFT: redefines fine-tuning units as multi-token concept-spanning sequences (not individual tokens); concept-granular training signal stronger for concept-level generalization; code public. First post-training method to instantiate the concept-unit fine-tuning primitive the wiki thesis calls for. |
+| [[research/single-sample-rl-finetuning/rlsc-self-confidence]] | RLSC (arXiv:2506.06395) — self-confidence (agreement probability $\sum_y p_\theta^2$) as reward; 16 samples/question, 10–20 gradient steps; +13.4 pp AIME24 / +21.2 pp MATH500 on Qwen2.5-Math-7B; no labels, no verifier. Lowest-label-count RL post-training in the wiki. Correctness-agnostic signal is a fundamental misspecification risk. |
 
 ### RLVR mechanics
 
@@ -158,6 +159,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/teacher-student-rl/sgsd-skill-gated-distillation]] | arXiv:2605.28791 (May 2026) — Skill-Conditioned Gated Self-Distillation (SGSD). Replaces trusted reference answers with a skill bank of reasoning principles + mistake patterns; polarity-gated distillation filters uncertain signals; +6.2 pp over GRPO on Qwen3-1.7B math, no reference answers required. Code released. |
 | [[research/teacher-student-rl/rlcsd]] | arXiv:2606.11709 (Jun 2026, Alibaba/Tsinghua) — RLCSD: contrastive self-distillation that subtracts wrong-hint KL from correct-hint KL to cancel privilege-induced style drift in OPSD. Drop-in modular; third position in the KnowRL vs RLT hint-design debate. |
 | [[research/teacher-student-rl/sg-opd]] | arXiv:2606.09304 (Jun 2026) — SG-OPD: two fixes to standard OPD — phased teacher sampling (verifier-endorsed rollouts at cold-start) + sign-consistency gate (extrapolate agreement, dampen disagreement per token). +1.98 per-sample / +7.50 per-question over OPD on competition math. |
+| [[research/teacher-student-rl/tapo-error-trajectory-distillation]] | TAPO (arXiv:2606.18844, Alibaba/Qwen/Tsinghua, Jun 2026) — explicit micro-reflective trajectory construction from model's own erroneous prefixes; decoupled advantage estimation (DAE); OOD token suppression (OTS); +9.58 pp over GRPO on AIME24 in cold-start setting; +4.79 pp over OPSD. Core claim: the bottleneck is explicit error diagnosis, not privileged target. |
 
 ### RL optimisers
 
@@ -181,6 +183,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rl-optimizers/bolt-kl-rlvr-boltzmann]] | BOLT (Shu et al., arXiv:2605.02469) — unique reference-sampled weighted-SFT objective matching KL-RLVR target = prompt-normalised Boltzmann density-ratio (Theorems 3, 4). Finite one-shot saturation $\beta\log(1/\pi^*(S_N|x))$ (Theorem 6); coverage–ESS frontier (Theorem 7); iterative BOLT = KL policy mirror descent (Theorem 11). Matches/exceeds GRPO at 75–85% less wall-clock. |
 | [[research/rl-optimizers/sdpg-self-distilled-policy-gradient]] | arXiv:2606.04036 (Liu, Zhang, Zhang, Gu; UCLA, Jun 2026) — SDPG augments GRPO with full-vocabulary on-policy self-distillation (student-to-teacher reverse-KL, same model under unconditional vs. solution-conditioned context) + reference-policy KL regularisation; improves stability and performance over standalone RLVR and self-distillation baselines. |
 | [[research/rl-optimizers/grail]] | arXiv:2606.04889 (Jun 2026) — GRAIL: gradient-activation saliency replaces GRPO's uniform per-token advantage broadcast. +3.60 pp accuracy / +3.05 pp Pass@3 over GRPO across 5 model families. Token-dilution fix is orthogonal to std-normalization (DR-GRPO) and sampling (DAPO) fixes. |
+| [[research/rl-optimizers/semi-online-dpo]] | arXiv:2506.21495 — systematic offline→semi-online→online DPO vs. GRPO comparison; semi-online DPO ($s\leq100$) matches fully-online DPO with async parallelism; online DPO marginally beats GRPO on verifiable and non-verifiable tasks; stability findings: Adam ε, ref model sync, entropy collapse. |
+| [[research/rl-optimizers/first-principles-two-axis-framework]] | arXiv:2606.16733 — 60-page first-principles derivation of REINFORCE→PPO→GRPO→post-GRPO from $J(\theta)=\mathbb{E}[R(\tau)]$; two-axis diagnostic framework (trajectory-side / reward-side / both-side compound failures); Agentic RL and GRPO-OPD hybrid structural extensions; DPO and divergence-OPD identified as boundary cases outside the frame. |
 
 ### Catastrophic forgetting (expanded to full theme 2026-05-16)
 
@@ -193,6 +197,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/catastrophic-forgetting/rft-mitigates-forgetting]] | arXiv:2507.05386 — 7-task continual post-training: SFT catastrophically forgets, RFT learns slower but retains. The direct skill-stacking experiment. |
 | [[research/catastrophic-forgetting/rft-data-perspective]] | arXiv:2506.23508 — data-distribution account: RFT's on-policy PPL-symmetric low-eNTK rollouts preserve prior knowledge; SFT's fixed targets don't. |
 | [[research/catastrophic-forgetting/mechanistic-forgetting]] | arXiv:2601.18699 — gradient interference / representational drift / loss-landscape flattening; 6 models (inspectable max 400B; 1.5T is an API-only estimate). |
+| [[research/catastrophic-forgetting/mechanistic-forgetting-circuits]] | arXiv:2605.28860 — circuit-level RL vs. SFT comparison via DBM on Qwen2.5-3B; RL retains 72.5% base circuit heads vs. SFT 59.0% (13.5 pp); RL = distributed adaptor; SFT = compressor; KL dissociates from circuit retention; mechanistic substrate for rls-razor behavioral account. |
 | [[research/catastrophic-forgetting/empirical-forgetting]] | Luo et al. 2023 (arXiv:2308.08747) — foundational SFT-forgetting baseline: scale, task order, decoder-vs-encoder. |
 
 ### MoE via delta/LoRA adapters (new theme 2026-05-16)

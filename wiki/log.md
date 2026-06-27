@@ -4,6 +4,12 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-26] weekly-brief | 2026-06-26 sweep
+
+Autonomous weekly sweep. 5 papers captured (RLSC arXiv:2506.06395, TAPO arXiv:2606.18844, Mechanistic Forgetting Circuits arXiv:2605.28860, Bridging Offline/Online RL arXiv:2506.21495, First-Principles Policy Optimization arXiv:2606.16733). All audited OK (2 broken image refs in first-principles paper are known pymupdf wrong-anchor false positives per master_notes 2026-05-13). 5 ingest subagents dispatched and validated. 5 wiki pages written. 5 watchlist additions. Brief written to `wiki/weekly-briefs/2026-06-26.md`.
+
+---
+
 ## [2026-06-05] weekly-brief | 2026-06-05 sweep
 
 Autonomous weekly sweep. 5 papers captured and ingested (Spurious Rewards RLVR, Latent Concept Disentanglement, Self-Play Theorem Proving Theory, E2H Curriculum RL, SDPG). 4 watchlist additions. Brief written to `wiki/weekly-briefs/2026-06-05.md`. Email sent to david.hugh.mcnamee@outlook.com.
