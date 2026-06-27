@@ -162,6 +162,18 @@ New index section: "Agent frameworks & memory".
 Key findings: OpenClaw's four-layer Markdown-based memory (bootstrap / JSONL transcript / context window / SQLite retrieval index); Hindsight as the shared-bank bridge to Claude Code; Anthropic explicitly rejected subscription-scale always-on third-party agents (Apr 2026) — production pattern is a dedicated API harness, not Claude Code subscription.
 
 ---
+2026-06-27 — /weekly-brief (weekly radar sweep)
+
+Sources scanned: ~25 (HF Papers trending, arXiv cs.LG/cs.CL, Reddit r/ML+r/LocalLLaMA, alphaXiv, GitHub awesome-lists, web search).
+Candidates surfaced: ~27; selected 5 for capture.
+Captures attempted / succeeded: 5 / 5 (qwen-agentworld, thought-anchors, spurious-rewards-rlvr [full page], vimpo, hrm).
+Note: audit_captures flagged 15 "broken image refs" for pymupdf captures — same base-directory mismatch as prior runs (kit-level issue). Text content verified substantive (210–227 lines each, full abstracts).
+Pages written: 4 new (qwen-agentworld, thought-anchors, vimpo, hrm); 1 upgraded full page (spurious-rewards-rlvr stub → full ingest).
+Index conflict entry for sparse-policy-selection updated to five-way; [[thought-anchors]] added as behavioral corroboration.
+hrm-text.md updated: added [[hrm]] link to Related section.
+Watchlist additions: 10 (STARE, JetSpec, ParaRNN, DAG-MoE, MoE-Surpasses-Dense, G2PO, Log-Linear Attention, Programming-by-Backprop, Bridging-Offline-Online-RL, Scaling-Laws-Carefully).
+
+---
 2026-06-13 — /weekly-brief (weekly radar sweep)
 
 Sources scanned: ~18 (HF Papers trending, arXiv cs.LG/cs.CL, Reddit r/ML+r/LocalLLaMA, alphaXiv, web search).

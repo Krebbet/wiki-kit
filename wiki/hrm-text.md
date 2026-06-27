@@ -82,6 +82,7 @@ New paper (captured 2026-05-25). Benchmarked directly against Huginn and Ouro (r
 
 ## Related
 
+- [[hrm]] — foundational paper (Wang et al., arXiv:2506.21734): original HRM architecture for symbolic tasks at 27M params, 1000 training samples; HRM-Text extends to language tasks at 1B params with MagicNorm, TBPTT warmup, and PrefixLM pretraining.
 - [[hyperloop-transformers]] — closest structural peer; both use looped/recurrent depth at sub-1B–1B scale; HRM-Text's dual-timescale H+L hierarchy is more structured than mHC loops; Looped Transformer is benchmarked directly against HRM in Table 1 FLOPs-matched comparison.
 - [[gram-recursive-reasoning]] — sibling recurrent-reasoning model surfaced the same week; parallel direction in learned recurrent depth for reasoning.
 - [[latent-grpo]] — both suppress explicit token-level CoT (HRM-Text strips `<think>` traces; latent-GRPO uses continuous latent reasoning); different mechanisms, same intuition.
