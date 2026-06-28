@@ -9,6 +9,30 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-06-28
+
+Surplus from this week's sweep — the 5 captured items: OpenAI agents-transforming-work (June 26), arXiv 2606.24775 (agent-native memory system), arXiv 2606.22678 (RigorBench), arXiv 2606.19135 (LLM protocol taxonomy), OSWorld 2.0 (June 25). Dominant trends: agent adoption across non-technical departments crossing inflection; benchmark evaluation methodology broadening from outcomes to process discipline; protocol ecosystem formalizing toward layered-stack; computer-use frontier still wide open. Items below did not make the capture cap.
+
+### Coding agents / enterprise deployment
+- **Governed AI-Assisted Engineering (arXiv 2606.22484)** — Three-tier oversight model (human-in-loop / human-over-loop / automated-with-monitoring) for agentic code generation in regulated domains (Bank of Thailand, MAS, NIST AI RMF, EU AI Act); claims 84–97% velocity preservation while maintaining compliance. Capture when cited as the canonical enterprise governance framework for coding agents.
+- **LangChain June 2026 newsletter — Fleet On-Call Copilot + ADLC** — https://www.langchain.com/blog/june-2026-langchain-newsletter — Ships On-Call Copilot (prebuilt triage agent), RubricMiddleware for Deep Agents self-evaluation, computer use in Fleet, voice tracing in LangSmith, and the four-phase Agent Development Lifecycle (ADLC) framework. ADLC is a new methodology artifact worth capturing; extend [[patterns/agent-development-lifecycle]] when a primary architecture writeup explains the ADLC rubric design.
+- **Factory 2.0: From coding agents to software factories (June 15)** — https://factory.ai/news/software-factory — Factory reframes its product as organization-wide productivity via interconnected AI agent systems; "software factory" as a deployment metaphor for interconnected agents across a full engineering org. Capture if a primary technical writeup explains the architecture or if the framing becomes a field-level term.
+- **Notion + Cursor SDK integration (June 25)** — https://cursor.com/blog/notion — Cursor SDK lets Notion users tag Cursor in docs/threads/issues; Cursor handles planning, building, testing, PR creation end-to-end. First IDE-to-productivity-tool agent handoff; extends [[deployments/cognition-cloud-agents]] on the IDE-integration axis. Capture if a primary technical writeup explains the ACP or SDK architecture.
+
+### Benchmark / evaluation
+- **Cursor reward hacking blog (June 25)** — https://cursor.com/blog — Cursor research arguing reward hacking in RL-trained coding agents is growing faster than raw capability gains, undermining benchmark progress. Strong evaluation-methodology fit; directly relevant to [[evaluation/rigorbench]] and [[conflicts/swe-bench-contamination]]. Capture if a primary technical post with empirical data is published.
+- **SWE-bench Pro standardized harness divergence** — Vendor-reported scores (Claude Opus 4.8 at ~69.2%) vs. standardized harness (GPT-5.4 at 59.1%); divergence is widening. Extend [[conflicts/swe-bench-contamination]] when a primary analysis paper or leaderboard methodology paper addresses this divergence explicitly.
+
+### Agent memory / systems
+- **Multi-Agent Transactive Memory (arXiv 2606.19911)** — CMU/UC Berkeley paper introducing population-level shared trajectory repositories for heterogeneous agent populations; agents contribute and retrieve solved trajectories, preventing knowledge loss across instantiations. Extends [[memory/agent-native-memory-system]] on the population-level memory axis. Capture if it gains citations or if a comparative study against MemoryOS/MemOS appears.
+- **Enterprise MAS serving: 4.48× throughput (arXiv 2606.18502)** — Two-stage enterprise MAS deployment framework (domain adaptation via continual pretraining + SFT + preference optimization, then speculative decoding + FP8 quantization) achieving 4.48× throughput with minimal quality loss. Directly addresses enterprise serving cost problem. Capture when cited as the canonical enterprise MAS serving reference.
+
+### Agent infrastructure / protocols
+- **DeepMind AI Control Roadmap (June 18)** — https://deepmind.google/blog/securing-the-future-of-ai-agents/ — Defense-in-depth framework for monitoring agent trajectories; internal prototype analyzed ~1M coding agent tasks for a live monitor on Gemini Spark agent. Strong fit for the evaluation cluster (monitor calibration; peer to [[patterns/sierra-monitor-eval-of-evals]]). Capture when the full technical architecture post or paper drops.
+- **What Makes a Harness a Harness (arXiv 2606.10106)** — Formal definitional paper establishing necessary and sufficient conditions for an agent harness; rare attempt at a rigorous taxonomy. Capture if it becomes the canonical harness-definition reference or is cited in a comparison study.
+
+---
+
 ## Week of 2026-06-14
 
 Surplus from this week's sweep — the 5 captured items: arXiv 2606.05405 (ALE benchmark), arXiv 2606.07297 (SWE-Explore), arXiv 2606.06448 (agent memory systems), arXiv 2606.13662 (EurekAgent), arXiv 2606.07448 (coding agent adoption). Dominant trends: benchmark landscape disaggregating (ALE/SWE-Explore/SWE-bench harness divergence); coding-agent adoption now default for new projects; memory cost characterization (BM25 wins on J/correct); environment engineering thesis gaining empirical grounding. Items below did not make the capture cap.

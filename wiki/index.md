@@ -8,6 +8,11 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 | Page | Summary |
 |---|---|
+| [[deployments/openai-agents-transforming-work]] | *(2026-06-28)* OpenAI internal Codex adoption data: 99.8% of weekly output tokens on Codex (mid-2026); non-developer adoption +137–189×; 80.6% of users requesting tasks >30-min equivalent; cross-functional task bleed documented. |
+| [[memory/agent-native-memory-system]] | *(2026-06-28)* arXiv 2606.24775 — Systematic evaluation of 12 memory systems across 5 benchmarks; no universal winner; verbatim raw storage beats extraction for factual recall; localized maintenance 20× cheaper; graph methods lead on knowledge-update. |
+| [[evaluation/rigorbench]] | *(2026-06-28)* arXiv 2606.22678 — First process-discipline benchmark for coding agents (planning, verification, recovery, abstention, codebase integrity); RIGORSCORE correlates r=0.87 with outcome; disciplined agents use 12% fewer tokens. |
+| [[patterns/agent-communication-protocols]] | *(2026-06-28)* arXiv 2606.19135 — Five-dimension taxonomy of 9 LLM agent communication protocols (MCP, A2A, Agora, ANP, ACP, LMOS, LAP, agents.json, agntcy); Agent Communication Trilemma; predicts federated OSI-style layered protocol stack. |
+| [[evaluation/osworld-v2]] | *(2026-06-28)* OSWorld 2.0 — Long-horizon computer-use benchmark (318-step median tasks); Claude Opus 4.8 leads at 20.5% / 225K tokens; GPT-5.5 most token-efficient at 14% / 37K tokens; sharply nonlinear token-efficiency curve. |
 | [[swe-bench-pro]] | Contamination-resistant coding-agent eval using private/GPL repos; top models 40-60% vs 70%+ on SWE-bench Verified. |
 | [[mcp-infrastructure]] | MCP 2026 roadmap — auth, context bloat, governance, audit trails — marking the protocol's transition to enterprise infrastructure. |
 | [[anthropic-internal-study]] | 132-engineer study on Claude adoption at Anthropic; engineer role shift from coder to orchestrator with quantified productivity and skill-atrophy tensions. |

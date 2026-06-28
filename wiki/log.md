@@ -4,6 +4,23 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-28] weekly-brief ingest | weekly radar sweep (5 captured, 10 watchlisted)
+
+Autonomous `/weekly-brief` radar sweep for week of 2026-06-28. 5 primary sources captured to `raw/research/weekly-2026-06-28/` (marker on CPU + capture_url; audit clean, 0 issues; 5/5 subagent summaries schema-valid).
+
+Sources:
+- **openai-agents-transforming-work** (OpenAI, June 26) — Internal Codex adoption data showing 99.8% of OpenAI's output tokens on Codex (mid-2026); non-developer +137–189×; long-delegation tasks now dominant; power users at >60 agent-hours/day.
+- **agent-native-memory-system** (arXiv 2606.24775, June 23) — Systematic evaluation of 12 memory systems; four-module R/S/Q/U framework; no universal winner; verbatim beats extraction for factual recall; localized maintenance 20× cheaper than global reorganization; graph methods lead on knowledge-update.
+- **rigorbench** (arXiv 2606.22678, June 21) — First process-discipline benchmark; five scored pillars (planning/verification/recovery/abstention/integrity); RIGORSCORE r=0.87 with outcome; disciplined agents 12% token reduction; abstention near-zero at baseline.
+- **llm-agent-protocol-taxonomy** (arXiv 2606.19135, June 2026) — TU Munich taxonomy of 9 LLM agent communication protocols via 5 taxonomy dimensions; Agent Communication Trilemma; predicts federated OSI-style layered stack long-term.
+- **osworld-v2** (XLANG Lab, June 25) — OSWorld 2.0 long-horizon computer-use benchmark; 318-step median tasks; Claude Opus 4.8 leads at 20.5% / 225K tokens; sharply nonlinear token-efficiency curve.
+
+**New pages:** `deployments/openai-agents-transforming-work`, `memory/agent-native-memory-system`, `evaluation/rigorbench`, `patterns/agent-communication-protocols`, `evaluation/osworld-v2`
+
+**Watchlist additions:** 10 surplus candidates added to `wiki/watchlist.md` ("Week of 2026-06-28" section).
+
+---
+
 ## [2026-05-18] weekly-brief ingest | weekly radar sweep (5 captured, 10 watchlisted)
 
 Autonomous `/weekly-brief` radar sweep for week of 2026-05-18. 5 primary sources captured to `raw/research/weekly-2026-05-18/` (marker on CPU + capture_url; audit clean, 0 issues; 5/5 subagent summaries schema-valid). SkillOS (arXiv 2605.06614) was excluded — already covered by `patterns/skillos`.
