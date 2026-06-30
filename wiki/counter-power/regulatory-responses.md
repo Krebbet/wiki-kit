@@ -144,6 +144,7 @@ Note: the "effective Jan 1 2027" shorthand captures only the registration deadli
 | **NY APDA** (eff. Nov 10 2025) | **Disclosure** ("THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA") | All retail / surveillance-pricing sectors | No (per-platform self-implementation) | AG (proven operative — Instacart halt) |
 | **MD HB0895** (eff. Oct 1 2026) | **Prohibition** (categorical ban in sector) | Food retail >15,000 sq ft + 3rd-party delivery only | No | AG only; pre-empts MD CPA; no private right of action |
 | **CT PA 26-64** (signed May 14 2026; registry Jan 2027; portal Jul 2028) | **Disclosure + centralized deletion portal + broker registry + geolocation ban** | Retail sellers + 3rd-party delivery (surveillance-pricing); all data brokers (registry/deletion) | **Yes — centralized DCP deletion portal (Jul 2028)** | CUTPA / DCP (AG); no confirmed PRA for surveillance-pricing provision |
+| **NY One Fair Price Act** (S8623A; passed legislature June 4 2026; pending Hochul signature) | **Prohibition** (categorical ban — use of personal data to set individualised prices) | All sectors (no food-retail floor; broader than MD) — *bill text review required to confirm scope* | No | AG enforcement + private right of action reported; penalty up to $20,000/subsequent violation — *bill text review required* |
 
 CT differs from MD on three dimensions: (a) it is **broader in scope** for the data-broker register/deletion (all sectors, not just food retail); (b) it has a **substantively different architecture** — the cross-broker deletion portal is novel infrastructure, not just statutory text; (c) it adopts the **disclosure (not prohibition) approach** to surveillance pricing, aligning with NY rather than MD on that specific dimension. Together NY, MD, and CT establish that the state-legislative cluster is not converging on a single architectural pattern — three different theories of the case (disclose, ban, infrastructure-build) are running in parallel.
 
@@ -159,6 +160,25 @@ CT differs from MD on three dimensions: (a) it is **broader in scope** for the d
 **Effect on the wiki's MD-HB0895 framing.** **MD remains the first-in-nation categorical prohibition** (different doctrinal theory); **CT PA 26-64 becomes the first-in-nation centralized cross-broker deletion portal** (different doctrinal theory; the strongest tooling hook of the three). No `wiki/conflicts/` file is warranted — MD and CT are doctrinally distinct, not contradictory.
 
 *(Sources: `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md` — CT Mirror, May 4 2026 — "Consumer data privacy bill gets final passage in CT House." `raw/research/weekly-2026-05-25/05-connecticut-sb4-pa26-64.md` — PrivacyLawMap, May 2026 — PA 26-64 signed May 14 2026; phased rollout, geolocation ban, facial recognition provisions. Supplementary cross-state framing: `raw/research/weekly-2026-05-11/06-md-hb0895-cfm-context.md` — Consumer Finance Monitor, May 5 2026.)*
+
+### New York One Fair Price Act (S8623A, 2026)
+
+Passed NY Legislature June 4, 2026; **awaiting Governor Hochul's signature** as of June 29, 2026. EPIC advocacy update confirms passage; bill text (S8623A) referenced but not yet captured — loophole analysis pending bill-text review.
+
+**What it does.** Categorical prohibition on surveillance pricing — using consumer personal data to set individualised prices — across all retail sectors. Structurally distinct from the existing NY Algorithmic Pricing Disclosure Act (APDA, effective Nov 10 2025), which requires disclosure but does not prohibit. If signed, **New York becomes the first state with both a disclosure regime and a prohibition regime stacked on the same practice**, operating simultaneously:
+
+- APDA (disclosure) — *"THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA"* mandate, AG-enforced, operative (Instacart halt 2026).
+- One Fair Price Act (prohibition) — categorical ban on the practice itself; enforcement mechanism and penalty structure to be confirmed against S8623A text.
+
+**Reported enforcement:** EPIC summary states AG enforcement plus a private right of action (civil penalty up to $20,000 per subsequent violation). If the PRA is confirmed against the bill text, **NY One Fair Price Act would be the first US state surveillance-pricing prohibition with a private right of action** — a structural departure from MD HB0895 (AG-only) and CO HB26-1210 (AG-only after PRA was struck by Senate amendment).
+
+**State cluster update.** NY is the third state to enact a surveillance-pricing prohibition (after MD) or disclosure+ban dual regime (no prior state). NJ and California explicitly named in source as considering similar legislation; diffusion is now an active multi-state process, not a forward-looking hypothesis.
+
+**Loophole assessment — pending.** S8623A bill text needed to assess: (a) exact definition of prohibited personal data types (browsing history, income, location, demographics, or narrower?); (b) loyalty-card / consent-based-collection exemptions (apply the HB0895 six-point Doctorow/Garofalo checklist); (c) whether sector scope is genuinely economy-wide or has equivalent carve-outs to MD's food-retail floor; (d) PRA confirmation and standing rules. Until this assessment is complete, treat the NY prohibition as a **stronger structural instrument than MD** (broader scope + reported PRA) but reserve judgment on enforcement reach pending loophole review.
+
+**Effect on wiki framing.** MD HB0895 remains the **first-in-nation categorical prohibition** (enacted first). NY adds a second prohibition state and — if PRA is confirmed — introduces the first enforcement mechanism capable of activating consumer-side class action strategies against surveillance pricing. The state legislative diffusion watchlist item (§ Forward-looking themes, watchlist) advances from hypothesis to confirmed multi-state process.
+
+*(Source: `raw/research/weekly-2026-06-29/05-ny-one-fair-price-act.md` — EPIC, June 4 2026: "New York Becomes Third State to Pass Surveillance Pricing Ban." Enforcement details to be confirmed against S8623A text at `https://legislation.nysenate.gov/pdf/bills/2025/S8623A`.)*
 
 ### Maryland HB0895 — Protection From Predatory Pricing Act (2026)
 Enacted April 2026; effective **October 1, 2026**. Cross-filed as SB0387; By Request of the Governor (Moore administration). 50+ House sponsors. **Substantive prohibition** (not disclosure):

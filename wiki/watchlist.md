@@ -245,3 +245,18 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - Drivers Cooperative Colorado 620+ members / "Driver Systems" federation build — scaling
 - Pluralistic "No honor among ad-tech thieves" (May 25) — Cox Media Active Listening false claims
 - Camden Property Trust + $218M RealPage batch preliminary approval filed ~May 15 — class-action milestone
+
+## Recent additions (2026-06-29 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- noyb / EU cookie banner abolition blocked (June 2026) — Council + Google oppose browser-signal replacement; consent-mechanism contest continues
+- noyb / LinkedIn GDPR Art.15 paywall complaint (June 2026) — "pay or okay" extraction: paid tier required to see GDPR-access data
+- uBlock Origin MV2 Chrome 139 end-of-support (gorhill flag) — structural threat to 29M+ Chrome tracker-blocking users
+- Ghostery v10.5.49 Distractions panel (June 23 2026) — hides Shorts/Reels/social widgets; dark-pattern counter feature
+- platform.coop ICDE 2026–27 fellowship cohort (June 2026) — 10 fellows / "Solidarity AI" theme; cooperative AI research pipeline
+- BIG "Watergate-Style Corruption at the Antitrust Division" (June 2026) — DOJ antitrust enforcement-rollback landscape
+- Pluralistic "Jailbreaking isn't theft" (June 25 2026) — counter-tool legitimacy / circumvention-as-self-defense framing
+- arXiv 2506.22606 — user-centric personal data ecosystem (DSAR-adjacent decentralised architecture)
+- arXiv 2506.15115 — machine unlearning verification survey (GDPR right-to-erasure compliance tooling)
+- DeFlock.me (EFF-backed, June 2026) — citizen crowd-sourced ALPR camera counter-mapping tool; community counter-surveillance

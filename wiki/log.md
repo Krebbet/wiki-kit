@@ -893,3 +893,29 @@ Weekly scan covering June 15–22, 2026. ~30 sources scanned across 4 tiers (arX
 **Existing open conflicts unresolved:** [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] still pending user ruling.
 
 **Pre-existing uncommitted at run start:** HANDOFF.md (untracked, left untouched).
+
+## [2026-06-29] weekly-brief-ingest | 2026-06-29 radar sweep
+
+Weekly scan covering June 22–29, 2026. ~35 sources scanned across 4 tiers (arXiv cs.CY/cs.CR, tools/platforms tier, civil society tier, enforcement/editorial tier).
+
+**Captures attempted / succeeded:** 5 / 5
+- `chatrie-scotus-location-data` (EFF Deeplinks, June 29 2026) — succeeded (capture_url); full text intact
+- `ftc-kochava-location-ban` (FTC press release, ~June 26 2026) — succeeded (capture_url); FTC WAF blocked direct page; reconstructed from law-firm analyses (capture technically succeeded, content from secondaries)
+- `fingerprinting-sdks-audit` (arXiv 2506.22639, June 2026) — succeeded (capture_pdf, pymupdf); broken image refs (cosmetic only, text intact at 2356 lines)
+- `cma-google-search-portability` (UK CMA press release, June 17 2026) — succeeded (capture_url); full text intact
+- `ny-one-fair-price-act` (EPIC, June 4 2026) — succeeded (capture_url); brief advocacy capture; loophole analysis deferred pending bill text (S8623A — timeout)
+
+**Wiki pages created / extended (5):**
+- `wiki/regulatory/chatrie-scotus-location-data.md` (new) — SCOTUS location-data Fourth Amendment ruling; third-party doctrine narrowed; data-broker loophole open; Google "privacy by architecture" precedent
+- `wiki/regulatory/ftc-kochava-location-ban.md` (new) — first permanent ban on location data broker; sensitive-location-categories mandate; supplier consent-chain compliance program; tooling hook: replicable private taxonomy
+- `wiki/regulatory/cma-google-search-portability.md` (new) — UK CMA mandated Google search data portability API (Sept 2026 deadline); authorized third-party access; cooperative data intermediaries eligible; competition-law basis (not GDPR)
+- `wiki/mechanisms/fingerprinting-sdk-ecosystem.md` (new) — Specter et al. 2026 arXiv 2506.22639; 228K SDKs + 178K apps; 723 fingerprinting SDK families; ad regulation covers only 30%; browser defenses fail for native apps
+- `wiki/counter-power/regulatory-responses.md` (extended) — Added NY One Fair Price Act (S8623A, passed June 4 2026); first state with dual disclosure+prohibition stack; reported private right of action (unconfirmed vs bill text); updated cross-state comparison table
+
+**Watchlist:** 10 new overflow entries added (noyb cookie banner block, LinkedIn GDPR paywall, uBO MV2 end-of-Chrome, Ghostery Distractions panel, platform.coop ICDE fellows, BIG antitrust corruption, Pluralistic jailbreaking frame, arXiv 2506.22606, arXiv 2506.15115, DeFlock.me).
+
+**No new conflict files.** Fingerprinting SDK paper extends browser-fingerprinting page conceptually (mobile/native layer vs browser layer) — no contradiction; new page created for mobile dimension. NY One Fair Price Act updates (not contradicts) MD HB0895 "first-in-nation" framing.
+
+**Existing open conflicts unresolved:** [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] still pending user ruling.
+
+**Pre-existing uncommitted at run start:** HANDOFF.md (untracked, left untouched).
