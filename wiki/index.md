@@ -69,6 +69,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[rl-teachers]] | Sakana AI (NeurIPS 2025, arXiv:2506.08388). RL-trained teacher models given (question, solution) optimize for student comprehension directly: r^RLT = r^SS − 3·r^KL. A 7B RLT outperforms Bespoke-7B (DeepSeek-R1 distillation traces) across AIME'24 / MATH-500 / GPQA Diamond at <0.05% of R1's estimated compute. Core insight: teaching ability is separable from problem-solving ability. Code: SakanaAI/RLT. |
 | [[thought-anchors]] | DeepMind (arXiv:2506.19143). Counterfactual sentence-removal identifies "thought anchors" — planning and backtracking steps that disproportionately determine CoT final output; connecting prose and calculation steps are non-load-bearing. ~20% of sentences are causally anchoring. Behavioral corroboration for [[high-entropy-tokens-rlvr]] / [[delta-token-credit]] sparse-structure findings. 131 HF upvotes. |
 | [[vimpo]] | (arXiv:2606.20008). Critic-free token-level credit assignment for LLM RL: derives a value function analytically from KL-regularized RL optimality conditions (no learned critic), expressed via policy–reference log-ratio recurrence anchored at end-of-sequence. Drop-in GRPO replacement; beats GRPO on MATH-500/AIME24/25/OlympiadBench. Code: github.com/backprop07/VIMPO. Third credit-assignment approach alongside [[token-gradient-cancellation]] / [[delta-token-credit]]. |
+| [[dopd-dual-on-policy-distillation]] | NUS/CUHK/PKU/JD (arXiv:2606.30626). Fixes "privilege illusion" in on-policy distillation: per-token advantage gap routes each token between privileged teacher and privileged student with distinct supervision objectives. +7.5 pp over Vanilla OPD (LLM), +6.0 pp (VLM); 89.8% gap recovery Qwen3-8B→1.7B; consistent across 5 teacher-student size pairs. |
+| [[evolution-fine-tuning]] | Minnesota NLP/CMU/KAIST (arXiv:2606.29082). Mid-training paradigm: SFT on 156K evolutionary search trajectories (Finch Collection, 371 tasks) internalizes cross-domain discovery capability into 2B–9B models. Finch-9B +10.24% avg on held-out tasks; Finch-8B + nanodiscover SoTA on two circle-packing tasks; cross-domain strategy transfer (recommender → competitive programming). |
+| [[program-as-weights]] | Waterloo (arXiv:2607.02512). Programming paradigm for "fuzzy functions": a 4B compiler emits per-spec LoRA adapters executed by a frozen 0.6B interpreter. 73.78% FuzzyBench exact match, beats Qwen3-32B prompting (68.70%) at ~50× less inference memory; runs at 31.6 tok/s on MacBook M3 under Q5_K_M + Q4_0. |
 
 ## Self-supervised learning
 
@@ -94,6 +97,15 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[moonlake-world-models]] | Moonlake position post: pure 2D video diffusion cannot yield interactive world simulators; proposes hybrid pipeline binding *neutral information-free latent codes* to coarse 3D mesh patches as scaffolds for video diffusion. Position only — no benchmarks. |
 | [[asymflow]] | Stanford (arXiv:2605.12964). Rank-asymmetric flow-matching velocity: full-rank data term, low-rank PCA-subspace noise term — lets a vanilla DiT model pixel space unmodified. ImageNet-256 FID **1.57** (best plain-transformer pixel diffusion); Procrustes latent→pixel lift makes AsymFLUX.2 beat the FLUX.2-klein latent base. Pixel-side evidence in [[conflicts/pixel-space-vs-latent-space-generation]]. |
 | [[sensenova-u1]] | SenseNova-U1 / NEO-unify (arXiv:2605.12500). End-to-end unified multimodal (8B dense, 30B-A3B MoE) with **no VE and no VAE**: single MoT backbone, AR cross-entropy (language) + pixel-space flow matching (vision). Top open-source GenEval 0.91 / OpenING 9.16 / RealUnify 52.4; 32× pixel compression matches FLUX.1-dev VAE PSNR at 8×. Pixel-side anchor of [[conflicts/pixel-space-vs-latent-space-generation]]; parallels [[vision-banana]]. |
+| [[orca-world-foundation]] | BAAI (arXiv:2606.30534). General world foundation model (0.8B/4B) pre-trained on 125K hours video + 160M event annotations via Next-State-Prediction (joint unconscious video / conscious event-language transition). Frozen backbone + lightweight decoders for text/image/action. PRICE-V0.1 59.8±10.9 avg (vs FLUX.2[klein] 56.1); emergent zero-shot robot action without action-labeled data. Extends [[conflicts/pure-video-vs-3d-world-models]] as evidence against mandatory explicit 3D scaffolding. |
+
+---
+
+## Agents
+
+| Page | Summary |
+|---|---|
+| [[agents-a1-horizon-scaling]] | Shanghai AI Lab Agents-A1: 35B MoE that reaches 1T-parameter-class performance on long-horizon agent benchmarks (SEAL-0 56.4, IFBench 80.6, FS-Olympiad 79.0, FS-Research 40.0) by scaling training trajectory length (45K-token avg) and domain heterogeneity via a three-stage recipe: full-domain SFT → domain teacher RL/SFT → multi-teacher on-policy distillation with Salient Vocabulary Alignment. Code + weights released. |
 
 ---
 

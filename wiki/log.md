@@ -183,3 +183,18 @@ Note: audit_captures flagged 15 "broken image refs" for pymupdf captures — ass
 Pages written: 3 new (magistral, reinforcement-pretraining, rl-teachers); 2 already existing (spurious-rewards-rlvr, high-entropy-tokens-rlvr — no new pages needed).
 Watchlist additions: 8 (DRPO, SSA, RuleReasoner, EASE-TTT, Fisher-MoE, Rewarding-the-Unlikely, Robust-U1, Generalization-Hacking).
 Conflicts extended: none (Magistral's pure-RL result is supportive of existing Position A/E in sparse-policy-selection conflict; not a new position).
+
+## 2026-07-04 — ingest agents-a1-horizon-scaling
+
+Ingested arXiv:2606.30616 (Agents-A1, Shanghai AI Lab). Created wiki/agents-a1-horizon-scaling.md. Added "Agents" section to index.md. Summary written to raw/research/weekly-2026-07-04/.ingest/agents-a1-horizon-scaling.summary.md. No conflict flags.
+
+---
+2026-07-04 — /weekly-brief (weekly radar sweep)
+
+Sources scanned: ~30 (HF Papers trending W27, arXiv cs.LG/cs.CL/cs.AI July 1–4, Reddit r/ML+r/LocalLLaMA, alphaXiv, GitHub awesome-lists, web search).
+Candidates surfaced: ~35; selected 5 for capture.
+Captures attempted / succeeded: 5 / 5 (program-as-weights, evolution-fine-tuning, agents-a1-horizon-scaling, dopd-dual-on-policy-distillation, orca-world-foundation).
+Note: audit_captures flagged 170 "broken image refs" for pymupdf captures — same base-directory mismatch as prior runs. Text content verified substantive (84–123 KB each).
+Pages written: 5 new (program-as-weights, evolution-fine-tuning, agents-a1-horizon-scaling, dopd-dual-on-policy-distillation, orca-world-foundation).
+Conflicts extended: conflicts/pure-video-vs-3d-world-models — added orca-world-foundation as Position B (video + language events, no 3D scaffolds).
+Watchlist additions: 10 (FlashMorph, BlockPilot, Prefix-RFT, OpenAI-gpt-oss, Genie-3, EvoPolicyGym, PopuLoRA, Multi-Block-Diffusion-LMs, Formalizing-Latent-Thoughts, Denser-Not-Better-SD).

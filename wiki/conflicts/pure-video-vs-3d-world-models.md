@@ -30,6 +30,14 @@ Moonlake's proposed alternative is a hybrid: coarse explicit 3D meshes + neutral
 
 **Implication:** Moonlake's "ill-posed task" framing is too strong as stated for the static case. The conflict's resolution path now requires distinguishing *static priors recoverable from 2D generation pretraining* (Vision Banana shows: yes) from *interactive simulation with action conditioning* (still open).
 
+### B (video + language events, no 3D scaffolds) — [[orca-world-foundation]] (BAAI, arXiv:2606.30534, 2026-07-04)
+
+**Claim:** A general world foundation model trained on video + language event annotations (no explicit 3D mesh scaffolds, no action labels in pre-training) learns a unified latent space that supports emergent zero-shot robot action generation. Orca-4B: PRICE-V0.1 59.8±10.9 avg (vs FLUX.2[klein] 56.1±18.1); robot action on 5 OOD tasks surpasses π0.5 (32.4 vs 29.4 avg rule-based) with zero action-labeled pre-training data.
+
+**Why this advances Position B:** Orca's action capability emerges from video + language event conditioning alone — no action tokens in pre-training, no 3D mesh scaffolds. This directly tests Moonlake's claim that 3D recovery from pixels is "ill-posed"; Orca shows that semantic event conditioning from language (not 3D structure) may suffice to build transferable action representations. The backbone is frozen after pre-training; the action head is a lightweight adaptor trained on 200 trajectories × 5 tasks. If the frozen world latent space truly encodes actionable physics, Position A's "mandatory 3D scaffolding" claim weakens significantly.
+
+**Open question:** The current orca experiments use only 1/10th of the video inventory (loss curves show no plateau), so capabilities may be substantially stronger at full scale.
+
 ## Update — Cosmos 3 changes the conflict state (2026-06-06)
 
 **Status:** still open, but materially narrowed. Cosmos 3 provides the first strong empirical evidence for Position B on the interactive case. The conflict now needs a ruling on whether action tokens + VAE latents count as "explicit 3D structure" in Moonlake's sense. If yes → Position A (3D structure is still required, just implicit); if no → Position B wins the interactive sub-case.

@@ -177,3 +177,25 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **Programming by Backprop (arXiv:2506.18777)** — Training regime where declarative instructions in training data "program" reusable algorithmic behaviors into model weights without I/O examples; LLMs learn to execute programs from source code alone. HuggingFace daily paper June 23. *(weekly-brief 2026-06-27.)*
 - **Bridging Offline and Online RL for LLMs (arXiv:2506.21495)** — Systematic comparison of offline/semi-online/online RL regimes (DPO/GRPO variants) for verifiable and non-verifiable tasks; online strongly dominates; multi-task joint training (verifiable + non-verifiable) improves both. HF daily paper June 26. *(weekly-brief 2026-06-27.)*
 - **"Scaling Laws, Carefully" (Lilian Weng, June 24 2026)** — Authoritative synthesis from Anthropic's head of safety research: Kaplan vs Chinchilla disagreements, compute-optimal allocation mechanics, why fitting details make extrapolation brittle. High-impact blog post driving r/MachineLearning discussion; URL: lilianweng.github.io/posts/2026-06-24-scaling-laws/. *(weekly-brief 2026-06-27.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-07-04)
+
+- **FlashMorph: Morphing into Hybrid Attention Models (arXiv:2606.30562, ByteDance Seed/Fudan)** — Budget-constrained subset optimization selects which full-attention layers to replace with linear alternatives; joint gate optimization + discretization; maintains long-context performance with reduced FLOPs. Extends hybrid-attention cluster. *(weekly-brief 2026-07-04.)*
+- **Multi-Block Diffusion Language Models (arXiv:2606.29215, SJTU)** — Extends diffusion LMs from single-block to multi-block decoding via Multi-block Teacher Forcing (MultiTF) + Block Buffer-based decoding; TPF 3.47→6.19, accuracy 79.95→81.03 on math/code. Extends [[coladlm]] / [[elf-embedded-language-flows]] diffusion-LM cluster. *(weekly-brief 2026-07-04.)*
+- **Formalizing Latent Thoughts: Four Axioms of Thought Representation in LLMs (arXiv:2606.27378, UBC-Okanagan)** — Establishes four formal axioms for latent thought representations in LLMs; 58 HF upvotes; theoretical grounding for CoT and latent reasoning research. Adjacent to [[latent-grpo]] / [[lepo]] latent-reasoning cluster. *(weekly-brief 2026-07-04.)*
+
+## RL / post-training (continued — weekly-brief 2026-07-04)
+
+- **Prefix-RFT: Blending Supervised and Reinforcement Fine-Tuning with Prefix Sampling (arXiv:2507.01679)** — Prefix sampling from demonstrations seeds RL exploration, addressing SFT's poor generalization and RFT's reward hacking; outperforms standalone SFT, RFT, and mixed-policy RFT on mathematical reasoning. Novel training paradigm bridging SFT/RFT. *(weekly-brief 2026-07-04.)*
+- **Denser ≠ Better: Limits of On-Policy Self-Distillation for Continual Post-Training (arXiv:2607.01763)** — Empirical analysis challenging the assumption that denser self-distillation signals always improve continual post-training; identifies failure regimes. Adjacent to [[anti-self-distillation]] / [[dopd-dual-on-policy-distillation]] distillation-critique cluster. *(weekly-brief 2026-07-04.)*
+- **BlockPilot: Instance-Adaptive Policy Learning for Diffusion-based Speculative Decoding (arXiv:2606.31315)** — Lightweight policy predicts optimal block size per input from prefill representation; 5.92 acceptance length, 4.20× speedup on Qwen3-4B; plug-and-play. Extends speculative-decoding cluster ([[tidar]]). *(weekly-brief 2026-07-04.)*
+
+## Evolution strategies (continued — weekly-brief 2026-07-04)
+
+- **EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments (arXiv:2607.02440)** — 16-author benchmark for measuring iterative LLM-driven policy self-improvement across 16 RL environments; GPT-5.5 tops the suite. Evaluation framework for [[huxley-godel-machine]] / [[seal-self-adapting]] line. *(weekly-brief 2026-07-04.)*
+- **PopuLoRA: Co-Evolving LLM Populations for Reasoning Self-Play (arXiv:2605.16727)** — Population-based LoRA adapters as teacher (proposer) / student (solver) with weight-space evolution operators on frozen 7B base; mean population beats compute-matched baselines on 10 code+math benchmarks. Evolutionary PEFT at LLM scale. *(weekly-brief 2026-07-04.)*
+
+## Infrastructure (continued — weekly-brief 2026-07-04)
+
+- **OpenAI gpt-oss-120b / gpt-oss-20b (July 2026)** — OpenAI's first open-weight model release at frontier scale; gpt-oss-120b benchmarks near o3/o4-mini, fits on a single GPU; gpt-oss-20b runs locally on high-end consumer hardware. Significant industry shift; no single technical paper. *(weekly-brief 2026-07-04.)*
+- **Genie 3 (Google DeepMind, July 2026)** — Foundation world model generating interactive 3D environments at 720p/24fps for minutes (vs Genie 2's 10–20 seconds); supports promptable world events via text. Adjacent to [[conflicts/pure-video-vs-3d-world-models]] pure-video-scaling position. *(weekly-brief 2026-07-04.)*
