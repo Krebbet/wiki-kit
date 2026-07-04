@@ -117,11 +117,31 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - REASONMAXXER deep-dive — rank-8 $W_O$ LoRA mechanism vs decoding-time reweighting equivalence ([[research/rlvr-mechanics/rethinking-rl-sparse-selection]] hook); still open as a /research target
 - Activation-steering cluster (arXiv:2605.03907 PSR / 2605.05892 flow-based / 2605.06342 key-orthogonal) — mini-trend; promote as one bundled /research run
 
+## Single-sample / few-context generalization
+
+- Select and Improve (arXiv:2606.13125) — two-mechanism decomposition of RL post-training: strategy *selection* (activated by diverse SFT data) + strategy *improvement* (activated by increasing RL difficulty); tested on Qwen-2.5-1.5B
+- Zero-shot Context Generalization from Few Training Contexts (arXiv:2507.07348) — **captured 2026-07-03**; see [[research/single-sample-rl-finetuning/cebe-context-generalization]]
+
+## RLVR dynamics and limits
+
+- Diversity Collapse / BBG (arXiv:2606.15455) — formalizes Pass@1↑ / Pass@k↓ divergence as overtraining; Bayesian Boundary Gating (BBG) redirects optimization away from saturated problems
+- The Invisible Leash (arXiv:2507.14843) — empirical RLVR entropy-reward trade-off; whether RLVR can escape base model support; may extend [[conflicts/invisible-leash-vs-spiral-transfer]]
+- Spurious Rewards Paradox (arXiv:2601.11061, ICML 2026) — Anchor-Adapter circuit: RLVR can collapse into memorization retrieval; mechanistic dissection of when verifiable rewards select shortcuts
+
+## Continual fine-tuning and forgetting
+
+- RFT Naturally Mitigates Forgetting (arXiv:2507.05386) — RFT resists catastrophic forgetting across 7 multimodal tasks while SFT degrades; no replay needed; on Qwen2.5-VL-7B
+- E2H Curriculum RL (arXiv:2506.06632, ICLR 2026) — easy-to-hard curriculum RL rescues 1.5B–3B models that fail with vanilla RL; finite-sample complexity bounds proving E2H needs fewer total samples
+
+## RL optimizer miscellany
+
+- LLMZero (arXiv:2606.18388) — LLM agent meta-searches over RL training hyperparameters and data mixtures; finds non-obvious schedules; AutoRL for post-training
+
 ---
 
 ## Related
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-06-26]] — most recent weekly sweep
-- [[weekly-briefs/2026-06-19]] — prior weekly sweep
+- [[weekly-briefs/2026-07-03]] — most recent weekly sweep
+- [[weekly-briefs/2026-06-26]] — prior weekly sweep

@@ -893,3 +893,18 @@ Key contributions: top-20% entropy tokens carry all effective RLVR gradient sign
 ## [2026-06-19] weekly-brief | 2026-06-19 sweep
 
 Autonomous weekly sweep. 5 papers captured and ingested (rlvr-pattern-selection-theory, adaback-adaptive-rationale, concept-aware-finetuning, hierarchical-reasoning-model, high-entropy-minority-tokens). 5 watchlist additions (new "RLVR theory and analysis" section). Brief written to `wiki/weekly-briefs/2026-06-19.md`. Conflict file updated: invisible-leash-vs-spiral-transfer gains 2026-06-19 Position A update. New wiki theme: variable-granularity/.
+
+---
+
+## [2026-07-03] weekly-brief | 2026-07-03 sweep
+
+Autonomous weekly sweep. 5 papers captured and ingested (icl-implicit-weight-update, curriculum-beyond-base-model, relex-rank1-trajectories, zero-shot-context-gen-few-contexts, zppo-teacher-in-prompts). 10 watchlist additions (3 new sections: single-sample/few-context generalization, RLVR dynamics and limits, continual fine-tuning and forgetting).
+
+**Pages written:**
+- `wiki/research/in-context-learning-theory/icl-implicit-weight-update.md` — arXiv:2507.16003: ICL = rank-1 MLP weight patch; extends von Oswald et al. to nonlinear transformers; Thought Patches generalize from K≈10–25 examples
+- `wiki/research/rlvr-mechanics/curriculum-boundary-aware-rl.md` — arXiv:2606.22317: zero-advantage collapse diagnosis; boundary-aware curriculum + teacher injection solves 42% of unsolvable problems; counter-evidence to Invisible Leash scope
+- `wiki/research/rlvr-mechanics/relex-rank1-extrapolation.md` — arXiv:2605.21468: RLVR weight trajectories near-rank-1/linear; RELEX matches full RLVR from 15% training via SVD + linear extrapolation
+- `wiki/research/single-sample-rl-finetuning/cebe-context-generalization.md` — arXiv:2507.07348 (NeurIPS 2025): CEBE formally proves single-context RL approximates multi-context Q-function to O(‖c−c₀‖²) error
+- `wiki/research/teacher-student-rl/zppo-teacher-in-prompts.md` �� arXiv:2606.18216 (NVIDIA): ZPPO teacher in prompts not gradients; BCQ+NCQ+graduation-gated replay; distillation degrades small-scale generalization while ZPPO improves all families
+
+**Conflict updated:** invisible-leash-vs-spiral-transfer.md — 2026-07-03 update added (curriculum-boundary-aware-rl counter-evidence)
