@@ -1,11 +1,34 @@
 ---
 setup_approved: true
-last_reviewed: 2026-06-07
+last_reviewed: 2026-07-05
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-07-05
+
+Surplus from this week's sweep — the 5 captured items: Claude Sonnet 5 (June 30), LangChain RLMs in Deep Agents (July 1), Devin Security Swarm (July 1), arXiv 2607.00692 (Self-GC context lifecycle), arXiv 2607.01084 (OpenAgent, ICML 2026). Dominant trends: frontier model tier collapsing (Sonnet approaching Opus capabilities); agentic security moving from research to shipping product; programmatic orchestration as context-rot antidote; open-world generalization now formally measured. Items below did not make the capture cap.
+
+### Model releases / commercial signals
+- **Anthropic Claude Science Workbench (June 30)** — https://www.anthropic.com/news/claude-science-ai-workbench — Coordinating-agent + 60+ specialist skills for scientific research; actor-critic agent pairs; NVIDIA BioNeMo, UniProt, PDB integrations; $30K credits program public beta. Capture when a primary technical writeup explains the harness architecture.
+- **OpenAI GPT-5.6 Sol/Terra/Luna (limited preview, July 1)** — https://openai.com/index/previewing-gpt-5-6-sol/ — "Ultra" inference mode orchestrates subagents to reach 91.9% on Terminal-Bench 2.1; subagent orchestration as first-class inference mode. Capture when publicly available and benchmarks can be independently verified.
+
+### Benchmark / evaluation
+- **SWE-bench Verified ceiling: Claude Mythos 5 at 95.5% (July 4)** — https://www.swebench.com — Near-saturation on Verified; SWE-bench Pro (standardized harness) remains the differentiation frontier. Extend [[evaluation/swe-bench-pro]] when a primary analysis of the Verified/Pro divergence at 95%+ lands.
+- **GAIA leaderboard: Claude Mythos 5 at 52.3% / Gemini 2.5 Pro at 33.3%** — https://hal.cs.princeton.edu/gaia — Widening gap between frontier orchestrated systems and single-model baselines; top entries are multi-model ensembles. Capture a primary analysis of the gap if one lands.
+- **arXiv 2607.01153 — Adversarial Pragmatics** — https://arxiv.org/abs/2607.01153 — Benchmark for instruction conflict, embedded commands, policy ambiguity; targets the evaluation gap where pass/fail labels collapse distinct failure modes. Capture if it becomes the canonical evaluation-methodology paper for this failure class.
+
+### Agent security / governance
+- **Anthropic Fable 5 / Mythos 5 export-control lift + jailbreak severity framework (July 1)** — Global availability restored; Anthropic leading consortium (Amazon, Microsoft, Google) building industry jailbreak severity scoring framework. Capture when the primary technical spec for the scoring framework is published.
+- **DeepMind $10M Multi-Agent Safety Research Funding (June 2026)** — https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/ — First major institutional funding call targeting emergent risks of interacting agent populations; $10M from DeepMind + Schmidt Sciences + ARIA + Google.org; apps open through August 8. Capture if a primary research call-for-proposals or results paper surfaces.
+
+### Coding agents / infrastructure
+- **Cursor iOS App + always-on cloud agent automations (June 29)** — https://cursor.com/blog/ios-mobile-app — Mobile control of local/cloud agents; /automate for natural-language workflow creation; Team MCPs via marketplace. Capture if a primary technical writeup explains the cloud VM isolation architecture.
+- **Devin Agentic MapReduce architecture** — https://devin.ai/blog/agentic-map-reduce — Primary technical explainer for the fan-out/reduce pattern powering Devin Security Swarm. Capture as a companion page to [[deployments/devin-security-swarm]] when ingested.
 
 ---
 
