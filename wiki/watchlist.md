@@ -259,4 +259,19 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - Pluralistic "Jailbreaking isn't theft" (June 25 2026) — counter-tool legitimacy / circumvention-as-self-defense framing
 - arXiv 2506.22606 — user-centric personal data ecosystem (DSAR-adjacent decentralised architecture)
 - arXiv 2506.15115 — machine unlearning verification survey (GDPR right-to-erasure compliance tooling)
-- DeFlock.me (EFF-backed, June 2026) — citizen crowd-sourced ALPR camera counter-mapping tool; community counter-surveillance
+- ~~DeFlock.me (EFF-backed, June 2026)~~ — *captured 2026-07-06 ([[tools/deflock]])*
+
+## Recent additions (2026-07-06 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- uBlock Origin MV2 Chrome 151 death (July 2026) — dynamic filtering fully dead on Chrome; migration pressure toward Firefox + uBO or uBO Lite on Chromium
+- EU DMA Google FRAND data-sharing decision — binding ruling due July 27; specifies anonymized ranking/query/click/view data field-by-field; potential substrate for counter-tools
+- NY One Fair Price Act — Hochul signature pending (deadline Dec 31 2026); third state after MD + CT
+- EU Council drops cookie-banner browser-signal replacement (June 18 2026) — Google lobbying blocked; noyb ADPC now main live alternative
+- DOJ RealPage Tunney Act consent decree entered — 7-year monitor; LivCor separately settled; algorithm-certification regime defining compliance surface
+- arXiv 2606.26390 — Privacy Sandbox post-mortem (UC Davis); privacy burden back on user configuration; counter-tooling gap framing
+- California AB 2564 — surveillance pricing ban, passed Assembly May 27; in Senate (broadest US bill)
+- EU Android Fine €4.1B final (July 2, 2026) — DMA interoperability for rival Android assistants running in parallel; binding ruling pending
+- arXiv 2606.02347 — algorithm register audit (Germany); fragmentation + no federal register; improvement criteria proposed
+- Surveillance pricing 24-state wave — 24 states moving; MD + CT enacted; NY + CA advancing; compliance surface for price-transparency tooling

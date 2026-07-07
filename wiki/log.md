@@ -919,3 +919,27 @@ Weekly scan covering June 22–29, 2026. ~35 sources scanned across 4 tiers (arX
 **Existing open conflicts unresolved:** [[information-sharing-remedy-efficacy]] and [[dp-deployment-trustworthiness]] still pending user ruling.
 
 **Pre-existing uncommitted at run start:** HANDOFF.md (untracked, left untouched).
+
+## 2026-07-06 — ingest google-rtb-control
+
+Ingested EFF Deeplinks article on the proposed Google RTB class-action settlement. Created wiki/tools/google-rtb-control.md covering: RTB mechanism (bid-request structure, bidstream data harvesting, downstream surveillance uses), the proposed RTB Control setting (identifier suppression, cookie-match blocking), settlement limitations (opt-in default; signed-in/third-party-cookie gate), EFF structural critique, and legislative ask (ban on behavioural advertising). Cross-linked to privacy-badger, surveillance-pricing-retail, noyb, dsar-and-data-deletion, regulatory-responses, algorithmwatch. Index updated.
+
+## 2026-07-06 — ingest deflock
+
+Ingested EFF Deeplinks article on DeFlock.me. Created wiki/tools/deflock.md covering: Flock Safety ALPR network as the surveillance infrastructure, DeFlock's crowdsourced camera-mapping mechanism (~90,000 cameras documented), privacy-aware route planning feature, the Flock Safety cease-and-desist and EFF First Amendment defense, and the 50+ city contract-cancellation pattern that DeFlock data has anchored. Cross-linked to transparency-tools, privacy-badger, adnauseam, meta-raybans-nametag-surveillance, regulatory/chatrie-scotus-location-data. Index updated.
+
+## 2026-07-06 — ingest keep-android-open
+
+Ingested keepandroidopen.org coalition page. Created wiki/campaigns/keep-android-open.md covering: Google's Android Developer Verification mandate (Sept 2026), its requirements (fee + government ID + signing keys for all developers including sideloaders), the sideloading escape-hatch architecture and why the mandate closes it, the 71-org coalition (F-Droid, EFF, GrapheneOS, FSF, BEUC, Article 19, Nextcloud, Tor, Brave), the 100K+ petition, and the EU DMA enforcement angle. Cross-linked to adnauseam, privacy-badger, bootstrap-strategy, consumer-price-tools. Index updated.
+
+## 2026-07-06 — ingest oblivious-algorithmic-collusion
+
+Ingested arXiv 2606.05363 (Wu & Zeevi, EC 2026). Created wiki/mechanisms/oblivious-algorithmic-collusion.md covering: the oblivious vs informed seller dichotomy in least-squares demand estimation, the excursion phenomenon (transient collusive patterns under oblivious learning), the Nash equilibrium result (all-informed market converges to competitive prices), and counter-power design implications (what disclosure mandates should compel, what cooperative price-transparency tools should reveal). Cross-linked to algorithmic-collusion, pricing-algorithm-taxonomy, adversarial-data-poisoning, the-firms-view. Index updated.
+
+## 2026-07-06 — ingest subvert-coop
+
+Ingested Hypebot article on Subvert.fm launch. Created wiki/organizations/subvert-coop.md covering: 0% platform fee model, 22,742 founding members, dual-entity LCA + PBC cooperative structure, one-vote-per-member governance, optional fan-contribution funding model, AI music ban, "Mondragon of Music" framing, Austin Robey / Ampled lineage, and scale context vs Bandcamp's $250M annual sales. Cross-linked to platform-cooperatives, mondragon, coopcycle, park-slope-food-coop, drivers-cooperative. Index updated.
+
+## 2026-07-06 — weekly-brief 2026-07-06
+
+Completed weekly-brief run. 5 captures (deflock, subvert-coop, google-rtb-control, keep-android-open, arxiv-2606-05363), 5 wiki pages created (tools/deflock, tools/google-rtb-control, campaigns/keep-android-open, mechanisms/oblivious-algorithmic-collusion, organizations/subvert-coop). Watchlist updated with 10 overflow entries. Brief committed and pushed to collective-consumer-action-wiki.
