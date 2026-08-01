@@ -45,6 +45,15 @@ X/Twitter is gated for programmatic capture. `capture_url --js` sometimes works,
 | @rohanpaul_ai | https://x.com/rohanpaul_ai | Daily paper and model highlights with technical detail. | 2026-04-21 | probation |
 | @jackclarkSF | https://x.com/jackclarkSF | Anthropic policy lead; writes "Import AI" newsletter — policy + capability signal. | 2026-04-21 | active |
 
+## Paper aggregators
+
+Fast-moving daily/weekly trending-paper feeds — checked directly rather than proxied via X accounts, since they're the primary source those accounts themselves draw from.
+
+| Source | URL | Role | Added | Status |
+|---|---|---|---|---|
+| Hugging Face Daily Papers | https://huggingface.co/papers | Community-upvoted daily arXiv paper feed; fastest-moving trending signal, effectively replaced the awesome-lists as this wiki's primary weekly aggregator (2026-08-01: all 7 pinned awesome-lists showed zero commits in the sweep window). | 2026-08-01 | active |
+| alphaXiv trending | https://www.alphaxiv.org/ | Social layer around arXiv; surfaces trending papers with discussion. Companion to @alphaxiv (already tracked above). | 2026-08-01 | active |
+
 ## GitHub awesome-lists
 
 These are meta-sources: curated link collections maintained by the community. `/lint` should sweep their recent commits / changelogs to spot what was added since the last sweep.

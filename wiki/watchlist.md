@@ -199,3 +199,19 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **OpenAI gpt-oss-120b / gpt-oss-20b (July 2026)** — OpenAI's first open-weight model release at frontier scale; gpt-oss-120b benchmarks near o3/o4-mini, fits on a single GPU; gpt-oss-20b runs locally on high-end consumer hardware. Significant industry shift; no single technical paper. *(weekly-brief 2026-07-04.)*
 - **Genie 3 (Google DeepMind, July 2026)** — Foundation world model generating interactive 3D environments at 720p/24fps for minutes (vs Genie 2's 10–20 seconds); supports promptable world events via text. Adjacent to [[conflicts/pure-video-vs-3d-world-models]] pure-video-scaling position. *(weekly-brief 2026-07-04.)*
+
+## RL / post-training (continued — weekly-brief 2026-08-01)
+
+- **BM25 Wins at Scale: A Scaling Study of Retrieval-Augmented Generation Paradigms (arXiv:2607.26497)** — HF Daily Papers trending, July 31. Provocative empirical finding that classic BM25 retrieval matches/outperforms learned retrievers at scale in RAG; part of this week's memory/retrieval cluster alongside MemoHarness, Metis, Memory Decoder at Scale. *(weekly-brief 2026-08-01.)*
+- **Metis: Memory Foundation Model (arXiv:2607.26760, MemTensor)** — HF Daily Papers, July 31. Dedicated memory foundation model; part of the "memory as first-class LLM component" cluster surfacing this week. *(weekly-brief 2026-08-01.)*
+- **Memory Decoder at Scale: A Pretrained, Parametric Long-Term Memory (arXiv:2607.27919)** — HF Daily Papers, July 31. Parametric alternative to retrieval-based long-term memory, scaling study. Adjacent to [[delta-mem]] / [[memagent]] cluster. *(weekly-brief 2026-08-01.)*
+- **Distilled Reinforcement Learning for LLM Post-training (arXiv:2607.17247)** — Addresses cross-family transfer limits of on-policy distillation vs. coarse RL supervision; adjacent to [[dopd-dual-on-policy-distillation]] / [[flux-opd]] distillation-critique cluster. *(weekly-brief 2026-08-01.)*
+- **Understanding Reasoning from Pretraining to Post-Training (arXiv:2607.16097)** — Uses chess as a controlled testbed across the full pretrain→SFT→RL pipeline to study where reasoning capability originates. Methodology relevant to the [[reasonmaxxer]] / [[high-entropy-tokens-rlvr]] sparse-policy-selection debate. *(weekly-brief 2026-08-01.)*
+- **Position: Stop Anthropomorphizing Intermediate Tokens as Reasoning/Thinking Traces (arXiv:2504.09762)** — r/MLScaling top post of the week; pushback against treating CoT tokens as literal reasoning, relevant to [[thought-anchors]] / RL-interpretability debates. *(weekly-brief 2026-08-01.)*
+
+## Infrastructure (continued — weekly-brief 2026-08-01)
+
+- **Molt: A Scalable PyTorch-Native Training Framework for Agentic Reinforcement Learning (arXiv:2607.21653, NVIDIA NeMo)** — HF trending; lean, hackable RL trainer scaling to trillion-param MoE at throughput comparable to Megatron. Open-sourced. Adjacent to [[polar-rl-harness]] / [[llamarl]] infra cluster. *(weekly-brief 2026-08-01.)*
+- **DeepSeek-V4-Flash-0731 (July 2026)** — Fast-follow flash variant of DeepSeek-V4; ArtificialAnalysis index ~50 (1pt behind GLM-5.2/GPT-5.6), matches Sonnet 5 / Grok 4.5 on DeepSWE. Extends [[deepseek-v4]] cluster. *(weekly-brief 2026-08-01.)*
+- **Qwen3.7-Flash (Alibaba, July 2026)** — First Qwen release that is API-only — no open weights or technical report, breaking Alibaba's prior fully-open release pattern. Notable strategic-shift signal rather than a technical contribution. *(weekly-brief 2026-08-01.)*
+- **Claude Opus 5 (Anthropic, July 24 2026)** — New SOTA on FrontierBench v0.1 / GDPval-AA at same price as Opus 4.8; adds a low/medium/high "effort" toggle and self-verification/error-recovery behavior. Used as the primary scaffold in this week's [[ai-agents-open-ended-research]]. *(weekly-brief 2026-08-01.)*

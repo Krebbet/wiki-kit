@@ -198,3 +198,16 @@ Note: audit_captures flagged 170 "broken image refs" for pymupdf captures — sa
 Pages written: 5 new (program-as-weights, evolution-fine-tuning, agents-a1-horizon-scaling, dopd-dual-on-policy-distillation, orca-world-foundation).
 Conflicts extended: conflicts/pure-video-vs-3d-world-models — added orca-world-foundation as Position B (video + language events, no 3D scaffolds).
 Watchlist additions: 10 (FlashMorph, BlockPilot, Prefix-RFT, OpenAI-gpt-oss, Genie-3, EvoPolicyGym, PopuLoRA, Multi-Block-Diffusion-LMs, Formalizing-Latent-Thoughts, Denser-Not-Better-SD).
+
+---
+2026-08-01 — /weekly-brief (weekly radar sweep)
+
+Sources scanned: ~25 (X/paper-feed accounts via HF Daily Papers + alphaXiv proxy, GitHub awesome-lists [all 7 dormant this week, zero commits], r/MachineLearning + r/LocalLLaMA + r/MLScaling, podcasts [Latent Space only — Dwarkesh/Cognitive Revolution/TWIML quiet], general AI news).
+Candidates surfaced: ~32; selected 5 for capture.
+Captures attempted / succeeded: 5 / 5 (kimi-k3-architecture, skill-self-play, memharness, ai-agents-open-ended-research, flux-opd).
+Note: capture_pdf --engine marker failed on arxiv.org/abs/ URLs (weasyprint error from HTML mis-treated as PDF); worked once switched to arxiv.org/pdf/ URLs directly. Same underlying bug as the 2026-04-22 pymupdf abs/pdf normalization note, now confirmed to also break the marker engine. Logged to master_notes.md.
+One ingest subagent summary (ai-agents-open-ended-research) initially failed schema validation — missing the required top-level "## Conflict flags" section (had only the DOMAIN-SLOT "## Conflicts" prose). Fixed by hand-adding "## Conflict flags\n(none)" since the prose already established no hard contradiction. Logged to master_notes.md.
+Pages written: 5 new (kimi-k3, skill-self-play, memoharness, ai-agents-open-ended-research, flux-opd).
+Conflicts extended: none. ai-agents-open-ended-research is a forward-looking counterweight to the Self-improving agents cluster (empirical evidence against optimistic recursive-self-improvement claims) but doesn't yet contradict a specific existing wiki page — kept in-page per the forward-looking-conflict discard rule.
+Watchlist additions: 10 (BM25-Wins-at-Scale, Metis, Memory-Decoder-at-Scale, Molt, Distilled-RL-Post-training, Understanding-Reasoning-Pretrain-to-Posttrain, Anthropomorphizing-Intermediate-Tokens, DeepSeek-V4-Flash-0731, Qwen3.7-Flash, Claude-Opus-5).
+Reference-sources.md evolved: added Hugging Face Daily Papers + alphaXiv trending as an explicitly-pinned watched source (this week confirmed as the de facto replacement for the now-dormant GitHub awesome-lists as a fast-moving aggregator layer).
