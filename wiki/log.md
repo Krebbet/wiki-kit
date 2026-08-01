@@ -908,3 +908,13 @@ Autonomous weekly sweep. 5 papers captured and ingested (icl-implicit-weight-upd
 - `wiki/research/teacher-student-rl/zppo-teacher-in-prompts.md` �� arXiv:2606.18216 (NVIDIA): ZPPO teacher in prompts not gradients; BCQ+NCQ+graduation-gated replay; distillation degrades small-scale generalization while ZPPO improves all families
 
 **Conflict updated:** invisible-leash-vs-spiral-transfer.md — 2026-07-03 update added (curriculum-boundary-aware-rl counter-evidence)
+
+## [2026-07-31] weekly-brief | 2026-07-31 sweep
+
+Autonomous weekly sweep. Source survey (4 parallel subagents: aggregators, curators, lab blogs, code/release proxies) found only 2 in-scope, in-window trending candidates — a quiet week industry-wide for this wiki's scope; 0 watchlist surplus (nothing else cleared the wiki-fit bar). Brief written to `wiki/weekly-briefs/2026-07-31.md`.
+
+**Pages written / extended:**
+- `wiki/research/self-play/skill-self-play.md` (new) — Skill Self-Play (Huang et al., arXiv:2607.22529): proposer + solver + dynamic skill controller co-evolving via GRPO; gated Goldilocks reward ($1-2|v_\text{solve}-0.5|$ × binary structural-validity gate) mediated by a persistent, evolving skill library (induce/prune/refine). Rescues weak backbones that can't bootstrap unguided self-play (Ministral-3-8B tool-call: 20.7% → 63.6%, +42.9 pp); Unguided SP can't bootstrap ZebraLogic at all. Added as tenth proposer-reward shape (proposer-reward-shapes.md); partial-complication cross-ref added to understanding-self-play.md (evaluator-role vs trained-solver-support distinction).
+- `wiki/research/teacher-student-rl/rlt-followups-2026.md` — extended with a 2026-07-31 addendum on **Inkling-Small** (Thinking Machines Lab blog): named, dated OPD-lineage instance (student 276B/12B active surpasses teacher Inkling 975B/41B active on HLE/SWEBench after OPD + 2 weeks agentic-coding RL). Soft, unresolved tension with `opsd-compresses-rlvr`'s compaction-not-correction claim flagged in-page — not elevated to a formal `wiki/conflicts/` entry since the source gives no OPD-vs-RL ablation to adjudicate.
+
+Recapture note: the first `skill-self-play` capture (`--src https://arxiv.org/abs/2607.22529`) grabbed only the arXiv abstract landing page (170 lines, no method content) rather than the paper — `capture_pdf` needs a `/pdf/` URL, not `/abs/`. Re-captured successfully from `https://arxiv.org/pdf/2607.22529` (2140 lines, full 30-page paper). Known false-positive broken-image-ref audit warnings (path-anchor bug, logged in `master_notes.md`) observed on both PDF captures — ignored per existing guidance, text content intact.

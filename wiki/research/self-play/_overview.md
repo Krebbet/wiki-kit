@@ -14,7 +14,7 @@ Nineteen sources organised around one question: *can a model improve by "playing
 |---|---|---|
 | **Foundation** | [[alphazero]], [[asymmetric-self-play]], [[debate]] | Pre-LLM templates. AlphaZero is the closed-domain prototype (MCTS as policy-improvement oracle). [[asymmetric-self-play]] is **the canonical pre-LLM proposer/solver curriculum template** — Alice/Bob with $R^A = \gamma \max(0, t_B - t_A)$. Debate is an eval-time honesty game, not a train-time skill installer. |
 | **Preference alignment** | [[spin]], [[sppo]] | Imitation / Nash-equilibrium against fixed reference (real data, fixed preference model). **Not load-bearing for concept learning** — no curriculum, no concept axis. Captured for citation completeness. |
-| **Reasoning and concept** | [[spag]], [[sqlm]], [[spice]], [[spiral]], [[spell]], [[understanding-self-play]], [[rstar]] | LLM self-play whose proposer/solver mechanism either *embeds* a concept (Taboo target word, topic string, document) or *transfers* skill from games to reasoning. **rStar adds the test-time per-problem multiplier template.** The subtree of direct interest. |
+| **Reasoning and concept** | [[spag]], [[sqlm]], [[spice]], [[spiral]], [[spell]], [[understanding-self-play]], [[rstar]], [[skill-self-play]] | LLM self-play whose proposer/solver mechanism either *embeds* a concept (Taboo target word, topic string, document) or *transfers* skill from games to reasoning. **rStar adds the test-time per-problem multiplier template.** **Skill-SP (added 2026-07-31) adds a third co-evolving component — a persistent, evolving skill library — mediating task generation.** The subtree of direct interest. |
 | **RLVR-bound + zero-data** *(added 2026-05-01)* | [[invisible-leash]], [[yue-rlvr-boundary]], [[two-stage-dynamic]], [[azr]], [[r-zero]], [[language-self-play]], [[info-gain-self-play]] | The formal/empirical bounds on what RLVR-style self-play can do, plus the zero-data instances that test the bounds. Invisible-Leash and Yue establish Position A (solver only re-weights); Two-Stage Dynamic refines to Stage-1-scoped. AZR/R-Zero/LSP are the zero-data triple that operate within the bound. Info-Gain (epiplexity) is the engineering pre-flight test. |
 
 The wiki has adjacent coverage that should be read in conjunction: [[../self-improvement/multi-turn-policy-verifier]] (PAG — single-LLM two-role precursor to SPELL), [[../teacher-student-rl/soar-edge-of-learnability]] (bilevel teacher-student-improvement-rate, the LLM-era analogue to Sukhbaatar), [[../curriculum-and-decomposition/poet]] (co-evolving environments + agents), [[../self-improvement/rstar-math]] (MCTS-LLM cousin of AlphaZero, successor to [[rstar]]), [[../self-improvement/self-rewarding-lm]] (LLM-as-judge sibling).
@@ -40,6 +40,8 @@ The open conflict [[../../conflicts/invisible-leash-vs-spiral-transfer]] is now 
 ## Nine proposer-reward shapes — the practical synthesis
 
 The "what proposer prompts the right question" engineering problem has at least nine instantiations across the corpus, each with a different formal reward. They are *not* substitutable; each commits to a different hypothesis about what makes a question valuable. Full discussion in [[../synthesis/proposer-reward-shapes]].
+
+**Update 2026-07-31 (weekly-brief):** [[skill-self-play]] adds a tenth shape — a continuous medium-difficulty term ($1-2|v_\text{solve}-0.5|$, same family as SQLM/R-Zero Goldilocks gates) multiplied by a binary structural-validity gate, explicitly designed to block reward-hacking by an ungated proposer fabricating unsolvable tasks. Novel axis: the validity gate is computed against a persistent, evolving skill library (induce/prune/refine each iteration), not just the current task.
 
 | Method | Reward shape | What it optimises for | Where the signal comes from |
 |---|---|---|---|
@@ -135,7 +137,7 @@ Single-model self-play is collapse-prone unless a stabiliser is in place. Four w
 
 ## Source
 
-Editorial synthesis. All claims trace to [[spag]], [[sqlm]], [[spice]], [[understanding-self-play]], [[asymmetric-self-play]], [[spiral]], [[spell]], [[alphazero]], [[debate]], [[spin]], [[sppo]], [[invisible-leash]], [[yue-rlvr-boundary]], [[two-stage-dynamic]], [[azr]], [[r-zero]], [[language-self-play]], [[rstar]], [[info-gain-self-play]] in this theme, plus the cross-referenced existing wiki pages.
+Editorial synthesis. All claims trace to [[spag]], [[sqlm]], [[spice]], [[understanding-self-play]], [[asymmetric-self-play]], [[spiral]], [[spell]], [[alphazero]], [[debate]], [[spin]], [[sppo]], [[invisible-leash]], [[yue-rlvr-boundary]], [[two-stage-dynamic]], [[azr]], [[r-zero]], [[language-self-play]], [[rstar]], [[info-gain-self-play]], [[skill-self-play]] in this theme, plus the cross-referenced existing wiki pages.
 
 ## Related
 
@@ -148,3 +150,4 @@ Editorial synthesis. All claims trace to [[spag]], [[sqlm]], [[spice]], [[unders
 - [[../../conflicts/invisible-leash-vs-spiral-transfer]] — open conflict, refined 2026-05-01 to Stage-1-scoped
 - [[../../conflicts/unified-vs-two-model-self-play]] — open conflict, stabiliser-vs-architecture resolution candidate
 - [[../single-sample-rl-finetuning/rlvr-incentivizes-reasoning]] — Wen et al.: counter-evidence to the Invisible-Leash family (CoT-Pass@K shows boundary extension)
+- [[../../weekly-briefs/2026-07-31]] — brought in by the 2026-07-31 weekly sweep ([[skill-self-play]])

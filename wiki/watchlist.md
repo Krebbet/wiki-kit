@@ -143,5 +143,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-07-03]] — most recent weekly sweep
-- [[weekly-briefs/2026-06-26]] — prior weekly sweep
+- [[weekly-briefs/2026-07-31]] — most recent weekly sweep (quiet week: 2 candidates, both captured, 0 watchlist surplus)
+- [[weekly-briefs/2026-07-03]] — prior weekly sweep

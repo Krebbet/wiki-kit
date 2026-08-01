@@ -14,7 +14,7 @@ type: research
 
 This page is the dedicated comparison; the [[../self-play/_overview]] is the broader theme synthesis.
 
-## The nine reward shapes
+## The ten reward shapes
 
 | # | Method | Reward formula | Optimised target | Signal source | Underlying hypothesis |
 |---|---|---|---|---|---|
@@ -27,6 +27,7 @@ This page is the dedicated comparison; the [[../self-play/_overview]] is the bro
 | 7 | [[../self-play/azr]] (Zhao et al. NeurIPS 2025) | $r^\text{propose} = \begin{cases} 1 - \bar{r}^\text{solve} & \bar{r}^\text{solve} > 0 \\ 0 & \text{else} \end{cases}$ | Solvable-but-not-trivial code tasks | Code executor; solver's empirical pass-rate | Asymmetric Goldilocks: hard zero on impossible kills wasted compute; linear decay rewards calibrated difficulty. **No KL needed** under task-mode diversity (3 modes). |
 | 8 | [[../self-play/r-zero]] (Huang et al. 2025) | $r = 1 - 2\lvert\hat{p} - \tfrac{1}{2}\rvert - \lambda \cdot \text{BLEU-cluster}$ | Solver pass-rate exactly 50% + diverse questions | Solver empirical accuracy (majority vote) + repetition penalty | Symmetric Goldilocks at $p=0.5$ with explicit diversity penalty. Authors claim **two-model split** is required (unified collapses) — see [[../../conflicts/unified-vs-two-model-self-play]]. |
 | 9 | [[../self-play/language-self-play]] (2025) | $r^\text{Challenger} = \bar{V} - V(q_i) + \beta \cdot \text{quality}(q_i)$ | Questions harder than batch average + meeting quality bar | Solver's value baseline + reference-model quality score (0–7) | **General-sum** game (both players incentivised by joint quality) prevents adversarial collapse. Without quality term, Solver hacks by answering everything in Python. |
+| 10 | [[../self-play/skill-self-play]] (Huang et al. 2026, arXiv:2607.22529) | $R_\text{propose} = \mathbb{1}\{\text{valid}\}\cdot[1-2\lvert v_\text{solve}-0.5\rvert]$ | Medium-difficulty tasks, gated behind structural validity | Solver success rate over $K$ probe rollouts + skill-validator schema/contract check | Goldilocks reward alone is exploitable (proposer fabricates unsolvable tasks); **gate the reward behind a binary validity check**, mediated by a persistent, evolving skill library rather than a static verifier. |
 
 ## Editorial commentary — what each commits to
 
@@ -47,6 +48,8 @@ This page is the dedicated comparison; the [[../self-play/_overview]] is the bro
 **Shape 8 (R-Zero) — Symmetric Goldilocks with diversity penalty.** $1 - 2\lvert\hat{p} - 1/2\rvert$ peaks symmetrically at 50% solver accuracy; the BLEU-cluster repetition penalty is the explicit diversity term that no other shape carries. Authors claim **two independent base-LLM copies** are required — Appendix D ablation reports unified-model collapse after one iteration. **This claim is in conflict** with shapes 3, 4, 7, and 9 which all use unified models successfully — see [[../../conflicts/unified-vs-two-model-self-play]] for the resolution-via-stabiliser-presence reading.
 
 **Shape 9 (LSP) — Frontier-relative + general-sum quality stabiliser.** $\bar{V} - V(q_i)$ tracks "harder than the batch average" without committing to a fixed difficulty target — the frontier auto-translates as the solver improves. The added reference-model quality score (0–7) is the **explicit collapse-prevention mechanism**: by giving both players a stake in joint quality, the game becomes general-sum and the trivial-collapse equilibrium is no longer Nash-stable. **Without this stabiliser, the Solver hacks by answering everything in Python** (paper's own ablation). LSP is the cleanest demonstration that *stabiliser presence*, not architectural separation, is the load-bearing axis for unified-model self-play.
+
+**Shape 10 (Skill-SP, added 2026-07-31) — Gated medium-difficulty via a persistent skill library.** Continuous-valued, same Goldilocks family as SQLM (#3) and R-Zero (#8), but multiplied by a **binary structural-validity gate** rather than relying on the difficulty term alone. Validity is computed against a persistent, evolving skill library (skills induce/prune/refine each iteration) rather than a static verifier — the library *is* the curriculum, not just a reward filter. Ablations show the evaluator role (the "feedback solver" used to compute the validity gate) is the single most load-bearing component: freezing it costs more than freezing the proposer (−3.0 pts vs −2.1 pts). **Distinct from Shapes 3/4/8's structural or variance-based anti-hacking mechanisms** in that the gate itself is a *learned, evolving* artifact rather than a fixed structural constraint or a fixed formula.
 
 ## How they could plug into [[proposed-method]]
 
@@ -87,10 +90,12 @@ Editorial composition. All formulas, claims, and findings trace to:
 - [[../self-play/understanding-self-play]] (mechanistic motivation)
 - [[../self-play/info-gain-self-play]] (epiplexity criterion — what unifies these shapes)
 - [[../single-sample-rl-finetuning/data-efficiency-rft]] (DOTS Theorem 1 grounding for shape #4)
+- [[../self-play/skill-self-play]] — shape 10 (gated medium-difficulty via evolving skill library)
 
 ## Related
 
 - [[../self-play/_overview]] — broader theme synthesis
+- [[../../weekly-briefs/2026-07-31]] — brought in by the 2026-07-31 weekly sweep (shape 10, Skill-SP)
 - [[proposed-method]] — where these reward shapes plug in (components C, G, V)
 - [[recursive-concept-learning]] — outer-loop curriculum reward question
 - [[single-sample-concept-skeleton]] — earliest synthesis; predates this comparison

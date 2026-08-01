@@ -133,6 +133,18 @@ Plus **Thinking Machines Lab's Tinker API** replicating the Qwen3 recipe. These 
 > **OPSD name-collision note (added 2026-05-16).** "OPSD" denotes **two distinct papers** in this corpus, cross-referenced but not the same method: (1) **Zhao et al., *On-Policy Self-Distillation*, arXiv:2601.18734** (Jan 2026) — the §4 entry on this page; single model, two contexts, reverse-KL to a privileged policy; claims 4–8× token efficiency over GRPO. (2) **arXiv:2605.06188, *OPSD Compresses What RLVR Teaches*** (May 2026) — see [[opsd-compresses-rlvr]]; a different paper showing OPSD acts as post-RL *compaction* (−1.0 pp Correct-only, not an efficiency method). When this page says "OPSD" it means (1) unless explicitly linking [[opsd-compresses-rlvr]].
 - **Does ExOPD-style "surpass the teacher" generalise to RLT-style explanations?** ExOPD reports that scaling the reward weight above 1 lets the student beat the teacher. RLT's reward is sequence-level log-prob, not per-token KL — whether the same scaling trick applies is unknown.
 
+## Update 2026-07-31 (weekly-brief) — Inkling-Small: a named Thinking Machines instance, with an unresolved OPD-vs-RL attribution question
+
+Thinking Machines Lab shipped **Inkling-Small** (276B-total/12B-active MoE), post-trained from a preview checkpoint via **on-policy distillation with its own larger sibling Inkling (975B-total/41B-active) as teacher**, then **two weeks of agentic-coding RL** on top. This is the same OPD lineage already tracked in the table above (§5, "Thinking Machines Lab"), now with a disclosed second phase and a concrete, named large-scale result.
+
+**Claim:** Inkling-Small **surpasses** Inkling on reasoning and agentic coding — HLE 31.6% vs 29.7% (+1.9 pp, holds across all thinking-effort budgets), SWEBench-Verified >80%. Inkling retains the edge on knowledge coverage and factuality (the one place the smaller/distilled model doesn't close the gap), and shows a ~6.4 pp regression on FORTRESS-adversarial safety refusal (71.6% vs 78.0%).
+
+**Attribution gap, not a resolved contradiction.** The "surpassed Inkling" claim is attributed to "these improvements" — OPD *and* the subsequent RL phase — collectively, with **no ablation isolating which phase produced the gain**. This sits in soft tension with [[opsd-compresses-rlvr]]'s claim that OPSD/OPD is compaction, not correction, and "cannot create new reasoning states the student doesn't already support" — a pure-OPD reading of Inkling-Small's result would break that ceiling. But RL (unlike distillation) can in principle exceed a teacher's ceiling on its own, so if the gain is mostly RL-attributable there's no real tension. **Not elevated to a formal `wiki/conflicts/` entry** — the source gives no basis to adjudicate, and opening a conflict file on an unresolved attribution question (rather than a stated, checkable position) would be premature. Revisit if a future source discloses an OPD-vs-RL ablation for this or a similar pipeline.
+
+This is also the thinnest source type this wiki normally ingests: a product blog post with no pseudocode, no loss formula, no dataset/step counts, no reward function for the RL phase, and no academic citations (only self-references to Inkling and Thinking Machines' Tinker docs).
+
+Source: `raw/research/weekly-2026-07-31/02-inkling-small.md`
+
 ## Source
 
 - `../../../raw/research/rlt-followups/01-05-thinking-machines-opd.md` — Thinking Machines Lab *On-Policy Distillation* blog, Oct 2025
@@ -150,3 +162,4 @@ Plus **Thinking Machines Lab's Tinker API** replicating the Qwen3 recipe. These 
 - [[../process-reward-models/_overview]] — dense-vs-sparse reward lineage
 - [[../self-improvement/_overview]] — STaR and self-improvement parallels; SDFT/SDPO extend this line
 - [[../synthesis/proposed-method]] — project roadmap; OPSD is a candidate cheaper substitute for RLT in the P3 reward slot
+- [[../../weekly-briefs/2026-07-31]] — brought in by the 2026-07-31 weekly sweep (Inkling-Small update)

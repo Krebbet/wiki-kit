@@ -95,6 +95,7 @@ The tension with [[spiral]] is worth flagging: SPIRAL reports non-trivial reason
 - [[invisible-leash]] — the formal bound this paper operationalises (Theorem C.1: $\text{supp}(\pi_\theta) \subseteq \text{supp}(q)$)
 - [[yue-rlvr-boundary]] — independent empirical foundation: pass@k inversion across 6 RLVR algorithms
 - [[two-stage-dynamic]] — refines the proposer-is-everything frame: Stage-1 exploitation traps GRPO; Stage-2 exploration possible under entropy preservation
+- [[skill-self-play]] — partial complication (2026-07-31): frozen *feedback-solver* (evaluator role) costs more than frozen proposer (−3.0 vs −2.1 pts), but this ablates the reward-computation role, not whether the trained solver's pass@k support ever exceeds the base model — the "proposer is critical" claim survives once evaluator and learner roles are distinguished
 - [[azr]] — the self-play system this paper *studies*; three-mode reasoning + asymmetric Goldilocks
 - [[info-gain-self-play]] — refines proposer-is-everything: proposer is necessary but not sufficient; must satisfy epiplexity criterion
 - [[_overview]] — theme synthesis
