@@ -211,3 +211,27 @@ Pages written: 5 new (kimi-k3, skill-self-play, memoharness, ai-agents-open-ende
 Conflicts extended: none. ai-agents-open-ended-research is a forward-looking counterweight to the Self-improving agents cluster (empirical evidence against optimistic recursive-self-improvement claims) but doesn't yet contradict a specific existing wiki page — kept in-page per the forward-looking-conflict discard rule.
 Watchlist additions: 10 (BM25-Wins-at-Scale, Metis, Memory-Decoder-at-Scale, Molt, Distilled-RL-Post-training, Understanding-Reasoning-Pretrain-to-Posttrain, Anthropomorphizing-Intermediate-Tokens, DeepSeek-V4-Flash-0731, Qwen3.7-Flash, Claude-Opus-5).
 Reference-sources.md evolved: added Hugging Face Daily Papers + alphaXiv trending as an explicitly-pinned watched source (this week confirmed as the de facto replacement for the now-dormant GitHub awesome-lists as a fast-moving aggregator layer).
+
+---
+
+## [2026-08-08] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-08-08). Sources scanned: HF Daily Papers + alphaXiv trending, X/Twitter paper-feed accounts (AK/arankomatsuzaki/karpathy/dair_ai/alphaxiv/jackclarkSF), GitHub awesome-lists (all 7 zero-activity again — most now confirmed >1yr stale via `gh api`), r/MachineLearning + r/LocalLLaMA + r/MLScaling (reddit.com fetch blocked, worked via web search instead), podcasts (Dwarkesh/Latent Space/Cognitive Revolution/TWIML).
+
+Candidates surfaced: ~45; dominant pattern this week is an on-policy-self-distillation (OPD) explosion — 6 independent papers across agentic RL, visual, multi-teacher, cross-domain-search, and delta-multilingual variants surfaced from 2 independent survey angles. Selected 5 for capture, spanning 5 distinct wiki-scope threads rather than clustering all picks on OPD.
+
+Captures attempted / succeeded: 5 / 5 (on-policy-self-distillation-no-supervision, argus-agentic-runtime, frontis-ma1-recursive-self-improvement, phizero-world-model, memharness-memory-reconstruction). `audit_captures` flagged 16 "broken image refs" — confirmed false positive (known pymupdf path-resolution bug per master_notes.md 2026-06-13); all image files verified present via `ls`, text extraction 1198–4283 lines/file.
+
+One ingest subagent summary (frontis-ma1-recursive-self-improvement) initially failed schema validation — missing the required top-level "## Conflict flags" section (had only the DOMAIN-SLOT "## Conflicts" prose), same recurring failure mode as 2026-08-01's ai-agents-open-ended-research. Fixed by hand-adding a proper "## Conflict flags" entry from the existing prose. This is now the second occurrence — logged to master_notes.md as a candidate for prompt-template tightening.
+
+Pages written: 5 new ([[u-opsd-unsupervised-self-distillation]], [[argus-agentic-runtime]], [[frontis-ma1-openmle]], [[phizero-world-model]], [[memharness]]).
+
+Naming collision flagged and resolved: this week's [[memharness]] (Shanghai AI Lab, RL-trained memory reconstruction, arXiv:2607.28272) is a distinct system from last week's [[memoharness]] (Notre Dame/LMU/USC, harness-editing, arXiv:2607.14159) — near-identical name, different authors/mechanism. Explicit disambiguation notes added to both pages and the index.
+
+Conflicts extended: [[conflicts/pure-video-vs-3d-world-models]] — added [[phizero-world-model]] as Position C (discrete "physical language" reasoning, no 3D geometry at all — agrees pixel-only prediction is insufficient like Position A, but rejects both Position A's 3D-mesh remedy and Position B's pure-scaling claim). Conflict is now a three-way split.
+
+Conflicts not opened (forward-looking, discarded per policy): both [[argus-agentic-runtime]] and [[frontis-ma1-openmle]] carry soft tensions with [[ai-agents-open-ended-research]] (optimistic vs skeptical evidence on whether verifiable agentic capability transfers to open-ended research judgment) — no existing conflict file covers this theme and neither source claims a hard, checkable contradiction (both hedge their own claims), so no new file opened this week; documented in-page on both new pages instead.
+
+Watchlist additions: 10 (AgentOPSD, OPD-V, Poly-OPD, Cross-Domain-Hybrid-OPD, OPD-Delta-Multilingual, Qwen3.8-Max, DeepSeek-V4-Flash-0731-post-train-update, LongHorizon-Harness, HarnessOpt-Bench, Import-AI-467-self-replicating-worm).
+
+Reference-sources.md: no new sources added this week — HF Daily Papers/alphaXiv (added 2026-08-01) and existing pinned sources continued to cover the surfaced signal; GitHub awesome-lists batch is increasingly dormant and worth a `/lint` demote pass in a future run (not actioned here, out of scope for weekly-brief).

@@ -42,6 +42,14 @@ Moonlake's proposed alternative is a hybrid: coarse explicit 3D meshes + neutral
 
 **Status:** still open, but materially narrowed. Cosmos 3 provides the first strong empirical evidence for Position B on the interactive case. The conflict now needs a ruling on whether action tokens + VAE latents count as "explicit 3D structure" in Moonlake's sense. If yes → Position A (3D structure is still required, just implicit); if no → Position B wins the interactive sub-case.
 
+## Position C — discrete "physical language" reasoning, no 3D geometry — [[phizero-world-model]] (CASIA, arXiv:2607.28624, 2026-07-31)
+
+**Claim:** Pixel-space-only prediction is insufficient (agrees with Position A's diagnosis), but the fix is neither 3D mesh scaffolding (Position A's remedy) nor pure video/action scaling (Position B) — it's an intermediate discrete symbolic "physical language," learned self-supervised from video, that a VLM-initialized reasoner predicts autoregressively *before* a diffusion model renders pixels. No 3D geometry, mesh, or camera model anywhere in the architecture.
+
+**Basis:** Own ablation (Table 9, Physics-IQ Verified IQ-Score): pixel-space Wan2.2-5B baseline 21.2 → +natural-language prompt enhancement 26.6 → full physical-language pipeline 41.2. Cross-embodiment/zero-shot transfer achieved via language-space editing of the first frame, not 3D scaffold manipulation (§4.4).
+
+**Why this is a third position, not a resolution:** PHIZERO agrees with Moonlake that pure pixel-space prediction is inadequate, directly undercutting Cosmos 3's role as clean evidence for Position B (both use a similar Wan2.2 pixel-space baseline family, and PHIZERO's own baseline underperforms sharply). But PHIZERO's remedy has none of Moonlake's explicit 3D structure — it substitutes a learned discrete language, not geometry. This splits the conflict three ways: pure-video-suffices (B) vs 3D-scaffold-required (A) vs discrete-symbolic-intermediate-required (C). A ruling now also needs to determine whether "physical language" counts as "implicit structure" in Moonlake's sense (paralleling the still-open Cosmos-3 action-token question) or is a genuinely distinct third camp.
+
 ## Caveat — Moonlake is a position post
 
 Moonlake's claim has **no quantitative results, no benchmarks, no code, no comparison tables**. It's a research-direction signal from a frontier lab, not a paper. Position B may already exist in published form; the conflict only becomes substantive once a primary pure-video-scaling source is captured and compared on shared evals (camera consistency over time, object identity across occlusion, action-conditional rollout fidelity).
@@ -52,6 +60,6 @@ Define "interactive world simulator" precisely (action-conditioned next-frame pr
 
 ## Related
 
-- [[moonlake-world-models]], [[sharp-view-synthesis]], [[vision-banana]] (adjacent CV cluster).
+- [[moonlake-world-models]], [[sharp-view-synthesis]], [[vision-banana]], [[phizero-world-model]] (adjacent CV cluster).
 - [[conflicts/regression-vs-diffusion-view-synthesis]] — adjacent debate, different scope.
 - [[watchlist]] — Sora, Genie, Gen3C, ViewCrafter, World-R1, PERSIST, Tuna-2 not captured.

@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-06-06
+last_reviewed: 2026-08-08
 ---
 
 # Watchlist — Identified But Not Captured
@@ -215,3 +215,19 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **DeepSeek-V4-Flash-0731 (July 2026)** — Fast-follow flash variant of DeepSeek-V4; ArtificialAnalysis index ~50 (1pt behind GLM-5.2/GPT-5.6), matches Sonnet 5 / Grok 4.5 on DeepSWE. Extends [[deepseek-v4]] cluster. *(weekly-brief 2026-08-01.)*
 - **Qwen3.7-Flash (Alibaba, July 2026)** — First Qwen release that is API-only — no open weights or technical report, breaking Alibaba's prior fully-open release pattern. Notable strategic-shift signal rather than a technical contribution. *(weekly-brief 2026-08-01.)*
 - **Claude Opus 5 (Anthropic, July 24 2026)** — New SOTA on FrontierBench v0.1 / GDPval-AA at same price as Opus 4.8; adds a low/medium/high "effort" toggle and self-verification/error-recovery behavior. Used as the primary scaffold in this week's [[ai-agents-open-ended-research]]. *(weekly-brief 2026-08-01.)*
+
+## RL / post-training (continued — weekly-brief 2026-08-08)
+
+- **AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning (arXiv:2608.05987)** — Applies the on-policy self-distillation pattern to agentic RL loops recursively. Sibling of [[u-opsd-unsupervised-self-distillation]] in this week's 6-paper OPD cluster explosion. *(weekly-brief 2026-08-08.)*
+- **OPD-V: Visual On-Policy Self-Distillation with Modality Balance (arXiv:2608.05131)** — CV/multimodal extension of OPD; +15.7pp accuracy on Qwen3.5-4B backbone. OPD cluster sibling. *(weekly-brief 2026-08-08.)*
+- **Poly-OPD: Heterogeneous Multi-Teacher On-Policy Distillation for Capability-Selectable Flow Models (arXiv:2608.04349)** — Consolidates multiple heterogeneous teachers into one compact flow-matching student. OPD cluster sibling. *(weekly-brief 2026-08-08.)*
+- **Cross-Domain Hybrid OPD for Generalizable Search Agents (arXiv:2608.02101)** — Combines agentic RL with cross-domain on-policy distillation to generalize search-agent behavior. OPD cluster sibling. *(weekly-brief 2026-08-08.)*
+- **On-Policy Delta Distillation (OPD²) for Multilingual Math Reasoning (arXiv:2608.05802)** — Delta variant of OPD transferring reasoning gains across languages. OPD cluster sibling; fifth of six OPD papers surfaced this week alongside [[u-opsd-unsupervised-self-distillation]]. *(weekly-brief 2026-08-08.)*
+- **LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks (arXiv:2608.01964)** — HF Daily Papers #1 ranking this week; reformulates long-horizon agent execution as explicit task-state management outside the LLM context (Manage-Execute-Audit loop). Pushes Qwen3.7-Plus 51.8%→80.7% on WeaveBench. Adjacent to [[argus-agentic-runtime]] agentic-runtime cluster. *(weekly-brief 2026-08-08.)*
+- **HarnessOpt-Bench: Evaluating LLMs at Harness Optimization (arXiv:2608.06301)** — Benchmark for automated agent-harness optimization; finds optimizer-model choice matters more than the harness it acts through, across 111 scored runs. Adjacent to [[memoharness]] / [[argus-agentic-runtime]]. *(weekly-brief 2026-08-08.)*
+
+## Infrastructure (continued — weekly-brief 2026-08-08)
+
+- **Qwen3.8-Max (Alibaba, August 3 2026)** — 2.4T-param MoE, first Max-class Qwen model to go open-weight; claims OSWorld-Verified 86.1, beating GPT-5.6 Sol / Claude Fable 5 / Gemini 3.1 Pro. Major open-weight capability jump; extends the frontier open-weight race alongside [[kimi-k3]] / [[deepseek-v4]]. *(weekly-brief 2026-08-08.)*
+- **DeepSeek-V4-Flash-0731 post-train agentic update (July 31 2026)** — RL-with-verifiable-rewards post-training alone (no architecture/scale change) drove DeepSWE 7%→54%, beating V4-Pro on 9/9 agent benchmarks. Strong RLVR case study; extends [[deepseek-v4]] cluster (this is a post-train update to the entry captured 2026-08-01). *(weekly-brief 2026-08-08.)*
+- **Import AI #467 — self-sustaining AI viruses (Jack Clark, August 3 2026)** — Reports a prototype self-replicating AI worm (U. Toronto/Vector/Cambridge/ServiceNow) achieving ~37% end-to-end attack success via stolen GPU compute. Policy/capability risk signal from this wiki's jackclarkSF source. *(weekly-brief 2026-08-08.)*
