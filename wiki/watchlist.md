@@ -56,6 +56,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - OPD Survey (arXiv:2604.00626) — systematic f-divergence OPD survey; design-axes reference for the teacher-student RL theme
 - Learning from Language Feedback via VPD (arXiv:2605.15113) — variational distillation from language-feedback teacher; addresses stale-teacher in OPD
 - TGPO (arXiv:2605.13230) — teacher-guided policy optimization preserving exploration benefits of on-policy sampling; OPD variant
+- One Student, Many Teachers (arXiv:2607.18293) — multi-task OPD via soft-prompt privileged context; possible third position on unified-vs-two-model-self-play
+- Rethinking On-Policy Self-Distillation for Thinking Models (arXiv:2607.05184) — mechanism/failure-mode analysis of OPSD for reasoning models; possible knowrl-vs-rlt-hint-design relevance, unconfirmed
 
 ## Process reward models
 
@@ -137,11 +139,17 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - LLMZero (arXiv:2606.18388) — LLM agent meta-searches over RL training hyperparameters and data mixtures; finds non-obvious schedules; AutoRL for post-training
 
+## In-context learning theory
+
+*Seeded 2026-08-07. Closest current coverage: [[research/in-context-learning-theory/icl-implicit-weight-update]].*
+
+- ICL as Implicit Policy Gradient (arXiv:2607.23153) — theoretical bridge between in-context learning and RL policy-gradient updates
+
 ---
 
 ## Related
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-07-31]] — most recent weekly sweep (quiet week: 2 candidates, both captured, 0 watchlist surplus)
-- [[weekly-briefs/2026-07-03]] — prior weekly sweep
+- [[weekly-briefs/2026-08-07]] — most recent weekly sweep (5 captures, hit the cap; 3 watchlist additions; all captures converged on the open GRPO-family conflict cluster)
+- [[weekly-briefs/2026-07-31]] — prior weekly sweep (quiet week: 2 candidates, both captured, 0 watchlist surplus)

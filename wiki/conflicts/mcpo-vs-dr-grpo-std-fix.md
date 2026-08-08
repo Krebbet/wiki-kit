@@ -18,6 +18,8 @@ The two positions *agree* on the diagnosis (the std term introduces difficulty b
 
 **If Position A (Dr. GRPO) holds:** the $p(1-p)$ residual is empirically small enough to ignore; the simpler Dr. GRPO objective is preferred for compute/debug reasons.
 
+**2026-08-07 update:** [[../research/rl-optimizers/grpo-std-identity|arXiv:2607.00152]] reframes rather than resolves the debate. It proves GRPO's std-division and Dr. GRPO's removal are two equally-valid modeling choices — arcsine-stabilized $E[2\arcsin\sqrt{p}]$ vs. raw $E[p]$ — not a bug/fix pair with one correct answer ("the right choice depends on whether the training goal prioritizes raw success-rate alignment, hard-prompt pressure, or compute efficiency," §10). This rejects the framing (shared by Position A and Position B) that there is a single privileged unbiased objective to converge on. It does supply exact closed forms (the group-size law, difficulty weight $w(p)$) that quantify what MCPO's advantage-denominator rescaling is trading off relative to both GRPO and Dr. GRPO — useful for adjudicating Position B's magnitude claims, but doesn't itself take a side. Separately, [[../research/teacher-student-rl/rstg-selective-negative-group-distillation|arXiv:2608.00782]] (RSTG) offers an orthogonal resolution path for the same zero-gradient-group symptom: external teacher distillation activated only on all-fail groups, rather than internal reward/advantage reshaping (MCPO's approach). RSTG doesn't touch std normalization at all, so it's compatible with either Position A or B rather than adjudicating between them.
+
 ## Source
 
 Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) explicitly critiques Dr. GRPO (arXiv:2503.20783) in its Sec 4.2 — see the basis quote in [[../research/rl-optimizers/mcpo]]'s `## Conflicts raised` section.
@@ -28,4 +30,7 @@ Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) explicitly cri
 - [[../research/rl-optimizers/dr-grpo]] — Position A paper
 - [[../research/rl-optimizers/dapo]] — adjacent (DAPO's Token-Level PG Loss also addresses the length-bias piece)
 - [[../research/single-sample-rl-finetuning/data-efficiency-rft]] — DOTS' $p(1-p)$ theorem is the underlying gradient-magnitude result both positions rely on
+- [[../research/rl-optimizers/grpo-std-identity]] — reframes the debate as a tradeoff between two valid objectives rather than a bug/fix pair (2026-08-07)
+- [[../research/teacher-student-rl/rstg-selective-negative-group-distillation]] — orthogonal, teacher-dependent resolution path for zero-gradient groups (2026-08-07)
 - [[../weekly-briefs/2026-04-23]] — brought in by the 2026-04-23 weekly sweep
+- [[../weekly-briefs/2026-08-07]] — brought in by the 2026-08-07 weekly sweep

@@ -22,6 +22,8 @@ But as a **hint-design principle**, they disagree: *maximise* context + regulari
 
 **What would resolve it:** an ablation on the same base student that compares (a) RLT-style full-solution-in-prompt + $r^{KL}$, (b) KnowRL-style minimal-KP subset, (c) hybrid (KP-selected minimal context + plausibility regularisation). KnowRL's Figure 1b suggests (b) outperforms full injection; no captured source tests (c).
 
+**2026-08-07 update:** [[../research/teacher-student-rl/rstg-selective-negative-group-distillation|arXiv:2608.00782]] (RSTG) adds a third axis to the debate: *when* (which groups) to inject teacher signal, rather than *how much per token* (RLT's hint density) or *what content* (KnowRL's atomic KP selection). RSTG restricts teacher distillation to GRPO groups where all rollouts fail (negative zero-variance groups) — 3.63% of training data in their setup — and shows this beats training on the full distillation set. It doesn't test atomic-knowledge-point hints or think-token density directly, so it sharpens rather than resolves the RLT/KnowRL question; it does reinforce KnowRL's general "less is more" finding from a different angle (selecting *which examples* get any teacher signal at all, rather than *how much* content each gets).
+
 **Relevance to the project's curriculum-method design ([[../research/synthesis/concept-curriculum-method]]):**
 - Step (b) "Per-concept packet construction" uses RLT-shaped (Q, E, A) triples — closer to Position A.
 - But if KnowRL's minimal-sufficiency result generalises, the textbook-body portion of the packet should be *pruned* to essential KPs rather than full chapter prose.
@@ -39,4 +41,6 @@ Surfaced via the 2026-04-23 weekly sweep. KnowRL (arXiv:2604.12627) Sec 4.2 and 
 - [[../research/teacher-student-rl/rlt-followups-2026]] — OPSD/SDPO use privileged-info teacher context similar to RLT
 - [[../research/synthesis/concept-curriculum-method]] — project method directly affected by this resolution
 - [[../research/synthesis/proposed-method]] — reference-grounded variant where textbook-in-context aligns with Position A
+- [[../research/teacher-student-rl/rstg-selective-negative-group-distillation]] — third axis: which groups get teacher signal at all (2026-08-07)
 - [[../weekly-briefs/2026-04-23]] — brought in by the 2026-04-23 weekly sweep
+- [[../weekly-briefs/2026-08-07]] — brought in by the 2026-08-07 weekly sweep

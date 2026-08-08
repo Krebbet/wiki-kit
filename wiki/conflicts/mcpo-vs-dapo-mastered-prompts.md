@@ -18,6 +18,8 @@ The two positions diagnose *different* problems. DAPO's concern is *compute effi
 
 **Potentially compositional:** Dynamic Sampling + hinge-KL on retained mastered prompts = both the compute efficiency gain and the drift prevention. Neither paper evaluates this hybrid.
 
+**2026-08-07 update:** [[../research/rl-optimizers/cue-grpo-rarity-credit|arXiv:2608.03467]] (Cue-GRPO) sidesteps this conflict rather than adjudicating it. Its rarity-aware credit redistribution operates strictly *after* standard GRPO mean/std normalization, and only among already-positive advantages — Algorithm 1 explicitly inherits vanilla GRPO's zero-gradient collapse on mastered prompts unchanged ($\sigma = 0 \Rightarrow$ all advantages 0). It requires a nondegenerate group (some correct, some incorrect responses) to have anything to redistribute, so it's structurally inapplicable to the all-correct regime MCPO addresses — a third-family method (credit redistribution) that simply doesn't engage the mastered-prompt question DAPO and MCPO disagree on.
+
 ## Source
 
 Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) Sec 4.1 critiques DAPO (arXiv:2503.14476) — see the basis quote in [[../research/rl-optimizers/mcpo]]'s `## Conflicts raised` section.
@@ -28,4 +30,6 @@ Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) Sec 4.1 critiq
 - [[../research/rl-optimizers/dapo]] — Position A paper
 - [[../research/rl-optimizers/dr-grpo]] — related; shares MCPO's diagnosis of the std-normalisation bias
 - [[../research/single-sample-rl-finetuning/1-shot-rlvr]] — post-saturation generalisation is the single-sample instance of this conflict
+- [[../research/rl-optimizers/cue-grpo-rarity-credit]] — sidesteps the mastered-prompt regime by construction rather than resolving it (2026-08-07)
 - [[../weekly-briefs/2026-04-23]] — brought in by the 2026-04-23 weekly sweep
+- [[../weekly-briefs/2026-08-07]] — brought in by the 2026-08-07 weekly sweep

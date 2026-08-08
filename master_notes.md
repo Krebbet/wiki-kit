@@ -225,3 +225,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Candidate fix:** audit should resolve image paths relative to repo root (i.e. `git rev-parse --show-toplevel`) when the ref starts with `raw/` or any non-`./` prefix. Alternatively, `capture_pdf.py` should write relative refs (`assets/slug/img.png` relative to the markdown file) rather than repo-root-absolute refs. The latter is a one-line fix in `_write_markdown`. Promote on next `/harvest`.
 
 **Status:** open
+
+### 2026-08-07 — poetry not on $PATH in weekly-brief's shell session
+
+**Scope:** kit
+
+**Observation:** In the 2026-08-07 `/weekly-brief` run, `poetry run python -m tools.capture_pdf ...` failed with `command not found` on the first attempt — `poetry` (installed at `~/.local/bin/poetry`) wasn't on `$PATH` in the shell session the harness spawned. Every subsequent `poetry run` invocation this run needed `export PATH="$HOME/.local/bin:$PATH"` prepended. Not fatal (one failed command + a `which`/`find` detour to locate the binary), but wastes a step every run if it recurs, and would silently break unattended cron runs (`claude -p "/weekly-brief"`) if the cron's shell environment doesn't source the same profile that adds `~/.local/bin` to `$PATH`.
+
+**Candidate fix:** the weekly-brief skill's capture/ingest bash snippets should `export PATH="$HOME/.local/bin:$PATH"` defensively before the first `poetry` invocation, or check `command -v poetry` up front and fall back to the full binary path. Also worth checking whether the cron line in `wiki/reference-sources.md` (`0 7 * * 0 cd ... && claude -p "/weekly-brief" ...`) runs under a login shell that sources `~/.profile`/`~/.bashrc` — if not, unattended runs may hit this every week silently until someone checks `/tmp/weekly-brief-cron.log`.
+
+**Status:** open
