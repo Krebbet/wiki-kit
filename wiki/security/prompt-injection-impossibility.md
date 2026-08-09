@@ -62,3 +62,5 @@ The impossibility result has direct consequences for how agent security should b
 [[deployments/mcp-infrastructure]] — MCP threat surface includes indirect prompt injection; the CI impossibility bound applies to defenses at the injection-detection layer of MCP pipelines
 
 [[patterns/harness-design-space]] — safety is a dimension of the harness design space; the impossibility result implies that context-sensitivity must be a first-class safety constraint, not just a structural pipeline property
+
+[[conflicts/auto-mode-prompt-injection-defense]] — open conflict: Claude Code auto mode's reported 0/720 attack-success rate against a third-party eval sits in tension with this paper's impossibility result, pending clarification of which defense layer each claim addresses

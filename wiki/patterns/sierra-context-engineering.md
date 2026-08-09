@@ -83,6 +83,23 @@ This distinction is architecturally coherent but partially deflates the rhetoric
 - Context engineering "future-proofs" agents: better models amplify returns from well-engineered context without requiring logic re-hardcoding. *(Vendor-stated; no evaluation cited.)*
 - Token efficiency: unnecessary inference cost is eliminated — *"you aren't paying to process a thousand tokens of baggage policy during a simple flight rebooking."* *(Operational cost framing.)*
 
+## Context Engine (product): business-data layer and outcome-learning loop (2026-08-04)
+
+Sierra's August 2026 post "Rent the intelligence, own the relationship" announces **Context Engine**, a product that uses Sierra's "context engineering" branding for a materially different concept than the block taxonomy above. Where the sections above describe *prompt-assembly* context — which named block gets injected into the model's working context, and when — Context Engine is a **business-data-integration and outcome-learning layer**: it resolves raw records from CRM systems, data warehouses, and billing platforms, plus agent-generated interaction signals ("customer always chooses pickup over delivery," "yesterday's troubleshooting failed at step three"), into linked entities (a "raw facts → entities" pipeline), then feeds those entities into agent decisions.
+
+**Mechanism claims (thin — no metrics, no architecture diagram, no benchmark cited):**
+- Entity resolution/linking across siloed business systems (CRM, warehouse, billing, usage) is the one concrete architectural nugget.
+- Every agent decision is treated as an experiment in a bandit-style framing — mostly exploit the best-known action, a small percentage explore alternatives — feeding a statistical model-training loop that improves predictions for outcomes like churn, offer-acceptance, and lead-conversion over time.
+- The product is pitched as the substrate for **"Horizon agents"** — long-running agents pursuing business outcomes over days/weeks/months — though the source only references Horizon agents in passing and gives no separate detail.
+
+**Business framing, not a technical claim:** Sierra argues foundation models are "rented" and commoditized (echoing Satya Nadella's "ceding value" language), while the proprietary record of customer-relationship context and decision-outcome history is the durable, non-buyable competitive moat. This is a strategic/positioning argument, not an architecture claim, and should be read as such.
+
+**Relation to this page's taxonomy:** the two "context engineering" senses should not be conflated. The eight-block taxonomy above governs *what enters an agent's prompt at conversation time*; Context Engine governs *what business data gets resolved into entities that inform a decision*, upstream of any single conversation. They are plausibly complementary layers of the same underlying Sierra platform, but this source does not state that link explicitly.
+
+**Relation to [[patterns/sierra-monitor-eval-of-evals]]:** that page documents a build → observe → understand → improve flywheel (Monitors + Explorer + Ghostwriter) on the eval/observability side. Context Engine's "treat every decision as an experiment, self-improvement loop looks for the next opportunity to improve outcomes" framing closely parallels that flywheel — Context Engine reads as the decision/outcome-side counterpart to Monitors' eval-side loop, though no source yet explicitly links the two as one system.
+
+*Source: Sierra Engineering Blog, "Rent the intelligence, own the relationship," 2026-08-04 — `raw/research/weekly-2026-08-09/04-sierra-context-engine.md`. Vendor primary source; product-launch framing, thin on independently verifiable technical detail.*
+
 ## Peer framing: Anthropic's general vs Sierra's domain-specific
 
 [[patterns/anthropic-context-engineering]] offers the complementary general-purpose vendor framing. Where Sierra's post instantiates context engineering as eight named, condition-gated block types for a customer-facing agent platform, Anthropic's post operates at the architectural-principle level: JIT retrieval, compaction, and structured note-taking as the technique triad, applied to coding agents. Sierra's "progressive disclosure" mechanism — inject each block only when its runtime condition fires — is the domain-specific instantiation of Anthropic's JIT retrieval principle. Both posts converge on the same load-bearing heuristic: context window as a finite attention budget that must be spent purposefully, not filled indiscriminately.

@@ -133,6 +133,22 @@ Discord is gated — no public capture. Monitor manually. When something interes
 
 Invite links change; find current invites through each community's website or pinned posts in their subreddit / X profile.
 
+## Tech press (agent-vendor launch coverage)
+
+Added 2026-08-09. Major agent-vendor launches (new coding agents, model releases) frequently break on general tech press before — or instead of — a primary vendor blog post. TechCrunch was the only usable capture source for Meta's Muse Code launch (2026-08-09 sweep); no primary Meta blog post could be found. Treat as secondary/press-tier sourcing (collect-but-confirm on quantitative/architectural claims), not vendor-primary.
+
+| Source | URL | Role | Added | Status |
+|---|---|---|---|---|
+| TechCrunch (AI section) | https://techcrunch.com/category/artificial-intelligence/ | Fast, broad coverage of agent-vendor launches; often the only available source when a vendor skips a technical blog post. | 2026-08-09 | probation |
+
+## Standards & spec repositories
+
+Added 2026-08-09. Cross-vendor interoperability standards for the agent ecosystem are starting to live as versioned spec repos rather than blog posts — worth watching directly for version bumps (e.g. a v1.1 adding the permission/secrets model Agent Plugins v1.0 explicitly deferred).
+
+| Source | URL | Role | Added | Status |
+|---|---|---|---|---|
+| Agent Plugins spec | https://github.com/agentplugins/agent-plugins-spec | Canonical Agent Plugins packaging-format spec (see [[patterns/agent-plugins-spec]]); watch for version bumps adding the permission/secrets/sandboxing model v1.0 explicitly defers. | 2026-08-09 | active |
+
 ---
 
 ## Related

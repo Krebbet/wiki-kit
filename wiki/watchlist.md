@@ -1,11 +1,34 @@
 ---
 setup_approved: true
-last_reviewed: 2026-07-05
+last_reviewed: 2026-08-09
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-08-09
+
+Surplus from this week's sweep — the 5 captured items: Claude Code auto mode (Aug 7), Agent Plugins v1.0.0 (Aug 6), Meta Muse Code (Aug 5), Sierra Context Engine (Aug 4), ContinualSkillBench (Aug 4). Note: this run's window covers ~Aug 1-9; no weekly-brief run landed for the ~4 weeks between 2026-07-05 and this run (cron gap — worth checking cron health separately, per the 2026-05-25 master_notes precedent for silent cron failures). Dominant trends: agent permission/governance shifting to classifier-gated autonomy; cross-vendor packaging standardization (Agent Plugins); coding-agent vendor field widening (Meta); "context engineering" terminology overloading across vendors; self-improving-agent skepticism gaining a second data point. Items below did not make the capture cap.
+
+### Coding agents / infrastructure
+- **AWS Kiro Crew (Aug 4)** — https://siliconangle.com/2026/08/04/aws-launches-kiro-crew-autonomous-agentic-orchestrator-24-7-code-development/ — AWS open-sources the orchestration layer (scheduling, memory, multi-agent coordination) for persistent 24/7 coding-agent crews while keeping the agent runtime proprietary. Notable build-vs-buy signal for agent infrastructure. Capture if a primary AWS technical writeup on the orchestration architecture lands.
+- **Cloudflare Kitesurf (Aug 6-7)** — https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/ — Purpose-built, tab/UI-stripped Rust browser for agent browser-use; claims 3-7x lower CPU/memory vs. Chromium. Direct hit on the agent-infra/browser-use beat. Capture if a primary technical writeup with benchmarks appears.
+- **Cursor Router (Aug 6)** — https://cursor.com/blog/how-cursor-router-works — Technical writeup on Cursor's model-routing system (Auto Intelligence/Auto Balance), dynamically selecting models per task from production traffic signals to cut cost while holding quality. Relevant to context-engineering/agent-orchestration; capture if a follow-up quantifies the cost/quality tradeoff.
+- **VS Code 1.132 subagent visibility (Aug 5)** — https://code.visualstudio.com/updates/v1_132 — New "agent host" lets one agent session be viewed across multiple windows; live status pills expose subagent/tool-call state without opening the subagent's own transcript. A UX pattern worth tracking for multi-agent orchestration visibility, not yet a wiki-worthy primary claim on its own.
+
+### LangChain Deep Agents cluster
+- **Managed Deep Agents public beta + Stripe "Kai" case study + ReviewBench eval (Aug 3-7)** — https://www.langchain.com/blog/managed-deep-agents-is-now-in-public-beta, https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents, https://www.langchain.com/blog/evaluating-code-review-agents-with-reviewbench — Three related posts: hosted Deep Agents runtime, a production enterprise case study (Stripe), and a new code-review-agent eval benchmark. Extend [[coding-agents/langchain-deep-agents]] when the case-study detail is concrete enough to add a production-deployment section.
+
+### Benchmark / evaluation
+- **OSWorld-Verified: Qwen3.8-Max takes the lead at 86.1% (Aug 7)** — https://leaderboard.steel.dev/leaderboards/osworld/ — New SOTA on computer-use, edging out Claude Mythos 5/Fable 5 (85% each). Extend [[evaluation/osworld-v2]] if a primary analysis of the leapfrog lands.
+- **ScrambleToolBench (Aug 3)** — https://arxiv.org/abs/2608.02358 — Interactive terminal benchmark: agents can discover unfamiliar tool behavior once but fail to reuse that knowledge on adaptation, defaulting to brute-force search over deduction. Concrete tool-use failure mode; capture on full-text review if it corroborates or contrasts with [[evaluation/continualskillbench]]'s consolidation-failure finding.
+- **SWE-bench Verified/Pro continued climb toward saturation (rolling, last updated ~Aug 6-7)** — https://benchlm.ai/benchmarks/swe-bench-verified, https://codingfleet.com/blog/swe-bench-pro-leaderboard-2026/ — Verified now clustered 95-96% across frontier models; Pro at 80.3% for the leaders. Incremental continuation of the saturation trend already flagged 2026-06-07; not a new mechanism, movement only.
+
+### Agent governance / permission models
+- **Anthropic auto-mode companion pieces (Aug 5-7)** — https://claude.com/blog/auto-mode-in-production, https://claude.com/blog/run-claude-code-sessions-on-your-own-compute, https://claude.com/blog/millennium-and-anthropic-are-building-a-digital-risk-analyst-with-claude — Follow-ons to the captured [[governance/claude-code-auto-mode]] flagship post: production-hardening guidance (skills as guardrails on the classifier), a self-hosted "runner" architecture for enterprises (code/artifacts stay on-prem, only conversation goes to Anthropic), and a finance-sector case study (Millennium). Fold into the auto-mode page if a follow-up run wants the self-hosted-runner architecture in more depth.
 
 ---
 
