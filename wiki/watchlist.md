@@ -261,6 +261,14 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - arXiv 2506.15115 — machine unlearning verification survey (GDPR right-to-erasure compliance tooling)
 - ~~DeFlock.me (EFF-backed, June 2026)~~ — *captured 2026-07-06 ([[tools/deflock]])*
 
+## Recent additions (2026-08-10 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- Senate Judiciary "Your Data, Their Profit" AI surveillance-pricing hearing (Aug 4 2026) — first federal hearing; Hawley + Durbin bipartisan; Hawley federal bill "soon" (no text yet)
+- Vaheesan "Antitrust as Anti-Oligarch Policy" (Open Markets Institute, Aug 4 2026) — state-level antitrust reframing amid surveillance-pricing legislation wave
+- Privacy Badger 2026.8.7 (Aug 7 2026) — maintenance release; onboarding/pinning UX + expanded translations; tracked-tool cadence confirmed
+
 ## Recent additions (2026-07-06 weekly-brief overflow)
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*

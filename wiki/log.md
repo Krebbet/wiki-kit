@@ -943,3 +943,7 @@ Ingested Hypebot article on Subvert.fm launch. Created wiki/organizations/subver
 ## 2026-07-06 — weekly-brief 2026-07-06
 
 Completed weekly-brief run. 5 captures (deflock, subvert-coop, google-rtb-control, keep-android-open, arxiv-2606-05363), 5 wiki pages created (tools/deflock, tools/google-rtb-control, campaigns/keep-android-open, mechanisms/oblivious-algorithmic-collusion, organizations/subvert-coop). Watchlist updated with 10 overflow entries. Brief committed and pushed to collective-consumer-action-wiki.
+
+## 2026-08-10 — weekly-brief 2026-08-10
+
+Completed weekly-brief run. 0 captures — thin week, no candidate cleared the capture bar (Privacy Badger 2026.8.7 was routine maintenance per prior-cycle precedent; Vaheesan/OMI antitrust op-ed had no implementable hook; Senate Judiciary AI-surveillance-pricing hearing has no bill text yet). Watchlist updated with 3 overflow entries. Brief committed and pushed to collective-consumer-action-wiki.
