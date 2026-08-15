@@ -20,6 +20,8 @@ The two positions diagnose *different* problems. DAPO's concern is *compute effi
 
 **2026-08-07 update:** [[../research/rl-optimizers/cue-grpo-rarity-credit|arXiv:2608.03467]] (Cue-GRPO) sidesteps this conflict rather than adjudicating it. Its rarity-aware credit redistribution operates strictly *after* standard GRPO mean/std normalization, and only among already-positive advantages — Algorithm 1 explicitly inherits vanilla GRPO's zero-gradient collapse on mastered prompts unchanged ($\sigma = 0 \Rightarrow$ all advantages 0). It requires a nondegenerate group (some correct, some incorrect responses) to have anything to redistribute, so it's structurally inapplicable to the all-correct regime MCPO addresses — a third-family method (credit redistribution) that simply doesn't engage the mastered-prompt question DAPO and MCPO disagree on.
 
+**2026-08-14 update:** [[../research/rl-optimizers/3po-parameter-exploration|arXiv:2608.09805]] (3PO) adds a genuinely orthogonal *fourth* axis: prevention rather than discard (DAPO), regularise (MCPO), or sidestep (Cue-GRPO). By sampling rollouts for a group from multiple weight-perturbed policies (IVON variational posterior) instead of one fixed policy, 3PO reduces how often a group collapses to all-correct/all-wrong in the first place — Fig. 3 shows it nets *more* zero-advantage groups rescued than lost over training, where action-space exploration baselines (temperature-based) net-lose instead. This doesn't resolve what to do with a mastered/silent group once one occurs — it changes the base rate at which the DAPO-vs-MCPO question arises. Compatible in principle with either discard or anchor as a fallback for groups that still go silent despite policy-diversity sampling; not evaluated in combination.
+
 ## Source
 
 Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) Sec 4.1 critiques DAPO (arXiv:2503.14476) — see the basis quote in [[../research/rl-optimizers/mcpo]]'s `## Conflicts raised` section.
@@ -31,5 +33,7 @@ Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) Sec 4.1 critiq
 - [[../research/rl-optimizers/dr-grpo]] — related; shares MCPO's diagnosis of the std-normalisation bias
 - [[../research/single-sample-rl-finetuning/1-shot-rlvr]] — post-saturation generalisation is the single-sample instance of this conflict
 - [[../research/rl-optimizers/cue-grpo-rarity-credit]] — sidesteps the mastered-prompt regime by construction rather than resolving it (2026-08-07)
+- [[../research/rl-optimizers/3po-parameter-exploration]] — fourth axis: prevents zero-advantage groups via parameter-space policy diversity rather than discarding, regularising, or sidestepping them (2026-08-14)
 - [[../weekly-briefs/2026-04-23]] — brought in by the 2026-04-23 weekly sweep
 - [[../weekly-briefs/2026-08-07]] — brought in by the 2026-08-07 weekly sweep
+- [[../weekly-briefs/2026-08-14]] — brought in by the 2026-08-14 weekly sweep

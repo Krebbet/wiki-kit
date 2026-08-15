@@ -234,4 +234,4 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 
 **Candidate fix:** the weekly-brief skill's capture/ingest bash snippets should `export PATH="$HOME/.local/bin:$PATH"` defensively before the first `poetry` invocation, or check `command -v poetry` up front and fall back to the full binary path. Also worth checking whether the cron line in `wiki/reference-sources.md` (`0 7 * * 0 cd ... && claude -p "/weekly-brief" ...`) runs under a login shell that sources `~/.profile`/`~/.bashrc` — if not, unattended runs may hit this every week silently until someone checks `/tmp/weekly-brief-cron.log`.
 
-**Status:** open
+**Status:** open — **confirmed recurring 2026-08-14:** `poetry` was again absent from a fresh shell's default `$PATH` this run; the defensive `export PATH="$HOME/.local/bin:$PATH"` was applied proactively before all `poetry run` calls and avoided the failed-command detour, but the skill file itself still doesn't do this automatically. Two data points now (2026-08-07, 2026-08-14) — this is the shell's baseline `$PATH`, not a one-off. Fix not yet promoted via `/harvest`.

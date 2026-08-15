@@ -9,6 +9,7 @@ ICL is the closest analogue in current LLMs to "single example imprints a concep
 - [[icl-bayesian-inference]] — Xie et al. 2022 (Stanford). HMM-mixture pretraining $\Rightarrow$ posterior concentration over latent concepts; ICL = implicit Bayes.
 - [[function-class-icl]] — Garg et al. 2022 (Stanford). Trained transformers in-context learn linear / sparse / NN / decision-tree classes at near-optimal rates.
 - [[icl-conceptual-belief-space]] — Bigelow et al. 2026 (arXiv:2605.12412). ICL as a smooth trajectory through a low-dim *conceptual belief space*; behaviour and residual-activation manifolds share geometry ($r=.92$); LLM emotion space ≅ human valence–arousal; steering entanglement ∝ manifold distance. Dynamical geometric complement to [[icl-bayesian-inference]].
+- [[bdh-cq-recurrent-latent-reasoning]] — Engdahl, Kosowski, Chorowski et al. 2026 (Pathway/Bielik/NYU, arXiv:2608.09888). A fourth mechanistic account: demonstrations update an explicit *recurrent memory state* $S_t$ (fixed weights), decoupled from a separate iterative latent-reasoning loop. New ARC-AGI-1 cost-efficiency SOTA (29.5% pass@2 at $0.0007/task); rich but mixed concept-binding/extrapolation/composition evidence.
 
 ## Cross-cutting synthesis
 
@@ -21,6 +22,8 @@ ICL is the closest analogue in current LLMs to "single example imprints a concep
 | Bayesian inference | Posterior selection over latent concepts $\theta$ | Per-token information matters, not just labels; long examples help; example ordering matters | Explains why ICL works despite distribution shift; predicts ordering-sensitivity, zero-shot > few-shot edge cases |
 
 These are not mutually exclusive. von Oswald explicitly reduces induction heads to a special case of LSA-as-GD (token-identity targets). GD-as-MAP under a Gaussian prior reconciles GD with Bayes. The induction phase-change is the moment the *prior* (Bayesian) or the *meta-optimiser* (GD) becomes well-formed enough to consume in-context examples productively.
+
+A fourth account, [[bdh-cq-recurrent-latent-reasoning]], sits alongside these rather than adjudicating between them: demonstrations accumulate into an explicit, architecturally-separate *recurrent memory state* ($S_t = U_\theta(S_{t-1}, D_t)$, fixed $\theta$) rather than being folded into a single implicit weight update (GD account) or a single posterior update (Bayesian account) — closest in spirit to [[icl-implicit-weight-update]]'s persistent-state framing, but formalised as an explicit recurrence instead of a rank-1 weight patch.
 
 ### Method × claim × sample-cost comparison
 

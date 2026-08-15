@@ -11,6 +11,7 @@ Theme overview for PRM research: how to give a reward model credit signals that 
 - [[pav-rewarding-progress]] — Setlur et al. 2024 (Google / DeepMind / CMU). PAV: process credit = step-level *advantage* under a complementary prover policy, not step correctness. >8% test-time search gain and 5–6× RL sample efficiency vs ORMs.
 - [[uprm]] — Gadetsky et al. 2026 (EPFL, arXiv:2605.10158). Fully **unsupervised** PRM: frozen-LLM next-token marker probabilities as a self-derived signal — no step labels, no final answers. Matches supervised PRMs on Best-of-8; substantially more reward-hacking-robust as an RL reward.
 - [[corver-verifiable-rewards-factual]] — Fan et al. 2026 (UIC, arXiv:2605.29648). Corpus-grounded sentence-level reward for factual QA: Wikipedia co-occurrence count via Infini-gram index, no neural verifier. +4.1 pp TriviaQA average; beats 4 neural-verifier baselines in 18/20 cells at 4.8–8.4× lower training cost.
+- [[exprl-mid-training]] — Xiang, Setlur, Blagden, Haber, Kumar 2026 (arXiv:2606.17024). RL-based mid-training: reference solutions hidden from the policy, used only to build LLM-judge grading rubrics for dense outcome/process rewards on on-policy rollouts. Better primes subsequent sparse-reward RL than SFT (which catastrophically collapses AIME25 pass@1 46.5%→6.0%), sparse GRPO, or self-distillation. Setlur is also a [[pav-rewarding-progress]] co-author — same "process advantage" concept, prover-policy vs. reference-conditioned-judge mechanisms.
 
 ## Cross-cutting synthesis
 
