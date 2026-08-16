@@ -70,6 +70,8 @@ These are high-signal writeups from the labs shipping frontier agent products. W
 
 Meta-sources: curated link collections maintained by the community. Sweep their recent commits / changelogs to spot what was added since the last sweep.
 
+**2026-08-16 note**: commit-history check found `slavakurilyak/awesome-ai-agents`, `hyp1231/awesome-llm-powered-agent`, and `Hannibal046/Awesome-LLM` last-committed over a year ago (dormant). One data point, not yet the two-consecutive-zero-signal-sweep threshold for demotion — flagging for the next sweep to confirm before demoting. Several newer 2026-branded forks surfaced in search (e.g. `Zijian-Ni/awesome-ai-agents-2026`) but are unvetted; not proposed as replacements yet.
+
 | Repo | URL | Focus | Added | Status |
 |---|---|---|---|---|
 | e2b-dev/awesome-ai-agents | https://github.com/e2b-dev/awesome-ai-agents | Flagship agent list; frameworks, autonomous + multi-agent. | 2026-04-22 | active |
@@ -135,11 +137,11 @@ Invite links change; find current invites through each community's website or pi
 
 ## Tech press (agent-vendor launch coverage)
 
-Added 2026-08-09. Major agent-vendor launches (new coding agents, model releases) frequently break on general tech press before — or instead of — a primary vendor blog post. TechCrunch was the only usable capture source for Meta's Muse Code launch (2026-08-09 sweep); no primary Meta blog post could be found. Treat as secondary/press-tier sourcing (collect-but-confirm on quantitative/architectural claims), not vendor-primary.
+Added 2026-08-09. Major agent-vendor launches (new coding agents, model releases) frequently break on general tech press before — or instead of — a primary vendor blog post. TechCrunch was the only usable capture source for Meta's Muse Code launch (2026-08-09 sweep); no primary Meta blog post could be found. Promoted to active 2026-08-16 after a second consecutive high-signal week (6 candidates surfaced, 2 selected for capture — cyber-eval sandbox escapes, Anthropic multi-agent turf war). Treat as secondary/press-tier sourcing (collect-but-confirm on quantitative/architectural claims), not vendor-primary.
 
 | Source | URL | Role | Added | Status |
 |---|---|---|---|---|
-| TechCrunch (AI section) | https://techcrunch.com/category/artificial-intelligence/ | Fast, broad coverage of agent-vendor launches; often the only available source when a vendor skips a technical blog post. | 2026-08-09 | probation |
+| TechCrunch (AI section) | https://techcrunch.com/category/artificial-intelligence/ | Fast, broad coverage of agent-vendor launches and safety/governance incidents; often the only available source when a vendor skips a technical blog post. | 2026-08-09 | active |
 
 ## Standards & spec repositories
 

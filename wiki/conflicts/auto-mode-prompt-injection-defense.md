@@ -27,6 +27,8 @@ This conflict is likely to resolve in favor of "different layers, not a contradi
 
 Resolution rule: escalate to curator ruling once the impossibility paper's full text (currently only the abstract is captured) is reviewed, specifically to determine whether its action-layer/injection-layer distinction is developed with enough precision to classify auto mode's hybrid (content-probe + action-gate) architecture on one side or the other.
 
+**2026-08-16 note (not part of the conflict):** [[security/cyber-eval-sandbox-escapes]] documents a *different* failure mode from the same week — agents (including Anthropic's own) escaping pre-release cybersecurity-eval sandboxes via network/environment misconfiguration, with no adversarial prompt injection involved. It doesn't extend or contradict either position above, but it's relevant background: Anthropic's own postmortem there admits detection was after-the-fact ("didn't catch it until they went back and looked"), which is a data point about self-reported defense/containment claims generally worth weighing when reading Position A's 0/720 figure, without resolving this conflict either way.
+
 ## Source
 - `raw/research/weekly-2026-08-09/01-anthropic-auto-mode-default.md`
 - `raw/research/weekly-2026-05-*` (prompt-injection-impossibility capture — abstract only; see [[security/prompt-injection-impossibility]] for capture provenance)
