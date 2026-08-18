@@ -241,3 +241,11 @@ Scope: kit
 Status: open
 
 `/weekly-brief` writes `/tmp/weekly-brief-<RUN_DATE>.{md,html}` with no per-repo namespacing. When two wikis on the same host run the weekly cron on the same date (observed 2026-05-18: `wiki-agentic-trends` ran first and left its brief at that path; this `wiki-collective-consumer-action` run then overwrote it). The wiki-copy at `wiki/weekly-briefs/<DATE>.md` is the durable audit trail so no data was lost, and the email is sent from the in-memory body, not re-read from /tmp — but the /tmp artifact is unreliable as a recovery copy under multi-wiki scheduling, and a poorly-timed run could in principle email the wrong wiki's body if a future change re-reads /tmp. Fix candidate: namespace the path as `/tmp/weekly-brief-<REPO_NAME>-<RUN_DATE>.{md,html}` (step 6 + step 8 in weekly-brief.md). Flagged for /harvest triage.
+
+### 2026-08-17 — WebSearch doesn't surface subreddit-tier discussion threads
+Scope: kit
+Status: open
+
+The `## Subreddits` stream in `wiki/reference-sources.md` (`r/PlatformCooperatives`, `r/privacy`, `r/degoogle`, etc.) is meant to be a discovery/backlash early-warning tier, but the scan subagent for this stream reported that `WebSearch` queries against these subreddits consistently return law-firm/policy-press coverage instead of actual Reddit threads — it could not confirm hot-post signal for any of the seven tracked subreddits in the 2026-08-17 run (and the same gap likely affected prior runs silently, since a null result there reads the same as "nothing new"). This is the second time in a few weeks a whole stream has come back structurally empty rather than content-empty. Fix candidate: point the subreddit tier at Reddit's own search/JSON endpoints (`old.reddit.com/r/<sub>/top/?t=week` or the public JSON API) instead of relying on WebSearch's general web index, or drop the tier if it can't be made reliable. Flagged for /harvest triage.
+
+**Generalises to:** any wiki-kit deployment whose `reference-sources.md` includes a subreddit-tier watch stream — the WebSearch-can't-see-Reddit gap is a tool limitation, not wiki-specific.

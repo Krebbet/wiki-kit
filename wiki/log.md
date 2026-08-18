@@ -947,3 +947,7 @@ Completed weekly-brief run. 5 captures (deflock, subvert-coop, google-rtb-contro
 ## 2026-08-10 — weekly-brief 2026-08-10
 
 Completed weekly-brief run. 0 captures — thin week, no candidate cleared the capture bar (Privacy Badger 2026.8.7 was routine maintenance per prior-cycle precedent; Vaheesan/OMI antitrust op-ed had no implementable hook; Senate Judiciary AI-surveillance-pricing hearing has no bill text yet). Watchlist updated with 3 overflow entries. Brief committed and pushed to collective-consumer-action-wiki.
+
+## 2026-08-17 — weekly-brief 2026-08-17
+
+Completed weekly-brief run. 0 captures — second consecutive thin week; no counter-algorithmic tool/paper/platform-coop launch cleared the capture bar. Strongest candidate (Pallone letters to 8 airlines demanding surveillance-pricing data disclosure, responses due Aug 25) held as watchlist pending the actual disclosure response, per the same congressional-oversight-letter precedent as the Senate Judiciary hearing and House Oversight investigation already on watchlist. Watchlist updated with 4 overflow entries. Flagged a kit-level gap to master_notes.md: WebSearch doesn't reliably surface subreddit-tier discussion threads for the discovery/backlash stream. Brief committed and pushed to collective-consumer-action-wiki.

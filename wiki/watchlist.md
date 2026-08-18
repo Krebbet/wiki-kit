@@ -261,6 +261,15 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - arXiv 2506.15115 — machine unlearning verification survey (GDPR right-to-erasure compliance tooling)
 - ~~DeFlock.me (EFF-backed, June 2026)~~ — *captured 2026-07-06 ([[tools/deflock]])*
 
+## Recent additions (2026-08-17 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- Pallone letters to 8 US airlines demanding surveillance-pricing data disclosure (Aug 11-12 2026) — responses due Aug 25; per-company data-category disclosure surface, first congressional letter with a hard deadline on this theme — revisit after 08-25 for capture
+- Mozilla "Privacy Not Included" sunsets into "Nothing Personal" product reviews (Aug 11 2026) — consolidation of consumer privacy-rating tool, not a new capability
+- EFF "Too Little, Too Late: Flock Admits Their Technology Needs Reforms" (Aug 14 2026) — critique of Flock Safety ALPR reform announcement; adjacent surveillance beat, no DSAR/tooling artefact
+- NJ Fair Price Protection Act signed (July 23 2026) — new state joining the surveillance-pricing legislative wave; not yet tracked in Active enforcement
+
 ## Recent additions (2026-08-10 weekly-brief overflow)
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
