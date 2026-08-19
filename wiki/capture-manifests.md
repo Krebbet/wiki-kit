@@ -140,6 +140,7 @@ pdf|crit-heckelman-explaining-the-rain|https://heckeljc.sites.wfu.edu/papers/pub
 | Job | Source | Problem |
 |---|---|---|
 | 1 | Wallis, *Persistence and Change in Institutions* — `econweb.umd.edu` | `SSL: CERTIFICATE_VERIFY_FAILED`; the host's cert chain is incomplete on both http and https. Needs a manual browser download into `raw/research/foundations-nie/`, then `capture_pdf --src <local-path>`. |
+| 4 | Bénabou & Tirole, *Intrinsic and Extrinsic Motivation* — `princeton.edu/~rbenabou/papers/IEM.pdf` | Not the RES 2003 article — a **29-page slide deck** presenting it. Capture is faithful; the source is slides. Usable as a statement of the authors' model and position, never as the paper. Motivation-crowding ground is covered in full text by `frey-crowding-intrinsic-motivation`. |
 | 3 | Parkinson 1955 essay — `doc.cat-v.org` | The page is an **excerpt** (561 words) that stops before the Admiralty/Colonial Office headcount data. Verified against raw HTML: the capture is faithful, the page is partial. `--js` returns the same. Do not attribute Parkinson's own empirics to it. |
 
 ## Canonical sources with no open copy
