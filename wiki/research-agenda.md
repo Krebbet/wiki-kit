@@ -26,7 +26,7 @@ resumable in place.
 
 | # | Slug | Topic | Status |
 |---|---|---|---|
-| 1 | `foundations-nie` | What institutions are and why they exist — North, Coase, Williamson, Ostrom; transaction costs, rules, credible commitment | queued |
+| 1 | `foundations-nie` | What institutions are and why they exist — North, Coase, Williamson, Ostrom; transaction costs, rules, credible commitment | ingesting |
 
 ## Wave 2 — The user's six subjects
 
@@ -72,7 +72,7 @@ the problem.
 
 | Date | Job | What blocked it | What would unblock it |
 |---|---|---|---|
-| — | — | — | — |
+| 2026-08-19 | 1 `foundations-nie` | Wallis, *Persistence and Change in Institutions* (`econweb.umd.edu`) fails capture with `SSL: CERTIFICATE_VERIFY_FAILED` — the host's cert chain is incomplete, on both `http://` and `https://`. Not a bot wall. | Find the paper on another host, or download it manually in a browser into `raw/research/foundations-nie/` and run `capture_pdf --src <local-path>`. Not blocking the job — five other sources captured cleanly. |
 
 ## Synthesis phase (not `/research` jobs)
 
