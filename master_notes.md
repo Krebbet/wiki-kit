@@ -37,7 +37,11 @@ Not observed with the default `marker` engine in this run.
 **Implication:** either redirect the third-party library's stdout to stderr around the pymupdf call in
 `tools/capture_pdf.py`, or have the tool emit the path on a sentinel-prefixed final line and update callers.
 The former is cleaner and keeps the contract. Affects every wiki, not just this one.
-**Status:** open
+**Resolution (2026-08-19):** wrapped the `capture(...)` call in `main()` with
+`contextlib.redirect_stdout(sys.stderr)`. Chose the blanket guard over silencing each library's progress flag
+because it is engine-agnostic — it covers `marker` and `pymupdf4llm` today and any future converter's chatter
+without a per-library fix. Errors and warnings still reach stderr; stdout is now the path and nothing else.
+**Status:** applied
 
 ### 2026-08-19 — `fetch_transcript` blocked by YouTube ("No video formats found")
 **Scope:** kit
@@ -50,4 +54,19 @@ Ostrom Workshop seminars), so this is a live gap, not a cosmetic test failure. L
 (`--cookies-from-browser`) or a subtitle-only extraction path that avoids format resolution. Until then,
 `/research` and `/weekly-brief` should treat YouTube captures as expected-to-fail and fall back to a written
 source. Worth confirming whether the other wikis hit this too before investing in a fix.
-**Status:** open
+**Correction (2026-08-19):** the "No video formats found" diagnosis was wrong — or rather, transient. It
+stopped reproducing within the hour and unauthenticated extraction now works from this host, so it was
+YouTube-side throttling rather than a persistent block. **Do not build a cookie-auth path on the strength of
+one bad hour.** If it recurs under load, the right first move is `ignore_no_formats_error: True` (verified to
+work, and correct in principle — this tool is subtitle-only and never needs a video format), before reaching
+for `--cookies-from-browser`.
+The *residual*, reproducible failure was the same defect as the `capture_pdf` entry above: yt-dlp writes
+download progress to stdout, corrupting the path-only stdout contract. `quiet: True` does not suppress
+progress — `noprogress: True` is the separate switch.
+**Resolution (2026-08-19):** added `noprogress: True` to the yt-dlp opts and wrapped `capture(...)` in
+`contextlib.redirect_stdout(sys.stderr)`, matching the `capture_pdf` fix. Full suite now 95/95 on a fresh
+clone (was 93/95). YouTube transcripts are usable; the declared source type stands.
+**Lesson worth keeping:** two red tests were reported as two unrelated problems when they shared one root
+cause. The first error message on a network-dependent test is a hypothesis, not a diagnosis — re-run before
+writing it down as a finding.
+**Status:** applied
