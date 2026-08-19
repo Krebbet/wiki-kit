@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import re
 import sys
 import tempfile
@@ -58,6 +59,7 @@ def _download_subs(url: str, workdir: Path) -> tuple[dict, Path]:
         "outtmpl": str(workdir / "%(id)s.%(ext)s"),
         "quiet": True,
         "no_warnings": True,
+        "noprogress": True,
     }
     with yt_dlp.YoutubeDL(opts) as ydl:
         info = ydl.extract_info(url, download=True)
@@ -115,7 +117,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--timestamp-every", type=int, default=30)
     args = p.parse_args(argv)
     try:
-        written = capture(args.url, args.out, args.slug, args.timestamp_every)
+        # yt-dlp writes download progress to stdout, but stdout is this tool's
+        # path-only contract with its callers. Send library chatter to stderr.
+        with contextlib.redirect_stdout(sys.stderr):
+            written = capture(args.url, args.out, args.slug, args.timestamp_every)
     except Exception as e:
         print(f"fetch_transcript failed: {e}", file=sys.stderr)
         return 1

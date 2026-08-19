@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import re
 import shutil
 import sys
@@ -180,7 +181,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-pages", type=int, default=None)
     args = p.parse_args(argv)
     try:
-        written = capture(args.src, args.out, args.slug, args.engine, args.max_pages)
+        # marker and pymupdf4llm both write progress bars to stdout, but stdout is
+        # this tool's path-only contract with its callers. Send library chatter to stderr.
+        with contextlib.redirect_stdout(sys.stderr):
+            written = capture(args.src, args.out, args.slug, args.engine, args.max_pages)
     except Exception as e:
         if _is_cuda_oom(e):
             print(
