@@ -402,3 +402,80 @@ different direction. Q44.
 - Meyer & Rowan is the weakest evidence tier in the wiki — a conceptual essay with hand-picked anecdotes —
   and it is carrying one full limb of an extended conflict. Weighted accordingly on the page and in the
   conflict, but worth stating plainly.
+
+---
+
+## 2026-08-19 — ingest: institutional-stagnation (9 sources)
+
+Merton (1940); Stigler (1971); Selznick (1948); Fukuyama (2014); Miller & Dudley (2016); Schleicher &
+Bagley (2025/26); plus three dedicated critics — Carpenter & Moss (2014), Novak (2014), Heckelman (2007).
+
+Seven new pages: `regulatory-capture`, `institutional-sclerosis`, `goal-displacement-and-bureaucratic-ritualism`,
+`cooptation`, `regulatory-accretion`, `political-decay-and-vetocracy`, `state-capacity-and-level-of-government`.
+`veto-points-and-bureaucratic-autonomy` extended with a contested-cases section. D60–D65 registered (D65
+`rejected`). One conflict filed OPEN. Q7 and Q8 updated; Q60–Q65 added.
+
+**This is the job commissioned to test the wiki user's book premise — that institutions decay with age. The
+verdict has four parts and they must not be collapsed into each other.**
+
+1. **Well evidenced, and structural rather than temporal.** Regulation and procedure create rents that favour
+   organised, concentrated incumbents over diffuse publics. Stigler's trucking regression (46–48 states,
+   three significant coefficients, correct signs, R² 0.24–0.50) is the batch's cleanest single result. Miller &
+   Dudley's JPMorgan "moat" is the same mechanism in a modern instance; Liscow & Brooks on US highway costs,
+   via Schleicher & Bagley, is the same again in procedural form. **This is a cross-sectional finding about
+   *who benefits*. It is not an age-decay finding, and the two must not be blurred.**
+
+2. **Theorised but unmeasured — most of the batch.** Merton's ritualism, Selznick's cooptation, Fukuyama's
+   vetocracy, Miller & Dudley's accretion, Schleicher & Bagley's procedural tax. Coherent mechanisms,
+   essentially no independent test of the mechanism itself. Four of the nine sources state no falsification
+   condition at all; Carpenter & Moss's three-part test is the only one in the batch.
+
+3. **Contested: capture as an age phenomenon, specifically.** The canonical evidence — Olney's 1892 letter,
+   Huntington's "marasmus", Bernstein's life-cycle — is shown by two dedicated critics to be a single anecdote
+   laundered through decades of citation, and Novak shows capture risk was anticipated at the ICC's 1871
+   design (Charles Francis Adams: "Who will guard the virtue of the tribunal?"), which removes the healthy
+   youth the decline story needs. Note precisely: **neither critic runs an age test. The age reading is
+   unevidenced, not refuted**, and the pages say so in those words.
+
+4. **Evidenced against institution-level age as the driver.** Wherever age or duration appears in this batch it
+   attaches to a **political regime, a legal corpus, or a national polity** — never to a single institution's
+   own tenure. Fukuyama's veto structure is 230 years old and he pins the dysfunction to 1980s polarisation.
+   Miller & Dudley's and Schleicher & Bagley's accretion dates to a 1970s–80s legal wave applied uniformly
+   regardless of any agency's founding date. Heckelman's variable is years of national political *stability*.
+
+**The single most striking fact in the batch, and it was volunteered:** Merton, Stigler and Selznick each state
+that their own mechanism is age-independent — unprompted, without being asked to address any decay thesis, and
+decades before one was posed to them. Three founders of the decay-mechanism literature declining a claim later
+attributed to them is not a critics' point-scoring exercise, and it is filed on Position B of the conflict as
+such.
+
+**Heckelman is the tiebreaker and is reported whole, deliberately.** 53 studies of Olson's sclerosis thesis:
+**57% support, 23% mixed, 21% no support**, with no significant difference by methodology, publication outlet,
+author location or year (28 regressions at 57/18/25; 25 case studies at 56/28/16). But only "a handful"
+directly test coalition *accumulation* — Olson's Implication 2 — and the vast majority instead relate
+stability duration to growth, "leaving the role of special interest organizations and distributional coalitions
+implicitly in the background". He discloses a conflict of interest (Olson tribute-volume editor; author of
+three of the 53, all coded Support), tests it with two dummies, and finds it does not move the split. And a
+companion survey (Heckelman & Whaples 2006) finds practising economists (2.53) and political scientists (2.39)
+scoring *below* the midpoint on the theory's signature prediction — "Apparently, there is not widespread belief
+in Olson's explanation for the rain." **Neither "the evidence supports sclerosis" nor "sclerosis is debunked"
+can be read off this page, and that is by construction.**
+
+The settlement criterion, now filed in the conflict and as Q60: a study measuring a **specific institution's
+own age** against a **directly observed accumulation variable** — coalition count, rule count, capture
+indicator — rather than regime-stability duration or cross-sectional density, in a panel, controlling for
+external-regime vintage and principal polarisation. **No source in this batch does this. No source in four
+batches does this.**
+
+Thin spots, all filed as questions rather than left in this log:
+- Nobody anywhere tests organisational age as a first-class independent variable (Q60).
+- Heckelman never enumerates the "handful" that directly test accumulation, so the 57% is a Layer-1 number
+  standing in for a Layer-2 claim (Q62).
+- Selznick's TVA grounding is unread — the 1948 article is theory only, and the case appears in it as a
+  footnote announcing a forthcoming book. Huntington 1952 and Bernstein 1955 are likewise held only
+  second-hand through Novak (Q63).
+- **Not one of the nine sources examines a private-sector institution** for any of these mechanisms. Merton and
+  Selznick assert generality and test nothing; Stigler and Schleicher & Bagley are scope-limited by
+  construction; the other five are silent. Merton supplies the discriminating test himself — hold sector fixed
+  and vary monopoly vs. competition (Q64).
+- No institution in the batch has a design-specified sunset or review trigger, in either direction (Q65).
