@@ -41,7 +41,7 @@ The former is cleaner and keeps the contract. Affects every wiki, not just this 
 `contextlib.redirect_stdout(sys.stderr)`. Chose the blanket guard over silencing each library's progress flag
 because it is engine-agnostic — it covers `marker` and `pymupdf4llm` today and any future converter's chatter
 without a per-library fix. Errors and warnings still reach stderr; stdout is now the path and nothing else.
-**Status:** applied
+**Status:** applied 2026-08-19 — harvested to main as e3bcf3a
 
 ### 2026-08-19 — `fetch_transcript` blocked by YouTube ("No video formats found")
 **Scope:** kit
@@ -69,4 +69,4 @@ clone (was 93/95). YouTube transcripts are usable; the declared source type stan
 **Lesson worth keeping:** two red tests were reported as two unrelated problems when they shared one root
 cause. The first error message on a network-dependent test is a hypothesis, not a diagnosis — re-run before
 writing it down as a finding.
-**Status:** applied
+**Status:** applied 2026-08-19 — harvested to main as e3bcf3a
