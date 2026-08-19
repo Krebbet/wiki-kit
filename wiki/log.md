@@ -64,3 +64,62 @@ Thin spots, stated rather than padded:
   assumed by nobody and tested by nobody (Q19).
 - Path dependence "with age" is a matrix-level claim throughout; the organisational reading this wiki wants is
   an inference by analogy, not a finding.
+
+## [2026-08-19] ingest | scale-effects
+
+Eight sources from `raw/research/scale-effects/` on large vs. small institutions: Coase ("The Nature of the
+Firm" 1937; Nobel lecture 1991), Niskanen (1968), Parkinson (1955 Economist essay), Klimek/Hanel/Thurner
+(2008), Rajan & Wulf (NBER 9633, 2003), Simon (1962), Garicano & Rossi-Hansberg (NBER 20607, 2014).
+Three new pages — `bureaucratic-growth-and-parkinsons-law`, `knowledge-hierarchies-and-the-cost-of-scale`,
+`hierarchy-and-near-decomposability` — plus extensions to `transaction-costs`, `governance-structures`,
+`dimensions-of-institutional-variation` and `path-dependence-and-increasing-returns`, and two conflicts filed.
+
+What landed:
+- **The register finally has intra-organisational axes.** D35–D41: funding mechanism (lump-sum vs. per-unit),
+  span of control, hierarchy depth (with Klimek's flatness variant ΔL), coupling strength/decomposability,
+  communication cost, information-acquisition cost, and formal authority vs. reporting proximity. The
+  foundations-NIE ingest recorded the absence of exactly these; the note is now marked partly closed.
+- **D25's "information flow" half is superseded, not silently edited.** Garicano & Rossi-Hansberg show that
+  communication cost and knowledge-acquisition cost move hierarchy depth in *opposite* directions, so a single
+  information-richness axis predicts nothing. D25 keeps its number and its measurability-of-output half, with
+  a note pointing at D39 and D40.
+- **The sharpest result in the batch** is not about size but about how growth happens: a firm that grows by
+  adding a management layer cuts the knowledge and wages of every pre-existing layer; a firm that grows without
+  adding one raises them. French administrative panel, firm fixed effects. It is the only mechanism-level
+  discriminator this wiki has between functional and dysfunctional growth (Q28).
+- **Only two sources in eight are real empirics.** Klimek/Hanel/Thurner (and their historical cases are
+  Parkinson's own 1957 figures restated at second hand, n=2) and Rajan & Wulf. Coase, Niskanen, Simon and
+  Garicano & Rossi-Hansberg are models their own authors call untested — Niskanen lists the tests that had not
+  been run, Coase coined "blackboard economics" for exactly this, Simon disclaims his social extrapolations,
+  and Garicano & Rossi-Hansberg say their evidence "fails to falsify" rather than confirms. Every page says so.
+- **Parkinson's essay is only partially captured** — ~500 words, cutting off at "statistical proofs, which will
+  follow." The Admiralty and Colonial Office numbers he is famous for are *not* in our source; the numbers on
+  the page come from Klimek et al. No statistic is attributed to Parkinson anywhere.
+- **Two conflicts filed OPEN.** Functional vs. rent-seeking growth (Niskanen against Garicano/Rossi-Hansberg
+  and Simon) — probably a scope condition on funding form, stated as the hypothesis to test and deliberately
+  not adopted, because no source states it. And Parkinson vs. knowledge-hierarchy accounts of headcount growth,
+  which is genuinely unresolved: the two bodies of evidence have no overlap at all.
+- **Not filed as a conflict:** Rajan & Wulf's flattening. The paper itself separates an era-driven flattening
+  trend (span +50–86%, depth −25%, at flat or falling headcount) from a persistent cross-sectional size→depth
+  relationship, and the latter is what Garicano & Rossi-Hansberg predict. Presented as reconciled on
+  `governance-structures`.
+
+The negative finding, which is the important one:
+- **Institutional age has essentially no data in this batch, and the batch looks like it should.** Klimek's
+  "age" is an individual official's career tenure; Garicano & Rossi-Hansberg's is technology vintage; Simon's
+  is evolutionary formation time; Niskanen's single age sentence is an aside his own footnote 1 disowns; Rajan
+  & Wulf report firm age as a sample statistic and never regress on it. This is load-bearing for outcome 4 and
+  directly undercuts what Q7 wanted to claim. Q7 rewritten to say so: the size literature does not supply age
+  evidence, and treating size evidence as age evidence is the field's habit, not a finding. No page in this
+  batch implies otherwise.
+- **Nothing tests firm against bureau on the same axis.** Three sources are firm-only, three bureau-only, and
+  two (Simon; Coase's 1991 lecture) assert public/private invariance by analogy without testing it. Q3 moved
+  back from partial to open — the batch that should have addressed it did not. Niskanen's footnote 3 hints the
+  axis itself may be wrong: funding form, not ownership (Q25).
+
+Thin spots:
+- The N≈20–21 decision-body threshold is the most quotable number here and the least defended: one
+  uncontrolled cross-section, with reverse causality unaddressed (Q26).
+- Simon flags his own theory as incomplete on what determines span; three sources give three incompatible
+  answers and none has been tested against the others (Q29).
+- Personnel selection (Q4) is still named by no source in this wiki.

@@ -53,11 +53,19 @@ Three features of this model are worth keeping:
 
 So the intuition that institutions ossify with age is, on this evidence, an inference by analogy from the matrix level to the organisational level. It is a good hypothesis and it is not yet supported. Logged as [[open-questions]] Q20.
 
+**[empirical — soft counter-datapoint, added by the `scale-effects` ingest]** The first evidence bearing on the organisational reading points *against* it, mildly. Rajan & Wulf's panel is 300+ large US public firms, 1986–1998, averaging ~85 years since founding and ~47,500 employees — old, large and, in the authors' words, "not one whose organizational structure is likely to be in flux." Over thirteen years these firms restructured substantially: CEO span of control rose 50% in the full panel and 86% in the balanced sub-panel, hierarchy depth fell more than 25%, the probability that a division manager reported directly to the CEO went from 0.05 to 0.31, and the COO role was eliminated in about a fifth of the firms that had one. This happened while employment was flat or falling, so it is not growth forcing the change.
+
+Weigh it carefully in both directions. It is a real observation of old organisations changing their own structure without an external shock large enough to be named — which bears on [[open-questions]] Q8 as well as Q20. But: it is senior management structure only, not rules, culture or mission; it is a period (post-takeover-wave US corporates) where external pressure was unusually high, and Rajan & Wulf explicitly do not identify the cause; the sample is old by construction, so there is no young-firm comparison and **age is never a covariate** in their regressions. It does not refute the ossification hypothesis. It does mean the hypothesis cannot be treated as obvious.
+
+**[model — a parallel mechanism, different clock]** Garicano & Rossi-Hansberg's dynamic extension supplies the closest thing in this wiki to a firm-level lock-in mechanism: an organisation that has thoroughly exploited its current technology may rationally postpone adopting a superior one indefinitely, because the new technology renders the accumulated hierarchy obsolete and a replacement must be built from scratch. Sunk organisational capital, not sunk political interest — the same shape as North's increasing returns at a different unit of analysis. It runs on **time since the current technology was adopted**, not time since founding, and it is a modelled result with no empirical test. Do not read it as age evidence.
+
 ## Source
 
 - `raw/research/foundations-nie/01-north-institutions-jep.md` — Douglass C. North, "Institutions", *Journal of Economic Perspectives* 5(1), 1991, 97–112. https://web.pdx.edu/~nwallace/EHP/NorthInstitutions.pdf (JSTOR: http://www.jstor.org/stable/1942704)
 - `raw/research/foundations-nie/02-north-institutional-change-framework.md` — Douglass C. North, "Institutional Change: A Framework of Analysis". https://econwpa.ub.uni-muenchen.de/econ-wp/eh/papers/9412/9412001.pdf
 - `raw/research/foundations-nie/04-nber-north-transaction-costs.md` — Gary D. Libecap, NBER Working Paper 24585, May 2018. https://www.nber.org/system/files/working_papers/w24585/w24585.pdf — the time-to-agreement findings cited here are Libecap's **own primary** case work; his North-attributed material elsewhere in that paper is second-hand.
+- `raw/research/scale-effects/06-rajan-wulf-flattening-firm.md` — Raghuram Rajan & Julie Wulf, "The Flattening Firm", NBER Working Paper 9633, April 2003. https://www.nber.org/system/files/working_papers/w9633/w9633.pdf — the counter-datapoint above; **(a) empirical**, and the only panel evidence in this wiki on organisational structure over time.
+- `raw/research/scale-effects/08-garicano-rossi-hansberg-knowledge-hierarchies.md` — Garicano & Rossi-Hansberg, NBER WP 20607, 2014. https://www.nber.org/system/files/working_papers/w20607/w20607.pdf — the stagnation/sunk-organisational-capital mechanism; **(b) model, untested**.
 - `raw/research/foundations-nie/03-ostrom-nobel-polycentric.md` — Elinor Ostrom, Nobel Prize Lecture, 8 Dec 2009 (cited here for the *absence* of an age claim). https://www.nobelprize.org/uploads/2018/06/ostrom_lecture.pdf
 
 ## Related
@@ -67,4 +75,6 @@ So the intuition that institutions ossify with age is, on this evidence, an infe
 - [[credible-commitment]] — the Spain-to-Latin America continuity claim is North's principal illustration of a locked-in extractive matrix.
 - [[governance-structures]] — Williamson's limits-to-firm-size argument is the nearest thing in these sources to an intra-organisational lock-in mechanism, and it is about size rather than age.
 - [[dimensions-of-institutional-variation]] — time-to-agreement, rent dissipated before correction, and formal/informal change-speed differential are all registered there as measurable axes.
+- [[knowledge-hierarchies-and-the-cost-of-scale]] — the sunk-organisational-capital stagnation mechanism, and why its clock is technology vintage rather than age.
+- [[governance-structures]] — carries the Rajan & Wulf panel in full, including the era-versus-size distinction the counter-datapoint depends on.
 - [[efficiency-of-institutions-north-vs-williamson]] — path dependence is North's main reason for denying that observed institutions are the efficient ones.

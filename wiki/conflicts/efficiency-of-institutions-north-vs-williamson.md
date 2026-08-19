@@ -23,6 +23,15 @@
 - North positions himself against Williamson by name: Williamson's efficient-solutions framework "assumes away" the question of why economies vary in performance, which North takes to be the whole point.
 - Corroborating from a third source: Libecap (**his own case work**, not his second-hand North material) documents regulators preferring revocable permits to transferable rights specifically because secure rights would weaken their discretion — a persistent inefficient arrangement chosen by the party with the power to change it.
 
+### Added by the `scale-effects` ingest (2026-08-19)
+
+Two further items on the North side of the ledger. Neither resolves anything; both narrow what the efficiency default can be resting on.
+
+- **Coase's efficiency claim is asserted, not proven by his own argument.** *Source:* `raw/research/scale-effects/01-coase-nature-of-the-firm.md`. **Evidence tier:** (b) formal argument, no data. Coase writes that firms arise "because they represent a more efficient method of organizing production" (note 14) — the historical seed of the presumption Williamson later formalises. But the marginal argument establishes only that a firm absorbs a transaction where marginal internal organising cost is locally below marginal market cost. It contains no mechanism that selects against a locally stable but globally inferior boundary; the sole disciplining device named is "it is always possible to revert to the open market if he fails," itself asserted. Coase further concedes that firm size is pushed *away* from the organising-cost optimum by two forces he names: tax and quota asymmetries between market and intra-firm transactions make firms **artificially larger** than efficiency alone would produce, and monopoly gain "offers a powerful incentive to continuous and unlimited expansion." Both are the founder of the tradition naming non-efficiency determinants of institutional boundaries.
+- **Niskanen's model produces allocatively wrong output with zero internal waste.** *Source:* `raw/research/scale-effects/03-niskanen-peculiar-economics-bureaucracy.md`. **Evidence tier:** (b) deductive model with invented numbers; the author's own Section V lists the empirical tests that had not been run. In the budget-constrained equilibrium the bureau's budget exactly covers minimum cost — no slack, nothing a cost-effectiveness audit would find — and output still exceeds the Pareto-optimal level by roughly two-thirds, or twice over where the bureau also discriminates among factor suppliers. This is a specific, formal counter-example to the inference Williamson's remediableness criterion invites: **absence of demonstrable waste is not evidence of efficiency**, because the pathology can be allocative rather than operational. It also sharpens the falsification problem in the criterion — a demand-constrained bureau's true minimum-cost function is, by Niskanen's argument, unrecoverable from any behaviour an outside analyst can observe, so the "feasible superior alternative" the criterion demands may be undemonstrable in principle rather than absent in fact.
+
+**Not adjudicated.** Both items are models, not measurements, and both come from authors sympathetic to the efficiency tradition rather than from critics of it. They add to Position B's ledger without settling anything, and the register remains unbalanced in the way point 4 below describes.
+
 ## Where the disagreement actually is
 
 Not on whether inefficiency exists — Williamson concedes political-purpose design, North concedes that productivity-raising rules "have overwhelmingly dominated" in the US case. The disagreement is over the **default assumption when you observe an arrangement you do not understand**:
@@ -41,6 +50,9 @@ The stakes are practical. Williamson's default makes reform proposals cheap to r
 
 ## Source
 
+- `raw/research/scale-effects/01-coase-nature-of-the-firm.md` — R. H. Coase, "The Nature of the Firm", *Economica* 4(16), 1937. http://econdse.org/wp-content/uploads/2014/09/firm-coase.pdf
+- `raw/research/scale-effects/03-niskanen-peculiar-economics-bureaucracy.md` — William A. Niskanen, "The Peculiar Economics of Bureaucracy", *American Economic Review* 58(2), 1968, 293–305. https://sites.socsci.uci.edu/~jkbrueck/course%20readings/Econ%20272B%20readings/niskanen.pdf (JSTOR: http://www.jstor.org/stable/1831817)
+
 - `raw/research/foundations-nie/05-williamson-nobel-transaction-cost.md` — https://www.nobelprize.org/uploads/2018/06/williamson_lecture.pdf
 - `raw/research/foundations-nie/01-north-institutions-jep.md` — https://web.pdx.edu/~nwallace/EHP/NorthInstitutions.pdf
 - `raw/research/foundations-nie/02-north-institutional-change-framework.md` — https://econwpa.ub.uni-muenchen.de/econ-wp/eh/papers/9412/9412001.pdf
@@ -51,4 +63,6 @@ The stakes are practical. Williamson's default makes reform proposals cheap to r
 - [[governance-structures]] — Position A in full, including the remediableness argument.
 - [[path-dependence-and-increasing-returns]] — Position B's mechanism for why inefficient arrangements are not competed away.
 - [[transaction-costs]] — the shared framework both positions sit inside.
+- [[functional-vs-rent-seeking-growth]] — the same dispute restated for organisational size: is added structure cost minimisation or rent extraction?
+- [[bureaucratic-growth-and-parkinsons-law]] — Niskanen's model in full, including the no-slack-but-oversized equilibrium.
 - [[what-is-an-institution]] — the two definitions carry the two priors: a governance structure selected by alignment vs. a rule-set selected by bargaining power.
