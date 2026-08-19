@@ -72,6 +72,7 @@ the problem.
 
 | Date | Job | What blocked it | What would unblock it |
 |---|---|---|---|
+| 2026-08-19 | 3 `scale-effects` | Parkinson's original 1955 Economist essay: the only open copy found (`doc.cat-v.org`) is an **excerpt** — 561 words, cutting off exactly where the "statistical proofs, which will follow" begin, and containing none of the Admiralty/Colonial Office headcount series that are the essay's actual evidence. Verified against the raw HTML: the capture is faithful, the *page* is partial. Re-capture with `--js` returned the same. | Find a full text of the 1955 essay (or the 1957 book chapter) on another host, or treat Parkinson's own empirics as uncited. Partially mitigated: the arXiv paper `parkinson-law-quantified-empirical` is a modern quantitative test of the same claim and carries the empirical weight. Any wiki page citing the excerpt must not attribute the headcount evidence to it. |
 | 2026-08-19 | 1 `foundations-nie` | Wallis, *Persistence and Change in Institutions* (`econweb.umd.edu`) fails capture with `SSL: CERTIFICATE_VERIFY_FAILED` — the host's cert chain is incomplete, on both `http://` and `https://`. Not a bot wall. | Find the paper on another host, or download it manually in a browser into `raw/research/foundations-nie/` and run `capture_pdf --src <local-path>`. Not blocking the job — five other sources captured cleanly. |
 
 ## Synthesis phase (not `/research` jobs)
