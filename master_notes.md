@@ -89,3 +89,27 @@ rather than replace. A stronger fix is to make `index.md` generated rather than 
 table from the pages on disk plus their first-paragraph summary, so the whole class of races disappears. A
 `/lint` check comparing `ls wiki/*.md` against the index rows would at least catch a drop after the fact.
 **Status:** open
+
+### 2026-08-19 — `audit_captures` reports "0 issues" while its two most valuable checks never run
+**Scope:** kit
+**Observation:** `tools/audit_captures.py:71` gates both the missing-source-PDF check and the thin-capture
+check behind `if pdfs_dir.exists():`. `tools/capture_pdf.py:102` downloads the source to a **temp** directory
+as `source.pdf` and never copies it into `<topic>/pdfs/`, so for any URL-sourced PDF that directory is never
+created. Verified: `find raw -type d -name pdfs` returns nothing across all seven topic dirs captured today.
+Every one of those topics reported `Total issues: 0`, and in every case only the image-reference checks
+actually executed. The one thin capture we did have (Parkinson, 561 words against a full essay) was caught by
+an agent reading the file, not by the audit.
+**Why it matters more than a normal bug:** the failure is silent and reports *success*. `/research` step 5
+tells the operator to run this audit as the fidelity gate before `/ingest`, so a clean audit is exactly the
+signal that licenses proceeding. It licensed proceeding seven times today on a check that never ran. A tool
+that cannot perform its check must not return the same output as a tool that performed it and passed.
+**Implication:** two defensible fixes, and they are not exclusive.
+(a) Make `capture_pdf` honour the contract the audit and the `/research` domain notes both assume — persist
+the fetched PDF to `<out>/pdfs/<slug>.pdf` instead of discarding it with the temp dir. This also makes
+captures re-derivable without re-fetching, which matters because `raw/research/` is gitignored.
+(b) Make `audit_captures` report `SKIPPED (no pdfs/ directory — source PDFs not retained)` for the checks it
+cannot run, and exit non-zero or print a prominent warning rather than folding them into a clean bill of
+health. Silence and success must not be the same output.
+Note (a) alone would change disk behaviour for every wiki; worth checking with the user before harvesting,
+since some may have chosen not to retain PDFs. (b) is safe unconditionally and should go first.
+**Status:** open
