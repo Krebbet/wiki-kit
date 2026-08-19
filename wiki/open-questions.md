@@ -4,6 +4,12 @@ The live register of questions this wiki exists to answer. Every question carrie
 research job or page that will settle it. Questions are added here whenever an ingest surfaces something the
 wiki cannot yet answer; they are never left in chat history.
 
+**Numbering gaps are deliberate.** Q46-Q59 and Q66-Q69 are unused. Seven research jobs were ingested
+concurrently on 2026-08-19 and each writing pass was assigned a reserved number range up front so two agents
+could not claim the same question number. Ranges that were reserved but not filled leave gaps. **No question
+has been deleted** — if a later session finds a gap, it is spare capacity, not a missing entry. Reuse the gaps
+freely.
+
 Status: `open` (no evidence yet) · `partial` (some evidence, no settled answer) · `answered` (a page states the
 answer and cites it) · `dissolved` (the question turned out to be malformed — say why).
 
