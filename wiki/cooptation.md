@@ -1,0 +1,84 @@
+# Cooptation
+
+Selznick's claim is that a formal organisation, when its stability or legitimacy is threatened, absorbs outside elements into its own leadership or policy structure as a defensive adaptation. He splits the phenomenon in two and keeps the halves rigorously apart. **Formal cooptation** answers a "hiatus between consent and control" — a legitimacy problem with a diffuse public — by admitting elements that carry that public's confidence; "what is shared is the responsibility for power rather than power itself," and it is overt by design. **Informal cooptation** answers pressure from a *specific organised power centre* able to enforce its demands — funders who "insist upon and receive a share in the determination of policy" — and here the outside party wants "the substance of power and not its forms"; real control changes hands, and the transfer is deliberately kept unacknowledged, since admitting capitulation would itself destroy the legitimacy the organisation is defending. The purchase is not free: stability is bought at the price of commitment, and the character of the coopted elements thereafter constrains what the leadership can do. **Cooptation is triggered by threat, not by duration — age is simply absent as a variable**, and this is a theory paper with no case evidence: the TVA study the concept is famous for is a different source, and this wiki has not read it.
+
+**Evidence tier note — read this before citing anything below.** (b) **Pure theoretical and conceptual argument. This document is not a case study.** It is a methodological manifesto for structural-functional analysis of formal organisations as "cooperative systems" with stable self-maintenance needs, and its illustrations are offered without data, sourcing or analysis: colonial administrations coopting native leaders; wartime "crisis-patriotism" enfranchisement of previously excluded groups; the postwar US Army's proposed enlisted-personnel representation in courts-martial; totalitarian "unity parties"; industrial company unions and employee representation plans. Every one is assertion-level. **The TVA case study is not in this text.** It appears only in footnote 17, as a forthcoming volume: "In a forthcoming volume, *TVA and the Grass Roots*, the author has made extensive use of the concept of cooptation in analyzing some aspects of the organizational behavior of a government agency." This 1948 article is the theoretical scaffolding built before or alongside that case work. **Anyone citing "Selznick's TVA finding" from this source is citing a claim the source does not contain**, and the empirical grounding for cooptation is therefore **absent from this wiki** until *TVA and the Grass Roots* is ingested as its own source. The same applies to the bureaucratic elaboration he cross-references: his 1943 "An Approach to a Theory of Bureaucracy" is also unread here.
+
+## The two mechanisms
+
+**[model — formal cooptation]** Trigger: a **hiatus between consent and control** — the organisation's formal authority has outrun its acceptance by a diffuse public or mass. Response: absorb elements that carry the confidence of that public into the leadership or policy structure. What actually moves is participation and appearance, not authority: "what is shared is the responsibility for power rather than power itself." Formal cooptation is legitimacy management, and it is **overt by design** — the point is that it be seen.
+
+**[model — informal cooptation]** Trigger: pressure from a **specific, organised power centre** capable of enforcing its demands — not a diffuse legitimacy problem but a concentrated one. Selznick's named instance is financial dependence: "individuals upon whom the group is dependent for funds or other resources may insist upon and receive a share in the determination of policy." Here the outside party wants "the substance of power and not its forms," and gets it. This form is **typically kept unacknowledged**, because open acknowledgment of capitulation would itself damage the perceived legitimacy the organisation is trying to protect.
+
+**[wiki synthesis]** The pair is the reusable content. They are not degrees of one thing: they have different triggers (diffuse legitimacy vs. concentrated power), transfer different objects (appearance vs. control), and carry opposite disclosure norms (overt vs. covert). An analyst who sees a new face on a board cannot tell which is happening from the appointment alone — the trigger and the disclosure norm are what distinguish them, and both are observable in principle.
+
+## Cooptation as one option among several
+
+**[model]** Cooptation sits in a *typology of possible responses* to threat, not a law. Selznick names others: ideology-construction, and — via Barnard — the "innate propensity of organizations to expand" as a response to "the inherent instability of incentives." He disclaims determinism in terms: "any given organization may or may not have recourse to the characteristic modes of response... no given organization will employ all of the possible mechanisms."
+
+**[wiki synthesis]** That disclaimer is also what immunises the theory. If non-occurrence in any given case is always consistent with "this organisation chose a different mechanism," then no observed case can count against the theory. Selznick names the two *preconditions* under which formal authority "may resort to" cooptation, which logically implies it should not be predicted when both are absent — but he never checks a case where the conditions hold and cooptation fails to appear, or the reverse. His own stated criterion for whether a relation is significant is pragmatist rather than falsificationist: it must "either (i) be taken into account as an element of achieving control; or (2) be ignored only at the risk of losing control." That is a usefulness test, not a test that could show cooptation is *not* a general tendency.
+
+## Formal authority vs. social power
+
+**[model]** The load-bearing distinction in the paper, and the most transferable thing in it: "Where the formal authority is an expression of social power, its stability is assured... when it becomes divorced from the sources of social power its continued existence is threatened."
+
+Formal authority must track actual social power. When it stops doing so it has two purchases available, and they are exactly the two cooptations: **buy legitimacy** (formal cooptation, paying in appearances) or **surrender real control** (informal cooptation, paying in authority). This is the wiki's nominal-vs-actual accountability gap stated as a stability condition rather than as a pathology.
+
+## The price of adaptation
+
+**[model]** Cooptation is not free, and Selznick says so: "the character of the coopted elements will necessarily shape (inhibit or broaden) the modes of action available to the leadership which has won adaptation and security at the price of commitment." Stability is bought by narrowing future degrees of freedom. Note the parenthesis — he allows that the constraint can *broaden* as well as inhibit; the claim is that the option set is reshaped by whoever was let in, not that it necessarily shrinks.
+
+## Goal displacement via informal control
+
+**[model]** Selznick names one of two possible outcomes when informal patterns interact with formal ones as "a condition wherein the informal controls effect a consistent modification of formal goals, as in the case of some bureaucratic patterns." That is goal displacement in this wiki's own vocabulary, reached from organisational adaptation rather than from career incentives — see [[goal-displacement-and-bureaucratic-ritualism]] for the other route. He cross-references his own 1943 "An Approach to a Theory of Bureaucracy" for the elaboration; that source is not in this wiki.
+
+He also names the **"organization-paradox"** — the tension and inhibitory consequences generated by informal structures inside organisations — and, as an illustration of his method rather than an evidenced finding, a conditional: "If the cultural level of the rank and file members of a formally democratic organization is below that necessary for participation in the formulation of policy, then there will be pressure upon the leaders to use the tools of demagogy."
+
+## Not age-linked
+
+**[model]** The source contains **no claim tying cooptation, or organisational self-defence generally, to organisational age.** Survival-maintenance needs are framed as "a basic need of all empirical systems" — present from inception, not emergent with maturity. Cooptation is triggered by *threat*. Nothing in the text suggests older organisations face more threats, coopt more readily, or respond differently from young ones. Age is not qualified, not conditioned, not weakly supported: it is absent as a variable.
+
+**[wiki synthesis]** Record this as a positive negative finding rather than as silence. A foundational capture-adjacent mechanism is, in its originator's own formulation, age-agnostic — and Selznick, like Merton on ritualism and like Stigler on acquired regulation, states the scoping unprompted, with no decay thesis in front of him to answer. Three founders of what later became the decay canon each located their mechanism somewhere other than in duration.
+
+## Selznick's warning on size, which this wiki should keep
+
+**[model]** Directly load-bearing for this wiki's method, and worth quoting rather than paraphrasing. Selznick warns against attributing organisational size changes to "the theory of organization" unless the causal claim is stated in genuinely *organisational* terms. Size changes driven by "the availability of markets, legislative delegations, the swing of opinion" are, in his words, **"accidental from the point of view of the organizational process"** and must not be folded into organisational theory unless reformulated as an internal propensity — his example of a legitimate reformulation being Barnard's derivation of expansion from "the inherent instability of incentives."
+
+**[wiki synthesis]** This is a 1948 statement of exactly the level-of-analysis discipline this batch found missing almost everywhere it looked. The move Selznick prohibits — reading an environmental or regime-level driver as a property of the organisation — is the substitution that recurs across the batch, where duration attaches to a political regime, a legal corpus or a national polity and is then discussed as though it were a property of an institution's own tenure. The register's insistence that an axis be a property *of the institution* rather than of its surroundings is the same rule.
+
+## Public/private: asserted, not tested
+
+**[model]** An explicit and strong generality claim: cooptation applies "private or public, in a large organization or a small one," and the illustration set is deliberately spread across colonial government, the US military, totalitarian party systems and private industrial company unions. Footnote 17 pushes further, suggesting the mechanism is characteristic of "all group leaderships" including non-organisational ones — ruling classes and aristocracies, via Michels and Mosca.
+
+**[wiki synthesis — the caveat is the point]** This generality is **asserted, not tested.** The examples are listed, never compared, and never analysed for whether the mechanism actually operates the same way across sectors. Treat public/private invariance here as an open claim carrying one author's authority, not as an evidenced finding — and note that the extension to ruling classes rests on citation to other theorists rather than on any demonstration in this text.
+
+## What the source does not contain
+
+**[wiki synthesis]**
+
+- **No falsification condition.** Stated above: the preconditions are named but never checked against a negative case, and the explicit anti-determinism makes absence-of-cooptation non-disconfirming.
+- **No levers.** Descriptive and diagnostic theory only. Selznick proposes no design change, rule or intervention that would prevent, channel or exploit cooptation; the paper's ambition stops at naming and classifying.
+- **No case evidence.** See the tier note. The TVA work is a separate, unread source.
+- **Selection and removal of leadership** are not treated mechanically — no electoral or appointment detail. What the paper is about is the *pressure* that reshapes who sits at the table, not the procedure by which they get there.
+- **Economic production** is thin: the only hook is informal cooptation through financial dependency. No treatment of property rights, standard-setting, licensing or rent extraction.
+
+**Scope.** No sector or regime restriction is stated; the theory is pitched as universal across organisation types — "trades unions, governments, business corporations, political parties, and the like." The concrete illustrations are all mid-twentieth-century and American-vantage: colonial administration, WWII-era enfranchisement, a 1947 US Army postwar reform study, contemporary totalitarian party systems, contemporary US industrial company unions. Universal theoretical ambition on a narrow and unsystematic illustration base, all of it predating the fieldwork the concept was built to support.
+
+**Provenance.** Structural-functionalist lineage — Parsons, Malinowski's "derived imperatives", a Freudian ego-defence homology, Barnard's cooperative-systems framework, Michels' oligarchy thesis, and Merton, his teacher, thanked in a footnote for objecting to the "need" terminology. The piece is a methodological brief for treating organisations as adaptive and not fully rational, written against the scientific-management school (Gulick, Urwick, Mooney & Reiley). Not politically tendentious in this text.
+
+## Source
+
+- `raw/research/institutional-stagnation/04-selznick-foundations-theory-organization.md` — Philip Selznick, "Foundations of the Theory of Organization", *American Sociological Review* 13(1), Feb. 1948, 25–35. http://www.iot.ntnu.no/innovation/norsi-pims-courses/harrison/Selznick%20(1948).PDF (JSTOR: http://www.jstor.org/stable/2086752)
+
+## Related
+
+- [[goal-displacement-and-bureaucratic-ritualism]] — Merton was Selznick's teacher and is thanked in a footnote here; his ritualism and Selznick's goal-modification-via-informal-control are the same displacement outcome reached by different routes (career-incentivised sentiment vs. absorbed outside elements), and both authors volunteer that their mechanism is age-independent.
+- [[regulatory-capture]] — informal cooptation is capture described from the organisation's side: the regulator absorbs the power centre rather than being bought by it, which is a different mechanism reaching a comparable reallocation of effective control, and it applies to any organisation rather than only to a regulator.
+- [[incentives-under-multiple-principals]] — a funder who "insists upon and receives a share in the determination of policy" is a principal acquiring effective control outside the formal accountability chain; Selznick frames it as leadership absorbing the principal, Dixit as principals competing for one agent.
+- [[bureaucratic-growth-and-parkinsons-law]] — carries Selznick's methodological warning most directly: Barnard's "innate propensity to expand" is cited here as a *legitimate* organisational derivation of size change, precisely because it names an internal propensity rather than an environmental accident.
+- [[path-dependence-and-increasing-returns]] — a scope contrast rather than a contradiction: that page's rigidity mechanism runs on lock-in accumulating over time, whereas cooptation's constraint ("adaptation and security at the price of commitment") arrives with a single threat response at any age.
+- [[veto-points-and-bureaucratic-autonomy]] — both concern who can constrain an organisation's action, but by opposite routes: Hammond's constrainers block from outside, Selznick's are let inside and constrain by their character once there.
+- [[institutional-isomorphism]] — formal cooptation absorbs outside elements to secure legitimacy with a diffuse public, which is a legitimacy-seeking structural adaptation of the kind that page treats at field level rather than as a bilateral response to threat.
+- [[institutional-myths-and-decoupling]] — formal cooptation shares "the responsibility for power rather than power itself", which is a decoupling of visible structure from operating control described from the adopting organisation's point of view.
+- [[dimensions-of-institutional-variation]] — supplies candidate axes: diffuse-legitimacy vs. concentrated-power threat as distinct triggers, overt vs. covert power-sharing, and funding dependency as a channel for external control over policy.
+- [[open-questions]] — bears on the age question, and on the level-of-analysis question that Selznick's size warning anticipates by seventy-five years.

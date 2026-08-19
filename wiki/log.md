@@ -293,3 +293,112 @@ Thin spots:
   with his own report that the Maskin-Tirole mechanism, which would make unverifiable variables contractible,
   is never used in practice. A founder of the tradition documenting parties not adopting an available
   efficiency-improving instrument.
+
+---
+
+## 2026-08-19 — ingest: institutional-evolution (7 sources)
+
+Sources: North's 1993 Nobel lecture; Arthur (1989, *Economic Journal*); Pierson (2000, *APSR*); DiMaggio &
+Powell (1983, *ASR*); Meyer & Rowan (1977, *AJS*); Thelen (2009, *BJIR*, presenting the Streeck & Thelen and
+Mahoney & Thelen typology); Krasner (1984, *Comparative Politics*).
+
+**Step 1: the Arthur audit, run before anything was written.** The job brief asked whether
+`path-dependence-and-increasing-returns` over-cited Arthur or sourced institutional claims to him. Grepped the
+whole `wiki/` tree, including `conflicts/`. **Arthur appears exactly once in the entire wiki**, in that page's
+evidence-tier note, and the citation was already correct: "North's increasing-returns mechanism is imported
+from Arthur and David on technology and asserted for institutions; the essay tests nothing." No institutional
+claim anywhere was sourced to him. **No correction was required.** The audit result is recorded on the page
+itself rather than only here, so a future reader can see the check was done. The new Arthur subsection states
+the scope limit explicitly — his paper contains none of the words "institution", "organisation", "agency",
+"bureaucracy" or "governance", and his agents are consumers choosing reactors and keyboards — so the citation
+stays honest as the page grows.
+
+**The batch's evidence profile, which is the context for everything below.**
+- **Only one of seven sources is a formal model with proofs (Arthur), and it is about technology adoption.**
+- The only genuine figures in the batch are **Skocpol's association counts** (secondhand via Pierson) and
+  **Wallis & North's 45%-of-1970-US-GNP transaction sector** — and the second is not about path dependence at
+  all. It is noted on the path-dependence page as belonging to `transaction-costs`, which a later pass should
+  pick up; this job did not touch that page.
+- **Three sources independently carry no falsification condition** — North, Pierson, Krasner — and only
+  Pierson admits it, citing Geddes 1997.
+- Two sources (DiMaggio & Powell, Meyer & Rowan) present **no original data by their authors' own statement**.
+
+**The age question, which this job was commissioned to settle, and did not.**
+This was supposed to be where age evidence finally appeared after the size batch and the risk-aversion batch
+both came back empty. It largely does not appear, and one source argues against the premise:
+- **Arthur's clock is adoption count *n*, not calendar time**, and he warns expressly against the "N years"
+  reading. His one quantified threshold (30 of 100 adoptions) is a technology-market result.
+- **North's durations** — ~500 years post-Rome, ~400 years of Spanish decline, ~800 years of European rise —
+  are post-hoc narrative with no threshold, no rate and no dose-response. Spain declines continuously with no
+  point of no return identified.
+- **Skocpol's dataset measures survival, not behavioural change with age.** It is the batch's only systematic
+  longitudinal data and it answers a different question. Read the other way it is 75% attrition over a century.
+- **DiMaggio & Powell's** repeated cross-study claim is about **field** maturity, not organisational age, and
+  originates zero measured intervals in their own text.
+- **Meyer & Rowan** supply nothing on age or size and flag the gap themselves.
+- **Krasner's own cited case data undercut his framing**: Skowronek's "punctuation" is 20 years against a
+  "stasis" of 23.
+- **Thelen denies the premise in principle**: contestation "often begin[s] as soon as a rule is laid down", and
+  her fourth gap-mechanism runs the *opposite* way on elapsed time — as designers die and context shifts,
+  interpretive space opens.
+
+So: **three literatures searched, no measurement of institutional behaviour against elapsed time since
+founding.** Q7 now records that source-by-source, and Q39 states the study that would supply it — reversal
+*attempt* success rate against time since the rule was laid down, with the denominator being attempts rather
+than successes, because measuring only successful changes selects on the outcome. That is the mistake the
+whole path-dependence literature makes, and it is now written down.
+
+**Pages.** Extended `path-dependence-and-increasing-returns` with four sections (Arthur as formal ancestor;
+North's cognitive mechanism; the duration catalogue; Pierson; and a reconciliation section against Thelen).
+The page's opening claim — matrices get less flexible with age — is now demoted to North's *attributed*
+position rather than the page's conclusion, because a source in the wiki now contests it. Four new pages:
+`institutional-isomorphism`, `institutional-myths-and-decoupling`, and the explicitly paired rival set
+`gradual-institutional-change` / `punctuated-equilibrium-and-the-state`, each of which opens by naming the
+other.
+
+**Register.** D54–D59 added. D54 (formal amendment/reversal threshold) is registered with an explicit
+statement of how it differs from D44 — D54 is a property of the *rule* (the written threshold, readable from
+primary documents, invariant to who holds the veto positions), D44 is a property of the *current actor
+configuration* (count jointly with preference divergence, and non-predictive without the second term per
+Hammond). A body can be high on one and low on the other. **D58 registered `rejected`**: Arthur's
+adoption-count reversal cost does not survive translation, because institutions supply no counter analogous to
+*n* — rules are continuously re-enacted by overlapping cohorts with renegotiable authority, whereas Arthur's
+agents choose once and are frozen. Readmission condition recorded. **North's adaptive/allocative axis was
+deliberately not re-registered**: it duplicates the already-`rejected` D34 and the lecture supplies no
+operationalisation the second time either. A second naming by the same author is not a second piece of
+evidence, and the note went on D34 rather than into a new row.
+
+**Conflicts.** Two filed OPEN, one extended.
+- `rival-models-of-institutional-change` — the headline. The important finding is that the three positions
+  **disagree about no observation**; they classify the same observations differently. German VET fits all
+  three: "lock-in" (the form survived), "stasis" (no crisis), and "conversion" (function transformed without
+  formal change). That is why five settlement tests are listed rather than an adjudication.
+- `homogenisation-vs-loose-coupling` — within-tradition, and unusually clean because DiMaggio & Powell name
+  the divergence in their own text at Hypothesis A-3. The consequence recorded on both pages: the wiki cannot
+  cite "sociological institutionalism" for anything about internal behaviour without saying which limb.
+- `functional-vs-rent-seeking-growth` **extended rather than duplicated**, per the brief. Position C
+  (ceremonial conformity) is a third answer to the same question, and the sharpest addition is the comparison
+  table: Positions A and B both assume an efficiency audit is possible and disagree about what it would show,
+  while Position C predicts **the audit will not happen**, because evaluation threatens the legitimacy the
+  structure exists to produce.
+
+**Flagged, not resolved.** Pierson/Skocpol's century-old voluntary associations persisting against Rajan &
+Wulf's old large firms restructuring substantially. Two candidate reconciliations, neither stated by any
+source: sector, or different dependent variables (existence-at-threshold vs. internal structural change). The
+second is more interesting, because if it is right then the persistence literature has been measuring the
+wrong quantity for the age question all along — which is Thelen's form/function point (D55) arriving from a
+different direction. Q44.
+
+**Thin spots.**
+- **Displacement, one of Thelen's four mechanisms, has no worked example in the source.** A quarter of the
+  typology is untested by its own author's evidence, and the 2×2 is exhaustive by construction, so any
+  observed change can be redescribed post hoc once the two axes are somehow scored. Discretion is sometimes
+  inferred *from* the fact that drift occurred.
+- **Krasner is a review essay contributing a metaphor.** He does not engage the falsifiability debate that
+  surrounded the biological original — he imports the label. The stability half (sunk information, trust and
+  shared expectations, as a comparative-cost argument) is genuinely stronger than the change half.
+- **The twelve DiMaggio & Powell hypotheses are the batch's only near-testable propositions and none was
+  tested by anyone.** Q41 exists mainly so the wiki does not quietly treat them as findings.
+- Meyer & Rowan is the weakest evidence tier in the wiki — a conceptual essay with hand-picked anecdotes —
+  and it is carrying one full limb of an extended conflict. Weighted accordingly on the page and in the
+  conflict, but worth stating plainly.
