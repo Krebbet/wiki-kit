@@ -93,8 +93,19 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
-   <!-- /DOMAIN-SLOT -->
+   - **Unit of analysis** — is the source talking about a single institution, a class of institutions, an institutional *field*, or an entire state/society? Mixing levels is the most common error in this literature; record the level explicitly.
+   - **Causal claim and mechanism** — what does the source claim causes what, and by what *mechanism*? A claim without a mechanism is a correlation; say so.
+   - **Evidence type** — formal model / cross-country regression / natural experiment / single case study / institutional history / ethnography / assertion. Note the strongest and weakest evidence in the source separately.
+   - **Dimensions of institutional variation named** — any axis the source uses to distinguish institutions (mandate clarity, selection and accountability mechanism, funding source, monopoly vs competition, exit/voice availability, formalisation, discretion, time horizon, information flow, measurability of output). These are the raw material for the wiki's general framework — flag every one.
+   - **Scale and age claims** — anything the source says about how behaviour changes with headcount, budget, layers of hierarchy, or years since founding. This is a priority theme; never let it pass unflagged.
+   - **Power** — who holds decision rights, how they are selected, who can remove them, who the institution is actually accountable to (as distinct from who it is nominally accountable to), and how the surrounding power structure sets its incentives.
+   - **Economic production** — how the institution enables or obstructs output: funding, infrastructure, R&D, standard-setting, property rights, licensing, rent creation and rent extraction. Does it favour a particular economic structure, and who captures the resulting power?
+   - **Public/private invariance** — does the source claim its finding holds across public and private institutions, restrict it to one, or is it silent? If silent, flag it as an open question rather than assuming generality.
+   - **Failure modes named** — capture, ossification, goal displacement, rent-seeking, principal-agent drift, mission creep, measurement gaming, credentialism, veto-point proliferation. Name them in the source's own terms *and* map them to the wiki's existing vocabulary.
+   - **Levers** — anything actionable: a design change, rule, or reform the source argues would change institutional behaviour, plus its claimed evidence base.
+   - **Scope conditions** — time period, country, sector, regime type. A finding from 1960s US federal agencies is not automatically a finding about institutions.
+   - **Ideological priors** — the author's camp, where discernible, and whether the conclusions outrun the evidence. Not a reason to discount the source; a reason to attribute it.
+<!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates
 - [[existing-page-name]] — <why this source touches it: extends / contradicts / parallels>

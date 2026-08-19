@@ -31,7 +31,13 @@ Perform a health check of the wiki.
 10. **Watched-source evolution (radar)** — the watch list tracks the wiki's evolving subject, not a frozen bootstrap snapshot. Review the sources cited by pages added or changed since the last lint report (`wiki/lint-reports/`), plus any high-signal venues encountered while reading the wiki this run. Identify sources the wiki should watch going forward that aren't yet pinned in `wiki/reference-sources.md`. Append confirmed new sources to the appropriate watched-source section of `wiki/reference-sources.md` (with a one-line relevance note), and drop any that have gone stale. Record the current watched-source set in the **Trend Radar** output section and the additions/removals made this run in the **Radar Evolution** section.
 
 <!-- DOMAIN-SLOT: domain-lint-checks -->
-11. **Domain-specific checks** — bootstrap replaces this section with checks appropriate to the wiki's domain. Examples: for history, flag pages missing date frontmatter; for code standards, flag references to deprecated libraries; for cooking, flag recipes missing prep time.
+11. **Framework operationalisation** — every page under `dimensions/` or `theory/` that proposes a dimension of institutional variation must state how you would *measure* it on a real institution. A dimension you cannot operationalise is an essay, not a framework. Flag any that lack it.
+12. **Evidence tier labelling** — flag any page where empirical findings, theoretical models, and the wiki's own synthesis are not distinguishable. Every substantive claim should be attributable to one of the three.
+13. **Case/theory linkage** — flag `dimensions/` and `theory/` pages with no link to any case-study page, and case-study pages that are not linked from at least one dimension or mechanism page. The framework is only worth something if it is doing work on real institutions.
+14. **Case-study tagging** — every institution profile must state, in its opening paragraph, its sector (public / private / hybrid / civil-society), rough scale (headcount and budget order-of-magnitude), age, and country. Cross-cutting comparison is impossible without these. Flag missing tags.
+15. **Scope-condition creep** — flag pages that state a general law about institutions while citing evidence drawn from a single country, sector, or era. Either the scope condition is stated on the page or the claim is overreaching.
+16. **Ideological balance** — flag pages on contested questions that cite only one camp. List the missing perspective(s) explicitly rather than just noting imbalance.
+17. **Thesis drift** — flag any page that treats the user's collapse-and-renewal book thesis, or the power/institutions/economy triad, as an established finding rather than as the working hypothesis it is. This wiki is evidence-led; the thesis is on trial, not on the bench.
 <!-- /DOMAIN-SLOT -->
 
 ## Output

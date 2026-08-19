@@ -19,8 +19,12 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
-   <!-- /DOMAIN-SLOT -->
+   **Tone and voice:** terse, analytical, expert. Lead with the claim, then the mechanism, then the evidence — in that order. Assume a technically fluent generalist reader with no formal grounding in political science or institutional economics: name the term of art, gloss it once in plain language, then use it freely.
+
+   Mark every substantive claim with its evidence tier — empirical finding, theoretical model, or wiki synthesis — and cite it with a `[[wiki-link]]`. Where the wiki's sources disagree, present the strongest form of each position and say what would settle it, rather than smoothing to a false consensus; point at the relevant `conflicts/` page.
+
+   Say plainly when the wiki does not know something. An honest "no page covers this — it is a research gap" is more useful than a confident answer assembled from training knowledge, which is never acceptable here. Where a question probes the user's own working thesis (institutional decay, the power/institutions/economy triad), answer against the evidence in the wiki, including when it cuts against the thesis.
+<!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:
    - A novel synthesis or comparison not already on any page?

@@ -17,7 +17,21 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki are**, in rough descending order of weight:
+
+1. **Peer-reviewed and working-paper social science** — economics (institutional, public, development, organisational), political science, public administration, economic history, sociology of organisations. NBER / SSRN / journal PDFs. Prefer the paper over any write-up of the paper.
+2. **Foundational books and monographs** in the field, and their primary chapters. Much of the canon here is book-shaped and older than the open-access era; a well-sourced detailed summary or a lecture by the author is an acceptable stand-in when the text itself is unobtainable, but **must be labelled as second-hand** on the resulting page.
+3. **Primary institutional documents** — enabling statutes, charters, mandates, org charts, budgets, annual reports, 10-Ks, inspector-general and audit reports, post-mortems, internal design memos. These are the ground truth about how an institution is actually wired, as opposed to how it describes itself.
+4. **Multilateral and government statistical/analytical output** — World Bank, OECD, IMF, national audit offices, GAO, V-Dem and comparable indices. Always capture the methodology alongside the number.
+5. **First-hand practitioner accounts** — people who have actually run large public or private institutions, writing about mechanism rather than politics.
+
+**Avoid, or capture only with an explicit flag:**
+- Opinion journalism and op-eds that assert institutional decline without evidence. If captured, tag as *position, not evidence* on the resulting page.
+- Advocacy think-tank output that presents a policy preference as a finding. Capture the underlying data if it has any; treat the conclusions as a position to be attributed, never as a source of fact.
+- Wikipedia, content-mill explainers, and LLM-written summaries.
+- Single-country generalisations presented as universal law — capture is fine, but the scope condition must survive into the wiki page.
+
+**Ideological balance is a hard requirement.** This domain has organised camps (public-choice / market-liberal, Weberian / state-capacity, institutionalist / new-institutional-economics, developmental-state, commons/polycentric, Marxian and elite-theory). When researching a contested question, deliberately capture at least one strong source from each major camp before writing a page. A topic dir where every source leans the same way is a research failure, not a finding.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,8 +66,14 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
-   <!-- /DOMAIN-SLOT -->
+- **Papers** — prefer the open PDF (NBER working-paper version, SSRN, author's page, arXiv) over a paywalled journal landing page; `capture_pdf` with the default `marker` engine. If only an abstract page is reachable, that is *not* a capture — find the PDF or drop the source.
+- **Books** — if a legitimate full-text PDF is available, `capture_pdf` it (these are long; expect a slow marker run and check the output length before trusting it). Otherwise capture a substantial, attributable secondary treatment — an extended review essay, a book symposium, an author lecture transcript — and mark the resulting wiki page's `## Source` section as **second-hand**.
+- **Lectures / interviews / podcasts** — `fetch_transcript` for YouTube. Transcripts of talks by the primary researcher count as primary sources for that researcher's *position*, never as evidence for the underlying empirical claim.
+- **Primary institutional documents** — usually PDFs (`capture_pdf`); statutes and filings are frequently HTML (`capture_url`). Preserve the original PDF; these are the documents where exact wording is load-bearing.
+- **Datasets and indices** — capture the codebook / methodology document, not just the headline ranking. A governance index without its construction method is uninterpretable and must not be cited on a wiki page.
+- **Historical case material** — long-form institutional histories are among the highest-value sources here (how an agency or firm actually evolved over decades). Prefer these over contemporary commentary when studying lifecycle and decay.
+- **Geographic spread** — when a research topic is comparative, actively seek non-Anglosphere sources (Nordic, Chinese, Japanese/Korean, German, Singaporean, Latin American). English-language coverage of these systems skews heavily toward outsider interpretation; prefer translated primary material or in-country scholarship where reachable.
+<!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
 
