@@ -206,3 +206,90 @@ Thin spots:
   not a resolution. Nonprofits excluded; vignettes validated but not occupation-tailored.
 - Personnel selection (Q4) is finally named once — the OECD's Canadian "clay layer" — and it is one country
   scan in an advocacy document with undeveloped coding protocols. Not enough for a register row.
+
+---
+
+## [2026-08-19] ingest | incentives-and-institutional-form
+
+Eight sources on how incentive structure determines institutional form: Holmström's and Hart's 2016 Nobel
+lectures, Holmstrom & Milgrom's 1991 multitask paper, Grossman & Hart 1986, Prendergast's 1999 JEL survey,
+Dixit's 2002 public-sector review, Frey on motivation crowding, and Bénabou & Tirole on intrinsic and
+extrinsic motivation.
+
+Four new pages, merged where the overlap was real rather than one page per source:
+- **`multitask-incentive-theory`** — Holmström's lecture folded into Holmstrom & Milgrom, since the lecture
+  is largely his own restatement of that model. The load-bearing result is stated as the sources state it:
+  when some tasks are measurable and others are not, high-powered incentives on the measurable ones destroy
+  effort on the rest, so low-powered pay plus bureaucratic rule-boundedness is the rational design response.
+  All seven propositions are recorded as untested **by the authors' own admission** — they defer "new,
+  testable results" to a companion working paper, and the one study they lean on (Anderson & Schmittlein) is
+  conceded to be equally consistent with two competing explanations from inside their own theory.
+- **`property-rights-theory-of-the-firm`** — Grossman & Hart merged with the property-rights half of Hart's
+  lecture. Hart-Moore "shading" kept as its own clearly separated section, because it abandons full
+  rationality, which the rest of the page assumes. The prison case is included and its narrowness stated in
+  the section itself: one service, one country, one correlational citation on outcomes.
+- **`incentives-under-multiple-principals`** — Dixit, the batch's only direct public-sector source.
+- **`motivation-crowding`** — Frey and Bénabou & Tirole on one page, two mechanism sections, with a table
+  showing where they diverge and the discriminating test (transparency) that neither source runs.
+
+Conflicts:
+- **Filed OPEN: `rival-firm-boundary-theories`.** Asset specificity vs. residual control rights vs.
+  measurement cost. The ingest flagged this without checking; `governance-structures` was read in full first
+  and states only the Williamson and Coase accounts, so this is new territory for that page rather than a
+  contradiction of it. Holmstrom & Milgrom's own §1 does the work: they claim to reproduce Williamson's
+  central stylised fact "without relying on any assumptions about specific investments," and emphasise
+  measurement cost "in contrast to the leading approaches, which stress asset specificity."
+- **Deliberately not filed: "high-powered incentives good vs. bad."** It resolves by scope and both sides say
+  so. The informativeness principle holds for a single cleanly-measurable task; multitasking and crowding are
+  two independent mechanisms by which the same incentive backfires once measurability or perceived valence
+  breaks down. Presented that way on `multitask-incentive-theory` rather than as a contradiction.
+- **Recorded as a tension, not a conflict, at D9.** Dixit and Holmstrom read bureaucratic rule-boundedness as
+  rational efficient design; Libecap's existing D9 entry reads regulators' discretion-preservation as
+  self-serving. Preserving and reducing discretion are opposite moves — Libecap's actor protects his own
+  decision space, Dixit's principals constrain someone else's — so it is not a contradiction. The consequence
+  is recorded where it bites: a score on D9 is no longer self-interpreting and must be read with D50 and D51.
+
+Register:
+- **D25a** added as a refinement of D25, handled the way D25's earlier supersession was handled — D25 keeps
+  its number and carries a pointer, so the change is visible rather than silent. Contractibility (specifiable
+  ex ante), verifiability (provable to a court ex post) and mere observability come apart in real
+  relationships, and which one binds determines the institutional form: Aghion-Bolton assume returns are
+  verifiable and get equity-like state-contingent control; Hart-Moore drop it and get debt.
+- **D49–D53** added (D42–D48 were being taken concurrently by the risk-aversion ingest). Two of the five are
+  **`rejected`**, per lint check 11, with reasons and readmission conditions: Frey's controlling-vs-supportive
+  valence (D52) and Bénabou & Tirole's sorting condition (D53). Both fail the same way — the label is applied
+  after the outcome it explains is known, so neither has an operational measurement procedure in its own
+  source. Recorded rather than dropped so the problem stays visible.
+- D50 (action-observability × outcome-observability, after Wilson) is the batch's most reusable addition:
+  both components are answerable from an institution's own case records. Recording caveat: Dixit's text names
+  only three of Wilson's four cells — procedural, craft, coping — so the both-observable cell is inferred
+  from the 2×2 and is not attributed to him.
+
+The honest bottom line, which is the important part:
+- **This batch is predominantly formal theory.** Six of eight sources contain no original data at all.
+- **Four of eight are explicitly silent on selection effects** — Holmström's lecture and Holmstrom & Milgrom
+  (agents "identical ex ante"), Grossman & Hart, and Hart's lecture. Bénabou & Tirole is a fixed-agent story
+  too. This is a structural gap in the literature, not a nuance.
+- **The real tested empirics cluster in two places**: Prendergast's clean selection-vs-incentive decomposition
+  (~1/3 of Lazear's 35% piece-rate gain is selection; Paarsch & Shearer isolate ~10% incentive effect on a
+  given worker) and the Courty & Marschke JTPA administrative data on threshold gaming and cream-skimming.
+  Q4 moved open → partial on that basis and no more — **one source, two occupations, both with unusually clean
+  output measures**, which Prendergast himself flags as the least representative slice of the workforce.
+- **Public-bureau coverage rests on Dixit alone**, corroborated only narrowly by Hart's prison case, which
+  reaches a compatible conclusion by a different mechanism for the make-or-buy boundary only. Q3 moved
+  open → partial because the wiki now has a specified, testable claim ("degree, not kind") where it had none —
+  not because it has been tested. Q38 is the discriminating test.
+- Q9 annotated rather than moved: the batch supplies a good account of how institutional *form* varies with
+  measurability and nothing at all about decay, because **no source in it is longitudinal**.
+
+Thin spots:
+- Two untested formal mechanisms — unmeasurability and influence cost — produce bureaucratic rules
+  identically, and the wiki cannot currently tell them apart (Q35). They differ in what happens when
+  measurement improves, which is the test.
+- Prendergast's verdict was added to the North side of `efficiency-of-institutions-north-vs-williamson` with
+  his own hedge preserved: the record is unpersuasive largely because contracts are unobserved, which is
+  evidence the efficiency default is *undemonstrated*, not that it is false.
+- Hart's "efficiency, not ideology" was added to the Williamson side, scope-limited three ways — and paired
+  with his own report that the Maskin-Tirole mechanism, which would make unverifiable variables contractible,
+  is never used in practice. A founder of the tradition documenting parties not adopting an available
+  efficiency-improving instrument.
