@@ -2,6 +2,13 @@
 
 Exactly which source URLs were verified and captured for each research job, in the order they were captured.
 
+**Verification standard.** A `HTTP 200` is NOT verification. Two sources in job 6 were discovered, marked
+verified, and then failed at capture — both returned 200 while serving HTML instead of the PDF the URL
+implied. Confirm the actual `content-type` and a plausible byte size before trusting a URL, and confirm the
+captured markdown is a plausible length for a full paper afterwards. Three further sources this session were
+fetchable and real but were not what their URL implied (a slide deck, an excerpt, a paper by a different
+author) — capture success does not establish that a source is what it claims to be.
+
 **Why this page exists.** `raw/research/` is gitignored — captures do not survive a fresh clone, and they are
 large and regenerable. This page is the recipe for regenerating them. Every URL here was verified to return
 real full-text content (not a 403, login wall, or abstract page) before capture. Without this page, resuming a
@@ -107,9 +114,9 @@ pdf|oecd-innovative-capacity-governments|https://www.oecd.org/content/dam/oecd/e
 Empowering change in institutions
 
 ```
-pdf|cox-design-principles-review|https://www.ecologyandsociety.org/vol15/iss4/art38/ES-2010-3704.pdf
+url|cox-design-principles-review|https://www.ecologyandsociety.org/vol15/iss4/art38/main.html
 pdf|bunse-fritz-public-sector-reforms|https://openknowledge.worldbank.org/server/api/core/bitstreams/359c2b9d-cfc7-56fb-a732-55b3bd21508c/content
-pdf|oreilly-tushman-ambidexterity|https://gsbapps.stanford.edu/researchpapers/library/RP2130.pdf
+pdf|oreilly-tushman-ambidexterity-dynamic-capability|https://www.hbs.edu/ris/Publication%20Files/07-088.pdf
 pdf|sabel-zeitlin-experimentalist-governance|https://charlessabel.com/papers/Sabel%20and%20Zeitlin%20handbook%20chapter%20final%20(with%20abstract).pdf
 pdf|finan-olken-pande-personnel-economics|https://www.nber.org/system/files/working_papers/w21825/w21825.pdf
 pdf|true-jones-baumgartner-punctuated-equilibrium|https://fbaum.unc.edu/teaching/articles/True_Jones_Baumgartner_2006_chapter.pdf
@@ -140,6 +147,8 @@ pdf|crit-heckelman-explaining-the-rain|https://heckeljc.sites.wfu.edu/papers/pub
 | Job | Source | Problem |
 |---|---|---|
 | 1 | Wallis, *Persistence and Change in Institutions* — `econweb.umd.edu` | `SSL: CERTIFICATE_VERIFY_FAILED`; the host's cert chain is incomplete on both http and https. Needs a manual browser download into `raw/research/foundations-nie/`, then `capture_pdf --src <local-path>`. |
+| 6 | Cox et al., design-principles review — `ecologyandsociety.org/.../ES-2010-3704.pdf` | The `.pdf` path now serves `text/html`. The article page is a legacy `<frameset>`; the full text lives at `.../art38/main.html`, which is what the manifest now points at. |
+| 6 | O'Reilly & Tushman — `gsbapps.stanford.edu/researchpapers/library/RP2130.pdf` | Returns a 6KB HTML page, not the PDF. Replaced with the HBS-hosted 2007 working paper (`hbs.edu/ris/Publication Files/07-088.pdf`), same authors and topic. |
 | 4 | Bénabou & Tirole, *Intrinsic and Extrinsic Motivation* — `princeton.edu/~rbenabou/papers/IEM.pdf` | Not the RES 2003 article — a **29-page slide deck** presenting it. Capture is faithful; the source is slides. Usable as a statement of the authors' model and position, never as the paper. Motivation-crowding ground is covered in full text by `frey-crowding-intrinsic-motivation`. |
 | 3 | Parkinson 1955 essay — `doc.cat-v.org` | The page is an **excerpt** (561 words) that stops before the Admiralty/Colonial Office headcount data. Verified against raw HTML: the capture is faithful, the page is partial. `--js` returns the same. Do not attribute Parkinson's own empirics to it. **Further:** the modern quantitative test (`parkinson-law-quantified-empirical`) does NOT independently replace them — its two historical staff series are Parkinson's own 1957 figures restated at second hand, n=2, with workload proxies that plausibly move opposite to administrative work. Its cross-country cabinet-size result is its own contribution; the growth series are not. |
 
