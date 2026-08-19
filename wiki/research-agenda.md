@@ -36,7 +36,7 @@ resumable in place.
 | 3 | `scale-effects` | Large vs small institutions — what changes with size: hierarchy layers, span of control, coordination cost, formalisation, diseconomies of scale | done |
 | 4 | `incentives-and-institutional-form` | Incentives and how they form institutions — principal-agent, incomplete contracts, selection effects, multitask/measurement distortion, how incentive structure produces institutional shape | done |
 | 5 | `risk-aversion-in-large-institutions` | Why large institutions become risk averse — asymmetric payoffs to individual decision-makers, blame allocation, veto points, defensive process, loss aversion in bureaucracies | done |
-| 6 | `enabling-institutional-change` | Empowering change in institutions — what actually makes reform succeed: crisis windows, leadership autonomy, reorganisation evidence, skunkworks, Ostrom design principles | capturing |
+| 6 | `enabling-institutional-change` | Empowering change in institutions — what actually makes reform succeed: crisis windows, leadership autonomy, reorganisation evidence, skunkworks, Ostrom design principles | done |
 | 7 | `institutional-stagnation` | Why institutions become stagnant — ossification, goal displacement, rent-seeking, Olson's distributional coalitions, vetocracy, sclerosis | done |
 
 ## Wave 3 — Seeding jobs to complete the frame

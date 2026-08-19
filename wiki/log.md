@@ -479,3 +479,118 @@ Thin spots, all filed as questions rather than left in this log:
   construction; the other five are silent. Merton supplies the discriminating test himself — hold sector fixed
   and vary monopoly vs. competition (Q64).
 - No institution in the batch has a design-specified sunset or review trigger, in either direction (Q65).
+
+## [2026-08-19] ingest | enabling-institutional-change
+
+Eight sources on what enables institutional change: Bunse & Fritz (World Bank portfolio review), Sabel &
+Zeitlin (experimentalist governance), Finan/Olken/Pande (personnel economics of the state), True/Jones/
+Baumgartner (punctuated equilibrium), the NAO's reorganisation audit, Andrews/Pritchett/Woolcock (isomorphic
+mimicry and PDIA), Cox/Arnold/Villamayor-Tomás (design-principles review) and O'Reilly & Tushman
+(ambidexterity). Seven new pages, one triage page, one correction to an existing page.
+
+**The correction came first.** `polycentric-governance` carried "a review of 100+ studies confirms them in
+about two-thirds of cases", taken secondhand from Ostrom's Nobel lecture. The published review is now a
+captured primary source and reports neither figure: 91 studies, 77 cases, mean study-level support 3.73 on a
+1–5 scale, and per-principle supportive:unsupportive case ratios tested with Fisher's exact — significant at
+5% for principles 1–7 and only at 10% for principle 8 (nested enterprises), every association positive, every
+principle at least 2:1 supportive. Very strongly supported: congruence with local conditions (2A),
+appropriation/provision proportionality (2B), and **monitor accountability to the users** (4B) — not the mere
+presence of monitors, which is only moderate. The likely explanation for the discrepancy is in the paper's own
+acknowledgments: the 2010 article revises a 2009 report titled *Design Principles Are not Blue Prints, but Are
+They Robust?: a Meta-analysis of 112 Studies*. That accounts for "100+" and for the "2009" date Ostrom cites;
+"two-thirds" matches no reported statistic in either version. The superseded figure is left visible on the page
+with that explanation attached, rather than overwritten — the failure mode (a Nobel lecture's paraphrase of a
+colleague's working draft hardening into a wiki fact) is worth being able to catch a second time.
+
+**The batch's headline is a negative, and it is stated on `reorganisation-base-rate`.**
+
+- **Only two of eight sources supply anything resembling a reform base rate**, and both point the same way:
+  measured success substantially overstates genuine change. NAO — 93 UK central-government reorganisations
+  2005–09, 51 audited in detail, £780m gross (an under-estimate on seven grounds NAO lists itself), value for
+  money "cannot be demonstrated", **0% of departments setting any benefit metric** against 73% of arm's length
+  bodies. Bunse & Fritz — **~75% operation-level success against 47% country-level transformation**, with the
+  gap attributed by the authors themselves to selecting politically easy, non-rent-threatening components.
+- **The other six are not reform base rates, in six different ways.** Cox measures principle-presence against
+  the *survival of existing commons systems* — no case installs a principle where one was absent, so **using
+  Cox as reform evidence is a category error**, and that sentence is on three pages because it is the mistake
+  this batch most invites. Punctuated equilibrium gives a distribution shape (leptokurtic budget change,
+  replicated across ~9 countries) and its authors disclaim local predictability. Sabel & Zeitlin, O'Reilly &
+  Tushman and Andrews/Pritchett/Woolcock report no denominator at all. Finan/Olken/Pande give narrow,
+  well-identified mechanism effects inside specific agencies — the best identification in the batch and the
+  wrong object.
+- **The wiki has no basis to generalise a number beyond those two populations**, and Q71 records that. What the
+  two do license is narrower: wherever a reform's success is measured by the reforming body against criteria it
+  also chose, the measured rate exceeds the rate of real change, and both sources supply a mechanism for the
+  gap — component selection in one, absent measurement in the other.
+
+**The evidence spread is the finding, and it drove the page design.** This batch runs from ~40 RCTs with
+reported effect sizes to a 2007 draft working paper containing the authors' unresolved marginalia. So
+`reform-levers` sorts every lever by *kind of evidence* rather than by topic or by confidence:
+
+- **Tier (i), randomised or quasi-experimental** — all of it from Finan/Olken/Pande: recruitment wages
+  (+35.2% fill rate, elasticity 2.15), career- vs. mission-framed ads, tax-collector performance pay,
+  teacher performance pay (+0.27 SD at two years rising to +0.54 SD at five), government audits (−8pp
+  unaccounted expenditure), randomised fixed-salary third-party auditors, community scorecards **with**
+  facilitated deliberation (the information-only version found no effect), biometric payment rails.
+- **Tier (ii), plausible and case-illustrated only** — windows of opportunity, ex-ante political-economy
+  analysis (n=2 plus a 17-operation sample the authors call "not hard evidence"), structural ambidexterity,
+  the experimentalist four-step cycle, incremental adjustment as a substitute for disruptive reorganisation
+  (one unreplicated citation), reform accountability checklists.
+- **Tier (iii), pure prescription** — PDIA's four principles ("not yet tested", authors' own words), "quick
+  wins" (**contradicted by their own source's Ghana and Tanzania cases**), better integrity screening (the one
+  test shows existing exams would not filter dishonest applicants), and five of NAO's six recommendations.
+
+Two levers were deliberately not smoothed. **The tax-collector result raised revenue growth 46% and raised
+bribe rates**, and both halves are reported everywhere it appears; it is also exactly what the source's own
+task typology predicts, which is why that typology is now D71. And **teacher performance pay produces opposite
+multitasking results in Andhra Pradesh and Kenya** on the same lever — whether multitasking bites is an
+empirical question per setting, not a law.
+
+**Register.** D70–D77 added. D70 (personnel selection and recruitment mechanism) closes the first item on the
+register's original absent-list, and closes it with randomised variation — Q4 has been "named by nobody", then
+"named once, badly", then "measured but with no axis" across four batches. D71 (citizen–state interest
+alignment on the task) is the first axis in the register that predicts *which lever is safe where*. D74
+(independent-venue count) is registered separately from D44 on purpose: a venue count measures how many places
+a challenger can start a change, a veto count how many places an incumbent can stop one, and the same actor
+usually appears on both lists. **D77 `rejected`** — "dynamic capability" excludes successful-but-undesigned
+adaptation (HP's divisional spinoffs, B.F. Goodrich's wartime pivot) by definition, making it a post-hoc label;
+readmission needs an ex-ante instrument for "consciously managed and repeatable" scored before the outcome is
+known. That is the fourth rejection in the register for the same reason.
+
+**Selection on the dependent variable is confirmed and self-flagged in three of eight sources**, and Q72
+records it as a property of the field rather than a defect of three papers. Sabel & Zeitlin examine zero failed
+cases; O'Reilly & Tushman have ~9 successes against 1 thin failure *and* a construct that prunes the cases that
+would test it; Andrews/Pritchett/Woolcock hand-pick failures with essentially no successes, which is the same
+defect running the other way. Only Finan/Olken/Pande's RCTs and NAO's near-census audit largely escape it —
+and those are the same two sources the tier-(i) levers and the base-rate finding come from. True/Jones/
+Baumgartner split across their own two evidence layers: the budget distributions are a full unconditional time
+series and select on nothing, while the mechanism narrative selects uniformly on successful punctuations. Same
+paper, opposite verdicts, which is the cleanest argument in the wiki for tiering per claim rather than per
+source.
+
+**Two cross-source connections, both recorded as connections rather than conflicts.**
+
+- **Mechanism-level:** Bunse & Fritz's own 75%-vs-47% gap looks like an instance of exactly what
+  Andrews/Pritchett/Woolcock diagnose — measured success tracking form-compliance rather than function. The
+  sources are independent and neither tests the other; what the pairing supplies is a quantified version, from
+  inside a donor institution, of a gap the diagnosis can otherwise only illustrate. It corroborates the
+  diagnosis and supplies nothing to PDIA.
+- **Nuance on `incentives-under-multiple-principals`:** Finan/Olken/Pande open with five named reasons state
+  personnel economics differs systematically from the private-sector version, which reads kind-graded against
+  Dixit's "differences of degree, not kind". Not filed as a conflict — neither source engages the other, two of
+  the five are Dixit's own parameters renamed, and their own wage data (>100% premium in the poorest sample
+  countries, 4–20% in the richest) is degree-graded.
+
+Thin spots:
+- **Nobody tests a reform that had the right design features and failed anyway** (Q70). Without such a case,
+  every tier-(ii) and tier-(iii) lever is unfalsifiable — each failure is attributable post hoc to incomplete
+  implementation of the recommended design. That is currently the structure of this whole literature.
+- **Private-sector renewal evidence in this wiki is one draft working paper built on ~5 recurring firms**
+  (Q73). No lever anywhere in the batch has been tested in both a public and a private setting.
+- **No age evidence again**, after a fifth literature. D73 is a property of a *decision* — time-to-benefit
+  against the authoriser's tenure — not of an institution's elapsed life, and is labelled so on the register to
+  stop it being read as one. Andrews et al.'s nearest claim runs the other way: 20 years of repeated reform
+  cycles accumulating into nothing, on two cases.
+- The batch's strongest source is silent on scale, hierarchy and age by its own admission, and its own
+  strongest lever (integrity screening) sits in tier (iii) — which is why the triage is done per lever and not
+  per source.

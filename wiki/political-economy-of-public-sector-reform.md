@@ -75,4 +75,4 @@ Distinguish this from [[red-tape]]: an isomorphic façade is legitimacy-seeking 
 - [[path-dependence-and-increasing-returns]] — limited access orders are North's inefficient-lock-in mechanism under another name.
 - [[incentives-under-multiple-principals]] — reforms opposed simultaneously by parliament, unions, judiciary and uncoordinated donors are Dixit's principal-multiplicity problem applied to implementation rather than to contracts.
 - [[dimensions-of-institutional-variation]] — supplies D73, and the reform-difficulty × salience 2×2 recorded in its commentary.
-- [[open-questions]] — Q70 and Q72 both draw on this source.
+- [[open-questions]] — Q70 and Q71 both draw on this source.
