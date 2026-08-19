@@ -32,8 +32,12 @@ wiki/
 ├── index.md                ← content catalog — update on every wiki change
 ├── log.md                  ← append-only session log
 ├── revisions.md            ← concise record of all wiki modifications
+├── reference-sources.md    ← the radar: watched sources, scope, selection priority
+├── watchlist.md            ← identified-but-not-captured ledger (weekly-brief overflow)
 ├── conflicts/              ← resolved and open conflicts between sources
 ├── research/               ← pages synthesised from external sources
+├── weekly-briefs/          ← one file per /weekly-brief run
+├── lint-reports/           ← one file per /lint run
 └── <topical-subdirs>/      ← created as needed by ingests; not pre-seeded
 ```
 

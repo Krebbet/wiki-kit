@@ -4,7 +4,7 @@
 
 A starter kit for personal and team knowledge wikis maintained by an LLM, following the [llm-wiki pattern](llm-wiki.md).
 
-Clone it, answer seven questions, and you have a working wiki tailored to your domain — schema, commands, and capture tooling all in place.
+Clone it, answer ten questions, and you have a working wiki tailored to your domain — schema, commands, radar, and capture tooling all in place.
 
 ## Quickstart
 
