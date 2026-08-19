@@ -91,7 +91,7 @@ A standing register of every axis of institutional variation named by the source
 - mandate clarity and multiplicity of objectives;
 - funding source and its stability;
 - hierarchy layer count as a behavioural variable rather than a size proxy;
-- age of the organisation as distinct from age of the rule-set (see [[path-dependence]]);
+- age of the organisation as distinct from age of the rule-set (see [[path-dependence-and-increasing-returns]]);
 - career incentives, tenure structures, and internal labour markets.
 
 D28 is measurable but currently unlinked to any tested prediction; the rest are not in the register because no source here names them. They should be the first things a later ingest of organisational-theory or bureaucratic-politics sources adds.
@@ -113,5 +113,5 @@ D28 is measurable but currently unlinked to any tested prediction; the rest are 
 - [[governance-structures]] — supplies D6, D17, D18, D19, D20, D21, D22.
 - [[transaction-costs]] — supplies D3, D8, D16, D25 and the reason measurability matters.
 - [[credible-commitment]] — supplies D10 and the market-priced operationalisation in D11, the sharpest measure in the register.
-- [[path-dependence]] — supplies D2 and D30, and explains why an axis can be measurable yet frozen in practice.
+- [[path-dependence-and-increasing-returns]] — supplies D2 and D30, and explains why an axis can be measurable yet frozen in practice.
 - [[open-questions]] — Q2 is the question this register exists to answer; Q3 asks which of these axes are genuinely invariant across the public/private divide.

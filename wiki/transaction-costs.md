@@ -70,7 +70,7 @@ That last row is the most transferable finding on the page: it is a **market-pri
 - [[governance-structures]] — Williamson's operationalisation of the same idea at the level of a single transaction, and where the efficiency presumption enters.
 - [[what-is-an-institution]] — transaction costs are why the definitional choice matters: institutions are individuated by which costs they alter.
 - [[credible-commitment]] — the enforcement-cost leg taken to its limit: what happens when the enforcer is the party you need protection from.
-- [[path-dependence]] — why high-transaction-cost arrangements persist rather than being competed away.
+- [[path-dependence-and-increasing-returns]] — why high-transaction-cost arrangements persist rather than being competed away.
 - [[polycentric-governance]] — Ostrom's cases are the counter-example set: user-organised monitoring lowers enforcement costs without formal property rights or state enforcement.
 - [[dimensions-of-institutional-variation]] — measurability, enforcement mechanism, party heterogeneity and residual claimancy all enter the register from this page.
 - [[efficiency-of-institutions-north-vs-williamson]] — open conflict on whether observed institutions should be presumed cost-economising.

@@ -26,7 +26,7 @@ resumable in place.
 
 | # | Slug | Topic | Status |
 |---|---|---|---|
-| 1 | `foundations-nie` | What institutions are and why they exist — North, Coase, Williamson, Ostrom; transaction costs, rules, credible commitment | ingesting |
+| 1 | `foundations-nie` | What institutions are and why they exist — North, Coase, Williamson, Ostrom; transaction costs, rules, credible commitment | done |
 
 ## Wave 2 — The user's six subjects
 

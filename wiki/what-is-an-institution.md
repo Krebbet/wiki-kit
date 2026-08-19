@@ -75,5 +75,5 @@ What the candidate costs: it dissolves North's institution/organization boundary
 - [[governance-structures]] — Williamson's market/hybrid/hierarchy typology, the full statement of the definition summarised here.
 - [[transaction-costs]] — the mechanism that makes the definitional choice consequential: institutions matter because they price interaction.
 - [[polycentric-governance]] — Ostrom's evidence that ownership form does not predict performance, which is why the definition cannot be sector-based.
-- [[path-dependence]] — North's institution/organization split does its main work here: organizations created under existing rules are what lock those rules in.
-- [[conflicts/efficiency-of-institutions-north-vs-williamson]] — the two definitions carry incompatible priors about whether the institutions we observe are the efficient ones.
+- [[path-dependence-and-increasing-returns]] — North's institution/organization split does its main work here: organizations created under existing rules are what lock those rules in.
+- [[efficiency-of-institutions-north-vs-williamson]] — the two definitions carry incompatible priors about whether the institutions we observe are the efficient ones.
