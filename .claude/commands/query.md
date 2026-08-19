@@ -19,7 +19,11 @@ $ARGUMENTS — the question to answer.
    - Never blend wiki content and outside content in the same paragraph or bullet without a marker. If a sentence mixes both, split it.
 
    <!-- DOMAIN-SLOT: answer-tone -->
-   **Tone and voice:** concise, direct, assume a generalist reader. Bootstrap replaces this section with domain-specific voice and audience guidance.
+   **Tone and voice:** terse, expert. The reader is an ML engineer — assume deep familiarity with deep learning, architectures, and training; skip all ML background. *Do* define materials-science and device-physics terms briefly on first use (BEOL, ECRAM, 1T1R, forming voltage, conductance linearity, on/off ratio).
+
+   Lead with the answer, then the evidence, then the caveat. Every number carries units, measurement conditions, and the boundary it was measured at; a figure without its boundary is marketing, not data. Explicitly separate **evidenced** (measured, sourced), **claimed** (a named party asserts it, with a date), and **(synthesis)** (the wiki's own inference). Attribute every forward-looking date to its owner.
+
+   When the honest answer is "nobody has demonstrated this end to end", say exactly that rather than hedging. Name hype as hype and say what measurement would settle it. Cite every claim with `[[wiki-link]]`.
    <!-- /DOMAIN-SLOT -->
 
 3. **Judge whether to update the wiki** — Does the answer contain:

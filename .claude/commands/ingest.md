@@ -93,8 +93,37 @@ schema_version: 1
 <single sentence: what is this source, what does it claim>
 
 <!-- DOMAIN-SLOT: takeaway-prompts -->
-   - (Domain-specific takeaway prompts go here — bootstrap fills this in. Examples: for history, flag dates and key actors; for science, flag methodology and data; for cooking, flag ingredients and technique names.)
-   <!-- /DOMAIN-SLOT -->
+## Device / material
+<the physical stack in precise terms: material system, device structure (1T1R, crossbar, 1S1R, FeFET, MTJ...), switching mechanism, technology node, fab/foundry, CMOS or BEOL integration path. `(n/a)` if the source is algorithm- or industry-only.>
+
+## Measured numbers
+<every quantitative claim with its units AND measurement boundary: array size, endurance (cycles), retention (hours/years @ temperature), on/off ratio, conductance levels/linearity, device-to-device and cycle-to-cycle variability (σ/µ), energy per synaptic operation or per inference — stating device vs array vs chip vs system, and inference vs training. Cite the specific table or figure. If the source reports none, say so explicitly.>
+
+## Algorithm / workload
+<SNN specifics if present: neuron model, encoding scheme (rate/latency/delta), training method (surrogate gradient, ANN-to-SNN conversion, STDP/local rule), on-chip vs off-chip learning, the task and dataset, accuracy vs a stated baseline.>
+
+## Baseline and comparison honesty
+<what is it compared against, and is the comparison fair? Flag: unstated boundary, different task/precision, chip-vs-system mismatch, extrapolation from a single device, "vs GPU" with no GPU named. This section is where hype gets caught.>
+
+## Maturity
+<where on the ladder: single device → small array → full crossbar → integrated chip → tape-out at a named foundry → sampling → in-product. Name the node and the fab if stated.>
+
+## Commercial signal
+<players named, funding, partnerships, design wins, customers, claimed availability dates. Mark each as evidenced or claimed, and attach the owner of any date.>
+
+## Blockers stated
+<what the source itself admits is unsolved: variability, drift, endurance, yield, peripheral/ADC-DAC overhead, sneak paths, forming, toolchain, benchmark validity.>
+
+## Novelty
+<genuinely new mechanism, a refinement, or a recombination? Name the closest prior work and what changed.>
+
+## Reproducibility
+<code, weights, dataset, harness released? Independent reproduction? Or closed?>
+
+## Conflicts
+<does this contradict a claim already in the wiki — SNN energy payoff, analog vs digital, which device family wins, on-chip learning necessity, commercial timeline, benchmark validity? If so, flag for `wiki/conflicts/`.>
+
+<!-- /DOMAIN-SLOT -->
 
 ## Cross-ref candidates
 - [[existing-page-name]] — <why this source touches it: extends / contradicts / parallels>

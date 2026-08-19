@@ -17,7 +17,17 @@ $ARGUMENTS — the topic to research.
 - **Never put your own opinions into voice as if they were source claims.** If you say "X recommends Y", Y must be a direct extraction from a captured X source.
 
 <!-- DOMAIN-SLOT: authoritative-sources -->
-**Authoritative sources for this wiki are:** peer-reviewed papers, official documentation, primary sources, and respected practitioner blogs. Avoid: Wikipedia, content-mill blogs, anonymous sources. Bootstrap replaces this paragraph with domain-specific criteria.
+**Authoritative sources for this wiki, in descending trust order:**
+
+1. **Peer-reviewed device/chip papers reporting measured silicon** with full conditions stated: array size, technology node, endurance cycles, retention, device-to-device and cycle-to-cycle variability (σ/µ), energy per synaptic operation *with the measurement boundary named*, and end-to-end task accuracy. A single-device demo extrapolated to a system is not a system result.
+2. **Independent reproduction or third-party benchmarking** (NeuroBench and similar), and papers that release code, data, or weights.
+3. **Vendor primary documents** — datasheets, SDK docs, product briefs, filings. Authoritative for *what a product is*; never for *how good it is*.
+4. **Named-expert commentary and conference talks** by the people who actually built the thing.
+5. **Trade press** — evidence that something happened; never the sole basis for a technical claim.
+
+**Treat with suspicion, and never as a sole source:** press releases quoting efficiency gains without a baseline; "N× more efficient than a GPU" claims where the comparison boundary is unstated (chip-only vs system, inference-only vs training, different task or precision); single-device lab results presented as system results; market-forecast reports with unstated methodology; Wikipedia; content-mill and SEO blogs; LLM-generated survey spam.
+
+Capture the strongest version of each side when a claim is contested rather than declaring a winner. Every quantitative claim recorded in the wiki carries its **measurement boundary** and its **source tier**. Company roadmap dates are recorded as claims with an owner and a date attached, not as facts.
 <!-- /DOMAIN-SLOT -->
 
 ## Process
@@ -52,7 +62,17 @@ $ARGUMENTS — the topic to research.
    **Known bot-walled hosts.** Some publishers (MDPI, ScienceDirect, some IEEE journals) bot-detect the capture scripts. MDPI tends to return `Access Denied` via Akamai/edgesuite for both HTML and direct-PDF URLs; ScienceDirect tends to return a Cloudflare IP-block page. `capture_url` detects common block-page signatures and exits non-zero; `capture_pdf` already exits non-zero on HTTP errors. When a blocked source is needed, ask the user to download the PDF manually via a browser and drop it into `raw/research/<topic-slug>/`, then run `poetry run python -m tools.capture_pdf --src <local-path> --out raw/research/<topic-slug> --slug <short-slug>` to process it.
 
    <!-- DOMAIN-SLOT: source-type-notes -->
-   (Bootstrap adds domain-specific source handling notes here — e.g., "for this wiki, prefer arXiv over journal paywalls", "transcripts of official conference talks count as primary sources", etc.)
+   **Source-type guidance for this wiki:**
+
+   - **arXiv / journal / conference PDFs** (Nature family, Science, Advanced Materials, IEEE ISSCC/IEDM/VLSI/JSSC/TCAS/DATE, Frontiers in Neuroscience) → `capture_pdf.py --engine marker`. Figures and equations are load-bearing here: device I–V curves, conductance-vs-pulse plots, TEM cross-sections and array micrographs *are* the evidence. Never drop to `--engine pymupdf` for a device paper unless marker fails.
+   - **Prefer arXiv over the paywalled journal version** when both exist, and note any divergence from the published version. Where only the journal version exists, try the author's institutional/lab copy before giving up. Many Nature Electronics device papers put the load-bearing numbers in the **Supplementary Information** — capture that too and say so on the page.
+   - **Vendor blogs, press rooms, product pages, SDK docs, GitHub READMEs** (Intel Labs, IBM Research, BrainChip, SynSense, Innatera, Prophesee, SpiNNaker, Lava/snnTorch/Norse/Rockpool/Nengo) → `capture_url.py`. Add `--js` for client-rendered vendor sites.
+   - **Datasheets and product briefs** are usually PDFs → `capture_pdf.py --engine pymupdf` is fine (layout matters less than the spec table).
+   - **Trade press** (EE Times, Semiconductor Engineering, IEEE Spectrum, The Next Platform) → `capture_url.py`. Ingest these as *event* records ("X announced Y on date Z"), not as technical sources.
+   - **YouTube conference talks** (Telluride Neuromorphic Workshop, NICE, ISSCC/IEDM sessions, vendor webinars) → `fetch_transcript.py`. Note on the page that the source is a transcript — no figures, and numbers spoken aloud are easy to mis-transcribe, so mark them as such. *(Known issue as of 2026-08-19: the pinned `yt-dlp` is stale and YouTube rejects it — see `master_notes.md`. Run `poetry update yt-dlp` if transcript capture fails.)*
+   - **Government / programme pages** (DARPA, EU Horizon, EBRAINS, national semiconductor roadmaps) → `capture_url.py`. These are primary sources for funding and timeline claims.
+   - **Benchmark artefacts** (NeuroBench results tables, MLPerf Tiny entries) → capture the results page *and* the harness README; the harness is what tells you whether the number is comparable.
+   - **Paywalled or gated content that cannot be captured** — record the citation and the claim in `wiki/watchlist.md` rather than paraphrasing an abstract into a wiki page.
    <!-- /DOMAIN-SLOT -->
 
 5. **Verify captures.** After capture, read a few lines of each written file to confirm it's real content (not a bot wall, login page, or empty extraction). **Any captured markdown under ~2KB is almost certainly a failure** — bot-wall pages, empty extractions, or login prompts — even if the tool exited zero; read it end-to-end before trusting it. If a capture is clearly broken, try the Playwright MCP tool directly to inspect the page and diagnose.
