@@ -70,3 +70,22 @@ clone (was 93/95). YouTube transcripts are usable; the declared source type stan
 cause. The first error message on a network-dependent test is a hypothesis, not a diagnosis — re-run before
 writing it down as a finding.
 **Status:** applied 2026-08-19 — harvested to main as e3bcf3a
+
+### 2026-08-19 — concurrent ingest jobs race on the shared tracking files
+**Scope:** kit
+**Observation:** Running two `/ingest` page-writing passes concurrently (different research jobs, disjoint
+`raw/` topic dirs, disjoint new pages) still puts them in a lost-update race on the **shared** tracking files —
+`wiki/index.md` above all, since it is rewritten as a whole table rather than appended to. Job 5's writer
+noticed this itself and flagged it: it had written its 8 index rows, and job 4's writer had created its pages
+but not yet done its bookkeeping, so if job 4's writer had read `index.md` before job 5's write it would
+silently drop those 8 rows on save. `revisions.md` and `log.md` are append-only in practice and are much
+lower risk; `index.md` is the exposed one. `dimensions-of-institutional-variation.md` has the same shape when
+two jobs both add rows, and is arguably worse because a dropped dimension row is harder to notice than a
+missing index entry.
+**Implication:** the kit's `/ingest` assumes one job at a time and says so ("one job at a time, ingested to
+completion"), but nothing enforces it and nothing detects a violation after the fact. Cheapest fix is a note
+in `ingest.md` telling the orchestrator to re-read `index.md` immediately before writing it and to merge
+rather than replace. A stronger fix is to make `index.md` generated rather than hand-maintained — derive the
+table from the pages on disk plus their first-paragraph summary, so the whole class of races disappears. A
+`/lint` check comparing `ls wiki/*.md` against the index rows would at least catch a drop after the fact.
+**Status:** open

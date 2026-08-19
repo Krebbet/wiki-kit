@@ -123,3 +123,86 @@ Thin spots:
 - Simon flags his own theory as incomplete on what determines span; three sources give three incompatible
   answers and none has been tested against the others (Q29).
 - Personnel selection (Q4) is still named by no source in this wiki.
+
+## [2026-08-19] ingest | risk-aversion-in-large-institutions
+
+Eight sources from `raw/research/risk-aversion-in-large-institutions/` (Hood, *The Blame Game* ch.1;
+Kahneman & Lovallo 1993; Holmström 1982/1999; Manso 2011; Nicholson-Crotty/Nicholson-Crotty/Webeck 2019;
+Hammond; Bozeman 1993; OECD OPSI WP 51). Six mechanism pages plus one umbrella page:
+`blame-avoidance-and-negativity-bias`, `isolation-errors-and-portfolio-framing`,
+`career-concerns-and-managerial-risk-taking`, `exploration-exploitation-incentive-contracts`, `red-tape`,
+`veto-points-and-bureaucratic-autonomy`, `risk-aversion-in-large-institutions`.
+
+**The headline, which is negative, and which the pages are built around rather than around the job title.**
+The job was commissioned as "why are large institutions risk averse?" — a question that presupposes its
+answer. This batch does not support the presupposition:
+- **Zero of eight sources test institutional size against risk-taking behaviour.** Not one has a headcount,
+  budget or hierarchy-depth variable on the right-hand side of anything.
+- **Holmström rejects a size-based account by name.** The Wilson/Ross risk-bearing-capacity story fails once
+  a firm is of "even modest size or... a publicly held corporation", because the firm can simply pay a
+  constant wage. His own mechanism runs on the external labour market and is size-invariant by construction.
+- **The one source that directly measures risk aversion finds against the sector version of the hypothesis.**
+  Nicholson-Crotty et al., randomized survey experiment, n=300 real US managers: no sector difference under
+  gain framing, public managers *significantly more* risk-tolerant under loss framing (76.62% vs 63.51%,
+  p<.10), and status-quo anchoring concentrated in the **private** managers.
+- **The most-cited source for institutional timidity denies the reading.** Kahneman & Lovallo: "we do not
+  claim that an objective observer would describe managerial decisions as generally risk averse." They pair
+  the timidity with an equally-evidenced bold-forecast bias and call the interaction a genuine dilemma.
+- **The veto-point intuition is undercut, not supported.** Hammond proves veto-point count and bureaucratic
+  discretion are not monotonically related once preference divergence varies — all 720 rank-orderings across
+  six systems are achievable. His paper never uses the word "risk". Neither does Bozeman's.
+
+Structure of the umbrella page: two crossed distinctions the sources themselves keep separate. **Mechanism
+level** (individual-payoff — Hood, Kahneman & Lovallo, Holmström, Manso, OECD — vs. structural — Bozeman,
+Hammond, and Kahneman & Lovallo's groupthink/winner's-curse half). **Claim type** (size claim vs. sector
+claim). The size column has no tester and one explicit rejecter; the sector column has four asserters and
+one tester, who finds against it. That asymmetry is the batch's actual content.
+
+What each page had to be protected from:
+- Hood is an argumentative chapter, not a study; its private-sector extension is one asserted clause with no
+  private evidence behind it, and its own reform lever is left open by the author.
+- Kahneman & Lovallo would be misrepresented by a page carrying only the timidity half. Both halves on the
+  page, plus the authors' warning that correcting only the timidity could make outcomes worse.
+- Manso is a **moral-hazard result, not a risk-preference result** — the propositions survive a risk-averse
+  agent unchanged, "because the critical elements... are the likelihood ratios between the different action
+  plans, not the agent's preferences". No size parameter; Section VIII's large-corporation claim is one HBS
+  case and two practitioner books.
+- Bozeman never uses the word "risk", says most of his causes are general to any externally-controlled
+  organisation (only sovereignty and policy-mission interconnection are government-inherent), and reports
+  the public/private literature as genuinely mixed, citing Buchanan 1975 finding *private* managers more
+  rule-adherent.
+- Hammond gets an explicit "what this page must not be used to support" section.
+- The OECD is embedded in the umbrella page and labelled institutional advocacy: 5 of 38 member states,
+  heavily self-cited, a hypothetical "Country X" box with zero evidential value, and its own counter-evidence
+  (Meijer & Thaens's innovation paradox; ~80% of Nordic workplaces innovating in two years; Danish officials
+  fired for failures inside the lever it holds up).
+
+Register: D42–D48 in a new "control and incentive environment" section. Hammond's contribution registered as
+**one composite axis** (veto-point count × preference-profile divergence), because a count-only row would
+reproduce exactly the error his paper exists to warn against. Three axes deliberately not duplicated —
+personal payoff asymmetry cross-linked into D8, rule rigidity into D1, discretion-limiting rules into D9.
+
+Conflict filed OPEN: `presumed-vs-measured-public-sector-risk-aversion`. Settlement criteria recorded, and
+the decisive one is a design nobody in the batch attempts — measure behavioural risk-taking **and** the
+structural variables (blame exposure, veto-point count, rule density) on the same subjects. The structural
+half and the behavioural half of this literature have never been in contact.
+
+Open questions: Q30 restates the wiki's framing question; Q31–Q34 record the gaps (public-sector transfer of
+narrow framing; the missing individual→institution aggregation step, which Kahneman & Lovallo's own pooling
+arithmetic suggests might *cancel* rather than compound; whether preference, contract artefact and structural
+constraint can be told apart from outside; and the same-subjects design). Q3, Q4, Q6 and Q7 updated.
+
+Thin spots:
+- The **aggregation step is missing from every individual-level source**, and it is not innocuous. Pooling
+  arithmetic predicts an institution holding many independent decisions should be *closer* to risk-neutral
+  than any of its agents. Aggregate timidity would then be evidence about internal review design (D46), not
+  about size. Kahneman & Lovallo's hierarchy-depth compounding conjecture points the other way. Both come
+  from the same model and neither is tested.
+- **No baseline is specified anywhere except Kahneman & Lovallo's pooled-portfolio value**, and against that
+  baseline their own answer is that the net direction is indeterminate. "Risk averse relative to what?" is
+  unanswered by seven of eight sources.
+- Nicholson-Crotty's status-quo nulls are the weakest limb of the strongest source: the authors name a real
+  Type-II concern themselves, and their mitigation (consistent direction across conditions) is an argument,
+  not a resolution. Nonprofits excluded; vignettes validated but not occupation-tailored.
+- Personnel selection (Q4) is finally named once — the OECD's Canadian "clay layer" — and it is one country
+  scan in an advocacy document with undeveloped coding protocols. Not enough for a register row.
