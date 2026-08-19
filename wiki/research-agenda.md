@@ -32,12 +32,12 @@ resumable in place.
 
 | # | Slug | Topic | Status |
 |---|---|---|---|
-| 2 | `institutional-evolution` | How institutions evolve over time — path dependence, institutional isomorphism, layering/drift/conversion, lifecycle models | queued |
-| 3 | `scale-effects` | Large vs small institutions — what changes with size: hierarchy layers, span of control, coordination cost, formalisation, diseconomies of scale | queued |
-| 4 | `incentives-and-institutional-form` | Incentives and how they form institutions — principal-agent, incomplete contracts, selection effects, multitask/measurement distortion, how incentive structure produces institutional shape | queued |
-| 5 | `risk-aversion-in-large-institutions` | Why large institutions become risk averse — asymmetric payoffs to individual decision-makers, blame allocation, veto points, defensive process, loss aversion in bureaucracies | queued |
-| 6 | `enabling-institutional-change` | Empowering change in institutions — what actually makes reform succeed: crisis windows, leadership autonomy, reorganisation evidence, skunkworks, Ostrom design principles | queued |
-| 7 | `institutional-stagnation` | Why institutions become stagnant — ossification, goal displacement, rent-seeking, Olson's distributional coalitions, vetocracy, sclerosis | queued |
+| 2 | `institutional-evolution` | How institutions evolve over time — path dependence, institutional isomorphism, layering/drift/conversion, lifecycle models | capturing |
+| 3 | `scale-effects` | Large vs small institutions — what changes with size: hierarchy layers, span of control, coordination cost, formalisation, diseconomies of scale | capturing |
+| 4 | `incentives-and-institutional-form` | Incentives and how they form institutions — principal-agent, incomplete contracts, selection effects, multitask/measurement distortion, how incentive structure produces institutional shape | capturing |
+| 5 | `risk-aversion-in-large-institutions` | Why large institutions become risk averse — asymmetric payoffs to individual decision-makers, blame allocation, veto points, defensive process, loss aversion in bureaucracies | capturing |
+| 6 | `enabling-institutional-change` | Empowering change in institutions — what actually makes reform succeed: crisis windows, leadership autonomy, reorganisation evidence, skunkworks, Ostrom design principles | capturing |
+| 7 | `institutional-stagnation` | Why institutions become stagnant — ossification, goal displacement, rent-seeking, Olson's distributional coalitions, vetocracy, sclerosis | capturing |
 
 ## Wave 3 — Seeding jobs to complete the frame
 
@@ -98,5 +98,6 @@ only as good as the evidence underneath, so they do not start until Wave 2 is `d
 ## Related
 
 - [[open-questions]] — the questions these jobs are meant to close.
+- [[capture-manifests]] — the exact verified URL list per job, so gitignored captures can be regenerated.
 - [[reference-sources]] — the standing weekly radar, distinct from this one-off queue.
 - [[index]] — the content catalog.

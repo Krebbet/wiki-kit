@@ -12,6 +12,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 |---|---|
 | [[research-agenda]] | *(OPEN)* Prioritised queue of research jobs — the ten opening `/research` runs and the phases after them. |
 | [[open-questions]] | *(OPEN)* Live register of the questions this wiki exists to answer, with status per question. |
+| [[capture-manifests]] | Verified source URLs per research job, so gitignored captures can be regenerated exactly. |
 | [[reference-sources]] | Watched-source radar for the weekly brief: journals, working-paper series, indices, practitioners, institutional-history feeds. |
 | [[watchlist]] | Overflow candidates surfaced by the weekly brief but not yet captured. |
 
