@@ -6,7 +6,13 @@ A standing register of every axis of institutional variation named by the source
 
 **Status values.** `candidate` — named by a source and operationalisable, but not yet doing predictive work in this wiki. `promoted` — meets the promotion criterion below. `rejected` — cannot currently be measured as stated, with the reason recorded; the row stays so the problem is visible rather than silently dropped.
 
-**Promotion criterion [wiki synthesis].** An axis is promoted when (i) at least two independent sources name it, *and* (ii) a measurement procedure can be stated that could be run against an institution's primary documents, budget, personnel records, or observable behaviour, without needing access the analyst would not plausibly have. Both conditions, not either. Criterion (i) is deliberately weak evidence of importance — it is a prior, revisable as soon as an axis proves it earns its place by predicting something.
+**Promotion criterion [wiki synthesis]. Revised 2026-08-20 by the user's ruling.** An axis is promoted when a measurement procedure can be stated that could be run against an institution's primary documents, budget, personnel records, or observable behaviour, without needing access the analyst would not plausibly have. **A single naming source is sufficient.**
+
+*What changed and why.* The criterion previously also required that at least two independent sources name the axis — "both conditions, not either". It was dropped because a two-source rule privileges well-trodden ground over well-operationalised ground, which is backwards for a framework meant to be *applied* to institutions rather than to summarise a literature. An axis nobody else has named but which yields a number from an institution's own records is more useful here than an axis three authors invoke and none can measure. Measurability is now the whole test.
+
+*Consequence.* Promotion no longer carries any claim about how well-attested an axis is — only that it can be measured. Weight of naming is still recorded in the Named-by column; read it there, and do not read `promoted` as consensus.
+
+*History.* Seven rows (D3, D4, D10, D30, D70, D71, D72) were promoted on a single source under the old rule, by two batches that independently read the "and" as an "or". The 2026-08-19 lint flagged them as breaches. Under the revised criterion they are compliant as written, and were not demoted.
 
 **Admissibility [lint check 11].** A dimension with no operationalisation is not admissible as part of the framework. Where none can be stated, the row says so explicitly and is marked `rejected`, with a note on what restatement would readmit it.
 
