@@ -6,7 +6,7 @@ Contracts cannot specify every future contingency, so someone must hold the righ
 
 ## The mechanism
 
-**[framework — Grossman & Hart 1986; Hart 2016]** The chain, as the sources state it:
+**[model — Grossman & Hart 1986; Hart 2016]** The chain, as the sources state it:
 
 1. Some future contingencies affecting an asset's use are too costly to specify ex ante, though they become obvious and can be bargained over ex post — **ex ante non-contractible, ex post contractible**. Contract incompleteness is about the *future*, not about measurement per se.
 2. By law and by default, whoever **owns** the asset decides in any contingency the contract is silent on. Grossman & Hart adopt Holmes's (1881) formulation: the owner "is allowed to exclude all, and is accountable to no one but him." Their standing illustration: absent a contract clause on an extra print run, the right to decide belongs to whoever owns the press.
@@ -22,7 +22,7 @@ The decision rule (Proposition 1): firm 1 should acquire firm 2 exactly when "fi
 
 ## Contractibility, verifiability, observability
 
-**[framework — Hart 2016]** Hart insists on three distinct properties where a coarser literature says "measurability," and the distinction does real work:
+**[model — Hart 2016]** Hart insists on three distinct properties where a coarser literature says "measurability," and the distinction does real work:
 
 - **Contractible** — can be specified in a binding agreement ex ante.
 - **Verifiable** — can be proven to a third party (a court) ex post.
@@ -59,7 +59,7 @@ Marvel (1982)'s correlation between independent-agent market share and client-ac
 
 ## Public versus private provision: the prison case
 
-**[framework with one weak empirical citation — Hart 2016 §4]** This is one of very few places in this batch where a firm-boundary theory is turned directly on a public/private choice, and its narrowness should be stated up front: it concerns **only** the point at which government decides to provide a service itself versus contract it out. It says nothing about how a bureau behaves internally once that decision is made.
+**[model, with one weak empirical citation — Hart 2016 §4]** This is one of very few places in this batch where a firm-boundary theory is turned directly on a public/private choice, and its narrowness should be stated up front: it concerns **only** the point at which government decides to provide a service itself versus contract it out. It says nothing about how a bureau behaves internally once that decision is made.
 
 The argument runs on exactly the same residual-control mechanism. Government contracts with private prison operators are in fact elaborate — food, hygiene, health care, work, education, recreation are all covered — but Hart, Shleifer & Vishny (1997) argue they are significantly incomplete on two things: **the use of force by guards, and the quality of personnel**. A private contractor can therefore use its residual control rights to save money by hiring cheap, unqualified guards who lack the skill to handle violent situations. Structurally identical to the coal mine choosing high-ash coal: the supplier takes a contractually permitted action that saves money at someone else's expense — in one case the power plant's, in the other society's. Hart's own footnote 19 maps this onto Holmstrom & Milgrom's multitask model: cost-cutting is easy to specify and reward, violence prevention is not, so incentivised effort migrates to the measurable one. See [[multitask-incentive-theory]].
 
@@ -75,7 +75,7 @@ Private provision has a countervailing benefit on the same logic: a private ward
 
 ## Contracts as reference points, and shading
 
-**[framework, with the batch's best experimental evidence — Hart & Moore 2008; Fehr, Hart & Zehnder 2009/2011/2015]**
+**[model, with the batch's best experimental evidence — Hart & Moore 2008; Fehr, Hart & Zehnder 2009/2011/2015]**
 
 This section is kept separate because it **abandons full rationality**, an assumption the rest of the page depends on. Hart introduces it explicitly under pressure from the Maskin-Tirole non-result, calls the move "an unfortunate conclusion" that most economists resist, and closes the lecture conceding that "there is as yet no tractable, widely agreed upon, theory of incomplete contracts."
 
@@ -91,6 +91,29 @@ The design implication is that **rigid, fixed-price contracts can dominate flexi
 
 **Evidence status.** This is the one place in the lecture where a model was built to be tested and then tested. Fehr, Hart & Zehnder's laboratory subjects choose rigid contracts significantly more often than the fully-rational prediction, and shading concentrates where the model predicts it. It is lab evidence, and the wiki should say so — but it is a genuine test against a stated alternative, which most of this batch is not.
 
+## Two terminology traps, and why neither is a conflict
+
+*Added by the `theory-of-the-firm` ingest, 2026-08-20.*
+
+**[wiki synthesis]** Two other pages in this wiki now use words this page also uses, for different objects. Both looked like conflicts on first pass and neither survives inspection; both are recorded here because this is the page a reader will be on when the collision happens.
+
+1. **"Residual" — claimant against control rights.** Alchian & Demsetz's **residual claimant** ([[team-production-and-monitoring]]) holds title to *earnings* net of contracted payments, and the point of giving it to the monitor is to make her self-policing. This page's **residual control rights** are the right to decide the uses of an *asset* that the contract does not specify, and the point is that it sets a party's ex post threat point and hence their ex ante investment. A cash-flow claim against a decision right over a thing. The two sources make no incompatible claim about any one object. Gibbons's **payoff rights against decision rights** split ([[decision-rights-and-authority-theory-of-the-firm]]) is the general form of exactly this distinction, and it classifies this theory as a *blend* — a decision right whose exercise determines the payoff through ex post bargaining.
+2. **"Ownership" — irrelevant against constitutive.** Fama's headline that "ownership of the firm is an irrelevant concept" ([[separation-of-ownership-and-control]]) is about ownership of the residual *financial* claim, held by diffuse security holders **inside an already-constituted firm**, and his claim is that holding it confers no decision rights. This page's ownership is of a physical, non-human *asset*, **across a firm boundary**. Fama takes no position on where the boundary falls; there is no asset specificity, no make-or-buy and no integration decision anywhere in his paper, and it must not be routed into [[rival-firm-boundary-theories]].
+
+Neither is filed in `conflicts/`. Filing them would be filing a shared vocabulary as a disagreement.
+
+## Gibbons's critique: the theory has no internal-organisation content
+
+*Added by the `theory-of-the-firm` ingest, 2026-08-20.*
+
+**[model — Gibbons 2004]** Gibbons's assessment of the elemental property-rights theory, from inside the formal tradition, is sharper than anything on this page so far and is worth stating in his own terms: the theory contains **"solo entrepreneurs" and "drone employees" only** — employees who own nothing, face no modelled incentives, and therefore do nothing. There is **no place in it for delegation, for managers, or for employees with real incentives.** It is silent on internal power structure by construction, not by oversight.
+
+**[wiki synthesis]** This matters for how the wiki cites the page. The theory is a theory of *boundaries*, and the "What is not established" list below already records that internal bureau behaviour is out of scope. Gibbons's point is stronger: the model's own machinery cannot be extended inward without adding ingredients it does not have. Where this wiki wants an account of authority *inside* a constituted organisation, the sources are [[formal-and-real-authority]] (what happens to effective control once the formal allocation is fixed) and [[decision-rights-and-authority-theory-of-the-firm]] (how the pure decision right gets allocated in the first place) — not this one.
+
+Gibbons also supplies the sharper aphorism for the "never a free lunch" result above: **"the cost of control is the loss of initiative,"** a corollary of the general point that "using a formal instrument to stop one hold-up problem typically creates another" — the reverse hold-up after integration.
+
+**A refinement of the three-way contractibility split.** Gibbons decomposes the same territory along three cross-cutting axes rather than one three-way distinction, which sharpens the section above: **actions** as observable-but-not-contractible (aO), not-observable (aN), or contractible-ex-ante (aC); **signals** as contractible (σC) or observable-only (σO); and **decisions** as contractible-ex-post-but-not-ex-ante (dP), never-contractible (dN), or contractible-ex-ante (dA). The last row is the one this page's D25a formulation does not have — Hart's "ex ante non-contractible, ex post contractible" is exactly dP, and Gibbons's point is that **dN, the never-contractible decision, is a different ingredient and generates a different theory** (Position D at [[rival-firm-boundary-theories]]).
+
 ## What is not established
 
 - **Selection effects.** Both sources are silent. Neither models nor discusses who is drawn into or screened out of ownership, management or investor roles *by* the structure on offer. The two selection-adjacent passages are weaker than selection: the threat of firing and replacing a manager is a bargaining lever, and the date-0 competitive market is about price-setting before lock-in, not about sorting person-types into roles. Nothing here supports a claim about [[open-questions]] Q4.
@@ -103,6 +126,7 @@ The design implication is that **rigid, fixed-price contracts can dominate flexi
 
 - `raw/research/incentives-and-institutional-form/04-grossman-hart-property-rights.md` — Sanford J. Grossman & Oliver D. Hart, "The Costs and Benefits of Ownership: A Theory of Vertical and Lateral Integration", *Journal of Political Economy* 94(4), 1986, 691–719. https://dash.harvard.edu/bitstreams/7312037c-527a-6bd4-e053-0100007fdf3b/download
 - `raw/research/incentives-and-institutional-form/02-hart-nobel-lecture.md` — Oliver Hart, "Incomplete Contracts and Control", Nobel Prize Lecture, 8 Dec 2016. https://www.nobelprize.org/uploads/2018/06/hart-lecture.pdf
+- `raw/research/theory-of-the-firm/06-gibbons-four-theories-of-firm.md` — Robert Gibbons, "Four Formal(izable) Theories of the Firm?", MIT and NBER, 2004 (for the "drone employees" critique and the refined contractibility taxonomy). https://web.mit.edu/rgibbons/www/Gibbons_4_Formal_9-16-04.pdf
 
 ## Related
 
@@ -115,3 +139,7 @@ The design implication is that **rigid, fixed-price contracts can dominate flexi
 - [[what-is-an-institution]] — Hart's definition of the firm as "a bundle of non-human assets" is a fourth named rival to North's, Ostrom's and Williamson's.
 - [[dimensions-of-institutional-variation]] — supplies the D25a refinement (contractibility vs. verifiability vs. observability).
 - [[efficiency-of-institutions-north-vs-williamson]] — Hart's "efficiency, not ideology" is logged there as a scope-limited item on the Williamson side.
+- [[team-production-and-monitoring]] — where "residual **claimant**" lives; read the terminology section above before citing either page's "residual".
+- [[separation-of-ownership-and-control]] — where "ownership is irrelevant" lives, and why it is not a contradiction of this page's "ownership is control".
+- [[decision-rights-and-authority-theory-of-the-firm]] — Gibbons's critique in full, plus the fourth elemental theory built on the never-contractible decision this page's dP formulation excludes.
+- [[formal-and-real-authority]] — takes this page's formal-authority result as given and models what happens to effective control afterwards.

@@ -12,7 +12,7 @@ The multitask model does not deny any of that. It identifies the scope condition
 
 ## The mechanism
 
-**[framework — Holmstrom & Milgrom 1991]** The agent chooses an effort vector `t` to maximise the certainty equivalent `CE = αᵀμ(t) + β − C(t) − ½rαᵀΣα`. The load-bearing assumption is on `C(·)`: it is strictly convex in *total* effort across tasks, so the tasks are **cost-substitutes for the agent's finite attention** — the marginal cost of effort on any one task rises with effort spent on all others.
+**[model — Holmstrom & Milgrom 1991]** The agent chooses an effort vector `t` to maximise the certainty equivalent `CE = αᵀμ(t) + β − C(t) − ½rαᵀΣα`. The load-bearing assumption is on `C(·)`: it is strictly convex in *total* effort across tasks, so the tasks are **cost-substitutes for the agent's finite attention** — the marginal cost of effort on any one task rises with effort spent on all others.
 
 The consequence is mechanical. Raising the incentive weight `α₁` on a measurable task lowers the agent's effective price of effort *there* relative to everywhere else, so effort reallocates toward whatever is rewarded and away from whatever is not — including the thing the principal actually cares about most. Formally (their eq. 7) `α₁*` falls as the measurement noise on the competing task rises, and can reach zero or turn negative even while the measurable task's own marginal benefit remains positive.
 
@@ -58,7 +58,7 @@ Multitasking and crowding are therefore two different mechanisms by which the *s
 
 ## Failure modes named
 
-**[framework, with illustrations only]** Measurement gaming and outright fraud (Wells Fargo shell accounts; the South Carolina teacher; the Atlanta Public Schools cheating scandal, framed through Kerr 1975's "folly of rewarding A while hoping for B"); goal displacement through misalignment of measure and value; **asset abuse and undermaintenance** where output is rewarded and asset care is not; accounting manipulation; intertemporal shifting of sales across fiscal boundaries (Healy 1985; Oyer 1998); **influence activities and pandering** under career concerns (Milgrom & Roberts 1988; Prendergast 1993's "Yes Men"); short-termism from too-short vesting. Every one of these is named by the sources as a *model implication with a matching anecdote*, not as a measured effect.
+**[model, with illustrations only]** Measurement gaming and outright fraud (Wells Fargo shell accounts; the South Carolina teacher; the Atlanta Public Schools cheating scandal, framed through Kerr 1975's "folly of rewarding A while hoping for B"); goal displacement through misalignment of measure and value; **asset abuse and undermaintenance** where output is rewarded and asset care is not; accounting manipulation; intertemporal shifting of sales across fiscal boundaries (Healy 1985; Oyer 1998); **influence activities and pandering** under career concerns (Milgrom & Roberts 1988; Prendergast 1993's "Yes Men"); short-termism from too-short vesting. Every one of these is named by the sources as a *model implication with a matching anecdote*, not as a measured effect.
 
 ## Selection versus incentive effects
 
@@ -80,6 +80,18 @@ The decomposition exists, and it comes from one place — Prendergast's survey, 
 
 One further puzzle he names against his own paradigm: the "N−1 problem" predicts individual incentive under profit-sharing should vanish as team size grows, yet company-wide profit sharing consistently shows ~4–5% productivity gains even in firms with thousands of workers. Peer monitoring, sorting and income effects are offered as competing explanations, all untested.
 
+## A second derivation of the same result: employees vs. independent contractors
+
+*Added by the `theory-of-the-firm` ingest, 2026-08-20.*
+
+**[model — Gibbons 2004]** Gibbons's elemental restatement of this theory delivers the low-powered-incentive result by a route Proposition 1 does not use, and the two should be kept apart because they rest on different ingredients.
+
+The elemental incentive-system theory treats **asset ownership as one more contractible instrument that changes the agent's *payoff function*, not her action space**. From that, weaker optimal contract slopes for employees than for independent contractors fall out **by construction**: the employer, not the employee, captures the asset's non-contractible value, so the optimal contract need not distract the employee with ownership-linked incentives on top of the measured-output incentive. No unmeasurable competing task is required for this version.
+
+**[wiki synthesis]** So this wiki now holds **three** formal routes to low-powered incentives inside firms, from one research tradition: unmeasurability of a competing task (Proposition 1, above); a corruptible subjective evaluator and the influence cost that follows (Prendergast, above); and the ownership-captures-the-asset-value derivation here. They make different predictions when measurement improves, when the evaluator becomes non-discretionary, and when the asset's value becomes contractible respectively. **None has been tested against either other.** Gibbons's own placement of the theory is worth recording alongside: he puts the elemental incentive-system theory in the **contract branch** — the position that integration changes nothing real about what anyone can do, only about what they are paid — which is the same branch as Alchian & Demsetz's "authority is a delusion" ([[team-production-and-monitoring]]) and is a stronger claim than this page has been making.
+
+**One more item, and it points away from the firm.** Gibbons's influence-cost model (Milgrom & Roberts 1988/90, plus his own Section 3D signal-jamming game) **derives** what Prendergast's influence mechanism above asserts: granting someone a decision right invites lobbying directed at them, with equilibrium lobbying intensity rising in how much the lobbyist's payoff depends on the decision. That makes the second of this page's two rule-boundedness mechanisms a formal result rather than an illustrative model, and it locates it in organisational economics rather than personnel economics. See [[decision-rights-and-authority-theory-of-the-firm]].
+
 ## What is not established
 
 - **Nothing here is tested on a public bureau.** Holmstrom & Milgrom claim coverage of "bureaucratic constraints" in their introduction, but every worked example and every cited study is a private firm or contractor: home remodelling, manufacturing piece rates, electronics sales forces, McDonald's and Burger King franchising, freelance versus staff writers. "Bureaucracy" appears only as interpretive analogy in §4. Holmstrom's lecture does not discuss public bureaus at all — the Atlanta schools case treats teachers as employees of a district, with no political principals, no multiple overseers, and no absence of residual claimancy. The public-sector transfer is carried in this wiki by a different source: [[incentives-under-multiple-principals]].
@@ -92,6 +104,7 @@ One further puzzle he names against his own paradigm: the "N−1 problem" predic
 - `raw/research/incentives-and-institutional-form/01-holmstrom-nobel-lecture.md` — Bengt Holmström, "Pay For Performance and Beyond", Nobel Prize Lecture, 8 Dec 2016. https://www.nobelprize.org/uploads/2018/06/holmstrom-lecture.pdf
 - `raw/research/incentives-and-institutional-form/03-holmstrom-milgrom-multitask.md` — Bengt Holmstrom & Paul Milgrom, "Multitask Principal-Agent Analyses: Incentive Contracts, Asset Ownership, and Job Design", *Journal of Law, Economics, & Organization* 7 (Special Issue), 1991, 24–52. https://www.sfu.ca/~allen/HolmstromMilgrom.pdf
 - `raw/research/incentives-and-institutional-form/05-prendergast-incentives-firms.md` — Canice Prendergast, "The Provision of Incentives in Firms", *Journal of Economic Literature* 37(1), 1999, 7–63. http://qed.econ.queensu.ca/pub/faculty/ferrall/econ861/papers/prendergast.pdf
+- `raw/research/theory-of-the-firm/06-gibbons-four-theories-of-firm.md` — Robert Gibbons, "Four Formal(izable) Theories of the Firm?", MIT and NBER, 2004 (for the employee-vs-contractor derivation and the formal influence-cost model). https://web.mit.edu/rgibbons/www/Gibbons_4_Formal_9-16-04.pdf
 
 ## Related
 
@@ -105,3 +118,6 @@ One further puzzle he names against his own paradigm: the "N−1 problem" predic
 - [[bureaucratic-growth-and-parkinsons-law]] — the contrasting reading of rule-boundedness and headcount as pathology rather than as design; the tension is recorded at D9.
 - [[efficiency-of-institutions-north-vs-williamson]] — Prendergast's "not a ringing endorsement" verdict is logged there on the North side.
 - [[open-questions]] — Q4 (selection vs. structure) turns on the Lazear/Paarsch-Shearer decompositions recorded here.
+- [[decision-rights-and-authority-theory-of-the-firm]] — the elemental restatement of this theory, its placement in the contract branch, and the formal influence-cost model behind the second route to rule-boundedness.
+- [[team-production-and-monitoring]] — the narrower, earlier ancestor of the measurement mechanism: single-task, driven by nonseparability rather than by differential measurability across tasks.
+- [[world-management-survey]] — supplies scorable proxies ("consequence management", "rewarding high-performance", "removing poor performers") for constructs this page treats formally, and a caution: a bureau may score low on exactly the items where low is the design this page prescribes.

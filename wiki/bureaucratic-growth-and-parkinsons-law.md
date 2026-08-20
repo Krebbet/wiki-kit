@@ -87,6 +87,18 @@ Two equilibria follow, and the distinction matters more than the numbers:
 
 Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no fat, no empire-building and no idle staff, still producing roughly two-thirds more than the social optimum. Any diagnosis that looks only for waste will not see it.
 
+## A framing tension: overload as commitment, not as bloat
+
+*Added by the `theory-of-the-firm` ingest, 2026-08-20. Recorded as a framing tension and deliberately **not** filed in `conflicts/`.*
+
+**[model — Aghion & Tirole 1997]** All three accounts above treat headcount or scope outrunning workload as the thing to be explained — as bloat with a motive behind it. Aghion & Tirole derive the opposite reading of the same observable. Define a firm to be in **overload** when the marginal profit of one more subordinate, *holding subordinate behaviour fixed*, is negative. Their equation 17 shows **it is always optimal for the firm to be in that state**, and footnote 22 gives the reason in one line: **"Overload is a credible commitment not to stifle initiative."** A principal who merely chooses not to supervise — "playing golf" — is not credible, because she can change her mind; a principal who is genuinely too stretched to investigate cannot. The marginal employee whose own contribution is negative is buying a commitment that could not otherwise be made, and the return on it is the initiative of everyone below.
+
+**Why this is not filed as a conflict.** There is no shared measured quantity for the two sides to disagree about. Aghion & Tirole is a formal model with **no data of any kind** and its own authors say the evidence for real authority is "personal experience"; the three accounts on this page rest on two restated historical series (n = 2), a set of invented numbers, and — in Downs's case — nothing whatsoever. Two undata'd readings of an unmeasured phenomenon do not constitute a conflict; they constitute a gap.
+
+**[wiki synthesis] What it does supply is a null hypothesis any future test would have to clear.** The diagnostic implicitly used on this page — find headcount rising without a matching workload signal, and read it as bloat — does not distinguish bloat from commitment, because both predict a negative marginal product for the last hire. Separating them needs something else: does subordinate initiative (proposals originated below, decisions taken without reference upward) rise or fall as the ratio moves? The bloat accounts have no prediction on that variable; Aghion & Tirole's is unambiguous. **That makes it the cheapest available sharpening of a question this page has left blunt since it was written**, and it costs no new data collection beyond what an organisation's own decision records contain. Recorded on both pages; see [[formal-and-real-authority]].
+
+Note also that Aghion & Tirole supply a **second** growth-related result this page's accounts do not have: it is the *growth rate*, not the size reached, that determines how much real authority migrates downward. Fast growth overloads the principal and pushes authority down; slow growth lets her accumulate monitoring experience, which pushes it back up as the organisation ages. That is an age mechanism pointing the opposite way from Downs's C.11, and it is registered at [[open-questions]] Q112 with the same warning attached: it is theory, from a paper with no data.
+
 ## What this page does not establish
 
 **[wiki synthesis — gaps]**
@@ -101,6 +113,7 @@ Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no 
 - `raw/research/scale-effects/05-parkinson-law-quantified-empirical.md` — Peter Klimek, Rudolf Hanel & Stefan Thurner, "Parkinson's Law Quantified: Three Investigations on Bureaucratic Inefficiency", 2008. https://arxiv.org/pdf/0808.1684
 - `raw/research/bureaucracy-and-public-choice/02-downs-theory-bureaucracy.md` — Anthony Downs, "A Theory of Bureaucracy", RAND Corporation P-3031, November 1964. https://www.rand.org/content/dam/rand/pubs/papers/2008/P3031.pdf — **scoped to the third-channel section only.**
 - `raw/research/scale-effects/03-niskanen-peculiar-economics-bureaucracy.md` — William A. Niskanen, "The Peculiar Economics of Bureaucracy", *American Economic Review* 58(2), May 1968, 293–305. https://sites.socsci.uci.edu/~jkbrueck/course%20readings/Econ%20272B%20readings/niskanen.pdf (JSTOR: http://www.jstor.org/stable/1831817)
+- `raw/research/theory-of-the-firm/05-aghion-tirole-formal-real-authority.md` — Philippe Aghion & Jean Tirole, "Formal and Real Authority in Organizations", *Journal of Political Economy* 105(1), Feb 1997, 1–29 (for the optimal-overload result). https://people.duke.edu/~qc2/BA532/1997%20JPE%20Aghion%20and%20Tirole.pdf
 
 ## Related
 
@@ -115,3 +128,4 @@ Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no 
 - [[downs-vs-merton-on-age-dependence]] — the filed conflict over Downs's C.11 life-cycle limb, kept explicitly as a clash of two models with no evidence on either side.
 - [[organizational-economics-of-the-state]] — carries the one size-positive datapoint in this area (Brown, Earle & Gehlbach: larger Russian regional bureaucracies, more effective privatisation), scoped to one country and period.
 - [[open-questions]] — Q7 (age vs. size vs. competitive pressure) and Q9 (does decay differ where output is measurable) both take evidence from this page.
+- [[formal-and-real-authority]] — the optimal-overload-as-commitment reading of the same observable, recorded on both pages as a framing tension rather than filed as a conflict.

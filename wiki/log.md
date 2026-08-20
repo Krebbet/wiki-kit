@@ -947,3 +947,113 @@ Wilson's *Bureaucracy* (1989) are both known and neither is held; nothing on any
 1968 Niskanen paper the wiki does hold is cited only for what is already on
 `bureaucratic-growth-and-parkinsons-law`. Krueger (1974) is named only as the coiner of "rent-seeking", which
 is a fact stated in the Tullock summary, not a claim from her paper.
+
+## [2026-08-20] ingest | theory-of-the-firm (8 sources)
+
+**Sources.** Alchian & Demsetz 1972 (team production); Jensen & Meckling 1976 (agency costs); Fama 1980
+(separation of ownership and control); Chandler 1992 JEP (organizational capabilities, M-form); Aghion &
+Tirole 1997 (formal and real authority); Gibbons 2004 (four formalizable theories); Gompers, Ishii & Metrick
+2001 (governance index); Bloom, Sadun & Van Reenen 2016 (World Management Survey). Scoped deliberately to the
+**internal organisation of the firm** — decision rights, monitoring, ownership structure, management practice
+— and away from the firm-boundary question the wiki already covers on `governance-structures` and
+`property-rights-theory-of-the-firm`.
+
+**1. Evidence character of the batch.** Five sources are `[model]` with no data of their own (Alchian &
+Demsetz, Jensen & Meckling, Fama, Aghion & Tirole, Gibbons), and four of the five say so in their own text.
+One (Chandler) is **compressed historical synthesis one remove from its archive** — his own 1992 condensation
+of *The Visible Hand* and *Scale and Scope*, neither of which this wiki holds — and it supplies no coding
+scheme, no ranking criterion and no restated caveats. **Two are `[empirical]`, and they are why this batch
+mattered**: Gompers/Ishii/Metrick and Bloom/Sadun/Van Reenen are the first instruments in this wiki that
+measure **individual organisations** rather than countries, and both are scoreable tomorrow by one competent
+person.
+
+**2. Eight new pages.** `team-production-and-monitoring`; `agency-costs-and-ownership-structure`;
+`separation-of-ownership-and-control`; `organizational-capabilities-and-the-m-form`;
+`formal-and-real-authority`; `decision-rights-and-authority-theory-of-the-firm`;
+`corporate-governance-index-and-firm-control-rights`; `world-management-survey`.
+
+**3. A correction to the wiki's own commissioning brief, made on the page rather than in chat.** The brief
+stated that Fama (1980) contains the initiation / ratification / implementation / monitoring decomposition of
+decision rights. **It does not** — the ingest checked the text and neither "ratification" nor "initiation"
+occurs in it. That taxonomy is Fama & Jensen (1983), which this wiki has **not** captured. The correction is
+stated as its own section at the top of `separation-of-ownership-and-control`, the taxonomy was **deliberately
+not written into any page from memory** (it is well known, which is exactly why importing it would be
+undetectable), Fama & Jensen (1983) was added to the acquisition list at Q103 alongside Weber's *Bureaucracy*
+and Wilson's *Bureaucracy* (1989), and a dedicated row records what the absence costs at Q113.
+
+**4. The measurement section, which is the reason this job was run.** Five register rows, D110–D114, in a new
+block whose note states what the block is for. **D110** management-insulation / control-rights allocation
+(`promoted`) — an additive 0–24 count of charter, bylaw and state-law provisions shifting control from
+shareholders to management, **scoreable tomorrow from documents alone by one analyst**, with the limit stated
+inside the row: generalising beyond US public companies requires **first building an equivalent settled
+taxonomy of control-shifting provisions** for another jurisdiction or entity type, a step neither this source
+nor any other in the batch attempts. **D111** management-practice quality (`promoted`) — 18 practices, 1–5,
+double-blind interview, **scoreable tomorrow given a trained interviewer and one honest correctly-placed
+respondent**, works on private firms by construction (90% of the sample) and untested-but-plausibly on public
+bureaus, failing on scripted answers or an unreachable respondent rather than on a decoupled document.
+**D112** formal/real authority gap (`candidate`, **not scoreable**) — Aghion & Tirole only *propose*
+instruments (overrule counts with their own self-censorship caveat, "who gets courted", liability doctrine),
+and the row records what would have to be built. **D113** residual-claim capitalizability (`candidate`,
+document-scoreable). **D114** separability of production (`candidate`, **not** document-scoreable in the same
+way — it classifies a production technology, and the row says so). **D90 was wired in as a gate on D110 and
+D111**, with the extension noting that the gate bites differently on each: D110 passes (i) and (ii) trivially
+and lives or dies on (iii), decoupling; D111 is a behaviour measure by construction and (i) and (ii) bind.
+
+**5. The 77% finding, recorded at Q90 rather than only on its own page.** Bloom et al. decompose management
+variation as 13% country, 10% industry, **77% within country-and-industry**. The wiki has repeatedly found
+that country-level measures cannot support institution-level claims and posed it at Q90 as a fork —
+a property of the *literature*, or a property of the *object*. This is the first evidence that question has
+had, and it supports the first limb for at least one measurable dimension. Recorded with two limits attached:
+management practice is not the same object as the shared legal and coercive order the second limb is about,
+and [[organizational-economics-of-the-state]]'s 73% country-fixed-effects "Weberian Fact" points the opposite
+way on a different instrument and a different object. The honest reading recorded is that **how much of
+institutional quality is national depends on what is being scored**, which makes running two instruments on
+one set of organisations the cheapest available progress.
+
+**6. Conflicts.** `rival-firm-boundary-theories` extended from three positions to four: **adaptation/authority**
+added as Position D (requires zero specific investment), with Gibbons's headline that the four are **formally
+orthogonal, not nested** — refuting the folk claim that Grossman-Hart formalised Williamson, which Gibbons
+calls "just plain wrong" — his candidate discriminating test (only the margins matter, for the property-rights
+theory) recorded **together with his own flag that the margins are unobservable and the test likely
+untestable**, and his own view that a horse race may be the wrong frame. **Masten-Meehan-Snyder** filed there
+too: the asset-specificity→integration regression cannot identify causal direction, generalised by Gibbons to
+all four theories. **Chandler vs. Williamson** filed as a sub-dispute on whether backward integration at Pabst,
+Singer, McCormick and Ford were "mistakes" — with the wiki's own note that the disagreement is about the
+benchmark and is in principle decidable from business-historical evidence neither source supplies here.
+**Aghion-Tirole's optimal-overload-as-commitment vs. overload-as-bloat recorded as a framing tension on both
+pages and deliberately not filed** — no shared measured quantity exists for the two sides to disagree about.
+
+**7. Two false conflicts explicitly not filed, and the terminology notes written instead.** (i) Alchian &
+Demsetz's "residual **claimant**" (title to earnings) vs. Grossman-Hart's "residual **control rights**" (the
+right to decide an asset's unspecified uses). (ii) Fama's "ownership of the firm is an irrelevant concept"
+(the residual financial claim, inside a constituted firm) vs. Grossman-Hart's "ownership is control" (a
+physical asset, across a boundary). Different objects, same words, in both cases. Short terminology sections
+written on `team-production-and-monitoring`, `separation-of-ownership-and-control` and — where a reader is
+most likely to hit the collision — `property-rights-theory-of-the-firm`.
+
+**8. Existing pages extended.** `governance-structures` (Gibbons's two-theories provenance finding with the
+1975/1985 index-count evidence; the generalised identification critique; the WMS technology-vs-design contrast
+marked soft and partial; the Chandler pointer). `property-rights-theory-of-the-firm` ("drone employees", the
+refined aO/aN/aC and dP/dN/dA taxonomy, both terminology traps). `multitask-incentive-theory` (the
+employee-vs-contractor derivation as a third formal route to low-powered incentives; the influence-cost model
+now derived rather than asserted). `bureaucratic-growth-and-parkinsons-law` (the overload framing tension and
+the null hypothesis it imposes on any bloat diagnostic). **Retired `[framework]` tokens normalised to
+`[model]` on every page touched** — 4 on `property-rights-theory-of-the-firm`, 2 on
+`multitask-incentive-theory`, 4 on `governance-structures`.
+
+**9. Open questions.** Q110 (can the G-index logic be rebuilt for another entity type, and what does building
+the prior taxonomy cost); Q111 (does capability formation operate in non-firm bureaucracies — asked because
+Chandler claims it once, in three sentences, with no evidence, against his own capital-intensity scope
+restriction); Q112 (an age mechanism running the *opposite* way — accumulated principal experience centralising
+authority — recorded for its direction, not as evidence); Q113 (the Fama & Jensen 1983 gap and what it costs);
+Q114 (**the batch's central negative: better measurement did not buy identification**, and the authors of the
+better instrument say so); Q115 (does the WMS instrument work on a public bureau, and what would it score —
+with the validity trap that a bureau may score low on exactly the items where low is the correct design).
+Q106–Q109 left unused; the numbering note records it.
+
+**10. What was deliberately not imported.** The Fama-Jensen (1983) taxonomy (see 3). Williamson's books, which
+the wiki does not hold and which Gibbons's index-count evidence is *about* rather than *from*. Chandler's *The
+Visible Hand* and *Scale and Scope*, both named on the page as unread with the consequence stated. The later
+WMS decentralisation instrument, which other Bloom/Sadun/Van Reenen papers reportedly field and which this
+source does not document — flagged on the page so it is not attributed here. Chong et al. (2014) on WMS scores
+in government services is named as **an appeal to an unread external paper, not evidence in this source**.

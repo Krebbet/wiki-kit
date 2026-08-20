@@ -34,7 +34,7 @@ The contract-law axis is the genuinely novel one: contract law is plural, not si
 
 ## Why firms cannot grow without limit
 
-**[framework — load-bearing for institutional lifecycle]** Section 4.1 of the lecture, "selective intervention," addresses Coase's and Knight's puzzle: why can't a large firm do everything a collection of smaller firms can do, and more? The hypothetical mechanism would be *replication* (acquire units and run them exactly as before) plus *selective intervention* (intervene only where it creates net value). Williamson's answer is that this requires four promises that are **not self-enforcing** absent costless three-way arbitration:
+**[model — load-bearing for institutional lifecycle]** Section 4.1 of the lecture, "selective intervention," addresses Coase's and Knight's puzzle: why can't a large firm do everything a collection of smaller firms can do, and more? The hypothetical mechanism would be *replication* (acquire units and run them exactly as before) plus *selective intervention* (intervene only where it creates net value). Williamson's answer is that this requires four promises that are **not self-enforcing** absent costless three-way arbitration:
 
 1. preserve high-powered incentives in the acquired unit;
 2. use the acquired assets with due care;
@@ -47,7 +47,7 @@ Each fails for a specific reason. The owner controls the accounting system and c
 
 ## Coase's original limits-to-firm-size argument
 
-**[framework — Coase 1937]** Williamson's selective-intervention argument answers a puzzle Coase posed and answered differently. Coase defines firm size as **the number and scope of transactions organised by one entrepreneur** — not headcount: "a firm becomes larger as additional transactions... are organized by the entrepreneur and becomes smaller as he abandons the organization of such transactions." The equilibrium condition is a margin, not a threshold: the firm expands until "the costs of organizing an extra transaction within the firm become equal to the costs of carrying out the same transaction by means of an exchange on the open market or the costs of organizing in another firm."
+**[model — Coase 1937]** Williamson's selective-intervention argument answers a puzzle Coase posed and answered differently. Coase defines firm size as **the number and scope of transactions organised by one entrepreneur** — not headcount: "a firm becomes larger as additional transactions... are organized by the entrepreneur and becomes smaller as he abandons the organization of such transactions." The equilibrium condition is a margin, not a threshold: the firm expands until "the costs of organizing an extra transaction within the firm become equal to the costs of carrying out the same transaction by means of an exchange on the open market or the costs of organizing in another firm."
 
 Four named diseconomies stop it there:
 
@@ -58,7 +58,7 @@ Four named diseconomies stop it there:
 
 Two exogenous shifters are named and matter for the wiki. **Technology**: improvements in managerial technique or communications (telephone, telegraph) that cut internal organising cost more than they cut market-transaction cost raise optimal firm size, and the reverse shrinks it — so observed firm size is partly a technology reading, not a governance reading. **Regulation**: sales taxes, quota schemes and price controls that apply to market transactions but not to the same transaction organised inside a firm push firms to be **artificially larger** than organising-cost economics alone would produce. And, quoting Knight, "the possibility of monopoly gain offers a powerful incentive to continuous and unlimited expansion of the firm" — absent the diseconomies above, market-power incentives alone would drive unbounded consolidation.
 
-**[framework — Coase 1991]** The Nobel lecture restates the margin condition — "a firm... could only continue to exist if it performed its co-ordination function at a lower cost than would be incurred if it were achieved by means of market transactions and also at a lower cost than this same function could be performed by another firm" — and gives the limiting case: Lenin's proposal to run the Soviet economy "as one big factory," which Western economists held to be impossible even as large Western firms plainly worked. Coase frames his own 1932 puzzle as reconciling the existence of management with the impossibility of economy-wide planning. **No threshold, no mechanism-with-numbers, and no test** is offered for where coordination-by-hierarchy breaks down. It is asserted as a puzzle resolved by theory.
+**[model — Coase 1991]** The Nobel lecture restates the margin condition — "a firm... could only continue to exist if it performed its co-ordination function at a lower cost than would be incurred if it were achieved by means of market transactions and also at a lower cost than this same function could be performed by another firm" — and gives the limiting case: Lenin's proposal to run the Soviet economy "as one big factory," which Western economists held to be impossible even as large Western firms plainly worked. Coase frames his own 1932 puzzle as reconciling the existence of management with the impossibility of economy-wide planning. **No threshold, no mechanism-with-numbers, and no test** is offered for where coordination-by-hierarchy breaks down. It is asserted as a puzzle resolved by theory.
 
 **Scope condition, load-bearing.** Coase's size logic requires a market alternative the entrepreneur can lose transactions to — "it is always possible to revert to the open market if he fails." A bureau with no market alternative fails that condition. Coase's own note 14 treats state planning as categorically different in origin (imposed rather than voluntary) even while granting the structural analogy, so the firm-size argument should not be assumed to transfer to bureau size. That transfer is exactly what [[bureaucratic-growth-and-parkinsons-law]] and [[functional-vs-rent-seeking-growth]] leave open.
 
@@ -90,7 +90,7 @@ Span and depth are negatively correlated across firms (−0.27): wider organisat
 
 *Added by the `incentives-and-institutional-form` ingest, 2026-08-19.*
 
-**[framework, three sources]** Everything above this section is one answer to the make-or-buy question. Two further formal answers exist, and they are **rivals rather than refinements** — each identifies a different observable as the thing doing the causal work, and two of the three say so about the first in their own text. They are set out here side by side; the unresolved part is filed as [[rival-firm-boundary-theories]].
+**[model, three sources]** Everything above this section is one answer to the make-or-buy question. Two further formal answers exist, and they are **rivals rather than refinements** — each identifies a different observable as the thing doing the causal work, and two of the three say so about the first in their own text. They are set out here side by side; the unresolved part is filed as [[rival-firm-boundary-theories]].
 
 | | **Asset specificity** (Williamson) | **Residual control rights** (Grossman & Hart 1986; Hart 2016) | **Measurement cost** (Holmstrom & Milgrom 1991) |
 |---|---|---|---|
@@ -112,6 +112,29 @@ Span and depth are negatively correlated across firms (−0.27): wider organisat
 **A fourth candidate, recorded but not admitted.** Frey points at "the limits of the firm... in view of the possible limits of relying purely on extrinsic incentives" (Osterloh & Frey 2000) — firm boundaries set by where extrinsic incentives stop working on motivation. It is a pointer inside a survey, with no model and no test. See [[motivation-crowding]].
 
 **Scope note that applies to all three.** None has been tested on a public bureau. Hart's private-prison case is the only extension of any of them to a public/private boundary decision, and it is one service in one country. Dixit's incentive-theoretic account of the same boundary ([[incentives-under-multiple-principals]]) is the closest thing this wiki has to a public-sector version, and it runs on principal multiplicity rather than on any of the three variables above.
+
+## Provenance: Williamson's corpus contains two theories, not one
+
+*Added by the `theory-of-the-firm` ingest, 2026-08-20.*
+
+**[model — Gibbons 2004]** Everything on this page above presents "Williamson's theory" as the asset-specificity account. Gibbons's synthesis of the elemental theories finds that the corpus actually contains **two distinct formal theories**, and gives textual-historical evidence: ***Markets and Hierarchies* (1975) has zero index entries for asset-specificity terms; *The Economic Institutions of Capitalism* (1985) has dozens.**
+
+- The **rent-seeking** theory (1979/1985; with Klein, Crawford & Alchian 1978): non-integration invites socially wasteful haggling over appropriable quasi-rents; integration unifies control over the *alienable* instruments of that haggling, at the cost of unmodelled "bureaucracy costs." Its formal core is Tullock's contest model, imported by Masten — the same mechanism as [[rent-seeking-and-the-welfare-cost-of-transfers]], applied to a firm boundary. Gibbons flags that **this theory has never been fully formalised as a unified account**; his section title on it ends in a question mark.
+- The **adaptation/authority** theory (1971/73/75/91; Simon 1951): decisions are non-contractible even ex post and the opportunity to make them is fleeting, so a pure decision right is pre-allocated to a boss who then decides self-interestedly. **This one requires no specific investment at all.**
+
+**[wiki synthesis]** Two consequences for how this page is cited. First, "TCE" is not a single citable position on the make-or-buy question, and a claim attributed to Williamson should say which limb it comes from. Second, the second limb is now Position D on [[rival-firm-boundary-theories]] and is set out at [[decision-rights-and-authority-theory-of-the-firm]] — so this page's three-rival table is a **four**-rival landscape, and the fourth rival is Williamson's own other theory.
+
+**And a critique that lands on the evidence this page asserts.** Williamson's "over 800 broadly corroborative empirical tests" are, almost entirely, regressions of organisational form on a transaction-difficulty variable. Masten, Meehan & Snyder (1991), generalised by Gibbons to **all four** elemental theories, show that such a regression **cannot distinguish** "specificity raises the cost of non-integration" from "specificity lowers the cost of internal organisation" — both produce the identical correlation, and the standard practice assumes independence between the two cost functions without justification. This does not make the correlations spurious; it makes them uninformative about mechanism and about direction. Recorded in full at [[rival-firm-boundary-theories]].
+
+**A contested application, filed.** Chandler disputes Williamson's verdict that backward integration at Pabst Brewing, Singer, McCormick Harvester and Ford "would appear to be mistakes," on the ground that the supply networks of the period could not deliver the specialised inputs at volume — so the alternative Williamson treats as feasible did not exist, and the remediableness comparison is to a counterfactual rather than to a remediable alternative. Filed at [[rival-firm-boundary-theories]]; Chandler's side is at [[organizational-capabilities-and-the-m-form]].
+
+## An empirical instrument that engages the alignment premise
+
+*Added by the `theory-of-the-firm` ingest, 2026-08-20.*
+
+**[empirical — Bloom, Sadun & Van Reenen 2016]** The World Management Survey's structural model frames itself explicitly against "the dominant 'Design' paradigm in organizational economics... in this contingent view... there is no sense in which any management styles are on average better than any others" — of which the discriminating-alignment hypothesis on this page is a canonical instance. On 11,383 firms in 34 countries, they find management practice behaves more like a **technology** (monotonically output-increasing) than like a contingent design choice, on the evidence that better scores predict higher productivity, growth and survival across environments.
+
+**Read this as partial and soft, not as a refutation, and the source says so.** The Design model they test is "an extremely stylized version" with one hand-picked functional form, which they state is "certainly not meant to represent the wide range of Design approaches." Their own data supports a contingency channel too — capital-intensive industries specialise in monitoring and targets, R&D-intensive industries in people management — and they propose **a hybrid model** as the honest conclusion. **[wiki synthesis]** It is also not a test of *this* page's claim: discriminating alignment is about matching transactions to governance structures, not about management practice quality, and the two are different objects. What it does establish is that a real dataset exists on which a contingency-versus-dominance question can be asked at organisation level — which is more than the alignment hypothesis has ever been tested against. Not filed as a conflict; the objects differ and both sides concede ground. See [[world-management-survey]].
 
 ## Levers
 
@@ -144,6 +167,9 @@ The **remediableness criterion**: an extant mode of organisation is presumed eff
 - `raw/research/incentives-and-institutional-form/02-hart-nobel-lecture.md` — Oliver Hart, "Incomplete Contracts and Control", Nobel Prize Lecture, 8 Dec 2016. https://www.nobelprize.org/uploads/2018/06/hart-lecture.pdf
 - `raw/research/incentives-and-institutional-form/01-holmstrom-nobel-lecture.md` — Bengt Holmström, "Pay For Performance and Beyond", Nobel Prize Lecture, 8 Dec 2016. https://www.nobelprize.org/uploads/2018/06/holmstrom-lecture.pdf
 - `raw/research/incentives-and-institutional-form/08-frey-crowding-intrinsic-motivation.md` — Bruno S. Frey, "Crowding effects on intrinsic motivation" (for the fourth, unadmitted candidate). https://www.bsfrey.ch/wp-content/uploads/2021/08/crowding-effects-on-intrinsic-motivation.pdf
+- `raw/research/theory-of-the-firm/06-gibbons-four-theories-of-firm.md` — Robert Gibbons, "Four Formal(izable) Theories of the Firm?", MIT and NBER, 2004 (for the two-theories provenance finding and the generalised identification critique). https://web.mit.edu/rgibbons/www/Gibbons_4_Formal_9-16-04.pdf
+- `raw/research/theory-of-the-firm/08-bloom-sadun-vanreenen-management-technology.md` — Nicholas Bloom, Raffaella Sadun & John Van Reenen, "Management as a Technology?", NBER Working Paper 22327, rev. 2016 (for the technology-vs-design contrast). https://www.nber.org/system/files/working_papers/w22327/revisions/w22327.rev0.pdf
+- `raw/research/theory-of-the-firm/04-chandler-organizational-capabilities.md` — Alfred D. Chandler Jr., "Organizational Capabilities and the Economic History of the Industrial Enterprise", *JEP* 6(3), 1992 (for the contested "mistakes" verdict). https://www.nsd.pku.edu.cn/attachments/f30cbfa11def4d2bbef32cdf89b0d00c.pdf
 
 ## Related
 
@@ -161,3 +187,6 @@ The **remediableness criterion**: an extant mode of organisation is presumed eff
 - [[rival-firm-boundary-theories]] — the open conflict between the three, with the discriminating cases that would settle it.
 - [[incentives-under-multiple-principals]] — Dixit extends discriminating alignment to the public/private boundary using incentive-theoretic microfoundations instead of asset specificity.
 - [[motivation-crowding]] — the fourth and weakest candidate account of firm limits, recorded but not admitted.
+- [[decision-rights-and-authority-theory-of-the-firm]] — the second theory inside Williamson's own corpus, formalised, and the fourth rival on the boundary question.
+- [[organizational-capabilities-and-the-m-form]] — Chandler's rejection of the transaction as the unit of analysis, and his contest of the four "mistake" verdicts.
+- [[world-management-survey]] — the technology-vs-design contrast, and the first dataset on which a contingency question can be asked at organisation level.
