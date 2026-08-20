@@ -774,3 +774,77 @@ form and missed the qualified form `[framework — ...]`, which still stands in 
 (×3), `motivation-crowding` (×2) and `gradual-institutional-change` (×4). Not fixed here — outside this
 batch's remit and it touches six unrelated pages — but flagged so the next lint pass can sweep for
 `\[framework` rather than `\[framework\]`.
+
+---
+
+## [2026-08-20] page | schooling-and-institutional-quality (user-requested, one source)
+
+**Scope.** One new page for the schooling hypothesis — human capital as a cause of institutional quality
+rather than a consequence — requested by the user and marked as a subject to expand. Written from the single
+already-captured source (Glaeser, La Porta, Lopez-de-Silanes & Shleifer, NBER WP 10568), with the raw file
+consulted directly to verify Tables 11 and 12 coefficient by coefficient. No new capture.
+
+**1. Why a separate page rather than a section on the anchor.** The Glaeser material was already split across
+two pages from the same batch: [[colonial-origins-and-the-settler-mortality-instrument]] carries the
+measurement attack and the mechanics of the instrument re-run, and
+[[institutions-vs-geography-vs-trade-horse-race]] carries the collision with Rodrik's channel decomposition.
+Both treat Glaeser et al. as a *critique*. Neither states the positive claim as a claim with its own evidence
+and its own failure conditions. This page does that and cross-links rather than restating; the measurement
+argument appears here only as a premise, in one paragraph, with a pointer.
+
+**2. Three things the raw tables carry that the existing pages do not, all found by reading Table 11 and
+Table 12 directly rather than through the summary.**
+
+- **Table 12 Panel A: initial log GDP per capita predicts subsequent five-year schooling growth strongly
+  (+0.2839, s.e. 0.0790; +0.3978 in the Polity specification), while predicting no institutional change on any
+  of the four measures in Panel B.** The wiki had recorded only the Panel B half. The paper's own sequencing
+  table is therefore a three-link chain — income → schooling → institutions — not evidence that human capital
+  is the unmoved first mover. The paper's rhetoric skips this link; the page states it and flags that anyone
+  using Glaeser et al. for "education is the deep cause" is claiming more than Table 12 supports.
+- **Table 11's footer reports the correlation between predicted executive constraints and predicted years of
+  schooling at 0.8182 and 0.8163, on N = 47 and 55, and the paper does not discuss it.** A horse race between
+  two instrumented regressors collinear at r ≈ 0.82 on fifty-odd observations has little power to attribute
+  shared variance. "Schooling wins" is better read as "the instruments cannot separate them" — which is
+  actually the authors' own stated conclusion (the instrument is invalid *for institutions specifically*) and
+  is weaker than the reading their framing invites.
+- **The executive-constraints second-stage coefficient is negative in both columns** (−0.3432 and −0.2965),
+  not merely insignificant, and the F-test on the 1500-density specification is 4.70 against 17.23 for settler
+  mortality. Wrong-signed point estimates are a symptom of a specification not identifying the thing, and the
+  page says so rather than scoring it for the schooling side.
+
+**3. The failing measure is now named.** "3 of 4" appears in the summary and on the anchor page without saying
+which one fails. It is the Alvarez autocracy dummy (−0.0958, s.e. 0.0707); the three that work are executive
+constraints (+0.4975), Polity autocracy (−0.9092) and democracy (+0.7004).
+
+**4. Mechanism candour, recorded.** Glaeser et al. consider the human-capital-externality reading (Lucas 1988)
+and set it aside because Pritchett (2000) finds returns to education in developing countries are not
+especially high — then adopt Lipset's political-externality reading ("courts and legislatures replace guns")
+as the residual. No violence, stability or dispute-resolution variable enters any regression in the paper. The
+mechanism is attached by citation after the timing result, which is the reverse of this wiki's stated
+preference, and is flagged on the page as the largest single thing job 17 must fix.
+
+**5. Q94: extended, not duplicated.** Q94 already stated the sequencing claim and the design asymmetry (only
+one camp owns a timing test) precisely enough that a second question would have split the evidence across two
+rows. It now points at the page and carries the three corrections above, plus the note that **no independent
+replication of Table 12 is recorded anywhere in this wiki** — stated as a gap in the wiki's evidence, not as a
+fact about the literature.
+
+**6. Thinness stated on the page, not just in the log.** One paper, one team, and the team is a party to the
+argument. The page makes the non-independence explicit: the measurement critique clears the ground and the
+schooling result occupies it, both from the same authors and the same priors, and accepting the first does not
+entail the second — the indices could be bad measures *and* institutions could still be upstream. The
+self-citation apparatus (La Porta et al. 1997/1998/1999/2004, Djankov et al. 2003) supplies the interpretive
+framework as well as the support, so the *framing* is uncorroborated outside the group.
+
+**7. What was deliberately left out.** No Barro, no Lipset's own empirical descendants, no modernisation
+theory, no human-capital-and-democracy literature — all of it known and none of it captured. The expansion
+note says explicitly that the absence is a rule being followed rather than a judgement that the literature
+does not exist, and hands the retrieval to job 17. Job 17's requirements are stated on the page as
+requirements: at least one affirmative-camp sequencing source (ideological balance is a hard gate), any
+independent replication of Table 12, the **norms half** the paper invokes and never measures ("human and
+social capital", operationalised as years of schooling alone), and sub-national or natural-experiment
+evidence. The page is to be **rewritten rather than patched** — its structure is shaped around one paper's
+table numbers and will not survive contact with a real literature.
+
+**8. No register row.** A hypothesis about causal direction is not an axis of institutional variation. D90
+already carries the measurement axis this paper contributes.

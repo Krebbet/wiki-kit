@@ -70,5 +70,6 @@ Three things, all in the paper, all routinely dropped when it is cited.
 - [[credible-commitment]] — the macro statistical version of that page's property-rights-drives-investment claim, with no institutional-design detail where that page has a single case and a market-priced measure.
 - [[decay-as-real-vs-decay-as-overstated]] — the decade-by-decade first-stage decline and rising Polity scores are country-level calendar-time evidence of institutional mutability; they extend that conflict without settling it.
 - [[developmental-state-and-embedded-autonomy]] — Wade's cases are the ones where a high-growth economy scores low on exactly the axis this paper finds decisive.
+- [[schooling-and-institutional-quality]] — the direct counter-result off the same instrument: this paper's Table 3 puts institutions' coefficient on human capital at roughly one-sixth of its coefficient on physical capital, where Glaeser et al. instrument for both and find only schooling survives the second stage.
 - [[what-is-an-institution]] — "institutions" here is one perceptions-based composite per country, which collapses every definitional distinction that page maintains.
 - [[open-questions]] — Q13 (which channel dominates — this paper's Table 3 is the only quantitative attempt in the batch), Q90 (level of analysis).
