@@ -65,6 +65,12 @@ hole the completed jobs identified by name.
 | 15 | `institution-case-profiles` | **Paired case profiles: one public, one private, same axes** (FDA and Meta as the brief's own example). *Why:* the wiki has **zero** case-study pages, so lint check 13 is permanently `not yet applicable` by construction and the framework is entirely ungrounded. **Not a literature job** — it captures primary institutional documents (enabling statutes, org charts, budgets, annual reports, 10-Ks, inspector-general reports, post-mortems) and scores them against `[[dimensions-of-institutional-variation]]`. It is also the only thing that will reveal which of the register's promoted axes are actually usable, since not one has ever been run against a real institution. | queued |
 | 16 | `informal-institutions` | **Norms, trust, culture and the informal half** — informal constraints, social norms, trust and its measurement, custom and convention as enforcement, why informal constraints change more slowly than formal rules. *Why:* North's formal/informal distinction is load-bearing in his own account and the wiki currently mentions it on four pages without ever having researched it. A general theory of institutions holding only the formal half is incomplete by construction. | queued |
 
+## Wave 5 — user-directed
+
+| # | Slug | Topic | Status |
+|---|---|---|---|
+| 17 | `schooling-norms-and-institutional-formation` | **How schooling and cultural norms form institutions.** Human capital as a *cause* of institutional quality rather than a consequence; education and state formation; civic education and norm transmission; cultural transmission of cooperation norms; the sequencing question — does schooling precede institutional change or follow it? *Why:* Glaeser et al. found that re-running AJR's own settler-mortality instrument tracks **human capital better than institutions**, and that on sequencing, schooling predicts institutional change rather than the reverse. If that holds, the causal arrow in the project's triad is partly reversed: institutions would be substantially downstream of education and norms rather than upstream of everything. Requested by the user 2026-08-20. See [[schooling-and-institutional-quality]]. | queued |
+
 ---
 
 ## Running conventions

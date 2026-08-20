@@ -670,3 +670,107 @@ is where every page already states it in practice.
 named axes" against 74 rows; the register's intro paragraph is still an append-log; the lettered tier form
 (`**[b]**`, three uses) still coexists with the named form; and `dimensions-of-institutional-variation` still
 lists `[[governance-structures]]` twice in its own `## Related`.
+
+## [2026-08-20] ingest | institutions-and-growth (9 sources)
+
+Nine sources on the wiki user's working thesis that institutions determine economic production: Acemoglu,
+Johnson & Robinson ×3 (colonial origins, reversal of fortune, the Handbook "fundamental cause" chapter),
+Rodrik/Subramanian/Trebbi, Besley & Persson, Wade, and three critics — Glaeser/La Porta/Lopez-de-Silanes/
+Shleifer, Albouy, Deaton. Five pages, two conflicts, four register rows, five open questions.
+
+**1. The verdict, in the batch's own four categories.** *Well-evidenced*: the raw correlation between measured
+institutional-quality indices and income. Both camps agree; it is not in dispute and no page should imply it
+is. *Theorised but unmeasured*: the constraint→investment→growth mechanism itself — AJR's own black box —
+Besley & Persson's investment-trap model, which its authors explicitly disclaim as causal, and "embedded
+autonomy". *Contested, unresolved*: whether the settler-mortality instrument identifies institutions at all,
+and the direction of causality between institutions, growth and human capital. *Evidenced against*: that
+corrected settler-mortality data still supports AJR's institutions coefficient (Albouy: it does not), and that
+the standard indices measure durable constraint rather than recent policy outcome (Glaeser: they do not).
+
+**2. Albouy is the hardest fact in the batch and is recorded at full precision.** 36 of AJR's 64 mortality
+rates originate outside the country they are assigned to; 22 of those trace to two extrapolations — a chain of
+French campaign rates from western Mali spread across six countries partly through place-name confusion, and
+16 Latin American countries scored from **19 bishop deaths** across three temperature bands, scaled up 4.25×
+against a Mexico campaign rate that was never annualised (correctly done, the factor is 1.86). Campaign and
+barracks rates are conflated, and the conflation runs *with* the hypothesis: campaign sourcing is
+significantly more common in high-expropriation-risk, low-GDP countries, rejected at 2%. With both of Albouy's
+corrections applied the first stage is insignificant **even with no controls** and switches sign in three of
+eight specifications; under Anderson–Rubin inference the confidence region for the institutions effect is the
+entire real line. AJR's "holds without Africa" defence leaves 13 non-conjectured countries driven entirely by
+the Neo-Europes. Albouy's own verdict stops at "without a strong empirical foundation" — not "institutions
+don't matter" — and the page says so.
+
+**3. Deaton was scoped down, and the correction is stated on the page.** The commissioning brief told the
+ingest that Deaton's Keynes Lecture uses AJR as its worked example. It does not. He names AJR **once**, in a
+list of six external-but-not-necessarily-exogenous instruments, and never demonstrates a competing channel —
+malaria, yellow fever and disease ecology do not appear in the source, and neither does "expropriation". His
+worked cases are the aid-growth instruments and Angrist–Lavy's Maimonides rule. **Albouy and Glaeser carry the
+technical critique; Deaton supplies the framework (external ≠ exogenous, LATE ≠ ATE, exogeneity untestable)
+in which their results are read.** Recorded on the anchor page and on the conflict page so the overstatement
+does not propagate.
+
+**4. The affirmative camp is internally split, and the disclaimers are the authors' own.** Rodrik's
+over-identification tests **fail** in the 140-country sample (p = 0.0071, 0.0365); he prefers the smaller
+just-identified sample rather than answering, titles a section "An instrument does not a theory make", and
+states "our findings do not map into a determinate set of policy desiderata". Besley & Persson: "there is no
+good reason to believe that these correlations can be interpreted causally", and causation on one of their own
+central results "runs from income to market support and taxation, not the other way around". AJR concede the
+culture confound unresolved, concede their malaria control is endogenous, concede the first stage collapses
+within Africa, and concede their framework is "largely verbal... not fully specified". Wade's fastest-growing
+cases score **low** on AJR's own constraint axis. The strong claim that circulates downstream is assembled
+from papers whose authors each declined to make it — filed as Q91.
+
+**5. The Rodrik merge decision: kept standalone, dependency stated twice.** The ingest flagged
+`institutions-vs-geography-vs-trade-horse-race` as a merge candidate with the anchor, since it shares AJR's
+instrument and all of its problems. Kept separate, because it contributes four things the anchor would bury —
+the three-way race against geography and trade specifically, the failed over-ID test, the decade-by-decade
+first-stage decay (0.94 → 0.87 → 0.71 against rising Polity scores 3.21 → 3.52 → 4.37), and the authors'
+unusually explicit self-disclaimer. The risk the merge would have removed — a reader treating it as
+independent corroboration — is handled by stating the dependency in the first paragraph and again in a section
+that records the decision.
+
+**6. The level-of-analysis finding is this wiki's sharpest instance to date, and is filed as a fork.** Every
+one of the nine sources measures "institutions" as a single national scalar. AJR's is a foreign-investor
+expropriation-risk score from a private consultancy averaged over a whole polity — and for 36 of 64 countries
+the *instrument* for it was collected somewhere else. Wade is the only source that names individual
+institutions (MITI, MOF, Taiwan's central bank, ITRI/ERSO, Saemaul Undong) and does so in comparative
+narrative; his one quasi-experimental citation, Lane 2017, compares targeted against non-targeted *sectors*,
+not one agency against another. **Nothing in this batch supports a causal claim about an individual
+institution's effect on production** — only about national institutional environments, contested even there.
+Q90 states it as a fork rather than a gap: either the literature has not run the disaggregation (a
+research-agenda problem, with the data classes named) or institutional environments are irreducibly national
+(in which case the triad is a claim about societies and the wiki's institution-level framework is answering a
+different question). No source in the batch takes a position. Q17 annotated accordingly.
+
+**7. Two conflicts filed OPEN.** `does-institutions-growth-survive-identification` — the central one, with a
+four-row status table and a two-part settlement criterion (an independently reconstructed mortality series
+with transparent provenance, plus a timing/sequencing design; only Glaeser's Table 12 attempts the latter and
+it runs against Position A). `constraint-vs-capacity-as-the-investment-mechanism` — the secondary one, and a
+direct tension with `credible-commitment`'s existing text rather than a new topic. That page has been
+annotated with a contested section: North's mechanism and Libecap's price-ratio measurement left intact, a
+third settlement test added (sustained investment under an unconstrained executive), and two candidate
+reconciliations recorded as hypotheses rather than adopted.
+
+**8. Register: four rows from nine sources, the worst yield the register has had, for a structural reason.**
+D90 (durable-rule vs. outcome/perception measurement validity, Glaeser) `promoted`, with a three-part
+diagnostic runnable on a single institution and registered as a **gate** on any row scored from a composite
+perception index. D91 (performance-conditionality of institutional support, Wade) `promoted` — the batch's one
+clear institution-level axis, with the observed withdrawal base rate as its fourth and load-bearing component.
+D93 (leadership-turnover risk, Besley & Persson's γ) `candidate`, with the institution-level form labelled as
+this wiki's own untested translation. D94 (embedded autonomy) **`rejected`** — no ex-ante instrument, and
+Wade's own Bank of England case shows a high score co-occurring with the opposite outcome; readmission
+requires scoring information-density-with-client and disciplining-instances separately, before the outcome is
+known. **D92 was reserved and deliberately not used**: the duplicate check the ingest asked for found the axis
+already at D7 (Ostrom's locus of rule-making authority — same operationalisation), not at D62 (which is
+selection-signal nationalisation and unrelated), so AJR's breadth-of-power-holding-group and Besley &
+Persson's θ were folded into D7 with AJR's de jure/de facto warning attached, and the number left unused so
+the check stays visible.
+
+**9. Incidental fix, and a residue for the next lint.** `credible-commitment` still carried two `[framework]`
+tokens after the 2026-08-20 tier-vocabulary normalisation; they were changed to `[model]` while the page was
+open. **The residue is wider than that page.** The normalisation appears to have caught the bare `[framework]`
+form and missed the qualified form `[framework — ...]`, which still stands in at least
+`multitask-incentive-theory`, `incentives-under-multiple-principals`, `path-dependence-and-increasing-returns`
+(×3), `motivation-crowding` (×2) and `gradual-institutional-change` (×4). Not fixed here — outside this
+batch's remit and it touches six unrelated pages — but flagged so the next lint pass can sweep for
+`\[framework` rather than `\[framework\]`.

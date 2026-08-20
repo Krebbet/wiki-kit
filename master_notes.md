@@ -113,3 +113,20 @@ health. Silence and success must not be the same output.
 Note (a) alone would change disk behaviour for every wiki; worth checking with the user before harvesting,
 since some may have chosen not to retain PDFs. (b) is safe unconditionally and should go first.
 **Status:** open
+
+### 2026-08-20 — `capture_pdf` has no timeout; marker hung 2h+ on a 25-page scan
+**Scope:** kit
+**Observation:** A marker run on a 25-page scanned PDF (`burawoy.berkeley.edu/.../Weber.Bureaucracy.pdf`) ran
+for **2 hours 8 minutes** without completing or failing, and because `capture.sh` processes a spec file
+sequentially, it blocked the other seven sources in that job for the whole period. Nothing in `capture_pdf`
+bounds the conversion, so a pathological input stalls indefinitely and silently — there is no progress output,
+no timeout, and no way to distinguish "slow" from "hung" without inspecting process elapsed time by hand.
+Scanned documents appear to be the trigger: marker's OCR path on a scan is far more expensive than on a
+digital-native PDF of the same page count, and page count alone does not predict it.
+**Implication:** `capture_pdf` should take a `--timeout` (defaulting to something like 15 minutes) and, on
+expiry, either fail cleanly with a message naming the engine or automatically retry once with
+`--engine pymupdf`, which handles scans far faster at some fidelity cost. Either behaviour is better than an
+unbounded stall. A cheaper interim mitigation is a note in `/research` telling the operator that a scanned PDF
+may need `--engine pymupdf` from the start, and that a capture exceeding ~15 minutes should be treated as hung
+rather than slow.
+**Status:** open
