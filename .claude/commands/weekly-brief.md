@@ -266,13 +266,14 @@ This command runs locally via the user's crontab (or equivalent). A minimal inst
 ```bash
 crontab -e
 # Append (substitute your wiki's repo path and weekly-brief branch):
-0 7 * * 1 cd /path/to/your-wiki && git checkout <weekly-brief-branch> && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
+0 7 * * 1 cd /path/to/your-wiki && git checkout <weekly-brief-branch> && git pull --ff-only origin <weekly-brief-branch> && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
 # Example for the ai-trends wiki:
-# 0 7 * * 1 cd /home/david/code/wiki-ai-trends && git checkout ai-trends-wiki && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
+# 0 7 * * 1 cd /home/david/code/wiki-ai-trends && git checkout ai-trends-wiki && git pull --ff-only origin ai-trends-wiki && claude -p "/weekly-brief" >> /tmp/weekly-brief-cron.log 2>&1
 ```
 
 Notes:
 - Cron fires at **7am local time** (America/Toronto) — user-crontab times are local, not UTC.
+- **The `git pull --ff-only` before invocation is load-bearing, not optional**, on any setup where more than one machine can push to this branch (e.g. an interactive workstation plus this cron machine). Without it, the cron runs against a stale checkout and its own `git push` in step 7 can fail non-fast-forward — the brief still gets generated and the artefact survives on disk, but nothing lands on the branch that week. `--ff-only` deliberately fails loudly (non-zero exit, visible in the cron log) rather than silently merging or rebasing over local state it doesn't understand — if it fails, the checkout has diverged and needs a human to look, not an automated resolution.
 - If the machine is off at fire time, the run is skipped for that week — no catch-up. Next Monday's run uses a fresh signal window anyway.
 - `/tmp/weekly-brief-cron.log` is the invocation audit trail; the email + `wiki/log.md` + the pushed commit are the content audit trail.
 - First-time install: also run `/weekly-brief` manually once to confirm Gmail MCP auth and capture tooling both work before relying on the cron.

@@ -54,3 +54,4 @@ For broader autonomous UAS capability context, see [[drone-autonomy-state]].
 - [[drone-autonomy-state]] — broader autonomy capability landscape.
 - [[drone-sensors-for-autonomy]] — sensor modalities fused in the Lattice pipeline.
 - [[faa-part-108-bvlos]] — civilian regulatory context; Lattice demo does not address this framework.
+- [[drone-commercial-verticals]] — transferable-tech context only (defence-origin; scope is what's applicable to consumer/commercial use per this wiki's scope rules, not the defence application itself).

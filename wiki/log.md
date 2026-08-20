@@ -4,6 +4,18 @@ Append-only chronological record of wiki activity.
 
 ---
 
+## [2026-06-22] query | RANSAC and PnP
+
+Added "Pose-verification primitives" subsection to [[slam]] defining RANSAC and PnP from first principles, grounded in the wiki's relocalization findings.
+
+---
+
+## [2026-06-09] research+ingest | floorplan-reconstruction-methods
+
+Topic: methods for improving the EDA037 floorplan hypothesis algorithm in drone-prototype. Researched from the EDA037/EDA039/EDA043 codebase, then found and captured 5 papers addressing the algorithm's four weaknesses (greedy splits, Manhattan-only, 20% passive-stereo noise, hand-tuned thresholds). New page: [[floorplan-reconstruction-methods]]. Updates to [[passive-stereo-room-mapping-campaign]] (learned-method caveat) and [[room-segmentation-floor-plan]] (non-Manhattan note). Improvement proposal covers 4 no-training levers + 1 learned benchmark, with a 5-EDA experiment ladder (EDA046–050).
+
+---
+
 ## [2026-06-04] research+ingest | humanoid-robot-indoor-perception
 
 Topic: perception stacks for commercially deployed / near-deployed mobile manipulation robots — Figure 02/03, 1X NEO/EVE, Boston Dynamics Spot + Orbit, Agility Digit, Apptronik Apollo.
@@ -369,3 +381,19 @@ Note: marker engine was OOM-killed (exit 137) on first attempt with CUDA_VISIBLE
 New wiki page: [[home-gateway-client-isolation]] (prototype-feedback from drone-app EXP002). Bell Home Hub client-isolation finding + workaround ladder. Index + revisions updated.
 
 New wiki page: [[home-iot-connectivity-patterns]] (research + prototype-feedback from drone-app). Comparative smart-home connectivity patterns; backs the onboard-realtime/cloud-relay architecture pivot. Cross-linked from [[home-gateway-client-isolation]]; index + revisions updated.
+
+### 2026-08-20 — /lint
+
+Full wiki health check, 128 top-level files vs. the 36-page baseline from 2026-05-23 — first lint since the mapping-refinement/robot-arm/home-tidy build-out. Deterministic structural checks run directly (link-graph grep across all pages); content-judgment checks (missing cross-refs, conflicts, stale content, domain-specific 11-18, capture fidelity, trend radar) fanned out to 3 parallel forked subagents.
+
+Headline findings: (1) `[[robust-evidence-mapping-principle]]` — a human-stated governing project principle quoted verbatim in `point-cloud-denoising-methods.md` — is cited as foundational in 5 files/~15 places but was never written as a page; same for `[[speckle-channel-standing-rule]]` (2 places). (2) `index.md:98` still states the camera↔LiDAR extrinsic as "measured (yaw −2.2°, 2 cm)" even though `camera-lidar-temporal-calibration-and-pose-interpolation.md` now carries a SUPERSEDED banner saying that value never reproduced and the whole extrinsic approach was abandoned for hloc-SfM registration. (3) `mapping-stack-design.md`, the refinement stack's design hub, doesn't link any of the 5 pages in the refinement cluster committed after it. (4) Systemic `## Source`/`## Related` heading-naming drift across ~20 recent pages (plural "Sources", numbered variants, inline `**Related:**` instead of a heading) — not missing content, just inconsistent headings; a handful of pages (`perimeter-capture-recipe.md`, `watchlist.md`, `reference-sources.md`) are missing the sections outright. (5) The prior lint's flagged "no use-case pages" gap is half-fixed: `drone-commercial-verticals.md` + 4 use-case pages now exist but aren't cross-linked to the AI-capability layer in either direction. (6) `tools/audit_captures.py` has a path-resolution bug — silently skips absolute-path image refs and double-joins repo-root-relative ones — that produced ~1000 false-positive "broken ref" results this run; logged to `master_notes.md` (Scope: kit) with root cause and fix direction. Domain-specific regulatory/benchmark/company-drift/manufacturing/onshoring checks (11–13, 17–18) came back clean — `skydio-autonomy-stack.md` and `anduril-lattice.md` in particular now carry exemplary dated status-update sections. No un-ingested raw sources found (all 13 `raw/research/*` topic dirs have ≥1 citing page).
+
+Trend radar: watched-source scope in `reference-sources.md` still reflects the original aerial-survey framing and would filter out most of what the wiki now actually cites (continuous-time trajectory estimation, the hloc/SfM ecosystem, the LeRobot/low-cost-arm ecosystem) — proposed additions logged in the report, not yet applied. Two gaps flagged in the 2026-05-23 radar (battery/energy roadmap, solid-state-LiDAR cost) are now resolved (`drone-battery-energy.md`, `cheap-lidar-pricing-guide.md` exist).
+
+Full report: `wiki/lint-reports/2026-08-20.md`.
+
+### 2026-08-20 — lint-fix pass
+
+Applied every fix from the report above, per user request. New `robust-evidence-mapping-principle.md` page, grounded in the verbatim human-stated principle already quoted in `point-cloud-denoising-methods.md` — resolved ~15 broken links across 5 citing pages at once. The two other dangling references (`speckle-channel-standing-rule`, and `dual-python-env-and-sam`/`rig-lidar-stereo-offset` in `point-cloud-object-segmentation-models.md`) had no substantive content behind them, so rather than fabricate pages they were converted to plain-text `memory \`slug\`` references — matching the pattern `weak-scan-registration-methods.md` already used for the same underlying fact. `index.md` gained 9 missing catalog entries and a rewritten entry for the SUPERSEDED `camera-lidar-temporal-calibration-and-pose-interpolation` page (no longer restates the dead −2.2° extrinsic as current). ~20 pages had their `## Source`/`## Related` headings normalized to the canonical form specified in `wiki/CLAUDE.md`; 9 pages gained a `## Source` section that was missing outright. `reference-sources.md`/`watchlist.md` were *not* forced into the standard format — they're machine-parsed by `/weekly-brief` (which groups the brief's "Other watchlist references" section by the watchlist's own `##` headers), so adding generic `## Source`/`## Related` headers risked corrupting that parse; instead both are now linked from `index.md` with a note explaining the exemption. `mapping-stack-design.md` got a pointer to the 5-page refinement cluster committed after it. `conflicts/lidar-vs-vision-autonomy.md` gained two missing evidence points: the iRobot-CEO on-the-record Position-B quote, and this project's own passive-stereo-campaign measured wall-depth-noise finding as Position-A-relevant evidence (also cross-linked to the 3 BVLOS-gated use-case pages). `drone-commercial-verticals.md`, `skydio-autonomy-stack.md`, `anduril-lattice.md`, and `detect-and-avoid.md` gained cross-links to close the AI-capability↔use-case gap in both directions. `reference-sources.md` got the trend-radar's proposed watched-source additions (continuous-time trajectory estimation, hloc/SfM ecosystem, LeRobot/low-cost-arm ecosystem) plus an inline flag on the arXiv filter's ground-robot blind spot — flagged rather than silently resolved, since redefining the wiki's scope policy is the user's call.
+
+Not yet committed — this pass plus the underlying refinement-phase work it built on (6 local commits + substantial uncommitted new pages) is still sitting in the working tree on `ai-drone-wiki`, unpushed to origin. Relevant to the `/weekly-brief` sync planning happening in the same session: origin is currently well behind local state.

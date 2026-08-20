@@ -42,7 +42,7 @@ ROSE² (RObust StructurE identification and ROom SEgmentation, IEEE RAL 2022, Lu
 2. **Wall detection** — run probabilistic Hough line transform on *M̄*. Cluster collinear segments by angular similarity and proximity into wall hypotheses. Merge segments lying on the same dominant direction.
 3. **Room detection** — fit rooms as rectangular or polygonal regions bounded by the detected walls. Where a dividing wall is missing (open floor plan, partial mapping), fall back to a Voronoi topological graph of the free space: if the free-space graph becomes disconnected, split the region accordingly.
 
-**ROSE² does not assume Manhattan environments** (right-angle only) — it handles non-Manhattan floor plans by detecting however many dominant directions are present.
+**ROSE² does not assume Manhattan environments** (right-angle only) — it handles non-Manhattan floor plans by detecting however many dominant directions are present. *(Note: non-Manhattan handling is not unique to ROSE² — PolyFit [ICCV 2017], Progressive-X [ICCV 2019], RoomFormer [CVPR 2023], and CAGE [NeurIPS 2025] also handle arbitrary wall orientations without special-casing. See [[floorplan-reconstruction-methods]].)*
 
 **ROSE² requires no training** and can be applied to any 2D occupancy grid regardless of the SLAM backend [src: 05-rose2-room-seg].
 

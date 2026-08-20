@@ -308,6 +308,10 @@ If the drone can't reliably know whether a grasp succeeded (did the object actua
 
 ---
 
+## Source
+
+Project-internal design page — top-down architecture synthesis grounded in the prototype's own progress; no external citations. Component-level claims are sourced on their own dedicated pages (linked below and inline).
+
 ## Related
 
 - [[world-model-architecture]] — the WORLD MAP subsystem (§1) made concrete: the layered world-model form factor (anchor + object layer + change-detection loop) grounded in what the prototype proved; addresses §1 staleness + C2 (lost-vs-changed)

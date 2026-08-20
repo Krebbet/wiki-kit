@@ -1,5 +1,7 @@
 # Passive-Stereo Robustification for Indoor SLAM (Consumer-Cost)
 
+> **Campaign verdict (2026-06-07):** the prototype's full room-mapping campaign concluded that passive stereo gives **free-space + floor but not crisp walls** (7 probes, root cause ~20% per-pixel depth noise), and that **trajectory drift is software-fixable via hloc SfM poses** (no robustifier hardware needed for drift). The achievable map already supports a collision-free nav demo. See **[[passive-stereo-room-mapping-campaign]]** for the durable findings — the robustifier ladder below is now an *upgrade path to wall-trustworthiness*, not a nav prerequisite.
+
 How to make a **passive stereo camera** robust enough to be a reusable indoor anchor-map sensor **without reaching for expensive 3D LiDAR** — the consumer-product cost tenet of the home-tidy build. Passive stereo is cheap and rich but starves on the textureless surfaces that dominate real homes (white walls, glass, glossy floors); this page consolidates the honest hard limit, the consumer-cost ranked robustifier ladder, the active-assisted-stereo escalation (a "dumb" IR dot projector that keeps the solution inside the stereo family), the pattern-as-calibration-validator insight, and the cheaper-than-D435i hardware ladder. It exists because the pieces were scattered across [[visual-inertial-slam]], [[indoor-cluttered-slam]], [[learned-slam]], and [[close-range-depth-sensors]] plus the prototype's own field findings, and step-4 of the build (RTAB-Map stereo + dense RGB-D) shouldn't re-derive them. *(synthesis — assembled from existing wiki pages + the `drone-prototype` prototyper log, with their own raw-source citations carried through.)*
 
 ## Source
@@ -77,6 +79,8 @@ But the dense left↔right correspondences a speckle produces on an otherwise-bl
 **See [[camera-calibration-and-self-calibration]]** for the full calibration treatment: why the prototype's offline solve hit a focal/baseline degeneracy (fronto-parallel poses) and how tilt+depth coverage + a known-distance anchor break it, plus the survey of **online / self-correcting calibration** (OpenVINS, OKVIS2-X, VINS-Fusion, Kalibr-as-reference, DSO photometric) for a robot that should tighten its own calibration over its life.
 
 ## 6. Hardware ladder — getting to active stereo, cheaply
+
+> **Current-pricing companion:** [[economical-ir-depth-cameras]] re-prices this ladder against real ≈2026 listings and adds the turnkey all-in-one column. Headline: the **Orbbec Gemini 2 ($234)** undercuts the D435i (rung D, $334) by $100 with the same active-IR-stereo + IMU + Linux/ROS capability — making it the new cheapest *turnkey* rung; the DIY OV9281 NoIR + IR-DOE path (rung C) prices out at ~$80–135.
 
 The expensive part of active stereo is **not** the projector — a tiny IR DOE dot projector is the cheap common ingredient in every path (~$20–50). What differs between rungs is **how you get IR-capable cameras** to see the IR pattern. Ladder, cheapest first *(prices per `drone-prototype` prototyper-log 2026-06-02 and [[close-range-depth-sensors]]; verify before purchase)*:
 

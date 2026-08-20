@@ -2,10 +2,6 @@
 
 Mandate for the `drone-app` prototype — the first end-to-end implementation of the communication layer connecting all five system entities over home WiFi.
 
-## Related
-
-[[user-comms-layer]] · [[system-architecture]] · [[voice-intent-task]] · [[ros2-server-bridge]]
-
 ---
 
 ## What we are building
@@ -140,3 +136,11 @@ Quick start: `docker-compose up` — runs World Brain + stub robot + app layer l
 3. **Does Google Home webhook add unacceptable latency?** → Answered by P3.2 test
 4. **What minimum data does the robot need onboard to survive WiFi dropout?** → Answered by P2.3 + reliability test
 5. **Is the REST API sufficient or do we need MQTT pub/sub from day one?** → Answered by P2.1 jitter measurement
+
+## Source
+
+Project-internal (design mandate for the `drone-app` prototype, `/home/david/drone/drone-app/`), not an external citation.
+
+## Related
+
+[[user-comms-layer]] · [[system-architecture]] · [[voice-intent-task]] · [[ros2-server-bridge]]

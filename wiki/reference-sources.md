@@ -33,9 +33,12 @@ Controls the *shape* of the email, not just source selection. The 2026-05-17 run
 
 ## Watched sources (trend-scan set — cheapest to most expensive)
 
-- **arXiv** `cs.RO` recent + `cs.CV`/`cs.LG` filtered for `UAV|drone|aerial|quadrotor|MAV` — primary signal.
+- **arXiv** `cs.RO` recent + `cs.CV`/`cs.LG` filtered for `UAV|drone|aerial|quadrotor|MAV` — primary signal. **Known gap (2026-08-20 lint):** this filter excludes most ground-robot SLAM / point-cloud-registration / continuous-time-estimation papers, which now drive a large share of the wiki's active content (the mapping-refinement + home-tidy-prototype work). Not yet resolved — the fix (broadening the filter vs. adding a parallel ground-robot term set) is a scope-policy call for the user, flagged here rather than applied unilaterally.
 - **alphaXiv trending**, filtered to robotics/aerial entries only.
 - **Named research groups** (new-publication pages): ETH RPG (Scaramuzza), TU Delft MAVLab (de Croon), Caltech CAST / GALCIT (Chung/Gharib), UPenn GRASP (Kumar), EPFL LIS (Floreano) & Imperial Aerial Robotics (Kovac), Stanford ASL, U-Toronto UTIAS (Schoellig/Waslander), Seville GRVC (Ollero — industrial, mine for transferable method only).
+- **Continuous-time trajectory estimation** (Barfoot/Tong/Anderson — UTIAS ASRL; GPTR) — added 2026-08-20: core method behind [[camera-lidar-spatiotemporal-calibration]], not covered by the aerial-group tracking above.
+- **hloc/SfM ecosystem** (SuperPoint, LightGlue, NetVLAD, COLMAP, MASt3R) — added 2026-08-20: the relocalization/SfM arc ([[methods-reading-list]]) this project's mapping stack depends on.
+- **Low-cost arm-policy ecosystem** (LeRobot, SmolVLA, ALOHA2, "Cutting the Cord," YOR) — added 2026-08-20: central to [[affordable-robot-arms]], [[arm-prototype-roadmap]], [[arm-starter-cost]], [[tidybot-deep-dive]]; no manipulation-policy watch line existed before.
 - **Robotics venues**: ICRA, IROS, RSS, CoRL, T-RO, RA-L, *Science Robotics*, *Nature Communications/Machine Intelligence* (robotics).
 - **Industry/regulatory** (consumer-relevant): IEEE Spectrum (robotics/drones), DroneDJ, sUAS News; FAA / EASA / Transport Canada / CAAC rulemaking pages (Part 108 status, DAA standards, ASTM F38).
 - **Company technical blogs**: Skydio, Zipline, Wing, Auterion, Parrot.

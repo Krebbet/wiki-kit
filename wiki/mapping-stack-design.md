@@ -4,6 +4,8 @@ What the current RTAB-Map stereo build actually produces, what it enables, what 
 
 > **Read alongside:** [[world-model-architecture]] (the layered world-model design), [[anchor-map-protocol]] (how to build a good anchor map), [[relocalization-method-bakeoff]] (why hloc won).
 
+> **Refinement-phase update (not yet folded into the body below).** A later research pass produced a dedicated map/trajectory-refinement cluster this page predates: [[lidar-sfm-map-alignment-methods]] (correcting the SfM↔LiDAR smooth warp), [[global-alignment-wall-refinement]] (wall/plane-constrained global refinement), [[trajectory-refinement-and-fusion]] (reconciling two trajectory estimates), [[point-cloud-denoising-methods]] (evidence-gated outlier removal), [[reconciling-competing-signals]] (cross-field robust fusion + over-pruning guard). The Sparse 3D point cloud / pose-graph sections below describe the pre-refinement baseline; these pages are the current state of the art for tightening it.
+
 ---
 
 ## What the current map is
@@ -220,5 +222,6 @@ Each layer builds on the one below. The anchor (pose graph + sparse cloud) is th
 - [[passive-stereo-robustification]] — filling blank-wall SGBM holes with active stereo
 - [[onboard-grasp-perception]] — the open-vocabulary detection blocker for aerial use
 - [[learned-slam]] · [[indoor-cluttered-slam]] — Tier 3 (3DGS) context and compute requirements
+- [[lidar-sfm-map-alignment-methods]] · [[global-alignment-wall-refinement]] · [[trajectory-refinement-and-fusion]] · [[point-cloud-denoising-methods]] · [[reconciling-competing-signals]] — the refinement-phase cluster (post-dates this page's baseline; see callout above)
 - [[system-architecture]] — where these layers sit in the full cognitive stack (WORLD MAP subsystem §1)
 - [[home-tidy-drone-prototype]] — the prototype plan this feeds into

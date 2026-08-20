@@ -57,3 +57,4 @@ For sensor stack context, see [[drone-sensors-for-autonomy]]. For broader autono
 - [[drone-sensors-for-autonomy]] — sensor modality landscape; Skydio's conspicuous absences (LiDAR, event) are notable.
 - [[anduril-lattice]] — sensor-fusion-heavy multi-asset autonomy (defence-origin technology).
 - [[drone-autonomy-state]] — where Skydio fits in the broader commercial autonomy landscape.
+- [[drone-inspection-use-case]] — Skydio's enterprise/public-safety inspection deployment is the commercial vertical this stack actually ships into.

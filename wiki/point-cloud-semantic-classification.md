@@ -12,7 +12,6 @@ Then: every assigned point is compared back against the primitive it was assigne
 
 This page exists because the governing project principle — *"for every point we must be able to explain where it came from; if yes, does it fit our assumptions about co-located points; if no, is it noise or genuinely unexplained?"* ([[robust-evidence-mapping-principle]]) — is a **point-accounting** problem, not a segmentation-leaderboard problem. The wiki already covers the learned-segmentation leaderboard side ([[ov3d-instance-seg]], [[scene-graph-world-model]]); the **point-to-primitive assignment + leftover→unknown + self-consistency residual** framing is not covered anywhere and is what this page adds.
 
-**Related:** [[floorplan-reconstruction-methods]] · [[room-segmentation-floor-plan]] · [[semantic-object-memory]] · [[ov3d-instance-seg]] · [[scene-graph-world-model]] · [[robust-evidence-mapping-principle]] · [[passive-stereo-robustification]] · [[learned-point-cloud-registration]]
 
 ---
 
@@ -125,3 +124,7 @@ This is sub-second, no GPU, no training, fully reproducible — and it directly 
 - [src: open-set-3d] *3DOS: Benchmarking Semantic Novelty Detection on Point Clouds* (arXiv 2207.11554); Li et al., *Open-Set Semantic Segmentation for Point Clouds via Adversarial Prototype Framework*, CVPR 2023; *A Probability-Driven Framework for Open World 3D Point Cloud Semantic Segmentation* (arXiv 2404.00979).
 
 *Captures: 2026-06-14. Existing wiki coverage of the learned-segmentation branch: [[ov3d-instance-seg]] (OV-3DIS compute/VRAM envelope, FOLK/Open-YOLO-3D, passive-stereo depth-hole failure modes), [[scene-graph-world-model]] (ConceptGraphs per-frame point-cloud→object pipeline incl. DBSCAN denoise + geometric+semantic association), [[room-segmentation-floor-plan]] (Roborock NN classifies pixels as room-inside/room-outside/noise — the closest prior 5-class analogue), [[floorplan-reconstruction-methods]] (RANSAC primitive fitting + unclaimed-point scoring).*
+
+## Related
+
+[[floorplan-reconstruction-methods]] · [[room-segmentation-floor-plan]] · [[semantic-object-memory]] · [[ov3d-instance-seg]] · [[scene-graph-world-model]] · [[robust-evidence-mapping-principle]] · [[passive-stereo-robustification]] · [[learned-point-cloud-registration]]

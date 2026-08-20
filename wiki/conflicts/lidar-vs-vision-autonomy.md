@@ -31,8 +31,13 @@ The commercial home robot field (2021–2025) shows the same split at product le
 - **Vision-only camp (Position B):** Dyson 360 Vis Nav (fisheye-only SLAM, shipping), Matic (5-camera no-IMU/LiDAR, Jetson Orin 4GB, shipping). Both successful for the indoor slow-navigation regime.
 - **LiDAR camp (Position A):** Samsung Ballie (spatial LiDAR, not yet shipped), Bear Robotics Servi (LiDAR+cameras, shipping commercially in restaurants).
 - **Undisclosed:** Amazon Astro (V-SLAM confirmed, sensor modalities undisclosed).
+- **On-the-record Position B, robot vacuums:** iRobot's CEO, on the Roomba j7's front-facing vision system: *"the primary sensor for a robot should be a vision system… the end state of a Roomba is going to be a hundred percent vision,"* with 3D range sensing only *"a crutch."* Roborock takes the opposite bet, keeping dToF/structured-light for low-light robustness and privacy. See [[robot-vacuum-navigation]].
 
 Neither camp has a decisive commercial win in home robots. The indoor slow-navigation regime (< 0.5 m/s, structured home environment) is distinctly easier than high-speed outdoor avoidance — Vision-only *works* here (Dyson, Matic), but this doesn't resolve the contested outdoor/high-speed middle.
+
+## This project's own evidence — Position A-relevant *(from [[passive-stereo-room-mapping-campaign]])*
+
+The 2026-06-07 room-mapping campaign (EDA010–028) is a first-party measured datapoint, not a vendor/corpus claim: on this project's own passive-stereo rig, per-pixel wall-depth noise measured ~20% (a 3 m wall → ±0.6 m slab), producing free-space + floor recovery but **not** crisp walls — a hardware/physics limit, not a software or pose-estimation gap (7 probes + 1 fusion stack ruled those out). This measured wall-depth ceiling is a direct instance of Position A's "camera depth is categorically inferior for geometry" claim, and is the finding that drove this project's own adoption of 2D LiDAR ([[floor-map-sensing-options]], [[cheap-lidar-pricing-guide]]) for wall/shape recovery specifically — while retaining stereo for free-space, floor, and semantics. Consistent with the "both camps concede the other's strong regime" synthesis above: LiDAR wins the *wall-geometry* task here even on a project whose default sensor is passive stereo.
 
 ## What would resolve it
 
@@ -54,4 +59,6 @@ Neither camp has a decisive commercial win in home robots. The indoor slow-navig
 
 - [[lidar-for-uav-autonomy]] · [[visual-inertial-slam]] · [[event-cameras]] · [[event-cameras-for-uavs]] · [[eth-rpg-scaramuzza]] · [[skydio-autonomy-stack]]
 - [[drone-sensors-for-autonomy]] · [[drone-autonomy-state]] — where this tension propagates
-- [[commercial-home-robots-perception]] — commercial evidence for both camps in the home robot domain (2021–2025)
+- [[commercial-home-robots-perception]] · [[robot-vacuum-navigation]] — commercial evidence for both camps in the home robot domain (2021–2025)
+- [[passive-stereo-room-mapping-campaign]] — this project's own measured Position-A-relevant datapoint
+- [[drone-inspection-use-case]] · [[drone-delivery-use-case]] · [[drone-mapping-surveying-use-case]] — commercial verticals where this sensor choice is a live deployment decision, not just a research debate

@@ -132,7 +132,7 @@ A prototype-able pipeline for the 2D case (everything below is a line, the 2D an
 
 ---
 
-## 7. Key sources
+## Source
 
 | Tag | Work | Venue / Year |
 |---|---|---|
@@ -155,6 +155,7 @@ A prototype-able pipeline for the 2D case (everything below is a line, the 2D an
 
 ## Related
 
+- [[weak-scan-registration-methods]] — the **single-weak-scan, locked-target** sibling of this page: how to *seat* one stubborn weak-wall/rich-object scan into an already-locked reference (observability-aware GICP, object-as-landmark, global init), where this page sharpens *all* walls jointly
 - [[learned-point-cloud-registration]] — the front-end registration layer (ICP/GICP/NDT and learned methods) that produces the per-scan alignment this page refines
 - [[2d-lidar-slam]] — Cartographer SPA / SLAM-Toolbox pose graph that produces the *initial* (non-final) alignment
 - [[slam]] — SLAM hub; loop-closure and map-then-localize context

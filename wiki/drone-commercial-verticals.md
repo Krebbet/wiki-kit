@@ -12,7 +12,7 @@ Drone-in-a-box platforms (Percepto AIM, Skydio Dock) run scheduled BVLOS mission
 
 ### [[drone-delivery-use-case]] — Last-Mile Logistics
 
-Zipline leads with 2M+ commercial deliveries and a $7.6B valuation (Jan 2026). US BVLOS authorisation is held by four operators (Wing, Amazon Prime Air, Zipline, Flytrex). Consumer delivery economics remain VC-subsidised (Amazon ~$63/delivery cost vs. $10–15 price); Manna (Dublin) is the sole operator claiming per-delivery profitability (~$4/delivery). Barclays projects $16B in annual unlocked industry profit at ~10% autonomous penetration by 2035.
+Zipline leads with 2M+ commercial deliveries *(shipping at scale)* and a $7.6B valuation (Jan 2026). US BVLOS authorisation is held by four operators (Wing, Amazon Prime Air, Zipline, Flytrex). Consumer delivery economics remain VC-subsidised (Amazon ~$63/delivery cost vs. $10–15 price); Manna (Dublin) is the sole operator claiming per-delivery profitability (~$4/delivery, *claimed*, not independently audited). Barclays projects $16B in annual unlocked industry profit at ~10% autonomous penetration by 2035 *(speculated — analyst projection, not a measured outcome)*.
 
 ### [[drone-agriculture-use-case]] — Precision Ag / Spraying
 
@@ -44,6 +44,10 @@ Multi-operator UTM is nascent. Wing and Flytrex sharing DFW airspace is an early
 
 ---
 
+## Source
+
+Rollup synthesis — figures cited here are sourced in full on each vertical's own page: [[drone-inspection-use-case]], [[drone-delivery-use-case]], [[drone-agriculture-use-case]], [[drone-mapping-surveying-use-case]]. This page adds no new primary citations beyond the cross-vertical comparison itself.
+
 ## Related
 
 - [[drone-inspection-use-case]]
@@ -55,3 +59,5 @@ Multi-operator UTM is nascent. Wing and Flytrex sharing DFW airspace is an early
 - [[drone-autonomy-state]]
 - [[detect-and-avoid]]
 - [[canadian-drone-onshoring]]
+- [[drone-sensors-for-autonomy]]
+- [[lidar-vs-vision-autonomy]]

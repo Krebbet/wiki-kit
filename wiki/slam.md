@@ -27,6 +27,14 @@ Event cameras are a third sensing path for high-speed/low-light regimes where st
 
 SLAM output is not the end — the estimated pose is fused into the flight controller's state estimator (ArduPilot EKF3 / PX4 EKF2 via MAVROS `vision_pose`) so the aircraft can hold position, fly waypoints, and take off / land GPS-denied ([[slam-fc-integration]]). Onboard compute gates which methods are deployable: LIO and semantic-landmark methods run on drone-class compute, and as of 2025 even dense 3D-Gaussian-Splatting SLAM has been *demoed* real-time on a Jetson Orin NX (GS-LIVO, ~20 Hz) — it is no longer desktop-only ([[learned-slam]], [[nano-drone-compute]], [[fast-lio-mid360-orin]]). Learning-based SLAM/odometry/depth methods are surveyed in [[learned-slam]].
 
+## Pose-verification primitives: RANSAC and PnP
+
+Two algorithms appear throughout the wiki's relocalization coverage as assumed-known; brief definitions for orientation:
+
+**RANSAC (Random Sample Consensus)** — a robust estimator. Repeatedly draw a minimal random subset of correspondences, fit a model (pose, plane), count how many *other* points agree within a threshold (inliers), keep the best hypothesis. The inlier count is the key diagnostic: high → model is trustworthy; zero → no consistent hypothesis could be found. Used in two contexts here: (1) inside the PnP pose solver to reject outlier 2D–3D correspondences; (2) for plane fitting (floor: ~1.7 cm RMS, wall: only reliable where ≥~70% inlier support — [[passive-stereo-room-mapping-campaign]]).
+
+**PnP (Perspective-n-Point)** — recovers absolute 6-DOF camera pose from n known 2D–3D correspondences: given matched keypoints in the query image and their triangulated 3D positions in the map, PnP solves the projection equation for the world→camera transform. `pycolmap` is the binding used in hloc. PnP is gate 2 of the relocalization pipeline: gate 1 (appearance retrieval) proposes candidate map locations; PnP confirms the exact pose. The wiki's central diagnostic: **RANSAC-PnP with ORB features returns 0 inliers on 88% of right-place matches** — not because PnP is wrong but because ORB produces poor triangulated 3D points on textureless walls. Replacing the correspondences (SuperPoint + LightGlue) eliminates the 0-inlier mode entirely — median ~295 inliers → 82.6–96% cross-session reloc ([[relocalization-method-bakeoff]]).
+
 ## Prototype baseline: RTAB-Map (stereo)
 
 The `drone-prototype` uses **RTAB-Map** (Labbé & Michaud, Sherbrooke) as its SLAM **back-end** — passive USB stereo, CPU-only, metric maps stored as `.db` files. Its relocalization pipeline is two sequential gates: (1) **DBoW2 appearance-based place recognition** (proposes candidate map locations) and (2) **ORB→RANSAC→PnP geometric verification** (confirms pose). Measured: gate 1 clears ~97% on covered paths; gate 2 **fails catastrophically — 88% of right-place matches return 0 PnP inliers**, end-to-end cross-session rate **~2–4%**, and this is **map-agnostic** (~2.1–4.1% no matter how the map is built — EDA006/009).
@@ -72,6 +80,7 @@ Synthesis hub assembled from existing wiki pages (each carries its own raw-sourc
 - [[lidar-vs-vision-autonomy]] — the open LiDAR-vs-vision conflict
 - [[drone-autonomy-state]] — deployment-maturity context
 - [[learned-slam]] — the AI/learning-based methods layer (neural LIO, learned VIO, edge 3DGS-SLAM, depth foundation models, learned place recognition)
+- [[lidar-visual-fusion-slam]] — LiDAR+visual front-end fusion (loose→tight, classical+learned); why tight LVI fusion is **not worth it now** on our handheld no-IMU rig (it's all inertial), and we already do the loosely-coupled win at the back-end
 - [[passive-stereo-robustification]] — consumer-cost ladder to make passive stereo survive indoor texture starvation (IMU→VIO → dense RGB-D → learned front-end → active IR stereo)
 - [[relocalization-method-bakeoff]] — the relocalization bake-off, now **decided with measured data**: hloc (SuperPoint+LightGlue) beats RTAB-Map's failing ORB→PnP gate 82.6–96% vs ~2–4%; metric scale validated −1.9% vs tape-measured GT
 - [[anchor-map-protocol]] — how to **build** a good navigation-anchor map: pool several overlapping passes into one SfM (93.6% reloc, no density/coverage trade-off); forward map-build recommendations

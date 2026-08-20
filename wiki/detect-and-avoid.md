@@ -52,3 +52,4 @@ The [[anduril-lattice]] sensor fusion stack (Sentry radar + optical towers) demo
 - [[anduril-lattice]] — defence-origin radar + optical sensor fusion stack; non-cooperative detection approach relevant to civilian DAA sensor gap.
 - [[drone-autonomy-state]] — where DAA bottlenecks fit in the broader autonomy capability timeline.
 - [[lidar-vs-vision-autonomy]] — radar/LiDAR vs. vision debate directly relevant to non-cooperative DAA sensor choice.
+- [[drone-delivery-use-case]] · [[drone-inspection-use-case]] — the two commercial verticals for which BVLOS/DAA is the binding regulatory gate (see [[drone-commercial-verticals]]).

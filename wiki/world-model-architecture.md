@@ -317,6 +317,10 @@ These are genuine forks, not things to settle in a research page:
 
 ---
 
+## Source
+
+Project-internal design page — synthesizes what the prototype has proven ([[anchor-map-protocol]], [[object-fingerprint-memory]]) into a form-factor proposal; no external citations of its own.
+
 ## Related
 
 [[anchor-map-protocol]] — how to *build* Layer 1 (multi-sweep recipe). ·

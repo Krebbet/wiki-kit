@@ -2,10 +2,6 @@
 
 How the five system entities communicate with each other and with the user. The core transport is the home WiFi LAN; internet connects to cloud services. For prototype scope, cloud is stubbed locally.
 
-## Related
-
-[[system-architecture]] · [[voice-intent-task]] · [[ros2-server-bridge]] · [[drone-comms-wifi]] · [[comms-prototype-mandate]]
-
 ---
 
 ## Five entities
@@ -227,5 +223,13 @@ Emergency stop (`cancel` intent) must bypass the LLM — direct `POST /robot/sto
 - **Google Home latency:** webhook path adds Google cloud round-trip (~200–500 ms) before reaching local server. Acceptable for task commands; not for stop.
 - **Multi-user:** last-in-wins for prototype; priority queue policy deferred.
 - **WiFi dropout mid-task:** robot must RTL or hold-position; World Brain must checkpoint task state.
+
+## Source
+
+Project-internal (design page for the `drone-app` prototype), not an external citation.
+
+## Related
+
+[[system-architecture]] · [[voice-intent-task]] · [[ros2-server-bridge]] · [[drone-comms-wifi]] · [[comms-prototype-mandate]]
 - **Audio privacy:** Whisper runs locally; Google Home wake-word goes through Google cloud. If that's unacceptable, phone PTT is the fallback.
 - **ngrok vs router port-forward:** ngrok is simplest for dev but requires account and internet. Router port-forward + DDNS is the production path for local-only operation.

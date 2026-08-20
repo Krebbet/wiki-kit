@@ -15,7 +15,7 @@ Synthesis page; load-bearing facts cited inline to source:
 
 ## Related
 
-[[sensor-weaknesses-and-fixes]] · [[passive-stereo-robustification]] · [[stereo-dense-reconstruction]] · [[robust-evidence-mapping-principle]] · [[floorplan-reconstruction-methods]] · [[room-segmentation-floor-plan]] · [[learned-point-cloud-registration]] · [[mapping-stack-design]] · [[speckle-channel-standing-rule]]
+[[sensor-weaknesses-and-fixes]] · [[passive-stereo-robustification]] · [[stereo-dense-reconstruction]] · [[robust-evidence-mapping-principle]] · [[floorplan-reconstruction-methods]] · [[room-segmentation-floor-plan]] · [[learned-point-cloud-registration]] · [[mapping-stack-design]]
 
 ---
 
@@ -61,7 +61,7 @@ Density-based clustering; label every point, then **keep clusters by size / exte
 ### 2.5 Plane fit + off-plane / radial-dispersion test — the glass-specific gate
 The criterion that actually distinguishes glass scatter from a real wall: **fit wall planes (RANSAC), then flag returns that sit off every plane AND show high local depth (radial) dispersion.** Glass produces returns scattered in range where a planar surface should be flat; reflective-noise work confirms reflective/virtual points are **off-surface and view-inconsistent** and are best caught by combining geometry with **intensity** (glass returns are anomalously low/odd) and **multi-view consistency** (a virtual point is not seen, or appears elsewhere, from a second sweep position) [src-web: Gao et al. 2021 multi-position reflective-noise filtering; IDSOR intensity+distance-aware SOR; DDIOR].
 - **Open3D:** `pcd.segment_plane(distance_threshold, ransac_n, num_iterations)` for the wall planes; then a custom residual + local-variance test on the off-plane remainder.
-- **Failure mode:** real off-wall objects (a stool, clutter) are *also* off-plane — so this gate must run on the region *near a detected window/wall plane* and lean on dispersion + view-inconsistency, not "off-plane" alone, or it eats furniture. Multi-view consistency is the strongest discriminator if multiple sweep positions exist ([[speckle-channel-standing-rule]] / multi-sweep fusion already give us redundant viewpoints).
+- **Failure mode:** real off-wall objects (a stool, clutter) are *also* off-plane — so this gate must run on the region *near a detected window/wall plane* and lean on dispersion + view-inconsistency, not "off-plane" alone, or it eats furniture. Multi-view consistency is the strongest discriminator if multiple sweep positions exist (memory `speckle-channel-standing-rule`; multi-sweep fusion already gives us redundant viewpoints).
 
 ### 2.6 Dynamic / moving-point removal — the operator residual
 The operator is a **dynamic object attached to the sensor**; the generic class of fixes removes points that are **not consistently observed as static** across the sweep:

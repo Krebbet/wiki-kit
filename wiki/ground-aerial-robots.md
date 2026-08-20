@@ -182,7 +182,7 @@ The M4 autonomy pipeline [src: 02-06-arxiv-2308-13972.md] implements the field's
 The CMU/NTU RL controller [src: 06-04-arxiv-2603-26687.md] learns a continuous policy that blends all actuators without discrete mode boundaries. The "mode switch" is emergent — the policy applies brief thrust bursts during difficult ground traversal rather than committing to full flight. This is the closest existing system to the "burst flight" concept: propeller use is calibrated to exactly what the task requires, not a binary switch. Hardware validation exists (3/5 gap-climbing success), but the policy runs on an external desktop GPU at 50 Hz and requires a motion capture system for state estimation — far from autonomous onboard deployment [src: 06-04-arxiv-2603-26687.md, Section VII-A].
 
 ### What autonomous switching requires (gaps)
-The M4 traversability work identifies key requirements: elevation map from depth sensor, traversability CNN, costmap with locomotion flags, path planner with mode-annotated waypoints. The CNNs in these papers run too slowly for Jetson-class hardware in real time and use optic-flow or mocap for localization. The [[SLAM]] problem during mode transitions — when the robot is partly on the ground and partly airborne — remains unsolved for consumer-grade sensors.
+The M4 traversability work identifies key requirements: elevation map from depth sensor, traversability CNN, costmap with locomotion flags, path planner with mode-annotated waypoints. The CNNs in these papers run too slowly for Jetson-class hardware in real time and use optic-flow or mocap for localization. The [[slam]] problem during mode transitions — when the robot is partly on the ground and partly airborne — remains unsolved for consumer-grade sensors.
 
 ---
 
@@ -222,7 +222,7 @@ The current Phase-1 prototype plan (`[[home-tidy-drone-prototype]]`) is aerial-p
 
 ### What it does not solve
 
-**Autonomous mode switching on consumer sensors.** Every system in this corpus uses motion capture, OptiTrack, Vicon, or an external GPU for state estimation. The traversability CNN (M4) runs too slowly for Jetson-class hardware. The RL policy (CMU/NTU) uses mocap for deployment. The [[SLAM]] problem during ground-to-air transitions — wheel odometry failing, IMU integrating, optical flow unreliable near the ground — is unsolved.
+**Autonomous mode switching on consumer sensors.** Every system in this corpus uses motion capture, OptiTrack, Vicon, or an external GPU for state estimation. The traversability CNN (M4) runs too slowly for Jetson-class hardware. The RL policy (CMU/NTU) uses mocap for deployment. The [[slam]] problem during ground-to-air transitions — wheel odometry failing, IMU integrating, optical flow unreliable near the ground — is unsolved.
 
 **Propeller safety near humans.** Burst flight in a domestic environment requires exposed spinning propellers near pets, children, and furniture. All platforms in this corpus either operate in controlled lab environments or outdoor spaces. No platform here has addressed domestic propeller safety (guards, variable-pitch stop, shrouding).
 
@@ -265,6 +265,6 @@ The ground-primary burst-flight architecture is likely the correct long-term dir
 - [[home-tidy-drone-prototype]] — current Phase-1 build; the ground-primary direction is a Phase-2 candidate
 - [[system-architecture]] — ACTIONS EXECUTION "land-then-grasp preferred" principle; ground-primary extends this to the full mission profile
 - [[payload-budget]] — weight constraints relevant to drivetrain mass penalty
-- [[SLAM]] — mode-transition localisation is the central unsolved problem
+- [[slam]] — mode-transition localisation is the central unsolved problem
 - [[close-range-depth-sensors]] — sensing stack for ground-mode obstacle avoidance
 - [[drone-autonomy-state]] — autonomous mode switching state-of-the-art

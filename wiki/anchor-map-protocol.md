@@ -1,5 +1,11 @@
 # Anchor-Map Protocol — how to build a good navigation-anchor map (passive stereo)
 
+> **Trajectory-source update (2026-06-07 campaign):** for the *offline map-build* trajectory, **adopt hloc
+> SfM global poses as the default**, replacing RTAB-Map odometry. RTAB fails to loop-close on 2 of 3 test
+> rooms (drift 15 m / 5.6 m); hloc SfM poses fix it (room_sweep3 15.34→0.15 m, generalizes 2nd room). The
+> drift problem (R0b) is thereby *software-solved*; the remaining wall gap is per-pixel depth noise, a
+> separate sensor/re-capture problem. Full findings: **[[passive-stereo-room-mapping-campaign]]** (b).
+
 How to **capture and build** a reusable indoor navigation-anchor map with the project's passive USB
 stereo rig, so that later cross-session relocalization is high-rate and the map is metrically
 trustworthy. This is the *map-build* counterpart to [[relocalization-method-bakeoff]] (which settled
@@ -104,6 +110,10 @@ Two artifacts, two roles (full inspection in `drone-prototype/docs/eda-mapping-s
 **Target = combine them:** RTAB-Map's metric grid + save/reload back-end, with the hloc learned
 front-end doing the frame→pose. That is the documented integration path
 ([[passive-stereo-robustification]] rung-3; [[relocalization-method-bakeoff]] §6).
+
+## Source
+
+`drone-prototype/docs/experiments-log.md` EDA004/006/008/009 + each `eda/EDA00N-*/major-findings.md` + `data/ground-truth/room-dims.md`. Synthesis of the prototype's own measured runs, not external literature.
 
 ## Related
 

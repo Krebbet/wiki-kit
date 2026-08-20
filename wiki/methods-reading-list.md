@@ -75,6 +75,10 @@ survey only linked repos.)*
 **#2 (hloc) · #3 (SuperPoint) · #1 (RTAB-Map)** — that trio explains the entire RTAB-Map-vs-hloc result
 and why a front-end swap (not calibration grinding) is the path forward.
 
+## Source
+
+Curated reading list — the tiered papers/repos above are the primary sources, assembled against the prototype's own measured results (EDA003/EDA004). See individual tier entries for full citations.
+
 ## Related
 
 [[relocalization-method-bakeoff]] · [[learned-slam]] · [[slam]] · [[visual-inertial-slam]] ·
