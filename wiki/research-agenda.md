@@ -47,11 +47,23 @@ proposed dimension can be measured.
 
 | # | Slug | Topic | Status |
 |---|---|---|---|
-| 8 | `bureaucracy-and-public-choice` | Public institutions: Weberian bureaucracy vs public choice — Wilson, Niskanen, Tullock, Downs. Both camps captured in one job so the conflict is documented from the start | queued |
-| 9 | `theory-of-the-firm` | Private institutions: why firms exist and where their boundaries fall — Coase, Chandler, Williamson, agency theory. Job 9 minus job 8 is the public/private difference the project needs | queued |
-| 10 | `institutions-and-growth` | The economy leg — institutions and economic production: inclusive/extractive, state capacity, developmental state, and the reverse-causality critiques | queued |
-| 11 | `power-and-accountability` | The power leg — elite theory, veto players, selectorate theory, corporate governance and control, who an institution is *actually* accountable to | queued |
-| 12 | `measuring-institutions` | Operationalisation — V-Dem, WGI, QoG, state-capacity indices, and the critiques of institutional measurement. Without this, lint check 11 fails every framework page | queued |
+| 8 | `bureaucracy-and-public-choice` | Public institutions: Weberian bureaucracy vs public choice — Wilson, Niskanen, Tullock, Downs. Both camps captured in one job so the conflict is documented from the start | capturing |
+| 9 | `theory-of-the-firm` | Private institutions: why firms exist and where their boundaries fall — Coase, Chandler, Williamson, agency theory. Job 9 minus job 8 is the public/private difference the project needs | capturing |
+| 10 | `institutions-and-growth` | The economy leg — institutions and economic production: inclusive/extractive, state capacity, developmental state, and the reverse-causality critiques | capturing |
+| 11 | `power-and-accountability` | The power leg — elite theory, veto players, selectorate theory, corporate governance and control, who an institution is *actually* accountable to | capturing |
+| 12 | `measuring-institutions` | Operationalisation — V-Dem, WGI, QoG, state-capacity indices, and the critiques of institutional measurement. Without this, lint check 11 fails every framework page | capturing |
+
+## Wave 4 — Follow-ups the findings demanded
+
+Added 2026-08-20 after Waves 1-3 exposed specific gaps. These are not "more of the same": each one targets a
+hole the completed jobs identified by name.
+
+| # | Slug | Topic | Status |
+|---|---|---|---|
+| 13 | `organisational-ecology` | **The demography of organisations** — Stinchcombe's liability of newness, Hannan & Freeman's population ecology, Carroll on organisational mortality, imprinting of founding conditions, age-dependent failure rates. *Why:* five literatures (jobs 2, 3, 5, 6, 7) came back with no institution-level age evidence, but all five were institutional economics, political science or public administration. Organisational sociology is the field that actually treats **organisational age as an independent variable** and has survival data on real organisational populations. If the age evidence this project needs exists anywhere, it is here. This is the highest-priority job in the queue. | queued |
+| 14 | `comparative-governing-philosophies` | **How governing philosophy shapes institutions** — Nordic models, the Chinese party-state and SOEs, Singapore, German ordoliberalism, Japanese/Korean developmental administration, the US administrative state. *Why:* the project brief asks for this explicitly and an earlier restructuring of this agenda dropped it. Also the only job that tests whether any registered axis is universal or an Anglosphere artefact. `[[reference-sources]]` lists Chinese, Nordic, Japanese/Korean, Latin American and African scholarship as standing coverage holes — this job should close them, preferring in-country scholarship and translated primary material over outsider interpretation. | queued |
+| 15 | `institution-case-profiles` | **Paired case profiles: one public, one private, same axes** (FDA and Meta as the brief's own example). *Why:* the wiki has **zero** case-study pages, so lint check 13 is permanently `not yet applicable` by construction and the framework is entirely ungrounded. **Not a literature job** — it captures primary institutional documents (enabling statutes, org charts, budgets, annual reports, 10-Ks, inspector-general reports, post-mortems) and scores them against `[[dimensions-of-institutional-variation]]`. It is also the only thing that will reveal which of the register's promoted axes are actually usable, since not one has ever been run against a real institution. | queued |
+| 16 | `informal-institutions` | **Norms, trust, culture and the informal half** — informal constraints, social norms, trust and its measurement, custom and convention as enforcement, why informal constraints change more slowly than formal rules. *Why:* North's formal/informal distinction is load-bearing in his own account and the wiki currently mentions it on four pages without ever having researched it. A general theory of institutions holding only the formal half is incomplete by construction. | queued |
 
 ---
 
