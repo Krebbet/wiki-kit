@@ -49,7 +49,7 @@ proposed dimension can be measured.
 |---|---|---|---|
 | 8 | `bureaucracy-and-public-choice` | Public institutions: Weberian bureaucracy vs public choice — Wilson, Niskanen, Tullock, Downs. Both camps captured in one job so the conflict is documented from the start | capturing |
 | 9 | `theory-of-the-firm` | Private institutions: why firms exist and where their boundaries fall — Coase, Chandler, Williamson, agency theory. Job 9 minus job 8 is the public/private difference the project needs | capturing |
-| 10 | `institutions-and-growth` | The economy leg — institutions and economic production: inclusive/extractive, state capacity, developmental state, and the reverse-causality critiques | capturing |
+| 10 | `institutions-and-growth` | The economy leg — institutions and economic production: inclusive/extractive, state capacity, developmental state, and the reverse-causality critiques | done |
 | 11 | `power-and-accountability` | The power leg — elite theory, veto players, selectorate theory, corporate governance and control, who an institution is *actually* accountable to | capturing |
 | 12 | `measuring-institutions` | Operationalisation — V-Dem, WGI, QoG, state-capacity indices, and the critiques of institutional measurement. Without this, lint check 11 fails every framework page | capturing |
 
