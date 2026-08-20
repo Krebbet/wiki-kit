@@ -45,3 +45,11 @@ First content run. `/research neuromorphic commercial viability` → 10 candidat
 
 **Radar evolved** on evidence: 4 sources promoted to `active`, Wiley `blocked`, nature.com flagged, 4 sources added, 2 local conventions learned.
 
+## [2026-08-20] scheduling | weekly-brief cron installed
+
+Branch `neuromorphic-wiki` pushed to origin (3 commits). `/weekly-brief` cron installed for **Thursday 23:13** local — slot picked to match the existing 23:13 group; the seven wikis on this machine now cover all seven days. Crontab verified byte-identical to the intended file after install, with a pre-change backup taken first.
+
+One near-miss worth recording: the first generated cron line lost its `cd /home/david/code/wiki-neuromorphic &&` prefix, which would have run `git checkout neuromorphic-wiki` in `$HOME`. The shell tooling was stripping the literal `cd` token from the command string; the line had to be written via Python to survive intact. Caught before install by diffing the candidate file, not after. **Any future cron edit here should diff the candidate against `crontab -l` before and after installing.**
+
+Not yet done: no manual `/weekly-brief` has ever run from this checkout, so the unattended path (capture tooling + SMTP delivery + Telegram) is unproven. The first Thursday firing is the real test. YouTube transcript capture remains broken (stale pinned `yt-dlp`) by explicit decision — the brief should skip video sources and say so.
+

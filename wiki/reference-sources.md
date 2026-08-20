@@ -151,17 +151,23 @@ Preferences specific to *this* wiki. The agent running `/weekly-brief` in this c
 - **Watchlist seeding policy:** agent-driven overflow only (cap 10/run). The initial watchlist ships empty.
 - **Branch policy:** weekly output goes on `neuromorphic-wiki`, the wiki's working branch. No dedicated `weekly-*` branch.
 - **Delivery:** email to `david.hugh.mcnamee@outlook.com`; Telegram ping enabled. Credentials come from the shared `/home/david/code/remote_workstation/.env`.
-- **Frequency:** not yet scheduled — no crontab entry exists for this wiki. See `## Scheduling` below.
+- **Frequency:** not yet scheduled — no crontab entry exists for this wiki. See `## Scheduling
 
-## Scheduling
-
-No cron entry is installed yet. The house pattern (from the other wikis) is one staggered line per wiki:
+**Installed 2026-08-20.** `/weekly-brief` runs unattended every **Thursday at 23:13** local (America/Toronto), on the `neuromorphic-wiki` branch:
 
 ```
-MM HH * * D git checkout neuromorphic-wiki && /home/david/.local/bin/claude -p --dangerously-skip-permissions "/weekly-brief" >> /home/david/.local/share/weekly-brief/logs/neuromorphic.log 2>&1
+13 23 * * 4 cd /home/david/code/wiki-neuromorphic && git checkout neuromorphic-wiki && /home/david/.local/bin/claude -p --dangerously-skip-permissions "/weekly-brief" >> /home/david/.local/share/weekly-brief/logs/neuromorphic.log 2>&1
 ```
 
-Currently occupied slots across the other wikis: Sat 09:07, Sun 09:07, Mon 23:13, Wed 23:13, Fri 23:13. Tue and Thu are free. Install only after a manual `/weekly-brief` run has confirmed capture tooling and email delivery work from this checkout.
+`4` is Thursday (0=Sun). Slot chosen to match the existing 23:13 group and avoid collision — the seven wikis on this machine now occupy all seven days.
+
+- Invocation audit trail: `/home/david/.local/share/weekly-brief/logs/neuromorphic.log`
+- Content audit trail: the email, `wiki/log.md`, and the pushed commit
+- If the machine is off at fire time the run is skipped; no catch-up. The next week's sweep uses a fresh window anyway.
+
+⚠️ **This cron has never fired.** It was installed before any manual `/weekly-brief` run, so capture tooling and email delivery are unproven from this checkout on the unattended path. First Thursday is the real test — check the log if no brief arrives.
+
+⚠️ **YouTube transcript capture is broken** on this clone: the pinned `yt-dlp` (2024.12.23) is rejected by YouTube. Known and deliberately deferred; `/weekly-brief` should skip video sources and note the skip rather than retrying. Fix is `poetry update yt-dlp`. See `master_notes.md`.
 
 ## Related
 
