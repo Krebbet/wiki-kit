@@ -6,7 +6,7 @@ Ostrom's case is that neither "the market" nor "the state" is the general-purpos
 
 ## What replaces the dichotomy
 
-**[framework]** Three components, and they are separable:
+**[model]** Three components, and they are separable:
 
 1. **A four-way goods typology.** Samuelson's two-way split (private / public) is expanded by crossing *subtractability of use* (rivalry) with *difficulty of exclusion*, both continuous rather than binary, giving private, public, toll (club), and common-pool goods. The point of the reclassification: CPRs share subtractability with private goods and non-excludability with public goods, so the market/state dichotomy necessarily misclassifies them and prescribes the wrong instrument.
 2. **Polycentricity.** Many formally independent decision centres, which may take each other into account, contract with each other, or resolve conflict through central mechanisms — as against a single hierarchical authority.

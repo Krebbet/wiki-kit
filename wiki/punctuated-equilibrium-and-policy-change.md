@@ -43,7 +43,7 @@ Institutions in this account **add friction** that delays response until pressur
 
 ## Named axes, and the levers other people supply
 
-**[framework]** Axes named here: number and independence of policy **venues** (registered as [[dimensions-of-institutional-variation]] D74); parallel vs. serial issue-processing capacity of a decision structure; institutional friction / supermajority requirement; executive strength; bureaucratic information-processing capacity; regime openness.
+**[model]** Axes named here: number and independence of policy **venues** (registered as [[dimensions-of-institutional-variation]] D74, **merged into D14 on 2026-08-20** — D14 is the live row); parallel vs. serial issue-processing capacity of a decision structure; institutional friction / supermajority requirement; executive strength; bureaucratic information-processing capacity; regime openness.
 
 **[b — all four are secondary citations, none is the authors' own tested finding]**
 
@@ -82,5 +82,5 @@ The complement to [[path-dependence-and-increasing-returns]] is exact and worth 
 - [[political-economy-of-public-sector-reform]] — the "window of opportunity" lever in operational form, with the same necessary-but-not-sufficient caveat.
 - [[reorganisation-base-rate]] — why a distribution shape is not a base rate, and the incremental-adjustment lever that speaks to reorganisation directly.
 - [[veto-points-and-bureaucratic-autonomy]] — friction as distribution-shaping vs. Hammond's count-alone-predicts-nothing result; adjacent but distinct claims.
-- [[dimensions-of-institutional-variation]] — supplies D74 (independent-venue count), registered separately from D44 because venue count enables mobilisation where veto count blocks change.
+- [[dimensions-of-institutional-variation]] — supplies D74 (independent-venue count), **merged into D14 (polycentricity) on 2026-08-20 as the same enumeration**; D14 is the live row and now carries this page's independence test and its D44 contrast — venue count enables mobilisation where veto count blocks change.
 - [[reform-levers]] — where the four secondary-citation levers are triaged.

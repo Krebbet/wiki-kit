@@ -12,7 +12,7 @@ North's claim is that institutional matrices exhibit increasing returns, so earl
 
 ## The four increasing-returns mechanisms
 
-**[framework]** From the JEP essay, applied to institutional frameworks by analogy with technology:
+**[model]** From the JEP essay, applied to institutional frameworks by analogy with technology:
 
 1. **Setup / fixed costs** — the cost of establishing the rule-set is sunk, so average cost falls as it is used more.
 2. **Learning effects** — actors get better at operating within a given rule-set over time.
@@ -43,7 +43,7 @@ What the model establishes, and it is proved rather than asserted (Theorems I–
 
 ## The political feedback loop
 
-**[framework]** This is the part with no technology analogue, and it is the mechanism that matters for institutional decay:
+**[model]** This is the part with no technology analogue, and it is the mechanism that matters for institutional decay:
 
 > Organisations that came into existence under the existing rules have a stake in perpetuating them → they invest in political influence to defend them → entrepreneurs' ideologies rationalise the existing matrix → the matrix persists → it continues to select for organisations adapted to it.
 
@@ -53,7 +53,7 @@ North is explicit that this is mutually reinforcing feedback, not correlation. H
 
 ## How change happens anyway
 
-**[framework]** North's model of institutional change: entrepreneurs — decision-makers inside organisations — perceive an opportunity, either from an external shift in relative prices or tastes, or from learning that alters their *mental models*. They compare the gains from recontracting within the existing framework against the gains from altering the framework. If altering it is worth the cost, they invest resources in changing formal rules (statutory, judicial, regulatory, constitutional) or, more slowly, informal constraints, which shift gradually and "subconsciously."
+**[model]** North's model of institutional change: entrepreneurs — decision-makers inside organisations — perceive an opportunity, either from an external shift in relative prices or tastes, or from learning that alters their *mental models*. They compare the gains from recontracting within the existing framework against the gains from altering the framework. If altering it is worth the cost, they invest resources in changing formal rules (statutory, judicial, regulatory, constitutional) or, more slowly, informal constraints, which shift gradually and "subconsciously."
 
 Three features of this model are worth keeping:
 
@@ -222,6 +222,7 @@ Weigh it carefully in both directions. It is a real observation of old organisat
 - [[gradual-institutional-change]] — the direct challenge: positive feedback without faithful reproduction, and contestation beginning at founding rather than after maturity.
 - [[punctuated-equilibrium-and-the-state]] — the third model on offer, and the one whose own cited case data undercut its "short burst" framing.
 - [[rival-models-of-institutional-change]] — the open three-way conflict this page is one corner of.
+- [[decay-as-real-vs-decay-as-overstated]] — the other open conflict this page feeds: whether the lock-in described here is the same thing as age-driven institutional decay. The conflict file is where that is held open in both directions — the age reading is unevidenced rather than refuted, and the critics have measured nothing either — which is the frame the contrary observation on this page has to be weighed in.
 - [[institutional-isomorphism]] — a parallel convergence account at field level, driven by legitimacy, mimicry and professionalisation rather than by political feedback.
 - [[institutional-myths-and-decoupling]] — an independent legitimacy-based account of institutional persistence, and the source of the form/practice coupling axis.
 - [[exploration-exploitation-incentive-contracts]] — Arthur's bandit-abandonment failure is the policy-level analogue of the same premature-exploitation problem.

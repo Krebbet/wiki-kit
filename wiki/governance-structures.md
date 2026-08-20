@@ -6,7 +6,7 @@ Williamson's transaction cost economics (TCE) makes the *transaction* the unit o
 
 ## Attributes of the transaction
 
-**[framework]**
+**[model]**
 
 - **Asset specificity** — the central variable. Named sub-types: physical, human, site-specific, dedicated, brand-name capital, and episodic/temporal. Williamson treats it as a *design variable*, not a given: a good or service can be redesigned to be less specific, at a cost in performance (Riordan & Williamson 1985).
 - **Uncertainty / disturbance** — specifically "outlier disturbances for which unprogrammed adaptations are needed." Disturbance exposure rises with contract length, so time horizon enters through this channel.
@@ -18,7 +18,7 @@ Of the three, Williamson says asset specificity and outlier disturbances are "mo
 
 ## Attributes of the governance structure
 
-**[framework]** Three binary attributes, which Williamson treats as a *syndrome* — internally consistent combinations, not free-floating dials:
+**[model]** Three binary attributes, which Williamson treats as a *syndrome* — internally consistent combinations, not free-floating dials:
 
 | Attribute | Market | Hierarchy |
 |---|---|---|
@@ -115,7 +115,7 @@ Span and depth are negatively correlated across firms (−0.27): wider organisat
 
 ## Levers
 
-**[framework]** Four design levers the lecture argues for:
+**[model]** Four design levers the lecture argues for:
 
 1. **Redesign the good or service to reduce asset specificity** — explicit trade-off: less specificity may cost performance.
 2. **Credible commitments** — consciously agreed assurance mechanisms that expand the range of transactions sustainable *without* full ownership integration: information disclosure and auditing, specialised private dispute-settling bodies, and "hostages" (Williamson 1983). Illustration: the Nevada Power / Northwest Trading 32-year coal contract.
@@ -124,7 +124,7 @@ Span and depth are negatively correlated across firms (−0.27): wider organisat
 
 ## Remediableness and the public/private symmetry claim
 
-**[framework]** Section 4.2 is Williamson's most direct contribution to this wiki's public/private invariance question. His charge: standard policy analysis applied zero-transaction-cost reasoning *asymmetrically*. Private-sector shortfalls were analysed as "market failures" arising from positive transaction costs, but "there was no corresponding concept for public sector failures" — an implicit assumption that public-sector transaction costs are zero, which he calls "nonsense."
+**[model]** Section 4.2 is Williamson's most direct contribution to this wiki's public/private invariance question. His charge: standard policy analysis applied zero-transaction-cost reasoning *asymmetrically*. Private-sector shortfalls were analysed as "market failures" arising from positive transaction costs, but "there was no corresponding concept for public sector failures" — an implicit assumption that public-sector transaction costs are zero, which he calls "nonsense."
 
 The **remediableness criterion**: an extant mode of organisation is presumed efficient unless a *feasible and implementable* superior alternative can be shown, with net implementation costs included in the comparison. Williamson states it applies identically "in any sector whatsoever – public, private, nonprofit, etc.", and describes it as dealing "symmetrically with real world institutions, both public and private, warts and all." He names public bureaus as an underused application domain, citing the post-9/11 design of the Department of Homeland Security as a case of political-purpose-driven rather than efficiency-driven bureau design (Cohen, Cuellar & Weingast 2006).
 

@@ -1,6 +1,6 @@
 # Wiki Index
 
-A general theory of institutions: how they function, what makes them function better or worse, how they change with scale and age, and how they interlock with the distribution of power and with economic production in a society.
+A general theory of institutions: how they function, what makes them function better or worse, and how they change with scale and age — carrying their interlock with the distribution of power and with economic production as the working decomposition under test rather than as the subject (Q17), and the decay-with-age premise likewise, five research jobs having so far found it unevidenced at the level of a single institution (Q60).
 
 Catalog of all pages in this wiki. Updated on every ingest.
 
@@ -11,7 +11,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[what-is-an-institution]] | The definitional core: North's rules-vs-organizations, Ostrom's rules-in-use, Williamson's governance structures — where they agree, and where they are analysing different objects. |
-| [[dimensions-of-institutional-variation]] | Standing register of every named axis of institutional variation, with how to measure it and its status (candidate / promoted / rejected). Seed of the general framework. |
+| [[dimensions-of-institutional-variation]] | Standing register of every named axis of institutional variation, with how to measure it and its status (candidate / promoted / rejected / superseded). Seed of the general framework. |
 | [[transaction-costs]] | The mechanism linking institutions to economic performance: information, enforcement and agency costs, and Libecap's case that the binding costs are political. |
 | [[governance-structures]] | Williamson's TCE: asset specificity / uncertainty / frequency, the three governance attributes, discriminating alignment, limits to firm size, and remediableness. |
 | [[path-dependence-and-increasing-returns]] | North's lock-in account — increasing returns plus a political feedback loop in which rules select the organisations that defend them — now extended and **contested on its own page**. Carries the Arthur audit (his model is technology adoption, clocked in adoption count *n*, not institutions or years), North's cognitive mechanism and duration catalogue with the finding that he names no falsification condition anywhere, Pierson's four politics-specific mechanisms plus the Skocpol dataset and his own falsifiability concession, and Thelen's denial that positive feedback implies faithful reproduction. Plus the Rajan & Wulf counter-datapoint. |

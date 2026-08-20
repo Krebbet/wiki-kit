@@ -34,7 +34,7 @@ Examples the source supplies: coal ash content is hard to specify ex ante but ea
 
 ## The scope conditions the theory carries
 
-**[framework]** These are stated by the sources and are load-bearing:
+**[model]** These are stated by the sources and are load-bearing:
 
 - **Replaceability of human capital.** An owner's bargaining power is void if the other party's manager is indispensable. Hart states this explicitly as a limit on the whole theory.
 - **A functioning legal system** that can enforce *ownership* and *verifiable* terms even where it cannot enforce fine-grained specific performance. Unstated by Hart but presupposed everywhere; it should not be assumed to travel to weak-state settings.

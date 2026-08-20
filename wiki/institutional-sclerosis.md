@@ -93,7 +93,7 @@ Post-1945 literature reviewed as of 2007, 25 years after Olson's 1982 book. Pred
 
 ## What would settle the question this page exists for
 
-**[wiki synthesis]** A study that measures a **specific institution's own age** against a **directly observed accumulation variable** — coalition count, rule count, or a capture indicator attached to that institution — rather than regime-stability duration or cross-sectional density. Heckelman's review makes it possible to say how far the field is from that: a handful of 53 studies test accumulation at all, and none of those tests it at the level of a single organisation. See `conflicts/decay-as-real-vs-decay-as-overstated`.
+**[wiki synthesis]** A study that measures a **specific institution's own age** against a **directly observed accumulation variable** — coalition count, rule count, or a capture indicator attached to that institution — rather than regime-stability duration or cross-sectional density. Heckelman's review makes it possible to say how far the field is from that: a handful of 53 studies test accumulation at all, and none of those tests it at the level of a single organisation. See [[decay-as-real-vs-decay-as-overstated]].
 
 ## Source
 
@@ -110,4 +110,5 @@ Post-1945 literature reviewed as of 2007, 25 years after Olson's 1982 book. Pred
 - [[punctuated-equilibrium-and-the-state]] — the reset-by-shock claim is a punctuated-equilibrium claim in different vocabulary; the two accounts of what a rupture does should be checked against each other.
 - [[goal-displacement-and-bureaucratic-ritualism]] and [[cooptation]] — the mechanism-level accounts of institutional rigidity whose own authors state they are age-independent; Olson is the one account in the batch that genuinely needs elapsed time, which is why his is the claim worth counting.
 - [[dimensions-of-institutional-variation]] — supplies the direct-measurement-versus-duration-proxy distinction that D60–D65 and the register's gap note now turn on.
+- [[decay-as-real-vs-decay-as-overstated]] — the filed dispute whose two sides are precisely the two readings this page declines to choose between: the 57%-of-53-studies count sits on Position A, the practitioner survey scoring below the midpoint on Position B, and the conflict file holds the comparison table that keeps them side by side.
 - [[open-questions]] — Q7 (the age limb), Q8 (renewal without shock), Q60, Q61, Q63.

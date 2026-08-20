@@ -6,7 +6,7 @@ Dixit's 2002 review is the only source in this wiki that takes agency theory's m
 
 ## The multi-principal weakening result
 
-**[framework]** A single agency's actions affect many parties who each hold some funding, legislative, legal or negotiating leverage. Congress, the executive, courts, unions, client groups and diffuse citizen interests are all in a position to attach consequences to what the agency does. If they could bargain in advance to a single joint scheme and split the gains, they would; but where they cannot — no shared information base, no credible commitment to share — they act independently, and the result is a **noncooperative game among principals**, whose subgame-perfect Nash equilibrium is what the agent actually faces.
+**[model]** A single agency's actions affect many parties who each hold some funding, legislative, legal or negotiating leverage. Congress, the executive, courts, unions, client groups and diffuse citizen interests are all in a position to attach consequences to what the agency does. If they could bargain in advance to a single joint scheme and split the gains, they would; but where they cannot — no shared information base, no credible commitment to share — they act independently, and the result is a **noncooperative game among principals**, whose subgame-perfect Nash equilibrium is what the agent actually faces.
 
 Dixit quotes Wilson (1989) for the picture: "Policy making in the United States is like a barroom brawl: Anybody can join in, the combatants fight all comers and sometimes change sides, no referee is in charge, and the fight lasts not for a fixed number of rounds but indefinitely.... It's never over." Government agencies are, in his phrase, **common agencies with several principals engaged in a noncooperative game**.
 
@@ -20,7 +20,7 @@ where `m` is the **sum** of the marginal payment coefficients across all princip
 
 ## Substitutes, complements, and the organisational-design principle
 
-**[framework]** With cross-terms in the agent's cost function, `C = Σᵢaᵢ² + k·Σᵢ≠ⱼ aᵢaⱼ`, so that efforts for different principals are **substitutes if k > 0** and **complements if k < 0**:
+**[model]** With cross-terms in the agent's cost function, `C = Σᵢaᵢ² + k·Σᵢ≠ⱼ aᵢaⱼ`, so that efforts for different principals are **substitutes if k > 0** and **complements if k < 0**:
 
 > `m = 1 / (1 + n·r·c·v·[1 + (n−1)k])`
 
@@ -51,7 +51,7 @@ The same qualitative result holds under adverse selection as under moral hazard 
 
 ## Why bureaus differ: parameters, not laws
 
-**[framework]** Dixit's central structural claim is that the *theory* is invariant across the public/private divide — the same moral-hazard, adverse-selection and multitask mathematics applies to both — and that what differs is the **parameterisation**. Public bureaus systematically have:
+**[model]** Dixit's central structural claim is that the *theory* is invariant across the public/private divide — the same moral-hazard, adverse-selection and multitask mathematics applies to both — and that what differs is the **parameterisation**. Public bureaus systematically have:
 
 1. more principals (`n` larger);
 2. more numerous tasks, more often substitutes than complements (`k > 0`);
@@ -71,7 +71,7 @@ Three things keep this a nuance rather than a contradiction. **(i) Neither sourc
 
 ## Micromanagement as rational response, not pathology
 
-**[framework]** Dixit's most direct reframing, and the reason this page matters beyond the public sector: he treats micromanagement not as a pathology but as "an unavoidable consequence of, or a less costly way of coping with, the asymmetric observability of multiple outcomes affecting multiple principals." Where a principal cannot write an outcome-based contract on the dimension he cares about, imposing crude constraints on the agent's actions is his *best available* instrument. The rulebook is the residue of unmeasurable objectives owned by principals who cannot coordinate.
+**[model]** Dixit's most direct reframing, and the reason this page matters beyond the public sector: he treats micromanagement not as a pathology but as "an unavoidable consequence of, or a less costly way of coping with, the asymmetric observability of multiple outcomes affecting multiple principals." Where a principal cannot write an outcome-based contract on the dimension he cares about, imposing crude constraints on the agent's actions is his *best available* instrument. The rulebook is the residue of unmeasurable objectives owned by principals who cannot coordinate.
 
 This converges with Holmstrom & Milgrom's reading of bureaucratic constraint as an optimal response to measurement difficulty ([[multitask-incentive-theory]]) while arriving by a different route — principal multiplicity rather than task multiplicity. **[wiki synthesis]** Note what this sets up against the existing register: [[dimensions-of-institutional-variation]] D9 records Libecap's finding that regulators prefer revocable permits to transferable rights specifically to preserve their own discretion, which is a self-serving reading of the same variable. Preserving discretion and reducing it are opposite moves, so the two are not in strict contradiction — but they are opposite priors about what a rule-bound bureau is *for*. Recorded as a tension at D9, not as a conflict.
 
@@ -91,13 +91,13 @@ Other failure modes Dixit names, on theory plus illustration rather than data:
 
 ## Where an activity should sit, and the not-for-profit form
 
-**[framework]** Dixit extends Williamson's discriminating-alignment logic to the public/private boundary itself: activities close to pure private goods (excludable, rival) are argued to be more efficiently produced privately, citing Megginson & Netter's (2001) survey finding privatised state enterprises generally more efficient — cited at one remove and not independently assessed. But privatisation does not guarantee competition, and multidimensional quality-versus-cost tradeoffs persist in private monopolies.
+**[model]** Dixit extends Williamson's discriminating-alignment logic to the public/private boundary itself: activities close to pure private goods (excludable, rival) are argued to be more efficiently produced privately, citing Megginson & Netter's (2001) survey finding privatised state enterprises generally more efficient — cited at one remove and not independently assessed. But privatisation does not guarantee competition, and multidimensional quality-versus-cost tradeoffs persist in private monopolies.
 
 The **not-for-profit form** is explained (via Glaeser & Shleifer 2001) as a credible-commitment device against quality-cutting: an NFP manager can capture cost savings only as perquisites, which are worth less to him than cash, so NFP status is a more credible signal of quality maintenance than a for-profit rival can send. Public agencies face tighter constraints still on appropriating cost savings — which is Dixit's argument for why activities with severe quality-measurement problems are sometimes rationally placed in government rather than contracted out. He cites Hart, Shleifer & Vishny on prisons for the case. **[wiki synthesis]** Structurally this is the same move as the shackling arguments on [[credible-commitment]]: remove the actor's ability to capture the gain from the behaviour you fear, rather than trying to detect the behaviour.
 
 ## Levers
 
-**[framework]** With Dixit's own evidentiary grading, which is unusually honest:
+**[model]** With Dixit's own evidentiary grading, which is unusually honest:
 
 1. **A standing "devil's advocates" unit** in every agency, tasked solely with red-teaming how current policies can be gamed or arbitraged. Purely a recommendation — "no sure remedy... a small reform may help a lot." Untested.
 2. **Group complements, split substitutes** across agencies. Formally derived from the `k` result above; never tested against a real reorganisation.
@@ -125,7 +125,7 @@ The **not-for-profit form** is explained (via Glaeser & Shleifer 2001) as a cred
 - [[property-rights-theory-of-the-firm]] — the only other public/private treatment in this batch, and the sole corroboration of Dixit's conclusion, on one service (prisons) by a different mechanism.
 - [[governance-structures]] — Dixit extends Williamson's discriminating alignment to the public/private boundary using incentive-theoretic microfoundations rather than asset specificity.
 - [[bureaucratic-growth-and-parkinsons-law]] — Niskanen's budget-maximising bureaucrat is the rival prior: Dixit explicitly declines the public-choice framing and treats bureaucratic form as rational equilibrium.
-- [[dimensions-of-institutional-variation]] — supplies D50 (action-observability × outcome-observability) and D51 (principal multiplicity and heterogeneity), and half of D49.
+- [[dimensions-of-institutional-variation]] — supplies D50 (action-observability × outcome-observability) and D51 (principal multiplicity and heterogeneity), **merged into D42 (external-control density) on 2026-08-20 as the same count**; D42 is the live row and now carries Dixit's inclusion test, lever-type enumeration and heterogeneity component. Also half of D49.
 - [[credible-commitment]] — the not-for-profit form as a commitment device is structurally the same move as shackling, on a different actor.
 - [[transaction-costs]] — Dixit's account of why activities migrate across the public/private boundary is a transaction-cost-politics argument, citing his own 1996 book.
 - [[what-is-an-institution]] — "degree, not kind" is a direct position on whether public and private governance are one analytical object.

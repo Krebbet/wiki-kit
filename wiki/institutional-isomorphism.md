@@ -6,7 +6,7 @@ DiMaggio & Powell's claim is that once a set of organisations coalesces into a r
 
 ## The three mechanisms
 
-**[framework]** Each has its own antecedent condition, and the authors insist they are analytically distinct even though they intermingle in practice.
+**[model]** Each has its own antecedent condition, and the authors insist they are analytically distinct even though they intermingle in practice.
 
 **Coercive isomorphism** — formal and informal pressure from organisations one depends on, plus cultural and legal expectations: government mandate, contract law, funding and reporting requirements. The mechanism is dependence plus legal environment forcing structural conformity, often ceremonially rather than substantively (affirmative-action officers, special-education compliance units, accountants hired to satisfy tax law). The authors refuse the obvious dismissal: ceremonial compliance is **not** inconsequential, because staff hired to perform it become internal advocates and shift the organisation's internal power distribution (citing Ritti & Goldner). Citing Pfeffer & Salancik, they add two features of politically constructed environments that make coercive pressure maladaptive: decision-makers "often do not experience directly the consequences of their actions", and political decisions are "applied across the board to entire classes of organizations".
 
@@ -71,7 +71,7 @@ Their sector case is hospitals (citing Lee, Fennell): a "poor market system" bec
 
 ## Where the field's own homogeneity claim sits relative to power
 
-**[framework]** Two forms of power are distinguished. The **power to set premises** (March & Simon; Simon 1957) — defining the norms and standards that channel what later looks like autonomous rational choice. And the **point of critical intervention** (Domhoff) — the moment at which elites define an organisational model or policy that then "goes unquestioned for years to come". The paper positions itself as a third way between natural-selection efficiency accounts and Marxist elite-control accounts: elite intent is necessary but not sufficient, and field structuration is the mechanism that lets isolated elite interventions cascade into durable field-wide structure. It claims to explain both that "elites often get their way" *and* the "irrationality, frustration of power, and lack of innovation" visible inside real organisations.
+**[model]** Two forms of power are distinguished. The **power to set premises** (March & Simon; Simon 1957) — defining the norms and standards that channel what later looks like autonomous rational choice. And the **point of critical intervention** (Domhoff) — the moment at which elites define an organisational model or policy that then "goes unquestioned for years to come". The paper positions itself as a third way between natural-selection efficiency accounts and Marxist elite-control accounts: elite intent is necessary but not sufficient, and field structuration is the mechanism that lets isolated elite interventions cascade into durable field-wide structure. It claims to explain both that "elites often get their way" *and* the "irrationality, frustration of power, and lack of innovation" visible inside real organisations.
 
 ## Scope, and where the authors exceed it
 

@@ -27,6 +27,13 @@ The user's stated three-part macro thesis (power / institutions / economy as the
 
 **Voice and tone:** Terse, analytical, expert. Lead with the claim, then the mechanism, then the evidence. Distinguish explicitly between (a) what is empirically established, (b) what is a theoretical model, and (c) what is the user's or the assistant's own synthesis — never let the three blur. Steelman contested positions before adjudicating them; institutions are an ideologically loaded field and a wiki that quietly picks a camp is worthless. Prefer mechanisms over labels: 'selection is by seniority, so risk-aversion compounds' beats 'bureaucratic culture'. No hedging filler, no throat-clearing.
 
+**Evidence-tier vocabulary — fixed, use exactly these tokens.** Three tiers, three markers, and no others:
+- `**[empirical]**` — tier (a): a claim resting on data the source actually collected or analysed. Say what the design was.
+- `**[model]**` — tier (b): anything asserted from theory rather than measured — a formal model with derived results, a conceptual scheme, a typology, a framework, an argumentative essay. **`[framework]` was a second token for this tier and is retired**; it was normalised to `[model]` on 2026-08-20 because nothing defined the boundary between the two and 39 uses had drifted across it. If a tier-(b) source's character matters — formal model vs. conceptual scheme vs. essay — say so in the page's `**Evidence tier note.**`, not by inventing a marker.
+- `**[wiki synthesis]**` — tier (c): this wiki's or the user's own inference, including anything read across sources that no source states.
+
+The lettered form (`(a)`, `(b)`, `(c)`) is fine in prose and in `**Evidence tier note.**` headers, where it reads better than a marker; the bracketed tokens above are the form used for inline per-claim marking. Do not coin a fourth token.
+
 ## Session Startup
 
 At the start of every session:

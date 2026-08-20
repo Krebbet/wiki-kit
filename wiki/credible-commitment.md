@@ -6,12 +6,12 @@ Capital markets and long-horizon investment require that whoever holds coercive 
 
 ## The problem
 
-**[framework]** A ruler who can seize assets faces no constraint on doing so when fiscally pressed. Investors know this, so they do not commit capital at long horizons; the ruler therefore has a smaller tax base than a ruler who could commit, but cannot get there from here, because the promise not to seize is not enforceable against the only party with enforcement power. North's two candidate solutions:
+**[model]** A ruler who can seize assets faces no constraint on doing so when fiscally pressed. Investors know this, so they do not commit capital at long horizons; the ruler therefore has a smaller tax base than a ruler who could commit, but cannot get there from here, because the promise not to seize is not enforceable against the only party with enforcement power. North's two candidate solutions:
 
 1. **Self-restraint ("forebearance")** — which he dismisses on the historical record: "seldom successful for very long in the face of... fiscal crises."
 2. **Structural shackling** — altering the rules so the ruler *cannot* act arbitrarily, rather than choosing not to. The Glorious Revolution (1688) is his exemplar: it produced parliamentary supremacy over the crown, and with it a credible constraint on expropriation (citing North & Weingast 1989).
 
-**[framework]** North's related second mechanism is *political fragmentation*: early modern Europe's many competing polities made rulers de facto dependent on merchant and constituent cooperation for revenue even where they were nominally sovereign, which forced bargaining — representation in exchange for revenue. He is careful about this one, calling it "only a partial answer," because it fails to explain divergence *within* Europe: Spain's decline against the Dutch and English rise. That admission is worth preserving; the fragmentation story is often repeated without it.
+**[model]** North's related second mechanism is *political fragmentation*: early modern Europe's many competing polities made rulers de facto dependent on merchant and constituent cooperation for revenue even where they were nominally sovereign, which forced bargaining — representation in exchange for revenue. He is careful about this one, calling it "only a partial answer," because it fails to explain divergence *within* Europe: Spain's decline against the Dutch and English rise. That admission is worth preserving; the fragmentation story is often repeated without it.
 
 ## The contrast case: Spain and Latin America
 

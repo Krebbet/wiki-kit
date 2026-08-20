@@ -8,7 +8,7 @@ Sabel & Zeitlin's handbook chapter defines a governance architecture built on a 
 
 ## The cycle and what it replaces
 
-**[framework]** The four steps, in the authors' order:
+**[model]** The four steps, in the authors' order:
 
 1. Central and local actors **provisionally** set broad framework goals and the metrics for gauging progress.
 2. Local units are given **broad discretion** to pursue those goals their own way.
@@ -23,18 +23,18 @@ The second target is the **street-level bureaucrat** problem — low-visibility 
 
 **[b — asserted and illustrated; the authors concede its payoff is uncalculable]** The distinctive mechanism, and the one that matters most for the wiki's reform question. Where an empowered party benefits from the status quo, central authorities do not seize control; they threaten to make the status quo **unworkable** — penalty defaults, destabilization rights exercised through courts, legislatures, or administrative threat. The claim is that this makes joint deliberation the dominant strategy even though its payoff cannot be known ex ante. Illustrations: EU energy policy, US school and child-welfare litigation. It is explicitly *in terrorem*, and the authors say so.
 
-**[framework] This is a wager against the conventional theory of reform, and they present it as one.** The conventional view attacks power disparities head-on: redistribute or share power as a *precondition* for reform (community organising, labour "power mapping", at the limit revolutionary redistribution). The experimentalist view holds that obstruction is **diffuse rather than located at a hierarchical apex**, so reform proceeds by creating local decision-making space plus destabilization mechanisms, *without* formal power redistribution at the top. The authors flag their own open question about it: whether affected parties — parents, citizens — actually gain a voice, or only frontline workers and firms do.
+**[model] This is a wager against the conventional theory of reform, and they present it as one.** The conventional view attacks power disparities head-on: redistribute or share power as a *precondition* for reform (community organising, labour "power mapping", at the limit revolutionary redistribution). The experimentalist view holds that obstruction is **diffuse rather than located at a hierarchical apex**, so reform proceeds by creating local decision-making space plus destabilization mechanisms, *without* formal power redistribution at the top. The authors flag their own open question about it: whether affected parties — parents, citizens — actually gain a voice, or only frontline workers and firms do.
 
 ## Scope conditions, stated twice by the authors
 
-**[framework]** Experimentalism is not offered as universal. Two conditions:
+**[model]** Experimentalism is not offered as universal. Two conditions:
 
 1. **Strategic uncertainty** — goals and effective methods cannot be determined ex ante and must be discovered by problem-solving.
 2. **Polyarchic / multi-polar power** — no single actor can impose its preferred solution unilaterally.
 
 The EU is the paradigm case because it combines both more consistently than other polities. Domain scope: EU and US regulation and public services, roughly 1990–2011. Nothing is claimed for authoritarian settings, non-EU/US polities, or the period before 1990.
 
-**[c — wiki synthesis]** The second scope condition is where this source collides productively with the wiki's existing material. Hammond ([[veto-points-and-bureaucratic-autonomy]]) shows that veto-point *count* predicts nothing about discretion without the preference profile; Sabel & Zeitlin treat "no actor can impose a solution" as the condition that *enables* experimentalism to emerge. Hammond's framework would call that underspecified without knowing how far apart the multipolar actors' preferences are. Adjacent conceptual territory, not a tested conflict. Distinguish this from the register's D74 (independent-venue count): venue count *enables mobilisation*, veto count *blocks change*, and they are not the same measurement.
+**[c — wiki synthesis]** The second scope condition is where this source collides productively with the wiki's existing material. Hammond ([[veto-points-and-bureaucratic-autonomy]]) shows that veto-point *count* predicts nothing about discretion without the preference profile; Sabel & Zeitlin treat "no actor can impose a solution" as the condition that *enables* experimentalism to emerge. Hammond's framework would call that underspecified without knowing how far apart the multipolar actors' preferences are. Adjacent conceptual territory, not a tested conflict. Distinguish this from the register's D74 (independent-venue count, **merged into D14 on 2026-08-20**; score D14): venue count *enables mobilisation*, veto count *blocks change*, and they are not the same measurement.
 
 Against Dixit ([[incentives-under-multiple-principals]]) the relation is sharper and more interesting: Dixit's `m = 1/(1+nrcv)` says that adding noncooperating principals mechanically collapses incentive strength — polyarchy causes paralysis. Sabel & Zeitlin say polyarchy is *generative* of a new accountability form that substitutes for incentive-based accountability. Neither engages the other's mechanism. **Candidate synthesis worth stating and not adopting: experimentalist governance as an institutional response to the Dixit problem** — dynamic accountability being what is left when explicit incentives cannot be made strong because too many uncoordinated principals own the outcome.
 

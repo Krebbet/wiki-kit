@@ -63,7 +63,7 @@ He does **not** formalise this. There is no model trading measurement cost again
 
 ### Levers, with their evidence base
 
-**[framework]** (1) Prefer non-controlling interventions, or frame monetary ones as supportive, where intrinsic or civic motivation is doing real work — the central actionable claim, with **no operational recipe** for making an intervention read as supportive. (2) Avoid intermediate enforcement stringency: either near-perfect or low dominates a half-hearted middle — **a single lab result**, not policy doctrine. (3) Constitutional design extending trust and participation rights to citizens sustains tax morale better than "constitutions for knaves" — **Frey's own normative extension**, resting on his own correlational work. (4) Restrict high-powered extrinsic incentives to simple, low-intrinsic-motivation environments — **one field study contrasted against one piece-rate study**. None of these rise to a level the wiki should treat as settled.
+**[model]** (1) Prefer non-controlling interventions, or frame monetary ones as supportive, where intrinsic or civic motivation is doing real work — the central actionable claim, with **no operational recipe** for making an intervention read as supportive. (2) Avoid intermediate enforcement stringency: either near-perfect or low dominates a half-hearted middle — **a single lab result**, not policy doctrine. (3) Constitutional design extending trust and participation rights to citizens sustains tax morale better than "constitutions for knaves" — **Frey's own normative extension**, resting on his own correlational work. (4) Restrict high-powered extrinsic incentives to simple, low-intrinsic-motivation environments — **one field study contrasted against one piece-rate study**. None of these rise to a level the wiki should treat as settled.
 
 ---
 
@@ -71,7 +71,7 @@ He does **not** formalise this. There is no model trading measurement cost again
 
 **Slide-deck caveat, restated because it governs everything in this section: the captured source is a 29-page presentation of the 2003 *Review of Economic Studies* article, not the article. It contains no empirical test of its own propositions, and the psychology it cites was the model's motivation, not its validation.**
 
-**[framework]** The setting is a dyad — parent and child, teacher and student, boss and employee, spouse and spouse — in which the **principal has private information the agent lacks**: about the agent's ability or the task's difficulty (Setting A, unknown θ), or about the task's cost and attractiveness (Setting B, unknown c).
+**[model]** The setting is a dyad — parent and child, teacher and student, boss and employee, spouse and spouse — in which the **principal has private information the agent lacks**: about the agent's ability or the task's difficulty (Setting A, unknown θ), or about the task's cost and attractiveness (Setting B, unknown c).
 
 The principal offers a contingent reward `b`, choosing it to maximise `θ[1 − G(σ*(b)|θ)][W − b]` — trading a higher probability the agent tries (via a lower effort threshold `σ*(b)`) against the cost of paying. The agent tries iff `E(θ|σ,b)(V+b) ≥ c`.
 

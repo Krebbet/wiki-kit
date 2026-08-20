@@ -21,7 +21,7 @@ Thelen credits the gap concept to Pierson (2004) and then redeploys it against P
 
 ## Two typologies, kept separate
 
-**[framework]** They operate at different levels and must not be flattened into one scheme.
+**[model]** They operate at different levels and must not be flattened into one scheme.
 
 ### Table 1 — process × result (Streeck & Thelen 2005)
 

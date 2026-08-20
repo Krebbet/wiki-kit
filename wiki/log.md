@@ -594,3 +594,79 @@ Thin spots:
 - The batch's strongest source is silent on scale, hierarchy and age by its own admission, and its own
   strongest lever (integrity screening) sits in tier (iii) — which is why the triage is done per lever and not
   per source.
+
+## [2026-08-20] lint remediation | 2026-08-19 report
+
+Acting on `wiki/lint-reports/2026-08-19.md`. Consistency and structure only — no new claims, no new sources.
+The report itself was not modified; it stays as found.
+
+**1. Promotion criterion re-applied.** The user's ruling of 2026-08-20 dropped criterion (i) (two independent
+naming sources); measurability is now the whole test, and the criterion text at the top of the register was
+already updated. All 50 `candidate` rows were walked against it, strictly: a countable, codable or
+readable-off-a-document instruction promotes, a gesture at measurement does not. **41 promoted, 7 left
+`candidate`, 2 taken out of the running by the merges below.** The seven that stay are D19, D22, D31, D32,
+D33, D57 and D64, each for a stated reason recorded in `revisions.md`. The three closest calls:
+
+- **D49 (task substitutability) — promoted.** Its first limb is an experiment an analyst cannot run
+  ("introduce or strengthen a measure on one task"), which nearly disqualifies it. Promoted because limbs (ii)
+  and (iii) are observational and executable — a reallocation audit off time-use or case-mix records around a
+  change in what was measured, and a design read-off from whether the institution has repeatedly split the
+  function. One runnable limb is enough; a row whose *only* limb is an intervention would not be.
+- **D57 (field structuration) — left.** The closest call against promotion. Its fourth proxy (count the
+  field's coordinating bodies and the participation share) is genuinely countable, but the axis is scored on a
+  **field**, not on an institution, so it cannot be run against "an institution's primary documents, budget,
+  personnel records or observable behaviour" at all — and DiMaggio & Powell concede in the row that
+  structuration "may not lend itself to easy measurement". Readmission is cheap: state it as a measurement on
+  the field an institution sits in, and say which field data source supplies it.
+- **D64 (coordination requirement for capture) — left.** Reads like a count — "count the distinct outside
+  actors whose assent or coordinated action is needed" — but the assent is counterfactual and informal, with
+  no data source named, where D44's structurally identical instruction is anchored in formal assent
+  requirements and voting records. Carpenter & Moss "measure neither pole" by the row's own admission.
+  Promotion condition: name where the actor list comes from.
+
+Also close: **D19** (left — the row itself says no method here measures human or site specificity) and **D33**
+(left — the executable proxy scores stated rationale, which the row concedes is not the named construct).
+
+**2. Duplicate axes merged.** D51 into D42, D74 into D14, both using the D25/D25a convention — lower number
+stays live, higher number stays in place marked `superseded by Dnn` and pointing at the survivor, with the
+survivor absorbing everything the superseded row did better. Nothing was deleted; the visible history is the
+point, and a `superseded by Dnn` status value was added to "How to read this" so the column stays legible.
+
+The two soft overlaps were **cross-referenced, not merged**, and the reasoning is on the rows:
+
+- **D10 / D44.** D10's bare veto count is exactly what D44's composite exists to prevent, so D44's warning is
+  now carried on D10 and must be applied whenever D10 is scored. They are not one axis: D10 counts who can
+  block *an expropriative act by the top decision-maker* and asks whether anyone ever has — a behavioural
+  check D44 does not have and should import — while D44 counts who must assent to *any* change to the status
+  quo. Merging would lose North's narrower act class and D44's preference limb both.
+- **D50 / D25.** D50's outcome-observability limb is D25's question restated, so it is now instructed to be
+  scored with D25's three-component instrument and D25a's three-way split rather than as a fresh binary. Not
+  merged, because D50's value is the *cross* with action-observability, which D25 has no analogue for, and
+  because D50 is explicitly scored on a situation rather than an organisation (Dixit's army is procedural in
+  peacetime, craft in war). D25 now names the full measurement cluster — D25, D25a, D47, D50 — which closes
+  the D50→nothing reference gap the lint found.
+
+**3. The decay conflict is reachable.** `conflicts/decay-as-real-vs-decay-as-overstated` had zero inbound
+wiki-links from any content page; it now has ten. Seven `## Related` entries, each stating which position in
+the dispute the page sits on and why, plus the three bare backticked paths converted to wiki-links. The
+justification clauses are the point: a reader on `goal-displacement` should learn there that Merton is one of
+Position B's founders, not merely that a conflict file exists.
+
+**4. `index.md` reframed.** One line, still one line. The triad and the decay premise are now stated as the
+working decomposition under test (Q17, Q60) rather than as the wiki's subject.
+
+**5. `open-questions.md` tidied.** Q39–Q45 moved up out of the end-matter and the `institutional-evolution`
+raw directory listed in `## Source` with the other six batches; scope clusters cross-referenced in both
+directions (Q3 → Q64 / Q73, with Q25 and Q38 as the candidate replacement variables; Q20 ↔ Q61) without
+merging anything.
+
+**6. Tier vocabulary.** `[framework]` retired into `[model]` — 39 occurrences across 16 pages — and the
+vocabulary stated once in `CLAUDE.md`: three tiers, three markers, lettered form for prose only, no fourth
+token. The `[framework]`/`[model]` split the lint described as "genuinely useful but undocumented" was not
+preserved; where a tier-(b) source's character matters it belongs in the page's `Evidence tier note.`, which
+is where every page already states it in practice.
+
+**Noted, not fixed** (outside this pass's remit): `open-questions.md` Q2 still says the register "registers 34
+named axes" against 74 rows; the register's intro paragraph is still an append-log; the lettered tier form
+(`**[b]**`, three uses) still coexists with the named form; and `dimensions-of-institutional-variation` still
+lists `[[governance-structures]]` twice in its own `## Related`.

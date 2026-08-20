@@ -35,7 +35,7 @@ Bunse & Fritz's World Bank working paper is the wiki's first source that puts a 
 
 ## Named axes of variation
 
-**[framework]** Time horizon of reform benefits against political tenure; clientelism / limited-access-order intensity; veto-point count and intensity; electoral system (proportional and open-list vs. majoritarian); programmatic vs. non-programmatic parties; regime type; aid dependency; pre-existing state capacity; reform *salience to citizens* crossed with reform *difficulty / rent-threat* (treated as an independent 2×2, not one axis); **de jure vs. de facto reform depth**; scope of a single intervention; instrument type. Registered as [[dimensions-of-institutional-variation]] D73 (reform-benefit time horizon vs. principal tenure) and noted in the D-row commentary for the rest.
+**[model]** Time horizon of reform benefits against political tenure; clientelism / limited-access-order intensity; veto-point count and intensity; electoral system (proportional and open-list vs. majoritarian); programmatic vs. non-programmatic parties; regime type; aid dependency; pre-existing state capacity; reform *salience to citizens* crossed with reform *difficulty / rent-threat* (treated as an independent 2×2, not one axis); **de jure vs. de facto reform depth**; scope of a single intervention; instrument type. Registered as [[dimensions-of-institutional-variation]] D73 (reform-benefit time horizon vs. principal tenure) and noted in the D-row commentary for the rest.
 
 ## Levers, with their evidence attached
 

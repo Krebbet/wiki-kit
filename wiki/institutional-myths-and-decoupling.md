@@ -6,7 +6,7 @@ Meyer & Rowan's claim is that formal organisational structure is frequently adop
 
 ## The six propositions
 
-**[framework]** Each carries an identified mechanism, and every mechanism routes through **legitimacy** rather than through efficiency, output quality, or budget bargaining. This is offered explicitly as an *alternative causal channel* to the Weberian coordination-and-control account of bureaucratisation, not as a refinement of it.
+**[model]** Each carries an identified mechanism, and every mechanism routes through **legitimacy** rather than through efficiency, output quality, or budget bargaining. This is offered explicitly as an *alternative causal channel* to the Weberian coordination-and-control account of bureaucratisation, not as a refinement of it.
 
 1. **Rationalised institutional rules arise in a domain → formal organisations form and expand by incorporating those rules as structural elements, independent of the rules' effect on efficiency.** Mechanism: legitimacy and resource gains from being isomorphic with the myths of the institutional environment.
 2. **The more modernised the society, the more extended the rationalised institutional structure and the greater the number of domains containing rationalised institutions.** Mechanism: rise of rational-legal order and centralised states. This is the one proposition operating at the environment level, and it is asserted rather than modelled — it functions as an input to the other five. The authors explicitly decline to theorise why the myth-system itself evolves: "the evolution of the whole modern institutional system... is beyond the scope of this paper."
@@ -29,13 +29,13 @@ At the production end sit organisations with clear routine technology, evaluable
 
 ## Ceremonial production functions and rent by legitimacy
 
-**[framework]** The economic-production claim is sharper than the rest of the paper. Modern accounting creates **"ceremonial production functions"** mapped onto the real one: units with no measurable contribution to output — advertising, safety, econometrics staff — are assigned "shadow prices" taken from their external market cost rather than their marginal product, and their internal power "rises with their performance on ceremonial measures" (citing Salancik & Pfeffer). Assessment criteria become externally derived — a Nobel Prize hire, a prestigious consultant — rather than output-based.
+**[model]** The economic-production claim is sharper than the rest of the paper. Modern accounting creates **"ceremonial production functions"** mapped onto the real one: units with no measurable contribution to output — advertising, safety, econometrics staff — are assigned "shadow prices" taken from their external market cost rather than their marginal product, and their internal power "rises with their performance on ceremonial measures" (citing Salancik & Pfeffer). Assessment criteria become externally derived — a Nobel Prize hire, a prestigious consultant — rather than output-based.
 
 Institutionalisation also channels resources directly: legitimated organisations get easier loans, donations and investment, and quasi-automatic public funding, independent of output. "Apart from whether schools educate students, or hospitals cure patients, people and governmental agencies remain committed to these organizations, funding and using them almost automatically." This is a **rent-creation-by-legitimacy** mechanism, distinct from both market rents and classic regulatory capture.
 
 ## Accountability, suppressed by mutual agreement
 
-**[framework]** Decision rights over formal structure sit partly with organisational leadership — who can actively *shape* the institutional environment, as automobile producers lobby over legal and public-opinion standards — and partly are ceded upward to "corporately organized agents of society": accrediting agencies, boards of trustees, government agencies, courts, professional licensing bodies. Accountability runs to the **appearance of conformity**.
+**[model]** Decision rights over formal structure sit partly with organisational leadership — who can actively *shape* the institutional environment, as automobile producers lobby over legal and public-opinion standards — and partly are ceded upward to "corporately organized agents of society": accrediting agencies, boards of trustees, government agencies, courts, professional licensing bodies. Accountability runs to the **appearance of conformity**.
 
 The distinctive part is that external constituents *also* avoid inspecting, preferring "categorical relationships". The nominal accountability channel is suppressed by mutual agreement between the organisation and its overseers — not evaded by one party against the other. That is a sharper statement of the nominal-versus-actual accountability gap than the wiki has from anywhere else, and it bears directly on [[open-questions]] Q11.
 
@@ -43,7 +43,7 @@ The distinctive part is that external constituents *also* avoid inspecting, pref
 
 ## Structural inconsistency
 
-**[framework]** A pluralistic institutional environment forces organisations to incorporate mutually incompatible elements — overlapping professional jurisdictions, competing programmes claiming authority over the same domain. Their illustration: "if one inquires who decides what curricula will be taught in schools, any number of parties... may say that they decide." This looks like veto-point gridlock and is a different mechanism — myth pluralism rather than formal veto design. Keep it separate from [[veto-points-and-bureaucratic-autonomy]] rather than merging the two counts.
+**[model]** A pluralistic institutional environment forces organisations to incorporate mutually incompatible elements — overlapping professional jurisdictions, competing programmes claiming authority over the same domain. Their illustration: "if one inquires who decides what curricula will be taught in schools, any number of parties... may say that they decide." This looks like veto-point gridlock and is a different mechanism — myth pluralism rather than formal veto design. Keep it separate from [[veto-points-and-bureaucratic-autonomy]] rather than merging the two counts.
 
 ## No age or size evidence, and the authors say so
 
@@ -57,7 +57,7 @@ See [[open-questions]] Q7.
 
 ## The authors' own posture
 
-**[framework]** Unusually agnostic for this literature, and it changes how the page should be read. Meyer & Rowan explicitly decline to characterise ceremonial decoupling as dysfunction: "No position is taken here on the overall social effectiveness of isomorphic and loosely coupled organizations... It should not be assumed that the creation of microscopic rationalities in the daily activity of workers effects social ends more efficiently than commitment to larger institutional claims and purposes." They close by suggesting decoupling **may maximise long-run effectiveness** through good-faith commitment.
+**[model]** Unusually agnostic for this literature, and it changes how the page should be read. Meyer & Rowan explicitly decline to characterise ceremonial decoupling as dysfunction: "No position is taken here on the overall social effectiveness of isomorphic and loosely coupled organizations... It should not be assumed that the creation of microscopic rationalities in the daily activity of workers effects social ends more efficiently than commitment to larger institutional claims and purposes." They close by suggesting decoupling **may maximise long-run effectiveness** through good-faith commitment.
 
 **[wiki synthesis]** That is the opposite normative posture from [[red-tape]], and the contrast is useful. Bozeman defines red tape as rules that impose burden and achieve *nothing*; Meyer & Rowan's ceremonial structure imposes efficiency costs and achieves something real — legitimacy, resources, survival. Two accounts of similar-looking rule elaboration with opposite verdicts on whether it is functionless. Neither has measured against the other.
 

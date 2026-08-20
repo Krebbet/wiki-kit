@@ -70,7 +70,7 @@ Lipset & Rokkan's three critical junctures (Reformation; Democratic Revolution a
 
 ## Statist against pluralist, and what the essay is arguing for
 
-**[framework]** The essay's frame is a contest of two conceptions, presented through Benjamin & Duvall's four-way taxonomy of "the state": state-as-government, state-as-bureaucratic-apparatus-and-legal-order, state-as-ruling-class, state-as-normative-order.
+**[model]** The essay's frame is a contest of two conceptions, presented through Benjamin & Duvall's four-way taxonomy of "the state": state-as-government, state-as-bureaucratic-apparatus-and-legal-order, state-as-ruling-class, state-as-normative-order.
 
 - **Statist view.** Decision rights sit with state officials whose selection and removal is internal to the apparatus — bureaucratic promotion, elite educational tracks — not through societal accountability channels. Officials' resources ("legality", administrative position) are conferred by the office rather than carried in from society. Institutional structures determine which combinations of resources are even possible: Krasner's example is that the same political will produces different outcomes depending on whether an apparatus like MITI exists to enact it.
 - **Pluralist view**, steelmanned at length through Dahl. Decision rights are diffuse, held by a "political stratum" whose resources come mostly from society (jobs, information) and are carried in and out of office; leaders are constrained by shifting societal coalitions rather than by durable structure.
