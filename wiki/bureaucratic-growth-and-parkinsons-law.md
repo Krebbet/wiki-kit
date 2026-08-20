@@ -1,6 +1,6 @@
 # Bureaucratic Growth and Parkinson's Law
 
-Parkinson's claim is that administrative headcount grows at a rate set inside the organisation and unrelated to the work to be done: "the number of officials and the quantity of work to be done are not related to each other at all." He names two motive forces — an official multiplies subordinates rather than rivals, and officials make work for each other — and offers no evidence for either. Klimek, Hanel & Thurner (2008) supply the quantitative layer Parkinson's own essay only promises: a 197-country cross-section putting a threshold at cabinet size N≈20–21, two historical staff series in which headcount rises while workload falls (British Colonial Office +6%/yr as the territories administered shrank; Royal Navy admiralty officials +80% as ships in commission fell from 62 to 20), and a renewal model whose growth rate depends only on promotion probability and subordinates-per-promotion, with no workload term at all. Niskanen's budget-maximising bureau is the contrast case: same conclusion that bureaus are too big, entirely different mechanism — the bureau head maximises budget, the lump-sum funding form gives him all-or-nothing power over his sponsor, and the resulting bureau can be *internally lean* and still allocatively oversized. The two accounts are not the same claim, and neither has been tested against the other.
+Parkinson's claim is that administrative headcount grows at a rate set inside the organisation and unrelated to the work to be done: "the number of officials and the quantity of work to be done are not related to each other at all." He names two motive forces — an official multiplies subordinates rather than rivals, and officials make work for each other — and offers no evidence for either. Klimek, Hanel & Thurner (2008) supply the quantitative layer Parkinson's own essay only promises: a 197-country cross-section putting a threshold at cabinet size N≈20–21, two historical staff series in which headcount rises while workload falls (British Colonial Office +6%/yr as the territories administered shrank; Royal Navy admiralty officials +80% as ships in commission fell from 62 to 20), and a renewal model whose growth rate depends only on promotion probability and subordinates-per-promotion, with no workload term at all. Niskanen's budget-maximising bureau is the contrast case: same conclusion that bureaus are too big, entirely different mechanism — the bureau head maximises budget, the lump-sum funding form gives him all-or-nothing power over his sponsor, and the resulting bureau can be *internally lean* and still allocatively oversized. Downs (1964) supplies a **third** channel, added 2026-08-20: growth driven by climber ambition, by rational territorial self-protection against interdependent bureaus, and by life-cycle scope expansion — **with no budget variable and no size variable anywhere in it**, which is what distinguishes it from Niskanen. The three accounts are not the same claim, none has been tested against either of the others, and they differ sharply in evidence: Downs has none at all.
 
 **Evidence tier note.** Grade this page piece by piece; the sources differ sharply.
 - **Parkinson (1955)** — (b) assertion only, and **the primary text is only partially captured**. The file in `raw/` is a ~500-word excerpt that stops at the sentence "The validity of this recently discovered law must rely mainly on statistical proofs, which will follow", ending with a dead link to the full essay PDF. The Admiralty and Colonial Office figures Parkinson is famous for **do not appear in our capture**, and nothing on this page attributes a number to him.
@@ -52,17 +52,38 @@ Two equilibria follow, and the distinction matters more than the numbers:
 
 **[model — levers, none tested]** Force bureau-to-bureau competition and treat consolidation as the harm it is ("the passion of reformers to consolidate bureaus with similar output seems diabolically designed to increase the inefficiency"); invert the incentive by making the top 5% of a bureau's personnel's salaries a *negative* function of budget for a given set of outputs; contract out to profit-seeking firms and retain only review. All three are deductions from the model, and all require output measurement the model itself says is unavailable.
 
-## What separates the two accounts
+## Downs's bureau: a third channel, with no budget variable at all
 
-**[wiki synthesis]** Both predict oversized bureaus; the mechanisms share almost nothing.
+**[model — added 2026-08-20; Downs 1964 contains no data of any kind, and this must be read as a rival *theory*, not as further evidence]** Downs's growth account is neither Parkinson's nor Niskanen's, and the reason it belongs on this page is that it has been routinely absorbed into one or the other. It runs through **three components, none of which is a budget and none of which is a size threshold**:
 
-| | Parkinson / Klimek | Niskanen |
-|---|---|---|
-| What grows | Headcount | Output and budget |
-| Driver | Individual official's career incentive, aggregated | Bureau head's utility in total budget |
-| Role of workload/demand | None — growth is workload-independent by construction | Central — demand slope determines which equilibrium and how much distortion |
-| Internal slack | Implied but not modelled | Present in one equilibrium, **absent in the other** |
-| What would stop it | Tuning promotion rate and subordinates-per-promotion | Elastic demand, rival suppliers, inverted pay-budget link |
+1. **Climber ambition (Central Hypothesis 2.a.1).** One of Downs's five official types — "climbers" — maximises power, income and prestige, and pursues promotion and aggrandisement. Aggregated, this is a growth pressure originating in individual career payoff. It is close to Parkinson's Factor I, and Downs supplies the motive Parkinson only asserts: the official is a utility-maximiser, and expansion is how his utility rises.
+2. **Territorial self-protection (C.7).** Where jurisdictional boundaries are ambiguous and bureaus are technically interdependent, turf conflict is a **rational** self-protective response to uncoordinated external decisions, not petty jealousy. A bureau expands its claimed territory because leaving a boundary unclaimed exposes it to another bureau's uncoordinated decisions. **There is no analogue of this in either Parkinson or Niskanen** — it is a growth mechanism that requires *other bureaus* to exist, which makes it a property of the bureaucratic field rather than of any single organisation.
+3. **Life-cycle scope expansion (C.11).** As bureaus age they "expand the scope of their functions", alongside developing more rules, becoming subject to inertia, and shifting goals from performing their functions to maintaining their structures. **This is an age-driven limb and the only one in this page's three accounts.** It is a bare assertion with no derivation and no data — see [[downs-vs-merton-on-age-dependence]] for why it is filed as a clash of models rather than treated as age evidence.
+
+**What makes it a genuinely third channel:**
+
+- **No budget variable.** Downs separates budget from output explicitly (C.8): a "small government budget" critique can be wrong on its own terms, since the same budget could buy far more output under full information. Nowhere does the bureau head maximise budget. **Niskanen's mechanism is absent from Downs.**
+- **No size variable.** Size in Downs is only the definitional threshold for what counts as a bureau at all (top-ranking members know less than half the members personally). It never enters a hypothesis as a continuous variable, and **there is no Downs claim that larger bureaus behave differently from smaller ones.**
+- **No workload variable either**, so it does not reduce to Parkinson's decoupling claim — Downs's growth is driven by ambition, territory and age, not by the absence of a workload term.
+- **No rent-seeking mechanism.** Downs does not discuss rent extraction anywhere in this document, unlike the Tullock wing of the same camp — see [[rent-seeking-and-the-welfare-cost-of-transfers]].
+
+**[wiki synthesis]** Add a column to the comparison below, and note what the three accounts have in common: **not one of them has been tested against either of the others**, and Downs is the only one of the three with no empirical content whatsoever. Where Parkinson and Klimek/Hanel/Thurner supply headcount series and Niskanen supplies a comparative-statics model with invented numbers, Downs supplies assertion. See [[rational-actor-accounts-of-bureaucratic-behaviour]] for the source's evidential character in full.
+
+## What separates the three accounts
+
+**[wiki synthesis]** All three predict oversized bureaus; the mechanisms share almost nothing.
+
+| | Parkinson / Klimek | Niskanen | Downs |
+|---|---|---|---|
+| What grows | Headcount | Output and budget | Headcount, territory, and scope of functions |
+| Driver | Individual official's career incentive, aggregated | Bureau head's utility in total budget | Climber ambition + rational territorial defence against interdependent bureaus + life-cycle scope expansion |
+| Role of workload/demand | None — growth is workload-independent by construction | Central — demand slope determines which equilibrium and how much distortion | None; workload does not appear |
+| Budget variable | None | The whole mechanism | **None** — Downs separates budget from output explicitly |
+| Size variable | Threshold N≈20–21 for decision bodies | None (static model) | **None** — size is a definitional threshold only |
+| Age variable | None (calendar-time trajectories, not young-vs-old comparison) | One aside, disowned in the author's own footnote 1 | **C.11 — the only genuine age limb in the three, and it is bare assertion** |
+| Internal slack | Implied but not modelled | Present in one equilibrium, **absent in the other** | Not modelled |
+| What would stop it | Tuning promotion rate and subordinates-per-promotion | Elastic demand, rival suppliers, inverted pay-budget link | Nothing proposed — Downs is descriptive throughout and recommends no reform |
+| Evidence | Two restated historical series (n=2), one uncontrolled cross-section, simulation | Deductive model, invented numbers | **None whatsoever** |
 
 Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no fat, no empire-building and no idle staff, still producing roughly two-thirds more than the social optimum. Any diagnosis that looks only for waste will not see it.
 
@@ -70,7 +91,7 @@ Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no 
 
 **[wiki synthesis — gaps]**
 
-- **Nothing here is about institutional age.** Klimek et al.'s only "age" variable is the *individual official's* career tenure — years in service, age of qualification, retirement age τR — not years since the institution's founding. The Colonial Office and Navy series are calendar-time trajectories of already-existing bodies, not comparisons of young against old institutions. Niskanen's one age claim — "new bureaus... will be very cost conscious... older bureaus... couldn't care less" — is an aside he disowns in his own footnote 1, which states the paper "develops only the static model of a bureau and does not explore the time dimension of budget maximization." It conflates age with which equilibrium a bureau sits in, and establishes neither. See [[open-questions]] Q7.
+- **Nothing here is about institutional age *that is evidenced*, and the one age claim added in 2026-08-20 is theory.** Downs's C.11 (ageing bureaus expand scope, accumulate rules, and shift goals toward self-maintenance) is the first age-dependent organisational mechanism asserted by any source in this wiki — and it carries zero data, is filed as a clash of models at [[downs-vs-merton-on-age-dependence]], and must not be counted as movement on the age question. Everything else here is about something other than age. Klimek et al.'s only "age" variable is the *individual official's* career tenure — years in service, age of qualification, retirement age τR — not years since the institution's founding. The Colonial Office and Navy series are calendar-time trajectories of already-existing bodies, not comparisons of young against old institutions. Niskanen's one age claim — "new bureaus... will be very cost conscious... older bureaus... couldn't care less" — is an aside he disowns in his own footnote 1, which states the paper "develops only the static model of a bureau and does not explore the time dimension of budget maximization." It conflates age with which equilibrium a bureau sits in, and establishes neither. See [[open-questions]] Q7.
 - **Nothing here tests firms.** Every unit in Klimek et al. is a public body; Niskanen's model is built on a funding form he treats as bureau-specific. Whether Parkinson's Factors I and II operate inside a private firm is untested in both. See [[parkinson-vs-knowledge-hierarchy-growth]].
 - **Whether the mechanism tracks ownership or funding form is open.** Niskanen's own footnote 3 concedes that post offices, universities and hospitals are "mixed" — part per-unit sale, part budget — regardless of public or private status. If the mechanism follows the lump-sum exchange rather than public ownership, "public vs. private" is the wrong axis and [[dimensions-of-institutional-variation]] D35 is the right one. Neither the source nor this wiki has tested it.
 
@@ -78,6 +99,7 @@ Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no 
 
 - `raw/research/scale-effects/04-parkinson-law-original-essay.md` — C. Northcote Parkinson, "Parkinson's Law", *The Economist*, November 1955. http://doc.cat-v.org/economics/parkinsons-law/ — **partial capture**: ~500 words, cuts off before any statistics.
 - `raw/research/scale-effects/05-parkinson-law-quantified-empirical.md` — Peter Klimek, Rudolf Hanel & Stefan Thurner, "Parkinson's Law Quantified: Three Investigations on Bureaucratic Inefficiency", 2008. https://arxiv.org/pdf/0808.1684
+- `raw/research/bureaucracy-and-public-choice/02-downs-theory-bureaucracy.md` — Anthony Downs, "A Theory of Bureaucracy", RAND Corporation P-3031, November 1964. https://www.rand.org/content/dam/rand/pubs/papers/2008/P3031.pdf — **scoped to the third-channel section only.**
 - `raw/research/scale-effects/03-niskanen-peculiar-economics-bureaucracy.md` — William A. Niskanen, "The Peculiar Economics of Bureaucracy", *American Economic Review* 58(2), May 1968, 293–305. https://sites.socsci.uci.edu/~jkbrueck/course%20readings/Econ%20272B%20readings/niskanen.pdf (JSTOR: http://www.jstor.org/stable/1831817)
 
 ## Related
@@ -89,4 +111,7 @@ Niskanen's budget-constrained equilibrium is the pointed case: a bureau with no 
 - [[dimensions-of-institutional-variation]] — supplies D35 (funding mechanism), D36 (span of control), D37 (hierarchy depth) and the flatness variant ΔL from this page's sources.
 - [[functional-vs-rent-seeking-growth]] — whether growth in institutional size is a cost-minimising response to scale or rent extraction; Niskanen is one pole.
 - [[efficiency-of-institutions-north-vs-williamson]] — Niskanen's budget-constrained equilibrium is a formal case of an arrangement with zero internal waste that is still allocatively wrong, which bears on the efficiency-default question.
+- [[rational-actor-accounts-of-bureaucratic-behaviour]] — where Downs's five official types and his ~20 hypotheses are set out in full, with the source's total absence of empirical content stated at the top.
+- [[downs-vs-merton-on-age-dependence]] — the filed conflict over Downs's C.11 life-cycle limb, kept explicitly as a clash of two models with no evidence on either side.
+- [[organizational-economics-of-the-state]] — carries the one size-positive datapoint in this area (Brown, Earle & Gehlbach: larger Russian regional bureaucracies, more effective privatisation), scoped to one country and period.
 - [[open-questions]] — Q7 (age vs. size vs. competitive pressure) and Q9 (does decay differ where output is measurable) both take evidence from this page.

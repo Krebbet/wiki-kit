@@ -53,6 +53,8 @@ The honest classification: this source supplies a **structural mechanism for ins
 
 ## Related
 
+- [[rational-actor-accounts-of-bureaucratic-behaviour]] — Downs's C.6 (1964) is an earlier, theory-only statement of this page's central distinction: extensive rules and inertia as a **rational** response to a bureau's decision-making and communication problems, explicitly not a pathology. Wilson's equity-versus-responsiveness tradeoff — general rules known in advance and applied uniformly, against case-by-case exception-making — is the same structural tension in plain language.
+
 - [[risk-aversion-in-large-institutions]] — the umbrella page; red tape sits on the structural side of the batch's two mechanism families, and the umbrella records that the link from rigidity to timidity is unmade.
 - [[blame-avoidance-and-negativity-bias]] — the plausible missing half: Hood supplies the individual motive for producing back-covering procedure, Bozeman the taxonomy of what results. Compatible, and neither tests the other.
 - [[veto-points-and-bureaucratic-autonomy]] — external control red tape and Hammond's veto points both count actors outside the organisation who constrain it, but Bozeman's entities promulgate *rules* and Hammond's block *policy changes*; keep the two counts separate.

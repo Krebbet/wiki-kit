@@ -848,3 +848,102 @@ table numbers and will not survive contact with a real literature.
 
 **8. No register row.** A hypothesis about causal direction is not an axis of institutional variation. D90
 already carries the measurement axis this paper contributes.
+
+---
+
+## [2026-08-20] ingest | bureaucracy-and-public-choice (7 sources)
+
+**Sources.** Two camps that argue against each other by name. *Public choice / rational actor*: Tullock,
+"The Welfare Costs of Tariffs, Monopolies, and Theft" (1967); Downs, "A Theory of Bureaucracy" (RAND P-3031,
+1964); Wilson, "The Bureaucracy Problem" (*The Public Interest*, 1967). *Weberian / empirical*: Evans & Rauch
+(*ASR*, 1999); Rauch (*AER*, 1995); Besley, Burgess, Khan & Xu (NBER WP 29163, 2021); Guo Xu (NBER WP 35568,
+2026).
+
+**1. The Weber gap is stated on every page that needs it, and it is the batch's central negative.** This wiki
+holds no text by Weber — the only open copy of "Bureaucracy" is a scanned image with no text layer, OCR failed
+and was discarded. Every "Weberian" claim in the batch is therefore a second-hand operationalisation, and the
+most-used one says so about itself: Evans & Rauch selected **two** of Weber's characteristics explicitly for
+measurability out of a larger set, and their footnote 7 names the one they deliberately excluded —
+rule-governed decision-making and bounded jurisdictions — because it is "a double-edged sword… producing
+rigidity and organizational sclerosis when carried further." That is the authors of the Weberianness Scale
+bracketing out the Merton critique in their own text. The gap is stated on `weberian-structure-and-growth`
+(opening section, before any result), on `civil-service-tenure-and-political-insulation`, on
+`organizational-economics-of-the-state`, on `rational-actor-accounts-of-bureaucratic-behaviour`, and as
+**Q103**. No page reconstructs Weber from any source's characterisation of him.
+
+**2. The D50 provenance correction.** The wiki's D50 (action-observability × outcome-observability) was
+attributed "Dixit, after Wilson (1989)". This batch supplies a Wilson primary text — the 1967 essay — and it
+contains **no version of that typology and no action × outcome framework at all**. The typology is from the
+1989 book, which this wiki does not hold. **The row was not deleted**: the axis is measurable and useful, and
+it stands. What changed is the Named-by cell, which now states that the axis is held **second-hand via Dixit
+alone**, that the primary Wilson text the wiki does have is confirmed not to contain it, and that the wiki
+therefore has no way to check Dixit's rendering — including Dixit's own footnoted warning that Wilson uses
+"output" for what economists call action. The same correction is carried on
+`incentives-under-multiple-principals`, where the typology lives, and Wilson (1989) is recorded as an
+acquisition target alongside Weber in the register's gap note and in Q103.
+
+**3. Rauch's placement — decided, and it was close.** Rauch (1995) is a personnel mechanism (merit exam +
+just-cause tenure) tested via a growth outcome, so it could have extended `personnel-economics-of-the-state`
+or anchored `weberian-structure-and-growth`. **Anchored on the Weberian page**, for three reasons stated on
+the page itself: he co-authors Evans & Rauch and frames the 1995 paper against the same Evans (1992)
+Weberianism measures, so the two are one research programme; the *contrast between their methods* — a
+correlational cross-section with disclosed regional-dummy fragility, and a within-country natural experiment
+with a control-group reform, agreeing — is itself the finding and only exists if they share a page; and the
+unit of analysis differs from the personnel page's, which is built on micro-level randomised evidence with
+individual- or facility-level outcomes, where Rauch's outcome is a municipal budget share. The personnel page
+carries a cross-reference and a one-line summary of the result, not a duplicate.
+
+**4. The personnel de-duplication, run before anything was added.** Besley et al. treat Finan/Olken/Pande as
+their base for this territory and restate their headline verbatim. **Six studies overlap** and are not
+restated on the page: Dal Bó/Finan/Rossi recruitment wages, Ashraf & Bandiera ad framing, Khan/Khwaja/Olken
+Punjab tax collectors, Muralidharan & Sundararaman teacher pay, Glewwe/Ilias/Kremer's contrary Kenyan result,
+and Iyer & Mani on caste-affinity postings — on all six the later source cites the design and does not restate
+effect sizes, so it adds citation weight and no numbers. Two more differ in identity but not in kind
+(Ashraf/Bandiera/Jack alongside the page's Rwanda evidence; Duflo/Hanna/Ryan alongside its nurse study).
+**What was genuinely new clusters in three places** and is what the extension carries: selection under rules
+vs. discretion with a non-uniform sign (Colonnelli/Prem/Teso and Xu 2018 negative; Weaver 2021 and Voth & Xu
+2020 positive; Hoffman/Kahn/Li as the authors' own private-sector parallel); the stated evidence gap on entry
+exams, including Moreira & Pérez's null on the Pendleton Act's effect on customs performance; and careers,
+autonomy and non-monetary levers (performance-based postings, autonomy with a monitor-dependent sign,
+seniority rules' priced downside, mission-framing spillover, random auditor assignment). Plus the
+embeddedness/rotation tension, four studies each way, which became D104.
+
+**5. The age point, handled so it cannot read as progress.** Downs's C.11 is the **first source in this
+project to assert an age-dependent decay mechanism at organisational level** — six prior batches found none,
+and three founders of the decay literature disowned the age reading of their own mechanisms unprompted. It is
+**bare assertion**: the document contains no data anywhere, C.11 has no derivation from the paper's own axioms
+and no stated mechanism beyond the sequence, and no falsification condition. Filed as
+`conflicts/downs-vs-merton-on-age-dependence.md`, explicitly as a **conflict of two models, not of evidence**,
+with that stated in the first line of the file, in the index row, on both content pages and in **Q100**, whose
+last line is "Do not report this row as progress." **No register row was added for age**, and the gap note now
+records why: the clock was never the missing piece, the directly observed accumulation variable is, and Downs
+supplies that no more than anyone else. The one usable contribution is that C.11 makes five *pre-specified*
+directional predictions against Merton's flat line, at least three countable from an agency's own records —
+which gives Q60's design its hypotheses in advance for the first time.
+
+**6. Register.** D100 progression-margin protection (`candidate`), with a stated four-component
+operationalisation and an explicit account of how it differs from D70 — D70 is the entry gate and measures who
+applies and who is hired; D100 is what happens to someone already in post, and the Pendleton Act evidence
+shows the two come apart. D101 selection trait, horizontal vs. vertical (`candidate`), with a warning against
+collapsing it into D70's screening-technology component, since discretionary instruments sometimes produce
+vertical selection. D102 content vs. fact of institutional reform (`candidate`), the register's first row that
+is a comparison design rather than an attribute, built on Rauch's commission-government control and its
+opposite-signed coefficient. **D103 `rejected`** — Wilson's multi-criterion observability axis, subsumed by
+D25/D50/D51 scored together, with a readmission condition requiring a source showing it predicts something
+those three do not. D104 personnel embeddedness (`candidate`), **with the both-ways finding inside the row**,
+because an axis whose own naming source reports four studies each way is measurable without being predictive;
+three candidate moderators are named as this wiki's inference, none tested.
+
+**7. Open questions.** Q100 (the age claim as theory, and what it does not change); Q101 (which component of
+the Weberian bundle does the work — never decomposed by scale item, and the one decomposition that exists
+points at tenure rather than exams); Q102 (whether any of this extrapolates to already-highly-protected
+systems, which the source says it does not); Q103 (the two missing primary texts); Q104 (whether any credible
+systems-level evidence exists — the same shape as Q90 from the other direction, a field with evidence at top
+and bottom and none in the middle); Q105 (what moderator predicts the sign of embeddedness). Q3, Q4, Q7 and
+Q60 annotated rather than duplicated. Q95–Q99 left unused; the numbering note records it.
+
+**8. What was deliberately not imported.** Niskanen's *Bureaucracy and Representative Government* (1971) and
+Wilson's *Bureaucracy* (1989) are both known and neither is held; nothing on any page draws on them. The
+1968 Niskanen paper the wiki does hold is cited only for what is already on
+`bureaucratic-growth-and-parkinsons-law`. Krueger (1974) is named only as the coiner of "rent-seeking", which
+is a fact stated in the Tullock summary, not a claim from her paper.
