@@ -1,6 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
+last_reviewed: 2026-08-20
 ---
 
 # Watchlist
@@ -14,6 +15,33 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 **Sections:** created on first use. Expected shapes for this wiki — *Devices & materials*, *Chips & systems*, *Algorithms & toolchains*, *Benchmarks*, *Players & funding*, *Programmes & policy*. The brief adds under the most relevant existing header; if none fits, it creates a new one.
 
 ---
+
+## Devices & materials
+
+- Cross-family comparison (PCM / FeFET / MRAM / ECRAM) — no captured source covers it; RRAM-only so far
+- Rao et al. 2048-level (11-bit) 256×256 foundry-CMOS memristor array — RTN denoising; cited secondhand only
+- STELLAR chip (Zhang et al.), 160k cells monolithic CMOS — cited secondhand; primary not captured
+- Nature Materials: high-accuracy memristor analogue computing (s41563-026-02600-y) — ⚠️ paywalled, abstract-only capture
+- Adv. Intelligent Systems: memristors for IMC and SNNs (aisy.202500806) — ⚠️ Cloudflare bot-wall, capture failed twice
+
+## Chips & systems
+
+- Innatera Pulsar / T1 current status — only source is ~2 years stale; did Q2-2025 high-volume happen?
+- Loihi 2 / Hala Point — named repeatedly, never sourced directly
+- SynSense Xylo Audio 2 — the wiki's best measured result; no vendor-primary source captured
+- Analog IMC competitors (EnCharge, Mythic, Rain, Axelera) — in scope, entirely unresearched
+
+## Algorithms & toolchains
+
+- LoAS, SpikeX, Bishop — specialized sparse-event accelerators; the η≈1 target
+- SATA and SpikeSim — open benchmarking harnesses, likely to recur across sources
+- NIR (Neuromorphic Intermediate Representation) — gates NeuroBench's closed-algorithm category
+- TTFS coding — the one SNN coding scheme that wins most capacity-matched configs
+
+## Players & funding
+
+- BrainChip September 2026 quarterly — next yield and volume checkpoint
+- TSMC 22 nm eRRAM — the only foundry-node claim in evidence; no independent benchmark
 
 ## Related
 

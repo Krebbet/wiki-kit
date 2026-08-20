@@ -31,9 +31,9 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 
 | Source | Why | URL | Status |
 |---|---|---|---|
-| **arXiv cs.NE (recent)** | Primary firehose for SNN and neuromorphic-architecture work. | https://arxiv.org/list/cs.NE/recent | unverified |
-| **arXiv cond-mat.mtrl-sci (recent)** | Where the device/materials half of this wiki actually publishes. | https://arxiv.org/list/cond-mat.mtrl-sci/recent | unverified |
-| **arXiv cs.AR (recent)** | Architecture and accelerator papers, incl. analog IMC. | https://arxiv.org/list/cs.AR/recent | unverified |
+| **arXiv cs.NE (recent)** | Primary firehose for SNN and neuromorphic-architecture work. | https://arxiv.org/list/cs.NE/recent | active |
+| **arXiv cond-mat.mtrl-sci (recent)** | Where the device/materials half of this wiki actually publishes. | https://arxiv.org/list/cond-mat.mtrl-sci/recent | active |
+| **arXiv cs.AR (recent)** | Architecture and accelerator papers, incl. analog IMC. | https://arxiv.org/list/cs.AR/recent | active |
 | **alphaXiv trending** | Popularity ranking over arXiv; catches what the field is reacting to. | https://www.alphaxiv.org/trending | unverified |
 | **Open Neuromorphic** | The field's active open community — events, projects, hardware guides, job/funding chatter. Highest-signal single aggregator for this domain. | https://open-neuromorphic.org | unverified |
 
@@ -41,12 +41,12 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 
 | Source | Why | URL | Status |
 |---|---|---|---|
-| **Nature Electronics** | Where the flagship measured-array and integrated-chip papers land. | https://www.nature.com/natelectron/ | unverified |
+| **Nature Electronics** | Where the flagship measured-array and integrated-chip papers land. ⚠️ Paywall risk: nature.com article pages fetch fine but yield abstract + references only for subscription content — see Local conventions. | https://www.nature.com/natelectron/ | probation |
 | **Nature Materials / Nature Nanotechnology** | Device-stack and materials firsts. | https://www.nature.com/nmat/ · https://www.nature.com/nnano/ | unverified |
 | **Nature Machine Intelligence** | Algorithm-side SNN work with hardware framing. | https://www.nature.com/natmachintell/ | unverified |
-| **Neuromorphic Computing and Engineering (IOP)** | Open-access, dedicated to exactly this field. | https://iopscience.iop.org/journal/2634-4386 | unverified |
+| **Neuromorphic Computing and Engineering (IOP)** | Open-access, dedicated to exactly this field. IOPscience captures cleanly and in full. | https://iopscience.iop.org/journal/2634-4386 | **active** |
 | **Frontiers in Neuroscience — Neuromorphic Engineering** | Long-running venue; variable quality, high volume. | https://www.frontiersin.org/journals/neuroscience/sections/neuromorphic-engineering | probation |
-| **Advanced Materials / Advanced Intelligent Systems** | Materials-first synapse and crossbar work. | https://onlinelibrary.wiley.com/journal/15214095 | unverified |
+| ~~**Advanced Materials / Advanced Intelligent Systems** (Wiley)~~ | ⚠️ **BOT-WALLED.** Cloudflare "Just a moment…" challenge; capture failed with and without `--js`, exit 0 both times with a 755-byte file. Do not attempt programmatic capture — request a manual PDF drop instead. | https://onlinelibrary.wiley.com/journal/15214095 | **blocked** |
 | **IEDM** | The venue for "we taped this out and here are the numbers". Annual, December. | https://www.ieee-iedm.org | unverified |
 | **ISSCC** | Chip-level energy and throughput results with credible measurement. Annual, February. | https://www.isscc.org | unverified |
 | **NICE workshop (Neuro-Inspired Computational Elements)** | Where the community argues about what counts as progress. | https://niceworkshop.org | unverified |
@@ -59,7 +59,7 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 |---|---|---|---|
 | **Semiconductor Engineering** | Best trade coverage of process/integration reality and foundry roadmaps. | https://semiengineering.com | unverified |
 | **EE Times** | Product launches, funding, design wins. | https://www.eetimes.com | unverified |
-| **IEEE Spectrum — semiconductors** | Occasional deep, well-sourced neuromorphic features. | https://spectrum.ieee.org/topic/semiconductors/ | unverified |
+| **IEEE Spectrum — semiconductors** | Occasional deep, well-sourced neuromorphic features. Captures cleanly. | https://spectrum.ieee.org/topic/semiconductors/ | **active** |
 | **The Next Platform** | System-level framing and skeptical takes on efficiency claims. | https://www.nextplatform.com | unverified |
 
 ## Vendors, labs and foundries (scan press rooms and eng blogs)
@@ -68,7 +68,7 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 |---|---|---|---|
 | **Intel Neuromorphic Computing Lab (Loihi / Hala Point)** | Largest research-scale digital neuromorphic programme. | https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html | unverified |
 | **IBM Research (NorthPole, analog AI / PCM)** | The digital-vs-analog argument runs straight through IBM's own portfolio. | https://research.ibm.com/blog | unverified |
-| **BrainChip (Akida)** | Publicly listed — filings and revenue are a hard viability signal, not a claim. | https://brainchip.com/news/ | unverified |
+| **BrainChip (Akida)** | Publicly listed — filings and revenue are a hard viability signal, not a claim. Press room captures cleanly. | https://brainchip.com/news/ | **active** |
 | **SynSense** | Ultra-low-power vision/audio SNN silicon; Rockpool toolchain. | https://www.synsense.ai | unverified |
 | **Innatera** | Analog-mixed-signal spiking sensor processor; shipping-status claims worth tracking. | https://innatera.com | unverified |
 | **Prophesee** | Event-camera side of the stack — the sensor that makes sparse workloads real. | https://www.prophesee.ai | unverified |
@@ -92,12 +92,37 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 
 | Source | Why | URL | Status |
 |---|---|---|---|
-| **NeuroBench** | The field's attempt at honest cross-vendor comparison — the single most load-bearing benchmark effort to track. | https://neurobench.ai | unverified |
+| **NeuroBench** | The field's attempt at honest cross-vendor comparison — the single most load-bearing benchmark effort to track. Framework confirmed real via the Nat. Comms. paper; site itself not yet fetched. Repos: github.com/NeuroBench/neurobench and /system_benchmarks. | https://neurobench.ai | **probation** |
 | **Lava (Intel)** | Loihi's toolchain; release notes reveal what the hardware can actually do. | https://github.com/lava-nc/lava | unverified |
 | **snnTorch** | Most-used surrogate-gradient training library; issue tracker shows real practitioner pain. | https://github.com/jeshraghian/snntorch | unverified |
 | **Norse** | PyTorch-native SNN library. | https://github.com/norse/norse | probation |
 | **Rockpool (SynSense)** | Vendor toolchain; deployment constraints visible in the docs. | https://github.com/synsense/rockpool | unverified |
 | **Nengo** | Long-lived neuromorphic compiler/runtime with multi-backend support. | https://www.nengo.ai | probation |
+
+## Radar evolution
+
+**2026-08-20 — first research run** (`/research neuromorphic commercial viability`). Eight sources captured, three failed. Changes made on evidence, not guesswork:
+
+*Promoted `unverified` → `active`* (content actually retrieved this run): arXiv listings (4 PDFs via `capture_pdf --engine marker`), IOPscience, brainchip.com, IEEE Spectrum.
+
+*Promoted → `probation`*: NeuroBench — the framework is confirmed real via its Nature Communications paper, but `neurobench.ai` itself has not been fetched.
+
+*Demoted → `blocked`*: Wiley (Advanced Intelligent Systems). Cloudflare challenge, unrecoverable programmatically.
+
+*Flagged*: nature.com — pages fetch but return abstract-only for paywalled content at a size that defeats the 2 KB thin-capture heuristic. See Local conventions.
+
+*Added*: DataCenterDynamics, Kalkine, SATA/SpikeSim, Open Neuromorphic repos (below).
+
+Everything still marked `unverified` has not been touched. That is a to-do, not a judgement.
+
+### Added this run
+
+| Source | Why | URL | Status |
+|---|---|---|---|
+| **DataCenterDynamics** | Funding rounds and vendor news; European neuromorphic coverage. ⚠️ Its article pages carry no publication date that `capture_url` records — date every capture by internal evidence. | https://www.datacenterdynamics.com | probation |
+| **Kalkine / ASX commentary** | Only useful as a pointer to BrainChip's Appendix 4C filings. Never cite for a technical claim; go to the filing. | https://kalkine.com.au | probation |
+| **SATA / SpikeSim** (Yale Intelligent Computing Lab) | Open hardware-realistic SNN benchmarking harnesses; the tooling behind the estimated-vs-actual energy critique. | https://github.com/Intelligent-Computing-Lab-Yale | probation |
+| **NeuroBench repos** | The harness and system benchmarks themselves, more informative than the paper for what is actually measurable. | https://github.com/NeuroBench/neurobench | probation |
 
 ## Selection priority (per bootstrap)
 
@@ -121,6 +146,8 @@ Preferences specific to *this* wiki. The agent running `/weekly-brief` in this c
 - **Separate evidenced / claimed / (synthesis)** in every trend bullet. Vendor roadmap dates always carry the owner's name.
 - **Trend bullets must touch the four standing questions** (players, research, viability timeline, money/deployment). A bullet that answers none of them is noise.
 - **Autogenerated pages link back to the brief.** Every page written during the autonomous ingest step includes in its `## Related` section: `- [[../weekly-briefs/<YYYY-MM-DD>]] — brought in by the <YYYY-MM-DD> weekly sweep`.
+- **Paywall check is structural, not size-based.** A `capture_url` on a paywalled Nature article exits 0 and returns ~86 KB — title, abstract, `## Access options`, and the full reference list, with **no body**. The "under ~2 KB is a failure" heuristic cannot catch it. Before trusting any publisher capture, grep for `Access through your institution`, `Buy this article`, or an `## Access options` heading; if present, the body is missing. Watchlist the citation rather than ingesting an abstract.
+- **Date every trade-press capture by internal evidence.** `capture_url` records `captured_on`, not the publication date. At least one source this run was ~2 years stale while reading as current. Reconstruct the vintage from the article's own dates and record forward-looking claims as "claimed as of &lt;date&gt;".
 - **Watchlist seeding policy:** agent-driven overflow only (cap 10/run). The initial watchlist ships empty.
 - **Branch policy:** weekly output goes on `neuromorphic-wiki`, the wiki's working branch. No dedicated `weekly-*` branch.
 - **Delivery:** email to `david.hugh.mcnamee@outlook.com`; Telegram ping enabled. Credentials come from the shared `/home/david/code/remote_workstation/.env`.

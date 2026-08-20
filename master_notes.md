@@ -49,3 +49,27 @@ Append entries using this structure:
 **Observation:** While surveying sibling wikis for conventions, found that `/home/david/code/wiki-agentic-trends` still has all five `{{...}}` placeholders in `wiki/CLAUDE.md` and all five DOMAIN-SLOT regions at raw template text, and still has `.claude/commands/bootstrap.md` present (it self-deletes on success). It has real content regardless — domain guidance was evidently applied in-session rather than through the slot mechanism.
 **Implication:** Not this wiki's problem, but that wiki is running without its tailored ingest/lint/query guidance and would benefit from a `/bootstrap` run. Flagging here so it isn't lost. Not actioned.
 **Status:** open
+
+### 2026-08-19 — capture_url does not detect the Cloudflare "Just a moment..." interstitial
+**Scope:** kit
+**Observation:** During `/research neuromorphic commercial viability`, `capture_url` returned **exit 0** on a Wiley article (`advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202500806`) while actually capturing Cloudflare's bot-check interstitial — title `"Just a moment..."`, body `"Performing security verification"`, 755 bytes. Identical result with `--js`. `research.md` documents MDPI (Akamai `Access Denied`) and ScienceDirect (Cloudflare IP-block) signatures, but this newer Cloudflare *challenge* page is not in the detector's signature set. It is only caught by the "under ~2KB is almost certainly a failure" heuristic in step 5 — i.e. by a human reading the file, not by the tool.
+**Implication:** Add the Cloudflare challenge signature to `capture_url`'s block-page detection — `Just a moment...` in `<title>`, plus body markers `Performing security verification` / `This website uses a security service to protect against malicious bots` / `Ray ID:`. Wiley (`onlinelibrary.wiley.com`) also belongs on the known-bot-walled-hosts list in `research.md`. Promote via `/harvest`.
+**Status:** open
+
+### 2026-08-19 — capture_url succeeds on Nature paywalls, capturing abstract-only
+**Scope:** kit
+**Observation:** `capture_url` on a paywalled Nature Materials article (`doi:10.1038/s41563-026-02600-y`) exited 0 and produced an **86 KB** file — comfortably over the "under ~2KB is a failure" threshold — but the content is title, authors, abstract, an `## Access options` section, and the full reference list. **No article body.** Size-based heuristics cannot catch this: a Nature reference list alone clears any reasonable byte floor. The wiki nearly ingested an abstract as if it were a paper.
+**Implication:** Add a *structural* paywall check to `capture_url` (or to `audit_captures`): flag any capture containing an `## Access options` / `Access through your institution` / `Buy this article` section, or whose non-reference body is a small fraction of total length. Byte-count thresholds are necessary but not sufficient for paywall detection — worth stating explicitly in `research.md` step 5 alongside the existing 2KB rule. Promote via `/harvest`.
+**Status:** open
+
+### 2026-08-20 — /ingest page-shape parser leaks markdown emphasis and parentheticals into page titles
+**Scope:** kit
+**Observation:** `tools.ingest_plan.aggregate` produced `page_plan` titles like `Innatera** (company/vendor page)` and `SNN energy efficiency vs. quantized ANNs" (or similar, under a \`research/\` or \`snn/\` topical subdir)`. The parser tolerates markdown emphasis (per the `d3d9407` fix on main) but does not strip trailing `**`, quotes, or the parenthetical hedges subagents naturally write in a `- New page: **X** — justification` line. Titles are unusable as filenames without hand-cleaning.
+**Implication:** Strip paired emphasis markers, surrounding quotes, and any trailing parenthetical from the extracted title in the page-shape parser; or tighten the `ingest.md` template to demand a bare slug (`- New page: \`some-slug\` — justification`). The orchestrator has to rewrite every title by hand today, which quietly defeats the point of the structured aggregation. Promote via `/harvest`.
+**Status:** open
+
+### 2026-08-20 — mechanical conflict detection cannot see cross-source conflicts
+**Scope:** kit
+**Observation:** In a fresh wiki with no pages, every subagent correctly reported `## Conflict flags: (none)` — the template asks each to compare its source against *existing wiki pages*, and there were none. `aggregate` therefore returned `conflicts: []`. But the batch contained a genuine order-of-magnitude conflict **between sources in the same run** (vendor efficiency claims vs two independent hardware-realistic analyses). It was found only because the orchestrator read the summaries and noticed. A first ingest into an empty wiki is exactly when cross-source conflicts are most likely and least detectable.
+**Implication:** Add an orchestrator step between aggregation and the human gate: scan the summaries' `## Conflicts` (not `## Conflict flags`) sections for claims about the same quantity that disagree, and propose cross-source conflict files. Alternatively have `aggregate` cluster summaries by shared claim-topic and surface disagreeing pairs. Worth noting in `ingest.md` that `conflicts: []` from a fresh wiki means "no *existing-page* conflicts", never "no conflicts". Promote via `/harvest`.
+**Status:** open
