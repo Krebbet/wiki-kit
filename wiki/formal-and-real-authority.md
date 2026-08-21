@@ -87,6 +87,8 @@ All are flagged by the authors as requiring "much more careful attention than ca
 
 ## Related
 
+- [[meta-oversight-board-case-profile]] — this page's formal/real authority gap (D112) confirmed on a real, named institution for the first time: binding decision authority qualified at four distinct points by the funding body's own continuing judgment.
+
 - [[property-rights-theory-of-the-firm]] — the direct theoretical ancestor: Aghion & Tirole take ownership-confers-formal-control-rights as given and build the real-authority layer on top of it.
 - [[decision-rights-and-authority-theory-of-the-firm]] — Gibbons's adaptation/authority theory is the boundary-side counterpart; this page is what happens to authority once the formal allocation is fixed.
 - [[incentives-under-multiple-principals]] — Dixit's `m = 1/(1+nrcv)` is a close cousin of Section V.C: more principals, weaker individual monitoring.

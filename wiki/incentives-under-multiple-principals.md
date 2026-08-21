@@ -36,7 +36,7 @@ The same qualitative result holds under adverse selection as under moral hazard 
 
 ## Action-observability × outcome-observability: Wilson's typology
 
-**[framework — Wilson 1989, via Dixit]** Incentive theory conventionally assumes actions are unverifiable and outcomes verifiable. Dixit's point is that public agencies frequently sit in the *opposite* cell, or in neither. Cross the two and you get a four-cell instrument:
+**[model — Wilson 1989, via Dixit]** Incentive theory conventionally assumes actions are unverifiable and outcomes verifiable. Dixit's point is that public agencies frequently sit in the *opposite* cell, or in neither. Cross the two and you get a four-cell instrument:
 
 | | **Outcomes observable** | **Outcomes not observable** |
 |---|---|---|

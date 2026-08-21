@@ -172,3 +172,29 @@ flag (or an EDGAR-specific host rule) that swaps in a compliant, non-spoofed Use
 one — SEC EDGAR is a first-class, frequently-needed source for this wiki's institution-case-profile work
 (10-Ks, proxies, filings) and will recur every time a public-company case is captured.
 **Status:** open
+
+### 2026-08-21 — Evidence-tier token retirement needs a wiki-wide grep, not a spot pass
+**Scope:** kit
+**Observation:** `[framework]` was retired and normalised to `[model]` on 2026-08-20, per `CLAUDE.md`. The
+2026-08-21 lint run found it still present, unnormalised, in 10 of the wiki's ~126 pages — including
+`transaction-costs.md`, one of the wiki's oldest and most heavily cross-referenced pages. Whatever swept the
+token the first time evidently touched only recently-edited pages, not the whole corpus.
+**Implication:** any future evidence-tier vocabulary change (retiring a token, adding one, renaming one)
+should be applied via `grep -rl '\[oldtoken' wiki/` across the entire wiki, not a pass over pages edited in
+the same session as the change. Worth adding as a standing step in the `/lint` skill's domain-specific checks
+rather than relying on the normalisation event itself to be exhaustive.
+**Status:** open
+
+### 2026-08-21 — Case/theory linkage check needs an explicit backward pass
+**Scope:** kit
+**Observation:** `/lint` check 13 asks whether framework/mechanism pages link to case-study pages and vice
+versa. When a case-study job (job 15, `institution-case-profiles`) lands after the framework pages it draws
+on already exist, the case pages correctly link forward to the frameworks they apply, but the frameworks —
+written with no way to know a case would later cite them — have no forward link back. Confirmed on this wiki:
+three case pages linked out to six framework pages; none of the six linked back until this lint run added
+them manually.
+**Implication:** any wiki whose case-study job runs after its framework pages exist will hit this same
+one-directional gap by construction. The `/lint` skill's check 13 should explicitly instruct a "grep each
+named framework page's own Related section for the case page, don't just read the case page's outbound
+links" step, since reading only the case page will make the check look compliant when it isn't.
+**Status:** open

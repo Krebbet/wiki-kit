@@ -8,7 +8,7 @@ Thelen's claim is that political-economic institutions in advanced economies cha
 
 ## Why gaps between design and effect are permanent
 
-**[framework — the mechanism, and it is a real one]** Institutions are "sets of rules that are enforced or complied with by actors" who have divergent and conflicting interests, so the rule must always be interpreted, enforced and enacted by somebody with a stake in what it means. Four named sources of the resulting gaps:
+**[model — the mechanism, and it is a real one]** Institutions are "sets of rules that are enforced or complied with by actors" who have divergent and conflicting interests, so the rule must always be interpreted, enforced and enacted by somebody with a stake in what it means. Four named sources of the resulting gaps:
 
 1. **Cognitive limits of designers** — institutions get used for purposes their designers never anticipated.
 2. **Institution-building as political compromise** — rules are ambiguous *by design from the outset*, because they encode a coalition's conflicting interests. Ambiguity is not decay; it is present at founding.
@@ -53,7 +53,7 @@ Sits entirely inside Table 1's *incremental* row.
 
 ## Levers, for an actor who cannot win a frontal fight
 
-**[framework — descriptive, not tested]** The three illustrated mechanisms read directly as strategies:
+**[model — descriptive, not tested]** The three illustrated mechanisms read directly as strategies:
 
 1. Exploit existing administrative or enforcement discretion to erode an institution's real coverage without touching its formal rules (**drift**).
 2. Add a new rule or programme alongside the old one rather than repealing it, when veto players protect the core (**layering**).
@@ -65,7 +65,7 @@ All three are *observed* in the German case, not evaluated for effectiveness aga
 
 ## What the original design does not determine
 
-**[framework — the single most important claim on this page]** The German VET system was legislated in **1897** by an authoritarian government together with reactionary artisan guilds, *specifically to weaken organised labour*. By the late twentieth century it was the institutional core of union–management "social partnership". Formal continuity across a century; complete reversal of whose interests it serves.
+**[model — the single most important claim on this page]** The German VET system was legislated in **1897** by an authoritarian government together with reactionary artisan guilds, *specifically to weaken organised labour*. By the late twentieth century it was the institutional core of union–management "social partnership". Formal continuity across a century; complete reversal of whose interests it serves.
 
 Thelen's general statement: feedback effects "are not associated with the faithful reproduction of the system as originally constituted"; institutions "created for one set of purposes and resting on the shoulders of one set of actors could be carried forward on the shoulders of another coalition altogether". Who effectively controls an institution is the **shifting coalition that currently carries it forward**, which is distinct from who designed it and from who nominally administers it.
 

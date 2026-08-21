@@ -1514,3 +1514,49 @@ are all `done` in `research-agenda.md`. `STATE.md` is stale and should be delete
 D46–D48 reserved-unused ranges as previously noted, and D115–D119 still unused). Two capture failures were
 found and fixed mid-resume: the SEC EDGAR bot-wall silent-success bug (job 15, logged to `master_notes.md`)
 and nothing else — all other captures across the six jobs were clean on audit and manual spot-check.
+
+## [2026-08-21] lint | full wiki health check (second lint run)
+
+**Scope: 126 files, up from ~40 at the first lint run (2026-08-19) — the wiki grew across ten research jobs
+since then (8, 9, 10, 12, 13, 11, 14, 15, 16, 17).** Audited via 9 parallel subagents (8 content batches, one
+conflicts-page batch) plus direct mechanical checks by the coordinator.
+
+**Headline result: 0 orphan pages, 0 broken links, across all 121 content pages** — verified mechanically by
+extracting every outbound link from every file and cross-referencing against the full page list. Capture
+fidelity clean across all 17 raw research topic directories; zero un-ingested raw sources (every one of 128
+files cited in at least one page's `## Source`).
+
+**Fixed this run:**
+- `conflicts/iron-law-vs-design-principles.md` — the only page of 126 missing mandated `## Source`/`## Related`
+  headers, given both.
+- The retired `[framework]` evidence-tier token, normalised to `[model]` on 2026-08-20 per `CLAUDE.md` but
+  still present in 10 pages the original sweep missed (including `transaction-costs.md`, ~7 instances) —
+  purged wiki-wide via grep, not just recently-touched pages.
+- **Case/theory linkage, now applicable** (job 15 added the wiki's first case-study pages) **and found
+  asymmetric**: all three case pages (`fda-case-profile`, `meta-case-profile`, `meta-oversight-board-case-
+  profile`) correctly link forward to the frameworks they apply; none of those six framework pages linked
+  back. Added the missing links in both directions.
+
+**Flagged, not auto-fixed** (need per-instance judgement, offered to the user separately): non-standard
+lettered-inline evidence-tier markers (`[b — ...]`, `[c — wiki synthesis]`) in 5 files, and `[assertion]`/
+compound-token drift in 5 more.
+
+**Coverage gaps carried forward, not new**: Fama & Jensen (1983) still uncaptured (Q113); a second Gilens &
+Page rebuttal (Enns) failed capture; the reference-sources.md non-Anglosphere gaps are partially, not fully,
+closed by job 14's English-language sources about (not from) China/Nordic/Japan/Korea.
+
+**Structural finding, not fixed**: seven of thirteen open conflict pages haven't been touched since
+2026-08-19, despite ten subsequent research jobs — none found factually contradicted, but
+`decay-as-real-vs-decay-as-overstated.md` (the wiki's stated central-thesis conflict) doesn't cross-reference
+its own 2026-08-20 sibling `downs-vs-merton-on-age-dependence.md`. Candidate for a follow-up pass.
+
+**Trend radar**: added Journal of Political Economy and Annual Review of Economics (both cited this session,
+neither previously watched); added a new "Primary institutional documents" category (SEC EDGAR, agency IG
+reports, investor-relations hosts) given job 15's case-profile work, carrying the SEC EDGAR User-Agent caveat
+forward from `master_notes.md`.
+
+**Two kit-level learnings logged to `master_notes.md`** (`Scope: kit`, `Status: open`): evidence-tier token
+retirement needs a wiki-wide grep, not a same-session spot pass; case/theory linkage checks need an explicit
+backward pass on the framework page's own Related section, not just a read of the case page's outbound links.
+
+Full report: `wiki/lint-reports/2026-08-21.md`.

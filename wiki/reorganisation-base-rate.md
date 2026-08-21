@@ -74,6 +74,8 @@ Two populations, two mechanisms, one direction. That is the entire evidential ba
 
 ## Related
 
+- [[fda-case-profile]] — a single-agency case this batch's base-rate finding did not itself run: FDA's own accelerated-approval withdrawal tool, used in 13% of cases, mostly since 2021.
+
 - [[political-economy-of-public-sector-reform]] — the batch's other base-rate source, and the only one whose numbers can be set beside these; both show measured success overstating real change.
 - [[reform-levers]] — the triage of every lever this batch surfaced; five of NAO's six recommendations sit in the pure-prescription tier.
 - [[isomorphic-mimicry-and-capability-traps]] — the same form/function gap diagnosed as a mechanism rather than an audit finding.

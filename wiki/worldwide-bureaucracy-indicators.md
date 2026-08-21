@@ -87,6 +87,8 @@ Every one is a national average for a worker type. **[wiki synthesis]** The wage
 
 ## Related
 
+- [[fda-case-profile]] — the granularity below this dataset's floor: a single named agency this instrument's schema cannot resolve to.
+
 - [[governance-indicators-and-their-construction]] — the instrument WWBI positions itself against and whose Government Effectiveness scores its wage premiums do not correlate with.
 - [[world-management-survey]] — the contrast that defines this page: WMS scores **11,383 individual firms** and finds 77% of variation within country-and-industry; WWBI's 202 economies buy breadth, not depth. WWBI must never be cited alongside WMS and the G-index as a third institution-level instrument.
 - [[corporate-governance-index-and-firm-control-rights]] — the same contrast from the document-scored side.

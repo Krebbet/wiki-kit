@@ -30,6 +30,8 @@ La Porta, Lopez-de-Silanes & Shleifer trace the **ultimate control chain** of th
 
 ## Related
 
+- [[meta-case-profile]] — the control/cash-flow wedge this page documents across 27 countries, run for the first time against a real, named, current institution.
+
 - [[dimensions-of-institutional-variation]] — supplies **D128**.
 - [[corporate-governance-index-and-firm-control-rights]] — the wiki's other document-scored corporate-control instrument (Gompers, Ishii & Metrick); that one scores *management insulation via charter provisions*, this one scores *who the ultimate controller is* — complementary, not overlapping, measures of the same accountability question.
 - [[veto-players-and-policy-stability]] — the "no rival blockholder in 75% of cases" finding as a zero-effective-veto-player instance.

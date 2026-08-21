@@ -19,7 +19,7 @@ Meyer & Rowan's claim is that formal organisational structure is frequently adop
 
 ## The scope condition: production vs. institutionalised organisations
 
-**[framework — keep this attached to every claim above]** Meyer & Rowan state the boundary of their own theory as a continuum, not a binary, and the driving variable is explicitly *not* sector:
+**[model — keep this attached to every claim above]** Meyer & Rowan state the boundary of their own theory as a continuum, not a binary, and the driving variable is explicitly *not* sector:
 
 > whether an organisation's survival depends primarily on **relational** demands (real customers, real inspection, real output tests) or on **institutional** demands (legitimacy conferred by accrediting bodies, funders, courts, professions, public opinion).
 
@@ -39,7 +39,7 @@ Institutionalisation also channels resources directly: legitimated organisations
 
 The distinctive part is that external constituents *also* avoid inspecting, preferring "categorical relationships". The nominal accountability channel is suppressed by mutual agreement between the organisation and its overseers — not evaded by one party against the other. That is a sharper statement of the nominal-versus-actual accountability gap than the wiki has from anywhere else, and it bears directly on [[open-questions]] Q11.
 
-**[framework — an explicit rejection worth recording]** Meyer & Rowan reject the "domesticated organisation" and pure-capture reading of their own material, citing and arguing *against* Carlson, Clark, Selznick and Zald & Denton: organisations are often active shapers of their institutional environment, not passive captives to it. Do not fold this page into a capture account.
+**[model — an explicit rejection worth recording]** Meyer & Rowan reject the "domesticated organisation" and pure-capture reading of their own material, citing and arguing *against* Carlson, Clark, Selznick and Zald & Denton: organisations are often active shapers of their institutional environment, not passive captives to it. Do not fold this page into a capture account.
 
 ## Structural inconsistency
 

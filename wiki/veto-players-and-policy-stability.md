@@ -28,6 +28,8 @@ Tsebelis's *Veto Players* generalises a single mechanism — the number, ideolog
 
 ## Related
 
+- [[meta-oversight-board-case-profile]] — a complete, countable veto-point inventory (panel size, quorum, amendment and removal thresholds) on a real internal governance body, of the kind this page's framework asks for.
+
 - [[veto-points-and-bureaucratic-autonomy]] — the wiki's existing D44 anchor (Hammond, theorem only); this page supplies the empirical corroboration that page lacked.
 - [[dimensions-of-institutional-variation]] — **D44 extended** with the empirical program and the qualified-majority inversion; supplies new row **D127** (absorption rule / nominal vs. effective veto power).
 - [[corporate-ownership-and-control-around-the-world]] — La Porta et al.'s "Alone" statistic (75% of controlling shareholders face no rival blockholder) is a corporate-governance instance of a zero-effective-veto-player configuration.

@@ -65,7 +65,7 @@ Three features of this model are worth keeping:
 
 ## North's cognitive mechanism: mental models and collective learning
 
-**[framework — the 1993 Nobel lecture; tests nothing]** The lecture supplies the machinery underneath the JEP essay's model. What generates path dependence, on this account, is not the rule-set alone but the **mental models** through which actors read it, and the cultural transmission of those models across generations. North adopts Hayek's "collective learning" — culture as "the transmission in time of our accumulated stock of knowledge" — and names it **"the key to path dependence"**. Belief systems filter new experience through existing categories, so a society facing a genuinely novel problem of complexity may fail to recognise it and gets **"stuck"**. North's own summary is that most societies throughout history got stuck: stability is the modal outcome and growth is the exception, requiring a specific competitive, fragmented, belief-evolving context.
+**[model — the 1993 Nobel lecture; tests nothing]** The lecture supplies the machinery underneath the JEP essay's model. What generates path dependence, on this account, is not the rule-set alone but the **mental models** through which actors read it, and the cultural transmission of those models across generations. North adopts Hayek's "collective learning" — culture as "the transmission in time of our accumulated stock of knowledge" — and names it **"the key to path dependence"**. Belief systems filter new experience through existing categories, so a society facing a genuinely novel problem of complexity may fail to recognise it and gets **"stuck"**. North's own summary is that most societies throughout history got stuck: stability is the modal outcome and growth is the exception, requiring a specific competitive, fragmented, belief-evolving context.
 
 Two further pieces are worth keeping:
 
@@ -108,7 +108,7 @@ Note also what the lecture does **not** add. Its two organisation-level statemen
 
 ## Pierson: why politics should lock in harder than markets
 
-**[framework — theoretical/review essay, one dataset]** Pierson (2000) transposes the increasing-returns argument from economics to politics. His contribution is that he refuses to let "history matters" stand as self-explanatory: he decomposes it into four distinct **mechanisms of reproduction** (the term is Collier & Collier's), three of which have no clean market analogue.
+**[model — theoretical/review essay, one dataset]** Pierson (2000) transposes the increasing-returns argument from economics to politics. His contribution is that he refuses to let "history matters" stand as self-explanatory: he decomposes it into four distinct **mechanisms of reproduction** (the term is Collier & Collier's), three of which have no clean market analogue.
 
 1. **Collective action.** Jointness of supply, non-excludability, and lumpy winner-take-all payoffs, plus high organising start-up costs, mean that once a coalition, party or movement crosses a mobilisation threshold it self-reinforces — "pick the right horse" adaptive expectations do the rest. Lipset & Rokkan's "frozen" party systems; the Skocpol data below.
 2. **Institutional density.** Formal institutions and public policies are legally binding, apply even to those who did not consent, and — unlike markets — offer **no exit option**. Skills, investments and identities built around them raise exit costs over time. This is North's argument extended.
@@ -154,7 +154,7 @@ Pierson makes no headcount, budget or hierarchy claim anywhere; his essay is sil
 
 ## Reconciliation: positive feedback does not imply faithful reproduction
 
-**[framework — a direct challenge to this page's own framing, and it is sustained]** Thelen accepts positive feedback and denies the inference this page opened with. Her statement is explicit: feedback effects "are not associated with the faithful reproduction of the system as originally constituted"; institutions "created for one set of purposes and resting on the shoulders of one set of actors could be carried forward on the shoulders of another coalition altogether." Positive feedback keeps a rule alive. It does not keep the rule doing what it was built to do, and it does not entail that the rule becomes harder to change.
+**[model — a direct challenge to this page's own framing, and it is sustained]** Thelen accepts positive feedback and denies the inference this page opened with. Her statement is explicit: feedback effects "are not associated with the faithful reproduction of the system as originally constituted"; institutions "created for one set of purposes and resting on the shoulders of one set of actors could be carried forward on the shoulders of another coalition altogether." Positive feedback keeps a rule alive. It does not keep the rule doing what it was built to do, and it does not entail that the rule becomes harder to change.
 
 Her worked instance: the German vocational training system, legislated in **1897** by an authoritarian government together with reactionary artisan guilds *specifically to weaken organised labour*, and by the late twentieth century the institutional core of union–management social partnership. A century of formal continuity, with a complete reversal of whose interests it serves. The full account is on [[gradual-institutional-change]].
 

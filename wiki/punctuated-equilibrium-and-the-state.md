@@ -10,7 +10,7 @@ Krasner's 1984 review essay contrasts pluralist and "statist" theories of the st
 
 ## Why state structures persist between crises
 
-**[framework — the stronger half of the argument]** Three mechanisms, kept distinct:
+**[model — the stronger half of the argument]** Three mechanisms, kept distinct:
 
 1. **Power holders select their own successors.** Elite and institutional self-reproduction; France's *grandes écoles* is the named case.
 2. **Incumbents resist change that would undermine "budgetary support, policy scope, and personal status".** Quoting Skowronek, institutions become "self-perpetuating perversions of that purpose" — goal displacement with a self-interest mechanism attached.
@@ -22,7 +22,7 @@ After a crisis, institutions "rigidify" and reproduce themselves "more [in respo
 
 ## What triggers a punctuation
 
-**[framework — the weaker half]** Crisis, defined via Skowronek as "a sporadic, disruptive event that suddenly challenges a state's capacity to maintain control and alters the boundaries defining the legitimate use of coercion". Two pathways:
+**[model — the weaker half]** Crisis, defined via Skowronek as "a sporadic, disruptive event that suddenly challenges a state's capacity to maintain control and alters the boundaries defining the legitimate use of coercion". Two pathways:
 
 - **Pattern I — internally generated.** Domestic society and economy change faster than state institutions ("public stasis and private dynamism"), producing incongruence but no immediate forced adjustment. The running example is industrialisation outrunning the nineteenth-century American state.
 - **Pattern II — externally generated.** International or military threat forces the state to raise extraction from society, provoking resistance. Prussia after Jena 1806; Russia after the Crimean War; Tilly's war → tax → bureaucracy chain; Trimberger's four revolutions from above.
@@ -60,7 +60,7 @@ Lipset & Rokkan's three critical junctures (Reformation; Democratic Revolution a
 
 ## Branching trees and economic structure
 
-**[framework — three instances, all path-dependent rather than efficiency-selected]** Krasner's own summary of the mechanism: once a critical choice is made, "it cannot be taken back".
+**[model — three instances, all path-dependent rather than efficiency-selected]** Krasner's own summary of the mechanism: once a critical choice is made, "it cannot be taken back".
 
 - **Tilly's war → tax → bureaucracy chain.** Military competition raises revenue need → higher taxation → an extensive bureaucracy to collect it → that extractive capacity, once built, is redeployed to non-military uses, and "extraordinary" war levies become permanent revenue streams. Institution creation as a byproduct of shock, not of design.
 - **Sabel/Piore/Zeitlin on Fordism against flexible specialisation.** Mass production with unskilled labour on special-purpose machines was not technologically inevitable; flexible specialisation with skilled labour on general-purpose machines was a live alternative. The outcome was set by the initial distribution of property rights and income in Britain and the US, after which political and economic institutions co-evolved to lock in mass markets.

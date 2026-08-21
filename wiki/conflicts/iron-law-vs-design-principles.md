@@ -22,4 +22,13 @@ Ostrom's design principles — clearly defined boundaries, congruence between ru
 
 **What would settle it.** A design comparable to Cox et al.'s survival meta-analysis, but scoring internal decision-making concentration (who actually proposes, amends, and enforces rules in practice, against who is formally entitled to) rather than system survival — run across the same or a comparable case set. Absent that, Position A and Position B are not in direct tension; they are answers to two different questions the wiki has so far only asked separately.
 
-See [[iron-law-of-oligarchy]] and [[polycentric-governance]].
+## Source
+
+- `raw/research/power-and-accountability/07-michels-iron-law-oligarchy.md` — Robert Michels, *Political Parties: A Sociological Study of the Oligarchical Tendencies of Modern Democracy*, 1911/1915.
+- Cox, Arnold & Villamayor-Tomás (2010), the design-principles meta-analysis captured in the `foundations-nie` batch and reviewed in full on [[polycentric-governance]].
+
+## Related
+
+- [[iron-law-of-oligarchy]] — Position A in full.
+- [[polycentric-governance]] — Position B in full, including the Cox et al. meta-analysis this conflict's settlement criterion would extend.
+- [[dimensions-of-institutional-variation]] — no register row yet scores internal decision-making concentration as distinct from system survival; the gap this conflict names is also a gap in the register.

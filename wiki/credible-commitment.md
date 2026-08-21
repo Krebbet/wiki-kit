@@ -76,6 +76,8 @@ Filed OPEN at [[constraint-vs-capacity-as-the-investment-mechanism]]. It adds a 
 
 ## Related
 
+- [[meta-oversight-board-case-profile]] — a real, current test case for this page's self-restraint thesis: an irrevocable funding trust that appears genuinely credible, alongside a charter-amendment veto that keeps the surrounding arrangement renegotiable.
+
 - [[transaction-costs]] — commitment failure is the limiting case of enforcement cost: the cost is infinite when the enforcer is the counterparty.
 - [[governance-structures]] — Williamson's hostages, disclosure and private dispute settlement are the private-ordering analogues of constitutional constraint.
 - [[path-dependence-and-increasing-returns]] — the Spain/Latin America case is North's principal illustration of an extractive matrix locking in, and of why transplanted formal rules do not transplant outcomes.

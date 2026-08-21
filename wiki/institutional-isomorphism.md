@@ -18,7 +18,7 @@ DiMaggio & Powell's claim is that once a set of organisations coalesces into a r
 
 ## Structuration: the field-maturity mechanism
 
-**[framework — a stage description, not a rate]** Fields do not begin homogeneous. "In the initial stages of their life cycle, organizational fields display considerable diversity"; early adopters of an innovation are "driven by a desire to improve performance", until a threshold is reached "beyond which adoption provides legitimacy rather than improves performance". After that, homogenisation is described as inexorable.
+**[model — a stage description, not a rate]** Fields do not begin homogeneous. "In the initial stages of their life cycle, organizational fields display considerable diversity"; early adopters of an innovation are "driven by a desire to improve performance", until a threshold is reached "beyond which adoption provides legitimacy rather than improves performance". After that, homogenisation is described as inexorable.
 
 Structuration has four named components: (1) increasing interaction among organisations in the field; (2) emergence of sharply defined interorganisational structures of domination and coalition; (3) increasing information load; (4) development of mutual awareness of a common enterprise. **No metric or elapsed-time value is attached to any of the four.** The authors' own hypothesis B-6 concedes structuration "may not lend itself to easy measurement" and offers concentration ratios, reputational interview studies or network data as crude proxies. Registered as [[dimensions-of-institutional-variation]] D57.
 
@@ -35,7 +35,7 @@ Structuration has four named components: (1) increasing interaction among organi
 
 ## The twelve hypotheses
 
-**[framework — the batch's only near-testable propositions, none tested]** Reproduced because testability is rare in this material and because they are directly usable as candidate predictor pairs. Each is directional and stated in terms of a measurable characteristic. The authors intend cross-sectional or preferably longitudinal testing against standard-deviation-based homogeneity measures, and note they have not addressed expected non-linearities or ceiling effects. **The original prints "Hypothesis A-5" twice**; the second is A-6 and is numbered so here.
+**[model — the batch's only near-testable propositions, none tested]** Reproduced because testability is rare in this material and because they are directly usable as candidate predictor pairs. Each is directional and stated in terms of a measurable characteristic. The authors intend cross-sectional or preferably longitudinal testing against standard-deviation-based homogeneity measures, and note they have not addressed expected non-linearities or ceiling effects. **The original prints "Hypothesis A-5" twice**; the second is A-6 and is numbered so here.
 
 ### Organisation-level: predicts how isomorphic *this organisation* becomes
 
@@ -63,7 +63,7 @@ Structuration has four named components: (1) increasing interaction among organi
 
 ## Isomorphism is not efficiency
 
-**[framework — the paper's central negative claim]** Stated flatly: "None of this... insures that conformist organizations do what they do more efficiently than do their more deviant peers." Weber's original bureaucratisation account was driven by market competition; DiMaggio & Powell argue the engine has moved to **the state and the professions**, and that conformity is now rewarded independent of performance because it eases transacting, attracts career-minded staff, and confers eligibility for public and private grants and contracts. Legitimacy functions as a currency substitutable for efficiency.
+**[model — the paper's central negative claim]** Stated flatly: "None of this... insures that conformist organizations do what they do more efficiently than do their more deviant peers." Weber's original bureaucratisation account was driven by market competition; DiMaggio & Powell argue the engine has moved to **the state and the professions**, and that conformity is now rewarded independent of performance because it eases transacting, attracts career-minded staff, and confers eligibility for public and private grants and contracts. Legitimacy functions as a currency substitutable for efficiency.
 
 Their sector case is hospitals (citing Lee, Fennell): a "poor market system" because patients lack the knowledge to be genuine consumers — physicians are the real consumers — so hospitals compete on status, prestige and breadth of service, "defined as fit only if they can offer everything other hospitals... offer", rather than on price or output.
 

@@ -38,7 +38,7 @@ Ostrom's own summary of what does the work: "it is not the general type of fores
 
 ## The eight design principles
 
-**[framework, inductively derived; empirically tested by Cox et al. 2010 — the numbers are in the next section]** Recorded in the updated Cox, Arnold & Villamayor-Tomás formulation as quoted in the source:
+**[model, inductively derived; empirically tested by Cox et al. 2010 — the numbers are in the next section]** Recorded in the updated Cox, Arnold & Villamayor-Tomás formulation as quoted in the source:
 
 - **1A. User Boundaries** — clear, locally understood boundaries between legitimate users and nonusers.
 - **1B. Resource Boundaries** — clear boundaries separating the CPR from the larger social-ecological system.

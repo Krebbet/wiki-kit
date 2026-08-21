@@ -13,7 +13,7 @@ An extrinsic incentive attached to a behaviour can reduce that behaviour. This i
 
 ## Mechanism A — self-determination and self-esteem (Frey)
 
-**[framework — Deci & Ryan lineage, synthesised by Frey]** The causal chain: an extrinsic intervention (a price, a sanction, a rule, a monitoring regime) changes the individual's perceived locus of control and their sense of whether their competence and motives are acknowledged; that changes intrinsic motivation; that changes behaviour. The claim with teeth is that this **indirect channel can outweigh the direct relative-price effect** — so the supply curve can shift by more than it moves along.
+**[model — Deci & Ryan lineage, synthesised by Frey]** The causal chain: an extrinsic intervention (a price, a sanction, a rule, a monitoring regime) changes the individual's perceived locus of control and their sense of whether their competence and motives are acknowledged; that changes intrinsic motivation; that changes behaviour. The claim with teeth is that this **indirect channel can outweigh the direct relative-price effect** — so the supply curve can shift by more than it moves along.
 
 Two channels, stated separately:
 
@@ -53,7 +53,7 @@ Two channels, stated separately:
 
 ### The measurability gloss
 
-**[framework — Frey's interpretation, not a tested joint model]** Frey's one explicit measurability claim: pay-for-performance is well supported in "simple task environments" where output is cleanly measurable and intrinsic motivation "can be assumed to play no role" — his standing example is Lazear's windshield-mounting piece-rate study — and crowding-out is "far less likely" there than under "complex working conditions." The implication he draws is that complex tasks are precisely those where output is harder to measure and intrinsic motivation is doing more of the work, making high-powered extrinsic incentives both harder to design and more likely to backfire.
+**[model — Frey's interpretation, not a tested joint model]** Frey's one explicit measurability claim: pay-for-performance is well supported in "simple task environments" where output is cleanly measurable and intrinsic motivation "can be assumed to play no role" — his standing example is Lazear's windshield-mounting piece-rate study — and crowding-out is "far less likely" there than under "complex working conditions." The implication he draws is that complex tasks are precisely those where output is harder to measure and intrinsic motivation is doing more of the work, making high-powered extrinsic incentives both harder to design and more likely to backfire.
 
 He names the two sides. **Low crowding risk / high measurability**: piece-rate manufacturing. **High crowding risk / low or contested measurability**: managerial judgment, volunteering, tax compliance, civic acceptance of unwanted facilities, creativity and entrepreneurship, and airline on-time attribution — where the "cause" of a delay is itself a contested sociotechnical measurement, which is Frey's explanation for why loose attribution outperformed precise attribution.
 
