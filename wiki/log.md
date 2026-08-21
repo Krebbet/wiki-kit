@@ -53,3 +53,24 @@ One near-miss worth recording: the first generated cron line lost its `cd /home/
 
 Not yet done: no manual `/weekly-brief` has ever run from this checkout, so the unattended path (capture tooling + SMTP delivery + Telegram) is unproven. The first Thursday firing is the real test. YouTube transcript capture remains broken (stale pinned `yt-dlp`) by explicit decision — the brief should skip video sources and say so.
 
+
+## [2026-08-20] weekly-brief | first manual run (pre-cron validation)
+
+First `/weekly-brief` run from this checkout, run manually ahead of the Thursday-23:13 cron to validate the unattended path (capture tooling, ingest, SMTP delivery, Telegram) before trusting it to fire alone. Trend scan dispatched 5 parallel source-cluster agents (arXiv/alphaXiv, venues/community, trade press, vendors, programmes/benchmarks) against the pinned watched sources in `reference-sources.md`. Overall a quiet week — most vendor/venue searches surfaced only out-of-window (pre-2026-08-13) items — but the literature and trade-press sweeps surfaced enough for a full 5-source capture batch.
+
+**Two capture-tooling bugs hit and worked around, both logged to `master_notes.md` as kit-level (`Status: open`):**
+- `capture_pdf --src <arxiv.org/abs/...>` silently captured the arXiv *abstract landing page*, not the paper — the tool needs the direct `/pdf/` URL. Caught because the resulting `.md` was suspiciously short (~170-184 lines) and an ingest subagent flagged the missing body; both affected sources (`beyond-peak-tops-per-watt`, `loihi2-acoustic-anomaly-detection`) were re-captured correctly and re-ingested.
+- `capture_url` against a fully open-access Nature Communications article (no paywall, no `## Access options` marker) returned abstract + metadata only, identically with and without `--js`. Unlike the previously-documented paywall signature, this has **no textual tell** — the existing structural-paywall grep check would not catch it. That source (`tetramem-hdc-edge-ai`) was downgraded to a watchlist entry rather than ingested as a full page, per the "watchlist the citation rather than ingest an abstract" convention.
+
+**Captures: 5 attempted, 4 usable, 1 watchlisted.** `audit_captures` flagged 8 broken image refs (pymupdf figure-extraction misses on the two re-captured arXiv PDFs) — cosmetic, text bodies intact (1426 and 587 lines respectively), not treated as capture failures.
+
+**Ingest — page plan (autonomous, no human gate):**
+- NEW `[[chips/loihi2-persistent-monitoring]]` — the wiki's first primary Loihi 2 source, filling a named watchlist gap. Load-bearing finding: the paper's own "two orders of magnitude" headline is dynamic-energy-only (474–496×); the boundary-honest total-energy figure (same table, static power included) is 2.1–40.2×— a clean same-paper illustration of the measurement-boundary problem.
+- EXTENDED `[[conflicts/snn-energy-payoff]]` — added that Loihi 2 illustration as new evidence, plus a new subsection on "Beyond Peak TOPS/W" (arXiv:2608.03514, MICRO 2026), a methodology paper generalizing this wiki's central efficiency-measurement conflict beyond SNNs to analog IMC and photonic computing.
+- EXTENDED `[[players/brainchip]]` — BrainChip's Symphony Community Akida Bundle (IBM Spectrum integration), a software-orchestration commercial signal distinct from prior silicon/yield news.
+- EXTENDED `[[devices/memristor-device-engineering]]` — a SAW-guided reconfigurable MoS₂ memristor (dual electrical/acoustic plasticity channels), sourced from a Semiconductor Engineering relay since the ACS Nano primary is paywalled with no preprint; flagged as a novelty note rather than a comparable table row given thin evidence.
+- 10 overflow candidates added to `[[watchlist]]` (cap reached); one existing watchlist gap (Loihi 2) struck through as captured.
+
+**Noteworthy noise, not signal:** three independent scan agents each separately surfaced and excluded the same SEO/content-farm claim of an "Intel Loihi 3" launch (8M neurons, 64B synapses, Q4 2026 availability) — no corroboration from intel.com or any primary source. Recorded here so it isn't accidentally re-surfaced as real in a future sweep. Similarly excluded: an unrelated "Neuromorphic Labs" seed round (AI-governance startup, name collision only) and unverified "IBM NorthPole 288-card" / "BrainChip Akida 2.0 in Mercedes-Benz" claims from the same low-quality sources.
+
+Full brief: `wiki/weekly-briefs/2026-08-20.md`.

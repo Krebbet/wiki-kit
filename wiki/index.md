@@ -35,6 +35,14 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 ---
 
+## Chips & systems
+
+| Page | Summary |
+|---|---|
+| [[chips/loihi2-persistent-monitoring]] | Intel Loihi 2 — acoustic anomaly detection on a 16-chip VPX system. The wiki's first primary Loihi 2 source. Headline "two orders of magnitude" efficiency claim is dynamic-energy-only (474–496×); boundary-honest total-energy figure is 2.1–40.2×. |
+
+---
+
 ## Spiking neural networks
 
 | Page | Summary |

@@ -33,7 +33,7 @@ A dedicated Innatera page is deliberately **not** created from this source alone
 
 Encountered in captured sources without enough evidence for a row. Each is a research target, not a claim:
 
-- **Intel** (Loihi 2) — appears as a NeuroBench system-track baseline platform and as a co-author institution.
+- **Intel** (Loihi 2) — appears as a NeuroBench system-track baseline platform and as a co-author institution. Now has one direct primary source: [[../chips/loihi2-persistent-monitoring]] (2026-08-20 weekly sweep) — a 16-chip VPX system running acoustic anomaly detection. Still short of a full row: no yield, volume, or pricing disclosure captured.
 - **SynSense** (Xylo) — appears as a NeuroBench system-track baseline platform and as a co-author institution.
 - **imec**, **TU Delft**, **Harvard** — NeuroBench co-author institutions.
 - **Prophesee**, **SpiNNcloud**, **Sony** — NeuroBench co-author organisations.

@@ -44,6 +44,16 @@ Measured gains remain **positive** — SNNs do save energy against those baselin
 
 **[[../devices/memristor-array-integration-gap]]** supplies the analog-side version of the same objection: ADC/DAC conversion exceeds **70% of total system power**, and static leakage runs ~10 mW per 1k×1k crossbar at 1 V. Device-level aJ/fJ figures do not survive to system level — a point the review makes against its own numbers.
 
+**[[../chips/loihi2-persistent-monitoring]]** (arXiv:2608.18341) supplies a same-paper illustration of the boundary effect from real silicon: its own headline "two orders of magnitude" claim is **dynamic-energy-only** (474–496× vs a CPU/GPU baseline), but the same table's **total-energy** multiplier — once static platform power is included — drops to **2.1–40.2×**. One paper, one Table 2, two very different numbers depending only on which boundary is drawn. (Scope caveat: the deployed model is a fixed-point dense autoencoder on Loihi 2 cores, not a trained SNN in the surrogate-gradient/STDP sense — cite as chip/systems evidence for the boundary problem, not as an SNN-algorithm data point.)
+
+## Beyond SNNs: the same boundary problem in AIMC and photonic computing
+
+*(added 2026-08-20, weekly sweep)*
+
+**"Beyond Peak TOPS/W: A System-Level Perspective on Hybrid Digital, Analogue and Neuromorphic Computing"** (Kanjo & De Silva, arXiv:2608.03514, accepted MICRO 2026) is a methodology paper, not a new measurement — but its argument is this conflict generalised beyond spiking. Its own Table 1 lines up three literature chip-scale results (an IBM PCM 34-tile accelerator @14nm, an IBM PCM 64-core accelerator @14nm, and a >16,000-component photonic accelerator) specifically to show that differing, unstated measurement boundaries make published TOPS/W figures **non-comparable across papers**, independent of any dispute about the underlying physics. It explicitly names [[../benchmarks/neurobench]] as the right framework for closing that gap.
+
+This matters for the ruling below: it means the boundary problem this page tracks is not an artefact of how SNN papers happen to report numbers — it recurs identically in analog in-memory compute and photonic accelerators, which strengthens the case that the fix is a *measurement discipline* (system-track, boundary-stated reporting), not something specific to spiking's marketing culture.
+
 ## What separates the positions
 
 Three things, all methodological:
@@ -82,6 +92,8 @@ What is **not** supported is any unconditioned multiplier — "500×", "83×", "
 - `raw/research/neuromorphic-commercial-viability/07-snn-energy-reconsidered.md` — capacity-matched breakeven analysis
 - `raw/research/neuromorphic-commercial-viability/05-neurobench.md` — the measurement protocol and the Xylo/Loihi baselines
 - `raw/research/neuromorphic-commercial-viability/04-memristor-codesign-review.md` — peripheral overhead at the analog boundary
+- `raw/research/weekly-2026-08-20/01-beyond-peak-tops-per-watt.md` — arXiv:2608.03514, the boundary problem generalised to AIMC/photonic
+- `raw/research/weekly-2026-08-20/02-loihi2-acoustic-anomaly-detection.md` — arXiv:2608.18341, same-paper dynamic-vs-total illustration
 
 ## Related
 
@@ -89,4 +101,6 @@ What is **not** supported is any unconditioned multiplier — "500×", "83×", "
 - [[../benchmarks/neurobench]] — the adjudicator
 - [[../players/brainchip]] · [[../players/roster]] — Position A claimants
 - [[../devices/memristor-array-integration-gap]] — the analog-side objection
+- [[../chips/loihi2-persistent-monitoring]] — same-paper dynamic-vs-total illustration
 - [[../viability-ledger]] — what this dispute gates
+- [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep

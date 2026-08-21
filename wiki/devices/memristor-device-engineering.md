@@ -24,6 +24,8 @@ How a resistive-switching cell is made to behave: the material systems, the swit
 
 **Volatile threshold-switching (TS) memristors** — resistance snaps back when voltage is removed. Used to emulate leaky-integrate-and-fire neuron dynamics (the spontaneous switch-back matches LIF behaviour) and as entropy sources for TRNG/PUF hardware security.
 
+**SAW-guided reconfigurable 2D memristor** *(added 2026-08-20, weekly sweep — thin evidence, see caveat)* — a monolayer-MoS₂ memristor combined on one platform with a surface-acoustic-wave (SAW) device (Kim et al., ACS Nano 2026, KAIST/Sungkyunkwan/Ajou/Hanyang/UMass Amherst/U. Tokyo). The mechanism is novel among this page's entries: **two independently addressable plasticity channels on one device** — electrical pulsing drives long-term plasticity (the usual filamentary route), while non-contact acoustic (SAW) stimulation drives short-term plasticity, without electrical contact. Reported qualitatively: stability beyond 10,000 s, and a downstream reservoir-computing task at 96.1% accuracy (task/baseline unstated). ⚠️ **Evidence caveat:** the primary (ACS Nano) is paywalled with no accessible preprint found; this entry is sourced from a Semiconductor Engineering relay post, which does not carry switching voltage, endurance, retention, or on/off-ratio figures — so unlike every other row in Table 1 below, this device **cannot yet be placed in that table**. Treat as a novelty flag, not a comparable data point, until the primary is captured.
+
 ## Single-device performance after optimisation
 
 The review's own Table 1, reproduced. **Boundary: single device.** These are the numbers that do *not* survive to system level — see [[memristor-array-integration-gap]].
@@ -79,6 +81,7 @@ For backprop-style ANN training in hardware, the review states large architectur
 ## Source
 
 - `raw/research/neuromorphic-commercial-viability/04-memristor-codesign-review.md` — "Memristor devices for next-generation computing: from performance optimization to application-specific co-design", IOPscience, 2026, open-access CC-BY 4.0, ~160 refs. **Secondary source** — a review aggregating others' measurements; figures are attributed to underlying work where the review names it.
+- `raw/research/weekly-2026-08-20/05-semieng-research-bits-aug18.md` — Semiconductor Engineering, "Research Bits: Aug. 18" (2026-08-18), relaying Kim et al., ACS Nano 2026 (SAW-guided MoS₂ memristor; primary paywalled, no preprint found).
 
 ## Related
 
@@ -86,3 +89,4 @@ For backprop-style ANN training in hardware, the review states large architectur
 - [[cmos-rram-beol-integration]] — a route onto CMOS without an embedded-RRAM foundry PDK
 - [[../snn/snn-energy-hardware-realistic]] — crossbar non-idealities as a measured energy cost
 - [[../conflicts/snn-energy-payoff]] — device-level efficiency figures as Position A evidence
+- [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep

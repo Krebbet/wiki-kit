@@ -58,6 +58,7 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - Raytheon-linked US Air Force neuromorphic radar initiative (dating to April 2025)
 - EDGEAI — smart-metering licensing (March 2026)
 - MicroIP (Taiwan) — production-module partnership (June 2026)
+- IBM — **Symphony Community Akida Bundle** (claimed by BrainChip, 2026-08-20): a free, open-source (GitHub) integration letting Akida processors be scheduled as a managed resource alongside GPUs/CPUs inside IBM Spectrum Symphony Community Edition. This is a distinct commercial-signal shape from the rest of the list — it's a software-orchestration integration, not a silicon design win, and its stated significance is extending Akida's addressable market from edge devices toward on-prem **enterprise servers**. No customer, deployment, or performance number attached; treat "equal footing with GPUs" as BrainChip's own framing, not an independent benchmark.
 
 ## Open questions
 
@@ -71,9 +72,11 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 
 - `raw/research/neuromorphic-commercial-viability/01-brainchip-akd1500-shipments.md` — BrainChip press release, "Commercial Availability and Production Shipments of AKD1500 Neuromorphic Processors", 2026-06-30. Vendor primary; tier 3 (authoritative for what the product is, not for how good it is).
 - `raw/research/neuromorphic-commercial-viability/03-brainchip-yield-cash.md` — Kalkine, "BrainChip (ASX:BRN) Starts Shipping Silicon — But the Cash Clock Is Ticking". Trade/financial commentary; tier 5 (event pointer only). Separates its bull and bear cases explicitly, which is to its credit, but paraphrases filings without linking them.
+- `raw/research/weekly-2026-08-20/04-brainchip-symphony-ibm-bundle.md` — BrainChip press release, "BrainChip Launches Symphony Community Akida Bundle for IBM's Workload Management Solution", 2026-08-20. Vendor primary.
 
 ## Related
 
 - [[roster]] — where BrainChip sits against the other players
 - [[../conflicts/snn-energy-payoff]] — BrainChip's unquantified power and efficiency claims are Position A evidence
 - [[../benchmarks/neurobench]] — the measurement protocol that would settle those claims
+- [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep
