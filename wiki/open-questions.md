@@ -9,7 +9,7 @@ concurrently on 2026-08-19 and each writing pass was assigned a reserved number 
 could not claim the same question number. Ranges that were reserved but not filled leave gaps. **No question
 has been deleted** — if a later session finds a gap, it is spare capacity, not a missing entry. Reuse the gaps
 freely. Q46–Q59, Q66–Q69 and **Q74–Q89** are unused for the same reason; the
-`institutions-and-growth` ingest was assigned Q90 upward. **Q95–Q99 are unused** for the same reason; the `bureaucracy-and-public-choice` ingest (2026-08-20) was assigned Q100 upward. **Q106–Q109 are unused** for the same reason; the `theory-of-the-firm` ingest (2026-08-20) was assigned Q110 upward.
+`institutions-and-growth` ingest was assigned Q90 upward. **Q95–Q99 are unused** for the same reason; the `bureaucracy-and-public-choice` ingest (2026-08-20) was assigned Q100 upward. **Q106–Q109 are unused** for the same reason; the `theory-of-the-firm` ingest (2026-08-20) was assigned Q110 upward. **Q116–Q119 are unused** for the same reason; the `measuring-institutions` ingest (2026-08-21) was assigned Q120 upward.
 
 Status: `open` (no evidence yet) · `partial` (some evidence, no settled answer) · `answered` (a page states the
 answer and cites it) · `dissolved` (the question turned out to be malformed — say why).

@@ -52,8 +52,20 @@ Each needs an ingest orchestrator (one subagent per source, summaries into `<top
 | 16 | `informal-institutions` | 9 |
 | 17 | `schooling-norms-and-institutional-formation` | 8 |
 
-Check `retry.log` in the session scratchpad, or just re-count `ls raw/research/<slug>/*.md`, to confirm whether the
-three retried captures (Le Mens, Enns, Eucken) landed before the reboot.
+**The three retried captures all FAILED again** and did not land — confirmed before the reboot. Counts are
+ecology 5, power 7, comparative 7.
+
+- Le Mens (ecology, disconfirming/obsolescence source) — 503 from the Wayback host
+- Enns (power, one of the two Gilens-Page rebuttals) — 403
+- Eucken (comparative, the German ordoliberal source) — the misleading weasyprint error, i.e. the server
+  returned a non-PDF
+
+**Note the discrepancy worth chasing:** a manual `curl -sIL` on all three returned `200` with
+`content-type: application/pdf`, yet `capture_pdf` failed on each. The capture tool uses httpx with its own
+User-Agent and does not follow the same redirect chain as curl, so these hosts are serving it differently.
+That is a real capture-tool gap, not three dead links — worth diagnosing before assuming the sources are lost.
+Losing Enns costs job 11 one of its two required rebuttals, so the ideological-balance gate on that job is not
+currently met.
 
 ### 3. Known constraints
 
