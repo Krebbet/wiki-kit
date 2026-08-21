@@ -71,6 +71,11 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[world-management-survey]] | **The wiki's first live-respondent institution-level instrument.** Bloom, Sadun & Van Reenen's 18-item, 1–5, double-blind interview across **11,383 firms in 34 countries**; management explains **~30% of TFP gaps with the US**, and **77% of the variation sits within country-and-industry** — the batch's most important number, and the first direct evidence that a measurable dimension of institutional quality is a property of the organisation, not the nation. Works on private firms by construction and, untested, possibly on bureaus; fails on scripted answers rather than on decoupled documents. |
 | [[research-agenda]] | *(OPEN)* Prioritised queue of research jobs — the ten opening `/research` runs and the phases after them. |
 | [[open-questions]] | *(OPEN)* Live register of the questions this wiki exists to answer, with status per question. |
+| [[measurement-validity-framework]] | Munck & Verkuilen's three-stage diagnostic — conceptualisation, measurement, aggregation — with 12 named failure modes. Level-agnostic; runnable on any register row. |
+| [[governance-indicators-and-their-construction]] | WGI: 35 perception sources, inverse-variance-weighted UCM, reported margins of error. Perception-exclusive by written policy; most pairwise country comparisons are statistically indistinguishable. |
+| [[v-dem-measurement-model]] | Bayesian IRT with DIF correction over ~5 expert raters per country-year. Coders are instructed to average away sub-national and branch heterogeneity before scoring. |
+| [[critiques-of-governance-indicators]] | Arndt & Oman's eight misuse modes; their re-estimation reverses the sign on income→governance in Kaufmann & Kraay's own model. |
+| [[worldwide-bureaucracy-indicators]] | Public employment and wages by country × sector × occupation — the closest approach to institution level in the literature, and still never a named agency. |
 | [[capture-manifests]] | Verified source URLs per research job, so gitignored captures can be regenerated exactly. |
 | [[reference-sources]] | Watched-source radar for the weekly brief: journals, working-paper series, indices, practitioners, institutional-history feeds. |
 | [[watchlist]] | Overflow candidates surfaced by the weekly brief but not yet captured. |

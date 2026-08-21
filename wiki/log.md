@@ -1057,3 +1057,12 @@ Visible Hand* and *Scale and Scope*, both named on the page as unread with the c
 WMS decentralisation instrument, which other Bloom/Sadun/Van Reenen papers reportedly field and which this
 source does not document — flagged on the page so it is not attributed here. Chong et al. (2014) on WMS scores
 in government services is named as **an appeal to an unread external paper, not evidence in this source**.
+
+## [2026-08-21] ingest | measuring-institutions (PARTIAL — interrupted)
+
+Five pages written: measurement-validity-framework, governance-indicators-and-their-construction,
+v-dem-measurement-model, critiques-of-governance-indicators, worldwide-bureaucracy-indicators. All five are
+structurally complete (title, summary, body, Source, Related).
+
+**The page-writing pass was interrupted by a planned machine reboot before finishing its bookkeeping.**
+Index rows were added by hand afterwards. Outstanding work is listed in `STATE.md` at the repo root.
