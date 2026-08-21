@@ -241,6 +241,27 @@ trust a zero exit code from this tool against `sec.gov/Archives` without reading
 
 ---
 
+## Job 16 — `informal-institutions`
+
+Norms, trust, culture and the informal half — informal constraints, social norms, trust and its
+measurement, custom and convention as enforcement
+
+```
+pdf|helmke-levitsky-typology|https://kellogg.nd.edu/sites/default/files/old_files/documents/307_0.pdf
+pdf|greif-maghribi-traders|https://elearning.unite.it/pluginfile.php/292614/mod_folder/content/0/Greif%20-%20Reputation.pdf?forcedownload=1
+pdf|ostrom-walker-gardner-covenants|https://wtf.tw/ref/ostrom_1992.pdf
+pdf|bernstein-diamond-industry|https://bpb-us-w1.wpmucdn.com/sites.usc.edu/dist/f/464/files/2019/11/4b.bernsteinl1992.optingoutofthelegalsystem.pdf
+pdf|crit-glaeser-measuring-trust|https://dash.harvard.edu/server/api/core/bitstreams/7312037c-7430-6bd4-e053-0100007fdf3b/content
+pdf|crit-sobel-can-we-trust-social-capital|https://econweb.ucsd.edu/~jsobel/Papers/soccap.pdf
+pdf|roland-fast-slow-institutions|https://eml.berkeley.edu/~groland/pubs/gr3.pdf
+pdf|bicchieri-norms-dynamics|https://www.sas.upenn.edu/~cb36/files/2006_natu.pdf
+pdf|alesina-laferrara-determinants-trust|https://www.nber.org/system/files/working_papers/w7621/w7621.pdf
+```
+
+All nine captured cleanly on the first pass — no retries needed.
+
+---
+
 ## Known-bad sources (do not retry without a fix)
 
 | Job | Source | Problem |

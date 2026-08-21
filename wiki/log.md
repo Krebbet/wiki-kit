@@ -1401,3 +1401,47 @@ majority-controlled shareholder vote, since the model's own assumptions don't an
 D128 has no analogue for a government agency (FDA) at all — a genuine scope limit, not a capture failure.
 
 **Three pages written**: [[fda-case-profile]], [[meta-case-profile]], [[meta-oversight-board-case-profile]].
+
+## [2026-08-21] ingest | informal-institutions (job 16, 9 sources)
+
+**Norms, trust, culture and the informal half of North's own formal/informal distinction — mentioned on
+four prior wiki pages without ever being researched.** Nine sources: Helmke & Levitsky (typology anchor),
+Greif (Maghribi traders, multilateral reputation), Ostrom/Walker/Gardner (covenants-with-and-without-a-sword
+lab experiment), Bernstein (diamond industry private ordering), Glaeser et al. and Sobel (two critiques, for
+methodological balance), Roland (fast/slow institutions), Bicchieri (social-norm micro-mechanism), Alesina &
+La Ferrara (empirical determinants of trust).
+
+**1. A formal/informal interaction typology (D135).** Helmke & Levitsky's 2×2 — complementary, accommodating,
+competing, substitutive, crossed on formal-institution effectiveness and goal-compatibility — is directly
+scoreable, and directly complicates "informal = slow": reactive informal institutions track formal-rule
+changes, often fast; only spontaneous ones default to slow. Bernstein's diamond-industry case stresses the
+typology's own limit — formal law there is both effective and goal-compatible and still displaced by
+preference, a cell the 2×2 doesn't have.
+
+**2. D2 extended, and its mechanism gap stays open.** Roland independently names the fast/slow distinction
+with a sharper criterion (fiat-changeability) and an earthquake interaction mechanism, but states explicitly
+he does not explain *why* norms are slow — a second naming source did not close the gap North's one-liner
+left. Bicchieri's convention-vs-social-norm distinction (D136, new) is the closest candidate mechanism this
+wiki now holds: conventions rest on empirical expectations alone and should shift fast; social norms add a
+normative-expectation layer and should resist change until beliefs about obligation, not just behaviour, move.
+
+**3. D32 (trust) sharpened, not closed.** Glaeser et al. show the field's dominant instrument — the GSS trust
+question — predicts trustworthy behaviour far better than trusting behaviour in an incentivised game.
+Alesina & La Ferrara's own determinants-of-trust paper uses that exact instrument and cites the caveat against
+itself. Sobel supplies the methodological-skeptic camp, precise about what he disputes (Putnam's causal
+claims, the capital analogy, cross-cultural comparability) and what he doesn't (that trust/norms/networks are
+worth studying).
+
+**4. D5 gets a controlled counterfactual field data cannot supply.** Ostrom, Walker & Gardner's lab experiment
+isolates communication from sanctioning: communication alone raises yield substantially with zero
+enforceability; imposed sanctioning without communication is worse than nothing net of cost; self-chosen
+sanctioning beats identical imposed sanctioning (93%/90% vs 85%/67% net yield).
+
+**5. D137, new**: Greif's multilateral-reputation mechanism implies a network-density precondition — the
+maximum sustainable enforcement network is bounded by how far reputation information actually travels — no
+source states or tests a threshold.
+
+**Nine pages written**: [[informal-institutions-typology]], [[maghribi-traders-reputation-mechanism]],
+[[covenants-with-and-without-a-sword]], [[diamond-industry-private-ordering]],
+[[measuring-trust-glaeser-et-al]], [[can-we-trust-social-capital]], [[fast-and-slow-moving-institutions]],
+[[social-norms-and-conditional-preferences]], [[determinants-of-trust]].

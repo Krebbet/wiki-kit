@@ -117,3 +117,8 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-08-21 | update | capture-manifests.md | Job 15 block added; the SEC EDGAR bot-wall capture failure and manual fix documented in full, since the standard recipe cannot regenerate those two sources |
 | 2026-08-21 | update | master_notes.md | New kit-level gap logged: `capture_url`'s browser-spoofing UA and missing bot-wall signature both fail silently against SEC EDGAR |
 | 2026-08-21 | update | research-agenda.md | Job 15 `institution-case-profiles`: `queued` → `done` |
+| 2026-08-21 | create | informal-institutions-typology.md, maghribi-traders-reputation-mechanism.md, covenants-with-and-without-a-sword.md, diamond-industry-private-ordering.md, measuring-trust-glaeser-et-al.md, can-we-trust-social-capital.md, fast-and-slow-moving-institutions.md, social-norms-and-conditional-preferences.md, determinants-of-trust.md | Job 16 `informal-institutions` — 9 pages, D135-D137 added, D2/D5/D32 extended |
+| 2026-08-21 | update | dimensions-of-institutional-variation.md | D135 (formal/informal typology), D136 (convention vs social norm), D137 (network-density threshold) added; D2, D5, D32 extended with real-source confirmations |
+| 2026-08-21 | update | index.md | Nine page rows added; dimensions row extended |
+| 2026-08-21 | update | capture-manifests.md | Job 16 block added (9 sources, all captured cleanly) |
+| 2026-08-21 | update | research-agenda.md | Job 16 `informal-institutions`: `queued` → `done` |
