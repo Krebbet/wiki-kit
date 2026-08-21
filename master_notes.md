@@ -130,3 +130,21 @@ unbounded stall. A cheaper interim mitigation is a note in `/research` telling t
 may need `--engine pymupdf` from the start, and that a capture exceeding ~15 minutes should be treated as hung
 rather than slow.
 **Status:** open
+
+### 2026-08-21 — `capture_pdf` does not verify the download is a PDF, producing misleading errors
+**Scope:** kit
+**Observation:** When a URL returns an HTML error page or a JSON redirect pointer instead of a PDF,
+`capture_pdf` saves the bytes as `source.pdf` and hands them to marker anyway. marker then detects the file is
+not a PDF and tries to convert it, emitting `Failed to convert /tmp/wk-pdf-*/source.pdf to PDF: No module
+named 'weasyprint'`. The operator sees a **missing-dependency error** for a package that is not in
+`pyproject.toml` and never was, when the actual problem is that the server returned a 500 page. Two separate
+sources this session failed this way, and diagnosing either took a manual `curl -sI` to discover the real
+cause.
+**Implication:** check the magic bytes (`%PDF-`) or the response `content-type` immediately after download and
+fail with the real reason — "server returned text/html, not a PDF (HTTP 500)" — before marker is invoked. This
+is a three-line fix that converts a misleading error into an actionable one. Note also that the weasyprint
+code path lives inside `marker-pdf`, not in this repo, so the dependency is undeclared here by construction;
+that is a second reason not to let a non-PDF reach marker at all.
+Related to the earlier entry on `audit_captures` reporting success for checks it never ran: both are cases of
+the tooling giving a confident answer that describes something other than what happened.
+**Status:** open
