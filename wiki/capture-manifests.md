@@ -142,6 +142,26 @@ pdf|crit-heckelman-explaining-the-rain|https://heckeljc.sites.wfu.edu/papers/pub
 
 ---
 
+## Job 13 — `organisational-ecology`
+
+The demography of organisations — liability of newness, structural inertia, age-dependent mortality
+
+```
+pdf|hannan-freeman-population-ecology|http://www.iot.ntnu.no/innovation/norsi-pims-courses/harrison/Hannan%20&%20Freeman%20(1977).PDF
+pdf|hannan-freeman-structural-inertia|http://www.iot.ntnu.no/innovation/norsi-pims-courses/harrison/Hannan%20&%20Freeman%20(1984).PDF
+pdf|yang-aldrich-liability-newness-revisited|https://faculty.wharton.upenn.edu/wp-content/uploads/2017/10/The-Liability-of-Newness.pdf
+pdf|coad-firm-age-performance|https://vbn.aau.dk/ws/files/310573536/JEE_Firm_Age.pdf
+pdf|crit-searing-zombies-nonprofit-demise|https://jpna.org/index.php/jpna/article/download/357/356
+```
+
+Two further candidates were sought and failed on retry, and are not in this list: **Thornhill & Amit**
+(`repository.upenn.edu`, `application/json` redirect pointer — see the known-bad-sources table below, this is
+the age-stratified failure dataset this job most wanted) and **Le Mens** (Wayback host, persistent `503`, the
+disconfirming/obsolescence source). Neither is captured. See `STATE.md`'s manual-acquisition note for Thornhill
+& Amit.
+
+---
+
 ## Known-bad sources (do not retry without a fix)
 
 | Job | Source | Problem |

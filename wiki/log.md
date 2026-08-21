@@ -1217,3 +1217,61 @@ the significance-share gap between indicators ("23 vs 10" against surrounding "s
 flagged in the summary as a possible OCR artefact and **not resolved or carried onto the page**. And **no
 source in the batch contains an institutional-age variable of any kind** — ninth consecutive batch; WWBI's
 schema structurally forecloses the question, since no given institution exists in it.
+
+## [2026-08-21] ingest | organisational-ecology (job 13, 5 sources)
+
+**Why this job was highest priority.** Five prior batches (scale-effects, institutional-evolution,
+institutional-stagnation, bureaucracy-and-public-choice, and the register's own gap-note) searched for
+institution-level organisational-age evidence and found none — every duration variable they turned up attached
+to a career, a legal regime, or a national polity, never to a single institution's own tenure. All five were
+institutional-economics, political-science or public-administration literatures. This job went to organisational
+sociology instead, the field that actually treats organisational age as an independent variable.
+
+**1. The result.** Yang & Aldrich (2016) supply the wiki's first true-panel organisation-age mortality evidence:
+a Cox hazard model on PSED II (1,030 US ventures, tracked monthly from actual founding, not registration) shows
+failure hazard declining **monotonically from 0.031 to 0.015 over 40 months** — confirming liability-of-newness
+over the rival liability-of-adolescence hypothesis in this sample, and comparing unfavourably (0.026 vs.
+Brüderl & Schüssler's 0.018 peak) against a registration-based study, evidence that registration-based age
+studies understate early-life mortality risk by construction. The paper decomposes the decline into a measured
+mechanism: post-founding routine/boundary-building activity (business plan, ownership agreement, professional
+retention, registration), not calendar time itself.
+
+**2. The theory behind it.** Hannan & Freeman (1984) formally derive the same declining-hazard shape from a
+different mechanism — reliability/accountability requirements select for reproducible structure, reproducibility
+rises with age, so does inertia, so mortality falls (Theorem 3) — and add a mechanism this wiki had not held:
+reorganisation can reset an organisation's effective age for mortality purposes (a Makeham hazard formalisation,
+Assumption 8), with a stated, unrun, internal-vs-external falsification test. This is the first source naming
+charter-level reconstitution as the natural age-mortality control [[open-questions]] Q60 calls for.
+
+**3. Two complications, both load-bearing.** Coad et al. (2018, special-issue editorial) show age effects are
+front-loaded (concentrated years 0–7) and non-monotonic across a full lifespan, with a distinct late-life
+"liability of obsolescence" running the opposite direction from early "liability of newness" — not one smooth
+curve. Searing (2020, n=8 qualitative) shows organisational "death" is frequently not the clean binary event
+hazard models assume — most non-survivors in her sample were Zombie (formally alive, functionally defunct),
+Reincarnated or Resurrected, not cleanly Dead.
+
+**4. What this does and does not settle.** [[open-questions]] Q7's age limb moves `open` → `partial`. Q60 stays
+`open`, but on narrower grounds: its specified design (true panel, true founding date, a directly observed
+accumulation variable) has now been run and gives a clean result, but on entrepreneurial ventures in their
+first 40 months, not the mature bureaucracies Downs's C.11 and Q60's own framing are about, and without the
+regime-vintage/principal-polarisation controls Q60 requires (inapplicable to private ventures). **Do not cite
+this batch as settling anything about decay in mature institutions** — it establishes the design is runnable
+and gives a genuine early-life result, nothing more.
+
+**5. Register.** D124 (age-dependent mortality hazard, flagged explicitly as population-level rather than a
+per-institution score, unlike D110–D114/D120–D121), D125 (routine/boundary-formation intensity — scoreable
+tomorrow on one institution's own records, the batch's most portable row), D126 (reconstitution as an age-reset
+event, named but untested). All three `candidate`.
+
+**6. A flagged non-conflict.** Yang & Aldrich's routine-building activities *reduce* failure risk early in an
+organisation's life; Downs's C.11 predicts rule accumulation *degrades* a mature bureaucracy over the long run.
+Not a contradiction — different life stages, different outcome variables — stated on the page so no later page
+conflates them.
+
+**7. Capture.** Two candidates failed on retry and are not held: Thornhill & Amit (the age-stratified failure
+dataset the job most wanted — `repository.upenn.edu` returns a JSON redirect pointer on every path) and Le Mens
+(the disconfirming/obsolescence source — persistent 503 from a Wayback host). Both recorded in
+`capture-manifests.md` and `STATE.md`'s manual-acquisition list.
+
+**8. Five pages written**: [[population-ecology-of-organisations]], [[structural-inertia-and-age-dependent-mortality]],
+[[liability-of-newness-empirical-hazard-evidence]], [[firm-age-and-performance]], [[organisational-demise-as-a-construct]].
