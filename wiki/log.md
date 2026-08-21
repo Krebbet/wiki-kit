@@ -1066,3 +1066,154 @@ structurally complete (title, summary, body, Source, Related).
 
 **The page-writing pass was interrupted by a planned machine reboot before finishing its bookkeeping.**
 Index rows were added by hand afterwards. Outstanding work is listed in `STATE.md` at the repo root.
+
+---
+
+## 2026-08-21 — ingest: `measuring-institutions` (7 sources)
+
+**Sources.** Kaufmann & Kraay, *The Worldwide Governance Indicators: Methodology and 2024 Update* (World Bank,
+2024); Pemstein, Marquardt, Tzelgov, Wang, Medzihorsky et al., *The V-Dem Measurement Model* (V-Dem WP 21,
+2026); Munck & Verkuilen, "Conceptualizing and Measuring Democracy" (*CPS* 35(1), 2002); Arndt & Oman, *Uses
+and Abuses of Governance Indicators* (OECD Development Centre, 2006); the *WWBI Codebook v3.0* (2022) and the
+*WWBI Methodology, Insights and Applications* report (2021); the *QoG Standard Dataset 2021 Codebook*.
+
+**1. The finding the job exists to record. The data does not transfer; some of the method does.** Every
+substantive score in this batch is a national aggregate, and all seven source summaries confirm it
+independently — this is not one summary's inference read across the others. WGI is six country-year scalars
+over 214 economies with no sub-national product proposed anywhere in its own methodology paper. V-Dem is
+country-year in every worked example, including for indicators substantively about a specific body. QoG is a
+~2,000-variable compilation of ~110 sources in which not one sampled variable family scores below the
+nation-state. WWBI comes closest and still stops at country × sector × occupation — **there is no agency or
+ministry identifier variable anywhere in its schema**, and the codebook's own ISIC note fixes the boundary:
+the classification tracks what kind of work a person does, not which institution employs them. **Nothing in
+the batch operationalises a single institution.**
+
+**2. The mechanism of the loss is now explicit, and it is the batch's real contribution.** V-Dem's coder
+instructions — reproduced verbatim in the QoG codebook across several public-sector-corruption items — tell
+expert coders to average out any perceived discrepancy "between branches of the public sector, between the
+national/federal and subnational/state level, or between the core bureaucracy and employees working with
+public service delivery" **before answering**. Job 9 established that **77% of management-quality variation
+sits within country-and-industry**. Put together: **the dominant instruments are structurally built to discard
+exactly the variation that carries most of the signal, at the point of data generation rather than in
+aggregation** — so it is unrecoverable by any downstream reprocessing of published scores, component data or
+raw source series. **This is not a criticism of V-Dem.** For characterising a national regime, instructing
+coders to give one national answer removes a genuine source of rater-specific noise and is the correct choice.
+It is decisive for this wiki's purposes and is recorded prominently at Q90, where it sharpens limb (i) of the
+fork (a property of the *literature*) and removes the best remaining argument for limb (ii) — that everyone
+who tries ends up at the country level. They end up there because they are instructed to. **The agenda
+consequence: institution-level measurement has to be collected, not derived.**
+
+**3. Five pages.** `measurement-validity-framework` is the **batch anchor** — Munck & Verkuilen's three-stage
+diagnostic with its twelve named failure modes, explicitly separated into level-agnostic method (transfers)
+and country-level content (does not), plus a run of the checklist against the wiki's own four instruments
+whose shared weak point turns out to be the aggregation stage. `governance-indicators-and-their-construction`
+carries the UCM in full, the inverse-variance weighting, the reported margin of error, the written
+perception-exclusive inclusion criterion, and the precision numbers **in the page summary rather than a
+footnote** because downstream use routinely ignores them: 61% of pairwise comparisons and 0.2%/3%/7%/13% of
+one-/five-/ten-/27-year changes clear the instrument's own 90% intervals. `v-dem-measurement-model` carries
+the IRT/DIF apparatus, the unusually candid self-documented failure modes (the vague-prior shrinkage artefact;
+dynamic smoothing priors that pulled Holocaust-era Germany upward and produced "death spirals"), and the coder
+instruction. `critiques-of-governance-indicators` carries the eight misuse modes, the correlated-error result
+(0.5 assumed correlation doubles WGI's Rule of Law standard error, 0.33 → 0.66), the 0.39-against-0.01
+weighting asymmetry, and the re-estimation reversing Kaufmann & Kraay. `worldwide-bureaucracy-indicators`
+merges the codebook and the methodology report, as both summaries independently proposed.
+
+**4. The Arndt & Oman merge decision: declined, with reasons on the page.** The ingest flagged it as a merge
+candidate with Munck & Verkuilen. Kept separate for three reasons, in order of weight. **They audit different
+objects** — one grades an index's *construction*, the other its *consumption*, and six of the eight misuse
+modes are properties of a use with no home in the three-stage framework. **Only one transfers below the
+nation-state**, and merging would blur the batch's single portable artifact with a catalogue welded to country
+indices and their external-user ecosystem. **The original econometrics would be buried** — the re-estimation
+is the source's hardest contribution. The three points where the taxonomies genuinely overlap
+(ordinal-as-cardinal ≈ failure mode 8; aggregation opacity ≈ 11 and 12; lack of transparency ≈ 9) are mapped
+explicitly on the page so the redundancy is visible rather than duplicated.
+
+**5. QoG gets no standalone page.** It is a compilation of ~110 other sources with no primary collection of
+its own, and was **sampled at only 3–5%** of its ~2,000 variable entries. Used as provenance material on three
+pages, with **the sampling rate stated at every citation**. Its most valuable content is second-hand: the
+verbatim V-Dem coder instruction, and WGI's own caveat that annual re-standardisation makes its scores "not
+directly suitable for over-time comparisons within countries".
+
+**6. Register: D120–D123, two of them `rejected`, and recording the rejections is the point.** **D120**
+(`candidate`) turns Munck & Verkuilen's audit on an institution's **own internal KPI/scorecard system** — five
+components, document-based, institution-scoreable, measuring not how the institution performs but whether it
+can tell. **D121** (`candidate`) turns Arndt & Oman's gaming warning into a two-step test: find whether
+funding, eligibility or classification is gated by a bright-line threshold on an external published index,
+then test the institution's own reported metrics for a discontinuity at it. It has a clean null, which makes
+it falsifiable per institution. **D122** (`rejected`) — V-Dem/WGI/QoG country scores, with three sufficient
+reasons and a stated readmission condition. **D123** (`rejected`) — WWBI sector/occupation aggregates, with
+the exact stopping point and the missing schema field named. **The rejected rows document that the field's
+flagship instruments are inadmissible here and why, so the question is not re-opened every batch.**
+D115–D119 left unused.
+
+**7. D90 extended, in both directions.** **(a)** WGI's perception-exclusivity is **written policy**, not
+inference — inclusion criterion #1, with objective/de jure data acknowledged as useful and categorically
+excluded, partly because it can be gamed. That is the strongest version of D90's claim anywhere in the wiki
+and it comes from the instrument's own authors rather than from a critic. **(b)** A complication that cuts the
+other way and had to go on the row rather than be filed elsewhere: Munck & Verkuilen argue the
+objective/subjective dichotomy is **itself overstated**, because an indicator is never a neutral record — the
+record-generating process has its own drivers. Applied here, **what drives an institution to *write down* a
+rule as against follow it is its own bias channel**, so a document-scored measure is not automatically the
+sound side. Consequence recorded: the three limbs stand, but limb (iii) is no longer a check of the perception
+measure against the document *as criterion* — it is a check of the two against each other with neither
+privileged. **(c)** A third distinction the axis was collapsing: WWBI's "objective, micro-level data"
+self-positioning is half-earned, since 155 of 192 indicators are household self-report; "not expert
+perception" and "documentary" are different things with different residual error classes.
+
+**8. The transferable methods, stated concretely because they are the job's practical yield.** (i) **WGI's
+inverse-variance precision weighting with a formally propagated, reported margin of error** — reusable if any
+register axis is ever built from several partial proxies, with two conditions on the page: you need per-source
+error variances, which WGI gets from a 214-country sample an institution-level analyst does not have, and the
+independence assumption must be defended, since proxies drawn from one document set or one set of informants
+are almost certainly correlated. (ii) **V-Dem's DIF / anchoring-vignette / bridge-coder technique**, directly
+applicable to **D111** if the wiki ever fields multiple coders on one institution — with the identification
+problem stated: bridging needs cross-unit overlap, and on a single unit "this coder is strict" and "this
+institution is bad" are the same observation, so **anchoring vignettes are the only component that works on
+one institution**. (iii) **Munck & Verkuilen's three-stage checklist**, runnable on any register row, now
+registered as D120. (iv) **Arndt & Oman's bright-line-gaming warning**, now with a concrete mechanism — a
+published index plus a threshold plus money on the other side — registered as D121, and independently named
+from the other side by WGI's own authors as their reason for excluding de jure data.
+
+**9. Conflicts. No hard contradiction of an existing wiki claim was found, and none was manufactured.** One
+thing logged: on `does-institutions-growth-survive-identification`, **Arndt & Oman's re-estimation reverses
+the sign on income → governance in Kaufmann & Kraay's own model** — same two-equation structure, same
+settler-mortality instrument family, more controls, four alternative instruments for GDP. Filed **inside
+"Position A is internally split"** rather than as a new position, because that is what it is: an internal
+reversal within the affirmative camp's own toolkit. Recorded with its limits — it is the system's second
+equation rather than the AJR claim, and the authors explicitly do not claim to have settled the direction.
+Two other tensions were **deliberately not filed as conflicts**: WWBI's wage premiums showing no correlation
+with WGI Government Effectiveness (neither makes a precise claim the other contradicts — recorded at Q123),
+and the WMS/Weberian-Facts 13%-against-73% country-share pair, already on Q90.
+
+**10. What the critiques established, and what remains unaddressed.** Recorded at Q122 because it is the
+wiki's clearest instance of a measurement critique landing. **Won**: WGI/WBI began **disclosing per-source
+scores in 2006**, credited by the critics themselves, and now **reports margins of error prominently** — both
+on the critics' minimum-transparency list, and the field's clearest self-correction in this wiki.
+**Unaddressed**: circularity in perception-built sub-indicators (Regulatory Quality is still perceived ability
+to promote private-sector development, still built from business perception); bright-line eligibility misuse
+downstream (publishing an interval does not stop a threshold rule using the point estimate, and no producer
+controls the use); reweighting toward population over expert/business perception (named as a "should",
+implemented by nobody — still 24 expert assessments to 11 surveys, and the ~0.01 weights unchanged); and
+correlated measurement error, now *tested* with the authors conceding the test is "suggestive, not conclusive"
+while the aggregation still assumes independence.
+
+**11. Questions.** Q120 (does any institution's own scorecard survive a construction audit — with the base
+rate that only 2 of 9 published indices reported a reliability test at all); Q121 (multi-coder DIF on one
+institution, and the identification problem that makes vignettes the only usable component); Q122 (what the
+critique won and what it did not, and the regularity that what got fixed is what cost the producer nothing);
+Q123 (two state-capacity instruments that do not correlate); Q124 (a capture gap — the unread Comparative
+Constitutions Project and Global Integrity de jure/de facto families). Q116–Q119 left unused.
+
+**12. Thin spots, stated so they are not mistaken for findings.** The **QoG codebook was sampled at 3–5%**,
+and the two most promising families in it went unread as full variable entries: the **Comparative
+Constitutions Project** (`ccp_*`, binary presence of named institution-types coded from constitutional text —
+**the batch's most promising unexplored lead for document-based coding**, though still one flag per country),
+and **Global Integrity's Africa Integrity Indicators** (paired "Law: X is guaranteed" / "Practice: X is
+guaranteed" items — the closest thing in the batch to D100(iv)'s coverage-against-exercise component).
+Anything the wiki attributes to either is inferred from the codebook's table of contents and category
+listings, not from a full read, and every page saying so. Both are acquisition targets alongside Q103's list.
+Also thin: **the WGI extraction contains one internally inconsistent sentence** about the source counts behind
+the significance-share gap between indicators ("23 vs 10" against surrounding "smaller… versus" phrasing),
+flagged in the summary as a possible OCR artefact and **not resolved or carried onto the page**. And **no
+source in the batch contains an institutional-age variable of any kind** — ninth consecutive batch; WWBI's
+schema structurally forecloses the question, since no given institution exists in it.

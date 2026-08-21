@@ -4,10 +4,10 @@ Written immediately before a planned machine restart. Delete this file once the 
 
 ## Where things stand
 
-**11 of 17 research jobs are complete** (pages written, committed, pushed): 1 foundations-nie, 2 institutional-evolution,
+**12 of 17 research jobs are complete** (pages written, committed, pushed): 1 foundations-nie, 2 institutional-evolution,
 3 scale-effects, 4 incentives-and-institutional-form, 5 risk-aversion-in-large-institutions,
 6 enabling-institutional-change, 7 institutional-stagnation, 8 bureaucracy-and-public-choice, 9 theory-of-the-firm,
-10 institutions-and-growth, plus the user-requested `schooling-and-institutional-quality` page.
+10 institutions-and-growth, 12 measuring-institutions, plus the user-requested `schooling-and-institutional-quality` page.
 
 **All captures are finished for every job.** Nothing is mid-download. `raw/research/` holds sources for all 17 topics.
 Note `raw/research/` is **gitignored** — it does NOT survive a fresh clone. It survives a reboot fine.
@@ -15,29 +15,16 @@ If it is ever lost, regenerate from `wiki/capture-manifests.md`, which lists eve
 
 ## Outstanding work, in priority order
 
-### 1. Finish job 12 `measuring-institutions` bookkeeping (INTERRUPTED MID-WRITE)
+### 1. ~~Job 12 bookkeeping~~ — DONE, no action needed
 
-Its five pages are written and committed and its index rows were added by hand. Still missing:
+Job 12 `measuring-institutions` **completed after all**. Its page-writing pass finished during the shutdown
+sequence, not before it — this file's earlier claim that it was interrupted was wrong and has been corrected.
+Verified complete: five pages, D120/D121 `candidate`, **D122/D123 `rejected`** (V-Dem/WGI/QoG country scores;
+WWBI sector/occupation) each with a stated readmission condition, D90 extended twice, Q90 carrying the mechanism
+finding, Q124 added, revisions and log written, and 81 index rows matching 81 files with nothing missing or
+dangling.
 
-- **D120** `candidate` — measurement-construction audit: run Munck & Verkuilen's three-stage checklist against an
-  institution's own internal KPI/scorecard documentation (not against a country index). Score for
-  maximalist/minimalist definition, redundancy/conflation, justified scale level, published coding rules and
-  reliability tests, and whether the aggregation rule reflects a stated theory of how components combine.
-- **D121** `candidate` — external-threshold gaming exposure: is the institution's funding, eligibility or
-  classification gated by a single external published index? Check funding documents for a bound threshold, then
-  test its own reported metrics for a discontinuity at that threshold.
-- **`rejected` rows, with reasons** — any V-Dem/WGI/QoG country score as an institution-level axis (national
-  aggregates; V-Dem explicitly averages away sub-national heterogeneity before scoring), and the WWBI
-  sector/occupation aggregate (stops at national functional category; no agency identifier in the schema).
-  Recording these as rejected is the point: it documents that the field's flagship instruments are inadmissible
-  here, and why.
-- **Q90 update** — the mechanism finding. V-Dem instructs coders to average away sub-national and branch
-  heterogeneity; job 9 found 77% of management-quality variation is *within* country-industry. Together: the
-  dominant instruments are structurally built to discard the variation that carries most of the signal.
-- **Q120+** — new questions from this batch.
-- **`wiki/revisions.md`** rows for the five new pages.
-
-Source material: `raw/research/measuring-institutions/.ingest/*.summary.md` (all 7 present and complete).
+**12 of 17 jobs are now complete.**
 
 ### 2. Six jobs captured but NOT yet ingested
 

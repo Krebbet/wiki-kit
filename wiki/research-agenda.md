@@ -51,7 +51,7 @@ proposed dimension can be measured.
 | 9 | `theory-of-the-firm` | Private institutions: why firms exist and where their boundaries fall — Coase, Chandler, Williamson, agency theory. Job 9 minus job 8 is the public/private difference the project needs | done |
 | 10 | `institutions-and-growth` | The economy leg — institutions and economic production: inclusive/extractive, state capacity, developmental state, and the reverse-causality critiques | done |
 | 11 | `power-and-accountability` | The power leg — elite theory, veto players, selectorate theory, corporate governance and control, who an institution is *actually* accountable to | capturing |
-| 12 | `measuring-institutions` | Operationalisation — V-Dem, WGI, QoG, state-capacity indices, and the critiques of institutional measurement. Without this, lint check 11 fails every framework page | capturing |
+| 12 | `measuring-institutions` | Operationalisation — V-Dem, WGI, QoG, state-capacity indices, and the critiques of institutional measurement. Without this, lint check 11 fails every framework page | done |
 
 ## Wave 4 — Follow-ups the findings demanded
 
