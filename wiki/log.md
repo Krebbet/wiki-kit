@@ -1319,3 +1319,40 @@ compliant institution. Filed at [[iron-law-vs-design-principles]].
 **6. Seven pages written**: [[veto-players-and-policy-stability]], [[de-jure-vs-de-facto-power-and-captured-democracy]],
 [[corporate-ownership-and-control-around-the-world]], [[whose-preferences-predict-policy-gilens-page]],
 [[oligarchy-result-methodological-critique]], [[selectorate-theory-and-the-winning-coalition]], [[iron-law-of-oligarchy]].
+
+## [2026-08-21] ingest | comparative-governing-philosophies (job 14, 7 sources)
+
+**The first batch commissioned to test directly whether this wiki's register is universal or an
+Anglosphere artefact.** Seven sources: Kettunen (Nordic), Brødsgaard & Beck (Chinese cadre rotation), Xu
+(regionally decentralized authoritarianism), Low (Singapore's Administrative Service), Colignon & Usui
+(Japan's amakudari), Han/KDI (Korea's Economic Planning Board), Bouckaert (the Neo-Weberian State,
+explicitly comparative). Eucken (German ordoliberalism) failed capture on retry — the same misleading
+weasyprint error recorded in `STATE.md` — and is not held.
+
+**Verdict: mixed, not clean.** Some vocabulary travels — Xu explicitly models China's RDA as an M-form
+organisation, citing Chandler and Williamson by name, which is evidence the *lens* generalises (a Western
+economist chose to apply it) more than evidence the underlying institutional logic is identical everywhere.
+Three genuinely new mechanisms surfaced that no prior batch had named, registered as D131 (personnel-control
+tournament substituting for market/electoral accountability — Xu's condition A gives it a checkable design
+criterion), D132 (institutionalised, ministry-organised capture pipeline — amakudari's four paths, distinct
+from D64's coordination-cost axis), and D133 (an administrative-legal-tradition moderator — Bouckaert's
+finding that NPM is Anglo-Saxon/common-law-specific and NWS is administrative-law-tradition-specific, with
+even Germany's own reform attempt failing to produce the predicted shift). D133 is the sharpest finding: the
+register's reform-trajectory rows (D60–D65, D70–D77, D100–D104) have been built and compared without this
+gate since job 6, and nobody has gone back to re-check them with it applied.
+
+**Two cases extend existing conflicts rather than yielding new rows.** Korea's EPB (concentrated
+planning+budget authority under President Park's personal supervision, not structural constraint) is logged
+as a third mode at [[constraint-vs-capacity-as-the-investment-mechanism]], alongside Position A (shackling)
+and Position B (Wade's conditionality) — it resolves neither, it adds a channel neither measures. Singapore's
+Civil Service College (a statutory board, legally autonomous yet fused with its parent ministry) is logged at
+[[open-questions]] Q3 as a fourth candidate case for the public/private invariance question.
+
+**New open question**: Q125 asks the batch's own question plainly and records the mixed verdict, with a
+stated next step — re-score an existing reform-trajectory row against a non-Anglo institution with D133's
+gate applied, which no source anywhere in this wiki has done.
+
+**Seven pages written**: [[nordic-model-and-interest-oriented-citizenship]],
+[[chinese-cadre-rotation-and-the-iron-triangle]], [[regionally-decentralized-authoritarianism]],
+[[singapore-milestone-programs-and-elite-formation]], [[amakudari-and-institutionalized-capture]],
+[[koreas-economic-planning-board]], [[neo-weberian-state-and-administrative-traditions]].

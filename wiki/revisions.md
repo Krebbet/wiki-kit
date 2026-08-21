@@ -104,3 +104,10 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-08-21 | update | index.md | Seven page rows added; dimensions row and Open Conflicts table extended |
 | 2026-08-21 | update | capture-manifests.md | Job 11 verified-URL block added (7 sources); Mills and Enns failures recorded, ideological-balance note added |
 | 2026-08-21 | update | research-agenda.md | Job 11 `power-and-accountability`: `capturing` → `done` |
+| 2026-08-21 | create | nordic-model-and-interest-oriented-citizenship.md, chinese-cadre-rotation-and-the-iron-triangle.md, regionally-decentralized-authoritarianism.md, singapore-milestone-programs-and-elite-formation.md, amakudari-and-institutionalized-capture.md, koreas-economic-planning-board.md, neo-weberian-state-and-administrative-traditions.md | Job 14 `comparative-governing-philosophies` — 7 pages, the wiki's first direct universality test |
+| 2026-08-21 | update | dimensions-of-institutional-variation.md | D131-D133 added (personnel-control tournament; institutionalised capture pipeline; administrative-legal-tradition moderator) |
+| 2026-08-21 | update | open-questions.md | Q125 added; Q3 extended with the Singapore statutory-board case |
+| 2026-08-21 | update | conflicts/constraint-vs-capacity-as-the-investment-mechanism.md | Korea's EPB logged as a third accountability mode neither existing position measures |
+| 2026-08-21 | update | index.md | Seven page rows added; dimensions/open-questions/conflicts rows extended |
+| 2026-08-21 | update | capture-manifests.md | Job 14 verified-URL block added (7 sources); Eucken retry failure recorded |
+| 2026-08-21 | update | research-agenda.md | Job 14 `comparative-governing-philosophies`: `queued` → `done` |

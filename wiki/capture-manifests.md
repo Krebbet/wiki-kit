@@ -185,6 +185,29 @@ a second Gilens-Page rebuttal is wanted.
 
 ---
 
+## Job 14 — `comparative-governing-philosophies`
+
+How governing philosophy shapes institutions — Nordic, Chinese, Singaporean, Japanese, Korean, and a
+directly comparative source
+
+```
+pdf|nordic-kettunen-historicity|https://tidsskrift.dk/njwls/article/download/26613/23385
+pdf|china-brodsgaard-cadre-management|https://rauli.cbs.dk/index.php/cjas/article/download/6399/6937
+pdf|china-xu-fundamental-institutions|https://down.aefweb.net/WorkingPapers/w621.pdf
+pdf|singapore-low-milestone-programs|https://press-files.anu.edu.au/downloads/press/n2144/pdf/ch09.pdf
+pdf|japan-colignon-usui-amakudari|https://library.fes.de/libalt/journals/swetsfulltext/14218811.PDF
+pdf|korea-kdi-economic-planning-board|https://www.kdi.re.kr/eng/file/download?atch_no=BlA0Us7ZBt3aSJOl0iO3Vg%3D%3D
+pdf|comparative-bouckaert-neoweberian-state|https://discovery.ucl.ac.uk/10196024/1/Bouckaert_bouckaert_g._2022_the_neo-weberian_state_from_ideal_type_model_to_reality_0.pdf
+```
+
+One candidate failed on retry and is not in this list: **Eucken**, the German ordoliberal source — the
+misleading weasyprint capture error (server returned a non-PDF despite `curl -sIL` showing 200/application-pdf,
+the same capture-tool-vs-curl discrepancy recorded in `STATE.md`). German ordoliberalism is therefore not
+covered in this job; the batch's continental-administrative-tradition ground is held instead by Bouckaert
+(comparative) and, indirectly, by the Napoleonic/Germanic contrasts he cites.
+
+---
+
 ## Known-bad sources (do not retry without a fix)
 
 | Job | Source | Problem |
