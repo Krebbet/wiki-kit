@@ -18,6 +18,12 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 
 ## Devices & materials
 
+- Noh et al. ECRAM Tiki-Taka (Sci. Adv. eadl3350) — ⚠️ science.org hangs; the wiki's only ECRAM primary
+- Tiki-Taka retention-aware zero-shifting — same paper, same access problem
+- Li et al. in-situ defect-tolerance training — **read this to settle [[conflicts/analog-onchip-training-viability]]**
+- A fabricated CurFe/ChgFe FeFET array with endurance and retention data
+- Event-camera survey Fig. 6 & 7 (power-vs-latency across ~15 accelerators) — lost to pymupdf; needs marker re-capture
+
 - Cross-family comparison (PCM / FeFET / MRAM / ECRAM) — no captured source covers it; RRAM-only so far
 - Rao et al. 2048-level (11-bit) 256×256 foundry-CMOS memristor array — RTN denoising; cited secondhand only
 - STELLAR chip (Zhang et al.), 160k cells monolithic CMOS — cited secondhand; primary not captured
@@ -29,7 +35,14 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 
 ## Chips & systems
 
-- ~~Loihi 2 / Hala Point — named repeatedly, never sourced directly~~ *(captured 2026-08-20, [[../chips/loihi2-persistent-monitoring]] — Hala Point itself still unsourced)*
+- IBM NorthPole *Science* paper (doi 10.1126/science.adh1174) — ⚠️ science.org hangs; primary for the 25× claim
+- NorthPole IEEE HPEC 2024 paper (modha.org) — likely names the unnamed GPU baselines
+- Intel's replacement SDK + next-generation Loihi — announced, undated, unshipped
+- TianjicX (Science Robotics, scirobotics.abk2948) — ⚠️ science.org hangs
+- Lynxi — commercialising the Tianjic lineage; entirely unresearched
+- iniVation, CelePixel, Sony IMX636 — event-sensor vendors, unresearched
+
+- ~~Loihi 2 / Hala Point — named repeatedly, never sourced directly~~ *(captured 2026-08-20, [[chips/loihi2-persistent-monitoring]] — Hala Point itself still unsourced)*
 - Innatera Pulsar / T1 current status — only source is ~2 years stale; did Q2-2025 high-volume happen?
 - SynSense Xylo Audio 2 — the wiki's best measured result; no vendor-primary source captured
 - Analog IMC competitors (EnCharge, Mythic, Rain, Axelera) — in scope, entirely unresearched
@@ -37,6 +50,12 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - EventKitchen stereo event-camera dataset (arXiv:2608.04865) — new benchmark-adjacent dataset, modest novelty
 
 ## Algorithms & toolchains
+
+- Systematic surrogate-gradient function comparison — the 2019 "doesn't much matter" claim is still uncontrolled
+- **SNN training energy vs ANN training energy** — no source in this wiki addresses it
+- Any network trained on a *fabricated* analog array rather than simulation calibrated to one
+- MatMul-free / attention-free architectures on neuromorphic substrates — the one measured win
+- DCLL-family local learning rules beyond DVS-Gestures scale
 
 - LoAS, SpikeX, Bishop — specialized sparse-event accelerators; the η≈1 target
 - SATA and SpikeSim — open benchmarking harnesses, likely to recur across sources

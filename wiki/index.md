@@ -21,6 +21,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[players/roster]] | Who is in neuromorphic hardware and what each has in hand versus on paper. Silicon-in-hand vs paper-only, with last-verified dates. |
+| [[players/intel-loihi2]] | Intel Loihi 2 — the field's most-used research platform, INRC-gated, not for sale. Graded 32-bit spikes (not 1-bit) invalidate Loihi-1-calibrated energy models. **Lava SDK archived 2026-05-13.** Hala Point's 15 TOPS/W contradicts Intel's own 20 petaops / 2,600 W arithmetic (≈7.7). |
+| [[players/ibm-northpole]] | IBM NorthPole — brain-inspired, fully digital, **not spiking**, no off-chip DRAM. 3B-param LLM at 28,356 tok/s on 16 cards. Every headline multiplier (46.9×, 72.7×, 25×) cites an unnamed GPU. |
 | [[players/brainchip]] | BrainChip (ASX:BRN) — Akida AKD1500 shipping from GlobalFoundries 22FDX into defence and wearables. Yield below expectations, ~1 year of cash runway. The wiki's strongest "actually shipping" datapoint. |
 
 ---
@@ -31,6 +33,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 |---|---|
 | [[devices/memristor-device-engineering]] | Material families, switching mechanisms, and the four engineering levers (doping, electrodes, interface layers, pulse protocol). Single-device comparison table — endurance to 10¹², 11-bit conductance resolution. |
 | [[devices/memristor-array-integration-gap]] | Why those device numbers don't survive to system level: ADC/DAC >70% of system power, static leakage, the energy-precision trade-off, and eleven itemized lab-to-fab blockers. The most load-bearing device page for the viability question. |
+| [[devices/fefet-analog-imc]] | FeFET analog in-memory compute — polarization switching, multi-level storage, analog shift-add. 14.47 TOPS/W with the ADC counted. Advantage erodes 1.56× → 1.37× at system level. **Simulation only; no endurance, retention or measured variability.** |
+| [[devices/analog-training-nonidealities]] | Why plain gradient descent fails on analog devices: response-function asymmetry, not defects. Analog SGD collapses below 15% where Tiki-Taka holds 97%. A device engineered for symmetry measures 61% skew on real silicon. |
+| [[devices/event-cameras]] | Event-based vision sensors — the front end that makes workloads natively sparse. Real commercial parts from 3 mW to 12 W. Named automotive design wins (vendor-claimed). The processing gap: most pipelines densify events back into frames. |
 | [[devices/cmos-rram-beol-integration]] | Inserting RRAM into commercial CMOS BEOL without a foundry embedded-RRAM PDK. 16×16 1T1R validated on 180 nm; larger arrays structural only. Evidence the foundry gate is tractable, not that it's solved. |
 
 ---
@@ -48,6 +53,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[snn/snn-energy-hardware-realistic]] | Six SNN algorithm papers re-measured on hardware-realistic simulators. Every one overstates: 10–83× claimed vs 1.3–25× actual. The three omitted costs — timestep data movement, LIF overhead, crossbar non-idealities. |
+| [[snn/snn-training-surrogate-gradients]] | How SNNs are trained at all. The Heaviside derivative annihilates gradients; surrogate gradients patch only the backward pass. Taxonomy of the four approaches, and why BPTT's O(NT) memory and non-local transport rule it out on-chip. 2019 vintage. |
+| [[snn/ann2snn-differential-coding]] | Training-free conversion at T=4–8. CNNs reach the favourable regime; **transformers cross energy ratio 1.0 exactly where accuracy reaches parity** — the converted SNN costs more than the ANN. Multi-threshold neurons, not differential coding, do most of the work. |
 | [[snn/snn-energy-breakeven-conditions]] | Capacity-matched analytical comparison against quantized ANNs. SNNs win only at T ≤ 5 and spike rate < ~5.7%; they lose on most realistic workloads, and by 3.8× on spiking Llama-2 7B. |
 
 ---
@@ -64,6 +71,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 | Page | Summary |
 |---|---|
+| [[conflicts/analog-onchip-training-viability]] | **Open.** Does in-situ training rescue imperfect analog arrays? The yield-economics argument rests on SGD-based training that fails on realistic response curves with no defects present. Resolution: read Li et al. and establish the actual update rule. |
 | [[conflicts/snn-energy-payoff]] | **Open.** Vendor and algorithm-paper claims (10–100×) against hardware-realistic and capacity-matched accounting (1.3–25×, often worse than a quantized ANN). Separated by measurement boundary and baseline capacity. Resolution condition: a NeuroBench system-track submission. |
 
 ---

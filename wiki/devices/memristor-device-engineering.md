@@ -26,6 +26,14 @@ How a resistive-switching cell is made to behave: the material systems, the swit
 
 **SAW-guided reconfigurable 2D memristor** *(added 2026-08-20, weekly sweep — thin evidence, see caveat)* — a monolayer-MoS₂ memristor combined on one platform with a surface-acoustic-wave (SAW) device (Kim et al., ACS Nano 2026, KAIST/Sungkyunkwan/Ajou/Hanyang/UMass Amherst/U. Tokyo). The mechanism is novel among this page's entries: **two independently addressable plasticity channels on one device** — electrical pulsing drives long-term plasticity (the usual filamentary route), while non-contact acoustic (SAW) stimulation drives short-term plasticity, without electrical contact. Reported qualitatively: stability beyond 10,000 s, and a downstream reservoir-computing task at 96.1% accuracy (task/baseline unstated). ⚠️ **Evidence caveat:** the primary (ACS Nano) is paywalled with no accessible preprint found; this entry is sourced from a Semiconductor Engineering relay post, which does not carry switching voltage, endurance, retention, or on/off-ratio figures — so unlike every other row in Table 1 below, this device **cannot yet be placed in that table**. Treat as a novelty flag, not a comparable data point, until the primary is captured.
 
+## ECRAM — a stub, and an admission
+
+*Added 2026-08-21.* **Electrochemical RAM (ECRAM)** is a distinct family this wiki has almost no evidence on. Mechanism differs fundamentally from RRAM: ion insertion into a channel modulates its conductance, rather than forming and rupturing a filament. That is claimed to give more deterministic, symmetric programming — the property [[analog-training-nonidealities]] identifies as the binding constraint on on-chip training.
+
+The wiki's only ECRAM source is a **1.6 KB trade-press relay of a two-sentence abstract**, supporting exactly four claims: a **4K-scale ECRAM cross-point array** fabricated, an **8×4 sub-array at 100% yield**, and qualitative "low" cycle-to-cycle and device-to-device variation with "excellent" switching. Training used the **Tiki-Taka v2** algorithm.
+
+**Do not cite ECRAM for anything beyond those four items.** No quantified variability, retention, endurance, on/off ratio or training-accuracy figure is available. The primary — Noh et al., *Sci. Adv.* 10, eadl3350, June 2024 — is on science.org, which this wiki has confirmed **unreachable** (capture hangs, exit 124 on three separate attempts). It sits on the [[../watchlist]] as known-inaccessible.
+
 ## Single-device performance after optimisation
 
 The review's own Table 1, reproduced. **Boundary: single device.** These are the numbers that do *not* survive to system level — see [[memristor-array-integration-gap]].

@@ -54,6 +54,24 @@ Measured gains remain **positive** — SNNs do save energy against those baselin
 
 This matters for the ruling below: it means the boundary problem this page tracks is not an artefact of how SNN papers happen to report numbers — it recurs identically in analog in-memory compute and photonic accelerators, which strengthens the case that the fix is a *measurement discipline* (system-track, boundary-stated reporting), not something specific to spiking's marketing culture.
 
+## New evidence — 2026-08-21 seed sweep
+
+**Position A gains three claims, all with the same defect:**
+
+| Claim | Owner | What's missing |
+|---|---|---|
+| "100× less energy… 50× faster than conventional CPU and GPU architectures" | Intel (Hala Point release, ~Apr 2024) | Cites **two external small-scale edge papers**, not any Hala Point measurement. No baseline hardware, workload or methodology in the release |
+| "46.9× faster" / "72.7× more energy efficient" / "25× more energy efficient" | IBM (NorthPole) | GPU baseline **never named** — no model, generation, node or precision. No absolute watts or joules. No accuracy delta for the 4-bit quantization |
+| "up to ~20× better performance per watt across various AI workloads" | EnCharge (EN100) | No baseline, no workload, no precision. Extends the pattern into **non-spiking analog IMC** |
+
+**And Intel's headline contradicts its own arithmetic.** Hala Point's 20 petaops at 2,600 W is **≈7.7 TOPS/W** — about half its stated ">15 TOPS/W". The 15 figure comes from a synthetic benchmark: a 14,784-layer MLP **stimulated with random noise**, pruned 10:1, sigma-delta neurons at 10% activation. Not a real workload. See [[../players/intel-loihi2]].
+
+**Position B gains its cleanest confirmation yet.** [[../snn/ann2snn-differential-coding]] converts transformers training-free and finds the energy ratio **crossing 1.0 exactly where accuracy reaches parity** — ViT-Small 1.05, EVA02-Base 1.17, EVA02-Small 1.21 at T=8. The converted SNN costs *more* than the source ANN. That comes from a conversion paper, motivated to show conversion works, measuring against a full-precision baseline more generous than the capacity-matched one. It still loses.
+
+**A same-paper boundary flip, measured on silicon.** [[../chips/loihi2-persistent-monitoring]] reports ~474–496× versus CPU on **dynamic energy only**, and **7.2–40.2×** on total energy — same table, same hardware, an order of magnitude apart. Static power (16.05 W of ~16.2 W) dominates because the model occupies 74 of ~2,048 cores. This is the single cleanest illustration in the wiki that the boundary *is* the claim.
+
+*(synthesis)* One qualification worth stating: NorthPole and the MatMul-free LLM result are **not spiking**. Their numbers belong to the boundary-honesty dispute, not to SNN evidence — do not merge them into spike-rate comparisons.
+
 ## What separates the positions
 
 Three things, all methodological:

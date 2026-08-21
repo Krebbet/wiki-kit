@@ -105,6 +105,24 @@ Routing hops matter correspondingly. Parity points for a typical SNN (T=4, sr=0.
 
 For genuine efficiency the paper requires a *confluence*: low total spike-event count (low `T·sr`), hardware optimized for cheap sparse-event processing (low `Ẽ_move`), and a substantial MAC-to-ACC ratio (`E_MAC ≫ T·E_ACC`).
 
+## Refinement: architecture matters more than spiking
+
+*Added 2026-08-21 from the seed sweep.* Two sources sharpen this page's conclusion without overturning it.
+
+**Attention-free architectures are a different case.** [[../players/intel-loihi2]] carries a measured result — the MatMul-free LLM (370M) on 24 Loihi 2 chips — beating a Jetson Orin Nano by ~2.7–2.9× throughput and ~1.8–3× energy per token. That looks like a contradiction of the spiking-Llama-2-7B finding above. It is not. The MatMul-free model is **attention-free** — token mixing is a linear recurrence, not self-attention — so the `T/⌈log₂(T+1)⌉` penalty derived here simply does not apply: there is no dense global mixing operation to re-evaluate each timestep. It is also **not iso-accuracy** (29% below Qwen2.5-500M), excludes embedding/lm_head layers, and pays a **6.9× multi-chip energy penalty** versus its own single-chip estimate.
+
+**Converted transformers confirm the finding.** [[ann2snn-differential-coding]] converts ViT and EVA02 models training-free, and its energy ratio **crosses 1.0 between T=6 and T=8 — exactly where accuracy reaches parity** (ViT-Small 1.05, EVA02-Base 1.17, EVA02-Small 1.21). That is a conversion paper, motivated to show conversion works, using a *full-precision* ANN baseline more favourable than this page's capacity-matched one, and it still lands above break-even.
+
+*(synthesis)* So the dividing line is **not spiking versus non-spiking**. It is whether the architecture contains a dense global mixing operation that must be re-evaluated across timesteps. Attention does; linear recurrences and convolutions do not. That is a sharper and more actionable statement than this page's original framing.
+
+## ⚠️ Caveat: the hardware anchor is Loihi 1
+
+This page's headline 5.7% threshold depends on a "Typical Neuromorphic" sparse-event movement cost of **3.0 pJ/bit/hop, normalized from Loihi 1's reported per-event routing energy** — and the sensitivity analysis shows data movement is the dominant lever (varying it moves the crossover across 3.41%–10.80%).
+
+But **Loihi 1 emitted 1-bit spikes; Loihi 2 emits graded spikes with up to 32-bit payloads**, on a NoC redesigned for roughly 10× faster spike processing ([[../players/intel-loihi2]]). The parameter models a mechanism the current hardware no longer uses. Direction of the correction is not obvious — a graded spike carries more information per event, so fewer events may be needed — but **the number cannot be carried to Loihi 2 without re-derivation.**
+
+Independently, measured Loihi 2 systems show **static power dominating**: a 16-chip VPX board draws 16.05 W static of ~16.2 W total while occupying 74 of ~2,048 cores ([[../chips/loihi2-persistent-monitoring]]). This page's model does not account for static power from underutilised chips at all.
+
 ## How this sits against the sibling source
 
 Not a contradiction — a sharpening. [[snn-energy-hardware-realistic]] measures six algorithm papers on two simulators and finds SNNs **always beat their own stated baselines**, just by far less than claimed (1.3–25× actual vs 10–83× estimated). This paper enforces **capacity matching** and finds the SNN often **loses outright**.

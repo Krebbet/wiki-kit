@@ -74,3 +74,28 @@ First `/weekly-brief` run from this checkout, run manually ahead of the Thursday
 **Noteworthy noise, not signal:** three independent scan agents each separately surfaced and excluded the same SEO/content-farm claim of an "Intel Loihi 3" launch (8M neurons, 64B synapses, Q4 2026 availability) — no corroboration from intel.com or any primary source. Recorded here so it isn't accidentally re-surfaced as real in a future sweep. Similarly excluded: an unrelated "Neuromorphic Labs" seed round (AI-governance startup, name collision only) and unverified "IBM NorthPole 288-card" / "BrainChip Akida 2.0 in Mercedes-Benz" claims from the same low-quality sources.
 
 Full brief: `wiki/weekly-briefs/2026-08-20.md`.
+
+## [2026-08-21] research + ingest | seed sweep across six gap topics
+
+Second content run, and the first to overlap with an autonomous one.
+
+**Scope.** Six topics chosen against the four standing questions: incumbent chips, device families beyond RRAM, analog IMC competitors, event vision, SNN training methods, and China. 22 candidates shortlisted, 18 approved, **16 captured, 16 ingested**, all schema-valid.
+
+**Captures.** 9 of 12 HTML succeeded. All 7 arXiv PDFs failed under marker: 6 of 7 lost to a 300 s timeout or SIGABRT while two other wikis ran concurrent marker jobs on the same box (16 cores, load 22–25). Re-ran with pymupdf per `research.md`'s own rule that the fallback is sanctioned once marker has failed on CPU — 6 of 6 succeeded, at the cost of figure binaries. One paper needed a 600 s retry. Audit: 9 issues, all broken image refs in pymupdf captures, explainable rather than silent.
+
+**science.org is unusable.** Three DOIs, three hangs at exit 124, zero bytes — it never returns rather than refusing. Cost the wiki the NorthPole *Science* paper, TianjicX, and the ECRAM primary. The Open Neuromorphic fallbacks deliberately kept in the plan for exactly this carried the load.
+
+**Pages (7 new + 1 conflict):** `players/intel-loihi2` (3-source merge), `players/ibm-northpole` (2-source merge), `devices/fefet-analog-imc`, `devices/event-cameras` (survey + vendor merge), `devices/analog-training-nonidealities` (2-source merge), `snn/snn-training-surrogate-gradients`, `snn/ann2snn-differential-coding`, and `conflicts/analog-onchip-training-viability`.
+
+**Three sources were deliberately not made into pages** — Tianjic (7-year-stale community page, one hard number), EnCharge (one press release plus a ~2023 teaser), ECRAM (1.6 KB abstract relay). Each got a roster row or stub plus a watchlist entry instead. Every one of those was the ingesting subagent's own recommendation.
+
+**The through-line got sharper.** Data movement dominates at every scale the wiki can now observe: ADC/DAC conversion in analog arrays, per-timestep memory traffic in digital SNN accelerators, NoC routing energy in the analytical model, chip-to-chip static power in a 24-chip LLM deployment (6.9× penalty), and static platform power in a 16-chip VPX box (16.05 W of 16.2 W with 74 of 2,048 cores used). And the SNN dividing line resolved: it is not spiking versus non-spiking, it is **whether the architecture contains a dense global mixing operation** — attention — that must be re-evaluated across timesteps.
+
+**A correction to my own work.** `players/intel-loihi2` initially stated no measured Loihi 2 power figure existed in any captured source. The 2026-08-20 weekly-brief cron had already ingested one. Corrected, and the two findings converge: static power from underutilised chips swamps the dynamic-energy advantage, independently confirmed by an autoencoder on a 16-chip VPX board and an LLM on 24 chips.
+
+**Also corrected: a subagent caught me.** I briefed the EnCharge ingest that EN100 uses charge-domain switched-capacitor compute. The source never says so — I had taken it from a search snippet, which this wiki's own rules forbid as a source. The agent refused to attribute it. The guardrail works on the orchestrator too.
+
+**Radar fully verified.** 25 unverified sources checked, zero remain: 22 active, 21 probation, 3 blocked, 1 retired. Two rows had to be corrected after a WebFetch-based check produced false negatives — including marking Intel's own site `blocked`. Verify capturability with the capture tool, not WebFetch.
+
+**Kit findings logged (3, all in the unattended path):** `capture_url` has no internal timeout so hostile hosts hang instead of failing; marker on CPU is not robust under machine contention and `/weekly-brief` has no fallback; and verification must use the capture tool rather than WebFetch. Combined with the weekly-brief run's own finding about open-access Nature Communications captures, that is four capture-layer issues worth a `/harvest`.
+

@@ -34,49 +34,50 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 | **arXiv cs.NE (recent)** | Primary firehose for SNN and neuromorphic-architecture work. | https://arxiv.org/list/cs.NE/recent | active |
 | **arXiv cond-mat.mtrl-sci (recent)** | Where the device/materials half of this wiki actually publishes. | https://arxiv.org/list/cond-mat.mtrl-sci/recent | active |
 | **arXiv cs.AR (recent)** | Architecture and accelerator papers, incl. analog IMC. | https://arxiv.org/list/cs.AR/recent | active |
-| **alphaXiv trending** | Popularity ranking over arXiv; catches what the field is reacting to. | https://www.alphaxiv.org/trending | unverified |
-| **Open Neuromorphic** | The field's active open community — events, projects, hardware guides, job/funding chatter. Highest-signal single aggregator for this domain. | https://open-neuromorphic.org | unverified |
+| **alphaXiv** | Popularity ranking over arXiv; catches what the field is reacting to. ⚠️ `/trending` 404s — corrected to root; live but shows a personalized/curated feed, not a clean trending list. | https://www.alphaxiv.org | probation |
+| **Open Neuromorphic** | The field's active open community — events, projects, hardware guides, job/funding chatter. Highest-signal single aggregator for this domain. Confirmed live: dated blog posts (Feb 2026, Oct 2025), workshop calendar into Jul 2026, no barriers. | https://open-neuromorphic.org | active |
 
 ## Journals and venues (scan tables of contents)
 
 | Source | Why | URL | Status |
 |---|---|---|---|
 | **Nature Electronics** | Where the flagship measured-array and integrated-chip papers land. ⚠️ Paywall risk: nature.com article pages fetch fine but yield abstract + references only for subscription content — see Local conventions. | https://www.nature.com/natelectron/ | probation |
-| **Nature Materials / Nature Nanotechnology** | Device-stack and materials firsts. | https://www.nature.com/nmat/ · https://www.nature.com/nnano/ | unverified |
-| **Nature Machine Intelligence** | Algorithm-side SNN work with hardware framing. | https://www.nature.com/natmachintell/ | unverified |
+| **Nature Materials / Nature Nanotechnology** | Flagship device and algorithm work. ⚠️ `capture_url` reaches nature.com fine, but **paywalled articles yield abstract + `## Access options` + references with no body** at a size that defeats the 2 KB thin-capture heuristic (confirmed on a Nature Materials article, 2026-08-19). An earlier WebFetch cookie-consent redirect-loop diagnosis was a WebFetch artifact. Apply the structural paywall check in Local conventions. | https://www.nature.com/nmat/ · https://www.nature.com/nnano/ | probation |
+| **Nature Machine Intelligence** | Flagship device and algorithm work. ⚠️ `capture_url` reaches nature.com fine, but **paywalled articles yield abstract + `## Access options` + references with no body** at a size that defeats the 2 KB thin-capture heuristic (confirmed on a Nature Materials article, 2026-08-19). An earlier WebFetch cookie-consent redirect-loop diagnosis was a WebFetch artifact. Apply the structural paywall check in Local conventions. | https://www.nature.com/natmachintell/ | probation |
 | **Neuromorphic Computing and Engineering (IOP)** | Open-access, dedicated to exactly this field. IOPscience captures cleanly and in full. | https://iopscience.iop.org/journal/2634-4386 | **active** |
 | **Frontiers in Neuroscience — Neuromorphic Engineering** | Long-running venue; variable quality, high volume. | https://www.frontiersin.org/journals/neuroscience/sections/neuromorphic-engineering | probation |
 | ~~**Advanced Materials / Advanced Intelligent Systems** (Wiley)~~ | ⚠️ **BOT-WALLED.** Cloudflare "Just a moment…" challenge; capture failed with and without `--js`, exit 0 both times with a 755-byte file. Do not attempt programmatic capture — request a manual PDF drop instead. | https://onlinelibrary.wiley.com/journal/15214095 | **blocked** |
-| **IEDM** | The venue for "we taped this out and here are the numbers". Annual, December. | https://www.ieee-iedm.org | unverified |
-| **ISSCC** | Chip-level energy and throughput results with credible measurement. Annual, February. | https://www.isscc.org | unverified |
-| **NICE workshop (Neuro-Inspired Computational Elements)** | Where the community argues about what counts as progress. | https://niceworkshop.org | unverified |
-| **Telluride Neuromorphic Workshop** | Talks and project outputs; strong for toolchain reality-checks. | https://tellurideneuromorphic.org | unverified |
+| ~~**Science / Science Advances / Science Robotics** (AAAS)~~ | Flagship neuromorphic results appear here (NorthPole, TianjicX, Tiki-Taka ECRAM). ⚠️ **UNUSABLE — hangs.** Tested 2026-08-20 on three separate DOIs: `capture_url` returned exit 124 at a 90 s timeout with zero bytes every time, and an un-timed attempt consumed a full 2-minute budget on one URL. Fails differently from a Cloudflare challenge (which returns fast) — this burns the caller's whole time budget. **Never queue science.org in an unattended run.** Route around it: Open Neuromorphic covers NorthPole and Tianjic, Semiconductor Engineering relays abstracts, and arXiv preprints often exist. | https://www.science.org | **blocked** |
+| **IEDM** | The venue for "we taped this out and here are the numbers". Annual, December. Confirmed live: 2026 CFP/registration open, no barriers. | https://www.ieee-iedm.org | active |
+| **ISSCC** | Chip-level energy and throughput results with credible measurement. Annual, February. Confirmed live: already publishing 2027-cycle CFP content, no barriers. | https://www.isscc.org | active |
+| **NICE workshop (Neuro-Inspired Computational Elements)** | Where the community argues about what counts as progress. Confirmed live: NICE 2027 featured plus 2025/2026 archives, no barriers. | https://niceworkshop.org | active |
+| **Telluride Neuromorphic Workshop** | Talks and project outputs; strong for toolchain reality-checks. Confirmed live via redirect to a year-versioned Google Sites page (2026 content, 2027 dates posted); ⚠️ canonical domain no longer hosts content itself, just redirects — watch for the slug changing each year. | https://tellurideneuromorphic.org | active |
 | **ICONS (ACM Intl. Conf. on Neuromorphic Systems)** | Systems-level neuromorphic work. | https://dl.acm.org | probation |
 
 ## Trade press (event signal, never a technical source)
 
 | Source | Why | URL | Status |
 |---|---|---|---|
-| **Semiconductor Engineering** | Best trade coverage of process/integration reality and foundry roadmaps. | https://semiengineering.com | unverified |
-| **EE Times** | Product launches, funding, design wins. | https://www.eetimes.com | unverified |
+| **Semiconductor Engineering** | Best trade coverage of process/integration reality and foundry roadmaps. ✅ Re-tested 2026-08-20: `capture_url` retrieves both homepage and article pages cleanly. An earlier WebFetch/curl check hit a Cloudflare challenge — **WebFetch artifact, not a real block**. Note its posts are often short abstract-relays of a primary paper; treat as a pointer, capture the primary. | https://semiengineering.com | **active** |
+| ~~**EE Times**~~ | Product launches, funding, design wins. ⚠️ **UNUSABLE — hangs.** Re-tested 2026-08-20 with `capture_url`: exit 124, timed out at 90 s with zero bytes. Distinct from a Cloudflare challenge (which fails fast) — this burns the caller's whole time budget. Never queue it in an unattended `/weekly-brief` run without an explicit timeout. | https://www.eetimes.com | **blocked** |
 | **IEEE Spectrum — semiconductors** | Occasional deep, well-sourced neuromorphic features. Captures cleanly. | https://spectrum.ieee.org/topic/semiconductors/ | **active** |
-| **The Next Platform** | System-level framing and skeptical takes on efficiency claims. | https://www.nextplatform.com | unverified |
+| **The Next Platform** | System-level framing and skeptical takes on efficiency claims. Confirmed live: dated headlines (Aug 2026), multi-times-weekly cadence, no barriers; marginal — neuromorphic-specific pieces are infrequent. | https://www.nextplatform.com | active |
 
 ## Vendors, labs and foundries (scan press rooms and eng blogs)
 
 | Player | Why for this wiki | URL | Status |
 |---|---|---|---|
-| **Intel Neuromorphic Computing Lab (Loihi / Hala Point)** | Largest research-scale digital neuromorphic programme. | https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html | unverified |
-| **IBM Research (NorthPole, analog AI / PCM)** | The digital-vs-analog argument runs straight through IBM's own portfolio. | https://research.ibm.com/blog | unverified |
+| **Intel Neuromorphic Computing Lab (Loihi / Hala Point)** | Largest research-scale digital neuromorphic programme. ✅ Re-tested 2026-08-20: `capture_url` retrieves the page cleanly (5.7 KB). An earlier WebFetch check returned WAF 403 — that was a **WebFetch artifact, not a real block**. | https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html | **active** |
+| **IBM Research (NorthPole, analog AI / PCM)** | The digital-vs-analog argument runs straight through IBM's own portfolio. Resolves and is live (posts dated through Aug 2026) but low signal density — no neuromorphic/NorthPole/PCM content in this snapshot; broad general-research blog. | https://research.ibm.com/blog | probation |
 | **BrainChip (Akida)** | Publicly listed — filings and revenue are a hard viability signal, not a claim. Press room captures cleanly. | https://brainchip.com/news/ | **active** |
-| **SynSense** | Ultra-low-power vision/audio SNN silicon; Rockpool toolchain. | https://www.synsense.ai | unverified |
-| **Innatera** | Analog-mixed-signal spiking sensor processor; shipping-status claims worth tracking. | https://innatera.com | unverified |
-| **Prophesee** | Event-camera side of the stack — the sensor that makes sparse workloads real. | https://www.prophesee.ai | unverified |
-| **SpiNNcloud / SpiNNaker** | Manchester/TU-Dresden lineage commercialised; large-scale digital SNN. | https://spinncloud.com | unverified |
-| **imec** | Foundry-adjacent device research; strongest signal on BEOL integration and PDK readiness. | https://www.imec-int.com | unverified |
-| **CEA-Leti** | European device/integration programme, RRAM and FeFET. | https://www.leti-cea.com | unverified |
+| **SynSense** | Ultra-low-power vision/audio SNN silicon; Rockpool toolchain. Confirmed live, on-topic, no barriers. | https://www.synsense.ai | active |
+| **Innatera** | Analog-mixed-signal spiking sensor processor; shipping-status claims worth tracking. Confirmed live: dated newsroom through Jul 2026 (CES 2026, Computex 2025), no barriers on the main site. | https://innatera.com | active |
+| **Prophesee** | Event-camera side of the stack — the sensor that makes sparse workloads real. Confirmed live: dated news through Jun 2026 (Mantara launch, €20M raise), no barriers. | https://www.prophesee.ai | active |
+| **SpiNNcloud / SpiNNaker** | Manchester/TU-Dresden lineage commercialised; large-scale digital SNN. Resolves, on-topic, no barriers, but the news feed reads stale — most recent entry ~Jan 2025. | https://spinncloud.com | probation |
+| **imec** | Foundry-adjacent device research; strongest signal on BEOL integration and PDK readiness. Resolves and live (dated 2026 stories) but homepage shows no neuromorphic/memristor/RRAM/BEOL content directly — point the watcher at /news or /articles rather than the root. | https://www.imec-int.com | probation |
+| **CEA-Leti** | European device/integration programme, RRAM and FeFET. Confirmed live: dated 2026 press release on FeRAM/FeFET scaling to 22nm for edge AI, active news carousel. | https://www.leti-cea.com | active |
 | **Mythic** | Analog IMC incumbent; its funding trouble history is a load-bearing cautionary case. | https://mythic.ai | probation |
-| **EnCharge AI** | Charge-domain analog IMC — a serious competitor for the same edge sockets. | https://www.enchargeai.com | unverified |
+| **EnCharge AI** | Charge-domain analog IMC — a serious competitor for the same edge sockets. Confirmed live: active, recently-dated news/blog section, no barriers. | https://www.enchargeai.com | active |
 | **Rain AI** | Analog/memristive compute startup; watch for silicon vs narrative. | https://rain.ai | probation |
 | **Axelera AI** | Digital-IMC edge inference — the competitive baseline. | https://www.axelera.ai | probation |
 
@@ -84,8 +85,8 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 
 | Source | Why | URL | Status |
 |---|---|---|---|
-| **DARPA** | Programme starts and BAAs are 3–5-year leading indicators for US device work. | https://www.darpa.mil | unverified |
-| **EBRAINS / EU Horizon** | European neuromorphic funding and infrastructure. | https://www.ebrains.eu | unverified |
+| **DARPA** | Programme starts and BAAs are 3–5-year leading indicators for US device work. Resolves and live (active news section) but the homepage surfaced no neuromorphic-relevant programme; needs a specific office/programme page (e.g. MTO) rather than the root. | https://www.darpa.mil | probation |
+| **EBRAINS / EU Horizon** | European neuromorphic funding and infrastructure. Confirmed live and on-topic: explicitly features "Neuromorphic Computing" as an infrastructure offering, dated news through Aug 2026. | https://www.ebrains.eu | active |
 | **US DOE labs (Sandia, ORNL, LANL)** | Neuromorphic-for-HPC and rad-hard/space angles. | https://www.sandia.gov | probation |
 
 ## Benchmarks, code and release proxies (discovery only)
@@ -93,10 +94,10 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 | Source | Why | URL | Status |
 |---|---|---|---|
 | **NeuroBench** | The field's attempt at honest cross-vendor comparison — the single most load-bearing benchmark effort to track. Framework confirmed real via the Nat. Comms. paper; site itself not yet fetched. Repos: github.com/NeuroBench/neurobench and /system_benchmarks. | https://neurobench.ai | **probation** |
-| **Lava (Intel)** | Loihi's toolchain; release notes reveal what the hardware can actually do. | https://github.com/lava-nc/lava | unverified |
-| **snnTorch** | Most-used surrogate-gradient training library; issue tracker shows real practitioner pain. | https://github.com/jeshraghian/snntorch | unverified |
+| ~~**Lava (Intel)**~~ | ⚠️ **ARCHIVED 2026-05-13** — read-only. Intel's notice: "Intel will not provide or guarantee development of or support for this project" and "All Lava repositories are archived. Stay tuned for announcements about our new SDK and next generation Loihi processor." **Not an exit — a platform transition.** Re-add the successor SDK when it is announced; until then the reference toolchain for the field's most-used research platform is frozen. | https://github.com/lava-nc/lava | **retired** |
+| **snnTorch** | Most-used surrogate-gradient training library; issue tracker shows real practitioner pain. Confirmed live: no archive banner, active issues/PRs (UCSC Neuromorphic Computing Group). | https://github.com/jeshraghian/snntorch | active |
 | **Norse** | PyTorch-native SNN library. | https://github.com/norse/norse | probation |
-| **Rockpool (SynSense)** | Vendor toolchain; deployment constraints visible in the docs. | https://github.com/synsense/rockpool | unverified |
+| **Rockpool (SynSense)** | Vendor toolchain; deployment constraints visible in the docs. Confirmed live: no archive banner, active commit/issue history, hosted docs at rockpool.ai. | https://github.com/synsense/rockpool | active |
 | **Nengo** | Long-lived neuromorphic compiler/runtime with multi-backend support. | https://www.nengo.ai | probation |
 
 ## Radar evolution
@@ -114,6 +115,16 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 *Added*: DataCenterDynamics, Kalkine, SATA/SpikeSim, Open Neuromorphic repos (below).
 
 Everything still marked `unverified` has not been touched. That is a to-do, not a judgement.
+
+**2026-08-21 — full verification pass.** Every source previously marked `unverified` was checked. **Zero remain.** Final: 22 `active`, 21 `probation`, 3 `blocked`, 1 `retired`.
+
+Corrections worth recording, because the method mattered:
+
+- An initial pass verified sources with **WebFetch** and marked three down on that basis — including **Intel's own neuromorphic-lab page** as `blocked` (WAF 403). Re-testing with `capture_url`, the tool the wiki actually captures with, showed **two of three were wrong**: Intel's page retrieves cleanly at 5.7 KB, and Semiconductor Engineering retrieves cleanly at both homepage and article level. Both promoted to `active`. **Verify capturability with the capture tool, never with WebFetch** — different clients, different blocking profiles. Logged to `master_notes.md` as kit-scope.
+- **science.org added as `blocked`.** Three separate DOIs, three exit-124 hangs at a 90 s timeout, zero bytes. It does not refuse — it never returns. An un-timed attempt burned a full 2-minute budget on one URL. This costs the wiki the NorthPole *Science* paper, the TianjicX Science Robotics paper, and the ECRAM Tiki-Taka primary.
+- **EE Times** confirmed `blocked` for the same reason — hangs rather than 403s, contrary to the earlier WebFetch diagnosis.
+- **Lava `retired`** — archived 2026-05-13. Not an exit: Intel promises a new SDK and next-generation Loihi. Re-add the successor when announced.
+- **nature.com** reason corrected — the earlier "cookie-consent redirect loop" was a WebFetch artifact. The real issue is abstract-only capture at a size that defeats the 2 KB heuristic. And per the 2026-08-20 weekly sweep, this now also affects **fully open-access Nature Communications articles with no paywall markers at all** — see `master_notes.md`.
 
 ### Added this run
 

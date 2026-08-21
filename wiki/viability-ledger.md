@@ -24,13 +24,23 @@ Built from 8 sources in one research run (2026-08-20). It is thin by constructio
 | **Phase-change memristors** | **single device / mechanism** | Covered only in review outlook | Thermal crosstalk between adjacent cells; switching power. Both worsen with density | Any array-level data |
 | **MRAM / ECRAM** | **not covered** | — | — | ECRAM is not mentioned in any captured source. Gap on the [[watchlist]] |
 
+### Added 2026-08-21
+
+| Technology | Rung reached | Best evidence | Gating blocker | Would move the date |
+|---|---|---|---|---|
+| **Digital neuromorphic, research scale** (Loihi 2) | **research platform** | Hala Point: 1,152 chips at Sandia. Measured 16-chip VPX: 48.3 µs, 16.89 W, 0.816 mJ/inference | INRC-gated, not for sale. **Static power dominates** — 16.05 W of 16.2 W with 74 of 2,048 cores used. Lava SDK archived 2026-05-13 | The announced next-gen Loihi and replacement SDK; a fully-utilised system measurement |
+| **Digital non-spiking neuromorphic** (NorthPole) | **research prototype** | 3B-param LLM at 28,356 tok/s on a 16-card server; *Science* + IEEE HPEC papers | No SKU, no availability. Model must fit 224 MB on-chip SRAM. Every efficiency multiplier cites an unnamed GPU | A named baseline; productisation signal |
+| **FeFET analog IMC** | **simulation only** | 14.47 TOPS/W at circuit level with ADC included; 40 nm PDK | **No array fabricated.** No endurance, retention, or measured variability — variability is imported from other groups' devices | Any fabricated CurFe/ChgFe array with reliability data |
+| **ECRAM** | **small array** | 4K-scale cross-point array; 8×4 sub-array at 100% yield; TTv2 training | Wiki has only an abstract relay; primary is on science.org, which **hangs on capture** | Access to the primary by any route |
+| **Event-based vision sensors** | **shipping product** | Real parts: Prophesee GENX320 at 3 mW, >120 dB; Sony IMX636 lineage; iniVation, CelePixel, Lucid | Processing gap — most pipelines densify events back to frames, discarding the sparsity. Ecosystem and tooling maturity | An end-to-end sparse pipeline in a shipping product |
+
 ## Per-application status
 
 | Application | Status | Evidence |
 |---|---|---|
 | **Always-on audio / keyword sensing** | **Working, measured, deployed-adjacent** — the strongest case in the wiki | Xylo Audio 2 vs Arduino at matched accuracy: 60.9× less dynamic power, 33.4× less dynamic energy, boundary disclosed. Latency cost admitted (84 ms vs 45 ms) |
 | **Defence / wearables edge inference** | **Shipping, unmeasured** | AKD1500 production shipments; no performance figure at a stated boundary |
-| **Event-vision / automotive** | **Datasets and models exist; no deployment evidence** | Prophesee 1MP automotive dataset is a NeuroBench algorithm-track task |
+| **Event-vision / automotive** | **Named design-win claims exist — vendor-sourced, production unconfirmed** *(upgraded 2026-08-21)* | Prophesee names Xperi/DTS in-cabin driver monitoring and Terranet/Mercedes-Benz VoxelFlow ADAS. Both vendor-claimed, neither independently corroborated. The vendor page carries **zero quantified performance claims**. Prophesee 1MP dataset is also a NeuroBench algorithm-track task |
 | **Combinatorial optimization (QUBO)** | **Regime-dependent win** | Loihi 2: 37.24× less power than best CPU solver; solves 4× larger workloads at ≤10⁻² s. **But CPU/TABU wins on solution quality at ≥10 s** |
 | **Large-scale CV and language** | **Losing** | Capacity-matched: RepVGG/ImageNet 2.232× worse; spiking Llama-2 7B at T=15 **3.793× worse**. Transformers degrade as `T/⌈log₂(T+1)⌉` |
 | **Analog CIM as a GPU/NPU replacement** | **Not demonstrated end to end** | No peripheral-inclusive system figure exists in any captured source |

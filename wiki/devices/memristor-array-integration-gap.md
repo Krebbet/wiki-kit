@@ -70,6 +70,18 @@ The argument: at realistic yields, in-situ learning is the viable defect-toleran
 
 *(synthesis)* This reframes on-chip learning. The usual argument for it is adaptivity or biological fidelity; here it is a **yield-economics** argument — in-situ training is how you ship an array that isn't perfect. If it holds, it couples the learning-rule question to the manufacturing question, and both to whether analog CIM can ever be cost-competitive. Caveat: MNIST-scale, single-source.
 
+### ⚠️ This reading is now disputed
+
+*Added 2026-08-21.* The yield-economics argument above rests on Li et al., recorded here as **"in-situ, SGD-based"**. New evidence shows plain Analog SGD collapsing **below 15% accuracy from conductance response-function asymmetry alone, with no defects present**, where Tiki-Taka-class algorithms hold 97%. And a device *engineered* for symmetric updates measures **61% symmetry-point skew** on real silicon.
+
+If Li et al. genuinely used plain SGD, their result depends on a favourable device response function and is **device-specific, not a general property of in-situ training**. See [[../conflicts/analog-onchip-training-viability]] — open, with "read Li et al. and establish the actual update rule" as the decisive resolution step. The claim above is left as written pending that check, rather than rewritten on inference.
+
+## Corroboration from FeFET
+
+*Added 2026-08-21.* [[fefet-analog-imc]] offers partial independent support for the peripheral-overhead finding. A FeFET design built specifically to fold shift-add into the analog domain — attacking conversion cost directly — still sees its advantage **erode from 1.56× at circuit level to 1.37× at system level** in the authors' own accounting, once interconnect and buffers are modelled. Roughly a quarter of the gain lost at the system boundary.
+
+It cannot confirm or refute the >70% figure specifically: its circuit-level TOPS/W **does** include the 5-bit ADC, but it publishes no power breakdown by block. It corroborates the direction while leaving the magnitude untested. That breakdown remains the single most useful thing a follow-up could publish.
+
 ## Baseline honesty in this source
 
 Mixed, and worth recording because this wiki will cite it:
