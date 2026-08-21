@@ -162,6 +162,29 @@ disconfirming/obsolescence source). Neither is captured. See `STATE.md`'s manual
 
 ---
 
+## Job 11 — `power-and-accountability`
+
+The power leg — elite theory, veto players, selectorate theory, corporate governance and control
+
+```
+pdf|tsebelis-veto-players|http://nzaher710.free.fr/coursLSES/poltique.pdf
+pdf|acemoglu-robinson-persistence-power|https://www.nber.org/system/files/working_papers/w12108/w12108.pdf
+pdf|laporta-corporate-ownership|https://www.nber.org/system/files/working_papers/w6625/w6625.pdf
+pdf|gilens-page-testing-theories|https://archive.org/download/gilens_and_page_2014_-testing_theories_of_american_politics.doc/gilens_and_page_2014_-testing_theories_of_american_politics.doc.pdf
+pdf|crit-bashir-oligarchy-review|https://www.ifs.org/wp-content/uploads/2016/05/Bashir-2015-Gilens-Page-Critique.pdf
+pdf|bueno-de-mesquita-selectorate-survival|https://www.almendron.com/tribuna/wp-content/uploads/2020/04/policy-failure-and-political-survival.pdf
+pdf|michels-iron-law-oligarchy|https://archive.org/download/political-parties-a-sociological-study-of-the-oligarchial-tendencies-of-modern-d/Political%20Parties%3B%20A%20Sociological%20Study%20of%20the%20Oligarchial%20Tendencies%20of%20Modern%20Democracy%20-%20Robert%20Michels.pdf
+```
+
+Two further candidates failed and are not in this list: Mills, *The Power Elite* (`archive.org`, persistent
+HTTP 500 on the item itself, not a bot wall — see the row below) and **Enns**, one of two intended rebuttals
+to Gilens & Page (`403` on retry). Elite theory rests on Michels without Mills. **Ideological-balance note**:
+the minimum bar (at least one rebuttal source captured) is met by Bashir; the fuller two-rebuttal target this
+job set for itself before the reboot was not, since Enns never landed. Worth a manual acquisition attempt if
+a second Gilens-Page rebuttal is wanted.
+
+---
+
 ## Known-bad sources (do not retry without a fix)
 
 | Job | Source | Problem |

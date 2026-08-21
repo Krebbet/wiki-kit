@@ -1275,3 +1275,47 @@ dataset the job most wanted — `repository.upenn.edu` returns a JSON redirect p
 
 **8. Five pages written**: [[population-ecology-of-organisations]], [[structural-inertia-and-age-dependent-mortality]],
 [[liability-of-newness-empirical-hazard-evidence]], [[firm-age-and-performance]], [[organisational-demise-as-a-construct]].
+
+## [2026-08-21] ingest | power-and-accountability (job 11, 7 sources)
+
+**The power leg of the power/institutions/economy triad.** Seven sources: Tsebelis (veto players), Acemoglu &
+Robinson (persistence of power / captured democracy), La Porta, Lopez-de-Silanes & Shleifer (corporate
+ownership around the world), Gilens & Page (whose preferences predict US policy), Bashir (a methodological
+rebuttal of Gilens & Page, captured for ideological balance), Bueno de Mesquita et al. (selectorate theory),
+and Michels (iron law of oligarchy). Mills's *Power Elite* and a second Gilens-Page rebuttal (Enns) both
+failed capture and are not held — see `capture-manifests.md`.
+
+**1. Veto players, now with data.** [[dimensions-of-institutional-variation]] D44 (Hammond's veto-point
+composite) was a theorem with no empirical content. Tsebelis's independent ~15-year testing program
+corroborates the same composite claim across Doering, Franzese, Henisz, Hallerberg & Basinger and Keefer &
+Stasavage, and adds two new results: a qualified-majority cohesion inversion, and the **absorption rule** —
+a formal vetoholder whose position sits inside the others' unanimity core is functionally irrelevant —
+registered as D127.
+
+**2. De jure vs. de facto power, formalised.** Acemoglu & Robinson's captured-democracy result (a durable
+democracy can see its elite capture economic institutions *more* often than under nondemocracy, because
+regime durability gives the elite an added motive to invest in de facto power) extends D7 rather than
+duplicating it, and bears directly on the existing [[constraint-vs-capacity-as-the-investment-mechanism]]
+conflict.
+
+**3. Two new document-scoreable, institution-level instruments.** D128 (La Porta et al.'s ultimate-ownership
+control-chain tracing, the register's second instrument in the D110 mould) and D130 (Gilens & Page's
+whose-preferences-predict-outcomes regression, a method turned into an instrument like D120/D121) — D130
+carries Bashir's caveat that the exact design (linear regression on a binary outcome, high predictor
+collinearity) can manufacture a spurious null.
+
+**4. Selectorate theory (D129).** The W/S ratio is the wiki's cleanest single-number candidate for "how
+broad-based vs. narrow-and-capturable is this institution's accountability structure," flagged explicitly as
+tested only at regime level via Polity proxies — extension to boards, bureaucracies or parties is this
+wiki's own untested inference.
+
+**5. A new conflict, not filed lightly.** [[iron-law-of-oligarchy]] (Michels) predicts even the most
+participatory, anti-oligarchic organisations concentrate power in a leadership stratum over time. Ostrom's
+design principles (already in the wiki, [[polycentric-governance]]) are empirically supported for commons
+*survival* across 91 studies. Not a strict contradiction — survival and internal power concentration are
+different measured quantities, and no source here tests the latter inside a long-running, design-principle-
+compliant institution. Filed at [[iron-law-vs-design-principles]].
+
+**6. Seven pages written**: [[veto-players-and-policy-stability]], [[de-jure-vs-de-facto-power-and-captured-democracy]],
+[[corporate-ownership-and-control-around-the-world]], [[whose-preferences-predict-policy-gilens-page]],
+[[oligarchy-result-methodological-critique]], [[selectorate-theory-and-the-winning-coalition]], [[iron-law-of-oligarchy]].

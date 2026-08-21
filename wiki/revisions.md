@@ -98,3 +98,9 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-08-21 | update | index.md | Five new page rows added; dimensions and open-questions rows extended for D124–D126 and the Q7/Q60 update; header sentence updated to reflect the batch |
 | 2026-08-21 | update | capture-manifests.md | Job 13 verified-URL block added (5 sources); two retried-and-failed candidates (Thornhill & Amit, Le Mens) recorded |
 | 2026-08-21 | update | research-agenda.md | Job 13 `organisational-ecology`: `queued` → `done` |
+| 2026-08-21 | create | veto-players-and-policy-stability.md, de-jure-vs-de-facto-power-and-captured-democracy.md, corporate-ownership-and-control-around-the-world.md, whose-preferences-predict-policy-gilens-page.md, oligarchy-result-methodological-critique.md, selectorate-theory-and-the-winning-coalition.md, iron-law-of-oligarchy.md | Job 11 `power-and-accountability` — 7 pages, the power leg of the triad |
+| 2026-08-21 | create | conflicts/iron-law-vs-design-principles.md | Michels vs. Ostrom's design principles — organisational oligarchic drift vs. commons-survival evidence, not a strict contradiction but unreconciled |
+| 2026-08-21 | update | dimensions-of-institutional-variation.md | D127-D130 added; D7 and D44 extended rather than duplicated |
+| 2026-08-21 | update | index.md | Seven page rows added; dimensions row and Open Conflicts table extended |
+| 2026-08-21 | update | capture-manifests.md | Job 11 verified-URL block added (7 sources); Mills and Enns failures recorded, ideological-balance note added |
+| 2026-08-21 | update | research-agenda.md | Job 11 `power-and-accountability`: `capturing` → `done` |
