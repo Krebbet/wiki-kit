@@ -208,6 +208,39 @@ covered in this job; the batch's continental-administrative-tradition ground is 
 
 ---
 
+## Job 15 — `institution-case-profiles`
+
+FDA and Meta, primary documents — the wiki's first case-study job. Not `/research`-style literature
+capture; `04` and `05` required a manual fix, recorded below and in `master_notes.md`.
+
+```
+pdf|fda-pdufa-financial-report-fy2025|https://www.fda.gov/media/190768/download?attachment
+pdf|fda-org-chart-overview|https://www.fda.gov/media/190947/download?attachment
+pdf|fda-oig-accelerated-approval-2022|https://oig.hhs.gov/oei/reports/OEI-01-21-00401.pdf
+pdf|meta-governance-guidelines-2025|https://s21.q4cdn.com/399680738/files/doc_downloads/2025/06/Meta-Corporate-Governance-Guidelines-Effective-June-1-2025.pdf
+pdf|meta-oversightboard-charter-2025|https://www.oversightboard.com/wp-content/uploads/2025/07/Oversight-Board-Charter-June-2025.pdf
+pdf|meta-oversightboard-bylaws-2025|https://www.oversightboard.com/wp-content/uploads/2025/07/Oversight-Board-Bylaws-June-2025.pdf
+```
+
+**`04-meta-10k-fy2025` and `05-meta-proxy-def14a-2026` are NOT regenerable by the standard recipe above.**
+Both URLs (SEC EDGAR `Archives/edgar/data/...` htm filings) return SEC's "Your Request Originates from an
+Undeclared Automated Tool" block page to `capture_url`'s browser-spoofing User-Agent, and — this is the part
+worth flagging loudly — `capture_url` **exited zero and wrote a plausible 63-line file** with that block page
+as its content. `audit_captures` reported 0 issues. Only reading the files by hand caught it. See the
+2026-08-21 entry in `master_notes.md` for the full mechanism (SEC wants a **declared**, non-browser User-Agent;
+the tool's `USER_AGENT` deliberately spoofs a browser to get past *other* sites). **Manual fix used**: fetch
+with `httpx` using a compliant declared User-Agent (`"<tool-name> <contact-email>"`), then run the result
+through `trafilatura.extract` directly — the same extraction call `capture_url` itself uses — and write it
+with the standard frontmatter. To regenerate:
+```
+url|meta-10k-fy2025|https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+url|meta-proxy-def14a-2026|https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm
+```
+`capture_url` will silently fail on these until it gains a declared-UA option for EDGAR-class hosts — do not
+trust a zero exit code from this tool against `sec.gov/Archives` without reading the output.
+
+---
+
 ## Known-bad sources (do not retry without a fix)
 
 | Job | Source | Problem |

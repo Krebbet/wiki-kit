@@ -148,3 +148,27 @@ that is a second reason not to let a non-PDF reach marker at all.
 Related to the earlier entry on `audit_captures` reporting success for checks it never ran: both are cases of
 the tooling giving a confident answer that describes something other than what happened.
 **Status:** open
+
+### 2026-08-21 — `capture_url`'s bot-wall detection misses SEC EDGAR's "undeclared automated tool" page, and its browser-spoofing User-Agent is the actual cause
+**Scope:** kit
+**Observation:** Two SEC EDGAR filings (Meta's 10-K and DEF14A proxy, job `institution-case-profiles`) were
+captured with `capture_method: url`, exited zero, and wrote plausible-looking 63-line markdown files — but the
+content was SEC's block page, "Your Request Originates from an Undeclared Automated Tool." `audit_captures`
+reported 0 issues, because its checks (image refs, PDF pairing, thin-capture-by-line-count) don't apply to a
+short-but-well-formed HTML capture. Only reading the files by hand caught it — exactly the failure mode the
+2026-08-21 `capture_pdf` entry above describes for a different tool. Root cause is double: (1) `capture_url`'s
+`_BOT_WALL_SIGNATURES` list (in `tools/capture_url.py`) does not include SEC's phrasing, so the built-in
+bot-wall guard didn't fire; (2) `USER_AGENT` in `tools/_common.py` deliberately spoofs a real browser to get
+past sites like ftc.gov — but SEC EDGAR's policy is the mirror image: it wants a **declared, non-browser**
+User-Agent identifying the actual tool and a contact ("Please declare your traffic by updating your user agent
+to include company specific information"), and rejects generic browser UAs as undeclared bot traffic. The two
+sites need opposite UA strategies, and the tool only has one. Confirmed the fix works: `curl` with
+`User-Agent: <tool-name> <contact-email>` against the same URL returns the real filing (2.3MB real XBRL/HTML,
+vs. the 63-line block page). Worked around manually this session by fetching with a compliant UA and running
+the result through `trafilatura.extract` directly, matching the tool's own extraction pipeline.
+**Implication:** add SEC's block-page phrase ("undeclared automated tool") to `_BOT_WALL_SIGNATURES` so this at
+least surfaces as a loud failure instead of a silent success. The deeper fix is a `--declared-ua "<contact>"`
+flag (or an EDGAR-specific host rule) that swaps in a compliant, non-spoofed User-Agent for hosts that require
+one — SEC EDGAR is a first-class, frequently-needed source for this wiki's institution-case-profile work
+(10-Ks, proxies, filings) and will recur every time a public-company case is captured.
+**Status:** open

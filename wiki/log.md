@@ -1356,3 +1356,48 @@ gate applied, which no source anywhere in this wiki has done.
 [[chinese-cadre-rotation-and-the-iron-triangle]], [[regionally-decentralized-authoritarianism]],
 [[singapore-milestone-programs-and-elite-formation]], [[amakudari-and-institutionalized-capture]],
 [[koreas-economic-planning-board]], [[neo-weberian-state-and-administrative-traditions]].
+
+## [2026-08-21] case-profile | institution-case-profiles (job 15, 8 sources, FDA + Meta)
+
+**The wiki's first case-study job — not literature capture, but scoring the register against two real
+institutions' own primary documents.** FDA: FY2025 PDUFA financial report, current org chart, HHS OIG report
+on accelerated-approval confirmatory-trial delays. Meta: FY2025 10-K, 2026 DEF14A proxy, Corporate Governance
+Guidelines, plus the Oversight Board's Charter and Bylaws as a distinct sub-institution.
+
+**A real capture bug caught and fixed mid-job.** Two SEC EDGAR filings (`04-meta-10k-fy2025`,
+`05-meta-proxy-def14a-2026`) silently captured SEC's bot-block page instead of real content —
+`capture_url` exited zero, wrote a plausible-looking 63-line file, and `audit_captures` reported 0 issues.
+Root cause: SEC wants a *declared*, non-browser User-Agent naming the actual tool and a contact; this wiki's
+capture tool deliberately spoofs a browser UA to get past *other* sites (ftc.gov, Akamai-fronted hosts) — the
+two policies are opposite and the tool only implements one. Fixed manually (compliant-UA fetch +
+`trafilatura.extract`, matching the tool's own pipeline) and logged as a kit-level gap in `master_notes.md`,
+`Scope: kit, Status: open`.
+
+**1. D128 promoted.** Meta's dual-class structure gives Zuckerberg 60.8% of voting power against a 13–14%
+economic interest — a clean, current, quantified control/cash-flow wedge, La Porta et al.'s mechanism run for
+the first time against a real, named institution. A live 2026 shareholder proposal to unwind the structure,
+reported to have majority support among independent shareholders and still losing to the controlling bloc, is
+a real-time confirmation of D127's absorption logic.
+
+**2. D112 promoted, on the richest test case in the register.** Meta's Oversight Board holds textbook binding
+authority over content decisions, qualified at four distinct points by Meta's own continuing judgment: a
+legal-violation carve-out, Meta-defined remedy scope, a feasibility test for extending decisions to duplicate
+content, and — the sharpest finding — a standing Meta veto over amending the charter that grants the binding
+authority in the first place. Funding (an irrevocable trust) and case-selection independence are, by contrast,
+genuinely real and specifically engineered. Recorded as a mixed case, not a debunking.
+
+**3. D35 confirmed.** FDA's human-drug review is 77% industry user fee / 23% appropriation in FY2025, gated
+by three statutory anti-substitution conditions — a real, working instance of the safeguard this row's
+Niskanen material only theorised.
+
+**4. An axis with no literature source at all.** D134 (leadership-vacancy share) was surfaced directly from
+FDA's own org chart — four senior leadership lines (Commissioner, Principal Deputy Commissioner, Chief of
+Staff, Chief Medical Officer) shown Acting or Vacant simultaneously. Registered and flagged explicitly as the
+register's first row born from a case profile rather than named by any source.
+
+**5. What did not score, recorded as informative rather than a gap.** D110's full 24-provision index was only
+partially extractable from the captured documents; D129 (selectorate ratio) applies awkwardly to a
+majority-controlled shareholder vote, since the model's own assumptions don't anticipate a near-degenerate W.
+D128 has no analogue for a government agency (FDA) at all — a genuine scope limit, not a capture failure.
+
+**Three pages written**: [[fda-case-profile]], [[meta-case-profile]], [[meta-oversight-board-case-profile]].

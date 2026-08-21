@@ -111,3 +111,9 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-08-21 | update | index.md | Seven page rows added; dimensions/open-questions/conflicts rows extended |
 | 2026-08-21 | update | capture-manifests.md | Job 14 verified-URL block added (7 sources); Eucken retry failure recorded |
 | 2026-08-21 | update | research-agenda.md | Job 14 `comparative-governing-philosophies`: `queued` → `done` |
+| 2026-08-21 | create | fda-case-profile.md, meta-case-profile.md, meta-oversight-board-case-profile.md | Job 15 `institution-case-profiles` — the wiki's first case-study pages, FDA and Meta scored against the register from primary documents |
+| 2026-08-21 | update | dimensions-of-institutional-variation.md | D134 added (no literature source — surfaced from FDA's org chart); D128 and D112 promoted on real-institution runs; D35, D120, D127 confirmed |
+| 2026-08-21 | update | index.md | Three case-profile page rows added; dimensions row extended |
+| 2026-08-21 | update | capture-manifests.md | Job 15 block added; the SEC EDGAR bot-wall capture failure and manual fix documented in full, since the standard recipe cannot regenerate those two sources |
+| 2026-08-21 | update | master_notes.md | New kit-level gap logged: `capture_url`'s browser-spoofing UA and missing bot-wall signature both fail silently against SEC EDGAR |
+| 2026-08-21 | update | research-agenda.md | Job 15 `institution-case-profiles`: `queued` → `done` |
