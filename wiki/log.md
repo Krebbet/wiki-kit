@@ -1445,3 +1445,72 @@ source states or tests a threshold.
 [[covenants-with-and-without-a-sword]], [[diamond-industry-private-ordering]],
 [[measuring-trust-glaeser-et-al]], [[can-we-trust-social-capital]], [[fast-and-slow-moving-institutions]],
 [[social-norms-and-conditional-preferences]], [[determinants-of-trust]].
+
+## [2026-08-21] ingest | schooling-norms-and-institutional-formation (job 17, 8 sources) — final job of the resume
+
+**The sixth and last of the six jobs left undone at the pre-reboot checkpoint. User-requested 2026-08-20**
+after Glaeser et al.'s Table 12 sequencing finding raised the schooling-precedes-institutions question. Eight
+sources: Glaeser/Ponzetto/Shleifer (formal mechanism, same programme as the existing page), Acemoglu/
+Johnson/Robinson/Yared and Acemoglu/Gallego/Robinson (two direct rebuttals), Nunn & Wantchekon (historical
+norm persistence), Tabellini (sub-national culture/institutions design), Cantoni et al. (causal curriculum
+evidence), Bisin & Verdier (formal transmission mechanism), Alesina/Giuliano/Reich (reverse-causality
+nation-building model).
+
+**[[schooling-and-institutional-quality]] rewritten, not patched, per its own standing instruction.** The
+page's "one paper, one team, no recorded replication" status is gone:
+
+**1. Two direct, named rebuttals.** Acemoglu, Johnson, Robinson & Yared replicate Glaeser et al.'s
+education-democracy regressions and show the result depends entirely on omitting year (not just country)
+fixed effects — adding them flips every coefficient negative and insignificant. Acemoglu, Gallego & Robinson
+run a fully independent re-identification (missionary-presence and 1900-enrolment instruments for human
+capital; corrected settler-mortality/population-density for institutions) and find human capital's growth
+coefficient collapses to micro-consistent (6–10%) levels while institutions' stays robust at 1.32–1.46 across
+every check — plus an independent reversal of the mechanism's own historical premise: Spanish conquistadors
+were more literate than British North American settlers, the opposite of what Glaeser et al.'s "Europeans
+brought human capital" narrative assumes. Neither is a confirmed line-for-line replication of Table 12 itself
+— stated precisely as a scope limit, not glossed over.
+
+**2. A reverse-causality alternative satisfying the ideological-balance gate.** Alesina, Giuliano & Reich
+model schooling as a tool threatened rulers deploy to homogenise culture and pre-empt democratisation —
+institutions and their anticipated trajectory driving schooling, not the reverse — self-described as
+"suggestive correlations," a weaker evidentiary tier than the sequencing designs above and stated as such.
+
+**3. A sub-national design that advances, but by its own author's admission does not resolve, the sequencing
+question.** Tabellini's 69-European-region design removes the cross-country confound every other design in
+this debate carries, and independently finds culture (instrumented by AJR's own settler-mortality variable)
+explains most of the institutions/output gap between high- and low-culture countries — but Tabellini himself
+names the identical reverse-causality threat as an unruled-out "special case" of his own design.
+
+**4. The mechanism reopened, not just formalised.** Glaeser, Ponzetto & Shleifer's formal socialisation
+mechanism (same research programme, not independent) rejects political indoctrination partly because
+education's effects looked general rather than targeted. Cantoni et al.'s Chinese curriculum-reform natural
+experiment shows targeted, content-specific belief change is real and causal (~20% persuasion rate, effects
+concentrated on government trust specifically, not general sociability) — directly undercutting that
+rejection. Bisin & Verdier supply the formal scope conditions (population balance; substitution vs.
+complementarity in the transmission technology) for when such a push succeeds versus triggers compensatory
+resistance.
+
+**Net verdict, stated on the page rather than left implicit**: the sequencing claim is weaker than this wiki
+previously had to treat it, the identification evidence behind it is now directly disputed on
+construct-validity grounds rather than merely re-estimated, and [[open-questions]] Q94 stays formally open
+with both camps now genuinely represented.
+
+**One new register row**: D138 (mover/non-mover channel decomposition, from Nunn & Wantchekon), flagged with
+the authors' own stated limit.
+
+**Eight pages written**: [[why-democracy-needs-education]], [[education-democracy-fixed-effects-critique]],
+[[institutions-human-capital-development]], [[slave-trade-and-mistrust]],
+[[culture-institutions-regions-of-europe]], [[curriculum-and-ideology]],
+[[economics-of-cultural-transmission]], [[nation-building-and-education]].
+
+---
+
+## [2026-08-21] All six jobs from the pre-reboot STATE.md resume are complete
+
+Jobs 13 (`organisational-ecology`), 11 (`power-and-accountability`), 14 (`comparative-governing-philosophies`),
+15 (`institution-case-profiles`), 16 (`informal-institutions`), 17 (`schooling-norms-and-institutional-formation`)
+are all `done` in `research-agenda.md`. `STATE.md` is stale and should be deleted per its own instruction
+("Delete this file once the outstanding work below is done"). Register stands at D1–D138 (with gaps at
+D46–D48 reserved-unused ranges as previously noted, and D115–D119 still unused). Two capture failures were
+found and fixed mid-resume: the SEC EDGAR bot-wall silent-success bug (job 15, logged to `master_notes.md`)
+and nothing else — all other captures across the six jobs were clean on audit and manual spot-check.

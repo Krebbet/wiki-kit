@@ -1,0 +1,23 @@
+# Nation-Building and Education
+
+Alesina, Giuliano & Reich model schooling as a **tool a threatened ruler deploys**, not an exogenous input that produces institutions downstream. In a two-period model, a ruler facing probability $p$ of democratisation chooses costly, persistent "homogenisation" ($\lambda$) — building a shared national identity/language/culture that reduces citizens' distance from government. A fully secure dictator ($p=0$) does no nation-building at all; homogenisation rises with the threat of democratisation, and a ruler facing a *high* threat can homogenise **more intensely than a democracy would**, front-loading the investment to lock in preferred borders/government before losing power. This reverses [[schooling-and-institutional-quality]]'s causal arrow directly: here, **an existing distribution of political power, and the anticipated threat to it, is what determines the schooling policy** — schooling is downstream of institutions and their expected trajectory, not upstream of them.
+
+**Evidence tier note.** **[model]** for the game-theoretic core; **[empirical, but self-described as "suggestive"]** for the cross-country panel (172 countries, 1925–2004, CNTS Data Archive) testing whether autocracies facing regime threats (government crises, revolutions, internal conflict) subsequently expand schooling more than autocracies that don't — the interaction term (Autocracy × threat) is positive and significant across all specifications, but the authors themselves do not claim causal identification for this panel, only correlation consistent with the model.
+
+## Historical illustrations, and a check against the rival "redistribution" story
+
+**[model/qualitative]** France: only ~12–13% spoke French before the Revolution; the most intense schooling-reform period followed the Third Republic (1870), coinciding with clear evidence "a shift of power to the wider population became clear" (Hobsbawm). Italy: ~10% spoke standard Italian at unification; compulsory schooling (1877) preceded major suffrage extension (1912); Prime Minister Crispi later regretted "having broadened the popular suffrage before having educated the masses." England: state-sponsored nationalist education began only after the 1870s, "not accidentally" coinciding with suffrage extension (Colley). **[empirical]** The authors check this against a demand-side alternative (education as a concession bought by popular pressure): contemporary surveys of causes of 1830s riots in 526 English parishes and French disturbances show **no mentions of demand for education as a grievance** — read as evidence nation-building schooling was elite-driven, not extracted by popular demand.
+
+## The recursive structure this implies
+
+**[wiki synthesis]** The fuller causal chain this paper implies is not a simple reversal of Glaeser et al.'s arrow but a loop: existing institutional configuration + anticipated institutional change → elite choice to deploy schooling → cultural/linguistic homogenisation → altered future institutional outcomes (which government persists, whether revolt occurs, how a democratisation transition resolves). Schooling here is simultaneously a *tool* institutions use on culture and a *cause* of subsequent institutional form — genuinely bidirectional, not a settled arrow in either direction. Directly complements [[curriculum-and-ideology]]'s single natural-experiment case with the macro-historical pattern claim that states have deployed schooling this way systematically, across centuries — though this paper's own evidentiary tier for that pattern is explicitly weaker (correlational, self-described "suggestive") than Cantoni's identified causal estimate.
+
+## Source
+
+- `raw/research/schooling-norms-and-institutional-formation/08-alesina-giuliano-reich-nation-building-education.md` — Alberto Alesina, Paola Giuliano & Bryony Reich, "Nation-Building and Education," NBER Working Paper 18839, 2013 (*Economic Journal*).
+
+## Related
+
+- [[schooling-and-institutional-quality]] — this paper is the affirmative-camp-adjacent reverse-causality source that page's own expansion note explicitly requested: institutions (an existing ruler's power and its anticipated trajectory) causing schooling, not the other way round.
+- [[curriculum-and-ideology]] — the identified, single-country micro case; this paper is the correlational, cross-country macro pattern.
+- [[institutions-human-capital-development]] and [[education-democracy-fixed-effects-critique]] — the identification-based rebuttals of the schooling-first claim; this paper supplies a distinct, mechanism-based reverse-causality account rather than a statistical critique of the forward claim.

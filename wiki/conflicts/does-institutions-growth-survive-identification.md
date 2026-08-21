@@ -64,6 +64,10 @@ Four statements, kept apart because collapsing them is how this literature gets 
 
 **[wiki synthesis]** A third thing would settle a different and, for this wiki, more important question: **any design at all that measures an individual institution's effect on production.** Nothing in this batch does. See [[open-questions]] Q90.
 
+## The schooling sub-debate, populated [`schooling-norms-and-institutional-formation`, 2026-08-21]
+
+**[wiki synthesis]** [[schooling-and-institutional-quality]] carries a closely related but distinct dispute — not whether institutions cause growth, but whether schooling causes institutional quality rather than the reverse — and it has moved substantially since this page was last updated. Acemoglu, Gallego & Robinson's independent re-identification (different instruments, different institutions measure) directly disputes the French-legal-origin leg of Glaeser et al.'s Table 11 horse race on construct-validity grounds, which is the same kind of instrument-validity objection this page's own settlement criteria are built around. Read the two pages together: this page's settlement criteria (an independently reconstructed mortality series; a symmetric timing design) now have partial analogues on the schooling-specific question, still without a resolution either side would accept as final.
+
 ## Source
 
 - `raw/research/institutions-and-growth/01-ajr-colonial-origins.md` — Acemoglu, Johnson & Robinson, "The Colonial Origins of Comparative Development: An Empirical Investigation", NBER WP 7771 (*AER* 91(5), 2001). https://www.nber.org/system/files/working_papers/w7771/w7771.pdf

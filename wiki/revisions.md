@@ -122,3 +122,11 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-08-21 | update | index.md | Nine page rows added; dimensions row extended |
 | 2026-08-21 | update | capture-manifests.md | Job 16 block added (9 sources, all captured cleanly) |
 | 2026-08-21 | update | research-agenda.md | Job 16 `informal-institutions`: `queued` → `done` |
+| 2026-08-21 | create | why-democracy-needs-education.md, education-democracy-fixed-effects-critique.md, institutions-human-capital-development.md, slave-trade-and-mistrust.md, culture-institutions-regions-of-europe.md, curriculum-and-ideology.md, economics-of-cultural-transmission.md, nation-building-and-education.md | Job 17 `schooling-norms-and-institutional-formation` — 8 pages, the final job of the resume |
+| 2026-08-21 | rewrite | schooling-and-institutional-quality.md | Rewritten per its own standing instruction: no longer one paper/one team — two direct rebuttals, a reverse-causality alternative, a sub-national design, and a content-dependency complication to the mechanism, all added; verdict section updated to reflect the weakened sequencing claim |
+| 2026-08-21 | update | dimensions-of-institutional-variation.md | D138 added (mover/non-mover channel decomposition) |
+| 2026-08-21 | update | open-questions.md | Q94 substantially updated with job 17's evidence on both sides |
+| 2026-08-21 | update | conflicts/does-institutions-growth-survive-identification.md | Cross-referenced to the now-populated schooling sub-debate |
+| 2026-08-21 | update | index.md | Eight page rows added; schooling-and-institutional-quality row rewritten; dimensions row extended |
+| 2026-08-21 | update | capture-manifests.md | Job 17 block added (8 sources, all captured cleanly) |
+| 2026-08-21 | update | research-agenda.md | Job 17 `schooling-norms-and-institutional-formation`: `queued` → `done` — all six resumed jobs now complete |

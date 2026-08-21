@@ -262,6 +262,26 @@ All nine captured cleanly on the first pass — no retries needed.
 
 ---
 
+## Job 17 — `schooling-norms-and-institutional-formation`
+
+How schooling and cultural norms form institutions — the sixth and final job from the 2026-08-21 resume;
+user-requested 2026-08-20
+
+```
+pdf|glaeser-ponzetto-shleifer-democracy-education|https://www.nber.org/system/files/working_papers/w12128/w12128.pdf
+pdf|crit-ajr-education-to-democracy|https://www.nber.org/system/files/working_papers/w11204/w11204.pdf
+pdf|crit-acemoglu-gallego-robinson-institutions-human-capital|https://www.nber.org/system/files/working_papers/w19933/w19933.pdf
+pdf|nunn-wantchekon-slave-trade-mistrust|https://www.nber.org/system/files/working_papers/w14783/w14783.pdf
+pdf|tabellini-culture-institutions-regions-europe|https://repec.unibocconi.it/igier/igi/wp/2005/292.pdf
+pdf|cantoni-curriculum-ideology|https://www.nber.org/system/files/working_papers/w20112/w20112.pdf
+pdf|bisin-verdier-cultural-transmission|https://www.nber.org/system/files/working_papers/w16512/w16512.pdf
+pdf|alesina-giuliano-reich-nation-building-education|https://www.nber.org/system/files/working_papers/w18839/w18839.pdf
+```
+
+All eight captured cleanly on the first pass — no retries needed.
+
+---
+
 ## Known-bad sources (do not retry without a fix)
 
 | Job | Source | Problem |
