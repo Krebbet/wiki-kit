@@ -47,6 +47,7 @@ Compression regime reached in ~25 steps (4× H100, ~6 hrs/100 steps). Epistemic-
 
 - **vs. thinking-disabled OPSD gains.** SDFT reports +25 pp, SDPO +24 pp; this paper measures −1.0 pp on Qwen3-8B Correct-only. Not a hard contradiction: regime boundary between thinking-enabled vs thinking-disabled mathematical reasoning. Tracking as a regime distinction in [[_overview]].
 - **vs. naive OPSD ≈ RFT framing.** Surface similarity but Eqs. 2–3 distinguish: correctness filters states, teacher-preference drives token advantage. Paper explicitly rebuts the conflation.
+- **vs. ADRS capability-transfer claim (2026-08-21, open).** [[adrs-self-distilled-reward-shaping]] reports +11.9 pp unseen-split transfer from an in-loop privileged-self-distillation reward, in soft tension with this page's "cannot create new reasoning states the student doesn't already support" claim. Different pipeline role (in-loop RL credit vs. post-hoc compaction stage) and domain (agentic vs. math) keep it a soft tension, not a direct contradiction. See [[../../conflicts/adrs-vs-opsd-compaction]].
 
 ## Related
 
@@ -62,4 +63,6 @@ Compression regime reached in ~25 steps (4× H100, ~6 hrs/100 steps). Epistemic-
 - [[../single-sample-rl-finetuning/_overview]]
 - [[../test-time-training/tempo]] — companion week-of trace-efficiency angle (different mechanism)
 - [[../../weekly-briefs/2026-05-10]] — brought in by the 2026-05-10 weekly sweep
+- [[adrs-self-distilled-reward-shaping]] — extends this page's privileged same-model-teacher recipe into an in-loop RL credit signal; raises the open conflict above
+- [[../../conflicts/adrs-vs-opsd-compaction]] — open conflict: does privileged self-distillation only compact, or can it also transfer capability?
 - [[../rlvr-mechanics/rethinking-rl-sparse-selection]] **(crossover added 2026-05-13)** — REASONMAXXER and OPSD are both dense-signal methods at sparse "active" positions, with different gates (self-entropy vs teacher-student divergence) likely indexing the same position set. See the "Crossover with OPD-family" subsection on that page for the full comparison. Five real differences survive the "same positions" reading: teacher-requirement, signed-vs-one-sided update, failure-mode shape, pipeline position, and offline-vs-on-policy gating. Composing REASONMAXXER (RL-replacement) → OPSD-style compaction is non-redundant; untested in the captured corpus.

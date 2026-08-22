@@ -59,7 +59,7 @@ Deprioritised per setup interview. The brief's agent should not invest significa
 
 | Signal | Why |
 |---|---|
-| **GitHub stars on tracked repos** — SakanaAI/RLT, BytedTsinghua-SIA/DAPO, sail-sg/understand-r1-zero, siyan-zhao/OPSD, lasgroup/SDPO, thunlp/OPD, RUCBM/G-OPD, Zhen-Tan-dmml/ExGRPO, QwenLM/Qwen | Indirect adoption signal — star spikes often precede follow-up papers. |
+| **GitHub stars on tracked repos** — SakanaAI/RLT, BytedTsinghua-SIA/DAPO, sail-sg/understand-r1-zero, siyan-zhao/OPSD, lasgroup/SDPO, thunlp/OPD, RUCBM/G-OPD, ElliottYan/LUFFY (ExGRPO subtree, corrected 2026-08-21 — `Zhen-Tan-dmml/ExGRPO` does not exist), QwenLM/Qwen | Indirect adoption signal — star spikes often precede follow-up papers. |
 | **Hugging Face model releases** — watchlist: SakanaAI, Qwen, DeepSeek-AI, allenai, mistralai, meta-llama | Post-training recipe changes often ship as model cards first. |
 
 ## Selection priority (per the setup interview)

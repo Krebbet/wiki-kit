@@ -151,5 +151,5 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-08-14]] — most recent weekly sweep (light week: 3 candidates, all captured, 0 watchlist surplus)
-- [[weekly-briefs/2026-08-07]] — prior weekly sweep (5 captures, hit the cap; 3 watchlist additions; all captures converged on the open GRPO-family conflict cluster)
+- [[weekly-briefs/2026-08-21]] — most recent weekly sweep (moderate week: 4 genuinely new captures from 5 slots — 1 wasted on a duplicate re-discovery of the 2026-08-07 RSTG capture; 0 watchlist surplus)
+- [[weekly-briefs/2026-08-14]] — prior weekly sweep (light week: 3 candidates, all captured, 0 watchlist surplus)

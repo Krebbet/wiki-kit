@@ -208,13 +208,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 
 **Candidate fix (any one):** before capture, the weekly-brief skill should cross-check each selected arXiv ID against existing wiki pages — grep `wiki/**/*.md` for the arXiv ID and against `wiki/index.md` titles — and auto-demote any hit to a "already on wiki" note rather than spending a capture slot. Cheap: one grep over the arXiv IDs in the candidate list at step 3, gated before step 4 captures. This also makes the hard cap of 5 meaningfully 5-*new*, not 5-minus-rediscoveries. Promote on next `/harvest`.
 
-**Status:** open
+**Status:** open — **confirmed recurring 2026-08-21, twice in one run:** (1) the aggregator scan's top hit (BDH-CQ, arXiv:2608.09888) turned out to be the 2026-08-14 sweep's own capture from one week prior — caught manually by the orchestrator before spending a capture slot, by cross-referencing `wiki/index.md`'s dated "Update" notes, not by any grep-based tooling. (2) Source 01 this run (arXiv:2608.00782, "Distill Where You Fail" / RSTG) was already fully ingested on 2026-08-07 — this one was NOT caught pre-capture; it was only caught after a full capture+ingest-subagent dispatch cycle, by the ingest subagent noticing the existing page while reading `wiki/index.md`. Three independent occurrences now (2026-05-17, and twice on 2026-08-21) with the identical root cause and an already-specified one-line fix (grep arXiv IDs against `wiki/**/*.md` before step 4). This has cost at least 3 wasted capture+ingest cycles across 3 different runs and is cheap to fix — this is the highest-value single fix outstanding in this file and should be promoted via `/harvest` before the next scheduled sweep rather than left open indefinitely.
 
 ### 2026-05-30 — capture_pdf arXiv abs-URL returns HTML not PDF (pymupdf engine)
 **Scope:** kit
 **Observation:** Using `arxiv.org/abs/<ID>` URLs with `--engine pymupdf` captures the abstract HTML page (200 lines of navigation + 3 PNG renders of the HTML), not the paper text. The correct URL for arXiv PDFs is `arxiv.org/pdf/<ID>`. The error is silent: no exception, audit's thin-captures check passes because the HTML renders to ~200 lines. Detected when inspecting capture text: "Skip to main content / We gratefully acknowledge support from the Simons Foundation..." Wasted 5 captures (immediately cleaned up and rerun with /pdf/ URLs; second run succeeded cleanly at 1150+ lines each).
 **Implication:** weekly-brief and /ingest should always use `/pdf/` URLs for arXiv. Candidate fix: `capture_pdf.py`'s `_resolve_source` auto-rewrite `arxiv.org/abs/<ID>` → `arxiv.org/pdf/<ID>` before download. Safe since arXiv always serves a PDF at `/pdf/`.
-**Status:** open
+**Status:** open — **confirmed recurring 2026-08-21:** hit again on all 5 captures this run (used `/abs/` URLs from search-agent candidates without rewriting). Same silent-success signature: pymupdf opened the HTML abstract page without erroring, ~170-183 lines each, audit's thin-check didn't catch it (page-count from the "PDF" was also artificially 1). Caught by manual inspection of file 01's content before proceeding, not by tooling. Third data point (2026-05-30, presumably intervening runs used /pdf/ correctly since not re-flagged until now, 2026-08-21) — still not promoted via /harvest despite recurring. This is now the second-highest-value fix in this file after the $PATH issue below.
 
 ### 2026-06-05 — audit_captures falsely reports broken image refs for repo-root-relative paths
 
@@ -224,7 +224,7 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 
 **Candidate fix:** audit should resolve image paths relative to repo root (i.e. `git rev-parse --show-toplevel`) when the ref starts with `raw/` or any non-`./` prefix. Alternatively, `capture_pdf.py` should write relative refs (`assets/slug/img.png` relative to the markdown file) rather than repo-root-absolute refs. The latter is a one-line fix in `_write_markdown`. Promote on next `/harvest`.
 
-**Status:** open
+**Status:** open — **confirmed recurring 2026-08-21, root cause narrowed:** only the `pymupdf` engine trips this (not `marker`) — `_convert_pymupdf` passes `image_path=str(assets_dir)` where `assets_dir` is topic-dir-relative, and `pymupdf4llm.to_markdown` bakes that full path into the emitted `![]()` refs verbatim. `_rewrite_image_refs` in `capture_pdf.py` then skips rewriting them because its regex explicitly leaves alone any ref that already contains `/` (that guard exists for marker's already-correct refs). Net effect: pymupdf-engine captures always emit repo-root-relative image paths, tripping this audit bug on every run that falls back to pymupdf (which is most runs — marker has been failing on a missing `weasyprint` dependency, see new 2026-08-21 note below). Worked around this run by `sed`-replacing the topic-dir prefix with `./` in the 3 affected files before re-auditing (went from 7 false positives to 0). Fix should land in `_rewrite_image_refs`: don't special-case "contains a `/`" as "already correct" — instead strip any `str(assets_dir)`-based prefix pymupdf wrote and replace with `assets_rel`, or simpler, have `_convert_pymupdf` pass `image_path=str(assets_dir.relative_to(out_dir))`-equivalent so its refs come out bare like marker's. Three data points now (2026-06-05, presumed intervening marker-engine runs avoided it, 2026-08-21) — same fix not yet promoted via `/harvest` despite being well-understood.
 
 ### 2026-08-07 — poetry not on $PATH in weekly-brief's shell session
 
@@ -235,3 +235,17 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Candidate fix:** the weekly-brief skill's capture/ingest bash snippets should `export PATH="$HOME/.local/bin:$PATH"` defensively before the first `poetry` invocation, or check `command -v poetry` up front and fall back to the full binary path. Also worth checking whether the cron line in `wiki/reference-sources.md` (`0 7 * * 0 cd ... && claude -p "/weekly-brief" ...`) runs under a login shell that sources `~/.profile`/`~/.bashrc` — if not, unattended runs may hit this every week silently until someone checks `/tmp/weekly-brief-cron.log`.
 
 **Status:** open — **confirmed recurring 2026-08-14:** `poetry` was again absent from a fresh shell's default `$PATH` this run; the defensive `export PATH="$HOME/.local/bin:$PATH"` was applied proactively before all `poetry run` calls and avoided the failed-command detour, but the skill file itself still doesn't do this automatically. Two data points now (2026-08-07, 2026-08-14) — this is the shell's baseline `$PATH`, not a one-off. Fix not yet promoted via `/harvest`.
+
+**Status:** open — **confirmed recurring 2026-08-21:** third occurrence, same workaround applied proactively. Still not promoted.
+
+### 2026-08-21 — marker engine fails: `No module named 'weasyprint'`
+
+**Scope:** kit
+
+**Observation:** `capture_pdf --engine marker` failed outright on the first capture attempt this run with `capture_pdf failed: Failed to convert ... to PDF: No module named 'weasyprint'`. This isn't the GPU-OOM failure mode the tool already has a documented fallback message for — it's a missing Python dependency in the environment, so `marker-pdf`'s HTML→PDF pre-processing step (used for some source formats) can't run at all. Fell back to `--engine pymupdf` for all 5 captures this run per the skill's documented fallback path, which worked once the abs/pdf-URL and image-ref-path issues above were also worked around. Not yet confirmed whether this is a one-off environment drift or will recur next week — first occurrence.
+
+**Implication:** every capture this run and possibly recent runs used pymupdf, not marker — meaning the `_rewrite_image_refs` bug above (which only affects pymupdf) has been getting exercised on effectively every run, not as an edge case. If marker is meant to be the primary engine, `weasyprint` is a missing dependency that should be added to `pyproject.toml` (`marker-pdf` may declare it as an optional/extra that isn't installed) or documented as a known-broken engine until fixed.
+
+**Candidate fix:** run `poetry run python -m pip install weasyprint` or add `weasyprint` as an explicit dependency in `pyproject.toml`, then confirm `--engine marker` works standalone. If it's an extras-group issue, check `marker-pdf`'s `pyproject.toml` for the correct extras spec (e.g. `marker-pdf[full]`).
+
+**Status:** open
