@@ -35,4 +35,5 @@ This is a cluster/synthesis page; it draws on [[titans-miras]], [[nested-learnin
 - [[titans-miras]], [[nested-learning]], [[in-place-ttt]]
 - [[eggroll]] — adjacent non-backprop-update line (training-time, not inference-time).
 - [[conflicts/ttt-distinct-vs-parametric-icl]]
+- [[conflicts/test-time-scaling-vs-test-time-training-terminology]] — naming distinction: this cluster is test-time *training* (weight/state updates); see [[test-time-scaling-taxonomy]] for the separate fixed-model "test-time scaling" axis.
 - [[watchlist]] — Sun et al. TTT-RNN, LaCT, DeltaNet, GLA, RWKV-7, fast-weight programmers (Schlag, Schmidhuber) referenced but not captured.

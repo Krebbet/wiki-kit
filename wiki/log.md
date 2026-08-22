@@ -235,3 +235,23 @@ Conflicts not opened (forward-looking, discarded per policy): both [[argus-agent
 Watchlist additions: 10 (AgentOPSD, OPD-V, Poly-OPD, Cross-Domain-Hybrid-OPD, OPD-Delta-Multilingual, Qwen3.8-Max, DeepSeek-V4-Flash-0731-post-train-update, LongHorizon-Harness, HarnessOpt-Bench, Import-AI-467-self-replicating-worm).
 
 Reference-sources.md: no new sources added this week — HF Daily Papers/alphaXiv (added 2026-08-01) and existing pinned sources continued to cover the surfaced signal; GitHub awesome-lists batch is increasingly dormant and worth a `/lint` demote pass in a future run (not actioned here, out of scope for weekly-brief).
+
+## 2026-08-22 — weekly-brief autonomous run
+
+Survey: 3 parallel subagents scanned X/paper-feeds (@_akhaliq, @arankomatsuzaki, @karpathy, @dair_ai, @alphaxiv, @jackclarkSF, HF Daily Papers), GitHub awesome-lists (7 pinned repos), and podcasts/subreddits (Dwarkesh, Latent Space, Cognitive Revolution, TWIML, r/MachineLearning, r/LocalLLaMA, r/MLScaling). GitHub awesome-lists confirmed a second consecutive zero-commit sweep (first flagged 2026-08-01) — demoted all 7 from active to probation; HF Daily Papers + alphaXiv trending confirmed as the wiki's primary discovery channel going forward.
+
+Trend clusters identified: (1) recurrent/latent reasoning at inference time displacing verbalized CoT (BDH-CQ, Recirculation — both captured); (2) self-play / dynamic-environment RL training (SPADE, EnvHarness, OpenART — all trended same week on alphaXiv, watchlisted); (3) reward-model design shifting from absolute scoring to relative ranking (RRC — captured); (4) formal theory catching up to test-time-scaling practice (captured, prompted a new conflicts file on TTS-vs-TTT terminology); (5) harness-as-training-target self-improvement pattern (Macaron-V1 — captured, joins skillopt/memoharness/argus-agentic-runtime cluster).
+
+Captures attempted/succeeded: 5/5 (bdh-cq-recurrent-latent-reasoning, recirculation-inference-time-recurrence, rrc-ranking-reward-construction, test-time-scaling-prefix-tree, macaron-v1-mixture-of-lora). Initial pymupdf-engine captures for 3 of the 5 (BDH-CQ, Recirculation, Macaron-V1) had 83 broken image refs flagged by `audit_captures`. Root-caused this time (previously mis-diagnosed 2026-06-13 as an audit-tool bug): `tools/capture_pdf.py`'s `_convert_pymupdf` wrote image refs using the cwd-relative `image_path` string passed to `pymupdf4llm`, which is `out_dir`-relative rather than md-relative, and because the ref already contained path separators `_rewrite_image_refs`'s bare-filename check skipped it — leaving a doubled/incorrect path. Fixed with a one-line rewrite stripping the `out_dir` prefix; re-ran the 3 affected captures, `audit_captures` now reports 0 issues. Logged to master_notes.md as a code fix pending `/harvest`.
+
+Marker engine (the documented default) was also tried first for the initial capture but killed after ~15 minutes with zero output on this GPU — fell back to `--engine pymupdf` for all 5 captures per the skill's documented fallback path; no GPU stability issues observed (100% utilization but clocks stayed at 420MHz/405MHz throughout, well within the safe caps).
+
+Pages written: 5 new ([[bdh-cq]], [[recirculation]], [[rrc-reward-ranking]], [[test-time-scaling-taxonomy]], [[macaron-v1]]).
+
+Conflicts: new file [[conflicts/test-time-scaling-vs-test-time-training-terminology]] — [[test-time-scaling-taxonomy]]'s strict fixed-model definition of "test-time scaling" doesn't include weight/state-updating methods that also use "test-time" language ([[tempo-test-time-rl]], [[test-time-training]] cluster). Terminology/scope clash, not a factual dispute; resolution rule adopts the taxonomy's split wiki-wide going forward. Disambiguation cross-links added to both existing pages.
+
+Watchlist additions: 10 (SPADE, EnvHarness, OpenART, ToolHazard, TRACES, 4DAnyone, Spark-to-Paper, SWE-Bench-ProMax, FreeToken, GLM-5.3).
+
+Reference-sources.md: all 7 GitHub awesome-lists (Hannibal046/Awesome-LLM, opendilab/awesome-RLHF, Curated-Awesome-Lists/awesome-llms-fine-tuning, KbsdJames/Awesome-LLM-Preference-Learning, JLZhong23/awesome-reward-models, zzli2022/Awesome-System2-Reasoning-LLM, LightChen233/Awesome-Long-Chain-of-Thought-Reasoning) demoted active→probation per the file's own demote rule (two consecutive zero-signal sweeps). HF Daily Papers entry updated to note the second confirmation.
+
+Pre-existing uncommitted work at run start (not touched by this run's commit): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.

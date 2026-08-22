@@ -145,6 +145,10 @@ def _convert_pymupdf(pdf_path: Path, assets_dir: Path, pages: list[int] | None) 
     if pages is not None:
         kwargs["pages"] = pages
     text = pymupdf4llm.to_markdown(str(pdf_path), **kwargs)
+    # pymupdf4llm embeds refs using the literal image_path string we passed in
+    # (relative to cwd), not relative to the markdown file's own directory —
+    # rewrite to the assets/<slug> form the caller and audit_captures expect.
+    text = text.replace(f"({assets_dir}/", f"(assets/{assets_dir.name}/")
     title = _first_heading(text)
     return title, text
 

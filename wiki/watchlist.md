@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-08
+last_reviewed: 2026-08-22
 ---
 
 # Watchlist — Identified But Not Captured
@@ -231,3 +231,22 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 - **Qwen3.8-Max (Alibaba, August 3 2026)** — 2.4T-param MoE, first Max-class Qwen model to go open-weight; claims OSWorld-Verified 86.1, beating GPT-5.6 Sol / Claude Fable 5 / Gemini 3.1 Pro. Major open-weight capability jump; extends the frontier open-weight race alongside [[kimi-k3]] / [[deepseek-v4]]. *(weekly-brief 2026-08-08.)*
 - **DeepSeek-V4-Flash-0731 post-train agentic update (July 31 2026)** — RL-with-verifiable-rewards post-training alone (no architecture/scale change) drove DeepSWE 7%→54%, beating V4-Pro on 9/9 agent benchmarks. Strong RLVR case study; extends [[deepseek-v4]] cluster (this is a post-train update to the entry captured 2026-08-01). *(weekly-brief 2026-08-08.)*
 - **Import AI #467 — self-sustaining AI viruses (Jack Clark, August 3 2026)** — Reports a prototype self-replicating AI worm (U. Toronto/Vector/Cambridge/ServiceNow) achieving ~37% end-to-end attack success via stolen GPU compute. Policy/capability risk signal from this wiki's jackclarkSF source. *(weekly-brief 2026-08-08.)*
+
+## RL / post-training (continued — weekly-brief 2026-08-22)
+
+- **SPADE: Self-Play in Adaptive Synthetic Executable Environments (arXiv:2608.*)** — Self-play framework for language-agent self-improvement via adaptively-generated executable environments; +8.1pp on reasoning benchmarks. Part of this week's self-play/dynamic-environment cluster alongside EnvHarness and OpenART. *(weekly-brief 2026-08-22.)*
+- **EnvHarness: Awakening Static Worlds for Agent Learning (arXiv:2608.*)** — Dynamic, customizable training-environment generation for LLM agents; +9.0pp on held-out tasks. Same self-play/dynamic-environment cluster as SPADE. *(weekly-brief 2026-08-22.)*
+- **OpenART: Scaling Agent Red Teaming via Open-Ended Environment Evolution (arXiv:2608.00677)** — 10,000+ validated stateful red-team scenarios across 50 domains via open-ended environment evolution. Same self-play/environment-design cluster as SPADE/EnvHarness, applied to red-teaming. *(weekly-brief 2026-08-22.)*
+- **ToolHazard: Scaling Adversarial Environments for Security Evaluation and Alignment of LLM-based Agents (arXiv:2608.11878)** — Automated (Env Simulator + Attacker Agent + User Simulator) synthesis of indirect-prompt-injection environments; ships ToolHazard-Bench. Pairs thematically with OpenART. *(weekly-brief 2026-08-22.)*
+- **TRACES: A Benchmark for Epistemic Reliability in Scientific Reasoning by LLMs (arXiv:2608.11415)** — 42 retracted/pseudoscientific probe corpus; LLMs engage with flawed premises ~95% of the time instead of rejecting them. *(weekly-brief 2026-08-22.)*
+- **Spark-to-Paper: End-to-End Research Paper Generation as a Composable Skill (arXiv:2608.11924)** — One-line idea → draft paper with verified citations, auto-run experiments, editable figures (~$10 API cost/paper). HF Daily Papers #1 (Aug 13). Adjacent to [[ai-agents-open-ended-research]]'s skepticism about autonomous research judgment. *(weekly-brief 2026-08-22.)*
+- **SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring (arXiv:2608.09802)** — 170 curated multilingual refactoring tasks (avg 11.4 files/261.6 LOC changed); best model only 41.2% resolve rate — harder, less-contaminated successor to SWE-bench Verified. *(weekly-brief 2026-08-22.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-08-22)
+
+- **4DAnyone (Ant Research, Aug 2026)** — Reconstructs 4D humans from monocular video via multiview-consistent video generation lifted into 4D Gaussian Splatting; 62 HF upvotes. *(weekly-brief 2026-08-22.)*
+
+## Infrastructure (continued — weekly-brief 2026-08-22)
+
+- **FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution (arXiv:2608.16157, UC Berkeley)** — Runs 20+ open-weight MoE models via bandwidth-adaptive expert offloading on hardware from 8GB laptop GPUs to a single workstation GPU. *(weekly-brief 2026-08-22.)*
+- **GLM-5.3 (Z.ai, August 14 2026)** — 743B base MoE model; leads CyberGym/AutomationBench; open weights staged behind safety review, not yet public. Extends the frontier open-weight race alongside [[kimi-k3]] / [[deepseek-v4]] / Qwen3.8-Max. *(weekly-brief 2026-08-22.)*

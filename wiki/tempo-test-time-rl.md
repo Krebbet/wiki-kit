@@ -54,3 +54,4 @@ Where this leaves [[ssm-tool-use-length-generalization]]'s argument that interac
 - [[eggroll]] — adjacent on the "post-RLVR-saturation" theme; EGGROLL uses ES because GRPO is infeasible at 14B+, TEMPO uses calibrated EM because self-rewarding TTT drifts.
 - [[token-gradient-cancellation]], [[rlsd-self-distilled-rlvr]] — RL post-training stabilization line.
 - [[conflicts/ttt-distinct-vs-parametric-icl]] — TEMPO trains on the unlabeled *test distribution* without any in-context examples, hardening the TTT-as-distinct-from-ICL position.
+- [[conflicts/test-time-scaling-vs-test-time-training-terminology]] — naming distinction: despite the title, TEMPO is test-time *training* (gradient/EM updates), not "test-time scaling" in the fixed-model sense defined by [[test-time-scaling-taxonomy]].

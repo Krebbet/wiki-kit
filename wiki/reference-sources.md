@@ -51,7 +51,7 @@ Fast-moving daily/weekly trending-paper feeds — checked directly rather than p
 
 | Source | URL | Role | Added | Status |
 |---|---|---|---|---|
-| Hugging Face Daily Papers | https://huggingface.co/papers | Community-upvoted daily arXiv paper feed; fastest-moving trending signal, effectively replaced the awesome-lists as this wiki's primary weekly aggregator (2026-08-01: all 7 pinned awesome-lists showed zero commits in the sweep window). | 2026-08-01 | active |
+| Hugging Face Daily Papers | https://huggingface.co/papers | Community-upvoted daily arXiv paper feed; fastest-moving trending signal, effectively replaced the awesome-lists as this wiki's primary weekly aggregator (2026-08-01: all 7 pinned awesome-lists showed zero commits in the sweep window; confirmed again 2026-08-22, second consecutive zero-signal sweep — see GitHub awesome-lists demoted to probation below). | 2026-08-01 | active |
 | alphaXiv trending | https://www.alphaxiv.org/ | Social layer around arXiv; surfaces trending papers with discussion. Companion to @alphaxiv (already tracked above). | 2026-08-01 | active |
 
 ## GitHub awesome-lists
@@ -60,13 +60,13 @@ These are meta-sources: curated link collections maintained by the community. `/
 
 | Repo | URL | Focus | Added | Status |
 |---|---|---|---|---|
-| Hannibal046/Awesome-LLM | https://github.com/Hannibal046/Awesome-LLM | Flagship general LLM list; broad coverage. | 2026-04-21 | active |
-| opendilab/awesome-RLHF | https://github.com/opendilab/awesome-RLHF | RLHF + preference-learning papers, frameworks, datasets. Directly on-topic. | 2026-04-21 | active |
-| Curated-Awesome-Lists/awesome-llms-fine-tuning | https://github.com/Curated-Awesome-Lists/awesome-llms-fine-tuning | Fine-tuning tutorials, papers, tools, best practices. | 2026-04-21 | active |
-| KbsdJames/Awesome-LLM-Preference-Learning | https://github.com/KbsdJames/Awesome-LLM-Preference-Learning | Preference optimization variants (ORPO, DPO family, GRPO). | 2026-04-21 | active |
-| JLZhong23/awesome-reward-models | https://github.com/JLZhong23/awesome-reward-models | Reward model training, reward hacking, process reward models. | 2026-04-21 | active |
-| zzli2022/Awesome-System2-Reasoning-LLM | https://github.com/zzli2022/Awesome-System2-Reasoning-LLM | Reasoning-focused methods, RLVR lineage. | 2026-04-21 | active |
-| LightChen233/Awesome-Long-Chain-of-Thought-Reasoning | https://github.com/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning | Long CoT, process supervision, reasoning RL. | 2026-04-21 | active |
+| Hannibal046/Awesome-LLM | https://github.com/Hannibal046/Awesome-LLM | Flagship general LLM list; broad coverage. | 2026-04-21 | probation |
+| opendilab/awesome-RLHF | https://github.com/opendilab/awesome-RLHF | RLHF + preference-learning papers, frameworks, datasets. Directly on-topic. | 2026-04-21 | probation |
+| Curated-Awesome-Lists/awesome-llms-fine-tuning | https://github.com/Curated-Awesome-Lists/awesome-llms-fine-tuning | Fine-tuning tutorials, papers, tools, best practices. | 2026-04-21 | probation |
+| KbsdJames/Awesome-LLM-Preference-Learning | https://github.com/KbsdJames/Awesome-LLM-Preference-Learning | Preference optimization variants (ORPO, DPO family, GRPO). | 2026-04-21 | probation |
+| JLZhong23/awesome-reward-models | https://github.com/JLZhong23/awesome-reward-models | Reward model training, reward hacking, process reward models. | 2026-04-21 | probation |
+| zzli2022/Awesome-System2-Reasoning-LLM | https://github.com/zzli2022/Awesome-System2-Reasoning-LLM | Reasoning-focused methods, RLVR lineage. | 2026-04-21 | probation |
+| LightChen233/Awesome-Long-Chain-of-Thought-Reasoning | https://github.com/LightChen233/Awesome-Long-Chain-of-Thought-Reasoning | Long CoT, process supervision, reasoning RL. | 2026-04-21 | probation |
 | glgh/awesome-llm-human-preference-datasets | https://github.com/glgh/awesome-llm-human-preference-datasets | Preference datasets for RLHF / DPO / eval. | 2026-04-21 | probation |
 | rkinas/reasoning_models_how_to | https://github.com/rkinas/reasoning_models_how_to | Research notes on training LLMs + RLHF (individual-maintained). | 2026-04-21 | probation |
 
