@@ -70,12 +70,23 @@ MCP governance transferred from Anthropic-steered to vendor-neutral in May 2026 
 
 The protocol-level roadmap items (transport scalability, async lifecycle, enterprise readiness) continue under AAIF stewardship. See [[governance/aaif]] for the full membership and project portfolio.
 
+## 2026-08 roadmap: agent identity & delegation
+
+The MCP Core Maintainers' 2026-08-22 roadmap post elevates "agent identity and enterprise-ready security" from a horizon item to a named priority, alongside agentic messaging primitives, HTTP-native transport unification, improved tool primitives, and SDK developer experience. Stated reason: "MCP authorization today is built around a person approving access in a browser. That works well for interactive clients, but more and more of the callers are agents running as cloud workloads with their own identity, acting on behalf of a user who isn't present, or delegating narrower authority to sub-agents." Goal: a standardized way for servers to recognize and trust agent identities "built on existing standards rather than pasted API keys and long-lived tokens."
+
+Concrete workstreams: (1) finalizing and driving adoption of DPoP (Demonstrating Proof of Possession, RFC 9449); (2) an "opinionated path for agent identity and delegation" via Workload Identity Federation (open PR #1933, not yet merged) and the ID-JAG grant already underlying the now-stable Enterprise-Managed Authorization extension; (3) standard token exchange; (4) continued engagement with IETF OAuth and the WIMSE (Workload Identity in Multi-System Environments) working groups. No hard date beyond "the next specification release and beyond." This extends an existing foundation rather than starting greenfield — the 2026-07-28 spec release already shipped issuer validation, issuer-bound client credentials, and Client ID Metadata Documents (CIMD) as the preferred client registration path.
+
+This is the browser-present-human-auth gap this page's earlier "Enterprise readiness" roadmap item pointed at in the abstract; the 2026-08 post is the first concrete standards path (DPoP / Workload Identity Federation / ID-JAG / token exchange) toward closing it, distinct from [[microsoft-agent-365]]'s vendor-level Entra-identity-per-agent product and [[security/adr-uber-mcp-detection]]'s endpoint-level detection substrate — this is protocol-level identity standardization, a third layer.
+
+The roadmap's "Agentic messaging primitives" workstream (maturing the Tasks extension per SEP-2663, Multi Round-Trip Requests per SEP-2322, server-initiated events/webhooks) is also a live data point for [[patterns/agent-communication-protocols]]'s prediction of a federated, OSI-style layered protocol stack. And [[patterns/agent-plugins-spec]] notes Agent Plugins v1.0 explicitly defers a permission/secrets/signing model — this MCP-side identity work is the protocol-layer effort that packaging-layer spec would eventually need to sit on top of.
+
 ## Source
 
 - `raw/research/weekly-2026-04-22/02-mcp-infrastructure-maturity.md` (captured 2026-04-22 from https://thenewstack.io/model-context-protocol-roadmap-2026/)
 - `raw/research/weekly-2026-05-04/01-microsoft-agent-365.md` (captured 2026-05-04; vendor response data point).
 - `raw/research/weekly-2026-05-04/02-notion-token-town.md` (captured 2026-05-04; practitioner four-axis MCP-vs-CLIs framing).
 - `raw/research/weekly-2026-05-04/03-openai-symphony.md` (captured 2026-05-04; OpenAI Frontier MCP-skepticism quote).
+- `raw/research/weekly-2026-08-23/06-mcp-agent-identity-roadmap.md` (captured 2026-08-23 from `blog.modelcontextprotocol.io/posts/mcp-roadmap/`, 2026-08-22). **Vendor/maintainer primary** — forward-looking roadmap; Workload Identity Federation is PR-stage, not shipped.
 
 ## Related
 
@@ -93,3 +104,5 @@ The protocol-level roadmap items (transport scalability, async lifecycle, enterp
 - [[agent-development-lifecycle]] — Govern phase overlap (cost / tool-access / discoverability are the same gaps the 2026 MCP roadmap targets at the protocol layer).
 - [[security/adr-uber-mcp-detection]] — production MCP-security system that enumerates the MCP-specific attack surface (tool shadowing, rug pull, control-flow hijacking, Agent Flayer) and fills the audit-trail gap via endpoint Sensor causal-chain telemetry; deployed 10+ months across 7,200 endpoints.
 - [[governance/aaif]] — AAIF is now the upstream governance body for MCP; the all-maintainer bottleneck risk this page identified is structurally addressed by Linux Foundation neutral stewardship.
+- [[patterns/agent-plugins-spec]] — Agent Plugins v1.0 explicitly defers a permission/secrets/signing model; MCP's 2026-08 agent-identity roadmap is the protocol-layer standardization work that spec would eventually sit on top of.
+- [[patterns/agent-communication-protocols]] — MCP's 2026-08 "agentic messaging primitives" workstream is a live data point for that page's predicted federated, OSI-style layered protocol stack.

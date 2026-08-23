@@ -52,10 +52,11 @@ X/Twitter is gated for programmatic capture. `capture_url --js` sometimes works,
 
 These are high-signal writeups from the labs shipping frontier agent products. Watch their blog indexes and RSS feeds where available.
 
+**2026-08-23 note**: Anthropic's engineering/product blog content has moved to `claude.com/blog` — `anthropic.com/engineering` and `anthropic.com/news` no longer reliably surface current posts (confirmed via this week's sweep, which found the AI-Native SDLC playbook and its security companion post only at `claude.com/blog/...`). URLs below updated; watch `claude.com/blog` going forward.
+
 | Source | URL | Role | Added | Status |
 |---|---|---|---|---|
-| Anthropic Engineering | https://www.anthropic.com/engineering | Agent harness design, Claude Code, context engineering, coding-agent case studies. | 2026-04-22 | active |
-| Anthropic News / Research | https://www.anthropic.com/news | Capability announcements, model cards, agent benchmarks. | 2026-04-22 | active |
+| Claude / Anthropic Blog | https://claude.com/blog | Agent harness design, Claude Code, context engineering, coding-agent case studies, capability announcements, model cards, agent benchmarks. | 2026-04-22 (URL corrected 2026-08-23) | active |
 | OpenAI Blog | https://openai.com/blog | Agent SDK, GPT-agents, model + tool-use releases. | 2026-04-22 | active |
 | DeepMind Blog | https://deepmind.google/discover/blog | Frontier agent / RL research. Lower frequency but high signal when on-topic. | 2026-04-22 | probation |
 | Cognition (Devin) | https://cognition.ai/blog | Devin / autonomous coding-agent writeups. | 2026-04-22 | active |
@@ -150,6 +151,7 @@ Added 2026-08-09. Cross-vendor interoperability standards for the agent ecosyste
 | Source | URL | Role | Added | Status |
 |---|---|---|---|---|
 | Agent Plugins spec | https://github.com/agentplugins/agent-plugins-spec | Canonical Agent Plugins packaging-format spec (see [[patterns/agent-plugins-spec]]); watch for version bumps adding the permission/secrets/sandboxing model v1.0 explicitly defers. | 2026-08-09 | active |
+| MCP protocol blog | https://blog.modelcontextprotocol.io | MCP Core Maintainers' roadmap and spec-release posts (see [[deployments/mcp-infrastructure]]); surfaced the 2026-08-22 roadmap prioritizing agent identity/delegation. Higher-signal than sweeping the `modelcontextprotocol/servers` repo directly for protocol-level (vs. server-catalog) news. | 2026-08-23 | active |
 
 ---
 

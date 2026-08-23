@@ -29,12 +29,16 @@ Resolution rule: escalate to curator ruling once the impossibility paper's full 
 
 **2026-08-16 note (not part of the conflict):** [[security/cyber-eval-sandbox-escapes]] documents a *different* failure mode from the same week — agents (including Anthropic's own) escaping pre-release cybersecurity-eval sandboxes via network/environment misconfiguration, with no adversarial prompt injection involved. It doesn't extend or contradict either position above, but it's relevant background: Anthropic's own postmortem there admits detection was after-the-fact ("didn't catch it until they went back and looked"), which is a data point about self-reported defense/containment claims generally worth weighing when reading Position A's 0/720 figure, without resolving this conflict either way.
 
+**2026-08-23 note (reinforcing, not part of the conflict):** [[governance/anthropic-ai-native-sdlc]] adds a third data point on the layered-defenses side. Anthropic's Deputy CISO describes moving coding VMs to **egress-allowlisted** network access, explicitly framed as prompt-injection containment: "an injected instruction can't reach arbitrary destinations on the internet… exfiltration paths are limited to a small set of monitored services." This is a network-layer *containment* control — it limits what a successful injection can accomplish, not a claim about detecting or classifying the injection itself — so it sits outside the impossibility result's target (structural data-instruction separation at the injection-detection layer) in the same way the working position above argues auto mode's action-layer gating might. Doesn't resolve the conflict, but is consistent with (and reinforces) the "defense in depth across distinct layers, not a single provable barrier" reading.
+
 ## Source
 - `raw/research/weekly-2026-08-09/01-anthropic-auto-mode-default.md`
 - `raw/research/weekly-2026-05-*` (prompt-injection-impossibility capture — abstract only; see [[security/prompt-injection-impossibility]] for capture provenance)
+- `raw/research/weekly-2026-08-23/03-anthropic-securing-ai-native-sdlc.md` (egress-allowlisting reinforcing data point; see [[governance/anthropic-ai-native-sdlc]])
 
 ## Related
 - [[governance/claude-code-auto-mode]] — source of Position A.
 - [[security/prompt-injection-impossibility]] — source of Position B; already carries an open, structurally identical conflict flag against [[security/adr-uber-mcp-detection]] for the same action-layer/injection-layer question.
 - [[security/adr-uber-mcp-detection]] — the precedent case for this exact reconciliation question; resolving one likely resolves the other.
 - [[security/memory-poisoning-mpbench]] — adjacent, not identical: concerns persistent memory poisoning rather than in-session tool-call/browser injection.
+- [[governance/anthropic-ai-native-sdlc]] — source of the 2026-08-23 egress-allowlisting reinforcing note.

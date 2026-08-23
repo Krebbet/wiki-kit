@@ -47,17 +47,32 @@ Cursor reports (collect-but-confirm): >50 million actions/day across >7 million 
 
 Cursor reports (collect-but-confirm): >40% of PRs merged to the Cursor monorepo now come from cloud agents, described as growing. This is a vendor-self-reported internal metric — no independent verification.
 
+## 2026-08-19: event-driven subscriptions, /goal, per-subagent VMs
+
+A follow-on product changelog (not the retrospective above) announces five harness upgrades aimed at letting cloud agents "operate as a system" without per-loop human intervention:
+
+- **Subscriptions (event-driven wake).** Cloud agents can subscribe to an event source — a PR thread, a Slack thread, a scheduled task — and wake only when something happens, rather than running in a fixed session loop. Agents auto-subscribe to PRs they create and drive them to completion (fixing CI, addressing bot comments) without re-invocation. Cloud-agent-only "for now" — explicitly not yet available for local agents. Structural shift from session-bound (start→run→terminate) toward persistent, externally-triggered wake/sleep cycles.
+- **Custom modes.** Any skill can be pinned in-chat as an "always-on skill" that keeps the agent focused on that skill's playbook for the session.
+- **Subagents on their own machines.** Subagents now run on isolated per-subagent VMs, each with a clean project copy and clean context — enabling subagents to test the parent's changes in a fresh environment, or "swarm" independent fixes without collisions. This is VM-level isolation *per subagent*, a step beyond the parent-level heterogeneous pod types described above.
+- **`/goal` (persistent objective).** A long-lived objective the agent works toward "until it's fully complete" (e.g. `/goal fix all flaky tests and make CI green`), rather than a single-turn instruction. Positioned as pairable with a Custom Mode (playbook) or `/loop` (recurring check-ins).
+- **Steering improvements.** Follow-up messages to an in-progress agent now queue and apply at the next tool-call boundary instead of interrupting mid-tool-call.
+
+No benchmark/quantitative data given — this is a product-changelog capture. Subscriptions and per-subagent VM isolation are the most architecturally significant items: they extend the three-way state-decoupling design above (agent loop / machine state / conversation state) with an explicit *trigger* axis (what wakes the agent loop) and push VM isolation down to subagent granularity.
+
 ## Source
 
 - `raw/research/weekly-2026-05-25/01-cursor-cloud-agents.md` — captured 2026-05-25 from the Cursor engineering blog, "What we've learned building cloud agents." Analyst summary at `raw/research/weekly-2026-05-25/.ingest/01-cursor-cloud-agents.summary.md`. **Primary vendor engineering writeup** — architectural descriptions of what Cursor built and decided are trustworthy; reliability metrics and PR-share figures are vendor self-reported (collect-but-confirm).
+- `raw/research/weekly-2026-08-23/01-cursor-cloud-agents-event-driven.md` — captured 2026-08-23 from Cursor's changelog (`cursor.com/changelog/08-19-26`, dated 2026-08-19). **Vendor changelog** — feature-announcement only, no evaluation data.
 
 ## Related
 
 - [[case-studies/cursor-agent-harness]] — companion Cursor harness-evaluation writeup (CursorBench, Keep Rate, LLM-judge, per-model tool-format provisioning); this page extends it with cloud-deployment architecture, durable execution, and state-decoupling framing
-- [[deployments/cognition-cloud-agents]] — direct peer: microVM + hypervisor-level snapshotting vs Temporal-based durable execution; both solve the async gap but via different mechanisms
+- [[deployments/cognition-cloud-agents]] — direct peer: microVM + hypervisor-level snapshotting vs Temporal-based durable execution; both solve the async gap but via different mechanisms. Cognition's page already notes an "always-on PM direction" extension — Cursor's Subscriptions + `/goal` are a concrete vendor-shipped instance of the same always-on trend.
 - [[patterns/effective-harnesses]] — both describe harness retreat as models improve; Cursor names it "get out of the way," the effective-harnesses page names try-too-much and declare-done-prematurely failure modes
 - [[deployments/openai-symphony]] — peer cloud deployment; Symphony = Elixir orchestrator with multi-Codex; Cursor = Temporal with dedicated VM environments; both report high agent PR share (collect-but-confirm)
 - [[deployments/shopify-simgym]] — peer cloud-scale agent deployment with different workload (shopper-bot simulation vs software development)
 - [[patterns/agentic-harness-engineering]] — both treat harness as an evolving artifact; AHE evolves via observability loop; Cursor via progressive trust transfer to agent
 - [[patterns/externalization-survey]] — Cursor's state-decoupling trifecta (agent loop / machine state / conversation state) is a concrete instantiation of the externalization-survey's harness externalization arc
 - [[patterns/topology-taxonomy]] — decoupled state enabling heterogeneous pod types and parent-subagent topologies is a new concrete cloud-deployment topology instance
+- [[patterns/agent-skills]] — Custom Modes (pin a skill as always-on) is a concrete product mechanism for skill invocation/persistence
+- [[case-studies/latent-space-async-agents]] — that page's "always-on agent direction" theme (Cognition CPO + OpenInspect, May 2026) is directly instantiated here by Subscriptions + `/goal`

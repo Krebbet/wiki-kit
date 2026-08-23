@@ -1,11 +1,39 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-16
+last_reviewed: 2026-08-23
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-08-23
+
+Surplus from this week's sweep — the 6 captured sources (as 5 selected trend items, Anthropic's playbook+security posts combined): Cursor event-driven cloud agents (Aug 19), Anthropic AI-native SDLC playbook + security companion (~Aug 19-21), LangSmith Tuned Evaluators (~Aug 18-19), Guidelight rogue-model containment grading (Aug 22), MCP agent-identity roadmap (Aug 22). Dominant trends: cloud agents converging on always-on/event-driven operation; agent-authored-majority-of-code governance goes primary-source; production LLM-as-judge splits into build-vs-buy camps; protocol-level agent-identity standardization begins; third-party accountability reporting follows the security cluster from the last two weeks. Items below did not make the capture cap.
+
+### Agent orchestration / interaction patterns
+- **Devin's Slack Etiquette (Aug 20)** — https://devin.ai/blog/devins-slack-etiquette — Cognition names a concrete agent-in-chat design pattern ("silence is your default; reply only when adding new information"). Narrower in scope than this week's captures but a genuine novel interaction-design mechanism, not a feature announcement. Capture if it gets cited as a pattern by other vendors.
+- **Warp Factories (Aug 18)** — https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development/ — Model-and-harness-agnostic (Codex or Claude Code) triage/spec/implement/review/verify pipeline with self-improvement loops on the overall pipeline. Adjacent to [[patterns/harness-design-space]]'s canonical-pattern taxonomy and last week's Factory AI DGX Spark item. Capture if a primary Warp technical writeup lands.
+
+### Governance / security
+- **OpenAI "Private Safety Processing" (Aug 19)** — https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/ — Automated agent that cross-analyzes multiple sessions for misuse patterns (e.g. malware requests spread across conversations to evade detection) without retaining/human-reviewing content. Cross-session abuse-detection pattern, explicitly positioned against Anthropic's data-retention stance. Capture if OpenAI publishes primary technical detail.
+- **OpenAI safeguards after Hugging Face breach (Aug 18)** — https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/ — Direct remediation follow-through on the sandbox-escape incident already captured in [[security/cyber-eval-sandbox-escapes]]. Worth a cross-reference addendum on that page rather than a new one if it hardens.
+- **Inherent/Faraday press pickup (Aug 22)** — https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/ — Mainstream coverage + head-to-head framing of an open-weight-based (Qwen 3.6) research-replication agent beating Claude Opus 4.8/GPT-5.5. Corroborates/upgrades an existing watchlist item from arXiv-only to press-covered; not a fresh capture.
+
+### Benchmark movements
+- **Open-weight models closing the gap (as of ~Aug 21)** — swebench.com / os-world.github.io — DeepSeek V4 Pro 0813 at 96.40% on SWE-bench Verified (0.6pp behind Claude Opus 5); Qwen3.8 Max leading OSWorld-Verified at 86.1%, narrowly ahead of Claude Mythos 5/Fable 5 (85%). Cross-benchmark corroboration of last week's "open-weight catching up" theme — two independent leaderboards now show the pattern. Promote to a captured trend note if a third leaderboard corroborates, or a primary technical writeup explains the gap-closing mechanism.
+
+### Memory / practitioner accounts
+- **swyx open-sources "Forge agents" book (Aug 18)** — https://x.com/swyx — Per-repo agent pattern with disk-based memory instead of chat-context state, framed as fixing hallucination-after-N-turns; community reaction favors "one agent per repo" over shared mega-agents. Relevant to [[memory/memory-architectures]] and [[patterns/effective-harnesses]] if the book content holds up under a direct read — low confidence on exact URL/date, verify before capture.
+- **Cognitive Revolution: "Lindy Teammate" — Flo Crivello (Aug 10)** — https://www.cognitiverevolution.ai — Always-on Slack-resident agent with agentic memory, editable file systems, and "context buckets" for shared team context. Just outside this week's window but close enough to flag; relevant to memory and multi-agent orchestration beats. Check for an in-window follow-up before capturing.
+
+### Deployment case studies
+- **Anthropic × monday.com case study (~Aug 20)** — https://claude.com/blog/how-monday-com-transformed-its-platform-into-an-agent-first-product-where-humans-and-agents-collaborate — 5M agent interactions, human/agent collaboration lessons in a shipped product. Deployment-pattern relevant but more customer-story than technical-mechanism; capture if it adds concrete architecture detail beyond narrative.
+
+### Research / RL training
+- **Cameron Wolfe — agentic RL training / sparse-outcome-reward survey (ongoing series)** — https://cameronrwolfe.substack.com/p/agentic-world-models — Recurring long-form coverage of the sparse-outcome-reward limitation in RL-for-agents (whole trajectory gets one signal). No single new post pinned to this exact window; soft signal, good source for the eval/RL-training angle if a discrete new post lands.
 
 ---
 
