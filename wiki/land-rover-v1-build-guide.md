@@ -377,16 +377,27 @@ can **look up at and rise to high surfaces** (countertops, shelves, tabletops), 
 
 | Part | Role | Key spec | Status |
 |---|---|---|---|
-| STS3215 12 V 30 kg bus servo + bracket | **Tilt** actuator | TTL serial bus; 12-bit mag encoder (~0.088°/step); 30 kg·cm | buy |
-| Waveshare Bus Servo Adapter (A) | **Tilt** bus bridge | UART↔half-duplex bus + servo power; **no MCU**; **9–12.6 V**; driven by the rover ESP32 | buy |
-| MKS SERVO42C + NEMA17 (buy the **motor-included** bundle, not the PCBA-only board) | **Z-lift** actuator | closed-loop: integrated FOC driver + 14-bit encoder; **7–28 V**; step/dir **or** UART | buy |
-| Redrex T8 365 mm lead-screw + brass nut + 5→8 mm coupler | **Z-lift** transmission | non-back-drivable; ~300 mm screw | buy |
-| MGN12H 300 mm linear rail + carriage | **Z-lift** guide | anti-rotation + load; **~255 mm usable travel**; 780 N dyn. | buy |
-| Optical endstop (×6 pack, use 1) | **Lift homing** (absolute zero) | ⚠ 5 V output → level-shift to ESP32 3.3 V (or use a mechanical microswitch) | buy |
+| STS3215 12 V 30 kg bus servo + bracket | **Tilt** actuator | TTL serial bus; 12-bit mag encoder (~0.088°/step); 30 kg·cm | **HAVE** |
+| Waveshare Bus Servo Adapter (A) | **Tilt** bus bridge | UART↔half-duplex bus + servo power; **no MCU**; **9–12.6 V**; driven by the rover ESP32 | **HAVE** |
+| MKS SERVO42C + NEMA17 (buy the **motor-included** bundle, not the PCBA-only board) | **Z-lift** actuator | closed-loop: integrated FOC driver + 14-bit encoder; **7–28 V**; step/dir **or** UART | **HAVE** (board + OLED confirmed on the motor 2026-08-24) |
+| Redrex T8 365 mm lead-screw + brass nut + 5→8 mm coupler | **Z-lift** transmission | non-back-drivable; ~300 mm screw | **VERIFY** — two long screws on hand; confirm they are T8 lead-screws and that the brass nut + coupler came with them |
+| MGN12H 300 mm linear rail + carriage | **Z-lift** guide | anti-rotation + load; **~255 mm usable travel**; 780 N dyn. | **HAVE** rail — **VERIFY** the carriage/block shipped with it |
+| Optical endstop (×6 pack, use 1) | **Lift homing** (absolute zero) | ⚠ 5 V output → level-shift to ESP32 3.3 V (or use a mechanical microswitch) | **HAVE** — needs a divider, see the pin note below |
 | Rover's existing **ESP32** (the TB6612 drive board) | **Single head controller** — tilt (UART→adapter) + lift (step/dir) + endstop | ~6 spare GPIO incl. a free UART | **HAVE** |
 | 3S LiPo 11.1 V motor rail + 1000 µF cap | Head power | 11.1 V is in-range for both the servo and the SERVO42C (7–24 V) | **HAVE** |
 | Brackets: nut↔carriage↔head plate + mast frame | Mechanical glue | print/fab to fit | **FAB** |
 | ~~TMC2209 stepper driver~~ | — | **❌ NOT NEEDED** — the SERVO42C has its own integrated driver; nothing to plug a TMC2209 into | **DROP** |
+
+> ✅ **Inventory confirmed 2026-08-24 (human, at the bench):** STS3215 + bracket, Bus Servo Adapter (A),
+> and the MKS SERVO42C (identified by the PCB + OLED + buttons on the motor's rear face) are all **in hand**,
+> as are the rail and the optical endstops. Still to confirm in the box: the **MGN12H carriage**, and whether
+> the two long screws are **T8 lead-screws** complete with **brass nut + 5→8 mm coupler**.
+>
+> 🔴 **Pin numbers in §11d below are WRONG for this rover.** They name GPIO 4/18/19 for lift step/dir/EN and
+> the endstop — those are **wheel pins** in the current 4-channel drive firmware (FR_IN2, FR_PWM, RR_IN1).
+> Authoritative map: `drone-prototype/docs/build-checklist.md` §A0 — tilt UART2 **17/16**, lift STEP **5** /
+> DIR **13** / EN **15**, home switch **34** (input-only, needs an external 10 k pull-up; the optical
+> endstop's 5 V output needs a divider). After the mast the ESP32 is **completely full**.
 
 > ⚠️ **BOM correction vs the sister page / older revisions of this guide:** the lift uses the **MKS SERVO42C**, an
 > all-in-one closed-loop servo-stepper (motor + driver + encoder + STM32). It **replaces** the plain NEMA17 +
