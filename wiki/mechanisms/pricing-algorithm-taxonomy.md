@@ -328,3 +328,4 @@ Two sources dropped during capture: Ban & Keskin 2020 (SSRN / INFORMS both 403 b
 - [[collective-bargaining-for-data]]
 - [[data-disruption-strategy-map]]
 - [[possible-strategic-levers]]
+- [[regulatory/ftc-personalized-pricing-policy]] — proposed federal disclosure mandate targeting the data types feeding these algorithm families

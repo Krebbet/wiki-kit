@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-05-11
+last_reviewed: 2026-08-24
 ---
 
 # Watchlist
@@ -23,8 +23,9 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - California AG surveillance-pricing sweep — civil investigative demands ongoing
 - ~~NY AG → Instacart APDA enforcement letter (Jan 2026)~~ — *captured 2026-05-04; Instacart halted item-price tests*
 - House Oversight surveillance-pricing investigation — March 5 2026 letters; document responses arriving
-- CA AB 2564 — full surveillance-pricing ban (broader than HB0895); CA AG CCPA CID sweep complement
+- CA AB 2564 — full surveillance-pricing ban (broader than HB0895); read third time + amended, ordered to second reading in CA Senate as of Aug 21 2026; not yet passed — CA AG CCPA CID sweep complement
 - HB0895 first enforcement actions — effective Oct 1 2026; loophole-bound enforcement reach predicted
+- FTC proposed personalized-pricing enforcement policy statement — comment docket FTC-2026-1057 open through Sept 18 2026; captured 2026-08-24 ([[regulatory/ftc-personalized-pricing-policy]]); watch docket comments + whether a final statement issues
 - Connecticut PA 26-64 — signed May 14 2026; broker registry Jan 2027, deletion portal Jul 2028 — captured 2026-05-25
 - DOJ-RealPage Tunney Act final judgment — court-monitor + algorithm-certification regime entering effect
 - Camden Property Trust $53M — preliminary approval target May 15 2026
@@ -261,11 +262,20 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - arXiv 2506.15115 — machine unlearning verification survey (GDPR right-to-erasure compliance tooling)
 - ~~DeFlock.me (EFF-backed, June 2026)~~ — *captured 2026-07-06 ([[tools/deflock]])*
 
+## Recent additions (2026-08-24 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- Needsmap Jamaica/Caribbean pilot proposal (platform.coop, Aug 19 2026) — cooperative needs-mapping/matching model (Turkey origin) adapted for degraded-connectivity Caribbean communities; conditional/proposal stage, no live pilot yet
+- EFF "Zero-Knowledge Proofs Aren't Age Verification Silver Bullets" (Aug 18 2026) — documents a Chrome-extension bypass of EU EUDI ZKP age tokens; critique-only, no counter-mechanism proposed
+- Mozilla "A Framework for Openness" (Aug 20 2026, CACM) — AI-stack openness taxonomy (data/code/weights/docs); descriptive vocabulary, not a tool
+- EFF + civil-society open letter to Nottinghamshire Police on live facial recognition (Aug 21 2026) — advocacy action, no reusable campaign toolkit published alongside it
+
 ## Recent additions (2026-08-17 weekly-brief overflow)
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
 
-- Pallone letters to 8 US airlines demanding surveillance-pricing data disclosure (Aug 11-12 2026) — responses due Aug 25; per-company data-category disclosure surface, first congressional letter with a hard deadline on this theme — revisit after 08-25 for capture
+- Pallone letters to 8 US airlines demanding surveillance-pricing data disclosure (Aug 11-12 2026) — responses due Aug 25 2026 (one day after this run's window closed; no airline responses public as of Aug 24); per-company data-category disclosure surface — revisit next run for capture
 - Mozilla "Privacy Not Included" sunsets into "Nothing Personal" product reviews (Aug 11 2026) — consolidation of consumer privacy-rating tool, not a new capability
 - EFF "Too Little, Too Late: Flock Admits Their Technology Needs Reforms" (Aug 14 2026) — critique of Flock Safety ALPR reform announcement; adjacent surveillance beat, no DSAR/tooling artefact
 - NJ Fair Price Protection Act signed (July 23 2026) — new state joining the surveillance-pricing legislative wave; not yet tracked in Active enforcement

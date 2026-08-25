@@ -197,3 +197,4 @@ These are individual episodes, not a coordinated movement. But they establish th
 - [[rental-housing-algorithmic-pricing]]
 - [[algorithmic-collusion]]
 - [[regulatory-responses]]
+- [[regulatory/ftc-personalized-pricing-policy]] — August 2026 FTC personalized-pricing disclosure policy statement

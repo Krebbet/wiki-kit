@@ -44,6 +44,14 @@ July 2024: FTC issued 6(b) orders to Mastercard, Revionics, Bloomreach, PROS, JP
 
 **Reach:** unclear. No enforcement action has followed; 6(b) studies historically lay groundwork for future rulemaking or referral to enforcement bureaus. The FTC has signalled continuing work ("Update & The Work Ahead" post, January 2025).
 
+### FTC — Personalized-Pricing Enforcement Policy Statement (August 2026)
+
+On August 19, 2026, the FTC voted 2-0 to seek public comment on a proposed enforcement policy statement on personalized pricing, opening docket FTC-2026-1057 (comment period closes September 18, 2026). The statement would enforce Section 5 (unfair-or-deceptive practices) against personalized pricing that businesses fail to "clearly and conspicuously disclose," including the data types used to set it — a disclosure regime, not a prohibition, and the statement explicitly declines to take a position on whether personalized pricing is unfair even when fully disclosed. The American Prospect (David Dayen, Aug 21 2026) critiques the move as falling well short of the bipartisan legislative and public-opinion pressure (75%+ support for an outright ban per Groundwork/Data for Progress polling) that prompted it, and notes it follows the FTC's own halting of the Khan-era 6(b) surveillance-pricing study referenced above. Full treatment, including the critique and a scrapeable-docket tooling hook, at [[regulatory/ftc-personalized-pricing-policy]].
+
+**Mechanism:** Section 5 FTC Act unfair-or-deceptive-practices authority, applied to non-disclosure of personalized pricing rather than to the practice itself.
+
+**Reach:** proposed, not final; no enforcement has occurred. Comment docket open through Sept 18, 2026.
+
 ### DOJ — Live Nation / Ticketmaster (2024 → March 2026 settlement)
 DOJ + 39 states + DC sued Live Nation/Ticketmaster May 2024 for unlawfully wielding control over concert promotion, artist management, venue operations, and ticketing. **March 2026: DOJ + several states settled for $280M** (service-fee caps at certain amphitheatres; greater venue flexibility on promoters/ticket distributors). 33 states + DC declined the settlement and continued the trial — see § 3 State AGs below for the April 2026 jury verdict. Notre Dame law professor Roger Alford characterised the outcome as "a massive win for the state AGs and an historic miss for the DOJ." *(NPR Apr 15 2026; AP via NPR.)*
 

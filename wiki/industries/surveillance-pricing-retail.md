@@ -90,3 +90,4 @@ The FTC study is itself a counter-power mechanism — the first sustained govern
 - [[consumer-facing-dynamic-pricing]]
 - [[algorithmic-collusion]]
 - [[regulatory-responses]]
+- [[regulatory/ftc-personalized-pricing-policy]] — August 2026 follow-on FTC enforcement policy statement; disclosure-only regime responding to the "not well understood" gap this 6(b) study left open
