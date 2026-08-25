@@ -33,3 +33,5 @@ Helmke & Levitsky supply this job's anchor framework: **informal institutions ar
 - [[maghribi-traders-reputation-mechanism]] and [[diamond-industry-private-ordering]] — both substitutive-type cases, though Bernstein's stresses the typology's own limit (see that page).
 - [[fast-and-slow-moving-institutions]] — the change-speed complication this page states directly.
 - [[social-norms-and-conditional-preferences]] — Bicchieri's micro-mechanism for *why* an informal rule binds at all, one level below this page's typology of *how it interacts with formal rules*.
+- [[colonial-rule-and-trust-in-traditional-leaders]] — chiefs as the paradigm case: British indirect rule reads as formal *accommodation* of the informal customary institution, French direct rule as formal *subordination*, converting chiefs into agents of the formal state.
+- [[culture-and-constitutional-compliance]] — a quantitative test case of this page's thesis at country level: formal-institution (constitutional) compliance shown to depend on the informal/cultural environment (individualism, religious doctrine) it is embedded in.

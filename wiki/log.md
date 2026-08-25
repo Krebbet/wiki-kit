@@ -1560,3 +1560,51 @@ retirement needs a wiki-wide grep, not a same-session spot pass; case/theory lin
 backward pass on the framework page's own Related section, not just a read of the case page's outbound links.
 
 Full report: `wiki/lint-reports/2026-08-21.md`.
+
+## [2026-08-25] weekly-brief | first sweep
+
+**First run of `/weekly-brief`.** All watched sources in `reference-sources.md` were still `probation` (no
+sweep had validated them since bootstrap 2026-08-19); this run is that validation. Survey ran five parallel
+scan agents across the full source radar (preprints/working papers, journals, data/indices, blogs, lectures)
+plus a dedicated non-Anglosphere coverage-gap sweep, and surfaced 26 in-scope candidates for the week of
+2026-08-18–25 — a strong first sweep for a field whose own local convention states "empty runs are expected
+and correct."
+
+**Selection (5 of 5 capture slots used):** ranked by evidential weight, framework relevance and non-Anglosphere
+coverage per `reference-sources.md`'s stated priority order. Picked: an AJPS gradual-institutional-change
+paper, an AJPS Venezuela participatory-capture paper, and a Governance Shanghai co-production paper (all
+three closing coverage gaps or extending open questions) — **all three failed capture**, blocked by Wiley's
+Cloudflare bot-check (see `master_notes.md`, 2026-08-25). Substituted, in order: a Culture-and-constitutional-
+compliance paper (arXiv-mirrored), a second NBER paper (Acemoglu et al., retried via the direct working-paper
+PDF path after the first attempt returned NBER's nav shell instead of the paper), and — after GAO and OECD
+report pages also returned hard 403s — a matched Niskanen/Mercatus pair for camp balance. The Cameroon
+colonial-rule natural-experiment paper (arXiv) was the one pick from the original top-5 that captured cleanly
+on the first attempt.
+
+**Pages written:** `colonial-rule-and-trust-in-traditional-leaders.md`, `culture-and-constitutional-
+compliance.md`, `misperceptions-and-support-for-democracy.md` — all new. The two thin, non-academic blog
+sources (Niskanen, Mercatus) were extensions, not new pages, per their own ingest subagents' recommendation
+against a standalone page disproportionate to the source's evidence tier: both landed as tier-(iii) levers on
+`reform-levers.md`. The Niskanen source's implicit veto-point-count-alone framing was filed as a third,
+explicitly-weaker contested case on `veto-points-and-bureaucratic-autonomy.md` rather than a new conflict
+file, matching that page's own established pattern for this exact recurring dispute (Fukuyama and Schleicher
+& Bagley are the first two instances).
+
+**Not formally registered this run:** the colonial-rule paper surfaces at least three axes not currently in
+`dimensions-of-institutional-variation.md` (accountability direction / "decentralized despotism", functional-
+portfolio breadth, legal-tradition-mediated formalization). Named informally on the new page's own text but
+not D-numbered — assigning a register row correctly requires reading the full register to avoid collision
+with the existing 138 rows, out of scope for a weekly sweep. Flagged for the next full `/research` job.
+
+**Source-status pass:** arXiv econ.GN, Niskanen and Mercatus (state-capacity and public-choice camps both
+producing usable candidates this week) promoted `probation` → `active` in `reference-sources.md`. NBER
+confirmed productive but flagged with a capture caveat (must use the direct
+`nber.org/system/files/working_papers/...` PDF path, not the `nber.org/papers/<id>` landing page, which
+redirects to the site shell). Wiley-hosted journals (AJPS, Governance) and GAO/OECD report pages flagged as
+landing-page-only / bot-gated pending a tooling fix — see `master_notes.md`.
+
+**Kit-level learning logged to `master_notes.md`** (`Scope: kit`, `Status: open`): `capture_url`/`capture_pdf`
+have no Cloudflare bot-check detection, and `audit_captures`' thin-capture heuristic caught the resulting
+garbage pages only by the accident of an image-path collision, not by design.
+
+Full brief: `wiki/weekly-briefs/2026-08-25.md`.

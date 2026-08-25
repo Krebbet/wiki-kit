@@ -89,3 +89,4 @@ Filed OPEN at [[constraint-vs-capacity-as-the-investment-mechanism]]. It adds a 
 - [[colonial-origins-and-the-settler-mortality-instrument]] — the cross-country statistical version of this page's claim, with the opposite weakness: a large sample resting on a contested instrument rather than one case with a clean measure.
 - [[institutions-as-fundamental-cause]] — AJR's holdup channel is this page's mechanism generalised from the ruler-and-investor problem to the choice of institutions itself.
 - [[endogenous-state-capacity]] — the same Glorious Revolution case for a complementary mechanism: here the ruler cannot expropriate the investor, there the ruler will not invest in state capacity because a successor might inherit it.
+- [[culture-and-constitutional-compliance]] — the same Weingast self-enforcement logic (a constitution binds only if it is self-enforcing) tested with a new upstream determinant: national culture, across 115 countries.

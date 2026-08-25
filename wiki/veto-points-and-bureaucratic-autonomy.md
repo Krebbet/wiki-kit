@@ -66,6 +66,8 @@ The register records this as a single composite axis rather than two, precisely 
 
 One caveat already on this page applies unchanged to both new sources: these are **external** veto points — constitutional, legislative, judicial, and procedural-access — not internal sign-off gates within an agency's own hierarchy. The two remain different objects, and neither Fukuyama nor Schleicher & Bagley closes that gap.
 
+**A third, much weaker instance (2026-08-25).** A Niskanen Center policy essay on US electricity-grid interconnection permitting treats sequential federal/state/local review layers as straightforwardly and substantially suppressing supply — "massively clogged," costing "tens of gigawatts per year" — with no discussion of what the reviewing parties' preferences are or when added layers would *not* bind. This is the same count-alone reading Fukuyama and Schleicher & Bagley make, applied to a live 2026 sector, but at a markedly lower evidence tier: a short advocacy essay with no dataset, case study or formal model behind its headline claim, versus Fukuyama's historical narrative and Schleicher & Bagley's cross-tier procedural-density comparison. Filed here rather than as a standalone conflict page because it adds no new argument to the dispute already stated above — only a fresh illustration of the same unmeasured gap (no preference-divergence data offered for the veto players in the interconnection pipeline). See [[reform-levers]], where the source's four prescriptive levers are filed in tier (iii).
+
 ## Source
 
 - `raw/research/risk-aversion-in-large-institutions/06-hammond-veto-points-bureaucratic-autonomy.md` — Thomas H. Hammond, "Veto Points, Policy Preferences, and Bureaucratic Autonomy in Democratic Systems", chapter 4 in *Politics, Policy, and Organizations: Frontiers in the Scientific Study of Bureaucracy*, University of Michigan Press. https://press.umich.edu/pdf/0472113178-ch4.pdf
@@ -82,4 +84,5 @@ One caveat already on this page applies unchanged to both new sources: these are
 - [[dimensions-of-institutional-variation]] — supplies D44 (veto-point count × preference-profile divergence, registered deliberately as one composite axis).
 - [[political-decay-and-vetocracy]] — filed on this page as a contested case: Fukuyama's "vetocracy" makes veto-point count a decay mechanism in its own right, while his own history gates the effect on post-1980s polarisation, which is Hammond's interaction term under another name.
 - [[state-capacity-and-level-of-government]] — the second contested case: Schleicher & Bagley argue procedural density degrades capacity by count and intensity alone, without ever measuring preference divergence among the veto players whose density they count.
+- [[reform-levers]] — carries the electricity-interconnection source's four prescriptive levers (weekly sweep, 2026-08-25), tier (iii).
 - [[open-questions]] — Q7 (the veto-point limb of the decay question), Q30.

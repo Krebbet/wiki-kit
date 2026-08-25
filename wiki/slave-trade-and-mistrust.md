@@ -27,3 +27,4 @@ Nunn & Wantchekon show individuals whose ancestral ethnic group was more heavily
 - [[determinants-of-trust]] — Alesina & La Ferrara's contemporary community-level trust determinants; this paper is the historical-persistence analogue.
 - [[economics-of-cultural-transmission]] — Bisin & Verdier's formal vertical-transmission model is the mechanism this paper's "internal channel" implicitly invokes without formally testing.
 - [[maghribi-traders-reputation-mechanism]] — the opposite historical case: a shock (trade opportunity, not violence) that built durable trust-based cooperation rather than eroding it.
+- [[colonial-rule-and-trust-in-traditional-leaders]] — the paper's coercion-stigma channel is explicitly modelled on this page's transmission mechanism ("in the same way that Nunn and Wantchekon (2011) show slave-trade-era insecurity became a durable norm of mistrust").

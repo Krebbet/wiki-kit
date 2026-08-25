@@ -198,3 +198,26 @@ one-directional gap by construction. The `/lint` skill's check 13 should explici
 named framework page's own Related section for the case page, don't just read the case page's outbound
 links" step, since reading only the case page will make the check look compliant when it isn't.
 **Status:** open
+
+### 2026-08-25 — `capture_url`/`capture_pdf` fail against Cloudflare-gated academic publishers and gov domains
+**Scope:** kit
+**Observation:** This wiki's first `/weekly-brief` sweep selected 5 sources for capture. 3 of the original 5
+picks (two AJPS articles, one Governance article — all onlinelibrary.wiley.com) came back as Cloudflare
+"Just a moment... Performing security verification" bot-check pages, not the article text; `tools.capture_url`
+has no bot-wall detection for this signature (unlike the SEC EDGAR case logged 2026-08-21, this one didn't
+even fail loudly — the audit tool's "suspiciously thin" heuristic missed it too, since the challenge page's
+line count wasn't thin enough to trip the threshold; it was only caught by an image-path-collision flag,
+which is an accident, not a designed check). Separately, mercatus.org also served the same Cloudflare
+challenge page (worked around by finding the piece's Substack syndication mirror), and both gao.gov and
+oecd.org returned flat 403s to every URL pattern tried, including with a browser User-Agent — no HTML
+challenge page at all, just a hard block.
+**Implication:** two distinct gaps. (1) `tools.audit_captures` should add a dedicated Cloudflare/bot-check
+signature check (grep captured markdown for "Performing security verification" / "Just a moment" / similar
+challenge-page strings) rather than relying on the thin-capture and image-collision heuristics to catch it by
+accident — a systematic false-negative right now. (2) Wiley (onlinelibrary.wiley.com), Mercatus (mercatus.org),
+GAO (gao.gov) and OECD (oecd.org, oecd-ilibrary.org) are all effectively uncapturable by the current tooling
+and should probably be marked as "landing-page-only, expect to substitute a preprint/syndicated mirror" in
+this wiki's `reference-sources.md` rather than treated as directly capturable — this will recur every week
+these sources are in the candidate pool, since GAO and OECD are both explicitly-watched source categories for
+this wiki (primary institutional documents; multilateral comparative-governance reports).
+**Status:** open

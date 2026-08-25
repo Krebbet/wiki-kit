@@ -55,9 +55,13 @@ substantive*. Rank candidates by, in order:
 
 | Source | Where | Added | Status |
 |---|---|---|---|
-| NBER new working papers (Political Economy, Development, Productivity/Innovation, Corporate Finance programs) | nber.org/papers | 2026-08-19 | probation |
+| NBER new working papers (Political Economy, Development, Productivity/Innovation, Corporate Finance programs) | nber.org/papers | 2026-08-19 | active (2026-08-25) |
 | SSRN — Political Economy & Public Choice, Corporate Governance networks | ssrn.com | 2026-08-19 | probation |
-| arXiv econ.GN (General Economics) | arxiv.org/list/econ.GN | 2026-08-19 | probation |
+| arXiv econ.GN (General Economics) | arxiv.org/list/econ.GN | 2026-08-19 | active (2026-08-25) |
+
+**Capture note (2026-08-25):** `nber.org/papers/<id>` is a landing page that `tools.capture_pdf` cannot
+distinguish from the actual PDF — it silently captures NBER's site-navigation shell instead of the paper.
+Use the direct file path instead: `nber.org/system/files/working_papers/w<id>/w<id>.pdf`.
 
 ## Journals
 
@@ -65,8 +69,8 @@ substantive*. Rank candidates by, in order:
 |---|---|---|---|
 | Journal of Economic Perspectives | Accessible surveys; frequent institutional-economics symposia | 2026-08-19 | probation |
 | Journal of Institutional Economics | Core venue for the field | 2026-08-19 | probation |
-| Governance | Public administration and institutional reform | 2026-08-19 | probation |
-| American Political Science Review / American Journal of Political Science | Power, veto players, accountability | 2026-08-19 | probation |
+| Governance | Public administration and institutional reform | 2026-08-19 | probation — capture-blocked (2026-08-25) |
+| American Political Science Review / American Journal of Political Science | Power, veto players, accountability | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | Administrative Science Quarterly / Organization Science | Organisational theory, scale and hierarchy effects | 2026-08-19 | probation |
 | Journal of Economic Literature | Survey articles — high value per capture for a wiki still building its canon | 2026-08-19 | probation |
 
@@ -77,9 +81,15 @@ substantive*. Rank candidates by, in order:
 | V-Dem | Democracy and governance indicators; annual report | 2026-08-19 | probation |
 | World Bank Worldwide Governance Indicators | Governance quality series | 2026-08-19 | probation |
 | Quality of Government Institute (Gothenburg) | QoG datasets and working papers | 2026-08-19 | probation |
-| OECD Public Governance | Comparative public-sector performance | 2026-08-19 | probation |
+| OECD Public Governance | Comparative public-sector performance | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | IMF / World Bank flagship reports | Institutions-and-growth chapters | 2026-08-19 | probation |
-| National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | probation |
+| National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | probation — GAO capture-blocked (2026-08-25); UK NAO/Canada OAG untested |
+
+**Capture note (2026-08-25):** `oecd.org`/`oecd-ilibrary.org` and `gao.gov` both returned hard 403s to every
+URL pattern tried (landing page, docserver guesses, browser User-Agent) — no Cloudflare challenge page, just
+a block. Both surfaced a genuinely strong candidate this sweep (an OECD public-sector-innovation paper, a GAO
+Army-modernization audit) that had to be watchlisted instead of captured. Worth a manual browser pull next
+time either source produces a must-have candidate.
 
 ## Blogs, essays and commentary (discovery only — cap 2 captures/sweep)
 
@@ -91,8 +101,8 @@ substantive*. Rank candidates by, in order:
 | Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | probation |
 | Statecraft | Interviews on how government institutions actually operate | 2026-08-19 | probation |
 | Institute for Government (UK) | Primary-document-grounded analysis of an administrative state | 2026-08-19 | probation |
-| Niskanen Center | State-capacity/vetocracy camp — deliberately included for balance against public-choice sources | 2026-08-19 | probation |
-| Mercatus Center | Public-choice camp — deliberately included for balance against state-capacity sources | 2026-08-19 | probation |
+| Niskanen Center | State-capacity/vetocracy camp — deliberately included for balance against public-choice sources | 2026-08-19 | active (2026-08-25) |
+| Mercatus Center | Public-choice camp — deliberately included for balance against state-capacity sources | 2026-08-19 | active (2026-08-25) — mercatus.org itself is Cloudflare-gated; captured via its Substack syndication mirror instead |
 
 ## Lectures, talks and long-form interviews
 
@@ -106,14 +116,28 @@ substantive*. Rank candidates by, in order:
 These are known holes in the radar above, not oversights. Closing them is a standing task for the sweep's
 survey subagent.
 
-- **Chinese-language scholarship** on the party-state and SOE governance.
+- **Chinese-language scholarship** on the party-state and SOE governance. English-language work *about* it
+  found this sweep (2026-08-25): a Shanghai co-production study (Governance, capture-blocked) and a Chinese
+  SOE/CCP-statecraft reassessment (Asian Politics & Policy, watchlisted, untested) — still not primary
+  Chinese-language sources.
 - **Nordic** in-country public-administration research (Nordic sources in English skew to outsider summaries).
-- **Japanese/Korean** developmental-state scholarship.
-- **Latin American and African** institutional research, currently absent entirely.
+  A candidate found this sweep (2026-08-25): *Scandinavian Journal of Public Administration* Vol. 29 No. 4,
+  published via a Swedish open-access platform (KB) — watchlisted, untested, but the first candidate from an
+  actual Nordic-hosted venue rather than an outsider summary.
+- **Japanese/Korean** developmental-state scholarship. A Korea industrial-policy candidate found this sweep
+  (2026-08-25), watchlisted, untested (ScienceDirect, likely paywalled).
+- **Latin American and African** institutional research, currently absent entirely until this sweep
+  (2026-08-25) closed it partially: [[colonial-rule-and-trust-in-traditional-leaders]] (Africa, captured) and
+  a Venezuela participatory-institutions paper (Latin America, capture-blocked, watchlisted) plus a Ghana
+  policy-capacity paper (Africa, watchlisted, untested).
 
 ## Source
 
-- Seeded at bootstrap, 2026-08-19, from `boot_strap_instructions.md`. No sweep has validated these yet.
+- Seeded at bootstrap, 2026-08-19, from `boot_strap_instructions.md`.
+- First sweep, 2026-08-25: arXiv econ.GN, NBER, Niskanen Center and Mercatus Center confirmed productive and
+  promoted to `active`. AJPS, Governance, OECD Public Governance and GAO all surfaced strong candidates but
+  are currently uncapturable by this wiki's tooling (Cloudflare bot-check or hard 403) — see the per-table
+  capture notes above and `master_notes.md` (2026-08-25, kit-level).
 
 ## Related
 
