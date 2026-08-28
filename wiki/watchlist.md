@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-08-20
+last_reviewed: 2026-08-27
 ---
 
 # Watchlist
@@ -32,6 +32,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - TetraMem/UMass hyperdimensional in-memory computing, Nat. Comms. s41467-026-76067-5 — 95.24% accuracy, ~90% resource reduction claimed; ⚠️ abstract-only capture twice (incl. `--js`), no boundary stated, real MX100 hardware kit so worth a retry
 - Nanoparticle Networks for Neuromorphic Computing (arXiv:2607.27844) — physical-substrate device, SiO₂-thickness-tuned memory type
 - IOP NCE Vol. 6: nanofluidic memristive reservoir computing (Kinavuidi et al., art. 014021) — publication date inside/outside this week's window unconfirmed
+- Mott/CDW device family (1T-TaS2) — in-scope, uncaptured; anchor on device-level oscillator work (Liu/Balandin/Khitun), not the atomic-scale characterization-only source that surfaced it
+- KAIST noise-tunable memristor "probabilistic neuron" — noise-as-resource vs noise-as-defect framing is interesting, but source is a two-sentence relay with zero numbers, no primary access (Wiley-blocked)
+- Nb:SrTiO3 resistive switching mechanism study (arXiv:2608.23430) — new oxide/interface family, mechanism-focused not breakthrough-numbers
 
 ## Chips & systems
 
@@ -65,11 +68,19 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - AIGOR modular event-driven SNN inference architecture (arXiv:2607.03191) — compiler/architecture toolchain contribution
 - "Time to standardize event-based vision processing" (Nature Sensors, s44460-026-00100-9) — proposed Event-SP standardization framework for event cameras
 - IOP NCE Vol. 6: structural plasticity (Jadia et al., art. 014020) — publication date inside/outside this week's window unconfirmed
+- Syn2Logic: end-to-end neuromorphic design automation (arXiv:2608.25536) — compiler/toolchain, unverified vs a real chip
+- NeuRehab: RL+SNN rehab automation framework (IOP NCE, art. ae9215) — claims deployment on dedicated low-power hardware, measured-vs-simulated unverified
+- Free-probability kernels for zero-rollout reservoir-computing hyperparameter selection (arXiv:2608.20998) — RC toolchain maturity angle
+
+## Benchmarks
+
+- ANTShapes: event-based neuromorphic object classification benchmark dataset (arXiv:2608.27150) — new dataset, modest novelty, NeuroBench-adjacent
 
 ## Players & funding
 
 - BrainChip September 2026 quarterly — next yield and volume checkpoint
 - TSMC 22 nm eRRAM — the only foundry-node claim in evidence; no independent benchmark
+- dorsaVi 22nm RRAM-CMOS validation chip fab start — ⚠️ single small-cap-stock-tipster source (smallcaps.com.au), unverified against any primary; dorsaVi's known business is biomechanical sensors, not chips — treat as unconfirmed until a second source corroborates
 
 ## Programmes & policy
 

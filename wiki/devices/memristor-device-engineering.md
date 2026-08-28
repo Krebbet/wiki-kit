@@ -97,4 +97,6 @@ For backprop-style ANN training in hardware, the review states large architectur
 - [[cmos-rram-beol-integration]] — a route onto CMOS without an embedded-RRAM foundry PDK
 - [[../snn/snn-energy-hardware-realistic]] — crossbar non-idealities as a measured energy cost
 - [[../conflicts/snn-energy-payoff]] — device-level efficiency figures as Position A evidence
+- [[optoelectronic-rram-photonic-programming]] — a distinct optically-programmed device family not covered by this page's material-family taxonomy
 - [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep
+- [[../weekly-briefs/2026-08-27]] — brought in by the 2026-08-27 weekly sweep

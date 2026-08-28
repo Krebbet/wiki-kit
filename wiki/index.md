@@ -23,7 +23,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[players/roster]] | Who is in neuromorphic hardware and what each has in hand versus on paper. Silicon-in-hand vs paper-only, with last-verified dates. |
 | [[players/intel-loihi2]] | Intel Loihi 2 — the field's most-used research platform, INRC-gated, not for sale. Graded 32-bit spikes (not 1-bit) invalidate Loihi-1-calibrated energy models. **Lava SDK archived 2026-05-13.** Hala Point's 15 TOPS/W contradicts Intel's own 20 petaops / 2,600 W arithmetic (≈7.7). |
 | [[players/ibm-northpole]] | IBM NorthPole — brain-inspired, fully digital, **not spiking**, no off-chip DRAM. 3B-param LLM at 28,356 tok/s on 16 cards. Every headline multiplier (46.9×, 72.7×, 25×) cites an unnamed GPU. |
-| [[players/brainchip]] | BrainChip (ASX:BRN) — Akida AKD1500 shipping from GlobalFoundries 22FDX into defence and wearables. Yield below expectations, ~1 year of cash runway. The wiki's strongest "actually shipping" datapoint. |
+| [[players/brainchip]] | BrainChip (ASX:BRN) — Akida AKD1500 shipping from GlobalFoundries 22FDX into defence and wearables; first 2,000-unit production batch shipped 1H CY2026. Yield below expectations, revenue up 19%/loss up 28% YoY. The wiki's strongest "actually shipping" datapoint. |
 
 ---
 
@@ -37,6 +37,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/analog-training-nonidealities]] | Why plain gradient descent fails on analog devices: response-function asymmetry, not defects. Analog SGD collapses below 15% where Tiki-Taka holds 97%. A device engineered for symmetry measures 61% skew on real silicon. |
 | [[devices/event-cameras]] | Event-based vision sensors — the front end that makes workloads natively sparse. Real commercial parts from 3 mW to 12 W. Named automotive design wins (vendor-claimed). The processing gap: most pipelines densify events back into frames. |
 | [[devices/cmos-rram-beol-integration]] | Inserting RRAM into commercial CMOS BEOL without a foundry embedded-RRAM PDK. 16×16 1T1R validated on 180 nm; larger arrays structural only. Evidence the foundry gate is tractable, not that it's solved. |
+| [[devices/optoelectronic-rram-photonic-programming]] | Optoelectronic RRAM (ORRAM) — memristive cells written with light, not voltage. 32-device IGZO array, µLED-array optical SET / electrical RESET, optical fading memory ~2500× longer than electrical relaxation. Academic-only; no endurance, retention, or CMOS-integrated ORRAM yet. |
 
 ---
 

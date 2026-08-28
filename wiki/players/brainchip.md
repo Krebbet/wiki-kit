@@ -35,6 +35,8 @@ Highest rung reached: **production shipments**, with a named fab and node — th
 
 Shipment volume and customer identities are likewise undisclosed; "production quantities" and "multiple customers" carry no counts.
 
+**Update, 1H CY2026 half-year report (period ended 30 June 2026):** a specific unit count now exists — BrainChip states it shipped a **first production batch of 2,000 AKD1500 units** during the half, described as the transition from pre-production to commercial-scale manufacturing. This is evidenced (company-reported) but is explicitly a "first batch," not a cumulative or lifetime total — the earlier open question about total unit volumes is only partly answered. No root cause for the below-expectations yield accompanies this figure.
+
 ## Financial position
 
 Company-disclosed figures, via a trade-press rollup of the June 2026 Appendix 4C quarterly (reported ~2026-07-27). These are **one level removed from primary** — the outlet paraphrases rather than quotes the filing, and links no primary document. Verify against BrainChip's actual ASX filings before relying on them.
@@ -49,6 +51,21 @@ Company-disclosed figures, via a trade-press rollup of the June 2026 Appendix 4C
 *(synthesis)* ~US$20M cash against ~US$5M/quarter burn implies roughly four quarters of runway at an unchanged burn rate. **Neither the company nor the outlet states this** — it is arithmetic on their disclosed numbers, and it ignores any financing, revenue growth, or cost change.
 
 **Hygiene note:** an A$21.5M placement figure circulating in older discussion dates to **2017** and is unrelated to the current funding position. The outlet raised this specifically to debunk it. Do not let it enter any funding total as current.
+
+### 1H CY2026 half-year P&L (added 2026-08-27, weekly sweep)
+
+Company-disclosed figures for the half-year ended 30 June 2026, via a Motley Fool Australia relay of the ASX filing (one level removed from primary; verify against the actual filing before relying on them). **The 30 Jun 2026 cash balance below (US$20,304,971) matches the quarterly-rollup figure above exactly** — same balance date, same underlying filing, different accounting lens (half-year P&L vs quarterly cash-flow statement).
+
+| Metric | 1H CY2026 | 1H 2025 | Change |
+|---|---|---|---|
+| Revenue | US$1,222,745 | (not given, % only) | +19% YoY |
+| Net loss after tax | US$12,015,897 | US$9,360,251 | +28% YoY (widened) |
+| Operating expenses | US$13,647,140 | (not given, % only) | +33% YoY |
+| Cash and equivalents | US$20,304,971 | — | as at 30 Jun 2026 |
+
+**Do not conflate operating expenses (P&L, half-year) with operating cash outflow (cash-flow statement, quarterly, ~US$5.3M/quarter above) to recompute runway** — they are different accounting measures and the source does not do this arithmetic itself. No updated runway figure is available from this source; the ~4-quarter *(synthesis)* estimate above still rests on the Mar 2026 quarterly cash-flow figure, not on this half-year opex number.
+
+New commercial detail from the same report: IP licensing deals signed with **EDGEAI** and **ASICLAND** during the half (revenue described as "potential," not yet broken out), a new **MicroIP** ecosystem partnership, and the **LDA Capital financing facility concluded** during the period with obligations "substantially settled" — removing a prior funding mechanism with no stated replacement. AKD2500 is tracking toward a "late-2026 development milestone" (claimed, owner BrainChip, no exact date).
 
 ## Partnerships
 
@@ -65,7 +82,10 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - What is the actual AKD1500 yield figure, and what is the root cause? *(unquantified in all sources)*
 - Did environmental/military qualification complete, and did it pass?
 - Any TOPS/W figure with a stated measurement boundary, or any third-party benchmark — e.g. a [[../benchmarks/neurobench]] system-track submission or MLPerf Tiny entry?
-- Unit volumes and named customers behind "multiple customers".
+- Named customers behind "multiple customers", and whether the 2,000-unit first batch has fully shipped to them.
+- Root cause of the below-expectations yield — still unquantified and unaddressed even in the 1H CY2026 report.
+- Any TOPS/W figure with a stated measurement boundary, or any third-party benchmark — e.g. a [[../benchmarks/neurobench]] system-track submission or MLPerf Tiny entry?
+- Actual quarterly cash-flow outflow for the Jun 2026 quarter, to update the runway synthesis on a like-for-like basis with the Mar 2026 figure.
 - The September 2026 quarterly is the next disclosure checkpoint for yield improvement and H2-2026 volume.
 
 ## Source
@@ -73,6 +93,7 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - `raw/research/neuromorphic-commercial-viability/01-brainchip-akd1500-shipments.md` — BrainChip press release, "Commercial Availability and Production Shipments of AKD1500 Neuromorphic Processors", 2026-06-30. Vendor primary; tier 3 (authoritative for what the product is, not for how good it is).
 - `raw/research/neuromorphic-commercial-viability/03-brainchip-yield-cash.md` — Kalkine, "BrainChip (ASX:BRN) Starts Shipping Silicon — But the Cash Clock Is Ticking". Trade/financial commentary; tier 5 (event pointer only). Separates its bull and bear cases explicitly, which is to its credit, but paraphrases filings without linking them.
 - `raw/research/weekly-2026-08-20/04-brainchip-symphony-ibm-bundle.md` — BrainChip press release, "BrainChip Launches Symphony Community Akida Bundle for IBM's Workload Management Solution", 2026-08-20. Vendor primary.
+- `raw/research/weekly-2026-08-27/03-brainchip-h1-cy2026.md` — Motley Fool Australia, "BrainChip shares: Half-year results show revenue up, loss widens", 2026-08-26. Relay of BrainChip's ASX half-year filing; tier 4 (one level removed from primary, no filing linked).
 
 ## Related
 
@@ -80,3 +101,4 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - [[../conflicts/snn-energy-payoff]] — BrainChip's unquantified power and efficiency claims are Position A evidence
 - [[../benchmarks/neurobench]] — the measurement protocol that would settle those claims
 - [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep
+- [[../weekly-briefs/2026-08-27]] — brought in by the 2026-08-27 weekly sweep
