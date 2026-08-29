@@ -19,7 +19,7 @@ Exclude:
 | Source | Why | URL |
 |---|---|---|
 | **alphaXiv weekly trending (cs.LG, cs.CL, cs.AI)** | Explicit popularity ranking on arXiv. | https://www.alphaxiv.org/trending |
-| **Hugging Face papers trending** | Community-attention signal. | https://huggingface.co/papers |
+| **Hugging Face papers trending** | Community-attention signal. **Note (2026-08-28):** the `/papers/date/YYYY-MM-DD` date-pages (e.g. `huggingface.co/papers/date/2026-08-28`) proved more reliable than the bare `/trending` page for a precise weekly window — fetch each date directly rather than relying on trending-page date-filtering. Also usable as an X/Twitter-search fallback: @_akhaliq's curation feed mirrors his X posts closely, and X search itself is rate-limited via WebSearch. | https://huggingface.co/papers |
 | **Papers With Code — trending on reasoning benchmarks** | Benchmark-grounded movement (MATH, AIME, GSM8K, GPQA, HumanEval). | https://paperswithcode.com/sota |
 | **r/MachineLearning — hot (past week)** | Broad ML community; better for filtering hype than discovery. | https://www.reddit.com/r/MachineLearning/top/?t=week |
 | ~~r/LocalLLaMA~~ | **Flagged for replacement** — user to pick a more appropriate subreddit. Skip for now. | — |

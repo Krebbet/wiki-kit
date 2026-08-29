@@ -17,6 +17,8 @@ This is a **soft** tension, not a direct contradiction, for two reasons the sour
 
 **What would resolve it:** an ablation that runs ADRS's privileged-rescoring + TVA-gate mechanism as a *post-hoc compaction stage* on an already-RLVR-trained model (OPSD's setting) rather than in-loop, to see whether the transfer gain survives outside the agentic in-loop-credit setting — or, conversely, an OPSD-style correct-only/incorrect-only outcome-filtered ablation of ADRS's own unseen-split gain, to check whether ADRS's +11.9 pp comes from genuinely novel reasoning states or from compaction/selection effects within states the un-shaped GRPO policy could already reach with enough rollouts.
 
+**2026-08-28 update:** [[../research/teacher-student-rl/opdvr-verifiable-reward]] (OPDVR, arXiv:2608.24696) adds a third data point on Position B's side, via a different mechanism again — a ReLU-gated fusion of sampled-token OPD with verifiable-reward RLVR (not self-distilled reward shaping, and not a same-model teacher). OPDVR's Appendix A.3 gives a *formal* toy-model proof that the method can strictly outperform the teacher whenever the student's initial per-token policy already exceeds the teacher's ($2q_0 - 1 > 2p - 1$), and Table 1 shows OPDVR empirically surpassing the teacher's AIME24 score (36.9 vs. 36.0). This is a genuine "student exceeds teacher" result under a same-distribution setting, distinct from ADRS's unseen-split-transfer framing — it sharpens rather than resolves the tension: it shows *correction past a fixed teacher ceiling* is achievable by construction, but doesn't test whether the exceeded ceiling is genuinely outside what the student's own unaided RLVR (no OPD term at all) could reach on the same compute budget. If plain RLVR reaches the same AIME24 ceiling, OPDVR's "exceeds teacher" claim reduces to "OPD doesn't hold RLVR back," which is compatible with OPSD's compaction reading; if plain RLVR does not reach it, that's a genuine correction result. Not yet tested by any of the three papers.
+
 ## Source
 
 Surfaced via the 2026-08-21 weekly sweep. ADRS (arXiv:2608.03223) §5.6, Conflict flags in `raw/research/weekly-2026-08-21/.ingest/05-agentic-rl-self-distilled-reward-shaping.summary.md`.
@@ -26,4 +28,6 @@ Surfaced via the 2026-08-21 weekly sweep. ADRS (arXiv:2608.03223) §5.6, Conflic
 - [[../research/teacher-student-rl/opsd-compresses-rlvr]] — Position A paper
 - [[../research/teacher-student-rl/adrs-self-distilled-reward-shaping]] — Position B paper
 - [[../research/teacher-student-rl/rstg-selective-negative-group-distillation]] — also revises what "OPD adds signal" means (recovers signal on negative-zero-variance prompts specifically, a third framing distinct from both compaction and general capability transfer)
+- [[../research/teacher-student-rl/opdvr-verifiable-reward]] — third data point on Position B's side; formal + empirical student-exceeds-teacher result via a ReLU-gated OPD+RLVR hybrid (2026-08-28)
 - [[../../weekly-briefs/2026-08-21]] — brought in by the 2026-08-21 weekly sweep
+- [[../../weekly-briefs/2026-08-28]] — brought in by the 2026-08-28 weekly sweep

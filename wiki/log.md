@@ -967,3 +967,29 @@ Autonomous weekly sweep. Source survey (4 parallel subagents: aggregators, curat
 **Conflicts opened:** `wiki/conflicts/adrs-vs-opsd-compaction.md` (new) — does privileged self-distillation only compact existing capability (OPSD, math, post-hoc stage) or can it also transfer new capability (ADRS, agentic, in-loop reward shaping)? Reciprocal link added to `opsd-compresses-rlvr.md`'s Conflicts section. `wiki/conflicts/index.md` updated.
 
 **Duplicate-detection gap (logged to `master_notes.md`, confirmed recurring):** the candidate-fix already on file (cross-check each selected arXiv ID against existing wiki pages before spending a capture slot) is still not implemented. This run wasted one full capture+ingest-subagent cycle on a paper already on the wiki. Should be promoted via `/harvest` — this is now a repeat-cost issue, not a one-off.
+
+## [2026-08-28] weekly-brief | 2026-08-28 sweep
+
+Autonomous weekly sweep. Source survey (4 parallel subagents: aggregators, curators, lab blogs, code/release proxies) found a rich week for the teacher-student-rl and self-play themes, quiet on lab blogs (Sakana, DeepSeek, Qwen, ByteDance Seed, SAIL, Meta FAIR, AI2, Qualcomm all silent in-window) and on code/release proxies (no tracked-repo activity, no conflict-resolving papers found by targeted search). Hugging Face Daily Papers date-pages (`huggingface.co/papers/date/YYYY-MM-DD`) proved the most reliable aggregator source this run — X/Twitter search for @_akhaliq / @arankomatsuzaki is rate-limited via WebSearch and was substituted with HF Daily Papers as a proxy (their curation feed mirrors AK's X posts).
+
+**Tooling notes (all logged to `master_notes.md`, all recurring/confirmed, none yet promoted via `/harvest`):**
+- 4th recurrence of the `arxiv.org/abs/<ID>` vs `/pdf/<ID>` capture_pdf bug. All 4 PDF captures this run initially came back abstract-only (174-178 lines, `capture_method: "pdf"` despite being an HTML render) — NOT caught pre-ingest this time; surfaced only when the first ingest subagent (source 01) explicitly flagged its summary as abstract-only. Cost: 4 wasted ingest-subagent calls (discarded stubs) plus 4 re-captures + 4 re-ingests. Full-text re-capture with `/pdf/` URLs succeeded cleanly for all 4 (1146-3095 lines each).
+- 4th recurrence of `poetry` not on `$PATH` — defensive `export PATH="$HOME/.local/bin:$PATH"` applied proactively.
+- 2nd recurrence of `capture_pdf --engine marker` failing with `No module named 'weasyprint'` — fell back to `--engine pymupdf` for all 5 captures.
+- Recurrence of the pymupdf image-ref-path bug (2026-06-05) — same `sed` workaround applied to all 4 PDF-derived captures (0 audit issues after).
+- Pre-ingest duplicate-check (grep arXiv IDs / title keywords against `wiki/**/*.md`) run proactively this time per the 2026-08-21 lesson — confirmed none of the 5 selected candidates were already in the wiki.
+
+**Pages written:**
+- `wiki/research/teacher-student-rl/opdvr-verifiable-reward.md` — arXiv:2608.24696 (LeapLab Tsinghua): OPDVR repairs sampled-token OPD's mis-signed implicit reward with a hyperparameter-free ReLU gate; composes with GRPO (GRPD); beats OPD on six math benchmarks; formally proven never anti-aligned with the RLVR gradient; exceeds the teacher on AIME24 (36.9 vs 36.0).
+- `wiki/research/teacher-student-rl/opd-dual-nature-generalization.md` — arXiv:2608.16647: OPD transfers reasoning patterns, not answers (teacher-unsolved problems equally useful); same-origin teacher/student pairs generalize broadly, cross-origin pairs stay narrow; prompt-routed multi-teacher OPD produces a mixture-dependent capability seesaw.
+- `wiki/research/rlvr-mechanics/es-broader-reasoning-coverage-grpo.md` — arXiv:2608.27351: Evolution Strategies, trained on the same verifier-reward objective as GRPO, exceeds base-model Pass@16/32 by diversifying rather than sharpening the policy population; large but functionally sparse parameter drift; disputes Abdi et al. 2026's ES-forgetting claim. First ES entry in the wiki.
+- `wiki/research/self-play/lure-pursuit-evasion.md` — arXiv:2608.21871: LURE reframes zero-data self-play as pursuit-evasion (RL-trained evader positions tasks at capture frontier, dense verifier-progress credit for the pursuer); beats R-Zero/GRPO at 80% of R-Zero's rollout budget; own audit finds R-Zero's ZebraLogic gains were largely gold-answer leakage.
+- `wiki/research/rlvr-mechanics/revisql-verified-data-reward-shaping.md` — Thinking Machines Lab / UIUC blog, ReViSQL-K2.6: RLVR on expert-curated BIRD-Platinum text-to-SQL data + two reward-shaping fixes reaches super-human accuracy without agentic scaffolding; 32.8% false-positive execution-match rewards measurably hurt training.
+
+**Conflicts opened/extended:**
+- `wiki/conflicts/adrs-vs-opsd-compaction.md` — extended with OPDVR as a third data point (formal + empirical student-exceeds-teacher result via a different mechanism).
+- `wiki/conflicts/invisible-leash-vs-spiral-transfer.md` — extended with the ES paper's method-class scope challenge to Theorem C.1.
+- `wiki/conflicts/lure-vs-r-zero-challenger-mechanism.md` (new) — LURE's related-work characterization of R-Zero's challenger (pure post-hoc rejection filtering) disputed against the wiki's own r-zero.md, which documents a Goldilocks-reward GRPO-trained challenger.
+- `wiki/conflicts/revisql-vs-spurious-rewards-noise-robustness.md` (new) — ReViSQL's reward-noise-sensitivity finding vs. Spurious Rewards' random-reward-robustness finding.
+
+**Watchlist:** 8 additions (SPADE, TTPO, CritICL, Best Practice Critic Optimization, SecOPD, Self-OPD [flow matching], On-Policy Self-Distillation in Diffusion Models, Chain-of-Experience). See `wiki/watchlist.md` for details.

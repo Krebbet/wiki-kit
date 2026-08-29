@@ -17,6 +17,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Self-play
 
+- SPADE (arXiv:2608.19197) — self-play in adaptive synthetic executable environments; LLM plays designer + agent roles, GRPO-trained on self-generated environments; env-generation variant alongside LURE's pursuit-evasion framing this week
 - Self-Distilled RLVR (RLSD, arXiv:2604.03128) — RLVR direction × self-distillation magnitude hybrid; OPSD-adjacent
 - Seirênes (arXiv:2605.11636) — adversarial self-play w/ evolving in-loop distractors; shared-param verifiable-reasoning RL. **User-tagged load-bearing 2026-05-19: strong self-play exemplar — evaluate/ingest when building any self-play-inclusive proposal.** Promotion triggered (user tag) but deferred per instruction; pull in at proposal time. Hub pointer: [[research/synthesis/proposer-reward-shapes#Candidates earmarked for self-play-inclusive proposals]].
 - DUEL (arXiv:2605.24794) — adversarial self-play for VLMs: Challenger generates hard negative image-grounded claims; Solver verifies; extends self-play to multimodal without human annotation
@@ -36,6 +37,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Process reward models
 
+- Best Practice Critic Optimization (arXiv:2608.23566) — reward/critic-model optimization, adjacent to process reward model and GRPO-family optimizer scope
 - Process Reward Agents (PRA, arXiv:2604.09482) — frozen domain-expert PRM as inference-time search guide; 80.8% MedQA Qwen3-4B
 - IOP / IOP-GSPO (arXiv:2605.05226) — internalising outcome supervision into process supervision via audit gating; +4.9–6.9% over GSPO
 - Controllable Verifiable Process Data Synthesis for PRMs (arXiv:2605.02395) — symbolic chain + template-aware error injection; principled PRM training-data generator
@@ -53,6 +55,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - ATESD (arXiv:2605.11458) — adaptive Beta-policy teacher reveal ratio; discounted learning-progress reward for delayed credit in OPD
 - Fast and effective OPD from reasoning prefixes (arXiv:2602.15260) — prefix-level policy divergence minimization; concurrent to ESR, different target (base-model bootstrapping)
 - AMR-SD (arXiv:2605.18529) — token-level credit via asymmetric meta-reflective self-distillation in RLVR
+- SecOPD (arXiv:2608.21500) — applies OPD mechanics to adaptive prompt-injection defense; application paper, not core method, but same OPD-signal machinery
+- Self-OPD (arXiv:2608.26872) — teacher-free OPD variant for flow-matching models; domain caveat: diffusion/flow-matching, not LLMs, but the no-teacher mechanism may be load-bearing for the OPD thread
+- On-Policy Self-Distillation in Diffusion Models (arXiv:2608.24646) — same domain caveat as Self-OPD above; OPD mechanism transplanted to diffusion models
 - OPD Survey (arXiv:2604.00626) — systematic f-divergence OPD survey; design-axes reference for the teacher-student RL theme
 - Learning from Language Feedback via VPD (arXiv:2605.15113) — variational distillation from language-feedback teacher; addresses stale-teacher in OPD
 - TGPO (arXiv:2605.13230) — teacher-guided policy optimization preserving exploration benefits of on-policy sampling; OPD variant
@@ -81,6 +86,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Test-time training and curriculum
 
+- TTPO (arXiv:2608.27448) — test-time policy optimization; policy-optimization variant applied at inference time, loose GRPO-family adjacency
 - Test-Time Curricula for Targeted RL (TTC-RL, arXiv:2510.04786) — automatic task-specific test-time curricula; 1.8× AIME25; ICLR 2026 re-surfacing
 - VCRL (arXiv:2509.19803) — variance-based curriculum RL; gradient variance as difficulty signal; GRPO-compatible
 - SPEED-RL (arXiv:2506.09016) — online curriculum scheduling for faster reasoning model training
@@ -132,6 +138,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Continual fine-tuning and forgetting
 
+- Chain-of-Experience (arXiv:2608.18027) — continual-improvement framing for LLMs via accumulated experience chains; uncertain forgetting-relevance, flagged for follow-up
 - RFT Naturally Mitigates Forgetting (arXiv:2507.05386) — RFT resists catastrophic forgetting across 7 multimodal tasks while SFT degrades; no replay needed; on Qwen2.5-VL-7B
 - E2H Curriculum RL (arXiv:2506.06632, ICLR 2026) — easy-to-hard curriculum RL rescues 1.5B–3B models that fail with vanilla RL; finite-sample complexity bounds proving E2H needs fewer total samples
 
@@ -144,6 +151,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 *Seeded 2026-08-07. Closest current coverage: [[research/in-context-learning-theory/icl-implicit-weight-update]].*
 
 - ICL as Implicit Policy Gradient (arXiv:2607.23153) — theoretical bridge between in-context learning and RL policy-gradient updates
+- CritICL (arXiv:2608.27455) — inference-time weak-to-strong generalization from small-model failure modes; loosely adjacent to teacher-student framing, leans "eval" more than "method"
 
 ---
 
@@ -151,5 +159,6 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-08-21]] — most recent weekly sweep (moderate week: 4 genuinely new captures from 5 slots — 1 wasted on a duplicate re-discovery of the 2026-08-07 RSTG capture; 0 watchlist surplus)
+- [[weekly-briefs/2026-08-28]] — most recent weekly sweep (unusually conflict-dense week: 5 captures, all genuinely new; full-text ingest surfaced 3 fresh conflicts the abstract-only scan missed; 8 watchlist additions)
+- [[weekly-briefs/2026-08-21]] — prior weekly sweep (moderate week: 4 genuinely new captures from 5 slots — 1 wasted on a duplicate re-discovery of the 2026-08-07 RSTG capture; 0 watchlist surplus)
 - [[weekly-briefs/2026-08-14]] — prior weekly sweep (light week: 3 candidates, all captured, 0 watchlist surplus)

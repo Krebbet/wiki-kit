@@ -73,4 +73,5 @@ The $r_\text{uncertainty}$ form is theoretically motivated via a KL-divergence l
 - [[spice]] — two-role design with structural asymmetry; compare stability mechanisms
 - [[../synthesis/proposer-reward-shapes]] — reward shape taxonomy; R-Zero adds the BLEU-penalised Goldilocks row
 - [[../../conflicts/unified-vs-two-model-self-play]] — open conflict: R-Zero claims unified collapses; AZR + LSP use unified successfully
+- [[../../conflicts/lure-vs-r-zero-challenger-mechanism]] — open conflict (2026-08-28): LURE characterises this page's Goldilocks-reward Challenger training as pure post-hoc rejection filtering; disputed
 - [[_overview]] — self-play theme overview

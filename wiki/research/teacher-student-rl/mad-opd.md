@@ -76,4 +76,5 @@ Training data: ToolACE (~16K agentic step-split) + OpenThoughts3 (30K code). Com
 - [[../critique-self-correction/_overview]]
 - [[../synthesis/proposed-method]]
 - [[../../conflicts/unified-vs-two-model-self-play]] — debate ensemble framing supports two-model side
+- [[opd-dual-nature-generalization]] **(added 2026-08-28)** — structural distinction, not a conflict: that page's MOPD setting is prompt-routed single-teacher-per-domain (and finds a "mixture-dependent seesaw" failure mode), distinct from this page's debate-ensemble multi-teacher design; the routing-vs-debate axis is an open question
 - [[../../weekly-briefs/2026-05-10]] — brought in by the 2026-05-10 weekly sweep

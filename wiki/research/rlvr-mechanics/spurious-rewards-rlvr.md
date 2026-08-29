@@ -62,4 +62,5 @@ where $\rho_{i,t} = \pi_\theta / \pi_{\theta_\text{old}}$. When a behaviour has 
 - [[_overview]] — RLVR mechanics overview; this paper extends the RL-as-selection cluster
 - [[../self-play/invisible-leash]] — support-inclusion theorem; clip bias provides a complementary inductive-bias account within that support
 - [[../single-sample-rl-finetuning/_overview]] — clip-bias amplification of high-prior behaviours is a direct threat to single-sample concept targeting
+- [[../../conflicts/revisql-vs-spurious-rewards-noise-robustness]] — open conflict (2026-08-28): ReViSQL's 32.8%-false-positive-hurts finding sits in tension with this page's random-reward-still-recovers-73%-of-gains result
 - [[../weekly-briefs/2026-06-05]] — brought in by the 2026-06-05 weekly sweep
