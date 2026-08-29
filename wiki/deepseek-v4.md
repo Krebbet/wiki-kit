@@ -52,3 +52,4 @@ Drop-in replacement for DeepSeek-V3/V3.2. V4-Flash (13B active) is the cost-effe
 - [[memagent]] — 1M-context handling; CSA+HCA (dense Transformer) vs memory-augmented approach
 - [[gated-deltanet-2]] — recurrent SOTA at long context; V4 is the MoE dense-attention comparison point
 - [[llamarl]] — V4's two-stage GRPO → on-policy distillation post-training is relevant to production RL infra design
+- [[moe-architecture-survey]] — general MoE reference/taxonomy page (8 milestones, 4 control planes); V4-Pro extends the survey's milestone 5–6 lineage (DeepSeekMoE → V2 fine-grained+shared+device-limited routing → V3 Auxiliary-Loss-Free balancing) with hybrid CSA+HCA attention and mHC residuals not yet covered by the survey's snapshot.

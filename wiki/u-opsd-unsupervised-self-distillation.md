@@ -24,6 +24,7 @@ No code, weights, or repo link found in the captured source; appears to be an ar
 - [[flux-opd]] — parallel OPD refinement (reverse-KL decomposition + conflict term) for non-verifiable-reward tasks; U-OPSD targets verifiable-answer math but removes GT entirely.
 - [[anti-self-distillation]] — AntiSD's PMI-identity critique targets a failure mode of default on-policy self-distillation (entropy suppression); U-OPSD's majority-vote teacher construction is a different design point in the same OPSD space.
 - [[rlsd-self-distilled-rlvr]] — also decouples direction/magnitude in self-distilled RLVR to fix privileged-info leakage; U-OPSD is a more radical version of the same underlying concern (what info is "allowed" into the teacher context).
+- [[ttpo-test-time-policy-opt]] — cites the same arXiv ID (2608.06296) as this page but characterizes the method as "distilling only disagreeing rollouts," which doesn't obviously match this page's "majority-vote consensus as privileged conditioning context" description. Flagged as an unresolved citation-identity question in `master_notes.md` (2026-08-29) — worth a manual check against the primary source before treating either description as authoritative.
 
 ## Source
 

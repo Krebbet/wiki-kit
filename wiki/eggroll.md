@@ -59,4 +59,5 @@ Authored by an Oxford FLAIR/WhiRL + MILA + NVIDIA + NormaCore group (Foerster, W
 
 - [[test-time-training]] — sibling fast-weight / online-update line (different objective; same concern about pretrained LLM adaptation).
 - [[conflicts/grpo-vs-evolution-strategies]] — EGGROLL's central positioning claim.
+- [[es-solution-coverage]] — sibling ES-for-LLM-post-training paper; complementary axis (solution coverage on Qwen transformers, 1.5B–32B) to EGGROLL's wall-clock efficiency claim on RWKV at 14B+.
 - [[watchlist]] — Salimans 2017 OpenES, MeZO, Qiu 2025, Korotyshova 2025 referenced but not captured.

@@ -25,6 +25,7 @@ Three sources in the radar-2026-04 ingest converge on **online parameter updates
 - **NL claims TTT is parametric ICL** (i.e., not a distinct paradigm) — see [[conflicts/ttt-distinct-vs-parametric-icl]]. In-Place TTT keeps TTT as a distinct mechanism that *complements* attention rather than replacing it.
 - **Hope and Titans require pretraining-from-scratch**; In-Place TTT explicitly targets the drop-in case. The two camps are not adversarial — they answer different operational questions.
 - **EGGROLL** sits adjacent (also "non-gradient-via-backprop" updates) but operates at training time, not inference time, and uses ES rather than fast-weight gradient updates. Worth noting because the same constant-state-RNN substrate (RWKV) recurs in EGGROLL's compute argument and in TTT's fast-weight viability.
+- **Distinct sibling cluster (not yet its own page):** this page's Members are all *architectural* TTT (a new memory module or repurposed weight matrix). [[tempo-test-time-rl]], [[u-opsd-unsupervised-self-distillation]], and [[ttpo-test-time-policy-opt]] form a separate "RL/distillation-based test-time adaptation" cluster — no architecture change, instead a LoRA or full-weight update driven by self-rewarding RL, self-distillation, or both, on the unlabeled test distribution. Four sources deep as of 2026-08-29; may warrant its own cluster page in a future ingest.
 
 ## Source
 

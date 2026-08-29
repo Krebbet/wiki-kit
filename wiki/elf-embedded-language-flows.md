@@ -42,9 +42,20 @@ The two differ on compression strategy (explicit VAE bottleneck vs. frozen encod
 
 Code: https://github.com/lillian039/ELF. Preprint: arXiv:2605.10938 (2026-05-18). Weights not confirmed released. No paperswithcode entry. WMT14/XSum baselines reproduced from public codebases (‡ in Table 1). Concurrent with FLM, LangFlow, DFM, CFM (mutual citations).
 
+## Field context (Dieleman, Aug 2026 synthesis)
+
+Sander Dieleman's Aug 2026 blog post ("Continuous diffusion language models" — a CDCD/SED co-author's synthesis of the field) directly names and situates ELF: "Latent diffusion language models (LDLM) and Embedded language flows (ELF) follow the design of Diffusion-LM and SED... make use of contextual embeddings, rather than per-token ones... jointly learnt with the denoiser for LDLM, whereas ELF (primarily) uses pre-trained and frozen embeddings" — matching this page's own T5-small frozen-encoder description above.
+
+The post's historical arc: 2021 discrete diffusion (D3PM, multinomial diffusion, SUNDAE) → 2022 continuous-embedding diffusion (Diffusion-LM, DiffuSeq, SSD-LM, GENIE, LD4LG, SED, CDCD) → late-2023 "continuous extinction" as discrete diffusion took over almost entirely, triggered empirically by Plaid-1B's continuous likelihood-based diffusion LM measuring **64× less training-compute-efficient** than an autoregressive baseline (Gulrajani & Hashimoto 2023) → H2 2025 hybrid discrete+continuous methods addressing "temporal dissonance" (diffusion duality, CADD, CCDD, CANDI) → early/spring 2026 pure-continuous "Cambrian explosion" enabled by a flow-maps step-distillation framework: Categorical/Discrete Flow Maps, LangFlow, Spherical/Hyperspherical flows, LDLM and ELF (this page), Continuous Bitstream diffusion (CoBit), RePlaid.
+
+**Causal claim for the 2026 revival**: discrete diffusion's few-step sampling is capped because simultaneously-sampled tokens are conditionally independent given prior tokens, limiting step distillation. Continuous diffusion, combined with trajectory-based step-distillation (flow maps), can in principle let single-step models capture token correlations — a distillability advantage discrete diffusion structurally lacks. RePlaid and LangFlow are cited (by title) as the current strongest counter-claims to the "discrete beats continuous at scale" consensus that ELF itself already challenges (see Novelty above), though no specific benchmark numbers for those two are given in the post. The post also flags a field-wide measurement trap: generative perplexity (GenPPL) is gameable and quality/diversity tradeoffs are often uncontrolled across papers — relevant caveat alongside this page's own Gen.PPL numbers above.
+
+Sibling 2026 papers named but not yet captured in this wiki: LangFlow, Spherical/Hyperspherical flows, Categorical/Discrete Flow Maps, CoBit, RePlaid, LDLM (ELF's closest sibling by design).
+
 ## Source
 
 `raw/research/weekly-2026-05-18/01-elf-embedded-language-flows.md` (arXiv:2605.10938)
+`raw/research/weekly-2026-08-29/04-sander-continuous-dlms.md` (Field context section; blog post, Aug 2026)
 
 ## Related
 

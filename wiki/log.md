@@ -255,3 +255,25 @@ Watchlist additions: 10 (SPADE, EnvHarness, OpenART, ToolHazard, TRACES, 4DAnyon
 Reference-sources.md: all 7 GitHub awesome-lists (Hannibal046/Awesome-LLM, opendilab/awesome-RLHF, Curated-Awesome-Lists/awesome-llms-fine-tuning, KbsdJames/Awesome-LLM-Preference-Learning, JLZhong23/awesome-reward-models, zzli2022/Awesome-System2-Reasoning-LLM, LightChen233/Awesome-Long-Chain-of-Thought-Reasoning) demoted active→probation per the file's own demote rule (two consecutive zero-signal sweeps). HF Daily Papers entry updated to note the second confirmation.
 
 Pre-existing uncommitted work at run start (not touched by this run's commit): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
+
+## 2026-08-29 — weekly-brief autonomous run
+
+Survey: 1 subagent scanned HF Daily Papers, alphaXiv trending, X/paper-feed accounts (@_akhaliq, @arankomatsuzaki, @karpathy, @dair_ai, @alphaxiv, @jackclarkSF), r/MachineLearning/r/LocalLLaMA/r/MLScaling, and podcasts (Dwarkesh, Latent Space, Cognitive Revolution, TWIML). ~21 candidates surfaced.
+
+Trend clusters identified: (1) Evolution Strategies vs. GRPO maturing into an explicit multi-paper debate this week (3 papers, 1 captured + 2 watchlisted); (2) test-time policy optimization emerging as a cheaper alternative to full RLVR (TTPO captured, joins TEMPO/u-opsd cluster); (3) agent "skills" and harness engineering as a meta-topic (2 watchlisted, judged out of core wiki scope — not captured); (4) reward-hacking scrutiny continuing as an active thread (debate-training mitigation captured); (5) "how far can AI go without human guidance" emerging as its own benchmark category (ASI-Bench, Co-Scientist — both watchlisted, judged too agentic/benchmark-only for a capture slot this week).
+
+Captures attempted/succeeded: 5/5 (es-solution-coverage, ttpo-test-time-policy-opt, moe-architecture-survey, sander-continuous-dlms, debate-training-reward-hacking). `capture_pdf --engine marker` against arXiv `/abs/` URLs failed with the known weasyprint/HTML-detection bug (already logged 2026-08-01/2026-08-08 in master_notes.md); worked immediately once retried against the `/pdf/` URL form directly — no new master_notes entry needed, this is the same recurring friction point, just reconfirmed.
+
+Pages written: 4 new ([[es-solution-coverage]], [[ttpo-test-time-policy-opt]], [[moe-architecture-survey]], [[debate-training-reward-hacking]]), 1 extended ([[elf-embedded-language-flows]] — "Field context" section from the Dieleman synthesis blog, chosen over a redundant new page since the source explicitly names and situates ELF).
+
+Conflicts: no new conflict file. Extended existing [[conflicts/grpo-vs-evolution-strategies]] with a new Position A data point (es-solution-coverage: ES beats GRPO on ordinary Qwen transformers at every scale 1.5B–32B on the solution-coverage/pass@k axis, weakening the file's prior RWKV-only substrate-dependent resolution framing); resolution rule updated to expect a per-axis answer (wall-clock efficiency vs. solution coverage) rather than a single substrate split. Position B (GRPO-orthodoxy defense) still uncaptured.
+
+Data-quality flag (not resolved this run): TTPO's citation of arXiv:2608.06296 ("distills only disagreeing rollouts") doesn't obviously match [[u-opsd-unsupervised-self-distillation]]'s existing description of the same arXiv ID ("majority-vote consensus as privileged conditioning context"). Logged to master_notes.md as an open project-scope item for manual verification against the primary source.
+
+Backlink cross-refs added (no new pages) to [[eggroll]], [[tempo-test-time-rl]], [[u-opsd-unsupervised-self-distillation]], [[coladlm]], [[rrc-reward-ranking]], [[deepseek-v4]], [[test-time-training]] (noted the TTPO/TEMPO/u-opsd RL-based test-time-adaptation cluster as distinct from the page's architectural-TTT Members table — candidate for its own cluster page in a future run), [[ai-agents-open-ended-research]].
+
+Watchlist additions: 10 (Understanding-ES-for-LLM-Reasoning, Hyper-ES, ASI-Bench, Demystifying-Agent-Skills, AutoSaddler, Co-Scientist, VGI-Bench, UrbanGround, Reward-Hacking-Benchmark, Greenblatt-Dwarkesh-podcast).
+
+Reference-sources.md: no new recurring sources added this week — HF Daily Papers + alphaXiv trending + X feeds continued to cover the surfaced signal; `last_reviewed` bumped to 2026-08-29 on watchlist.md.
+
+Pre-existing uncommitted work at run start (not touched by this run's commit, unchanged from the last several runs — see master_notes.md 2026-08-01 entry for root cause, a known chicken-and-egg COMMIT_SHA_PENDING patching bug, not new drift): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.

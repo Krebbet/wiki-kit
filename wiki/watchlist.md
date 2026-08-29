@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-22
+last_reviewed: 2026-08-29
 ---
 
 # Watchlist — Identified But Not Captured
@@ -250,3 +250,31 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution (arXiv:2608.16157, UC Berkeley)** — Runs 20+ open-weight MoE models via bandwidth-adaptive expert offloading on hardware from 8GB laptop GPUs to a single workstation GPU. *(weekly-brief 2026-08-22.)*
 - **GLM-5.3 (Z.ai, August 14 2026)** — 743B base MoE model; leads CyberGym/AutomationBench; open weights staged behind safety review, not yet public. Extends the frontier open-weight race alongside [[kimi-k3]] / [[deepseek-v4]] / Qwen3.8-Max. *(weekly-brief 2026-08-22.)*
+
+## Evolution strategies (continued — weekly-brief 2026-08-29)
+
+- **Understanding Evolution Strategies for LLM Reasoning: Broader Reasoning Coverage than GRPO (arXiv:2608.27351)** — Second ES-vs-GRPO coverage paper surfacing the same week as [[es-solution-coverage]]; same subfield, not yet independently read. *(weekly-brief 2026-08-29.)*
+- **Hyper-ES: Effective Evolution Strategies for LLM Reasoning via Descent Direction Merging (arXiv:2608.05541)** — Merges ES descent directions across a population for more sample-efficient LLM reasoning fine-tuning; third ES-for-LLM-reasoning paper this cluster this week. *(weekly-brief 2026-08-29.)*
+
+## RL / post-training (continued — weekly-brief 2026-08-29)
+
+- **Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use (arXiv:2605.02964)** — Benchmark quantifying reward-hacking exploits in tool-using LLM agents; adjacent to [[debate-training-reward-hacking]]'s mitigation angle. *(weekly-brief 2026-08-29.)*
+- **Ryan Greenblatt on Dwarkesh Podcast (Aug 11 2026)** — Recursive self-improvement, verifiable training, and reward-hacking risk framing; podcast-only, no paper captured. *(weekly-brief 2026-08-29.)*
+
+## Self-improving agents (continued — weekly-brief 2026-08-29)
+
+- **Accelerating Scientific Research with Gemini in the Real-World / Co-Scientist (arXiv:2608.26701, Google DeepMind)** — Gemini-based multi-agent system moves from in-silico hypothesis generation to execution-grounded, closed-loop real-world experiments (materials science, biology, CS). *(weekly-brief 2026-08-29.)*
+
+## Benchmarks & evaluation (continued — weekly-brief 2026-08-29)
+
+- **ASI-Bench: At the Dawn of Artificial Superintelligence (arXiv:2608.17271)** — First benchmark progressively withdrawing methodological guidance across 60 project-level research tasks (scores drop ~51→~27 as guidance is removed); probes autonomous end-to-end scientific capability rather than isolated task performance. *(weekly-brief 2026-08-29.)*
+
+## Infrastructure (continued — weekly-brief 2026-08-29)
+
+- **Demystifying Agent Skills: Why They Work—Until They Don't (arXiv:2608.14036)** — Taxonomy of agent-skill failure modes; procedural anchoring dominates over knowledge injection, retrieval precision collapses as skill pools grow. Trended alongside AutoSaddler as this week's "agent harness/scaffolding" meta-topic. *(weekly-brief 2026-08-29.)*
+- **AutoSaddler: Automatic Harness Optimization with Durable Updates from Agent Execution Traces (Microsoft, arXiv:2608.23041)** — Auto-improves agent harnesses from failure traces; +9–10pp on GAIA2/SWE-Bench Pro/Terminal-Bench. Code released (github.com/microsoft/AutoSaddler). *(weekly-brief 2026-08-29.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-08-29)
+
+- **VGI-Bench: Probing Visual Intelligence in Video Generation Models** — Benchmark for physical/visual intelligence in video-generation models. *(weekly-brief 2026-08-29.)*
+- **UrbanGround** — Multimodal LLM-agent navigation/spatial-reasoning benchmark in a realistic 3D city replica. *(weekly-brief 2026-08-29.)*

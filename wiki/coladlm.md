@@ -45,3 +45,4 @@ No GitHub URL, no Hugging Face weights, no paperswithcode entry referenced in th
 - [[latent-grpo]] — continuous-latent RL post-training (Coconut/CoLaR lineage); orthogonal mechanism (RL vs diffusion pretraining), shared continuous-latent substrate.
 - [[vision-banana]] — shared "generation pretraining as universal substrate" framing; ColaDLM Section 5.5 extends this to multimodal via MMDiT over modality-specific VAEs.
 - [[watchlist]] — Joint Latent DLM (arXiv:2605.07933) and Break the Block (arXiv:2605.02263) are concurrent diffusion-LM papers in the same cluster, not yet captured.
+- [[elf-embedded-language-flows]] — see its "Field context" section (added 2026-08-29) for Dieleman's synthesis of the 2025–2026 continuous-diffusion-LM revival, which situates both ColaDLM and ELF in the same lineage (Diffusion-LM → SED → LD4LG → LDLM/ELF) and flags GenPPL comparability as a field-wide evaluation weakness relevant to this page's own PPL caveat.
