@@ -4,6 +4,7 @@ Concise record of all wiki modifications. One row per logical change.
 
 | Date | Action | Pages Touched | Summary |
 |---|---|---|---|
+| 2026-09-05 | weekly-brief ingest | one-shot-opd-data-efficiency, gradient-aligned-rewards-rlvr, terminal-universe, latentpress, disco-arex-skill, index, log, revisions, watchlist | 5 new pages (weekly-brief 2026-09-05); mid-run fix to `tools/capture_pdf.py` (arXiv abs→pdf URL normalization, 4th-logged occurrence of a recurring capture bug); 5 watchlist additions |
 | 2026-06-06 | weekly-brief ingest | cosmos-3, polar-rl-harness, rlvr-incentivizes-reasoning, deepseek-v4, mai-thinking-1, conflicts/pure-video-vs-3d-world-models, conflicts/sparse-policy-selection-vs-gradient-cancellation, index, log, revisions, watchlist | 5 new pages + 2 conflict updates + watchlist 8 additions (weekly-brief 2026-06-06) |
 | 2026-04-21 | bootstrap | CLAUDE.md, commands | Initial bootstrap: AI research and engineering trends |
 | 2026-04-21 | seed-radar | reference-sources.md, lint.md, index.md | Seeded trend radar (X handles, awesome-lists, podcasts, subreddits, Discord); added radar-sweep step to /lint DOMAIN-SLOT |

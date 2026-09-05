@@ -277,3 +277,23 @@ Watchlist additions: 10 (Understanding-ES-for-LLM-Reasoning, Hyper-ES, ASI-Bench
 Reference-sources.md: no new recurring sources added this week — HF Daily Papers + alphaXiv trending + X feeds continued to cover the surfaced signal; `last_reviewed` bumped to 2026-08-29 on watchlist.md.
 
 Pre-existing uncommitted work at run start (not touched by this run's commit, unchanged from the last several runs — see master_notes.md 2026-08-01 entry for root cause, a known chicken-and-egg COMMIT_SHA_PENDING patching bug, not new drift): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
+
+## 2026-09-05 — weekly-brief autonomous run
+
+Survey: sources already pinned in `wiki/reference-sources.md`, no bootstrap survey needed. 3 parallel subagents scanned HF Daily Papers + alphaXiv trending, X/paper-feed accounts (@_akhaliq, @arankomatsuzaki, @karpathy, @dair_ai, @alphaxiv, @jackclarkSF/Import AI), and r/MachineLearning/r/LocalLLaMA/r/MLScaling (Reddit fully inaccessible this run — see master_notes.md 2026-09-05 entry — subagent substituted HF/arXiv proxy signal). ~13 in-window candidates surfaced after filtering out several stale (Sept-2025/Feb-2026-dated) items agents had mis-flagged as current.
+
+Trend clusters identified: (1) on-policy self-distillation (OPD) research maturing from algorithmic-variant spam into mechanistic self-study (OPD II asks *why* OPD works, not just a new variant — multi-signal candidate, surfaced independently via both HF/alphaXiv and X scans); (2) RLVR dense-reward-design line continues (Gradient-Aligned Rewards joins the token-gradient-cancellation/delta-token-credit/rrc-reward-ranking cluster at rollout rather than token granularity); (3) agent-skill-distillation now a 4th-consecutive-week theme (DisCo/AREX-Skill); (4) agentic-environment-synthesis-from-trajectories continues last week's self-play/dynamic-environment theme (Terminal-Universe); (5) long-context/memory-compression cluster gains an external-interface entry (LatentPress) distinct from the architecture-internal δ-mem/MemAgent/SST-v2 pages; (6) policy/capability-risk signal persists via Import AI #471 (open-model-ecosystem risk framing, continuing #467's AI-worm thread from 2026-08-08).
+
+Captures attempted/succeeded: 5/5, but only after a capture-pipeline bug fix mid-run — see below.
+
+**Capture-tool bug hit and fixed this run:** all 5 initial `capture_pdf --engine pymupdf` calls against `arxiv.org/abs/<id>` URLs silently captured only the HTML abstract landing page (1 page), not the full PDF — a recurring issue already logged 2026-04-22/2026-08-01/2026-08-08 in master_notes.md but never fixed in code. All 5 ingest subagents independently caught it via thin-content warnings. Re-captured all 5 against `arxiv.org/pdf/<id>` directly (18–48 real pages each, `audit_captures` clean), then applied the actual fix to `tools/capture_pdf.py` (`_normalize_arxiv_url()`, called in `_resolve_source()`) so future runs don't need the manual workaround. Verified against a fresh capture. Logged as the 4th occurrence in master_notes.md, `Status: open (fix applied on this branch, not yet harvested)`.
+
+Pages written: 5 new — [[one-shot-opd-data-efficiency]] (arXiv:2609.04172), [[gradient-aligned-rewards-rlvr]] (arXiv:2609.03342), [[terminal-universe]] (arXiv:2609.04148), [[latentpress]] (arXiv:2609.01507), [[disco-arex-skill]] (arXiv:2609.02749).
+
+Conflicts: no new conflict file opened; no existing conflict file extended. Several sources noted complementary (not contradicting) relationships to [[conflicts/sparse-policy-selection-vs-gradient-cancellation]] (GAR, one-shot-OPD) — cross-linked in the new pages' `## Related` sections rather than editing the conflict file itself, since none stake a competing position on that debate's actual axis.
+
+Structural flags (not acted on this run, logged to master_notes.md): both the OPD/OPSD cluster (7 pages) and the agent-skill-distillation cluster (4 sources / 3 weeks) have grown past the point where loose individual pages are legible — candidates for `[[test-time-training]]`-style overview pages, left for the user to greenlight.
+
+Watchlist additions: 5 (LLaDA-Image, "Uno" diffusion-augmented LLM framework [unverified lead], SolarWM, LightNav-0, Import AI #471).
+
+Reference-sources.md: no new recurring sources added this week. Reddit access-blocker flagged in master_notes.md for `/lint` to consider, not acted on here per that file's "ask before editing" convention.

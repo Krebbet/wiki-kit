@@ -90,12 +90,29 @@ def _rewrite_image_refs(markdown: str, assets_rel: str) -> str:
     return _IMAGE_REF_RE.sub(repl, markdown)
 
 
+_ARXIV_ABS_RE = re.compile(r"^(https?://arxiv\.org)/abs/([^/?#]+)")
+
+
+def _normalize_arxiv_url(src: str) -> str:
+    """Rewrite an arXiv `/abs/<id>` URL to `/pdf/<id>`.
+
+    `/abs/` serves an HTML landing page, not the PDF; downloading it verbatim
+    silently captures the abstract only (both engines — this bit marker via a
+    weasyprint HTML->PDF path and pymupdf via treating the HTML as a 1-page PDF).
+    """
+    m = _ARXIV_ABS_RE.match(src)
+    if not m:
+        return src
+    return f"{m.group(1)}/pdf/{m.group(2)}"
+
+
 def _resolve_source(src: str) -> tuple[Path, str | None, Callable[[], None]]:
     """Resolve src to (pdf_path, source_url, cleanup_fn).
 
     For HTTP(S) URLs, downloads to a tempdir and returns a cleanup that removes it.
     For local paths, returns the path with a no-op cleanup.
     """
+    src = _normalize_arxiv_url(src)
     if src.startswith(("http://", "https://")):
         tmp_dir = Path(tempfile.mkdtemp(prefix="wk-pdf-"))
         tmp_path = tmp_dir / "source.pdf"

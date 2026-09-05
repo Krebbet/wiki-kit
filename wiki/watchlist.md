@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-29
+last_reviewed: 2026-09-05
 ---
 
 # Watchlist — Identified But Not Captured
@@ -278,3 +278,17 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **VGI-Bench: Probing Visual Intelligence in Video Generation Models** — Benchmark for physical/visual intelligence in video-generation models. *(weekly-brief 2026-08-29.)*
 - **UrbanGround** — Multimodal LLM-agent navigation/spatial-reasoning benchmark in a realistic 3D city replica. *(weekly-brief 2026-08-29.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-09-05)
+
+- **LLaDA-Image: Building Strong Image Generators with Fully Open Training Recipes (arXiv:2609.03796)** — 6B DiT built on the LLaDA2.0-Mini diffusion-LM backbone; image-only pretrain-then-align recipe; new open-source SOTA on Qwen-Image-Bench (53.5). HF Daily Papers #2 trending. Diffusion-LM-as-image-backbone sibling of [[coladlm]] / [[elf-embedded-language-flows]]. *(weekly-brief 2026-09-05.)*
+- **"Uno" — diffusion-augmented LLM framework unifying AR and discrete diffusion decoding** — Surfaced as alphaXiv-trending via two independent search passes; claimed 2.5× single-request speedup via parallel decoding. Exact arXiv ID/URL could not be confirmed at scan time — flagged as an unverified lead, needs direct-source lookup before promotion to a capture. *(weekly-brief 2026-09-05.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-09-05)
+
+- **SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models (arXiv:2609.02886)** — Open training recipe + open data for long-horizon video world models. Adjacent to [[conflicts/pure-video-vs-3d-world-models]]. *(weekly-brief 2026-09-05.)*
+- **LightNav-0: VLM Spatial Intelligence for Generalist Embodied Navigation (arXiv:2608.30935)** — Compact VLM for embodied navigation with a compute-efficiency angle. *(weekly-brief 2026-09-05.)*
+
+## Infrastructure (continued — weekly-brief 2026-09-05)
+
+- **Import AI #471 — "Why Hugging Face worries me; space mining; Five Eyes on AI" (Jack Clark, Aug 31 2026)** — Policy-lead commentary on open-model-ecosystem risk (Hugging Face) and dual-use/national-security framing. Continues the policy/capability-risk thread from Import AI #467 (self-sustaining AI worm, 2026-08-08). *(weekly-brief 2026-09-05.)*
