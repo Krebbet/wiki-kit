@@ -146,6 +146,21 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - LLMZero (arXiv:2606.18388) — LLM agent meta-searches over RL training hyperparameters and data mixtures; finds non-obvious schedules; AutoRL for post-training
 
+## RLVR mechanics (cont.)
+
+- Aggregation-Induced Reward Hacking in Multi-Reward RL (arXiv:2609.00213) — scalarizing multiple reward dimensions in RLVR post-training creates a hackable aggregate signal
+- The Rise of Verbal Reinforcement Learning (arXiv:2609.01597) — survey unifying natural-language feedback as grounding/deliberative/training signal
+
+## Process reward models (cont.)
+
+- Small Language Models as Judges for Rubric-Based RL (arXiv:2608.30005) — small-model (in-scope size range) reward/judge design for rubric-based RL
+
+## Data-efficient / mid-training
+
+- Post-Training LMs for Gold-Medal Coding Competitions (arXiv:2609.02849) — end-to-end SFT+RL post-training pipeline for competitive programming; borderline scope (benchmark-flavored) but has genuine method detail
+- Knowledge Distillation During Mid-Training Favors Reasoning over Factual Recall (arXiv:2609.01532) — "Switch Distillation"; relevant to the reasoning-vs-statistical-recall distinction central to the wiki thesis
+- Dynamic Important Example Mining for Reinforcement Finetuning (arXiv:2608.29252) — title suggests curriculum/data-selection relevance for RFT; content unconfirmed, low-confidence flag from this week's scan
+
 ## In-context learning theory
 
 *Seeded 2026-08-07. Closest current coverage: [[research/in-context-learning-theory/icl-implicit-weight-update]].*
@@ -159,6 +174,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-08-28]] — most recent weekly sweep (unusually conflict-dense week: 5 captures, all genuinely new; full-text ingest surfaced 3 fresh conflicts the abstract-only scan missed; 8 watchlist additions)
+- [[weekly-briefs/2026-09-04]] — most recent weekly sweep (5 captures, all genuinely new after dedup caught 2 already-ingested candidates pre-capture; two independent OPD-mechanism-critique papers this week; 6 watchlist additions)
+- [[weekly-briefs/2026-08-28]] — prior weekly sweep (unusually conflict-dense week: 5 captures, all genuinely new; full-text ingest surfaced 3 fresh conflicts the abstract-only scan missed; 8 watchlist additions)
 - [[weekly-briefs/2026-08-21]] — prior weekly sweep (moderate week: 4 genuinely new captures from 5 slots — 1 wasted on a duplicate re-discovery of the 2026-08-07 RSTG capture; 0 watchlist surplus)
 - [[weekly-briefs/2026-08-14]] — prior weekly sweep (light week: 3 candidates, all captured, 0 watchlist surplus)

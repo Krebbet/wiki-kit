@@ -993,3 +993,24 @@ Autonomous weekly sweep. Source survey (4 parallel subagents: aggregators, curat
 - `wiki/conflicts/revisql-vs-spurious-rewards-noise-robustness.md` (new) — ReViSQL's reward-noise-sensitivity finding vs. Spurious Rewards' random-reward-robustness finding.
 
 **Watchlist:** 8 additions (SPADE, TTPO, CritICL, Best Practice Critic Optimization, SecOPD, Self-OPD [flow matching], On-Policy Self-Distillation in Diffusion Models, Chain-of-Experience). See `wiki/watchlist.md` for details.
+
+## [2026-09-04] weekly-brief | 2026-09-04 sweep
+
+Autonomous weekly sweep. Source survey (4 parallel subagents: aggregators, curators, lab blogs, code/release proxies) found two independent papers this week attacking sampled-token on-policy distillation's mechanism from different angles (OPSA: no-teacher-needed; IDA-OPD: entropy-influence-gated diversity fix) — the OPD literature is trending toward mechanism interrogation. Lab blogs and code/release proxies were quiet (all 11 tracked labs silent, no tracked-repo activity beyond doc-only OPSD commits).
+
+**Duplicate-detection check applied proactively this run** (per the recurring 2026-05-17/2026-08-21 lesson in `master_notes.md`): grepped all 13 raw candidate arXiv IDs against `wiki/**/*.md` before capture. Caught 2 already-ingested duplicates pre-capture for the first time (ES-vs-GRPO arXiv:2608.27351 and LURE arXiv:2608.21871, both from the 2026-08-28 sweep, resurfaced by this week's aggregator subagent) — no wasted capture/ingest cycle this run. Also caught 2 items (TTPO, CritICL) already sitting on the watchlist from prior weeks, excluded from re-adding.
+
+**Tooling notes (both logged to `master_notes.md` as recurring, neither promoted via `/harvest`):**
+- 5th recurrence of `capture_pdf --engine marker` failing with `No module named 'weasyprint'` — skipped straight to `--engine pymupdf` for all 5 captures this run (no wasted attempt).
+- 5th recurrence of the pymupdf image-ref-path bug (repo-root-relative paths) — same `sed` workaround applied to all 5 captures, 0 audit issues after.
+
+**Pages written:**
+- `wiki/research/teacher-student-rl/opsa-teacher-free-self-adaptation.md` — arXiv:2608.31046: OPD's gains come from suppressing low-logp student tokens, not real teacher distillation; teacher-free/noisy supervision matches standard OPD.
+- `wiki/research/teacher-student-rl/ida-opd-entropy-influence.md` — arXiv:2608.29846: entropy-influence-gated advantage shrinkage fixes sampled-token OPD's diversity collapse; student exceeds teacher on several pass@16 benchmarks.
+- `wiki/research/process-reward-models/cliff-first-mistake-credit.md` — arXiv:2609.02817: LLM-judge first-mistake prefix/suffix decomposition for process-reward credit, no extra reward model; +15% over OPD.
+- `wiki/research/curriculum-and-decomposition/pac-progress-augmented-curriculum.md` — arXiv:2608.30528: Bayesian Thompson-sampling rollout-budget curriculum for GRPO multi-task RL.
+- `wiki/research/data-efficient-survey/sft-rl-budget-allocation.md` — arXiv:2609.01573: near-optimal SFT/RL annotation-budget-ratio framework; explicitly out of scope below 5k samples.
+
+**Conflicts opened:** `wiki/conflicts/opsa-vs-opd-pattern-transfer.md` (new) — OPSA's no-teacher-needed finding vs. opd-dual-nature-generalization's teacher-origin-pattern-transfer claim. Reciprocal link added to opd-dual-nature-generalization.md's Related section (page has no dedicated Conflicts section). `wiki/conflicts/index.md` updated.
+
+**Watchlist:** 6 additions (Aggregation-Induced Reward Hacking, Verbal RL survey, Small LMs as Judges, Gold-Medal Coding Competitions post-training, KD Mid-Training Favors Reasoning, Dynamic Important Example Mining [low-confidence]). See `wiki/watchlist.md` for details.
