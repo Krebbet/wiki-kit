@@ -66,6 +66,7 @@ These are high-signal writeups from the labs shipping frontier agent products. W
 | LlamaIndex Blog | https://www.llamaindex.ai/blog | RAG-heavy; occasional agent / workflow patterns. | 2026-04-22 | probation |
 | Replit Blog | https://blog.replit.com | Agent v2 / coding-agent posts. | 2026-04-22 | probation |
 | Sierra / Bret Taylor | https://sierra.ai/blog | Enterprise agent deployment writeups. | 2026-04-22 | probation |
+| Prime Intellect Blog | https://www.primeintellect.ai/blog | Open-source self-improving RLM agent harness (Prime Agent) with a fast, recurring release cadence (v0.9.1 update Sep 4, launched Aug 6); surfaced twice in one window via the 2026-09-06 sweep. New watch, probation pending a second high-signal week. | 2026-09-06 | probation |
 
 ## GitHub awesome-lists
 

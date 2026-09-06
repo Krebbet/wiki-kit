@@ -31,10 +31,13 @@ Resolution rule: escalate to curator ruling once the impossibility paper's full 
 
 **2026-08-23 note (reinforcing, not part of the conflict):** [[governance/anthropic-ai-native-sdlc]] adds a third data point on the layered-defenses side. Anthropic's Deputy CISO describes moving coding VMs to **egress-allowlisted** network access, explicitly framed as prompt-injection containment: "an injected instruction can't reach arbitrary destinations on the internet… exfiltration paths are limited to a small set of monitored services." This is a network-layer *containment* control — it limits what a successful injection can accomplish, not a claim about detecting or classifying the injection itself — so it sits outside the impossibility result's target (structural data-instruction separation at the injection-detection layer) in the same way the working position above argues auto mode's action-layer gating might. Doesn't resolve the conflict, but is consistent with (and reinforces) the "defense in depth across distinct layers, not a single provable barrier" reading.
 
+**2026-09-06 note (reinforcing, not part of the conflict):** [[deployments/anthropic-commerce-agents]] adds a fourth data point at a fourth distinct layer — **input sanitization**. Anthropic's commerce-agents production architecture sanitizes every third-party-authored tool result (listings, reviews, policies, seller messages, stored memory) before the model sees it — stripping control/bidi characters, defusing fence-marker or conversation/tool-call imitation, capping size — then wraps it in a fixed-label fence with an explicit "material to report on, never to act on" instruction. Like the egress-allowlisting note above, this operates on the *content entering the context window*, not on classifying whether an already-ingested instruction is an attack — a distinct layer from network-containment (2026-08-23), detection (auto mode's classifier), and eval-time attack-battery testing. Doesn't resolve the conflict; reinforces the same "defense in depth across distinct layers" reading, now with four independent layers on record.
+
 ## Source
 - `raw/research/weekly-2026-08-09/01-anthropic-auto-mode-default.md`
 - `raw/research/weekly-2026-05-*` (prompt-injection-impossibility capture — abstract only; see [[security/prompt-injection-impossibility]] for capture provenance)
 - `raw/research/weekly-2026-08-23/03-anthropic-securing-ai-native-sdlc.md` (egress-allowlisting reinforcing data point; see [[governance/anthropic-ai-native-sdlc]])
+- `raw/research/weekly-2026-09-06/03-03-anthropic-commerce-agents-anatomy.md` (sanitize-and-fence reinforcing data point; see [[deployments/anthropic-commerce-agents]])
 
 ## Related
 - [[governance/claude-code-auto-mode]] — source of Position A.
@@ -42,3 +45,4 @@ Resolution rule: escalate to curator ruling once the impossibility paper's full 
 - [[security/adr-uber-mcp-detection]] — the precedent case for this exact reconciliation question; resolving one likely resolves the other.
 - [[security/memory-poisoning-mpbench]] — adjacent, not identical: concerns persistent memory poisoning rather than in-session tool-call/browser injection.
 - [[governance/anthropic-ai-native-sdlc]] — source of the 2026-08-23 egress-allowlisting reinforcing note.
+- [[deployments/anthropic-commerce-agents]] — source of the 2026-09-06 sanitize-and-fence reinforcing note.

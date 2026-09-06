@@ -59,10 +59,29 @@ A follow-on product changelog (not the retrospective above) announces five harne
 
 No benchmark/quantitative data given — this is a product-changelog capture. Subscriptions and per-subagent VM isolation are the most architecturally significant items: they extend the three-way state-decoupling design above (agent loop / machine state / conversation state) with an explicit *trigger* axis (what wakes the agent loop) and push VM isolation down to subagent granularity.
 
+## 2026-09-02: Self-Hosted Machines
+
+A follow-on vendor blog post elaborates the execution layer of the state-decoupling architecture — the "machine state" axis — with a customer-infrastructure deployment option. **The agent loop, inference, and planning stay in Cursor's cloud; only the execution environment moves.** An `agent worker start` process opens a long-lived **outbound** HTTPS connection from the customer's machine to Cursor; Cursor's cloud harness does inference/planning and sends tool calls to the worker, which executes them (holds the repo working copy, edits files, runs commands) and returns results for the next inference round.
+
+**Stated security property:** "Cursor never initiates a connection into your network" — the trust boundary is outbound-only from the customer side. This is not full on-prem: tool outputs (which may contain code) flow back to Cursor for inference, and transcripts "may be processed and stored by Cursor."
+
+**Two pooling models:**
+- **My Machines** — single laptop/VM tied to one account, personal workflow.
+- **Pools** — a named queue of workers serving a team/enterprise; a controller watches a request queue and runs a team-supplied spawn script to add capacity. Pools aren't tied to individual repos (one pool serves many repos); idle timeout plus optional workspace preservation for follow-ups; **hibernation** (snapshot + stop idle machine, restore on reconnect within a window) trades cost against several-minute workspace-reconstruction latency.
+
+Cursor-hosted VMs (the existing default — per-session dedicated VM with secret redaction/egress controls/signed commits) remain the baseline; self-hosting is opt-in for teams needing in-network tool execution, custom hardware (GPU/Mac), or hard-to-package build pipelines.
+
+**Multi-provider sandbox ecosystem** (new relative to the Temporal/heterogeneous-pod-type framing above, which described Cursor-hosted infrastructure only): partners named for running workers include AWS Lambda (MicroVMs, run in your own AWS account, near-instant snapshot resume), Cloudflare, Coder, Daytona, E2B, Modal, Namespace (real Mac devboxes for iOS/macOS builds), and Vercel Sandbox.
+
+**Computer use extended to Linux** — previously Mac-only per the retrospective above; agents can now click/screenshot/control a browser on Linux workers with Chrome/Chromium installed, watchable/interruptible from Cursor.
+
+Cursor reports (vendor-stated, collect-but-confirm): cloud agents now create >60% of the pull requests merged internally, up from the >40% figure in the original retrospective above.
+
 ## Source
 
 - `raw/research/weekly-2026-05-25/01-cursor-cloud-agents.md` — captured 2026-05-25 from the Cursor engineering blog, "What we've learned building cloud agents." Analyst summary at `raw/research/weekly-2026-05-25/.ingest/01-cursor-cloud-agents.summary.md`. **Primary vendor engineering writeup** — architectural descriptions of what Cursor built and decided are trustworthy; reliability metrics and PR-share figures are vendor self-reported (collect-but-confirm).
 - `raw/research/weekly-2026-08-23/01-cursor-cloud-agents-event-driven.md` — captured 2026-08-23 from Cursor's changelog (`cursor.com/changelog/08-19-26`, dated 2026-08-19). **Vendor changelog** — feature-announcement only, no evaluation data.
+- `raw/research/weekly-2026-09-06/05-05-cursor-self-hosted-machines.md` — captured 2026-09-06 from the Cursor blog, "Run cloud agents on machines you manage" (`cursor.com/blog/self-hosted-machines`, dated 2026-09-02). **Vendor primary** — architecture description trustworthy; the "never initiates inbound connection" security claim and the >60% PR-share figure are vendor-stated (collect-but-confirm).
 
 ## Related
 
@@ -76,3 +95,4 @@ No benchmark/quantitative data given — this is a product-changelog capture. Su
 - [[patterns/topology-taxonomy]] — decoupled state enabling heterogeneous pod types and parent-subagent topologies is a new concrete cloud-deployment topology instance
 - [[patterns/agent-skills]] — Custom Modes (pin a skill as always-on) is a concrete product mechanism for skill invocation/persistence
 - [[case-studies/latent-space-async-agents]] — that page's "always-on agent direction" theme (Cognition CPO + OpenInspect, May 2026) is directly instantiated here by Subscriptions + `/goal`
+- [[deployments/mcp-infrastructure]] — the outbound-only worker-connection pattern is a network-trust-boundary choice relevant to the agent-identity/enterprise-security workstream tracked there, though Self-Hosted Machines doesn't discuss auth/identity tokens directly

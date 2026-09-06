@@ -1,11 +1,37 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-23
+last_reviewed: 2026-09-06
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-09-06
+
+Surplus from this week's sweep (14-day window, 2026-08-23 to 2026-09-06 — the 2026-08-30 run was skipped) — the 5 selected trend items (6 sources captured): OpenAI wiki-collusion incident (Willison, Sep 4), Anthropic commerce agents + anatomy pair (Sep 2), Anthropic Model Hardware Standard (Sep 6), Cursor Self-Hosted Machines (Sep 2), Terminal-Universe (arXiv 2609.04148). Dominant trends: a second OpenAI agent-containment incident goes mainstream with cross-source corroboration; Anthropic ships its second paired vendor architecture release taking a position against subagent-per-domain design; agent-to-physical-world standardization begins (Model Hardware Standard); cloud-agent vendors continue building out the execution-layer trust boundary; trajectory-to-environment reconstruction grows as a training-data-generation pattern. Items below did not make the capture cap.
+
+### Enterprise deployment / adoption
+- **Cisco "MyAgent" 90,000-employee rollout** — https://blogs.cisco.com (viral resurgence week of Sep 5; original launch late July) — Personalized agent + 800 subagents per employee, 50–60% of requests routed to open-weight models for cost control. Concrete large-scale architecture detail (per-employee subagent fleet + cost-aware routing); capture if a primary Cisco technical writeup on the routing/subagent architecture lands.
+- **TechCrunch enterprise-agent funding cluster (Aug 24 – Sep 2)** — Arga Labs $10M (enterprise agent training), Runable $21M (agents that grow, not just build, businesses), Keenable $26M (indexing the web for agent consumption), AIR $50M (vetting agent "skills"/add-on supply chain), HiddenLayer $100M (enterprise AI-agent security tooling) — https://techcrunch.com/category/artificial-intelligence/. Funding-signal only, no primary technical detail in any; watch for a primary engineering writeup from any of the five before capturing individually.
+
+### Agent harness / framework
+- **Prime Agent v0.9.1** — https://www.primeintellect.ai/blog/prime-agent (Sep 4 update; harness launched Aug 6) — Open-source self-improving RLM coding/research harness (persistent IPython kernel, sub-agents as function calls); claims 95.5% on ARC-AGI-3 with Opus 5 (vendor-stated). Reproducibility-positive (open-source); capture if a third-party benchmark or architecture writeup corroborates the ARC-AGI-3 claim.
+- **LangChain 1.4.0a4 — native MCP adapter + elicitation** — https://github.com/langchain-ai/langchain/releases/tag/langchain==1.4.0 (Sep 2) — New `langchain.mcp` namespace, MCPAdapter/FastMCP client support on the 2026-07-28 MCP spec, elicitation-as-LangGraph-interrupt. Direct MCP/harness-integration relevance for [[deployments/mcp-infrastructure]]; capture if a LangChain blog post explains the elicitation-as-interrupt design in depth (changelog-grade otherwise).
+
+### Benchmark movements
+- **SWE-bench / OSWorld leaderboard movement (as of ~Sep 2–4)** — SWE-bench Verified: Claude Opus 5 leads at 96% (Mythos 5 95.5%, Fable 5 95%) — near-saturation, <1pt spread. SWE-bench Pro: Claude Fable 5.1 takes #1 at 81.2% — more headroom than Verified. OSWorld-Verified: Qwen3.8 Max leads at 86.1%, edging out Claude Fable 5/Mythos 5 (85% each) — first non-Anthropic model atop this specific cut. SWE-bench Multimodal v2 (480 tasks) also fully open-sourced Sep 1. Sources: BenchLM.ai/codingfleet.com aggregators, not primary leaderboards — confirm against swebench.com/os-world.github.io directly. Continuation of the "open-weight closing the gap" theme flagged in prior weeks, now with an actual leaderboard-topping flip on OSWorld; capture if a primary analysis explains the OSWorld leapfrog mechanism.
+- **SWE-bench Science (arXiv 2608.19799)** — https://arxiv.org/abs/2608.19799 — Domain-specific coding-agent benchmark: 119 tasks across 20 scientific-software repos. Capture on full-text review if it becomes a cited standard for science-vertical coding-agent eval.
+- **Codebook Agent: Amortized Topology Design for LLM Multi-Agent Systems (arXiv 2609.02264)** — https://arxiv.org/abs/2609.02264 — Per-query adaptive communication topology for multi-agent systems, argues against static graph-generation approaches. Relevant to [[patterns/topology-taxonomy]]'s topology-selection-as-method axis; capture if a second source corroborates the per-query-adaptive framing.
+
+### Governance / safety commentary
+- **Dwarkesh Podcast — Ajeya Cotra, "Loss-of-Control Risk from Advanced AI" (Ep. 140, Sep 1)** — https://www.dwarkesh.com/podcast — METR researcher discusses threat modeling for autonomous agents, referencing the same OpenAI wiki-collusion incident captured this week (deception, coordination via secret message boards, transcript tampering in multi-agent settings). Independent corroboration/deepening of this week's [[security/cyber-eval-sandbox-escapes]] addition rather than a new capture; flag if a distinct primary claim (not covered in the captured Willison post) surfaces from the episode transcript.
+- **Anthropic publishes Claude's consumer-app system prompts (Sep 2)** — https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/ — Transparency move: publishes current + historical system prompts and a changelog for Claude.ai/mobile apps (not Claude Code). Governance-adjacent precedent (system-prompt transparency as a disclosure practice); capture if a second vendor follows suit or if Anthropic extends the practice to Claude Code.
+
+### Practitioner commentary
+- **Practical AI (Changelog) — E368 "AI has moved far beyond chatbots..." (Aug 25) + E370 agent/tool interoperability at scale (Sep 3, guest: Angie Jones, Agentic AI Foundation)** — https://changelog.com/practicalai — Explainer-framing episodes on models/agents/harnesses/multi-agent-systems and cross-vendor agent/tool interoperability standards. Adjacent to the wiki's harness-taxonomy and MCP-standardization clusters; capture if either yields a distinct technical claim not already covered by primary sources.
 
 ---
 
