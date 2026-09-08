@@ -114,3 +114,4 @@ This page synthesises across multiple captured sources, each anchored on its pri
 - [[federated-learning]] — substrate page; consumer-side framing of §5
 - [[pricing-algorithm-taxonomy]] — pricing-algorithm families targeted by §3
 - [[data-disruption-strategy-map]] — risk classes 5 + 6 are the operational expression of §5, §6, §2
+- [[regulatory/ftc-amazon-ad-auction-lawsuit]] — rare case where firm-side internal reasoning is on the public record via litigation discovery (the "proxy 2nd price" SVP quote, deliberate anti-detection design) rather than inferred

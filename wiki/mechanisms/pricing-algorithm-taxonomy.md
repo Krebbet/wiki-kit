@@ -319,6 +319,7 @@ Two sources dropped during capture: Ban & Keskin 2020 (SSRN / INFORMS both 403 b
 - [[consumer-facing-dynamic-pricing]]
 - [[surveillance-pricing-retail]]
 - [[algorithmic-collusion]]
+- [[regulatory/ftc-amazon-ad-auction-lawsuit]] — GSP/Vickrey ad-auction plus covert "soft reserve" override as a concrete auction-pricing taxonomy entry
 - [[obfuscation]]
 - [[adversarial-data-poisoning]]
 - [[algorithmic-collective-action]] — coordinated counter-power against Family 1 / Family 3 (data manipulation by collective)

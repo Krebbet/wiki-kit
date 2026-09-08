@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-24
+last_reviewed: 2026-09-07
 ---
 
 # Watchlist
@@ -23,9 +23,10 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - California AG surveillance-pricing sweep — civil investigative demands ongoing
 - ~~NY AG → Instacart APDA enforcement letter (Jan 2026)~~ — *captured 2026-05-04; Instacart halted item-price tests*
 - House Oversight surveillance-pricing investigation — March 5 2026 letters; document responses arriving
-- CA AB 2564 — full surveillance-pricing ban (broader than HB0895); read third time + amended, ordered to second reading in CA Senate as of Aug 21 2026; not yet passed — CA AG CCPA CID sweep complement
+- CA AB 2564 — full surveillance-pricing ban (broader than HB0895); Senate passed Aug 31 2026 but **missed the Assembly concurrence deadline** — did not reach Governor's desk this session; watch for reintroduction next session
 - HB0895 first enforcement actions — effective Oct 1 2026; loophole-bound enforcement reach predicted
-- FTC proposed personalized-pricing enforcement policy statement — comment docket FTC-2026-1057 open through Sept 18 2026; captured 2026-08-24 ([[regulatory/ftc-personalized-pricing-policy]]); watch docket comments + whether a final statement issues
+- FTC proposed personalized-pricing enforcement policy statement — comment docket FTC-2026-1057 **extended to Sept 25 2026** (was Sept 18); captured 2026-08-24 ([[regulatory/ftc-personalized-pricing-policy]]); watch docket comments + whether a final statement issues
+- RealPage MDL private-settlement ($359.9M+ pool) — opt-out deadline Sept 22 2026; final approval hearing Oct 15 2026
 - Connecticut PA 26-64 — signed May 14 2026; broker registry Jan 2027, deletion portal Jul 2028 — captured 2026-05-25
 - DOJ-RealPage Tunney Act final judgment — court-monitor + algorithm-certification regime entering effect
 - Camden Property Trust $53M — preliminary approval target May 15 2026
@@ -270,6 +271,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - EFF "Zero-Knowledge Proofs Aren't Age Verification Silver Bullets" (Aug 18 2026) — documents a Chrome-extension bypass of EU EUDI ZKP age tokens; critique-only, no counter-mechanism proposed
 - Mozilla "A Framework for Openness" (Aug 20 2026, CACM) — AI-stack openness taxonomy (data/code/weights/docs); descriptive vocabulary, not a tool
 - EFF + civil-society open letter to Nottinghamshire Police on live facial recognition (Aug 21 2026) — advocacy action, no reusable campaign toolkit published alongside it
+
+## Recent additions (2026-09-07 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- ICA General Assembly & Global Conference, Panama City (Sept 13-18 2026) — board elections Sept 15; watch for post-event federation-leadership coverage
+- Cornish-Adebiyi v. Caesars Entertainment (3d Cir., decided July 29 2026, still propagating in commentary) — revived hub-and-spoke price-fixing claims against Cendyn's "Rainmaker" algorithm; ~90% algorithm-adherence rate treated as circumstantial collusion evidence — lowers pleading bar, adherence-rate is a scrapeable/measurable signal
+- Privacy Washing (arXiv 2609.02055, Sept 2 2026) — privacy-policy internal-contradiction detector; audit methodology only, no confirmed public code/tool yet
+- Mozilla Data Collective "Compensated Datasets" (July 30 2026 launch, standalone since May 2026) — data-licensing cooperative spinout; not yet confirmed as a captured wiki page, backfill check candidate
+- Groundwork Collaborative / Consumer Reports Instacart per-item price-variation findings (up to 5 prices/item, 23% spread) — follow-on to the already-captured NY AG Instacart APDA action; watch for a dated primary release to capture
 
 ## Recent additions (2026-08-17 weekly-brief overflow)
 

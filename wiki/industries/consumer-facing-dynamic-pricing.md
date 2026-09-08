@@ -198,3 +198,4 @@ These are individual episodes, not a coordinated movement. But they establish th
 - [[algorithmic-collusion]]
 - [[regulatory-responses]]
 - [[regulatory/ftc-personalized-pricing-policy]] — August 2026 FTC personalized-pricing disclosure policy statement
+- [[regulatory/ftc-amazon-ad-auction-lawsuit]] — seller/advertiser-side extraction (Amazon ad-auction rigging); Doctorow's MFN-clause transmission-mechanism claim connects it back to consumer-facing price effects

@@ -88,3 +88,4 @@ arXiv 2604.15825 (Frick, Cornell, April 2026) closes the convergence-speed open 
 - [[rental-housing-algorithmic-pricing]]
 - [[surveillance-pricing-retail]]
 - [[regulatory-responses]]
+- [[regulatory/ftc-amazon-ad-auction-lawsuit]] — single-firm covert auction-price override (not multi-firm collusion, but same extraction-via-nominally-neutral-mechanism pattern)
