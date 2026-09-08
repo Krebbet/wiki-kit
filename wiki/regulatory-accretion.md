@@ -32,6 +32,20 @@ Rules accumulate because **creation is gatekept and survival is not**. Miller & 
 - **The available inference, and the discipline required about it.** The mechanism — asymmetric gatekeeping plus vested-interest lock-in — is generic to any rule-issuing body over any span it operates, which *would* predict that a single agency's rule stock accretes with its own operating tenure. The source stops short of stating this and never tests it. **The wiki must not attribute that inference to Miller & Dudley as a finding.**
 - **This is rule-stock accumulation, not organisational growth.** No headcount, no budget, no hierarchy layers appear anywhere. Keep it analytically separate from the Parkinson/Niskanen/Garicano growth literature in [[bureaucratic-growth-and-parkinsons-law]]: same shape of curve over calendar time, different object, different mechanism.
 
+## A second instance, at doctrine level: EPA/TSCA and engineered microbes
+
+**[wiki synthesis]** Alex Tabarrok's Marginal Revolution post "No Doing, No Learning" (public-choice/libertarian priors — see below; illustrative-evidence tier, not a systematic dataset) supplies a second worked case of this page's core mechanism, at a different level than Miller & Dudley's regime-wide claim. In the 1980s EPA reinterpreted the Toxic Substances Control Act — written for industrial chemicals — to cover genetically engineered organisms: "officials reasoned that genomes are made of chemicals and chemicals are covered." The reinterpretation set a bright-line trigger (any introduction of DNA from another genus, including a marker gene used only to confirm successful editing, counts as a "new chemical" requiring review) and, in Tabarrok's words, "has governed the field ever since," with no vote and no debate ever revisiting it.
+
+This is the same create-gatekept/survive-unreviewed asymmetry named above, but instantiated **inside one agency's own doctrine** rather than across the federal regulatory corpus: the reinterpretation was adopted once, informally, and has faced no subsequent review mechanism at all since. It is the doctrine-level analogue this page's "Level of analysis" section flags as untested by Miller & Dudley (an agency's own internal precedent accreting with tenure) — though it remains one doctrine, not a demonstrated full rule stock ageing with the agency.
+
+**[model]** Tabarrok reports "more than 240" TSCA applications for engineered microbes between 1987 and 2018, of which "only a few were ever approved," citing a secondary source (Niko McCarty, *Works in Progress*). No denominator logic is supplied (how many were viable candidates, rejected for cause vs. cost), and the accompanying list of plausible foregone applications (explosive-detecting bacteria, rare-earth-extracting microbes, plastic-digesting enzymes) is explicitly speculative in the source itself ("We can't know for sure"). Treat the count as illustrative, not a base rate.
+
+**[empirical, secondhand via blog]** The essay's one hard data point — cited in support of its NEPA/nuclear case, not the TSCA case — is a real cost time series: overnight construction costs for US nuclear reactors fell 81% from 1954–1968, then rose 187% for reactors begun 1967–1972, with the essay's own honest note that the reversal predates Three Mile Island (1979), the event usually blamed. This bears on veto points generally rather than on TSCA specifically and belongs more naturally on [[veto-points-and-bureaucratic-autonomy]]; noted here only because it is the essay's strongest evidence and calibrates how much weight the rest of the piece can bear.
+
+**Candidate new mechanism, not yet named on this wiki.** Tabarrok's actual argument runs broader than either accretion case: veto points don't just impose static deadweight loss, they foreclose a *sequential learning curve* — "the first approved product is rarely the safest or the best but when we fail to approve the first we don't get the much better 5th." That is a distinct claim from asymmetric review (which explains why rules survive); this one is about what a blocked approval forecloses downstream, and the wiki has no name for it yet. Worth flagging as a candidate mechanism — **learning-by-doing suppression** — to [[dimensions-of-institutional-variation]] and [[veto-points-and-bureaucratic-autonomy]]; not added to either page in this pass.
+
+**Ideological priors of this source.** Tabarrok (George Mason University, Marginal Revolution) writes from a public-choice/libertarian, deregulation-favouring standpoint. The piece is rhetorically loaded ("invisible graveyard," premature-death framing), selects only foregone-benefit examples, never engages the safety case for NEPA or TSCA, and never quantifies harms the regulations may have prevented. Read as an advocacy essay supplying illustrative case material, in the same spirit this page already applies to Miller & Dudley's own priors above.
+
 ## Dimensions named
 
 **[model]** Axes the source names, each usable on a real institution:
@@ -68,6 +82,7 @@ These are filed on [[dimensions-of-institutional-variation]].
 ## Source
 
 - `raw/research/institutional-stagnation/05-miller-dudley-regulatory-accretion.md` — Miller & Dudley, "Regulatory Accretion: Causes and Possible Remedies", *Administrative Law Review* 67(1), 2016, 99 (a Response to Reeve Bull). http://www.administrativelawreview.org/wp-content/uploads/2016/03/MillerDudley_PublishedVersion-1.pdf
+- **Extended [`weekly-2026-09-08`, 2026-09-08]** from: Tabarrok, "No Doing, No Learning," Marginal Revolution, Sept 2026, `raw/research/weekly-2026-09-08/04-no-doing-no-learning.md` — supplies the doctrine-level EPA/TSCA case above.
 
 ## Related
 

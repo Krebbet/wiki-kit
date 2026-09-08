@@ -68,7 +68,7 @@ Use the direct file path instead: `nber.org/system/files/working_papers/w<id>/w<
 | Source | Focus | Added | Status |
 |---|---|---|---|
 | Journal of Economic Perspectives | Accessible surveys; frequent institutional-economics symposia | 2026-08-19 | probation |
-| Journal of Institutional Economics | Core venue for the field | 2026-08-19 | probation |
+| Journal of Institutional Economics | Core venue for the field | 2026-08-19 | active (2026-09-08) — open access since 2025, no Cloudflare block; two captures this sweep |
 | Governance | Public administration and institutional reform | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | American Political Science Review / American Journal of Political Science | Power, veto players, accountability | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | Administrative Science Quarterly / Organization Science | Organisational theory, scale and hierarchy effects | 2026-08-19 | probation |
@@ -83,7 +83,7 @@ Use the direct file path instead: `nber.org/system/files/working_papers/w<id>/w<
 | Quality of Government Institute (Gothenburg) | QoG datasets and working papers | 2026-08-19 | probation |
 | OECD Public Governance | Comparative public-sector performance | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | IMF / World Bank flagship reports | Institutions-and-growth chapters | 2026-08-19 | probation |
-| National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | probation — GAO capture-blocked (2026-08-25); UK NAO/Canada OAG untested |
+| National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | UK NAO: active (2026-09-08); GAO capture-blocked (2026-08-25, confirmed 2026-09-08); Canada OAG untested |
 
 **Capture note (2026-08-25):** `oecd.org`/`oecd-ilibrary.org` and `gao.gov` both returned hard 403s to every
 URL pattern tried (landing page, docserver guesses, browser User-Agent) — no Cloudflare challenge page, just
@@ -91,14 +91,20 @@ a block. Both surfaced a genuinely strong candidate this sweep (an OECD public-s
 Army-modernization audit) that had to be watchlisted instead of captured. Worth a manual browser pull next
 time either source produces a must-have candidate.
 
+**Capture note (2026-09-08):** OECD and GAO both hard-403'd again this sweep (see `watchlist.md` Week of
+2026-09-08 for the specific candidates blocked) — confirmed persistent, not a one-off. `nao.org.uk` captured
+cleanly, but the same landing-page trap NBER has (2026-08-25 note) applies here too: `nao.org.uk/reports/<
+slug>/` is a thin summary page, not the report body — use the direct PDF path
+(`nao.org.uk/wp-content/uploads/<year>/<month>/<Report-Name>.pdf`) instead.
+
 ## Blogs, essays and commentary (discovery only — cap 2 captures/sweep)
 
 | Source | Angle | Added | Status |
 |---|---|---|---|
-| VoxEU / CEPR columns | Economist-authored summaries of new institutional research | 2026-08-19 | probation |
-| Broadstreet | Historical political economy, explicitly institutions-focused | 2026-08-19 | probation |
-| Marginal Revolution | Discovery feed for institutional-economics papers | 2026-08-19 | probation |
-| Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | probation |
+| VoxEU / CEPR columns | Economist-authored summaries of new institutional research | 2026-08-19 | probation — capture-blocked (2026-09-08): cepr.org Cloudflare bot-check, `--js` retry also blocked |
+| Broadstreet | Historical political economy, explicitly institutions-focused | 2026-08-19 | probation — dry sweep (2026-09-08), no posts in window |
+| Marginal Revolution | Discovery feed for institutional-economics papers | 2026-08-19 | active (2026-09-08) — not Cloudflare-gated; one capture this sweep |
+| Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | active (2026-09-08) — strong candidate surfaced, watchlisted |
 | Statecraft | Interviews on how government institutions actually operate | 2026-08-19 | probation |
 | Institute for Government (UK) | Primary-document-grounded analysis of an administrative state | 2026-08-19 | probation |
 | Niskanen Center | State-capacity/vetocracy camp — deliberately included for balance against public-choice sources | 2026-08-19 | active (2026-08-25) |
@@ -138,6 +144,11 @@ survey subagent.
   promoted to `active`. AJPS, Governance, OECD Public Governance and GAO all surfaced strong candidates but
   are currently uncapturable by this wiki's tooling (Cloudflare bot-check or hard 403) — see the per-table
   capture notes above and `master_notes.md` (2026-08-25, kit-level).
+- Second sweep, 2026-09-08: Journal of Institutional Economics, Marginal Revolution, Works in Progress and UK
+  NAO confirmed productive and promoted to `active`. VoxEU/CEPR confirmed Cloudflare-blocked (first live test
+  of this source). OECD and GAO blocks confirmed persistent on a second sweep. SSRN, Canada OAG, Broadstreet,
+  Statecraft, Niskanen and Institute for Government all dry this cycle — none yet at the three-consecutive-
+  dry-sweep retirement threshold.
 
 ## Related
 

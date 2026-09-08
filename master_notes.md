@@ -221,3 +221,24 @@ this wiki's `reference-sources.md` rather than treated as directly capturable �
 these sources are in the candidate pool, since GAO and OECD are both explicitly-watched source categories for
 this wiki (primary institutional documents; multilateral comparative-governance reports).
 **Status:** open
+
+### 2026-09-08 — Landing-page-vs-report-body capture trap generalises beyond NBER
+**Scope:** kit
+**Observation:** Second `/weekly-brief` sweep hit the same failure mode the 2026-08-25 NBER note already
+flagged, on a different domain: `capture_url` against `nao.org.uk/reports/<slug>/` succeeded and produced a
+clean-looking 729-word markdown file — but that page is the report's landing/summary page (background, scope,
+headline conclusions, a download link), not the report body. `tools.audit_captures` reported zero issues
+against it (word count wasn't low enough to trip the thin-capture heuristic). The gap was only caught because
+the downstream `/ingest` subagent, reading the captured file to write its structured summary, noticed the
+content had no figures, tables, or methodology detail and flagged it explicitly as "this looks like a landing
+page, not the report body" — a manual/LLM catch, not a tooling one.
+**Implication:** this is now two independent domains (NBER, NAO) where a government/institutional-report site
+serves a real, non-thin, non-bot-walled landing page at the natural URL, with the actual document one click
+away as a direct PDF link. `tools.audit_captures`'s thin-capture heuristic is the wrong tool for this — the
+page isn't thin, it's just *not the source*. A better check: for known report-hosting domains (or heuristically,
+any capture whose markdown contains a "Download the report (PDF)"-style link or ends abruptly after a
+"Conclusions"/"Recommendations" summary with no body sections), warn that a direct PDF capture should be tried
+instead. Cheaper fix in the meantime: `reference-sources.md`'s per-source capture notes should carry a
+"prefer direct PDF path over landing page" flag for every source in the National-audit-bodies and
+Working-paper-feeds categories, since both have now independently produced this exact trap.
+**Status:** open

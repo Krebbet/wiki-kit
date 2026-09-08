@@ -1608,3 +1608,48 @@ have no Cloudflare bot-check detection, and `audit_captures`' thin-capture heuri
 garbage pages only by the accident of an image-path collision, not by design.
 
 Full brief: `wiki/weekly-briefs/2026-08-25.md`.
+
+## [2026-09-08] weekly-brief | second sweep
+
+**Second run of `/weekly-brief`.** Sources are now largely `active`, so this run scanned the pinned radar
+directly (per `reference-sources.md`'s own convention for established wikis) via five parallel category
+agents, rather than re-surveying from scratch. Window nominally 7 days but effectively 14 (2026-08-25 to
+2026-09-08, since the cron's first live Monday fell in between); 26 candidates surfaced across NBER, JOIE,
+APSR/AJPS/ASQ, OECD/GAO/NAO, VoxEU/MR/Works in Progress/Mercatus, and a dry lecture/Ostrom-Workshop category.
+
+**Selection (5 of 5 capture slots used):** ranked by evidential weight, framework relevance and camp balance
+per `reference-sources.md`. Picked: NBER's China Grand Canal natural experiment (Bai, Bian & Jia — strong
+non-Anglosphere evidential weight); two Journal of Institutional Economics symposium pieces (Ménard's
+meso-institutions framework intro, Kiesling's Ostrom/Buchanan RTO-governance synthesis — both directly
+framework-relevant to this wiki's own general-theory goal); VoxEU's "Don't drain the swamp!" (bureaucracy/
+populism empirics, state-capacity camp) — **capture failed**, Cloudflare-blocked (re-confirms the 2026-08-25
+note that cepr.org/voxeu is bot-gated); substituted with the UK NAO's food-supply-chain resilience audit
+(primary institutional document, diversifies source type). Fifth pick: Marginal Revolution's "No Doing, No
+Learning" (regulatory-gatekeeping/learning-suppression, public-choice camp) — paired with VoxEU's
+state-capacity lean for camp balance even after the VoxEU substitution, since MR captured cleanly.
+
+**Capture note:** the NAO report's landing page (`nao.org.uk/reports/...`) is a thin summary, not the report
+body — same failure mode NBER's landing-page URLs have (2026-08-25 note). Caught by the ingest subagent's own
+"thin capture" flag rather than `audit_captures` (word count alone didn't trip its heuristic); re-captured
+from the direct PDF (`nao.org.uk/wp-content/uploads/.../....pdf`) and re-ingested. Worth generalising the NBER
+direct-PDF-path lesson to NAO in `reference-sources.md`.
+
+**Pages written:** `meso-institutions.md`, `rto-governance-exclusion-and-club-theory.md`,
+`politics-driven-infrastructure-siting.md`, `defra-food-supply-chain-resilience-case-profile.md` — all new.
+The MR source (illustrative-evidence tier, single blog essay) was an extension, not a new page, per its own
+ingest subagent's recommendation: folded into `regulatory-accretion.md` as a second, doctrine-level instance
+of the create-gatekept/survive-unreviewed mechanism, with a pointer (not a new row) flagging "learning-by-doing
+suppression" as a candidate mechanism for a future batch to register properly.
+
+**Register extension:** `dimensions-of-institutional-variation.md` gained four new rows (D139–D142) from the
+two JOIE papers, plus four existing rows (D9, D42, D112, D120) extended with a real-institution instance from
+the NAO audit — the register's second real-institution run after `institution-case-profiles` (2026-08-21).
+The replicability/competitive-exit axis (D141) was checked against D12 (exit/voice) and judged genuinely
+distinct — D12 takes the supply of alternatives as given, D141 asks whether a rival institution can be built
+at all — with the reasoning recorded on the row per the register's own convention for near-duplicate calls.
+
+**Source-status pass:** NAO confirmed capturable (direct PDF path, not the landing page); VoxEU/CEPR
+re-confirmed hard-blocked by Cloudflare across two sweeps now. OECD and GAO remain untested again this week
+(no in-window candidate strong enough to justify a manual browser pull).
+
+Full brief: `wiki/weekly-briefs/2026-09-08.md`.
