@@ -29,6 +29,7 @@ Argus's framing — a "general, self-evolving harness" that closed 6/6 autonomou
 - [[skillopt]] — Argus's skill-update mechanism (propose → Reviewer commits) mirrors SkillOpt's propose-edit-validate loop, extended beyond skill documents.
 - [[agentflow]] — parallel four-module role decomposition (Planner/Executor/Verifier/Generator vs Manager/Planner/Engineer/Reviewer) but the opposite design bet: AgentFlow trains its roles on-policy via Flow-GRPO (weights change); Argus freezes weights and evolves only external runtime state.
 - [[huxley-godel-machine]] — shares the "self-improvement without gradient updates to the base policy" theme via a different mechanism (clade-based tree search vs verification-gated runtime-state admission).
+- [[research-swarm-whistleblowing]] — Argus's role-gated, evidence-backed admission control is a concrete instance of the institutional/enforcement scaffolding this case study argues autonomous swarms need but lacked (sanctioning, dispute resolution).
 - [[seal-self-adapting]] — direct contrast: SEAL trains the adaptation strategy itself via an outer RL loop; Argus keeps self-evolution fixed-model, with SFT/RL on retained trajectories named only as future work.
 
 ## Source

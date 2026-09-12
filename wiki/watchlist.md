@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-05
+last_reviewed: 2026-09-12
 ---
 
 # Watchlist — Identified But Not Captured
@@ -292,3 +292,22 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 ## Infrastructure (continued — weekly-brief 2026-09-05)
 
 - **Import AI #471 — "Why Hugging Face worries me; space mining; Five Eyes on AI" (Jack Clark, Aug 31 2026)** — Policy-lead commentary on open-model-ecosystem risk (Hugging Face) and dual-use/national-security framing. Continues the policy/capability-risk thread from Import AI #467 (self-sustaining AI worm, 2026-08-08). *(weekly-brief 2026-09-05.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-09-12)
+
+- **Thinking with Looped Flows (EPFL/KAIST)** — Novel looped/recurrent flow-based architecture for reasoning; extends the [[hyperloop-transformers]] looped-transformer cluster. *(weekly-brief 2026-09-12.)*
+- **Semigroup-JEPA: Latent Dynamics Consistency for Zero-Shot Physics Generalization (Yale/Brown)** — Novel JEPA-family architecture enforcing semigroup consistency on latent dynamics for physics generalization; extends [[lejepa]] cluster. *(weekly-brief 2026-09-12.)*
+- **Data Scarcity and Model Sparsity: Mixtures-of-Experts Overfit More to Repeated Data (Stanford/UW)** — MoE models degrade faster than dense models under repeated-data training; dropout partially recovers generalization. Training-dynamics complement to [[moe-architecture-survey]] / [[deepseek-v4]]. *(weekly-brief 2026-09-12.)*
+
+## RL / post-training (continued — weekly-brief 2026-09-12)
+
+- **An Open Recipe for IMO Gold: Training Nemotron for Olympiad Mathematics (arXiv:2609.10712, NVIDIA)** — Open training recipe for olympiad-level math reasoning. *(weekly-brief 2026-09-12.)*
+- **Beyond Solver Verdicts: Generative Reward Models for Autoformalization (arXiv:2609.11085)** — Reward-model design for formal-math verification; adjacent to the reward-model-design thread ([[rrc-reward-ranking]]). *(weekly-brief 2026-09-12.)*
+- **DRG-MAPPO: Hierarchical Dynamic Role-Graph Multi-Agent RL for Cooperative Air Combat (arXiv:2609.11155)** — Novel hierarchical role-graph reward architecture for cooperative MARL. *(weekly-brief 2026-09-12.)*
+- **T1: Terminal Agent Reinforcement Learning for Long-Horizon Tasks (Tencent/NUS)** — RL agent for long-horizon terminal/tool-use tasks; extends the long-horizon agentic-runtime cluster ([[argus-agentic-runtime]]). *(weekly-brief 2026-09-12.)*
+
+## Self-improving agents (continued — weekly-brief 2026-09-12)
+
+- **The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement (SJTU/Tsinghua)** — Provocative framing of RSI as an approaching phase transition rather than a current capability; extends [[huxley-godel-machine]] evolutionary self-improvement line. *(weekly-brief 2026-09-12.)*
+- **EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents (arXiv:2609.05903)** — Evolutionary method applied to agent-security harnesses rather than the LLM itself; HF 47 upvotes. *(weekly-brief 2026-09-12.)*
+- **Procedural Graphs: Self-Evolving Execution Structures for LLM Agents (arXiv:2609.09153)** — Self-evolving execution-graph structures for LLM agents outperforming memory-based baselines. *(weekly-brief 2026-09-12.)*

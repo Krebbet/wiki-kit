@@ -4,6 +4,7 @@ Concise record of all wiki modifications. One row per logical change.
 
 | Date | Action | Pages Touched | Summary |
 |---|---|---|---|
+| 2026-09-12 | weekly-brief ingest | ncp-arch-preview, sensenova-u1-5, negative-self-distillation, research-swarm-whistleblowing, deepseek-v4 (extended), sensenova-u1, anti-self-distillation, u-opsd-unsupervised-self-distillation, debate-training-reward-hacking, ai-agents-open-ended-research, argus-agentic-runtime, index, log, revisions, watchlist | 4 new pages + 1 extended page (deepseek-v4 → V4.1-Flash) (weekly-brief 2026-09-12); 6 backlink cross-refs added to existing pages; Reddit inaccessible 2nd consecutive week (see master_notes.md); 10 watchlist additions |
 | 2026-09-05 | weekly-brief ingest | one-shot-opd-data-efficiency, gradient-aligned-rewards-rlvr, terminal-universe, latentpress, disco-arex-skill, index, log, revisions, watchlist | 5 new pages (weekly-brief 2026-09-05); mid-run fix to `tools/capture_pdf.py` (arXiv abs→pdf URL normalization, 4th-logged occurrence of a recurring capture bug); 5 watchlist additions |
 | 2026-06-06 | weekly-brief ingest | cosmos-3, polar-rl-harness, rlvr-incentivizes-reasoning, deepseek-v4, mai-thinking-1, conflicts/pure-video-vs-3d-world-models, conflicts/sparse-policy-selection-vs-gradient-cancellation, index, log, revisions, watchlist | 5 new pages + 2 conflict updates + watchlist 8 additions (weekly-brief 2026-06-06) |
 | 2026-04-21 | bootstrap | CLAUDE.md, commands | Initial bootstrap: AI research and engineering trends |

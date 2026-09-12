@@ -71,6 +71,7 @@ Code: github.com/OpenSenseNova/SenseNova-U1 (open). Weights: huggingface.co/coll
 
 ## Related
 
+- [[sensenova-u1-5]] — direct successor: spatially-coupled decoder fixes high-res seam artifacts, adds specialize-then-unify multi-expert RL + on-policy distillation post-training.
 - [[vision-banana]] — generation-first unification; complementary approach
 - [[coladlm]] — latent diffusion + Text VAE; opposing pixel-vs-latent bet
 - [[conflicts/pixel-space-vs-latent-space-generation]] — tension SenseNova-U1 (pixel) vs CoLaDLM (latent)

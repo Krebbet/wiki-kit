@@ -47,4 +47,5 @@ Code: `github.com/FloyedShen/AntiSD`. Public WandB: `wandb.ai/brain-cog/AntiSD`.
 - [[tempo-test-time-rl]] — deliberation/search preservation in reasoning RL via E-step recalibration; shared concern about training collapse suppressing search tokens
 - [[reasonmaxxer]] — RL modifies only high-entropy decisions; AntiSD's finding that SD suppresses high-entropy deliberation tokens runs parallel
 - [[delta-token-credit]] — sibling per-token RL-credit paper surfaced the same week; complementary credit-assignment angle
+- [[negative-self-distillation]] — sibling fix for the same self-distillation-suppresses-reflection problem (shares this page's arXiv:2605.11609 citation as closest prior work), via reference-vs-negative-teacher gating instead of PMI/JSD-ascend
 - [[latent-grpo]] — per-token GRPO stabilization in continuous-token space; AntiSD fixes polarity of distillation signal in discrete-token space

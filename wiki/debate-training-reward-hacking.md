@@ -38,4 +38,5 @@ No contradiction of an existing wiki claim — this is a new empirical data poin
 
 - [[rrc-reward-ranking]] — parallel reward-signal-design-flaw thread: RRC addresses generative-reward-model judgment not transferring to scalar RL reward via naive scalarization; this source addresses LLM-judge reward being outright hackable. Candidate anchor for a "reward model / judge reliability for RL" cluster if a third data point arrives.
 - [[ai-agents-open-ended-research]] — parallel alignment-lens failure-mode framing: both surface concrete failure modes of RL/agentic training under fuzzy, hard-to-verify objectives.
+- [[research-swarm-whistleblowing]] — parallel concern (gaming automated verification, limits of oversight) via emergent untrained peer detection instead of trained adversarial debate.
 - [[polar-rl-harness]] / [[vimpo]] / [[token-gradient-cancellation]] — infrastructure/credit-assignment neighbors in the Training & optimization section, not topically overlapping.

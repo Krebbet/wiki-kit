@@ -39,6 +39,18 @@ Two-stage post-training: (1) independent domain-expert cultivation via SFT + GRP
 
 Drop-in replacement for DeepSeek-V3/V3.2. V4-Flash (13B active) is the cost-effective path for most inference deployments; V4-Pro (49B active) justified for coding competitions, agentic workflows, and hard reasoning. 1M context practically usable given CSA+HCA KV reduction. Requires FP4-capable hardware or software dequantization. Inference via vLLM and SGLang (day-one support).
 
+## V4.1-Flash: CED architecture and CSA2 (September 2026)
+
+DeepSeek-V4.1-Flash is a 552B-backbone (8B active prefill / 16B decode) multimodal follow-up, pushing the same KV-cache-reduction lineage further via three new mechanisms rather than a like-for-like tuning of CSA+HCA:
+
+- **Causal Encoder-Decoder (CED).** The 40-layer Transformer splits into a 20-layer causal encoder and 20-layer decoder; the decoder's global KV cache is projected from the encoder's final hidden states instead of each decoder layer computing its own — this is what drops per-token activated params to 8B (prefill) / 16B (decode).
+- **CSA2.** Second-generation Compressed Sparse Attention: each layer gets a static Full/Reindex/Reuse mode to share main KV and indexer keys across layers and reuse Top-K sparse-attention indices, with a Hierarchical Sparse Indexer restricting later layers' candidate pool to the first Full-mode layer's output.
+- **SWA Bounded Replay + FP4 KV.** Sliding-window-attention KV is reconstructed by replaying only the last n_win tokens instead of persisting it to SSD; combined with FP4 (E2M1) main-KV caching, global footprint drops to 890 bytes/token — ~4× below V4-Flash, ~437× below V1.
+
+Single-Pass mHC ("Mega-mHC" kernel) is a direct efficiency evolution of the mHC mechanism above, not a new residual scheme. Post-training is explicitly unchanged (SFT → RL → OPD, no algorithmic modification); the stated gains come from data-pipeline scaling (automated agent-task synthesis) and a continuously controllable reasoning-effort knob (1–100). Also DeepSeek's first V4-line multimodal release (DeepSeek-ViT + 2-layer MLP projector, jointly trained from pretraining start).
+
+**Results:** tops Opus-5.0 on Terminal-Bench 2.1 (90.6 vs 89.1), DeepSWE v1.1 (74.2 vs 74.0), and Codeforces rating (3471); beats V4-Pro on most agentic/tool-use benchmarks despite the smaller activated-param count. Not a strict Pareto win: pure-reasoning HLE Pass@1 is 36.8, *below* V4-Pro's 42.7 — the efficiency architecture trades off some no-tools reasoning capability. 140K+ HF downloads in the first month; weights MIT-licensed.
+
 ## Source
 
 - HuggingFace: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro (MIT license)
