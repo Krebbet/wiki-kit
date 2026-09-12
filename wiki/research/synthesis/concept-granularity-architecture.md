@@ -23,6 +23,7 @@ A transformer that operates on the same fixed per-token grid from input to outpu
 - **[[../concept-learning/recursive-concept-evolution]]** — concept-as-subspace operationalisation; spawn-on-failure with MDL gate. RCE already operates on concept-units rather than tokens at the concept-library level. The hypothesis lifts this to the middle layers themselves.
 - **[[../concept-learning/concept-bottleneck-models]]** — concept-as-axis. Earlier, supervised version; provides the design principle that intervening on concepts (not tokens) is a useful primitive.
 - **[[../rl-optimizers/latent-grpo]]** — first stable GRPO on continuous (vocabulary-superposition) latent reasoning chains; +4.27 Pass@1 with 3.31× shorter chains; documents Latent Mixture Non-Closure failure mode. **Closest existing corpus result to the proposal** — latent reasoning *is* concept-granular in spirit; it operates on continuous superpositions rather than discrete token sequences.
+- **[[../variable-granularity/ncp-arch-preview]]** — first frontier-scale (8.9B params, 5.73T tokens) empirical validation that an explicit concept-level pretraining objective (Next-Concept-Prediction over a product-quantized vocabulary) improves training efficiency (1.95× convergence speedup) and downstream capability (+2.45pt). **Scope-boundary marker, not confirmation:** concept units are a *fixed* k=4-token grid from mean-pooling, not a merge/split decision process — no boundary-decision loss, no decision-points-vs-transport-overhead analysis. Validates the general "concept-level middle-module objective helps" claim while leaving the specific variable-granularity mechanism untested by any corpus source so far.
 
 ## General flow (sketch)
 
@@ -102,7 +103,7 @@ Categories of paper that, if captured, would either supply primitives or invalid
 - **Variable-length internal representations** — funnel transformers, mixture-of-tokens, dynamic token pruning, hierarchical autoencoders applied mid-stack.
 - **Differentiable sequence routing** — Mixture-of-Depths, expert-choice routing, learned token-merging in vision (ToMe and successors) re-applied to language.
 - **Latent reasoning successors to [[../rl-optimizers/latent-grpo]]** — anything that extends continuous-superposition reasoning to variable-length latent sequences.
-- **Concept-level training signals** — work that supervises representations at a sub-token or super-token granularity (BPE alternatives, byte-level + chunking).
+- **Concept-level training signals** — work that supervises representations at a sub-token or super-token granularity (BPE alternatives, byte-level + chunking). **Partially populated** by [[../variable-granularity/ncp-arch-preview]] (fixed-grid concept prediction) — still watching for a variable-granularity (merge/split) instance specifically.
 - **Entropy-routed compute** — methods that route compute to high-entropy positions (echoes [[../rlvr-mechanics/rethinking-rl-sparse-selection]]'s entropy gating).
 - **Cross-token-merging during fine-tuning** — anything that retroactively merges/groups token positions for downstream tasks.
 - **Counter-evidence** — papers showing that uniform per-token compute is provably or empirically necessary, or that variable-length middle layers cause representational collapse.
@@ -132,6 +133,7 @@ Editorial hypothesis. Surfaced 2026-05-13 from a /query thread on REASONMAXXER a
 - [[../rlvr-mechanics/rethinking-rl-sparse-selection]] — primary motivating result (1-4% reranked tokens, 0% shifted outside base top-5, 5-12× entropy at reranked positions)
 - [[../rlvr-mechanics/rl-sparse-subnetwork]] — parameter-side sparsity counterpart
 - [[../rl-optimizers/latent-grpo]] — closest existing corpus result (continuous latent reasoning, vocabulary superposition, shorter chains)
+- [[../variable-granularity/ncp-arch-preview]] — frontier-scale concept-prediction existence proof; fixed-grid, not variable-granularity — scope-boundary marker
 - [[../rl-optimizers/bolt-kl-rlvr-boltzmann]] — speculative connection: coverage wall may relax at concept granularity
 - [[../concept-learning/recursive-concept-evolution]] — concept-as-subspace at the concept-library level
 - [[../concept-learning/concept-bottleneck-models]] — concept-as-axis with intervention

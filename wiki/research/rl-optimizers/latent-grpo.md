@@ -65,4 +65,5 @@ Wiki position via [[../self-play/invisible-leash]] / [[../self-play/yue-rlvr-bou
 - [[../single-sample-rl-finetuning/_overview]] — chain compression as single-sample budget multiplier
 - [[../in-context-learning-theory/icl-as-gradient-descent]] — latent reasoning as continuous concept representation
 - [[../self-play/invisible-leash]] / [[../self-play/yue-rlvr-boundary]] — open base-bound question
+- [[../variable-granularity/ncp-arch-preview]] — differentiable-discrete-latent methodological parallel (soft codebook expectation vs. Gumbel-STE), pretraining MSE objective rather than RL
 - [[../../weekly-briefs/2026-05-03]] — brought in by the 2026-05-03 weekly sweep

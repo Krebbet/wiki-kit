@@ -63,3 +63,4 @@ HRM is the most architecturally principled of the three: it does not require a s
 - [[../synthesis/concept-granularity-architecture]] — two-module arch as variable-granularity evidence
 - [[../synthesis/recursive-concept-learning]] — hierarchical decomposition instantiation
 - [[../decoding-time-steering/continuous-latent-contexts]] — complementary latent-reasoning approach
+- [[ncp-arch-preview]] — sibling variable-granularity entry (concept-level pretraining objective, different mechanism — quantization vs. recurrence)

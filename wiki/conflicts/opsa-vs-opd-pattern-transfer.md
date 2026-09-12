@@ -6,9 +6,19 @@
 
 **Position B — OPD-Dual-Nature ([[../research/teacher-student-rl/opd-dual-nature-generalization]]).** OPD transfers the teacher's reasoning *patterns*, not answers to particular problems (Sec 3.1). The evidence is a same-origin vs cross-origin dissociation: same-origin teacher-student pairs (shared base checkpoint) generalize broadly across language, reasoning horizon, and domain; cross-origin pairs stay narrowly fit to the training distribution, and higher cross-origin teacher competence does not improve transfer. Top-K next-token overlap between teacher and student rises over training for same-origin pairs but stays flat for cross-origin pairs (Fig. 6) — offered as mechanistic evidence that same-origin OPD pulls the student toward whole-policy agreement with the *specific* teacher, not just toward any distributional sharpening. This dissociation only makes sense if the teacher's specific behavioral content (hence its identity/origin) is actually what's being transferred.
 
+## Extension (2026-09-11 weekly sweep) — three independent papers bear evidence against Position A
+
+Three papers surfaced in the same week, none citing each other on this point, each independently finding a result hard to reconcile with Position A's teacher-content-independent account:
+
+- **[[../research/teacher-student-rl/one-shot-opd]]** (Rethinking OPD II, arXiv:2609.04172) grounds its one-shot-OPD result in *measured* teacher-student distributional convergence — top-16 token-overlap ratio rising to full-data level, overlap-token advantage approaching zero, entropy gap closing (Sec 3.2/5.1) — and frames OPD as "trained to match one [teacher's] distribution." This is the paper's causal explanation for *why* one-shot OPD works, and it assumes real alignment, not mere low-logp-token suppression.
+- **[[../research/teacher-student-rl/sequential-opd-then-rl]]** (arXiv:2609.04108) finds that OPD and every tested joint OPD+RLVR method plateau at/near the *specific* teacher's own measured pass@1 (56.6% on K&K) — a teacher-identity-dependent ceiling. A teacher-optional, token-suppression-only mechanism does not obviously predict that the ceiling tracks the teacher's actual performance.
+- **[[../research/teacher-student-rl/tgopd-verify-before-distill]]** (TGOPD, arXiv:2609.02998) shows large, *reliability-tied* gains specifically from withholding OPD supervision on prompts where the teacher is verifiably wrong (verified via extra probe rollouts) — at 35B code, every non-gated baseline including vanilla OPD shows negative transfer, while gating on verified teacher correctness flips this to positive transfer exceeding the teacher. If OPD's gains were teacher-content-independent, gating specifically on teacher *correctness* should not produce this differential effect.
+
+None of the three runs Position A's own diagnostics (noisy-only vs. teacher-free fixed-advantage ablation) on their own setups, so none is a direct falsification — each is a structural tension, same status as the original Position B tension. But three independent papers converging on the same objection in one week is a stronger signal than either paper alone, and shifts the weight of new evidence against Position A pending a direct ablation.
+
 ## Resolution rule
 
-*(Open — no ruling yet.)*
+*(Open — no ruling yet.)* The extension above sharpens what would resolve it: Position A's own noisy/teacher-free ablation, re-run (a) on a query the student never solves under one-shot OPD's setup, (b) at TGOPD's low-teacher-reliability prompts specifically, and (c) tracking whether the teacher-free variant's performance ceiling still tracks teacher pass@1 as in Sequential-Beats-Joint. If teacher-free training reproduces all three results, Position A survives intact and the three papers' causal *framing* (not their data) would be wrong. If it doesn't, Position A's generality claim (holds regardless of teacher quality/identity) would not survive.
 
 This is a direct, not merely soft, tension: Position A's mechanism (advantage mass concentrates on student-low-logp tokens; teacher identity/noise barely matters) predicts that *which* teacher supplies the advantage sign should matter little beyond producing roughly the right sign on roughly the right tokens — it does not obviously predict a same-origin/cross-origin generalization split, since a teacher-free fixed advantage on the same token selection reproduces OPD's gains in Position A's own experiments. Conversely, Position B's mechanism requires the *specific* teacher's whole-policy identity to be what's being absorbed, which is difficult to reconcile with Position A's finding that teacher supervision noise (up to 97.8% mis-signed tokens for a 235B teacher) barely changes final performance.
 
@@ -20,7 +30,7 @@ Two threads worth separating before either position is dismissed:
 
 ## Source
 
-Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2–2.3, 3.1–3.2, in `raw/research/weekly-2026-09-04/.ingest/01-opsa-does-opd-really-distill.summary.md`.
+Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2–2.3, 3.1–3.2, in `raw/research/weekly-2026-09-04/.ingest/01-opsa-does-opd-really-distill.summary.md`. Extended via the 2026-09-11 weekly sweep with three independent papers (arXiv:2609.04172, 2609.04108, 2609.02998).
 
 ## Related
 
@@ -28,4 +38,8 @@ Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2�
 - [[../research/teacher-student-rl/opd-dual-nature-generalization]] — Position B paper
 - [[../research/teacher-student-rl/opdvr-verifiable-reward]] — related OPD-noise diagnosis, sides with calibrating-not-removing the teacher
 - [[../research/teacher-student-rl/gc-opd-group-calibrated]] — related OPD-noise diagnosis, sides with calibrating-not-removing the teacher
+- [[../research/teacher-student-rl/one-shot-opd]] — 2026-09-11 extension: teacher-alignment mechanism for one-shot OPD
+- [[../research/teacher-student-rl/sequential-opd-then-rl]] — 2026-09-11 extension: teacher-pass@1-bounded ceiling
+- [[../research/teacher-student-rl/tgopd-verify-before-distill]] — 2026-09-11 extension: reliability-tied gating gains
 - [[../../weekly-briefs/2026-09-04]] — brought in by the 2026-09-04 weekly sweep
+- [[../../weekly-briefs/2026-09-11]] — extended by the 2026-09-11 weekly sweep

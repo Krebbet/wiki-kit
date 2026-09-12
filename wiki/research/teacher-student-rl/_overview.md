@@ -19,6 +19,31 @@ Theme covering methods where the *teacher* is optimised — or at least engineer
 - [[pm4grpo]] — Lee, Park, Sim, Bae (Jan 2026). TACReward. Student-side: process-mining alignment between student and teacher reasoning traces produces a dense reward in $[0, 1]$; drops into RLOO/GRPO/GSPO without architectural change; GSPO + TACReward: +89.2% relative accuracy average.
 - [[rlt-followups-2026]] — landscape note tracking post-RLT work (2025-Q4 → 2026-Q2): On-Policy Distillation (Qwen3 / MiMo / GLM-5 commercial adoption, Thinking Machines' Tinker), self-distillation with privileged info (OPSD, SDFT, SDPO), explanatory probes (ExGRPO), and systematic log-prob rewards (Kwiatkowski). **Finding: no captured follow-up directly cites RLT — the dense-teacher-signal family is advancing through OPD siblings rather than RLT's reference-in-prompt framing.**
 
+### OPD saga pages (2026-05 to 2026-09, added via weekly-brief, not yet folded into the axes/tables above)
+
+- [[knowrl]] — atomic knowledge-points + Constrained Subset Search for minimal-sufficient hint design; no KL loss; 1.5B SOTA.
+- [[co-evolving-policy-distillation]] — CoPD: alternating GRPO + bidirectional mutual on-policy distillation across parallel branches; surpasses every single-expert ceiling on Qwen3-VL-4B.
+- [[opsd-compresses-rlvr]] — founds the "compaction-not-correction" position: OPSD cannot create new reasoning states the student doesn't already support (−29% length, ~0 Δaccuracy, correct-only).
+- [[mad-opd]] — multi-agent debate ensemble breaks the single-teacher OPD ceiling via task-adaptive divergence.
+- [[esr-early-stopping-opd]] — diagnoses Off-policy Teacher Decay at late rollout positions; truncating to first N tokens gives 24× wall-clock speedup and beats full-rollout OPD.
+- [[sgsd-skill-gated-distillation]] — replaces trusted reference answers with a polarity-gated skill bank of reasoning principles + mistake patterns.
+- [[zppo-teacher-in-prompts]] — teacher knowledge lives in prompts, not gradients (Vygotsky ZPD framing); distillation *degrades* generalization at small scale where ZPPO improves it.
+- [[rlcsd]] — contrastive self-distillation subtracts wrong-hint KL from correct-hint KL to cancel privilege-induced style drift in OPSD.
+- [[sg-opd]] — phased teacher sampling + sign-consistency gate; +7.50 per-question over vanilla OPD.
+- [[tapo-error-trajectory-distillation]] — explicit micro-reflective trajectory construction from the model's own erroneous prefixes; argues the bottleneck is explicit error diagnosis, not the privileged target.
+- [[rstg-selective-negative-group-distillation]] — gates OPD+SFT exclusively onto GRPO's zero-variance (all-fail) groups (3.63% of data); naive full-set OPD *regresses* math.
+- [[gc-opd-group-calibrated]] — calibrates dense teacher-likelihood against a task verifier; reinforces the compaction-not-correction claim.
+- [[adrs-self-distilled-reward-shaping]] — folds self-distilled reward shaping directly into GRPO/GiGPO's advantage (in-loop, not post-hoc); +11.9pp unseen-split transfer — opens [[../../conflicts/adrs-vs-opsd-compaction]].
+- [[opdvr-verifiable-reward]] — ReLU-gated OPD+RLVR hybrid, formally proven never anti-aligned with the RLVR gradient; exceeds the teacher on AIME24.
+- [[opd-dual-nature-generalization]] — "Every Coin Has Two Sides": OPD transfers reasoning *patterns* not answers; same-origin teacher/student generalizes broadly, cross-origin narrowly; multi-teacher routing produces a mixture-dependent capability seesaw.
+- [[opsa-teacher-free-self-adaptation]] — argues sampled-token OPD's gains require no teacher at all (suppressing the student's own low-logp tokens reproduces them under maximally-noisy supervision) — conflicts directly with opd-dual-nature-generalization's teacher-origin claim, opens [[../../conflicts/opsa-vs-opd-pattern-transfer]].
+- [[ida-opd-entropy-influence]] — fixes the same sampled-token estimator's diversity collapse via entropy-influence-gated advantage shrinkage; student pass@16 matches/exceeds teacher.
+- [[one-shot-opd]] — "Rethinking OPD II": one-shot OPD (single query, hundreds of steps) recovers 62–89% of full-data OPD's gain via state coverage, not query count; direct single-sample-thesis extension; >2× RLVR's validation gain on the same query.
+- [[sequential-opd-then-rl]] — OPD-then-RL hard switch beats 9 joint OPD+RLVR combination methods; OPD expands teacher-bounded pass@k coverage, RL sharpens within it; both plateau at the teacher's own pass@1 until continual RL breaks the ceiling.
+- [[tgopd-verify-before-distill]] — prompt-level teacher-reliability gate (idle-teacher probe rollouts, verifier-scored) routes each prompt to dense OPD or GRPO fallback; surpasses the teacher on code where every non-gated baseline regresses.
+
+**The arc in one line:** opsd-compresses-rlvr (05-10) founded "compaction only"; seven months of successive papers (mad-opd, esr, sgsd, rstg, gc-opd, adrs, opdvr, opd-dual-nature, opsa, ida-opd, one-shot-opd, sequential-opd-then-rl, tgopd) kept probing *why* OPD works rather than proposing new applications, and the mechanism is still contested — two conflicts open, neither resolved: [[../../conflicts/adrs-vs-opsd-compaction]] (does privileged self-distillation add real capability, or only compact?) and [[../../conflicts/opsa-vs-opd-pattern-transfer]] (does OPD even need a teacher? — three independent 2026-09-11 papers now bear evidence against OPSA's teacher-free account).
+
 ## Cross-cutting synthesis
 
 **The bilevel structure is shared; what changes is the action space and the student-feedback signal.** Every method except Ho (frozen teacher) and PM4GRPO (frozen teacher, student trained) fits the same bilevel shape: outer loop optimises the teacher, inner loop updates or evaluates the student, and a *reward* from the inner loop flows back to the outer. Fan 2018 established the shape; LLM-era methods inherit it.

@@ -63,6 +63,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - TGPO (arXiv:2605.13230) — teacher-guided policy optimization preserving exploration benefits of on-policy sampling; OPD variant
 - One Student, Many Teachers (arXiv:2607.18293) — multi-task OPD via soft-prompt privileged context; possible third position on unified-vs-two-model-self-play
 - Rethinking On-Policy Self-Distillation for Thinking Models (arXiv:2607.05184) — mechanism/failure-mode analysis of OPSD for reasoning models; possible knowrl-vs-rlt-hint-design relevance, unconfirmed
+- Eliciting Weak-to-Strong Generalization with On-Policy Reverse Distillation (arXiv:2609.08798) — reverse-direction OPD; weak teacher elicits strong-student generalization
+- One Symptom, Three Levers: A Critical Review of On-Policy Self-Distillation (arXiv:2608.25936) — critical survey/review of the OPSD mechanism literature
+- Co-Evolving Harnesses and Models (arXiv:2609.09134) — on-policy correction helps weaker models catch up where imitation fails
 
 ## Process reward models
 
@@ -78,6 +81,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - RLVR Implicitly Incentivizes Correct Reasoning (arXiv:2506.14245) — theory: GRPO gradients provably incentivize correct CoT in base models
 - Learning What RL Can't (arXiv:2506.07527) — interleaved SFT+RL for hardest questions; 1.5% SFT + 20.4% RL data of prior SOTA
 - Revisiting RL for LLM Reasoning Cross-Domain (arXiv:2506.14965) — empirical study whether RLVR gains transfer across math/code/science; tests single-sample generalisation claim
+- Revisiting Complete Reasoning Traces for Post-Training (arXiv:2609.07103) — examines full vs. partial reasoning traces in post-training
 
 ## Self-improvement
 
@@ -93,6 +97,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - TACLer (arXiv:2601.21711) — tailored multi-stage curriculum RL; 50% compute, 42% inference-token reduction over GRPO
 - RACES / LEGO Bricks (arXiv:2606.12373) — recursive composition of verifiable envs for automatic RL curriculum scaling
 - DOTS+RR (arXiv:2506.05316, NeurIPS 2025) — adaptive difficulty targeting + rollout replay; cuts RL compute without accuracy loss
+- StudyBench (arXiv:2609.00787) — can self-evolution squeeze textbooks for olympiad capability; low-confidence, benchmark-flavored flag
 
 ## Variable-granularity / concept-level architectures
 
@@ -174,7 +179,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-09-04]] — most recent weekly sweep (5 captures, all genuinely new after dedup caught 2 already-ingested candidates pre-capture; two independent OPD-mechanism-critique papers this week; 6 watchlist additions)
+- [[weekly-briefs/2026-09-11]] — most recent weekly sweep (5 captures, deliberately diversified against an OPD-mechanism glut; three independent papers converge against OPSA's teacher-free claim, extending the open conflict; 5 watchlist additions)
+- [[weekly-briefs/2026-09-04]] — prior weekly sweep (5 captures, all genuinely new after dedup caught 2 already-ingested candidates pre-capture; two independent OPD-mechanism-critique papers this week; 6 watchlist additions)
 - [[weekly-briefs/2026-08-28]] — prior weekly sweep (unusually conflict-dense week: 5 captures, all genuinely new; full-text ingest surfaced 3 fresh conflicts the abstract-only scan missed; 8 watchlist additions)
 - [[weekly-briefs/2026-08-21]] — prior weekly sweep (moderate week: 4 genuinely new captures from 5 slots — 1 wasted on a duplicate re-discovery of the 2026-08-07 RSTG capture; 0 watchlist surplus)
 - [[weekly-briefs/2026-08-14]] — prior weekly sweep (light week: 3 candidates, all captured, 0 watchlist surplus)

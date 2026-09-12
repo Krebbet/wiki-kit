@@ -45,4 +45,5 @@ Unstated: no wall-clock or compute overhead is reported for maintaining per-task
 - [[metis-curriculum-judgment]] — parallel solution to online task-utility estimation, different mechanism (explicit Bayesian controller vs. in-context calibration memory)
 - [[_overview]] — candidate addition to the multi-task/GRPO curriculum sub-cluster alongside SCRL, METIS, E2H, AdaBack
 - [[../rlvr-mechanics/deepseekmath-grpo]] — PAC is built directly on GRPO's group-normalized advantage and is explicitly complementary to GRPO-optimizer-level advances (DAPO, Dr. GRPO, GSPO) — it only changes the task-sampling distribution
+- [[../rlvr-mechanics/datpo-difficulty-adaptive-tree-rlvr]] — parallel difficulty-adaptive rollout-budget allocation within a single training step, rather than PAC's cross-task Bayesian sampling
 - [[../../weekly-briefs/2026-09-04]] — brought in by the 2026-09-04 weekly sweep

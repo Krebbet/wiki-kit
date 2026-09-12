@@ -18,10 +18,10 @@ Exclude:
 
 | Source | Why | URL |
 |---|---|---|
-| **alphaXiv weekly trending (cs.LG, cs.CL, cs.AI)** | Explicit popularity ranking on arXiv. | https://www.alphaxiv.org/trending |
+| **alphaXiv weekly trending (cs.LG, cs.CL, cs.AI)** | Explicit popularity ranking on arXiv. **Note (2026-09-11):** `/trending` now 404s — use `/explore/papers` instead. | https://www.alphaxiv.org/explore/papers |
 | **Hugging Face papers trending** | Community-attention signal. **Note (2026-08-28):** the `/papers/date/YYYY-MM-DD` date-pages (e.g. `huggingface.co/papers/date/2026-08-28`) proved more reliable than the bare `/trending` page for a precise weekly window — fetch each date directly rather than relying on trending-page date-filtering. Also usable as an X/Twitter-search fallback: @_akhaliq's curation feed mirrors his X posts closely, and X search itself is rate-limited via WebSearch. | https://huggingface.co/papers |
-| **Papers With Code — trending on reasoning benchmarks** | Benchmark-grounded movement (MATH, AIME, GSM8K, GPQA, HumanEval). | https://paperswithcode.com/sota |
-| **r/MachineLearning — hot (past week)** | Broad ML community; better for filtering hype than discovery. | https://www.reddit.com/r/MachineLearning/top/?t=week |
+| ~~Papers With Code — trending on reasoning benchmarks~~ | **Flagged 2026-09-11: `/sota` now 302-redirects to `huggingface.co/papers/trending`** — the site appears merged/defunct as an independent source. Treat as a duplicate of HF trending above rather than a separate signal; drop from active scan next run if this persists. | https://paperswithcode.com/sota |
+| **r/MachineLearning — hot (past week)** | Broad ML community; better for filtering hype than discovery. **Note (2026-09-11):** WebFetch blocked on both `reddit.com` and `old.reddit.com` this run; WebSearch returned no thread content either. Unreachable two runs running as of 2026-09-11 — consider a fallback (old.reddit.com JSON API, or drop if it persists). | https://www.reddit.com/r/MachineLearning/top/?t=week |
 | ~~r/LocalLLaMA~~ | **Flagged for replacement** — user to pick a more appropriate subreddit. Skip for now. | — |
 
 ## Curators (weekly scan)

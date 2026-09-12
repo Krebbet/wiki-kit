@@ -10,6 +10,7 @@ Theme covering the *mechanics* of RL with verifier rewards (RLVR) for LLM reason
 - [[structured-fisher-optimizer]] — Gong et al. (Microsoft, 2025). Structured FIM approximation (RACS, Alice) unifying Adam / Shampoo / grad-norm; 2× Adam speedup at LLaMA scale. Adjacent to L2T's Fisher proxy on the optimisation side, not the reward side.
 - [[rethinking-rl-sparse-selection]] — Akgul et al. (arXiv:2605.06241). Token-level dissection: 1.0–4.1% positions reranked, **0% shifted outside base top-5**; rank-32 LoRA at 0.27–0.49% params replicates RL; REASONMAXXER matches/exceeds RL at 3 orders of magnitude less cost.
 - [[binary-rewards-rl-challenges]] — Dymetman (arXiv:2605.02375). Information-geometric account of diversity collapse: filtered model $p^*$ is I-projection; forward-KL convergence + $\text{KL}(p^\beta\|p^*)=+\infty$; misspecification + small $\beta$ drives near-Dirac.
+- [[datpo-difficulty-adaptive-tree-rlvr]] — DATPO (arXiv:2609.08650). Difficulty-adaptive tree rollouts + sentence-entropy forking + sibling-diversity advantage bonus expand pass@k coverage; Jensen-gap variance-penalty theorem formalizes why easy-heavy rollout budgets degrade hard-problem pass@k.
 
 ## Cross-cutting themes
 
