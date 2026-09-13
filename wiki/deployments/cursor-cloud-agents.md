@@ -77,11 +77,21 @@ Cursor-hosted VMs (the existing default — per-session dedicated VM with secret
 
 Cursor reports (vendor-stated, collect-but-confirm): cloud agents now create >60% of the pull requests merged internally, up from the >40% figure in the original retrospective above.
 
+## 2026-09-10: Projects — coordinator agent + shared context
+
+A follow-on product launch packages the state-decoupling + Subscriptions primitives above into a named product surface, "Projects," for larger bodies of work (a feature, a migration, a full app) spanning months. Two new elements beyond the prior changelog entries:
+
+- **Coordinator agent.** A Project's coordinator agent does not write code itself — it plans the work, delegates to agents that implement it, and brings finished work back to the user to check. The coordinator creates and manages its own agents, running as many in parallel as the work needs (Cursor's own framing: "delegates tasks to thousands of subagents"). This is a single-coordinator, fan-out delegation topology, distinct from the per-subagent VM isolation described in the 2026-08-19 entry (isolation is the *execution* substrate; the coordinator is the new *control* layer sitting above it).
+- **Shared, cross-machine context.** Each Project maintains a set of files that sync across every cloud and local machine its agents use — research, artifacts, and learned codebase/preference knowledge accumulate so that "if one agent figures out how to test a service, every future agent can use those instructions." This extends the conversation-state axis of the three-way state-decoupling architecture with a persistent, Project-scoped (not session-scoped) memory layer.
+
+Projects runs on its own cloud computer, so closing the laptop doesn't stop it; when something needs local-machine testing, the coordinator spins up a local agent for that step (paralleling the Self-Hosted Machines split between cloud inference/planning and local/customer-machine execution, 2026-09-02 above). Subscriptions (Slack/schedule/PR triggers, 2026-08-19) now attach to the coordinator, so a Project can act on inbound signals without a fresh prompt. No benchmark/quantitative data given — product-launch capture. Available in beta, rolling out to all users starting 2026-09-10.
+
 ## Source
 
 - `raw/research/weekly-2026-05-25/01-cursor-cloud-agents.md` — captured 2026-05-25 from the Cursor engineering blog, "What we've learned building cloud agents." Analyst summary at `raw/research/weekly-2026-05-25/.ingest/01-cursor-cloud-agents.summary.md`. **Primary vendor engineering writeup** — architectural descriptions of what Cursor built and decided are trustworthy; reliability metrics and PR-share figures are vendor self-reported (collect-but-confirm).
 - `raw/research/weekly-2026-08-23/01-cursor-cloud-agents-event-driven.md` — captured 2026-08-23 from Cursor's changelog (`cursor.com/changelog/08-19-26`, dated 2026-08-19). **Vendor changelog** — feature-announcement only, no evaluation data.
 - `raw/research/weekly-2026-09-06/05-05-cursor-self-hosted-machines.md` — captured 2026-09-06 from the Cursor blog, "Run cloud agents on machines you manage" (`cursor.com/blog/self-hosted-machines`, dated 2026-09-02). **Vendor primary** — architecture description trustworthy; the "never initiates inbound connection" security claim and the >60% PR-share figure are vendor-stated (collect-but-confirm).
+- `raw/research/weekly-2026-09-13/02-02-cursor-projects.md` — captured 2026-09-13 from the Cursor changelog, "Cursor Projects" (`cursor.com/changelog/projects`, dated 2026-09-10). **Vendor changelog** — feature-announcement only, no evaluation data.
 
 ## Related
 

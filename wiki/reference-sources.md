@@ -145,6 +145,14 @@ Added 2026-08-09. Major agent-vendor launches (new coding agents, model releases
 |---|---|---|---|---|
 | TechCrunch (AI section) | https://techcrunch.com/category/artificial-intelligence/ | Fast, broad coverage of agent-vendor launches and safety/governance incidents; often the only available source when a vendor skips a technical blog post. | 2026-08-09 | active |
 
+## AI/ML news aggregators
+
+Added 2026-09-13. General-purpose AI/ML news sites that publish original technical writeups (not just press-release rephrasing) on model/agent releases — distinct from the tech-press section above, which is vendor-launch-agnostic breaking news. Treat as third-party/secondary sourcing (collect-but-confirm on quantitative claims), same tier as tech press, but higher technical depth on model-architecture stories specifically.
+
+| Source | URL | Role | Added | Status |
+|---|---|---|---|---|
+| MarkTechPost | https://www.marktechpost.com | Technical writeups on model/agent releases with architecture-level detail (KV-cache mechanisms, training recipes, benchmark tables); sole source for 2 of 5 captures in the 2026-09-13 sweep (Cognition SWE-2, DeepSeek-V4.1-Flash). New watch, probation pending a second high-signal week. | 2026-09-13 | probation |
+
 ## Standards & spec repositories
 
 Added 2026-08-09. Cross-vendor interoperability standards for the agent ecosystem are starting to live as versioned spec repos rather than blog posts — worth watching directly for version bumps (e.g. a v1.1 adding the permission/secrets model Agent Plugins v1.0 explicitly deferred).

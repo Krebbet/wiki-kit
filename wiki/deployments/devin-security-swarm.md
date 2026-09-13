@@ -20,10 +20,17 @@ Scan profiles are generated from existing threat model documentation, scoped to 
 
 For organizations with an existing CVE backlog, Cognition offers a six-week forward-deployment program — the Devin Security Vulnerability Remediation Program — in which Cognition engineers embed with the customer team, burn down the backlog with Devin, and then configure ongoing Security Swarm scanning.
 
+## 2026-09-11: independent practitioner parallel — Willison/Datasette multi-model audit
+
+Simon Willison (high-authority individual practitioner, watched source) reported running an extensive security audit of his own Datasette codebase using three frontier models in parallel — Claude Fable 5.1, GPT-5.6, and GPT-6 Astra — following issues reported by two other contributors. The audit found "very subtle" bugs (no bug count, CVE references, or code-level detail disclosed in the source, which is a release announcement rather than a technical writeup), leading to two Datasette security patch releases (1.0a39, 0.65.4). Willison states: "We'll be incorporating security audits by frontier models into all of our development work going forward."
+
+This is architecturally distinct from Security Swarm's autonomous agentic-MapReduce approach: Willison's audit was human-orchestrated (multiple models run manually in parallel, not an autonomous swarm), and remediation was human-implemented rather than agent-opened-PR — audit-to-fix took "almost a week" of human collaboration, with a split-work discipline where one human wrote the failing test and another implemented the fix for most issues. It is nonetheless an independent, non-Cognition data point corroborating the same underlying claim this page centers on: agentic/multi-model review catches subtle pre-release vulnerabilities that a single reviewer (human or model) would miss.
+
 ## Source
 
 - Cognition vendor blog: https://cognition.com/blog/introducing-devin-security-swarm (2026-07-05)
 - Raw capture: `raw/research/weekly-2026-07-05/01-03-devin-security-swarm.md`
+- `raw/research/weekly-2026-09-13/06-01-willison-datasette-security.md` — captured 2026-09-13 from simonwillison.net, "Datasette 1.0a39 and 0.65.4 security releases" (2026-09-11). **High-authority individual practitioner source**, but thin on technical detail (link-blog announcement, no bug specifics or benchmark numbers).
 
 ## Related
 
@@ -32,3 +39,5 @@ For organizations with an existing CVE backlog, Cognition offers a six-week forw
 - [[coding-agents/coding-agent-adoption]] — extends the coding-agent value proposition into security remediation
 - [[security/adr-uber-mcp-detection]] — parallel effort in agentic security tooling
 - [[security/prompt-injection-impossibility]] — agentic security tools as potential attack surfaces
+- [[case-studies/willison-vibe-agentic-convergence]] — same practitioner source; this is a concrete security-domain data point for his broader running commentary on trusting agent-produced work
+- [[governance/anthropic-ai-native-sdlc]] — that page documents Anthropic's own multi-agent PR review as an SDLC security-layering stage; this is an independent, non-Anthropic-vendor instance of the same "multiple models reviewing the same code catches more" pattern

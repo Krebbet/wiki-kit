@@ -1,11 +1,35 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-06
+last_reviewed: 2026-09-13
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-09-13
+
+Surplus from this week's sweep (clean 7-day window, 2026-09-06 to 2026-09-13) — the 5 selected trend items: Cursor Projects (Sep 10), Cognition SWE-2 (Sep 12), DeepSeek-V4.1-Flash (Sep 10), Anthropic Claude Platform cost/perf (Sep 8), Willison/Datasette multi-model audit (Sep 11, backfilled after the top-ranked pick's capture failed). Dominant trends: a same-week three-layer push on the agent cost/performance frontier (harness-side, serving-architecture-side, training-side); cloud coding-agent vendors packaging orchestration primitives into named product surfaces; continued independent practitioner corroboration of "agentic review catches subtle vulnerabilities." Items below did not make the capture cap.
+
+### Coding agents / infrastructure
+- **OpenAI Agents API public beta** — https://openai.com/index/the-next-evolution-of-the-agents-sdk/ (reported ~Sep 10) — Exposes the same managed-orchestration harness that runs Codex as a hosted product (sandboxes, long-running sessions); direct competitive move against Claude Code/Devin-style managed agent infra. **Capture attempted and failed this run** — the page returns only a Cloudflare "Just a moment..." bot-check screen via both plain and `--js` capture; needs either a different capture approach (e.g. a longer Playwright wait/stealth profile) or a secondary source (press coverage) next sweep. High priority carry-forward given the significance of the underlying announcement.
+- **OpenHands hits 1.0** — https://dev.to/jamilxt/openhands-just-hit-10-heres-how-to-run-it-on-your-own-machine-without-handing-over-the-keys-5666 (~Sep 8, date-unconfirmed — may fall just inside or just before the window) — Open-source coding agent reaches a production-oriented 1.0 (Docker sandboxing, security policies, resource limits, plugin system); ~68% on SWE-bench Verified, well off the frontier ceiling but relevant to the self-hosted/enterprise-deployment thread. Capture if a primary OpenHands technical writeup on the 1.0 architecture lands.
+
+### Enterprise deployment / funding
+- **Cognition raises $2B+ Series E at $48B valuation, ~$900M ARR** — https://techcrunch.com/2026/09/08/cognition-hits-48b-valuation-signaling-investors-believe-ai-coding-is-far-from-a-winner-take-all-market/ (Sep 8) — Same week as the captured SWE-2 release; corroborated by Dealroom/FourWeekMBA/MLQ. Funding-signal context for this week's SWE-2 capture rather than a standalone technical item; noted inline on that page's Related if a future ingest wants the funding context added.
+- **Anthropic × T. Rowe Price** — https://claude.com/blog/t-rowe-price-brings-more-of-claude-to-its-investment-process (Sep 10) — Enterprise agent deployment case study in regulated finance (asset management). Vendor primary but narrative-heavy; capture if it adds concrete architecture/technical detail beyond the customer-story framing.
+- **Meta launches "Muse" personal AI agent** — https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/ (Sep 8) — Consumer-facing (not enterprise/coding-agent) major-lab agent launch; press-tier only, no primary Meta blog post found. Lower wiki-fit than this week's picks; capture if a primary technical writeup or adoption data follows.
+
+### Benchmark / research
+- **Recurrent decoder / full-history replay for RL-aligned agent policies (Yifan Zhang)** — https://www.alphaxiv.org/@yifan-zhang-2 (date-tight, ~Sep 13 — needs re-confirmation) — Targets self-evolving coding/deep-research agents; addresses RL policy-drift via exact replay, part of a broader "Agentic Foundation Models" research direction. Capture if a stable dated post/paper is confirmed.
+- **OpenAI/agent-to-agent communication incident follow-up** — Reuters coverage, ~Sep 9-11 — Possible escalation/follow-up on the OpenAI agent-containment story already on [[security/cyber-eval-sandbox-escapes]] (the Aug 31-Sep 1 Dwarkesh/Ajeya Cotra episode discussed a related 1,200-agent reward-hacking incident, just before this window). Press-tier, collect-but-confirm, anonymous sourcing reported. Capture if a primary source or a clearer distinction from the already-captured incident emerges.
+- **Agent Plugins spec v1.1.0 working draft** — https://github.com/agentplugins/agent-plugins-spec — v1.0.0 shipped 2026-08-06 explicitly deferring permissions/secrets/signing; a v1.1.0 draft reportedly exists but no confirmed in-window commit date. Capture on a dated version bump adding any of the deferred mechanisms.
+
+### Practitioner commentary / podcasts
+- **Practical AI E371 — "Less about Models; More about Architecture"** — https://changelog.com/practicalai (Sep 10, guest Chetan Gupta, Chief AI Officer, Rackspace) — Argues enterprises moving experimentation-to-production are under-investing in agentic architecture relative to model selection; relevant to the enterprise-deployment pattern cluster. Capture if a distinct technical claim beyond the general architecture-over-models framing surfaces.
+- **The Cognitive Revolution — Week 37 "AI:AM Highlights"** — cognitiverevolution.ai (~Sep 12, covering three live shows recorded Sep 8-10) — Nathan Labenz + Prakash Narayanan on GPT-6 Astra safety pacing, defensive cybersecurity, and agent infrastructure segments. Capture if a specific segment yields a concrete technical or governance claim on a direct read.
 
 ---
 

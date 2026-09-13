@@ -97,7 +97,7 @@ Append entries using this structure:
 **Implication:** Two complementary fixes:
 1. Either add `weasyprint` to `pyproject.toml` (so abs-page URLs Just Work), or strip the abs-page HTML conversion path and require callers to pass `/pdf/` URLs (simpler — fewer deps, fewer code paths).
 2. If keeping the abs-page path: improve the error message to suggest the `/pdf/` URL. The current error doesn't hint that the workaround is one URL change away.
-**Status:** open
+**Status:** applied 2026-08-02 — hit the identical failure again during the weekly-brief run (`--src https://arxiv.org/abs/2607.25379 --engine marker`), 3 months after this was first logged and still unresolved. Added `weasyprint = "^69.0"` to `pyproject.toml` (fix 1) via `poetry add weasyprint`; `poetry install` pulled it plus transitive deps (brotli, cssselect2, fonttools, pydyf, pyphen, tinycss2, tinyhtml5, webencodings, zopfli). Verified: both queued abs-page arXiv URLs converted via marker without the workaround. Error-message improvement (fix 2) not done — no longer needed now that fix 1 is applied.
 
 ### 2026-05-11 — /weekly-brief step-5 subagent prompt template lacks the `parse_summary` schema
 **Scope:** kit
@@ -163,6 +163,17 @@ The same gap likely exists in `.claude/commands/ingest.md` if `/ingest`'s subage
 **Implication:** (1) `capture_pdf` should detect a non-zero/abort exit from marker and *auto-retry with pymupdf* rather than leaving the caller to notice the missing file and retry by hand — the weekly-brief/research flows already treat pymupdf as the sanctioned fallback, so automating the fallback on marker abort is a clean kit win. (2) Consider a page-count guard: route PDFs above ~80–100 pages straight to pymupdf (or marker with a memory cap) to avoid the abort entirely. (3) The abort signature (`free(): invalid next size`, exit 134) is worth catching specifically so the error message points at the fallback. Recurs-risk: any large survey PDF (this wiki ingests them regularly).
 **Status:** open
 
+### 2026-06-02 — /lint broken-link checker has two systematic false positives
+**Scope:** kit
+**Observation:** During the 2026-06-02 lint run, the ad-hoc Python link-checker script produced two classes of false positives:
+1. **Escaped-pipe display-text links in Markdown tables** — `[[slug\|display text]]` uses `\|` to escape the pipe inside a table cell. The checker extracted the full `slug\|display text` string as the slug, which never resolved. These are valid Obsidian-style links; the slug before `\|` exists. Four instances flagged: `building-effective-agents\|...`, `agentic-context-engineering\|...`, `framework-skepticism\|...`, `slm-agents\|...`.
+2. **Code-quoted text in append-only log** — `log.md` contains a historical note written as backtick-quoted code: `` `[[../patterns/memory-architectures]]` ``. The regex scanned through backtick context and reported this as a broken live link.
+**Implication:** The `/lint` skill's link-extraction step (whether via Python or grep) should:
+(1) Strip display text after `|` (and `\|`) before resolving the slug target.
+(2) Skip `[[...]]` patterns that appear inside backtick spans (both inline `` `[[...]]` `` and fenced code blocks ````` ```...``` `````).
+A standalone `audit_links.py` tool in `tools/` would be the right home for this logic (parallel to `audit_captures.py`) so lint, research, and ingest can all call it.
+**Status:** open
+
 ### 2026-08-09 — `capture_pdf --src <arxiv abs URL>` silently captures the wrong content (landing page, not the paper)
 
 **Scope:** kit
@@ -170,4 +181,12 @@ The same gap likely exists in `.claude/commands/ingest.md` if `/ingest`'s subage
 **Implication:** Two complementary fixes:
 1. `capture_pdf.py` should detect `arxiv.org/abs/` in `--src` and either auto-rewrite to `/pdf/` or hard-fail with a message pointing at the `/pdf/` URL — the abs-page HTML-to-PDF path has no legitimate use case for arXiv sources (it exists for non-arXiv HTML docs).
 2. `audit_captures.py`'s "thin capture" heuristic checks line-count vs page-count, which doesn't catch "correct-shaped but wrong-content" captures. A cheap content-heuristic (e.g. flag if capture contains `arXivLabs` / `Bibliographic Explorer` / `Submission history` boilerplate strings alongside a short Abstract-only body) would catch this specific failure mode for arXiv captures.
+**Status:** open
+
+### 2026-09-06 — `tools.ingest_plan._PAGE_SHAPE_EXTEND_RE` requires a literal quoted section name; free-prose "extend" proposals parse as `kind: "unknown"`
+
+**Scope:** kit
+**Observation:** During this weekly-brief run, 2 of 6 subagent summaries proposed an "extend" page shape but were parsed as `kind: "unknown"` by `tools.ingest_plan.aggregate()` — the same silent-degradation failure class as the 2026-05-16 "New page" bold-prefix entry above, this time on `_PAGE_SHAPE_EXTEND_RE`. That regex requires the literal form `extend [[page]] with section "S"` (quoted section name immediately following `[[page]]`). Both subagents instead wrote a full justification sentence before naming the section informally, e.g. `- Extend [[security/cyber-eval-sandbox-escapes]] with a new section (e.g., "OpenAI wiki-collusion incident (May–July 2026)") covering: ...` and `- Extend [[deployments/cursor-cloud-agents]] with a new section, e.g. "Self-Hosted Machines (2026-09)" — justification: ...`. Both are unambiguous to a human reader and even contain a quoted candidate section name, but neither matches `with section "S"` immediately after the page link, so the parser silently fell through to `kind: "unknown"` rather than raising. Caught only because the orchestrator (this run) manually inspected the raw "Proposed page shape" text after seeing `unknown` in the aggregation JSON.
+**Implication:** The subagent prompt template in `.claude/commands/ingest.md` already shows the canonical extend form (`- OR: extend [[existing-page]] with section "<section name>"`) but doesn't say "match this literally," unlike the new-page form's now-documented tolerance. Two options, same tradeoff as the 2026-05-16 fix: (a) strengthen the prompt instruction to say the extend form must be matched literally, or (b) make `_PAGE_SHAPE_EXTEND_RE` tolerant of a justification clause between the page link and the quoted section name (e.g. match the *first* quoted string anywhere in the bullet as the section name, not only one immediately following `[[page]]`). (b) is more robust for the same reason the 2026-05-16 fix chose (b) — subagents reliably drift toward prose justification. Low urgency this run since the orchestrator caught it by manual inspection, but on a fully unattended run (which weekly-brief is) an `unknown`-kind entry would silently drop out of any automated page-plan-application step.
+**Recurrence (2026-09-13):** Happened again, this time 1 of 5 summaries — `- Extend [[deployments/devin-security-swarm]] with a short section, e.g. "Independent practitioner parallel: ..." — this source is too thin...`. Same shape: justification prose between the page link and the quoted section name. Three occurrences across two runs now (2 on 2026-09-06, 1 on 2026-09-13) with zero occurrences of a subagent naturally producing the literal `with section "S"` form — the prompt-tolerance option (a) looks unlikely to work given subagents consistently drift the same direction; option (b) (loosen the regex) should be prioritized at the next `/harvest`.
 **Status:** open
