@@ -100,12 +100,42 @@ items above).
   Diamond) — theoretical contribution on automatic-adjustment mechanisms disciplining political
   decision-making in pension institutions.
 
+## Week of 2026-09-15
+
+Third sweep. Genuinely thin week — only 3 in-scope candidates surfaced (vs. the usual double digits), expected
+and correct per this wiki's own conventions for a slow-moving field. 1 was captured and folded into an
+existing page (Acemoglu, second-hand); 2 are listed here, both capture-blocked for different reasons.
+
+### Working papers
+
+- Do Social Norms Substitute for Enforcement? Evidence from Public Officials' Home Purchases in Singapore
+  (NBER w35756, Piskorski, Seru, Zhang, Zhao) — quasi-natural-experiment on informal norms vs. formal
+  anti-corruption enforcement using Singaporean public-official property records; direct hit against the
+  wiki's non-Anglosphere coverage gap. **Capture blocked**: genuinely paywalled — both the landing page and
+  the direct PDF path 403 even with a browser user-agent, distinct from the usual NBER landing-page trap.
+  Worth a manual pull if institutional access is available.
+- The Allocative Cost of War (CEPR DP21886, Gorodnichenko, Amann & Talavera) — firm-level data from Russia's
+  invasion of Ukraine showing war destroys output partly via allocative-efficiency collapse, with a
+  state-capacity/crisis-reallocation institutional-design angle. **Capture blocked**: CEPR's own landing-page
+  trap (see `master_notes.md`, 2026-09-15) — the only capturable version so far is Marginal Revolution's
+  discovery post, which carries just the abstract. Too thin for a full page; re-attempt via institutional
+  access or wait for a working-paper mirror (SSRN/author site).
+
+### Flagged for next sweep (uncertain timing, not a full candidate this week)
+
+- State Capacity as an Organizational Problem (Mastrorocco & Teso, *Review of Economic Studies* advance
+  article) — strong empirical piece (US federal expansion via railroad-driven monitoring-cost variation), but
+  could not confirm the advance-access push date fell inside this week's 7-day window. Re-check next sweep for
+  a September 2026 advance-access date.
+
 ## Source
 
 - Seeded at bootstrap, 2026-08-19.
 - Weekly sweep, 2026-08-25 — see `wiki/weekly-briefs/2026-08-25.md` for the full candidate list and selection
   rationale.
 - Weekly sweep, 2026-09-08 — see `wiki/weekly-briefs/2026-09-08.md` for the full candidate list and selection
+  rationale.
+- Weekly sweep, 2026-09-15 — see `wiki/weekly-briefs/2026-09-15.md` for the full candidate list and selection
   rationale.
 
 ## Related

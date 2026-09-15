@@ -1653,3 +1653,36 @@ re-confirmed hard-blocked by Cloudflare across two sweeps now. OECD and GAO rema
 (no in-window candidate strong enough to justify a manual browser pull).
 
 Full brief: `wiki/weekly-briefs/2026-09-08.md`.
+
+## [2026-09-15] weekly-brief | third sweep
+
+Genuinely thin week — expected and correct per this wiki's own conventions for a slow-moving field. Trend scan
+surfaced only 3 in-scope candidates (vs. the usual double digits): a Singapore anti-corruption/social-norms
+NBER paper, a Ukraine war-allocative-cost CEPR paper (discovered via Marginal Revolution), and Daron Acemoglu's
+new book on the crisis of liberal democracy (LSE talk today, no recording yet; captured a prior YouTube
+interview on the same book instead).
+
+**Two new capture-blocked patterns this week:**
+1. NBER w35756 403s on *both* the landing page and the direct PDF path, even with a browser user-agent — this
+   is a genuine paywall, not the landing-page trap NBER papers usually hit. Distinguish the two failure modes
+   going forward: 403-on-both = paywalled (skip); 200-on-landing/thin-on-PDF-path = landing-page trap (use
+   direct PDF path).
+2. CEPR (`cepr.org/publications/dp21886`) has its own landing-page trap: `capture_pdf` "succeeded" and passed
+   `audit_captures`'s thin-capture heuristic clean, but the captured file was site-navigation chrome repeating
+   the abstract three times — no methodology or results. The ingest subagent caught this by actually reading
+   the content; the automated heuristic did not. Re-captured the discovery source (Marginal Revolution's post
+   quoting the abstract) instead, but that's abstract-only — too thin for a full page, so this candidate went
+   to the watchlist rather than being ingested. Logged to `master_notes.md` (kit-level): `audit_captures`'s
+   thin-capture heuristic needs a repetition/chrome check, not just a line-count-vs-page-count ratio.
+
+**Pages written:** none new. `de-jure-vs-de-facto-power-and-captured-democracy.md` extended with a short
+second-hand section (Sweden/US campaign-finance-law contrast) rather than a standalone page for the Acemoglu
+interview — its own ingest subagent flagged the source as assertion-tier/second-hand and recommended against
+a new page, consistent with this wiki's evidence-tier discipline.
+
+**Watchlist:** 2 overflow entries (the paywalled NBER paper, the abstract-only CEPR paper) plus 1
+uncertain-timing candidate (Mastrorocco & Teso, RESTUD advance article on state capacity as an organizational
+problem — couldn't confirm the advance-access date fell inside this week's window) flagged for a look next
+sweep.
+
+Full brief: `wiki/weekly-briefs/2026-09-15.md`.

@@ -242,3 +242,25 @@ instead. Cheaper fix in the meantime: `reference-sources.md`'s per-source captur
 "prefer direct PDF path over landing page" flag for every source in the National-audit-bodies and
 Working-paper-feeds categories, since both have now independently produced this exact trap.
 **Status:** open
+
+### 2026-09-15 — Landing-page trap defeats `audit_captures`'s thin-capture heuristic on a third domain (CEPR), by padding rather than being short
+**Scope:** kit
+**Observation:** Third `/weekly-brief` sweep produced the cleanest instance yet of the pattern the 2026-08-25
+and 2026-09-08 notes above already flagged (NBER, NAO), but on a domain (CEPR) whose failure mode inverts the
+usual signature: `capture_pdf --engine pymupdf` against `cepr.org/publications/dp21886` returned exit 0 and
+produced a ~600-line markdown file. `tools.audit_captures` reported **zero issues** — not even close to the
+thin-capture threshold, because the file wasn't short. It was long because it repeated the same one-paragraph
+abstract three times inside site-navigation chrome (header/footer/related-links boilerplate padding out the
+line count). Only the downstream `/ingest` subagent — which actually read the content while building its
+summary — caught that there was no methodology, results, or mechanism detail anywhere in the file.
+**Implication:** the thin-capture heuristic (`lines << pages`) is structurally the wrong tool for this failure
+class, on all three domains found so far, for two different reasons: NBER/NAO fail it by being short-and-clean
+(a real but summary-only page); CEPR defeats it entirely by being long-and-repetitive (a navigation shell that
+pads the line count past the threshold while containing zero unique body content). A better check needs
+content-uniqueness, not length: e.g., flag any capture where a paragraph-length span of text (say, >40 words)
+repeats near-verbatim 2+ times in the same file — that would catch the CEPR case regardless of overall length,
+and is a distinct, additive check from the "download the report (PDF)" link-sniffing heuristic proposed in the
+2026-09-08 note for the short-landing-page variant. Both checks are still open; `reference-sources.md`'s CEPR
+row now carries a manual note to prefer a syndicated mirror (e.g., Marginal Revolution's discovery post, when
+one exists) over the CEPR PDF/landing URL directly, same workaround already in place for Mercatus.
+**Status:** open

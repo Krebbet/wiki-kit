@@ -24,9 +24,16 @@ Acemoglu & Robinson's *Persistence of Power, Elites and Institutions* formalises
 
 **[model]**, illustrative only: (1) direct co-optation of oversight bodies (the Freedmen's Bureau); (2) legal engineering to entrench control absent formal exclusion (Black Codes, vagrancy and enticement laws, poll taxes, literacy tests); (3) violence as a labour- and vote-control technology (Klan terror, lynching, the assassination of Colombian party leaders Gaitán and Galán); (4) electoral fraud and party-system engineering (Colombia's "incomplete vote" elite power-sharing pact; Liberia's 1927 election, described by the *Guinness Book of Records* as the most fraudulent ever held); (5) kinship/dynastic networks monopolising office (Central American presidents descended from two named conquistadors — Figures 1–2 of the source).
 
+## The legal hinge: does wealth concentration convert to political capture? (second-hand, 2026)
+
+**[model], second-hand capture — flag explicitly.** Acemoglu, discussing his 2026 book *What Happened to Liberal Democracy?* in a podcast interview (not the book or a paper itself; assertion-tier, no data walked through), offers a contemporary illustration of this page's own captured-democracy mechanism: Sweden has more billionaires per capita than the US but, in Acemoglu's account, "not a single one" has a discernible negative political effect, while in the US, campaign-finance rulings (*Citizens United* plus a further ruling permitting party/candidate spending coordination) let concentrated wealth convert directly into coordinated political influence. The claim names a **specific legal hinge** — rules on money-in-politics and campaign coordination — as the variable gating whether de facto (economic) power converts into de facto political power, rather than wealth level per se.
+
+**[wiki synthesis]** This is a fresh illustration of the mechanism the AJR model already formalises above (de facto power as an elite's endogenous investment), naming a concrete real-world lever — campaign-finance/coordination law — for what the model treats abstractly as the elite's "de facto-power technology" (φ). Treat as illustrative color pending a primary source (the book, or a paper with actual data on Sweden/US political-spending outcomes), not as new evidence; no claim here has been tested to the standard the rest of this page holds itself to.
+
 ## Source
 
 - `raw/research/power-and-accountability/02-acemoglu-robinson-persistence-power.md` — Daron Acemoglu & James A. Robinson, "Persistence of Power, Elites and Institutions," NBER Working Paper 12108, 2006 (published *American Economic Review* 98(1), 2008).
+- `raw/research/weekly-2026-09-15/02-acemoglu-liberal-democracy-book-talk.md` — Pitchfork Economics podcast interview with Daron Acemoglu on *What Happened to Liberal Democracy? Remaking a Politics of Shared Prosperity* (2026); second-hand, assertion-tier.
 
 ## Related
 

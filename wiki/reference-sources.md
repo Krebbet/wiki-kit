@@ -63,6 +63,12 @@ substantive*. Rank candidates by, in order:
 distinguish from the actual PDF — it silently captures NBER's site-navigation shell instead of the paper.
 Use the direct file path instead: `nber.org/system/files/working_papers/w<id>/w<id>.pdf`.
 
+**Capture note (2026-09-15):** a *different* failure mode from the landing-page trap above — NBER w35756
+403'd on **both** the landing page and the direct PDF path, even with a browser user-agent. This looks like a
+genuine paywall (some NBER papers require institutional access or purchase in their first weeks), not a
+tooling gap. Distinguish the two: 403-on-both = paywalled, skip; 200-on-landing/thin-on-PDF = landing-page
+trap, use direct PDF path.
+
 ## Journals
 
 | Source | Focus | Added | Status |
@@ -101,7 +107,7 @@ slug>/` is a thin summary page, not the report body — use the direct PDF path
 
 | Source | Angle | Added | Status |
 |---|---|---|---|
-| VoxEU / CEPR columns | Economist-authored summaries of new institutional research | 2026-08-19 | probation — capture-blocked (2026-09-08): cepr.org Cloudflare bot-check, `--js` retry also blocked |
+| VoxEU / CEPR columns | Economist-authored summaries of new institutional research | 2026-08-19 | probation — capture-blocked (2026-09-08): cepr.org Cloudflare bot-check, `--js` retry also blocked; capture-blocked (2026-09-15): a direct `cepr.org/publications/<id>` discussion-paper capture returns exit 0 but is a landing-page trap (site chrome repeating the abstract, not the paper — see `master_notes.md` 2026-09-15). Prefer a syndicated discovery mirror (e.g. Marginal Revolution's post about the paper) over the CEPR URL directly, same workaround as Mercatus below — but note the mirror alone is usually abstract-only, too thin for a full page. |
 | Broadstreet | Historical political economy, explicitly institutions-focused | 2026-08-19 | probation — dry sweep (2026-09-08), no posts in window |
 | Marginal Revolution | Discovery feed for institutional-economics papers | 2026-08-19 | active (2026-09-08) — not Cloudflare-gated; one capture this sweep |
 | Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | active (2026-09-08) — strong candidate surfaced, watchlisted |
@@ -149,6 +155,12 @@ survey subagent.
   of this source). OECD and GAO blocks confirmed persistent on a second sweep. SSRN, Canada OAG, Broadstreet,
   Statecraft, Niskanen and Institute for Government all dry this cycle — none yet at the three-consecutive-
   dry-sweep retirement threshold.
+- Third sweep, 2026-09-15: genuinely thin week (3 in-scope candidates total, vs. the usual double digits) —
+  consistent with this field's expected pace, not a sweep failure. NBER and Marginal Revolution both surfaced
+  a candidate each but both hit new capture-blocked patterns (see capture notes above and `master_notes.md`);
+  only 1 candidate (an Acemoglu book-talk interview) made it through to the wiki, and as a page extension
+  rather than a new page given its second-hand/assertion tier. No source hit its three-consecutive-dry-sweep
+  retirement threshold this cycle either.
 
 ## Related
 
