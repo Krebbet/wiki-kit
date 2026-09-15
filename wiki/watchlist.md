@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-07
+last_reviewed: 2026-09-14
 ---
 
 # Watchlist
@@ -271,6 +271,19 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - EFF "Zero-Knowledge Proofs Aren't Age Verification Silver Bullets" (Aug 18 2026) — documents a Chrome-extension bypass of EU EUDI ZKP age tokens; critique-only, no counter-mechanism proposed
 - Mozilla "A Framework for Openness" (Aug 20 2026, CACM) — AI-stack openness taxonomy (data/code/weights/docs); descriptive vocabulary, not a tool
 - EFF + civil-society open letter to Nottinghamshire Police on live facial recognition (Aug 21 2026) — advocacy action, no reusable campaign toolkit published alongside it
+
+## Recent additions (2026-09-14 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- ICA Panama General Assembly & Global Conference board elections (Sept 15 2026) — results land just after this run's window; follow up next sweep
+- noyb SCHUFA "shadow database" lawsuit now certain (Sept 10 2026) — algorithmic credit-scoring transparency fight; litigation, not a releasable DSAR kit
+- 404 Media "Doctor Doom" Seattle ALPR protest (Sept 9 2026) — grassroots backlash-organizing tactic vs Axon/Flock camera expansion
+- BIG "Monopoly Round-Up: Stop the Anthropic IPO" (Sept 2026) — AI-vendor antitrust carve-out ask; new extraction-mechanism angle
+- Small anti-dark-pattern / anti-fingerprinting browser-extension cluster (Sept 2026, GitHub, 0-8 stars each) — hackathon-tier proliferation signal, no single entry yet capture-worthy
+- HN: Reddit blocking Firefox/Android users running uBlock Origin (Sept 12 2026) — platform-vs-adblocker escalation; tools-to-monitor drift signal
+- arXiv 2609.10271 "Senseful Consense" cookie-banner plain-language feasibility study (Sept 9 2026) — paper-only, consent-language readability
+- arXiv 2609.11152 "terms.txt" agentic-crawler consent/compensation protocol (Sept 10 2026) — publisher-vs-AI-crawler, not consumer-vs-platform; tangential but adjacent to consent/compensation coordination mechanisms
 
 ## Recent additions (2026-09-07 weekly-brief overflow)
 

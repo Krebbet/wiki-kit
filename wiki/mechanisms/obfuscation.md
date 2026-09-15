@@ -75,6 +75,12 @@ The authors draw an explicit policy conclusion: "the sole use of notice and cons
 
 Richards & Hartzog: "Collective obfuscation usually requires us to trust our confederates... The same gladiators who protected Spartacus from the Roman authorities could just as easily have identified him to those who would kill him" (§III). This applies directly to any proposed pricing-obfuscation co-op: the co-op operator becomes the new single point of trust.
 
+## Physical-layer / hardware obfuscation
+
+The variants above are all software: decoy traffic or pixel perturbation generated on a general-purpose device against a digital watcher. [[tools/simulacra|Simulacra]] (captured 2026-09-14) is the wiki's first hardware/physical-layer instance: a multi-node ESP32 firmware swarm that fabricates a rotating crowd of fake BLE/Wi-Fi device identities to defeat passive RF-based physical tracking (retail footfall sensors, ALPR-adjacent trackers, co-travel correlators), each identity capped at 15 minutes on-air to match real-phone randomised-address rotation.
+
+The same "blending in" paradox documented below for browser fingerprinting recurs here, self-disclosed by the project rather than found by an external attacker: any identifier persisting more than one day breaks the whole fleet's cover under a trivial long-term-observation filter, because every Simulacra-emitted identity is gone within 15 minutes and never returns. This is independent, physical-layer confirmation of the general pattern — rotation alone, without matching the joint statistical structure of real devices, is a leaky defence (cf. FP-Inconsistent below).
+
 ## Technical approach taxonomy — source-traceable
 
 This section inventories technical approaches that the captured sources describe or formalise. Each is a specific method a builder could implement; countermeasures to each are catalogued in the next section.
@@ -227,6 +233,7 @@ For consumer-collective tools aimed at pricing algorithms, the practical read: *
 - [[adnauseam]]
 - [[nightshade-glaze]]
 - [[privacy-badger]]
+- [[tools/simulacra]] — first hardware/physical-layer obfuscation tool; anti-tracking decoy swarm defeating passive RF trackers
 - [[adversarial-data-poisoning]]
 - [[browser-fingerprinting]]
 - [[transparency-tools]]

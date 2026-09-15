@@ -12,6 +12,8 @@ No consumer product at scale tells a user "you are being charged more than anoth
 
 **Northeastern PriceSteering extension (2016, defunct):** The only consumer-facing tool with research rigour. Chrome extension by Volunteer Science (Northeastern multi-university project). Compared user-seen prices vs. a "clean" server-side baseline on Amazon, Google Flights, and Priceline Hotels. Finding: prevalent price *steering* (result reordering by user profile) rather than outright price-discrimination. Never commercialised; no longer maintained.
 
+**[[natural-price|Natural Price]] (private beta, captured 2026-09-14):** First concrete, releasable-code candidate this wiki has tracked for this white space since PriceSteering. Open-source (AGPL-3.0) browser extension using the same clean-baseline-comparison method — a private-tab clean-room fetch rather than a server-side one — plus an opt-in crowd-sourced median layer. Status is genuinely pre-consumer-scale: no hosted service, not listed in any extension store, released via GitHub only. Doesn't close the white space yet, but is the clearest signal so far that the gap is buildable, not just theoretically open. See [[natural-price]] for the standalone page.
+
 **BetterPrice (launched May 2026):** Detects markups vs. other retailers (cross-retailer, not within-retailer personalisation detection). Affiliate commission model creates the same structural conflict documented in the Honey scandal below. Not a discrimination detector.
 
 **Regulatory acceleration:** FTC 6(b) orders to 8 surveillance-pricing companies (July 2024); FTC surveillance pricing study confirming location/browsing/demographic use for personalised prices (January 2025); NY Algorithmic Pricing Disclosure Act (July 2025); House Oversight Committee investigation (March 2026). Consumer Reports survey (May 2024): 66% of Americans oppose personalised pricing. See [[surveillance-pricing-retail]] and [[regulatory-responses]].
@@ -79,6 +81,7 @@ All major products at scale use an affiliate-commission business model — their
 ## Related
 
 - [[transparency-tools]] — mechanism anchor for price transparency tools; Hannak et al. 2014 foundational detection methodology; Keepa and paypal-honey are existing entries
+- [[natural-price]] — Natural Price standalone page; first captured Hook 1 candidate
 - [[keepa]] — Keepa standalone page
 - [[paypal-honey]] — Honey standalone page (canonical extractive-drift failure case)
 - [[fakespot]] — Fakespot acquisition-and-sunset failure case
