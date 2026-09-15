@@ -131,6 +131,16 @@ Everything below is host-side Python; one directory per episode; `events.jsonl` 
 
 ---
 
+## What this rig measured (2026-09-15) — prototype feedback
+
+*Source: drone-prototype `eda/EDA216-odometry-labels/FINDING.md` (labels + rung-1 fit on 684 rest-bracketed moves from three EDA215 campaigns, office lane, 2026-09-15). Measured, not claimed.*
+
+- **Labeller that worked = pairwise ICP on consecutive rests**, seeded from the commanded motion, **two independent initialisations that must agree** (2 cm / 2°), rms ≤ 7 cm, inliers ≥ 0.85 → 674 / 684 valid. The §1 design above (register each rest to the *map*, then difference) **failed in practice**: in a near-symmetric 1 × 2.8 m lane a few rests snapped into a 90°/180°-rotated basin *with a 4 mm rms*, giving 10 cm labels and 14° heading sd. A good residual is not a good pose; a relative label must be measured as a relative quantity. Pairwise rms is set by point spacing (3–4 cm), so the gate belongs to the method, not the noise.
+- **Encoders vs time, leave-one-episode-out over 490 translations:** ticks **2.19 cm** (`dx = k·mean_ticks`, k = 0.2848 mm/tick) vs the fixed timed model **3.07 cm** (a per-speed affine refit gave no gain, 3.12 cm). Spins: 3.15° from ticks vs 3.9° timed (rate 85 °/s, −16° ramp offset at tank 0.6).
+- **Effective mecanum rolling circumference 0.282 m** vs geometric 0.3047 m (**−7 %**): rollers compress and scrub. Use the measured value for odometry, keep the geometric one for the record.
+- Straight-move heading walk sd 4.6° is mostly tick asymmetry (residual 1.75°) but with the **opposite sign to differential-drive intuition** — flagged for a controlled test, not explained.
+- Battery volts sat at 10.8–11.3 V across all three campaigns → the voltage regressor (§5) has no leverage until a full-pack→cutoff campaign is run.
+
 ## Sources
 
 - Censi, Franchi, Marchionni, Oriolo — *Simultaneous Calibration of Odometry and Sensor Parameters for Mobile Robots*, IEEE T-RO 2013 — https://censi.science/pub/research/2012-joint_calibration.pdf (canonical inputs, ~3500 samples/subset, 1 mm scan-match precision, CRB consistency check)

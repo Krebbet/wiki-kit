@@ -343,6 +343,7 @@ frame** (use the recorder's `sharp` gauge / `make_kitti_dataset` + a glance at t
 Logged so nobody mistakes a deferred choice for a bug:
 
 1. **Mecanum strafing** — needs 4-channel firmware + mixing (the wheels & boards are already there).
+   > **Mounting note (2026-09-14, measured):** mecanum wheels are HANDED — from above the top rollers must draw an **X** or a rotate command becomes a strafe. See [[mecanum-wheel-handedness]] before the first floor test (this bit the prototype: P-00047).
 2. **Closed-loop odometry** — wire the encoders, read them on the ESP32, publish odometry to RTAB-Map
    (parked **P-003**; also helps bridge feature-poor frames).
 3. **Cut the tether** — move capture onboard (Pi 5 → later Jetson Orin); see [[land-rover-v1-rig]] §6
@@ -592,6 +593,6 @@ Assembled from the rig spec ([[land-rover-v1-rig]]), the `drone-prototype` rover
 
 ## Related
 
-[[land-rover-v1-rig]] · [[sensor-mount-2dof-tilt-lift]] · [[passive-stereo-robustification]] ·
+[[land-rover-v1-rig]] · [[mecanum-wheel-handedness]] · [[sensor-mount-2dof-tilt-lift]] · [[passive-stereo-robustification]] ·
 [[imu-vio-integration-reality]] · [[map-then-navigate]] · [[system-architecture]] ·
 [[home-tidy-drone-prototype]] · [[drone-comms-wifi]]

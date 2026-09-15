@@ -401,3 +401,8 @@ Not yet committed — this pass plus the underlying refinement-phase work it bui
 ### 2026-09-14 — odometry research (prototyper-dispatched)
 
 Three research pages written by parallel research agents briefed with the day's rover measurements (R1 noise floor, R2 stop envelope, R3 drive constants): `odometry-self-calibration-classical`, `learned-odometry-correction`, `odometry-dataset-and-derived-gt`. Cross-linked; index + revisions updated. Consumer: `drone-prototype/docs/odometry-self-correction-plan.md`.
+
+### 2026-09-15 — librarian periodic pass (prototype-feedback fold-in)
+
+Folded the drone-prototype EDA215/EDA216 odometry measurements back into the two consuming research pages (`odometry-dataset-and-derived-gt`, `odometry-self-calibration-classical`) as dated "What this rig measured" sections — the key reversal is that the pages' scan-to-locked-map labelling design failed in a near-symmetric lane and pairwise consecutive-rest ICP is what worked. New small page `mecanum-wheel-handedness` (the X rule; closed P-00047), linked from `land-rover-v1-build-guide` §10 + Related and catalogued in `index.md`. Flagged stale (not fixed): `land-rover-v1-build-guide` still frames v1 as skid-steer/no-encoders (the rig now has X-mounted mecanums + Hall encoders, 990 ticks/rev); `learned-odometry-correction` §"No encoders yet" is out of date; `odometry-self-calibration-classical` §6 seeds predate EDA216; `camera-lidar-temporal-calibration-and-pose-interpolation` remains SUPERSEDED-bannered but is still cited by the odometry-dataset page for the δt trick (fine, but the citation should say so). Committed on `ai-drone-wiki`, not pushed.
+

@@ -161,6 +161,15 @@ Outlier handling: Censi's loop — after a batch fit, drop the top 5–10 % resi
 5. **Validation (binding per project standards)**: leave-one-episode-out prediction error on held-out moves, not in-sample residuals; report both the systematic fit and the fitted α's; cross-check `κ` and `k_lat` against a physical tape measurement once.
 6. **When encoders arrive**: same estimator, regressors swapped; expected gain is mainly in *within-move* prediction (matcher initial guess) and in surviving degenerate scans, not in the stop-and-scan accuracy which the map already supplies.
 
+## What this rig measured (2026-09-15) — prototype feedback
+
+*Source: drone-prototype `eda/EDA216-odometry-labels/FINDING.md` — rung-1 fit on 684 rest-bracketed moves (three EDA215 campaigns, office lane), validated leave-one-episode-out per §Recommendation item 5. Encoders arrived (Hall A-channel ×4, 990 ticks/rev) before the §6 estimator was run, so the seeds in §6 (94 °/s, no encoders) are already superseded by these numbers.*
+
+- **Ticks beat time:** `dx = k·mean_ticks`, **k = 0.2848 mm/tick → effective rolling circumference 0.282 m** vs the geometric 0.3047 m (−7 %, mecanum roller compression + scrub). LOO RMS **2.19 cm** (ticks) vs **3.07 cm** (fixed timed model, R3 constants); a per-speed affine refit of the timed model gave nothing (3.12 cm). Per-speed encoder residual sd 1.6–2.0 cm, bias < 0.3 cm.
+- **Rotation:** timed spin at tank 0.6 = 85 °/s with a −16° ramp offset (3.9° LOO); encoder rotation `dθ = g·(R−L)/2`, g = 7.03e-4 rad/tick (3.15°) → effective track 0.405 m (mecanums scrub).
+- **The reference that worked was pairwise (consecutive rests, seeded, two inits must agree), not scan-to-locked-map.** Map-based absolute-pose differencing snapped a few rests into rotated basins with a *good* rms in the near-symmetric lane — see [[odometry-dataset-and-derived-gt]] §What this rig measured. The §3 degeneracy gate is necessary but not sufficient against basin ambiguity.
+- Straight-move heading walk (sd 4.6°) is mostly tick asymmetry (residual 1.75°) with an unexplained sign; volts flat (10.8–11.3 V) so the battery regressor is untested.
+
 ## Sources
 
 - [Borenstein96] Borenstein & Feng, "Measurement and Correction of Systematic Odometry Errors in Mobile Robots", IEEE T-RA 12(6):869–880, 1996. PDF: https://johnloomis.org/ece445/topics/odometry/borenstein/paper58.pdf (UMBmark procedure §3.3, formulae §4, results Table I)
