@@ -410,3 +410,8 @@ Folded the drone-prototype EDA215/EDA216 odometry measurements back into the two
 ### 2026-09-17 — closed-loop odometry pipeline research (prototyper-dispatched)
 
 New page `odometry-closed-loop-pipeline`: what the standard path is now that the rover has an encoder velocity loop; calibration is nearly done, mapping is next. Index + revisions updated.
+
+
+### 2026-09-17 — mapping-practice + USB-IMU research (prototyper-dispatched)
+
+Two new pages from dispatched research: `stop-and-scan-room-mapping` (how a stop-and-scan rover maps a room; the 9-step protocol now in drone-prototype `docs/mapping-campaign-plan-v1.md` §4) and `usb-imu-candidates` (shortlist with live prices; WT901C-TTL primary, XIAO nRF52840 Sense fallback). Both catalogued in `index.md`. Fold-back note: drone-prototype EDA218 (M0 office map from campaign rests) confirmed two of the mapping page's claims on real data — loop closures must be gated by agreement with the chain they are seeded from, and station spacing in a small room is not overlap-limited — and measured the rig's self-occlusion zones (mast 163–188.5°, screw 234.5–248.5°), which the page's "blind cone 164–188°" should be read as.
