@@ -38,6 +38,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/event-cameras]] | Event-based vision sensors — the front end that makes workloads natively sparse. Real commercial parts from 3 mW to 12 W. Named automotive design wins (vendor-claimed). The processing gap: most pipelines densify events back into frames. |
 | [[devices/cmos-rram-beol-integration]] | Inserting RRAM into commercial CMOS BEOL without a foundry embedded-RRAM PDK. 16×16 1T1R validated on 180 nm; larger arrays structural only. Evidence the foundry gate is tractable, not that it's solved. |
 | [[devices/optoelectronic-rram-photonic-programming]] | Optoelectronic RRAM (ORRAM) — memristive cells written with light, not voltage. 32-device IGZO array, µLED-array optical SET / electrical RESET, optical fading memory ~2500× longer than electrical relaxation. Academic-only; no endurance, retention, or CMOS-integrated ORRAM yet. |
+| [[devices/optoelectronic-reservoir-computing-si3n4-ttd]] | Foundry-fabricated Si3N4 true-time-delay chip closes a delayed-feedback reservoir computer's loop, at feedback gain >40× below prior optoelectronic reservoirs. Single device, bench system, no code/data release. Not spiking; the wiki's first reservoir-computing entry. |
 
 ---
 

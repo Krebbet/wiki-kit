@@ -176,9 +176,14 @@ Preferences specific to *this* wiki. The agent running `/weekly-brief` in this c
 - Content audit trail: the email, `wiki/log.md`, and the pushed commit
 - If the machine is off at fire time the run is skipped; no catch-up. The next week's sweep uses a fresh window anyway.
 
-⚠️ **This cron has never fired.** It was installed before any manual `/weekly-brief` run, so capture tooling and email delivery are unproven from this checkout on the unattended path. First Thursday is the real test — check the log if no brief arrives.
+**Cron validated.** First unattended firing (2026-08-20) completed the full loop end-to-end (capture, ingest, commit, push, email, Telegram) — see `master_notes.md` 2026-08-21 entry. The "never fired" caveat recorded at install time is retired.
 
 ⚠️ **YouTube transcript capture is broken** on this clone: the pinned `yt-dlp` (2024.12.23) is rejected by YouTube. Known and deliberately deferred; `/weekly-brief` should skip video sources and note the skip rather than retrying. Fix is `poetry update yt-dlp`. See `master_notes.md`.
+
+**2026-09-17 — quiet-week sweep, no source-status changes.** No candidate this run surfaced across ≥2 independent watched sources — five parallel survey subagents (aggregators/feeds, journals/venues, trade press, vendors/labs/foundries, programmes/benchmarks) confirmed a genuinely slow week rather than a coverage gap. No new high-signal source was confidently identified for addition to this file. Two corrections worth recording:
+
+- **investing.com blocks `capture_url` with HTTP 403** (confirmed on two distinct article URLs). Not a pinned source in this file, so no table entry, but worth knowing before routing a BrainChip-earnings capture through it again — go to `brainchip.com`/`investor.brainchip.com` directly instead.
+- **A secondary-outlet "new" funding story was actually 19 months stale.** An EnCharge AI "$100M raise, Sept 16 2026" item, sourced from a non-watched secondary outlet, turned out to be a re-report of the February 2025 Series B with a fresh publication date. Caught by verification before it entered the brief — a reminder that only this file's watched sources (and their own primary links) should be trusted for "this is new," never an unaffiliated secondary relay's dateline.
 
 ## Related
 

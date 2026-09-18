@@ -77,6 +77,15 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - MicroIP (Taiwan) — production-module partnership (June 2026)
 - IBM — **Symphony Community Akida Bundle** (claimed by BrainChip, 2026-08-20): a free, open-source (GitHub) integration letting Akida processors be scheduled as a managed resource alongside GPUs/CPUs inside IBM Spectrum Symphony Community Edition. This is a distinct commercial-signal shape from the rest of the list — it's a software-orchestration integration, not a silicon design win, and its stated significance is extending Akida's addressable market from edge devices toward on-prem **enterprise servers**. No customer, deployment, or performance number attached; treat "equal footing with GPUs" as BrainChip's own framing, not an independent benchmark.
 
+## Product-line accessibility: AKD1500 PCIe card (added 2026-09-17, weekly sweep)
+
+Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). BrainChip launched a standard-PCIe-slot AKD1500 development/evaluation card, sold now through its own online store with no subscription or license fees. This is **not a new chip or a production milestone** — it's an accessibility layer on top of the already-shipping AKD1500: the release itself frames it as completing a product-line ladder (eval card → M.2 module → packaged/unpackaged silicon → licensable IP), all built on the same die discussed above.
+
+- **Evidenced:** card available now via shop.brainchipinc.com; installs in a standard PCIe slot in a desktop, workstation, industrial PC, or single-board computer; runs "models built in existing frameworks" (no framework named); quotes from CEO Sean Hehir and CPO Steve Brightfield.
+- **Claimed, not independently verified:** "industry-leading momentum"; that a model validated on the card "runs on the deployed hardware without change" — a portability claim with no supporting benchmark or technical detail.
+- The release cites third-party ABI Research market-sizing (edge AI chipset market $34.4B in 2026 → $96B by 2031) as demand context. This is a market-wide figure, not BrainChip-specific share data — don't read it as validation of BrainChip's own position, despite its placement next to the "momentum" language.
+- **No new numbers on the open questions below.** The release states no yield, production-volume, or pricing figures for the card, and doesn't engage with the below-expectations yield or widening losses tracked elsewhere on this page — an omission, not a rebuttal.
+
 ## Open questions
 
 - What is the actual AKD1500 yield figure, and what is the root cause? *(unquantified in all sources)*
@@ -94,6 +103,7 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - `raw/research/neuromorphic-commercial-viability/03-brainchip-yield-cash.md` — Kalkine, "BrainChip (ASX:BRN) Starts Shipping Silicon — But the Cash Clock Is Ticking". Trade/financial commentary; tier 5 (event pointer only). Separates its bull and bear cases explicitly, which is to its credit, but paraphrases filings without linking them.
 - `raw/research/weekly-2026-08-20/04-brainchip-symphony-ibm-bundle.md` — BrainChip press release, "BrainChip Launches Symphony Community Akida Bundle for IBM's Workload Management Solution", 2026-08-20. Vendor primary.
 - `raw/research/weekly-2026-08-27/03-brainchip-h1-cy2026.md` — Motley Fool Australia, "BrainChip shares: Half-year results show revenue up, loss widens", 2026-08-26. Relay of BrainChip's ASX half-year filing; tier 4 (one level removed from primary, no filing linked).
+- `raw/research/weekly-2026-09-17/04-brainchip-akd1500-pcie-card.md` — BrainChip press release, "BrainChip Launches AKD1500 PCIe Card For Edge AI Evaluation Everywhere", 2026-09-17. Vendor primary.
 
 ## Related
 
@@ -102,3 +112,4 @@ All named as claimed partnerships; the outlet's own caveat is that they carry **
 - [[../benchmarks/neurobench]] — the measurement protocol that would settle those claims
 - [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep
 - [[../weekly-briefs/2026-08-27]] — brought in by the 2026-08-27 weekly sweep
+- [[../weekly-briefs/2026-09-17]] — brought in by the 2026-09-17 weekly sweep

@@ -117,3 +117,21 @@ Second content run, and the first to overlap with an autonomous one.
 
 Full brief: `wiki/weekly-briefs/2026-08-27.md`.
 
+
+## [2026-09-17] weekly-brief | quiet week: 2 pages, 1 dropped paywalled source, 1 kit-level capture bug found
+
+Third `/weekly-brief` run. A genuinely quiet week for the tracked sources — no candidate surfaced across ≥2 independent watched sources this run, consistent with the local convention that hardware fields move slowly. 5 survey subagents scanned aggregators, journals, trade press, vendors, and programmes/benchmarks; only a handful of in-window (2026-09-10 to 2026-09-17) candidates cleared the wiki-fit bar.
+
+**3 captured, 1 dropped, 2 ingested.** Captured: an optoelectronic reservoir-computing arXiv paper (foundry Si3N4 true-time-delay chip), a Nature Electronics half-unit-cell 2D Ga2O3 ferroelectric BEOL-integration paper, and a BrainChip AKD1500 PCIe dev-card press release. The Nature Electronics capture hit the wiki's documented structural paywall signature (`## Access options` / "Buy this article", abstract-only body) and was dropped to the watchlist per existing convention rather than ingested thin.
+
+**A capture-tooling bug found and worked around, not just documented.** The first attempt at the reservoir-computing paper (`capture_pdf --src <arxiv /abs/ URL>`) silently succeeded and passed `audit_captures` clean, but had actually captured only the arXiv abstract landing page — `_resolve_source()` has no Content-Type/magic-byte check, so pymupdf's tolerant format-sniffing opened the HTML as a 1-page "PDF." Re-run against the `/pdf/` URL produced the correct 21-page capture. Logged to `master_notes.md` (kit, open) with a proposed fix (Content-Type validation, auto `/abs/`→`/pdf/` normalization for arxiv.org).
+
+**A stale-news near-miss caught before it entered the brief.** A survey subagent flagged an EnCharge AI "$100M raise, Sept 16 2026" item from a secondary outlet; verification showed the actual raise was announced February 2025 — the secondary source had re-reported old news with a new date. Dropped entirely, not even watchlisted, since there's no new signal.
+
+**BrainChip's actual Sept 11 Q2 FY2026 investor webinar could not be cleanly captured** — two attempts via investing.com both hit HTTP 403. Substituted a same-day-relevant, cleanly-capturable primary source instead (brainchip.com's Sept 17 AKD1500 PCIe card press release) rather than force a stale or blocked source into the run; the investor-webinar content (yield status, AKD2500 tape-out schedule) is watchlisted with the capture failure noted, for a better-sourced retry.
+
+**Pages (1 new + 1 extend):** `devices/optoelectronic-reservoir-computing-si3n4-ttd` (new) — the wiki's first reservoir-computing entry, explicitly not spiking, single-device academic bench system, feedback gain >40× below prior optoelectronic reservoirs, closed reproducibility. `players/brainchip` extended with the PCIe dev-card launch, framed explicitly as a go-to-market/accessibility move rather than a technical or production milestone, with the market-sizing figures tagged as third-party context rather than BrainChip-specific data.
+
+**5 watchlist additions** (well below the 10 cap; a quiet week and a disciplined selection stayed disciplined rather than padding to 5 captures): the paywalled Ga2O3 ferroelectric paper, an analog-IMC-variability statistical framework (RACE-AIMC), a low-confidence Nature Electronics N&V item, an on-chip local-learning paper (simulation-only), and an unverified single-maintainer SNN toolkit release (NMTK) — flagged for the same legitimacy-skepticism reason as the 2026-08-27 KAIST figure-hallucination finding. The existing BrainChip-quarterly watchlist entry was updated in place with the Sept 11 webinar's headline claims and the capture-failure note, rather than duplicated.
+
+Full brief: `wiki/weekly-briefs/2026-09-17.md`.

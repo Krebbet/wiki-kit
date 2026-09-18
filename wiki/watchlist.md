@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-08-27
+last_reviewed: 2026-09-17
 ---
 
 # Watchlist
@@ -35,6 +35,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Mott/CDW device family (1T-TaS2) — in-scope, uncaptured; anchor on device-level oscillator work (Liu/Balandin/Khitun), not the atomic-scale characterization-only source that surfaced it
 - KAIST noise-tunable memristor "probabilistic neuron" — noise-as-resource vs noise-as-defect framing is interesting, but source is a two-sentence relay with zero numbers, no primary access (Wiley-blocked)
 - Nb:SrTiO3 resistive switching mechanism study (arXiv:2608.23430) — new oxide/interface family, mechanism-focused not breakthrough-numbers
+- Half-unit-cell (6Å) 2D Ga2O3 ferroelectricity, 0.8V switching, BEOL-compatible on Si (Nature Electronics, doi 10.1038/s41928-026-01694-1) — ⚠️ paywalled, abstract-only capture per structural check; strong scope-fit (CMOS-voltage-scale, BEOL-integrated) if the body can ever be obtained
+- RACE-AIMC: risk-aware ensemble inference across heterogeneous analog IMC accelerators (arXiv:2609.03149) — statistical framework for device-to-device variability, not a measured chip; touches the [[../devices/memristor-array-integration-gap]] theme
+- Nature Electronics News & Views on a room-temperature correlated-microwave-signal thin-film magnetic source — low confidence on neuromorphic relevance from abstract alone; needs the underlying paper's title/abstract to judge oscillator/coupled-oscillator-computing fit
 
 ## Chips & systems
 
@@ -71,6 +74,8 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Syn2Logic: end-to-end neuromorphic design automation (arXiv:2608.25536) — compiler/toolchain, unverified vs a real chip
 - NeuRehab: RL+SNN rehab automation framework (IOP NCE, art. ae9215) — claims deployment on dedicated low-power hardware, measured-vs-simulated unverified
 - Free-probability kernels for zero-rollout reservoir-computing hyperparameter selection (arXiv:2608.20998) — RC toolchain maturity angle
+- Gradient-tunneling STDP-compatible feedback learning for neural microcircuits (arXiv:2609.08070, submitted Nature Machine Intelligence) — on-chip/local-learning weight-transport angle, simulation-only, comparable-not-breakthrough vs leading SNN online methods
+- NMTK (NeuroMorphicToolKit) v0.6.5 — single-maintainer first public release claiming near-universal SNN-framework interop (snnTorch/Brian2/Lava/Nengo/Rockpool/PyNN/Akida via NIR); ⚠️ treat as unverified until independent adoption is seen, not an established toolchain like snnTorch/Rockpool/Nengo
 
 ## Benchmarks
 
@@ -78,7 +83,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 
 ## Players & funding
 
-- BrainChip September 2026 quarterly — next yield and volume checkpoint
+- BrainChip Q2 FY2026 investor webinar (11 Sept 2026) held — AKD2500 Dec-2026 tape-out on schedule, Akida 1500 25% inventory sold, ~$20M cash runway, yield issues still under investigation; ⚠️ every capture attempt (investing.com ×2) hit a 403 — only secondary-relay content available, no clean primary this run; next quarterly (Sept 2026) is still the yield/volume checkpoint
 - TSMC 22 nm eRRAM — the only foundry-node claim in evidence; no independent benchmark
 - dorsaVi 22nm RRAM-CMOS validation chip fab start — ⚠️ single small-cap-stock-tipster source (smallcaps.com.au), unverified against any primary; dorsaVi's known business is biomechanical sensors, not chips — treat as unconfirmed until a second source corroborates
 
