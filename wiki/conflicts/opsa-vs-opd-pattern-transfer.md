@@ -16,6 +16,17 @@ Three papers surfaced in the same week, none citing each other on this point, ea
 
 None of the three runs Position A's own diagnostics (noisy-only vs. teacher-free fixed-advantage ablation) on their own setups, so none is a direct falsification — each is a structural tension, same status as the original Position B tension. But three independent papers converging on the same objection in one week is a stronger signal than either paper alone, and shifts the weight of new evidence against Position A pending a direct ablation.
 
+## Extension (2026-09-18 weekly sweep) — a fourth paper complicates both positions rather than siding with either
+
+**[[../research/teacher-student-rl/privileged-info-opsd]]** (Zhang et al., "What Does Privileged Information Add to On-Policy Self-Distillation?", arXiv:2609.20612) directly targets the crux of this conflict — what a genuine teacher reference contributes beyond a reference-free control — and lands in an unusual place: partial corroboration *and* partial complication of both positions simultaneously.
+
+- **Toward Position A ("no privileged content needed")**: a reference-free control (thinking-enabled teacher scoring direct-response student prefixes, *zero* privileged content) recovers most of the gain that full-reference views achieve. At step 100, the largest content-bearing view (FULL TRACE) is statistically indistinguishable from reference-free.
+- **Against Position A's specific mechanism**: the paper explicitly rejects "suppressing the student's own low-confidence tokens" as the explanation for the reference-free gain. Its own mode-reversal experiment is the sharpest evidence against a content-independent, mode-agnostic suppression account: switching *only* the student's training-rollout mode (direct-response → thinking-enabled), with the identical teacher and identical reference, flips gains into losses in both model families ("all nine gaps negative, eight significant"). If OPSA's suppression mechanism were the whole story — teacher identity and content barely mattering, only the student's own low-logp tokens — changing the rollout mode alone (same teacher, same reference, same suppression opportunity) should not reverse the sign of the effect.
+- **Against a strong reading of Position A generally**: reference *content* is not fully fungible even where reference-free training is competitive — swapping in a length-matched but wrong-problem reference (wrong content, wrong answer) costs ~2 accuracy points versus the genuine reference.
+- **Orthogonal to Position B**: the paper proposes a third causal story neither position captures — **cross-mode capability access**. Gains concentrate on problems the base model never solves under direct-response decoding but solves 62% of the time with thinking enabled; the interpretation is that OPSD training changes parameters shared by both inference modes, making already-latent thinking-mode capability more *accessible* under direct-response decoding, rather than either (a) content-independent token suppression (Position A) or (b) transferring the specific teacher's whole-policy behavioral identity (Position B).
+
+This doesn't resolve the conflict — if anything it complicates the resolution rule below, since Position A's own diagnostic (mode-reversal with fixed teacher/reference) is exactly the kind of ablation §21's resolution rule calls for, and it comes out **against** Position A's generality claim, independent of the three 2026-09-11 papers' same-origin/cross-origin angle. Four independent papers now bear on this conflict from four different angles (teacher-alignment mechanism, teacher-pass@1 ceiling, reliability-gating, and now cross-mode capability access) — none siding cleanly with either original position.
+
 ## Resolution rule
 
 *(Open — no ruling yet.)* The extension above sharpens what would resolve it: Position A's own noisy/teacher-free ablation, re-run (a) on a query the student never solves under one-shot OPD's setup, (b) at TGOPD's low-teacher-reliability prompts specifically, and (c) tracking whether the teacher-free variant's performance ceiling still tracks teacher pass@1 as in Sequential-Beats-Joint. If teacher-free training reproduces all three results, Position A survives intact and the three papers' causal *framing* (not their data) would be wrong. If it doesn't, Position A's generality claim (holds regardless of teacher quality/identity) would not survive.
@@ -30,7 +41,7 @@ Two threads worth separating before either position is dismissed:
 
 ## Source
 
-Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2–2.3, 3.1–3.2, in `raw/research/weekly-2026-09-04/.ingest/01-opsa-does-opd-really-distill.summary.md`. Extended via the 2026-09-11 weekly sweep with three independent papers (arXiv:2609.04172, 2609.04108, 2609.02998).
+Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2–2.3, 3.1–3.2, in `raw/research/weekly-2026-09-04/.ingest/01-opsa-does-opd-really-distill.summary.md`. Extended via the 2026-09-11 weekly sweep with three independent papers (arXiv:2609.04172, 2609.04108, 2609.02998). Extended again via the 2026-09-18 weekly sweep with arXiv:2609.20612.
 
 ## Related
 
@@ -41,5 +52,7 @@ Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2�
 - [[../research/teacher-student-rl/one-shot-opd]] — 2026-09-11 extension: teacher-alignment mechanism for one-shot OPD
 - [[../research/teacher-student-rl/sequential-opd-then-rl]] — 2026-09-11 extension: teacher-pass@1-bounded ceiling
 - [[../research/teacher-student-rl/tgopd-verify-before-distill]] — 2026-09-11 extension: reliability-tied gating gains
+- [[../research/teacher-student-rl/privileged-info-opsd]] — 2026-09-18 extension: cross-mode capability access, mode-reversal evidence against Position A's specific mechanism
 - [[../../weekly-briefs/2026-09-04]] — brought in by the 2026-09-04 weekly sweep
 - [[../../weekly-briefs/2026-09-11]] — extended by the 2026-09-11 weekly sweep
+- [[../../weekly-briefs/2026-09-18]] — extended by the 2026-09-18 weekly sweep

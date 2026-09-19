@@ -66,6 +66,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Eliciting Weak-to-Strong Generalization with On-Policy Reverse Distillation (arXiv:2609.08798) — reverse-direction OPD; weak teacher elicits strong-student generalization
 - One Symptom, Three Levers: A Critical Review of On-Policy Self-Distillation (arXiv:2608.25936) — critical survey/review of the OPSD mechanism literature
 - Co-Evolving Harnesses and Models (arXiv:2609.09134) — on-policy correction helps weaker models catch up where imitation fails
+- RetireOPD (arXiv:2609.20784) — self-retiring teacher schedule for agentic OPD
+- When EOS Tokens Disagree (arXiv:2609.20511) — diagnoses OPD length-inflation via EOS-token disagreement
+- Negative Self-Distillation (arXiv:2609.11699) — learns to reason by avoiding flaws, not imitating
 
 ## Process reward models
 
@@ -98,6 +101,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - RACES / LEGO Bricks (arXiv:2606.12373) — recursive composition of verifiable envs for automatic RL curriculum scaling
 - DOTS+RR (arXiv:2506.05316, NeurIPS 2025) — adaptive difficulty targeting + rollout replay; cuts RL compute without accuracy loss
 - StudyBench (arXiv:2609.00787) — can self-evolution squeeze textbooks for olympiad capability; low-confidence, benchmark-flavored flag
+- CanvasAnneal (arXiv:2609.13060) — teacher-guided curriculum RL for diffusion LMs [domain caveat]
+- MATCH (arXiv:2609.20082) — curriculum scheduling + hierarchically-gated tool-learning rewards
 
 ## Variable-granularity / concept-level architectures
 
@@ -155,10 +160,13 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - Aggregation-Induced Reward Hacking in Multi-Reward RL (arXiv:2609.00213) — scalarizing multiple reward dimensions in RLVR post-training creates a hackable aggregate signal
 - The Rise of Verbal Reinforcement Learning (arXiv:2609.01597) — survey unifying natural-language feedback as grounding/deliberative/training signal
+- Score Centering Stabilizes Off-policy RL (arXiv:2609.20807) — reward/score-centering technique stabilizes off-policy RL
+- Compositional Reasoning under RL Post-Training (arXiv:2609.19465) — composed-task training transfers better to decomposed skills
 
 ## Process reward models (cont.)
 
 - Small Language Models as Judges for Rubric-Based RL (arXiv:2608.30005) — small-model (in-scope size range) reward/judge design for rubric-based RL
+- Beyond Solver Verdicts (arXiv:2609.11085) — generative reward models for autoformalization verification
 
 ## Data-efficient / mid-training
 
@@ -172,6 +180,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - ICL as Implicit Policy Gradient (arXiv:2607.23153) — theoretical bridge between in-context learning and RL policy-gradient updates
 - CritICL (arXiv:2608.27455) — inference-time weak-to-strong generalization from small-model failure modes; loosely adjacent to teacher-student framing, leans "eval" more than "method"
+- Thought without systematicity? (arXiv:2609.13948) — evaluates reasoning models on rule-induction tasks
+- Convergent Emergence of ICL Across Modalities (arXiv:2609.14011) — ICL emergence patterns converge across modalities
 
 ---
 
@@ -179,7 +189,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-09-11]] — most recent weekly sweep (5 captures, deliberately diversified against an OPD-mechanism glut; three independent papers converge against OPSA's teacher-free claim, extending the open conflict; 5 watchlist additions)
+- [[weekly-briefs/2026-09-18]] — most recent weekly sweep (5 captures, deliberately diversified against the OPD glut; new critic-vs-critic-free conflict opened; 10 watchlist additions)
+- [[weekly-briefs/2026-09-11]] — prior weekly sweep (5 captures, deliberately diversified against an OPD-mechanism glut; three independent papers converge against OPSA's teacher-free claim, extending the open conflict; 5 watchlist additions)
 - [[weekly-briefs/2026-09-04]] — prior weekly sweep (5 captures, all genuinely new after dedup caught 2 already-ingested candidates pre-capture; two independent OPD-mechanism-critique papers this week; 6 watchlist additions)
 - [[weekly-briefs/2026-08-28]] — prior weekly sweep (unusually conflict-dense week: 5 captures, all genuinely new; full-text ingest surfaced 3 fresh conflicts the abstract-only scan missed; 8 watchlist additions)
 - [[weekly-briefs/2026-08-21]] — prior weekly sweep (moderate week: 4 genuinely new captures from 5 slots — 1 wasted on a duplicate re-discovery of the 2026-08-07 RSTG capture; 0 watchlist surplus)

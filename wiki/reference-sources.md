@@ -21,15 +21,15 @@ Exclude:
 | **alphaXiv weekly trending (cs.LG, cs.CL, cs.AI)** | Explicit popularity ranking on arXiv. **Note (2026-09-11):** `/trending` now 404s — use `/explore/papers` instead. | https://www.alphaxiv.org/explore/papers |
 | **Hugging Face papers trending** | Community-attention signal. **Note (2026-08-28):** the `/papers/date/YYYY-MM-DD` date-pages (e.g. `huggingface.co/papers/date/2026-08-28`) proved more reliable than the bare `/trending` page for a precise weekly window — fetch each date directly rather than relying on trending-page date-filtering. Also usable as an X/Twitter-search fallback: @_akhaliq's curation feed mirrors his X posts closely, and X search itself is rate-limited via WebSearch. | https://huggingface.co/papers |
 | ~~Papers With Code — trending on reasoning benchmarks~~ | **Flagged 2026-09-11: `/sota` now 302-redirects to `huggingface.co/papers/trending`** — the site appears merged/defunct as an independent source. Treat as a duplicate of HF trending above rather than a separate signal; drop from active scan next run if this persists. | https://paperswithcode.com/sota |
-| **r/MachineLearning — hot (past week)** | Broad ML community; better for filtering hype than discovery. **Note (2026-09-11):** WebFetch blocked on both `reddit.com` and `old.reddit.com` this run; WebSearch returned no thread content either. Unreachable two runs running as of 2026-09-11 — consider a fallback (old.reddit.com JSON API, or drop if it persists). | https://www.reddit.com/r/MachineLearning/top/?t=week |
+| ~~r/MachineLearning — hot (past week)~~ | **Flagged 2026-09-18: unreachable a third consecutive run** (WebFetch blocked on both `reddit.com` and `old.reddit.com`; WebSearch fallback returned no thread content). Per the 2026-09-11 note's own threshold, drop from active scan — HF/alphaXiv trending pages are already covering the overlapping signal. Revisit only if a working fallback (e.g. old.reddit.com JSON API) is found. | https://www.reddit.com/r/MachineLearning/top/?t=week |
 | ~~r/LocalLLaMA~~ | **Flagged for replacement** — user to pick a more appropriate subreddit. Skip for now. | — |
 
 ## Curators (weekly scan)
 
 | Source | Why | URL |
 |---|---|---|
-| **@_akhaliq (AK) X timeline** | Daily arXiv-paper curator; strong frontier-awareness. | https://x.com/_akhaliq |
-| **@arankomatsuzaki** | Researcher-curated paper feed; taste overlaps wiki scope. | https://x.com/arankomatsuzaki |
+| **@_akhaliq (AK) X timeline** | Daily arXiv-paper curator; strong frontier-awareness. **Note (2026-09-18):** WebFetch on `x.com/_akhaliq` now returns **HTTP 402 Payment Required** (first occurrence — X's read paywall, not a rate-limit). WebSearch fallback surfaces only scattered individual tweets, not a timeline; direct arXiv topic search substituted this run with adequate coverage. | https://x.com/_akhaliq |
+| **@arankomatsuzaki** | Researcher-curated paper feed; taste overlaps wiki scope. **Note (2026-09-18):** same 402 Payment Required as AK's timeline above — likely a platform-wide change, not source-specific. | https://x.com/arankomatsuzaki |
 | **Interconnects (Nathan Lambert)** | RL-for-LLMs focused; best for GRPO-family / post-training news. | https://www.interconnects.ai |
 | **Import AI (Jack Clark)** | Weekly digest with taste; cross-domain. | https://jack-clark.net |
 | **Simon Willison's TIL / blog** | Frontier practitioner notes. | https://simonwillison.net |
