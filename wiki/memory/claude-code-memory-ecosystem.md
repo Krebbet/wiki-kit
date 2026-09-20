@@ -2,6 +2,8 @@
 
 Practitioner-landscape survey of the auxiliary memory systems people pair with Claude Code for long-term projects. Claude Code has **no native session-to-session memory** (curator ruling 2026-05-23; corroborated by the MindStudio survey's FAQ — see [[claude-code-session-memory]] for the disputed contrary claim): each session is a fresh API conversation, so anything that must survive a session reset has to be written to an external store and re-loaded deliberately. The community has converged on a ladder of approaches — from a single `CLAUDE.md` file, through a markdown "memory bank", to MCP-server-backed stores (Mem0, Basic Memory, mcp-knowledge-graph, MemPalace) and full cross-tool databases. This page maps that ladder, the tools at each rung, and the doctrinal split running through it. It is a hub; individual systems have their own pages.
 
+> **2026-09-20 update:** [[deployments/claude-code-projects]] (Anthropic's redesigned Projects beta) claims threads within a project now share a native, cross-thread memory. This is flagged as a possible scope-narrowing of the no-native-memory ruling above, not yet a reversal — see [[conflicts/claude-code-projects-shared-memory]] for the open conflict and working position.
+
 > **Framing note (editorial):** the page leads with the no-native-memory premise per the curator's ruling. The six-level taxonomy below is the MindStudio survey's framing; tool-specific mechanics are attributed to each tool's own docs. Comparative/benchmark assertions from blog sources are **collect-but-confirm**.
 
 ## The three problems memory has to solve
@@ -112,3 +114,4 @@ These are [[direct-corpus-interaction]]-adjacent on the verbatim pole: keyword/F
 - [[supermemory]] — extract-pole engine with cross-tool plugins; OSS plugins but a hosted commercial core.
 - [[mcp-memory-server]] — the official MCP knowledge-graph reference; upstream of the `mcp-knowledge-graph` fork above.
 - [[memori]] — extract-pole memory layer (MemoriLabs); captures agent *execution* + chat into 8 typed categories; HTTP MCP server.
+- [[deployments/claude-code-projects]] — Anthropic's 2026-09-20 Projects redesign claims native cross-thread memory; see [[conflicts/claude-code-projects-shared-memory]].

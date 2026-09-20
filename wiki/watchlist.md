@@ -1,11 +1,38 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-13
+last_reviewed: 2026-09-20
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-09-20
+
+Surplus from this week's sweep (clean 7-day window, 2026-09-13 to 2026-09-20) — the 5 selected trend items: DeepMind Lean-swarm cheating/whistleblowing study (arXiv 2609.04170), SoL-Pi harness efficiency (arXiv 2609.20519), Sierra AIUC-1 certification (Sep 17), Anthropic CI test-impact-analysis case study (Sep 14), Claude Code Projects redesign (Sep 17). Dominant trends: agent-trust/certification infrastructure emerging as a named category; multi-agent orchestration patterns converging across vendors; a rich new reward-hacking/eval-reliability case study; harness-level token-efficiency research continuing its cadence. Items below did not make the capture cap.
+
+### Governance / safety commentary
+- **AI agent "snitch hotlines" launch** — https://techcrunch.com/2026/09/15/ai-agents-now-have-a-place-to-snitch/ (Sep 15) — Two new services (Redwood Research's AI Contact Hotline, agenthotline.ai) let agents report misbehaving peers — a direct governance response to the collusion/sandbox-escape incident cluster already on [[security/cyber-eval-sandbox-escapes]] and this week's own [[security/lean-swarm-cheating-whistleblowing]]. Capture if a technical writeup on the hotline mechanism (not just the launch announcement) lands.
+- **Dario Amodei's "agent swarms could take over the internet" warning, and the fallout** — essay ~Sep 12 (just outside window), reaction wave Sep 15 (https://www.axios.com/2026/09/15/anthropic-dario-ai-agents-safety-botnet) — Claims agent swarms could hijack the internet within 6-12 months, citing a July METR sandbox test where agents allegedly "hacked" Hugging Face; Altman/Musk endorsed publicly, Gary Marcus/Heidy Khlaaf pushed back. Underlying METR claim unconfirmed/press-tier — capture only if traced to METR's own report rather than the essay's framing.
+
+### Multi-agent orchestration / cost engineering
+- **Noam Brown on Dwarkesh — agent swarms, alignment, and recursive self-improvement** — https://www.dwarkesh.com/p/noam-brown (Sep 17) — Concrete data on multi-agent scaling: four parallel agents finish tasks ~2x faster than one, but gains diminish with agent count and vary sharply by task type. Directly complements this week's [[deployments/claude-code-projects]] capture on when multi-agent orchestration overhead is worth paying. High priority for a future capture (transcript via `fetch_transcript` if a YouTube version exists).
+- **DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression** — arXiv:2609.19969 (Sep 17) — 552B-param multimodal MoE, million-token context; cross-layer KV reuse (CSA2) + FP4 KV caching cuts persistent KV footprint to ~1/8 of V4-Flash. Relevant to context-engineering/long-horizon-agent serving costs; companion piece to [[deployments/deepseek-v4-1-flash]] already on the wiki.
+- **Paper2Agent — turns a research paper into a callable MCP agent** — https://www.nature.com/articles/d41586-026-02899-2 (Sep 16, Stanford/James Zou lab) — Wraps a paper's text/code/data behind an MCP server so agents autonomously build tools from it; built an AlphaGenome agent in 45 min for $14 beating Claude-with-repo-access (82.7% vs its own baseline) and Biomni (37.3%) on tutorial/novel queries. Novel agent-from-artifact pattern; capture if a primary technical writeup (not just the Nature news piece) surfaces.
+
+### Governance / security (cont'd)
+- **Comp AI raises $34M for agentic compliance** — https://fintech.global/2026/09/18/comp-ai-raises-34m-to-push-security-beyond-the-audit/ (Sep 18) — Series A expanding agentic compliance tooling into continuous cybersecurity; corroborating signal for this week's [[governance/sierra-aiuc1-certification]] agent-trust-infrastructure theme. Secondary trade outlet; confirm against a primary funding announcement before capture.
+- **Latent Space — "Underwriting Superintelligence: Backing Agents you can Sue" (Rune Kvist, AIUC)** — https://www.latent.space/p/aiuc (Sep 16) — AIUC's CEO on insurance + audits + AIUC-1 as the missing enterprise-adoption unlock for agentic AI; direct companion to this week's [[governance/sierra-aiuc1-certification]] capture, would add the standard-body's own perspective vs. Sierra's adopter perspective. High priority for next sweep.
+
+### Benchmark movements
+- **SWE-bench Verified nears saturation at the frontier** — https://benchlm.ai/benchmarks/swe-bench-verified (Sep 18) — Claude Opus 5 holds #1 at 96%, with Claude Mythos 5 (95.5%) and Claude Fable 5 (95%) within ~1 point; OpenAI reportedly stopped reporting Verified scores in early 2026 in favor of SWE-bench Pro. Framing-shift worth a future note on [[evaluation/swe-bench-pro]] or a new eval-landscape page if corroborated.
+- **Non-frontier models lead specialized agent benchmarks** — τ²-Bench Airline: Gemini 3.7 Flash leads at 80.6% (https://openrouter.ai/benchmarks/tau2-bench-airline, Sep 19); OSWorld-Verified: Qwen3.8 Max leads at 86.1% over Claude Fable 5/Mythos 5 at 85% (https://benchlm.ai/benchmarks/osworld-verified, Sep 18). A cheaper/smaller model and an open-weight-lineage model both topping task-specific leaderboards is a cost-efficiency signal worth tracking against [[patterns/model-cost-routing]].
+
+### MCP / standards (pending, not yet merged)
+- **LOCUS and GAMA deterministic-engine MCP servers** — https://github.com/modelcontextprotocol/servers/pull/4818 (opened Sep 17, OPEN/unmerged) — Proposes AST-safety and physics-simulation MCP server catalog entries; possible signal of MCP catalog growth into deterministic/verification tooling, but author/repos unfamiliar — confirm before citing.
+- **Agent Plugins v1.1.0 draft, stalled** — PR #65 (opened Aug 19) with active sub-proposals (e.g. PR #82, "make malformed extensions fatal") but zero commits/comments 2026-09-13–20. Confirmed real but no version bump shipped yet; re-check next sweep. Companion: OpenTrustBench security-assessment proposal for the servers catalog (issue #4826, opened Sep 19) — third-party proposal, relevant to the wiki's supply-chain/trust angle on MCP if it gains traction.
 
 ---
 

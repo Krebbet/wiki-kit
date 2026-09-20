@@ -35,6 +35,23 @@ Anthropic's Deputy CISO (Jason Clinton) details the security controls layered on
 
 Context numbers: engineers ship **8×** as much code per quarter versus 2021–2025; Claude authors ~80% of merged code; >50% of all code merged by "Claude Tag."
 
+## CI infrastructure scaling: test-impact-analysis at 25x load
+
+A companion Anthropic engineering post (2026-09-14) is a deep-dive case study on one downstream infra consequence of the same 8×-code/80%-Claude-authored adoption curve: agentic coding drove a **25× increase in CI jobs over six months** (test count grew 10×, engineer count only nominally), which broke a singleton test-impact-analysis service three times before a stateless, horizontally-shardable redesign — built substantially by Claude — stabilized it.
+
+Test-impact analysis picks which tests run per change based on past test-result history and package relevance, rather than running every test on every PR. It's framed as specifically valuable for agents: humans self-filter irrelevant test failures fairly well, but agents need a precise, scoped set of valid tests to self-verify and iterate — sloppy selection disproportionately costs agentic workflows.
+
+**Architecture evolution — three patches, then a redesign:**
+- **v0** — single-process listener + selector; a single writer maintained running per-test history, blocking horizontal sharding. Broke first the prior October, triggering two days of paging.
+- **Patch 1** (Oct) — doubled cores; bought ~70 days.
+- **Patch 2** (Feb) — moved from a single global writer to one writer *per package* (Claude generated the sharding code); bought ~29 days.
+- **Patch 3** (Mar) — hit memory limits by mid-afternoon on weekdays; daily restarts caused progressive listener lag, and lag beyond ~1 hour caused the listener to silently drop CI job results (stale history driving test selection, often manifesting as re-running already-flaky tests). Lasted less than a day before the team committed to a redesign.
+- **Redesign (v1, "on Claude's advice")** — gave the service a database; any listener worker can process any result, append to a journal, and move on statelessly, horizontally scalable by design. A small consumer rolls the journal into per-test history every few seconds. Built and tuned largely autonomously by Claude in **three engineer-weeks** — "a year ago it would have been closer to a quarter." During the crisis, a long-lived Claude Tag session monitored the service, configured to page the author and resume context whenever listener lag exceeded 50,000 jobs — persisting context across months without manual re-briefing.
+
+**Results:** 25× CI-job growth in six months; three progressively shorter patch lifespans (70 days → 29 days → <1 day) before redesign; the redesign has "remained stable since." No numeric before/after latency or cost figures are given for the final architecture — mostly qualitative stability and timeline claims.
+
+**Forward-looking guidance:** assume 25× load within two quarters when designing infra ("always plan for the exponential" — scaling patches buy less time each iteration, while full redesigns now take *less* time than a year ago since code-writing is no longer the bottleneck); budget for 10–20× perceived scale in v0 designs; instrument services to be legible to Claude ("Claude's eyes and ears") so it can hill-climb fixes; keep state out of processes from the start; avoid single-instance critical services unless heavily measured with canaries. A companion post, "AI CI/CD on-call using Claude Tag" (beta), is referenced but not yet captured in the wiki.
+
 ## How this fits the wiki
 
 - [[governance/claude-code-auto-mode]] — the "Claude Code on auto mode" play (Stage 3: Build) frames classifier-gated auto-accept as enabling parallel worktree sessions and as a graduated on-ramp (tuned CLAUDE.md + skills + hooks + test suite) rather than a single toggle; the securing post's risk-tiered approval logging + human sampling is a parallel automated-gate-with-human-backstop philosophy.
@@ -46,11 +63,14 @@ Context numbers: engineers ship **8×** as much code per quarter versus 2021–2
 - [[security/cyber-eval-sandbox-escapes]] — egress-allowlisted remote VMs are the affirmative mitigation for exactly the kind of network/environment escape that page documents happening elsewhere.
 - [[security/adr-uber-mcp-detection]] — peer agent-security-infrastructure page (causal-chain audit/detection vs. this page's approval-logging + risk-weighted human sampling); both answer the wiki's "40%-no-audit gap" theme.
 - [[conflicts/auto-mode-prompt-injection-defense]] — the egress-allowlisting claim is a network-layer containment argument, not a data-instruction-separation defense; it's a third reinforcing data point for that conflict's "defense in depth, not a single provable barrier" working position (see conflict page for detail).
+- [[deployments/cognition-cloud-agents]] / [[deployments/cursor-cloud-agents]] — the CI-scaling section above is a concrete, numbers-heavy single-service case study of the same "infrastructure strain from agent-driven PR/commit volume" class of problem those pages document (Cursor's cloud-agents retrospective names three parallel load-bearing infra lessons).
+- [[coding-agents/coding-agent-adoption]] — corroborating adoption-scale context that makes the CI-scaling section's 8×-code/25×-CI claim plausible at an industry level.
 
 ## Source
 
 - `raw/research/weekly-2026-08-23/02-anthropic-ai-native-sdlc-playbook.md` — captured 2026-08-23 from `claude.com/blog/the-ai-native-sdlc-playbook` (~2026-08-19/21). **Vendor primary.**
 - `raw/research/weekly-2026-08-23/03-anthropic-securing-ai-native-sdlc.md` — captured 2026-08-23 from `claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle` (~2026-08-19/21, Jason Clinton, Deputy CISO). **Vendor primary.** Internal metrics (80% AI-authored code, 16%→54% review comments, 1/3 of incidents catchable) are self-reported — collect-but-confirm.
+- `raw/research/weekly-2026-09-20/04-anthropic-ci-test-impact-analysis.md` — captured 2026-09-20 from `claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic` (2026-09-14). **Vendor primary.**
 
 ## Related
 
@@ -64,3 +84,5 @@ Context numbers: engineers ship **8×** as much code per quarter versus 2021–2
 - [[security/cyber-eval-sandbox-escapes]]
 - [[security/adr-uber-mcp-detection]]
 - [[conflicts/auto-mode-prompt-injection-defense]]
+- [[deployments/cognition-cloud-agents]]
+- [[deployments/cursor-cloud-agents]]
