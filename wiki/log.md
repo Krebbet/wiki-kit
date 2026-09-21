@@ -421,3 +421,8 @@ Two new pages from dispatched research: `stop-and-scan-room-mapping` (how a stop
 
 Folded drone-prototype EDA219/220/221 (closing test, stop envelope at mapping speed, PI ripple) into `odometry-closed-loop-pipeline` and EDA218/222 (M0 office map from rests; M1 mapping routine; M2 first live autonomous map) into `stop-and-scan-room-mapping`, each as a dated "What this rig measured" section that says what held and what the floor reversed; `lidar-floorplan-extraction` got a pointer paragraph. Key reversals recorded: register on walls + objects (walls alone lose the symmetry-breaking clutter); select stations by quality not sparsity; a far wall looks like an object to one scan; the optimiser's residuals certify nothing — own-wall heading and per-station layering gate PASS/FAIL; the RPLIDAR C1 counts clockwise; the "blind cone" is two measured rig zones, filtered. Odometry: one constant (`k`, +5.8 %) was the whole closed-loop error, the mecanum crab is real and invisible to the encoders, a goal refreshes its own deadman. Index rows updated. (drone-prototype side: the June EDAs were archived under `eda/archive/2026-06-worldmodel/` the same day; wiki citations of `eda/EDA0xx…` paths should be read with that prefix.)
 
+
+
+### 2026-09-21 — stop-and-go navigation research (prototyper-dispatched)
+
+New page `stop-and-go-navigation-on-a-locked-map` (costmap error budget, planning over the rover's motion set, relocalise-at-every-stop, temporary obstacles, recovery, scoring). Catalogued in `index.md`. Drives drone-prototype navigation plan v1 §4 and the N0/N1 defaults (inflation 0.33 m, tolerance 5 cm / 3°).
