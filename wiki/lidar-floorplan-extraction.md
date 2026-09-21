@@ -114,6 +114,8 @@ The page also covers the doorway question, for which the answer is specific and 
 
 [[2d-lidar-slam]] · [[slam-toolbox]] · [[room-shape-topology-methods]] · [[floorplan-reconstruction-methods]] · [[room-segmentation-floor-plan]] · [[global-alignment-wall-refinement]] · [[weak-scan-registration-methods]] · [[learned-point-cloud-registration]] · [[trajectory-refinement-and-fusion]] · [[robust-evidence-mapping-principle]] · [[mapping-stack-design]] · [[dynamic-object-handling]] · [[sensor-weaknesses-and-fixes]] · [[consumer-robot-vacuum-mapping]] · [[anchor-map-protocol]]
 
+> **Rig results (2026-09-17 → 21).** The pipeline this page describes was run on the prototype rover in stop-and-scan mode — office mapped from campaign rests (EDA218) and then autonomously (EDA222 M2: 13 stations, heading p90 0.49°, asserted walls 0.2–0.6 cm, two runs agree to ~1 cm). What held and what the data reversed (register on walls + objects; select stations by quality not sparsity; a far wall looks like an object to one scan; optimiser residuals certify nothing — use own-wall heading and per-station layering; the C1 counts clockwise; rig self-occlusion zones) is folded into [[stop-and-scan-room-mapping]] §What this rig measured; the odometry side is in [[odometry-closed-loop-pipeline]] §What this rig measured. §3's closure question is still open on the rover: furniture flush to a wall is asserted as wall at the 1.1 m plane.
+
 ---
 
 ## 0. The five-stage pipeline, and where the difficulty actually is
