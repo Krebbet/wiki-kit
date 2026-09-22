@@ -69,6 +69,16 @@ genuine paywall (some NBER papers require institutional access or purchase in th
 tooling gap. Distinguish the two: 403-on-both = paywalled, skip; 200-on-landing/thin-on-PDF = landing-page
 trap, use direct PDF path.
 
+**Capture note (2026-09-22):** a *third* pattern, wider than either above — **every paper checked from this
+week's release batch** (w35758, w35768, w35778, w35780 — four different papers, two fetch methods: the
+capture tool and a raw `curl` with a browser user-agent) 403'd on both the landing page and the direct PDF
+path. A single paywalled paper (like w35756) is expected; four different papers all blocked the same way in
+the same week looks like a batch-wide access embargo rather than four independent paywalls, though this
+wiki has no way to confirm the mechanism from the outside. **Before dropping a blocked NBER paper, check for
+an open-access author mirror** — w35780 (Bacher, Fagereng, Ring & Wold) had one on a co-author's GitHub Pages
+site and was captured via that route. Re-test next sweep whether the block is batch-specific (this week's
+releases only) or has become the new baseline for all NBER papers.
+
 ## Journals
 
 | Source | Focus | Added | Status |
@@ -77,8 +87,17 @@ trap, use direct PDF path.
 | Journal of Institutional Economics | Core venue for the field | 2026-08-19 | active (2026-09-08) — open access since 2025, no Cloudflare block; two captures this sweep |
 | Governance | Public administration and institutional reform | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | American Political Science Review / American Journal of Political Science | Power, veto players, accountability | 2026-08-19 | probation — capture-blocked (2026-08-25) |
-| Administrative Science Quarterly / Organization Science | Organisational theory, scale and hierarchy effects | 2026-08-19 | probation |
+| Administrative Science Quarterly / Organization Science | Organisational theory, scale and hierarchy effects | 2026-08-19 | probation — capture-blocked (2026-09-22) |
 | Journal of Economic Literature | Survey articles — high value per capture for a wiki still building its canon | 2026-08-19 | probation |
+
+**Capture note (2026-09-22):** `journals.sagepub.com` (Administrative Science Quarterly, and presumably other
+SAGE-hosted journals) served a Cloudflare "Performing security verification" challenge page to both a direct
+PDF request and a Playwright `--js` capture attempt, even though the target article's DOI metadata claimed CC
+BY-NC open access. `capture_url` "succeeded" (exit 0) but the captured file was the challenge page, not the
+article — same failure class as the CEPR (2026-09-15) and NBER (2026-08-25) landing-page traps, new source.
+Distinguish from Wiley's Cloudflare block (Governance, APSR/AJPS, OECD Public Governance) only in that SAGE's
+challenge page is dynamic (a Ray ID, a "waiting for X to respond" message) rather than a static block — a
+manual browser session with a persistent cookie jar may clear it where Wiley's does not; untested.
 
 ## Data, indices and multilateral output
 
@@ -135,7 +154,11 @@ survey subagent.
 - **Nordic** in-country public-administration research (Nordic sources in English skew to outsider summaries).
   A candidate found this sweep (2026-08-25): *Scandinavian Journal of Public Administration* Vol. 29 No. 4,
   published via a Swedish open-access platform (KB) — watchlisted, untested, but the first candidate from an
-  actual Nordic-hosted venue rather than an outsider summary.
+  actual Nordic-hosted venue rather than an outsider summary. **Partially closed 2026-09-22**:
+  [[capital-requirements-and-entrepreneurial-entry]] is a natural experiment run directly on Norwegian
+  administrative registers (business, tax, shareholder, employment and education records) — genuine
+  Nordic-institution primary data, though the authors themselves are not Nordic-affiliated and the venue is
+  NBER, not a Nordic-hosted journal, so this is a partial rather than full closure of the gap.
 - **Japanese/Korean** developmental-state scholarship. A Korea industrial-policy candidate found this sweep
   (2026-08-25), watchlisted, untested (ScienceDirect, likely paywalled).
 - **Latin American and African** institutional research, currently absent entirely until this sweep
@@ -161,6 +184,14 @@ survey subagent.
   only 1 candidate (an Acemoglu book-talk interview) made it through to the wiki, and as a page extension
   rather than a new page given its second-hand/assertion tier. No source hit its three-consecutive-dry-sweep
   retirement threshold this cycle either.
+- Fourth sweep, 2026-09-22: arXiv econ.GN productive again (2 captures, a single-author theory pair). NBER
+  surfaced four strong candidates but the entire checked batch was capture-blocked (see capture note above) —
+  one recovered via an open-access author mirror, the other three watchlisted. ASQ (a probation journal) hit a
+  new SAGE-specific Cloudflare landing-page trap on its first live test this sweep. OECD surfaced two strong
+  methodological/governance candidates, both still hard-403-blocked (persistent, fourth confirmation). No
+  source hit its three-consecutive-dry-sweep retirement threshold. SSRN, Governance, APSR/AJPS, JEP, JEL,
+  Broadstreet, Statecraft, Institute for Government, Niskanen and Mercatus were all dry or not surveyed with a
+  strong-enough candidate this cycle.
 
 ## Related
 

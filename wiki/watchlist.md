@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-08-25
+last_reviewed: 2026-09-22
 ---
 
 # Watchlist
@@ -123,10 +123,64 @@ existing page (Acemoglu, second-hand); 2 are listed here, both capture-blocked f
 
 ### Flagged for next sweep (uncertain timing, not a full candidate this week)
 
-- State Capacity as an Organizational Problem (Mastrorocco & Teso, *Review of Economic Studies* advance
-  article) — strong empirical piece (US federal expansion via railroad-driven monitoring-cost variation), but
-  could not confirm the advance-access push date fell inside this week's 7-day window. Re-check next sweep for
-  a September 2026 advance-access date.
+- ~~State Capacity as an Organizational Problem (Mastrorocco & Teso, *Review of Economic Studies* advance
+  article)~~ — **resolved 2026-09-22**: advance-access date confirmed as 2026-06-17, three months outside any
+  recent sweep window. Dropped rather than re-flagged.
+
+## Week of 2026-09-22
+
+Fourth sweep. A moderate week: the current NBER working-paper release batch turned out to be under what looks
+like a batch-wide access embargo (see `reference-sources.md` capture note), so three otherwise-strong NBER
+candidates are listed here purely on capture-blocked grounds, not weak content. 4 sources captured, 1 dropped
+post-capture (Cloudflare landing-page trap) and listed here instead.
+
+### Working papers
+
+- Money and Power: Historical Lessons for Stablecoins and U.S. Dollar Dominance (NBER w35768, Bordo & Wilkins)
+  — institutional history of private-money regimes and five design foundations for a stable one. **Capture
+  blocked**: 403 on both landing page and direct PDF path, no open-access mirror found. Part of this week's
+  apparent NBER batch-wide embargo.
+- Governing Global Externalities: Investor Voice Amid Fragmented Policy (NBER w35778, Döttling, Levit, Malenko
+  & Rola-Janicka) — corporate governance under regulatory fragmentation; investor stewardship vs. policy
+  advocacy. **Capture blocked**: same NBER batch-wide pattern as above.
+- Fiscal Populism and Monetary Policy Rules (NBER w35758, Jácome, Magud, Pienknagura & Uribe) — links populist
+  regimes to central-bank lending/independence erosion across countries. **Capture blocked**: same pattern.
+- Migration, Identity and Political Economy in a Globalizing World (NBER w35777, Fouka & Tabellini) —
+  political economy of migration-driven identity shifts and party realignment. Borderline scope (migration
+  politics rather than institutional design core); not independently verified as capture-blocked.
+
+### Journals
+
+- Legitimizing the Regulatory State: How Institutional Intermediaries Facilitate Inclusive and Effective
+  Co-creation in Emerging Economies (Hicken, Malesky, Nillasithanukroh & Taussig, *Administrative Science
+  Quarterly*) — Thailand digital public-consultation programme; non-Anglosphere comparative institutional
+  design, directly against this wiki's coverage gap. **Capture blocked**: journals.sagepub.com served a
+  Cloudflare "security verification" challenge page to both a direct request and a Playwright `--js` attempt —
+  see `reference-sources.md` capture note. Worth a manual browser pull given the scope fit.
+- What motivates corporate executives to make political donations? (Barber & Blake, *Organization Science*,
+  Articles in Advance) — corporate political activity and governance-theory angle; borderline scope (leans
+  toward company-news territory). Untested for capture.
+
+### Data, indices and multilateral output
+
+- Updated OECD Guidelines on Measuring Trust and Trust Drivers in Public Institutions (OECD Publications, 16
+  Sept 2026) — methodological update on measuring institutional trust across national statistical offices;
+  direct hit on "methodological work on measuring institutions." **Capture blocked**: oecd.org hard-403,
+  confirmed again this sweep.
+- Managing Risk Across State-Owned Enterprises (OECD Publications, 15 Sept 2026) — extends OECD's SOE
+  governance guideline series; corporate-governance/state-capacity intersection. **Capture blocked**: same
+  oecd.org hard-403.
+- Borderline single-programme audit reports, not pursued: GAO federal-property-disposal report (16 Sept) and
+  paid-administrative-leave report (15 Sept), both also hard-403-blocked; UK NAO "Upgrading the electricity
+  transmission network" (11 Sept), thin institutional-design angle, capturable but not selected.
+
+### Blogs, essays and commentary
+
+- What Regulatory Capture Actually Looks Like (Marginal Revolution) — applies Bernstein's regulatory
+  life-cycle framework (Gestation/Youth/Maturity/Old Age) to AI regulation, arguing capture is slow erosion
+  rather than a single event. Public-choice lean; commentary applying established theory to a new case rather
+  than pointing at a new paper, so lower priority under this wiki's blog-cap convention. Pairs with
+  [[regulatory-capture]] if promoted later.
 
 ## Source
 
@@ -136,6 +190,8 @@ existing page (Acemoglu, second-hand); 2 are listed here, both capture-blocked f
 - Weekly sweep, 2026-09-08 — see `wiki/weekly-briefs/2026-09-08.md` for the full candidate list and selection
   rationale.
 - Weekly sweep, 2026-09-15 — see `wiki/weekly-briefs/2026-09-15.md` for the full candidate list and selection
+  rationale.
+- Weekly sweep, 2026-09-22 — see `wiki/weekly-briefs/2026-09-22.md` for the full candidate list and selection
   rationale.
 
 ## Related

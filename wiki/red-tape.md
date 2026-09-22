@@ -64,3 +64,6 @@ The honest classification: this source supplies a **structural mechanism for ins
 - [[bureaucratic-growth-and-parkinsons-law]] — rule accretion and headcount accretion are separate quantities with separate mechanisms; no source in this wiki relates them.
 - [[dimensions-of-institutional-variation]] — supplies D42 (external-control density / layering) and D43 (feedback-mechanism quality); overlaps D1 (formalisation) and D9 (discretion).
 - [[open-questions]] — Q3, Q7, Q30, Q34 (does rule density actually predict cautious behaviour, measured on the same subjects).
+- [[ordeal-mechanisms-and-welfare-targeting]] — a quasi-experimental instance of exactly Bozeman's pattern (real compliance/exclusion cost, null effect on the stated behavioural goal), sharpening "achieves nothing" from assertion to measurement (weekly sweep, 2026-09-22).
+- [[capital-requirements-and-entrepreneurial-entry]] — a boundary case: burdens entry without functioning as a quality screen, which is neither pure red tape nor a working filter (weekly sweep, 2026-09-22).
+- [[internal-conflict-and-structural-inefficiency]] — a candidate formal mechanism (mixed-sign cross-effects accumulating additively) for why individually-justified rules cumulatively burden performance, which this page's account does not itself derive (weekly sweep, 2026-09-22).

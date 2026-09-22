@@ -27,6 +27,11 @@ Every lever surfaced by the `enabling-institutional-change` batch, sorted into t
 2. **The same lever gives opposite multitasking results in different settings.** Teacher performance pay produced positive spillovers to non-incentivised subjects in Andhra Pradesh and gains *only* on the incentivised exam in Kenya (Glewwe, Illias & Kremer 2010). Whether multitasking bites is an empirical question per setting, not a general law.
 3. **Same tier, same source, not in the brief's headline list:** facility-level health performance pay (**+0.53 SD** infant weight-for-age, Rwanda), village block grants tied to indicators (health **+0.04 SD**, malnutrition **−15%**, no education effect, Indonesia), and school-committee elections plus village-council linkage (**+0.17 to +0.23 SD** test scores across 520 schools — while **training alone had no effect and grants alone were insignificant**).
 
+**This tier's first two levers from outside [[personnel-economics-of-the-state]] (weekly sweep, 2026-09-22), one positive and one negative:**
+
+- **Cut minimum capital requirements for incorporation** — Norway's 2012 cut (NOK 100,000 → 30,000) nearly doubled entry with **no detected downside** on survival, profitability, productivity, leverage, or founder quality. Regression-discontinuity design around a sharp statutory cutoff. The first entry-deregulation lever in this tier, and the first outside the personnel/monitoring domain. See [[capital-requirements-and-entrepreneurial-entry]].
+- **Work requirements as a welfare-eligibility screen — a negative-signed result.** Reinstating SNAP's ABAWD work requirement cut caseloads 7–13% with **no** detectable employment or earnings gain, screened out the lowest-income recipients disproportionately, and imposes an estimated social cost of ~$2.19 per dollar of budget savings once infeasible (not merely costly) compliance is modelled. Triple-differences/DiD on linked administrative data. This tier's first lever shown, under real quasi-experimental identification, **not to deliver its claimed benefit** — record it as a caution against assuming every tier-(i) evidence base points toward adopting the lever. See [[ordeal-mechanisms-and-welfare-targeting]].
+
 ---
 
 ## Tier (ii) — Plausible, case-illustrated only
@@ -90,3 +95,5 @@ Every lever surfaced by the `enabling-institutional-change` batch, sorted into t
 - [[open-questions]] — Q70–Q73, the questions this triage leaves open.
 - [[goal-displacement-and-bureaucratic-ritualism]] — the mandate-compliance-as-terminal-goal mechanism behind the competitive-forecasting-tournament lever (weekly sweep, 2026-08-25).
 - [[veto-points-and-bureaucratic-autonomy]] — the interconnection-permitting lever's implicit count-alone framing, filed there as a third contested case alongside Fukuyama and Schleicher & Bagley (weekly sweep, 2026-08-25).
+- [[capital-requirements-and-entrepreneurial-entry]] — a tier-(i) entry-deregulation lever, RD-identified, no detected downside (weekly sweep, 2026-09-22).
+- [[ordeal-mechanisms-and-welfare-targeting]] — a tier-(i) lever shown to fail its stated goal while imposing first-order cost on the excluded population (weekly sweep, 2026-09-22).

@@ -264,3 +264,28 @@ and is a distinct, additive check from the "download the report (PDF)" link-snif
 row now carries a manual note to prefer a syndicated mirror (e.g., Marginal Revolution's discovery post, when
 one exists) over the CEPR PDF/landing URL directly, same workaround already in place for Mercatus.
 **Status:** open
+
+### 2026-09-22 — `audit_captures`'s thin-capture heuristic cannot fire on any `capture_url`-sourced (HTML) capture at all
+**Scope:** kit
+**Observation:** Fourth `/weekly-brief` sweep captured an ASQ/SAGE article via `tools.capture_url --js`; the
+tool exited 0 and wrote a 670-byte markdown file whose entire content was a Cloudflare "Performing security
+verification... Ray ID: ..." challenge page, not the article. `tools.audit_captures` reported **zero issues**
+on the batch. Root cause, read from `tools/audit_captures.py`: the thin-capture check (`_MIN_LINES_PER_PAGE *
+page_count`) only runs when a paired PDF exists at `pdfs_dir / f"{slug}.pdf"` — it compares markdown line
+count against the *PDF's own page count*. `capture_url` never writes a paired PDF (there is no PDF to pair;
+the source is HTML), so every URL-sourced capture is structurally exempt from this check regardless of how
+short or clearly broken it is. This is a fourth, distinct instance of the landing-page-trap family (after
+NBER/NAO's short-landing-page variant, CEPR's long-and-repetitive variant, and now SAGE's short-and-exempt
+variant) but the underlying tooling gap is new: the two prior variants at least made the *general shape* of
+the heuristic ("compare against expected length") plausible for HTML captures too, whereas this one shows the
+heuristic literally never runs for that whole class of source, independent of content.
+**Implication:** `capture_url` outputs need their own minimum-length floor independent of any paired PDF (e.g.
+flag any `--js`/non-`--js` HTML capture under some absolute byte/line threshold, since a genuine article body
+is never a few hundred bytes), plus the same "known bot-check phrase" sniff already implicitly needed for the
+Cloudflare-challenge-page pattern specifically (`"Performing security verification"`, `"Just a moment"`, "Ray
+ID" all appear verbatim and would make a cheap, high-precision signature check). Caught here only because the
+weekly-brief orchestrator happened to read the captured file directly before dispatching it to `/ingest`; a
+run that trusted `audit_captures`'s clean report would have ingested the challenge page as if it were the
+article. `reference-sources.md`'s Administrative Science Quarterly / Organization Science row now carries a
+capture-blocked note for this pattern.
+**Status:** open

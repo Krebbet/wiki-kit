@@ -1686,3 +1686,44 @@ problem — couldn't confirm the advance-access date fell inside this week's win
 sweep.
 
 Full brief: `wiki/weekly-briefs/2026-09-15.md`.
+
+## [2026-09-22] weekly-brief | fourth sweep
+
+Trend scan surfaced a moderate week — the current NBER working-paper release batch, two arXiv econ.GN papers
+from a single-author organisational-theory program, and one ASQ (Administrative Science Quarterly) article on
+regulatory-state legitimation in Thailand. Selected 5 candidates for capture; 1 (the ASQ article) hit a
+Cloudflare bot-check landing-page trap and was dropped after capture, substituted with a companion arXiv paper
+by the same author as another selected source — bringing the run to 4 captured sources, 3 pages written (the
+two companion arXiv papers merged into one page, independently recommended by both ingest subagents).
+
+**New capture-blocked pattern this week — a batch-wide NBER access embargo, not isolated paywalls.** All four
+NBER working papers checked this sweep (w35758, w35768, w35778, w35780) 403'd on *both* the landing page and
+the direct PDF path, confirmed via both the capture tool and a raw `curl` with a browser user-agent. This
+looks like the entire current release batch being under an access embargo (NBER's free-download limit
+applies per-requester, but the uniform 403 across four different papers and two fetch methods suggests
+something batch-level, not the paper-specific paywall pattern logged 2026-09-15 for w35756). One paper
+(w35780) had an open-access author-mirror PDF and was captured via that route instead — worth checking for an
+author mirror before giving up on any blocked NBER paper.
+
+**New capture-blocked pattern: SAGE/ASQ Cloudflare landing-page trap.** `journals.sagepub.com` (Administrative
+Science Quarterly) served a Cloudflare "Performing security verification" challenge page to both a direct PDF
+request and a Playwright `--js` capture attempt — the DOI metadata claimed CC BY-NC open access, but the
+served page was site chrome, not the article. Same failure class as the CEPR/NBER landing-page traps logged
+2026-09-15, new source. The candidate (Hicken, Malesky, Nillasithanukroh & Taussig, "Legitimizing the
+Regulatory State") was dropped to the watchlist rather than forced through.
+
+**Pages written:** three new — [[capital-requirements-and-entrepreneurial-entry]] (Norway RD natural
+experiment, closes a non-Anglosphere coverage gap and supplies the reform-levers register's first outside-
+personnel-economics tier-(i) lever), [[ordeal-mechanisms-and-welfare-targeting]] (SNAP work-requirements
+quasi-experiment, supplies the register's first *negative*-signed tier-(i) lever), and
+[[internal-conflict-and-structural-inefficiency]] (the merged van de Poll theory pair — wholly **[model]**,
+flagged for an internal tension between its "purely theoretical" self-description and a present-tense claim
+of existing empirical support). `dimensions-of-institutional-variation.md` extended with D143–D144, both
+`candidate, not scoreable`.
+
+**Watchlist:** overflow entries from the fourth sweep, including the 3 blocked-but-genuinely-substantive NBER
+papers (fiscal populism/central-bank independence, migration/political identity, investor-voice corporate
+governance), 2 blocked OECD reports (trust-measurement guidelines, SOE risk governance), the dropped ASQ
+article, and a handful of borderline single-programme audit reports (GAO, UK NAO).
+
+Full brief: `wiki/weekly-briefs/2026-09-22.md`.
