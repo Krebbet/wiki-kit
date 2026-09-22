@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-14
+last_reviewed: 2026-09-21
 ---
 
 # Watchlist
@@ -30,6 +30,7 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - Connecticut PA 26-64 — signed May 14 2026; broker registry Jan 2027, deletion portal Jul 2028 — captured 2026-05-25
 - DOJ-RealPage Tunney Act final judgment — court-monitor + algorithm-certification regime entering effect
 - Camden Property Trust $53M — preliminary approval target May 15 2026
+- RealPage/Pinnacle proposed Final Judgment — published Federal Register Sept 18 2026, opens Tunney Act comment window; 6th landlord on the identical RealPage/Cortland/Greystar/LivCor/Willow Bridge settlement template — no new tooling hook, procedural not first-of-kind
 
 ## Strategy-layer build candidates
 
@@ -276,7 +277,7 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
 
-- ICA Panama General Assembly & Global Conference board elections (Sept 15 2026) — results land just after this run's window; follow up next sweep
+- ~~ICA Panama General Assembly & Global Conference board elections~~ — *resolved 2026-09-21: Guarco re-elected president unopposed; 15 at-large directors elected from 24 candidates (8 new, 7 returning), 16 countries; governance-only, no artefact — not captured*
 - noyb SCHUFA "shadow database" lawsuit now certain (Sept 10 2026) — algorithmic credit-scoring transparency fight; litigation, not a releasable DSAR kit
 - 404 Media "Doctor Doom" Seattle ALPR protest (Sept 9 2026) — grassroots backlash-organizing tactic vs Axon/Flock camera expansion
 - BIG "Monopoly Round-Up: Stop the Anthropic IPO" (Sept 2026) — AI-vendor antitrust carve-out ask; new extraction-mechanism angle
@@ -291,6 +292,7 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 
 - ICA General Assembly & Global Conference, Panama City (Sept 13-18 2026) — board elections Sept 15; watch for post-event federation-leadership coverage
 - Cornish-Adebiyi v. Caesars Entertainment (3d Cir., decided July 29 2026, still propagating in commentary) — revived hub-and-spoke price-fixing claims against Cendyn's "Rainmaker" algorithm; ~90% algorithm-adherence rate treated as circumstantial collusion evidence — lowers pleading bar, adherence-rate is a scrapeable/measurable signal
+- ~~ICA General Assembly & Global Conference, Panama City board elections~~ — *duplicate of 2026-09-14 overflow entry; see resolution logged there*
 - Privacy Washing (arXiv 2609.02055, Sept 2 2026) — privacy-policy internal-contradiction detector; audit methodology only, no confirmed public code/tool yet
 - Mozilla Data Collective "Compensated Datasets" (July 30 2026 launch, standalone since May 2026) — data-licensing cooperative spinout; not yet confirmed as a captured wiki page, backfill check candidate
 - Groundwork Collaborative / Consumer Reports Instacart per-item price-variation findings (up to 5 prices/item, 23% spread) — follow-on to the already-captured NY AG Instacart APDA action; watch for a dated primary release to capture
@@ -326,3 +328,13 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - EU Android Fine €4.1B final (July 2, 2026) — DMA interoperability for rival Android assistants running in parallel; binding ruling pending
 - arXiv 2606.02347 — algorithm register audit (Germany); fragmentation + no federal register; improvement criteria proposed
 - Surveillance pricing 24-state wave — 24 states moving; MD + CT enacted; NY + CA advancing; compliance surface for price-transparency tooling
+
+## Recent additions (2026-09-21 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- arXiv 2609.05119 "Understanding the Privacy-Preserving Potential of HTTP/2 Against Webpage Fingerprinting" (Sept 4 2026) — fingerprint-defence paper, just outside this week's window; watch for code release next cycle
+- Open Markets Institute "The Google Remedies Turn Landmark Verdicts Into a Whimper" (Sept 17 2026) — Google AdX remedies-ruling critique; weak-antitrust-remedy framing, no implementable hook
+- RealPage MDL private settlement opt-out deadline lapses Sept 22 2026 (one day after this run's window) — watch for opt-out count / total class size next sweep
+- FAccT 2026 accepted-papers page currently broken/unpopulated on the ACM site — re-check once live for algorithmic-pricing/consumer-side entries
+- AlgorithmWatch + Ada Lovelace Institute — both quiet in-window but on an active algorithmic-accountability publishing cadence per recent (pre-window) output; re-check directly next week rather than via general web search
