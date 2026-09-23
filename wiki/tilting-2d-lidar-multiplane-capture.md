@@ -4,6 +4,39 @@
 The load-bearing calibration is the **tilt-axis-to-beam-origin lever arm**: a 4 cm arm at −26.6° displaces the sensor origin 1.8 cm, **3.6× our 0.5 cm registration accuracy** — build it out if the mount allows, measure it if not, never assume it — and a tilted plane is **not a height layer, it is a ramp**, z = 1.10 + x·tan τ, so "register each height as its own 2D map" is geometrically void.
 Recommendation: keep 0° as the map/registration/guard plane, add a **stepped 7-angle ladder uniform in tan τ** (−26.6…+14.0°, 25 cm height spacing at 2 m range), carry every tilted scan on the *level* scan's station pose instead of registering it, and derive a **2.5D multi-level surface grid** from the accumulated cloud — tilting only while stationary, with a verified return to level before any wheel goal.
 
+## CORRECTION (2026-09-23, measured on the rig — read before §5 and §6)
+
+**This page's §5–6 reason from a 1.10 m scan plane. The rover's is 0.337 ± 0.005 m.** The 1.10 m
+came from `data/calib/rig_geometry.json`, which describes the June **capture rig** — a tripod
+carrying the stereo camera — a *different platform*. Measured two ways in drone-prototype EDA228:
+floor returns give `h = r·sin φ` (0.350 / 0.340 / 0.336 m at −20 / −25 / −26.5°), and the wall→floor
+break-away angle brackets the same value independently.
+
+Three conclusions on this page invert:
+
+1. **§5 "It closes the known blind spot" is wrong.** There is no blind spot below 1.1 m to close by
+   tilting down — the rover already scans at ankle height, which is why it sees chair legs and floor
+   clutter. The unseen band is **above** 0.337 m: table tops (0.74 m), counters (0.9 m), shelves.
+   The ladder should be weighted **upward**, not downward.
+2. **§7's floor-line warning mostly does not apply to an upward ladder.** An up-tilted beam never
+   reaches the floor. The warning transfers intact to the **ceiling** instead — the top angles reach
+   a 2.41 m ceiling beyond ~2 m range, and a ceiling line is as straight and dense as a floor line.
+3. **§6's ladder (−26.6…+14.0°) points the wrong way** for this platform. Re-derived as 0° plus eight
+   upward steps uniform in `tan τ` (0 → +43.5°): see drone-prototype `docs/next-campaign-scoping.md`
+   §"REVISED PLAN".
+
+**What this page got right and the rig confirmed.** The lever arm is the load-bearing calibration:
+measured at **9.6 cm** (the tape to the visible scanner head said 6.2 — the true pivot is lower),
+displacing the sensor 4.0 cm at the down limit and 6.6 cm at the up limit, 8–13× the rig's 0.5 cm
+registration accuracy. Its identifiability caveat also held exactly: at a **single** wall distance
+the arm is algebraically indistinguishable from a tilt-zero error, and a first version of the
+verification harness would have passed a rig carrying 1.8 cm of unmodelled error. Four wall
+distances were needed; **closer beat further** (1/d is 1.67 at 0.6 m vs 0.50 at 2.0 m). The §7
+prediction that **the rig's self-occlusion zones move with tilt** was observed directly: 0.05–0.07 m
+returns at bearings swinging from −110° toward −70° tilting up, outside the 0°-surveyed mask.
+
+---
+
 ## Source
 
 Literature in *Sources*. Rig facts: `docs/wheel-calibration.md` §Procedure B (measured travel), `data/calib/rig_geometry.json`, `src/drone/devices/{tilt,lidar}.py`, `src/drone/guard.py`, `src/drone/mapping/scanclean.py`, `docs/locked-map-office.md`, `docs/next-campaign-scoping.md`. All §6 geometry is computed here from h = 1.10 m and the measured travel — arithmetic, not a citation.
