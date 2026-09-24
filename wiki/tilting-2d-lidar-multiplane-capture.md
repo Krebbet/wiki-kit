@@ -77,14 +77,22 @@ this page recommends. The pipeline works end to end. Four results are worth fold
   actually needs gets **878 points in 0.8–1.0 m against 4812 in 0.2–0.4 m**, because a plane at high tilt
   spends most of its arc on the floor behind and the ceiling ahead. Height accuracy is a function of
   range, not a constant: floor z-scatter grows 0.012 → 0.039 m from 0.3 to 1.2 m.
-- **§2's roll term ρ was real and unmodelled: the rig rolls −1.80°.** 11 % of points came out *below* the
+- **§2's roll term ρ was real and unmodelled: the rig rolls −1.8 ± 0.4°.** 11 % of points came out *below* the
   floor. Binned by bearing at fixed range, z varied **smoothly** across 0.65 m² of floor (−0.023 → −0.064 m
   from 150° to 240°) — a discontinuity would be a mat step, a few cells would be an obstacle; a smooth
   gradient is a tilted sheet. From one station a rig roll and a sloping floor are **degenerate**, so:
   **turn the rover 180° and re-sweep.** A roll is rover-fixed and keeps its sign; a floor slope is
-  room-fixed and flips. It kept its sign → **roll = −1.80 ± 0.04°** (bootstrap, 200 resamples), floor slope
-  **+0.17°**. That is ~3 cm of height error per metre to the side, it is invisible to every level-plane
-  test (a roll is zero straight ahead), and `ROLL_DEG = -1.80` now applies in `scan_to_rover_3d`.
+  room-fixed and flips. It kept its sign → **roll = −1.8 ± 0.4°**, floor slope **+0.17°**. That is
+  ~3 cm of height error per metre to the side, it is invisible to every level-plane test (a roll is zero
+  straight ahead), and `ROLL_DEG = -1.80` now applies in `scan_to_rover_3d`.
+  **Quote the ±0.4, not the bootstrap's ±0.04.** A 200-resample bootstrap on the combined fit returns
+  ±0.04°, but that is **one fit's sampling error, not the uncertainty**: sub-set fits (odd/even planes,
+  high/low tilts) spread **−1.43 to −1.80** — ~0.4°, nine times the bootstrap band, and the figure to
+  carry. The result also rests on **one** 180° orientation pair, so between-orientation error is
+  invisible to it; a second pair elsewhere in the room would close that. This is the same
+  between-set-versus-single-fit distinction the lever arm makes above (7 ± 1 cm, not ±0.5), and it is
+  worth stating as a rule for this rig: **a constant's error bar is the spread between independent
+  measurement sets, never the band a single fit reports on itself.**
   **Measure ρ by a 180° re-sweep before trusting any multi-plane height product.**
 
 Not answered by that capture: the scene was wall and floor with no furniture, so whether a table top
