@@ -1,45 +1,101 @@
 # Tilting a 2D LiDAR into multi-plane capture — nodding rigs, stepped sweeps, and what this rig should do
 
 **Summary.** The established way to make a 2D LiDAR see in 3D is to pitch it about a horizontal axis and accumulate every plane into **one 3D point cloud in one frame** — Kurt3D's AIS scanner pitched *between* horizontal scans while the robot sat still (120° max pitch, 128/256 lines, 3.4–30 s per 3D scan) and *re-levelled the same scanner* to drive; the PR2 carried a **second, fixed base laser** so the tilting one was never the navigation sensor.
-The load-bearing calibration is the **tilt-axis-to-beam-origin lever arm**: a 4 cm arm at −26.6° displaces the sensor origin 1.8 cm, **3.6× our 0.5 cm registration accuracy** — build it out if the mount allows, measure it if not, never assume it — and a tilted plane is **not a height layer, it is a ramp**, z = 1.10 + x·tan τ, so "register each height as its own 2D map" is geometrically void.
-Recommendation: keep 0° as the map/registration/guard plane, add a **stepped 7-angle ladder uniform in tan τ** (−26.6…+14.0°, 25 cm height spacing at 2 m range), carry every tilted scan on the *level* scan's station pose instead of registering it, and derive a **2.5D multi-level surface grid** from the accumulated cloud — tilting only while stationary, with a verified return to level before any wheel goal.
+The load-bearing calibration is the **tilt-axis-to-beam-origin lever arm**: a 4 cm arm at −26.6° displaces the sensor origin 1.8 cm, **3.6× our 0.5 cm registration accuracy** — build it out if the mount allows, measure it if not, never assume it — and a tilted plane is **not a height layer, it is a ramp**, z = h + x·tan τ, so "register each height as its own 2D map" is geometrically void.
+Recommendation: keep 0° as the map/registration/guard plane, add a **stepped ladder uniform in tan τ** (25 cm height spacing at 2 m range), carry every tilted scan on the *level* scan's station pose instead of registering it, and derive a **2.5D multi-level surface grid** from the accumulated cloud — tilting only while stationary, with a verified return to level before any wheel goal.
+**For the prototype rover the ladder points UP, not down** — see the correction below: its plane is **0.2972 m**, not the 1.10 m §5–6 reason from, and the first real ladder (EDA233) showed the product is a **bracket** on a horizontal surface, never a sample of it.
 
-## CORRECTION (2026-09-23, measured on the rig — read before §5 and §6)
+## CORRECTION (updated 2026-09-24, measured on the rig — read before §5 and §6)
 
-**This page's §5–6 reason from a 1.10 m scan plane. The rover's is 0.337 ± 0.005 m.** The 1.10 m
-came from `data/calib/rig_geometry.json`, which describes the June **capture rig** — a tripod
-carrying the stereo camera — a *different platform*. Measured two ways in drone-prototype EDA228:
-floor returns give `h = r·sin φ` (0.350 / 0.340 / 0.336 m at −20 / −25 / −26.5°), and the wall→floor
-break-away angle brackets the same value independently.
+**This page's §5–§6 reason from a 1.10 m scan plane. The prototype rover's is 0.2972 m.**
 
-Three conclusions on this page invert:
+| figure | platform / provenance | status |
+|---|---|---|
+| **1.10 m** | the **June capture rig** — a tripod carrying the stereo camera (`data/calib/rig_geometry.json`) | correct **for that platform**; wrong for the rover |
+| 0.337 ± 0.005 m | drone-prototype EDA228, 2026-09-23, from *wall* sweeps | **superseded** — those were wall hits classified as floor (the −20° sample read 0.600 m at a 0.600 m wall; the floor would have been at 0.848 m) |
+| **0.2972 m, sd 0.5 mm** | drone-prototype EDA228 `height_probe.py`, 2026-09-24, pointed at **open floor** with 2.12 m clear — seven independent down angles, each solving `h = r·sin|φ| + L(1−cos|φ|)` | **current** |
 
-1. **§5 "It closes the known blind spot" is wrong.** There is no blind spot below 1.1 m to close by
-   tilting down — the rover already scans at ankle height, which is why it sees chair legs and floor
-   clutter. The unseen band is **above** 0.337 m: table tops (0.74 m), counters (0.9 m), shelves.
-   The ladder should be weighted **upward**, not downward.
-2. **§7's floor-line warning mostly does not apply to an upward ladder.** An up-tilted beam never
-   reaches the floor. The warning transfers intact to the **ceiling** instead — the top angles reach
-   a 2.41 m ceiling beyond ~2 m range, and a ceiling line is as straight and dense as a floor line.
-3. **§6's ladder (−26.6…+14.0°) points the wrong way** for this platform. Re-derived as 0° plus eight
-   upward steps uniform in `tan τ` (0 → +43.5°): see drone-prototype `docs/next-campaign-scoping.md`
-   §"REVISED PLAN".
+Seven independent angles agreeing to half a millimetre. Anything below that reasons from 1.10 m for the
+rover should be read against 0.2972 m instead.
+
+Three conclusions on this page invert for that platform:
+
+1. **§5 "It closes the known blind spot" is wrong.** There is no blind spot below the plane to close by
+   tilting down — the rover already scans at **ankle height**, which is why it sees chair legs and floor
+   clutter. The unseen band is **above** 0.30 m: table tops (0.74 m), counters (0.90 m), shelves (1.20 m).
+   The ladder must be weighted **upward**, which is also the direction the measured travel is generous
+   towards: **−24.7…+43.5°** (EDA228; not the −26.8…+41.4° this page assumed).
+2. **§7's floor-line warning mostly does not apply to an upward ladder.** An up-tilted beam never reaches
+   the floor *ahead*. Two caveats: the warning transfers intact to the **ceiling** (the top angles reach a
+   2.41 m ceiling beyond ~2.2 m range, and a ceiling line is as straight and dense as a floor line); and a
+   tilted plane is a full **disc**, so the *backward* half of an up-tilted sweep looks **down** and meets the
+   floor 0.35 m behind at the up limit — free floor evidence on every upward sweep, and a labelling trap if
+   "upward ladder" is taken to mean "upward everywhere" (EDA233).
+   A down-tilt is close to useless on this platform for a further reason: the floor line sits at
+   `x = 0.2972/tan|τ|`, i.e. **0.65 m ahead at the −24.7° limit** — the plane is in the floor within a metre.
+3. **§6's ladder (−26.6…+14.0°) points the wrong way** for this platform, and §6's table is computed from
+   h = 1.10 m. Re-derived as 0° plus eight upward steps uniform in `tan τ` (0 → +43.5°, 25 cm spacing at
+   2 m): drone-prototype `docs/next-campaign-scoping.md` §"REVISED PLAN".
 
 **What this page got right and the rig confirmed.** The lever arm is the load-bearing calibration:
-measured at **9.6 cm** (the tape to the visible scanner head said 6.2 — the true pivot is lower),
-displacing the sensor 4.0 cm at the down limit and 6.6 cm at the up limit, 8–13× the rig's 0.5 cm
-registration accuracy. Its identifiability caveat also held exactly: at a **single** wall distance
-the arm is algebraically indistinguishable from a tilt-zero error, and a first version of the
-verification harness would have passed a rig carrying 1.8 cm of unmodelled error. Four wall
-distances were needed; **closer beat further** (1/d is 1.67 at 0.6 m vs 0.50 at 2.0 m). The §7
-prediction that **the rig's self-occlusion zones move with tilt** was observed directly: 0.05–0.07 m
-returns at bearings swinging from −110° toward −70° tilting up, outside the 0°-surveyed mask.
+measured at **7 ± 1 cm** — and the ±1 is the spread *between* station sets (9.6 → 6.8 → 8.0 → 7.1 cm),
+not the ±0.5 cm any single fit reports, so tilt kinematics must carry the between-set uncertainty.
+Its identifiability caveat held exactly: at a **single** wall distance the arm is algebraically
+indistinguishable from a tilt-zero error, and a first version of the verification harness would have
+passed a rig carrying 1.8 cm of unmodelled error. Four wall distances were needed; **closer beat
+further** (1/d is 1.67 at 0.6 m vs 0.50 at 2.0 m). The §7 prediction that **the rig's self-occlusion
+zones move with tilt** was observed directly, and the fixed 0°-surveyed sector mask has since been
+replaced by a **geometric** self-filter that follows the head (`src/drone/lidar_filter.py`) — which is
+what §7 recommended, citing the PR2's `tilt_laser_self_filter`.
+
+**Tilt is cleared for autonomous use on this rig (2026-09-24).** `tilt_centre` 2554 → 2585, worst
+commanded-vs-achieved **0.33°** against a 1.5° gate, and the PASS holds at *every* lever-arm value anyone
+proposed (1.48° at 5.0 cm, 0.60° at 6.2 cm, 0.33° at 7.1 cm, 1.26° at 9.6 cm) — so it does not rest on a
+number we chose. Counts-per-degree was measured *directly* (command the same large tilt either side of a
+known `tilt_centre` shift and difference the two): **12.23 counts/deg** against 11.378 assumed, hysteresis
+0.04°. Sources: drone-prototype `eda/EDA228-actuator-verification/FINDING.md`.
+
+## What this rig measured — the first real ladder (2026-09-24, EDA233)
+
+Nine planes, 0 → +43.15° (servo read-back, not commanded — they differ by up to 0.35°), **18,934 points**
+in one 3D cloud through the calibrated kinematics, carried on the level scan's station pose exactly as
+this page recommends. The pipeline works end to end. Four results are worth folding back into the method:
+
+- **Tilt BRACKETS a horizontal surface; it never samples it.** A box at 1.17 m was touched by the **level
+  plane only** — every tilted plane sailed over the top and hit the wall behind at ~2.0 m. What the ladder
+  returns is an **interval**: above the plane that cut it, below the plane that missed it — 0.297–0.436 m,
+  **13.9 cm wide**, which is exactly the plane spacing at that range, **`r·Δ(tan τ)`**. The top face is never
+  sampled, and no number of revolutions helps. **Driving forward 0.45 m** and repeating the identical ladder
+  tightened it to **8.7 cm**, and the two brackets **overlap** (intersection 0.300–0.387 m; the operator's tape
+  afterwards said **350 mm**, 6.5 mm from the midpoint). The width was **predicted before it was measured**
+  (0.139 predicted / 0.139 measured at 1.17 m; 0.089 / 0.087 at 0.75 m). This is the strongest practical
+  argument for pairing tilt with *translation*: the bracket narrows with range, not with more angles.
+- **One station gives height information on less than half of what it sees.** Of the occupied cells,
+  **56.4 % are seen by exactly one plane** (median z-span 0.2 cm) — a point in space, not a surface.
+  No amount of extra tilt angles fixes it, because every plane pivots about the same point.
+- **Coverage collapses with height.** Two-thirds of points land below 0.6 m; the band the object layer
+  actually needs gets **878 points in 0.8–1.0 m against 4812 in 0.2–0.4 m**, because a plane at high tilt
+  spends most of its arc on the floor behind and the ceiling ahead. Height accuracy is a function of
+  range, not a constant: floor z-scatter grows 0.012 → 0.039 m from 0.3 to 1.2 m.
+- **§2's roll term ρ was real and unmodelled: the rig rolls −1.80°.** 11 % of points came out *below* the
+  floor. Binned by bearing at fixed range, z varied **smoothly** across 0.65 m² of floor (−0.023 → −0.064 m
+  from 150° to 240°) — a discontinuity would be a mat step, a few cells would be an obstacle; a smooth
+  gradient is a tilted sheet. From one station a rig roll and a sloping floor are **degenerate**, so:
+  **turn the rover 180° and re-sweep.** A roll is rover-fixed and keeps its sign; a floor slope is
+  room-fixed and flips. It kept its sign → **roll = −1.80 ± 0.04°** (bootstrap, 200 resamples), floor slope
+  **+0.17°**. That is ~3 cm of height error per metre to the side, it is invisible to every level-plane
+  test (a roll is zero straight ahead), and `ROLL_DEG = -1.80` now applies in `scan_to_rover_3d`.
+  **Measure ρ by a 180° re-sweep before trusting any multi-plane height product.**
+
+Not answered by that capture: the scene was wall and floor with no furniture, so whether a table top
+separates from its legs, and whether two stations recover what the 56 % single-plane cells lack, are
+still open. Source: `eda/EDA233-tilt-sweep/FINDING.md` and `FLOOR-DATUM.md`.
 
 ---
 
 ## Source
 
-Literature in *Sources*. Rig facts: `docs/wheel-calibration.md` §Procedure B (measured travel), `data/calib/rig_geometry.json`, `src/drone/devices/{tilt,lidar}.py`, `src/drone/guard.py`, `src/drone/mapping/scanclean.py`, `docs/locked-map-office.md`, `docs/next-campaign-scoping.md`. All §6 geometry is computed here from h = 1.10 m and the measured travel — arithmetic, not a citation.
+Literature in *Sources*. Rig facts: `docs/wheel-calibration.md` §Procedure B (measured travel), `data/calib/rig_geometry.json`, `src/drone/devices/{tilt,lidar}.py`, `src/drone/guard.py`, `src/drone/mapping/scanclean.py`, `docs/locked-map-office.md`, `docs/next-campaign-scoping.md`. All §6 geometry is computed here from h = 1.10 m and the *assumed* −26.8…+41.4° travel — arithmetic, not a citation. **Both inputs are wrong for the rover** (0.2972 m; −24.7…+43.5°) — see the CORRECTION above before using any §6 number.
 
 ## Related
 
@@ -103,7 +159,7 @@ Three candidate representations; the rig's 0.5 cm station pose decides between t
 ## 5. What multi-height actually buys for objects — and how it fails
 
 - **No single height works — that is settled, not arguable.** Liao et al. simulated horizontal 2D scanners on real indoor scans: *"the laser scanner set at 20 cm fails to detect the upper stove and the seat of the chairs… while the laser scanner set at 80 cm misses the lower garbage bins as well as the seats"* — two heights, two **disjoint** sets of misses [liao-parse-geometry]. Lundell et al. give the canonical consequence: a robot on raw 2D laser *"would see the legs of the table but not the tabletop itself, allowing it to plan and execute a trajectory through the table causing a collision"* [lundell-hallucinating]. And in a surveyed 10 × 10 m facility, LiDAR-only obstacle recall was **60.0 %, rising to 95.0 % fused with RGB-D**, the named misses including *"low obstacles: pallets below the laser scan plane"* [delhibabu-2dgrid].
-- **It closes the known blind spot.** Today everything below 1.1 m is invisible to *both* the map and the guard, and a 0.9 m base counter against a wall makes the rig see the wall behind it and **certify false free space** ([[lidar-floorplan-extraction]] §Pitfalls: 1.8–4.8 m² per kitchen). One modest down-tilt fixes that: at −7.1° the plane is at 0.85 m at 2 m range, which cuts the counter front rather than passing over it.
+- **It closes the known blind spot.** *(INVERTED for the rover — see CORRECTION: its plane is 0.2972 m, so the unseen band is above it, not below.)* Today everything below 1.1 m is invisible to *both* the map and the guard, and a 0.9 m base counter against a wall makes the rig see the wall behind it and **certify false free space** ([[lidar-floorplan-extraction]] §Pitfalls: 1.8–4.8 m² per kitchen). One modest down-tilt fixes that: at −7.1° the plane is at 0.85 m at 2 m range, which cuts the counter front rather than passing over it.
 - **It separates a table top from its legs — if the table is at the right distance.** A 0.74 m top is crossed by the plane where z(x) = 0.74, i.e. at x = 0.36/|tan τ|: **0.72 m at −26.6°, 0.96 m at −20.6°, 1.44 m at −14.0°, 2.88 m at −7.1°**. So the ladder places the 0.74 m contour at four distances between 0.7 and 2.9 m, and the top is grazed by whichever angle matches the table's range. This is the concrete reason tilt and translation belong together (protocol step 9): **tilt picks the ramp's slope, driving picks its offset.**
 - **It does not make the learned 3D segmenters applicable.** Seven planes is ~3.5k points per station — [[point-cloud-object-segmentation-models]]'s verdict (Mask3D/PointGroup/OpenMask3D assume a dense coloured 3D scan and structurally do not run on our data) is unchanged. What changes is that the BEV + seeded-assignment route it recommends now has a **height channel** to cut on, and [[floor-map-sensing-options]]'s "a 2D LiDAR is a floor-map sensor, not an object-mapping sensor" becomes "unless you tilt it, and then only coarsely".
 - **The up-tilt is not a throwaway.** Previtali et al. find that *"the acquisition of the ceiling surface, due to its location, is generally less influenced by clutter and occlusion than other surfaces in the room"* [previtali-cluttered-rooms], and [[lidar-floorplan-extraction]] §6.5 draws the conclusion that **1.1 m is the worst possible single height** — above the counters, below the ceiling. Our +41.4° limit meets a 2.4 m ceiling at 1.47 m range, so a ceiling shot from each station is reachable *today* with the LiDAR rather than waiting on stereo — a cleaner architectural boundary than the 1.1 m slice, and the one use of the up-travel that the asymmetric envelope is generous towards.
@@ -117,6 +173,8 @@ The classic failure modes, with our numbers:
 - **Veiling / mixed pixels at depth steps.** Standard on every nodding rig: the PR2's tilt-scan pipeline began with a dedicated **`tilt_shadow_filter`** before anything else touched the data [pr2-nav-perception]. A tilted plane crosses far more depth discontinuities per revolution than a level one, because it cuts objects obliquely — budget for a shadow/veiling filter in the ladder, not just the level scan.
 
 ## 6. Height sampling geometry for THIS rig — do the arithmetic first
+
+> **Read the CORRECTION first.** Every number in this section is computed from h = 1.10 m and a −26.8…+41.4° travel. The rover's plane is **0.2972 m** and its travel **−24.7…+43.5°**; the *method* (uniform in `tan τ`, Δz = x·Δtan τ, one angle is not one height) is unaffected — the table is not. Re-derived ladder: drone-prototype `docs/next-campaign-scoping.md` §"REVISED PLAN".
 
 Tilting the whole unit tilts the disc it sweeps, so the scan stays a **plane**. Plane ∩ floor is a **straight line**, not a conic. With the sensor at h = 1.10 m and tilt τ (positive up, forward horizontal distance x), the plane's height is
 

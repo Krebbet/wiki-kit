@@ -6,6 +6,8 @@ A methods page: surveys the four deep-learning families, ranks them for *our* re
 concrete first build. Grounded in the drone-prototype object pipeline (EDA127/132/133) and researched
 2026-06 (EDA135).
 
+> **Scan-plane note (librarian, 2026-09-24).** The "~1.1 m" scan plane on this page is the **June capture rig** (a tripod carrying the stereo camera, `data/calib/rig_geometry.json`). The **prototype rover** scans at **0.2972 m** — sd 0.5 mm, seven independent down angles at open floor, drone-prototype `eda/EDA228-actuator-verification/FINDING.md` (2026-09-24; an earlier 0.337 m was wall hits read as floor). The "one ~1.1 m horizontal 2D-LiDAR slice" in the input description is the **June capture rig**. The rover's slice is at **0.2972 m**, and a tilt ladder supplies height only as a per-surface **bracket** (EDA233) — relevant to how partial the partial observation actually is. Canonical statement and the tilt consequences: [[tilting-2d-lidar-multiplane-capture]] §CORRECTION.
+
 > **Read alongside:** [[apple-roomplan]] (the production ceiling — RoomPlan outputs *boxes*, not shapes),
 > [[mapping-stack-design]] (where the object layer sits), [[object-fingerprint-memory]] (per-instance memory
 > the shape feeds), [[stereo-dense-reconstruction]] / [[stereo-3d-mapping-known-poses]] (the observed-point
