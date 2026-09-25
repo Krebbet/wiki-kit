@@ -44,7 +44,9 @@ Encountered in captured sources without enough evidence for a row. Each is a res
 - **Prophesee**, **SpiNNcloud**, **Sony** — NeuroBench co-author organisations.
 - **GlobalFoundries** — foundry, evidenced via BrainChip's 22FDX relationship.
 - **TSMC** — the only foundry-node-level embedded-RRAM claim in the device literature captured so far (40 nm RRAM 2019; 22 nm eRRAM 2024, per [[../devices/memristor-array-integration-gap]]).
-- **University of Edinburgh (Prodromakis group)** — the CMOS-RRAM prototyping route in [[../devices/cmos-rram-beol-integration]].
+- **University of Edinburgh (Prodromakis group)** — the CMOS-RRAM prototyping route in [[../devices/cmos-rram-beol-integration]], now also the source of a large open memristor characterization database, see [[../devices/memristor-device-engineering]].
+- **Heidelberg University (ZITI Institute, BrainScaleS-2)** — EU-funded academic BSS-2 analog neuromorphic platform, active on chiplet-scaling interconnect engineering; see [[../chips/brainscales2-chiplet-interconnect]]. Silicon-in-hand for the base ASIC, but the chiplet-scaling work itself is simulation-only. No commercial arm.
+- **TU Delft / KU Leuven / UZH / UPenn (ETHEREAL consortium)** — fabricated an event-driven GNN processor ASIC via TSMC's academic shuttle programme; see [[../chips/ethereal-event-gnn-processor]]. Purely academic, funded in part by Prophesee.
 
 ## Open questions
 

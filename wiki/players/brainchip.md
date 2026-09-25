@@ -86,6 +86,8 @@ Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). B
 - The release cites third-party ABI Research market-sizing (edge AI chipset market $34.4B in 2026 → $96B by 2031) as demand context. This is a market-wide figure, not BrainChip-specific share data — don't read it as validation of BrainChip's own position, despite its placement next to the "momentum" language.
 - **No new numbers on the open questions below.** The release states no yield, production-volume, or pricing figures for the card, and doesn't engage with the below-expectations yield or widening losses tracked elsewhere on this page — an omission, not a rebuttal.
 
+**Dedup note (2026-09-24 weekly sweep):** this week's source survey independently resurfaced the same AKD1500 PCIe card announcement (dated 2026-09-17) via a GlobeNewswire syndication, and it was initially miscounted as a new capture. On inspection the GlobeNewswire text is the identical press release already covered above — same date, same claims, **no price figure in either capture** (a "$99" price cited by this week's survey agent does not appear in the source text and was not carried into this page). No new information. Recorded here as a source-tracking correction, not a content update.
+
 ## Open questions
 
 - What is the actual AKD1500 yield figure, and what is the root cause? *(unquantified in all sources)*
@@ -104,6 +106,7 @@ Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). B
 - `raw/research/weekly-2026-08-20/04-brainchip-symphony-ibm-bundle.md` — BrainChip press release, "BrainChip Launches Symphony Community Akida Bundle for IBM's Workload Management Solution", 2026-08-20. Vendor primary.
 - `raw/research/weekly-2026-08-27/03-brainchip-h1-cy2026.md` — Motley Fool Australia, "BrainChip shares: Half-year results show revenue up, loss widens", 2026-08-26. Relay of BrainChip's ASX half-year filing; tier 4 (one level removed from primary, no filing linked).
 - `raw/research/weekly-2026-09-17/04-brainchip-akd1500-pcie-card.md` — BrainChip press release, "BrainChip Launches AKD1500 PCIe Card For Edge AI Evaluation Everywhere", 2026-09-17. Vendor primary.
+- `raw/research/weekly-2026-09-24/05-brainchip-akd1500-pcie-card.md` — GlobeNewswire syndication of the same 2026-09-17 BrainChip press release above, resurfaced by this week's sweep. Duplicate, not a new source — see dedup note above.
 
 ## Related
 
@@ -113,3 +116,4 @@ Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). B
 - [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep
 - [[../weekly-briefs/2026-08-27]] — brought in by the 2026-08-27 weekly sweep
 - [[../weekly-briefs/2026-09-17]] — brought in by the 2026-09-17 weekly sweep
+- [[../weekly-briefs/2026-09-24]] — brought in by the 2026-09-24 weekly sweep

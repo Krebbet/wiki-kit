@@ -38,6 +38,8 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Half-unit-cell (6Å) 2D Ga2O3 ferroelectricity, 0.8V switching, BEOL-compatible on Si (Nature Electronics, doi 10.1038/s41928-026-01694-1) — ⚠️ paywalled, abstract-only capture per structural check; strong scope-fit (CMOS-voltage-scale, BEOL-integrated) if the body can ever be obtained
 - RACE-AIMC: risk-aware ensemble inference across heterogeneous analog IMC accelerators (arXiv:2609.03149) — statistical framework for device-to-device variability, not a measured chip; touches the [[../devices/memristor-array-integration-gap]] theme
 - Nature Electronics News & Views on a room-temperature correlated-microwave-signal thin-film magnetic source — low confidence on neuromorphic relevance from abstract alone; needs the underlying paper's title/abstract to judge oscillator/coupled-oscillator-computing fit
+- Humidity-responsive Ni₂P₂O₇ memristor for non-contact sensory neuro-electronic applications (press-release relay, ScienceDirect journal/date unconfirmed, 2026-09-24) — porous oxide, humidity-modulated switching, retention over hundreds of cycles, >97% classification accuracy claimed; primary not yet captured, treat figures as unverified
+- Nature Electronics: large-scale stretchable neuromorphic circuit for on-body edge computing (doi s41928-026-01639-8) — 10,000-transistor/cm² stretchable OECT array with synaptic programming/retention, on-body health-data demo; ⚠️ likely hits the wiki's known nature.com structural-paywall capture failure, publication date inside/outside this week's window unconfirmed
 
 ## Chips & systems
 
@@ -86,10 +88,13 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - BrainChip Q2 FY2026 investor webinar (11 Sept 2026) held — AKD2500 Dec-2026 tape-out on schedule, Akida 1500 25% inventory sold, ~$20M cash runway, yield issues still under investigation; ⚠️ every capture attempt (investing.com ×2) hit a 403 — only secondary-relay content available, no clean primary this run; next quarterly (Sept 2026) is still the yield/volume checkpoint
 - TSMC 22 nm eRRAM — the only foundry-node claim in evidence; no independent benchmark
 - dorsaVi 22nm RRAM-CMOS validation chip fab start — ⚠️ single small-cap-stock-tipster source (smallcaps.com.au), unverified against any primary; dorsaVi's known business is biomechanical sensors, not chips — treat as unconfirmed until a second source corroborates
+- Axelera AI Europa AIPU launch (2026-09-15, syndicated through 2026-09-23) — 629 TOPS INT8 digital-IMC edge/enterprise accelerator, named OEM partners (Dell, Supermicro), $1.5B pipeline claimed; digital-IMC competitive baseline per [[reference-sources]], 2 independent signals (Axelera press room + trade-press syndication)
+- Mythic Defense Advisory Board formation (2026-09-16) — analog compute-in-memory (APU) vendor building a US DoD/IC procurement channel; viability signal for a named analog-IMC competitor, no technical content
 
 ## Programmes & policy
 
-- Lava (Intel) successor SDK — still unannounced as of 2026-08-20; re-checked this run, no change from the `retired` status in [[reference-sources]]
+- Lava (Intel) successor SDK — still unannounced as of 2026-09-24. New weak signal this run: an Intel job posting (2026-09-23, "AI Software Development Engineer – Neuromorphic Computing") references building kernels for "current and next-generation neuromorphic hardware" and "future neuromorphic products" — job-posting-level only, no SDK name, no chip name, no ship date. Widely-circulating "Loihi 3" specs (8M neurons, 4nm) trace to content-mill sources that self-contradict by admitting no official product sheet exists — not corroborated, not elevated here.
+- DARPA "Firefox" programme (proposers day held 2026-09-21) — solicits neuromorphic photonics, in-sensor computing, and analog/optical hardware; $4–7M across Phases 1–3; BCI-centric framing, borderline wiki-fit (photonics-adjacent rather than a core spiking chip programme) but a dated, named-owner leading indicator worth a second look if a concrete award follows
 
 ## Related
 

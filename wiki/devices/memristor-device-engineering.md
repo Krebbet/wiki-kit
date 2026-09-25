@@ -86,17 +86,31 @@ For backprop-style ANN training in hardware, the review states large architectur
 
 *(synthesis)* If that generalises beyond MNIST, it is one of the better technical arguments for spiking on analog substrates specifically — not that SNNs are more efficient in the abstract, but that they tolerate the exact device non-idealities analog memristors cannot shed. It is a single small-task result and should not be leaned on until reproduced at scale.
 
+## Open characterization datasets
+
+*Added 2026-09-24, weekly sweep.* The first large-scale, provenance-linked, openly-released memristor dataset to enter this wiki: a University of Edinburgh (Prodromakis group) relational database linking **6,190 devices** (three oxide MIM stacks: TiN/HfOxNy/TiN, Pt/TiOx/AlOy/Pt, Pt/TiOx/Pt, all on 150 mm Si wafers) to **161,006 validated automated electrical-characterization experiments** and **169.27M raw electrical point records**, with explicit foreign-key provenance from fabrication recipe → wafer/die/sub-die/device location → raw electrical points → derived features. Devices are **Stand-Alone (SA)** — discrete probed elements, not 1T1R or crossbar-integrated — so this underscores, by omission, the same lab-to-fab integration gap [[cmos-rram-beol-integration]] documents.
+
+**What it measures, and doesn't.** Each device gets 20 automated experiments across three blocks: electroforming (10 sweeps, 3.0→7.5 V), I-V non-linearity/Roff-Ron (6 sweeps, 0.5→3.0 V), and switching-dynamics/volatility (200-pulse trains at 10/50/100/500 µs). **No endurance-cycling (cycles-to-failure) and no long-duration retention test are included** — "volatility" here means only short-term post-pulse relaxation via interleaved reads, not archival retention. Device-to-device/cycle-to-cycle variability is discussed only qualitatively per recipe (e.g. "TiOx/AlOy shows the largest pre-forming resistance variability") — no σ/µ figure is stated numerically. Roff/Ron is reported only as qualitative trends from sinh-fit curves, no aggregate number.
+
+**Why it's a data-infrastructure contribution, not a device claim.** The paper explicitly states its goal was *not* to identify a single best-performing stack, but to validate that a normalized relational schema (37 tables, 336 columns) scales: a storage-format benchmark on synthetic data matched to the real dataset's size shows SQLite beating flat CSV/TSV/JSON-Lines by 20–2,000× on query latency at 10⁷-record scale, and normalization alone cuts footprint by 2.7–4.2× and speeds queries a further 3–22×. Deployed size: 13.85 GiB.
+
+**Access status: not yet independently available.** The database (Zenodo DOI 10.5281/zenodo.19390197) is under **restricted access as of 2026-09-24**, to be made public "before publication of the peer-reviewed journal article." The processing/visualization code is public now: https://github.com/aprilaihub/STARS_GUI. Treat this dataset as *data pending public release* until the DOI resolves — worth a `/weekly-brief` re-check.
+
 ## Source
 
 - `raw/research/neuromorphic-commercial-viability/04-memristor-codesign-review.md` — "Memristor devices for next-generation computing: from performance optimization to application-specific co-design", IOPscience, 2026, open-access CC-BY 4.0, ~160 refs. **Secondary source** — a review aggregating others' measurements; figures are attributed to underlying work where the review names it.
 - `raw/research/weekly-2026-08-20/05-semieng-research-bits-aug18.md` — Semiconductor Engineering, "Research Bits: Aug. 18" (2026-08-18), relaying Kim et al., ACS Nano 2026 (SAW-guided MoS₂ memristor; primary paywalled, no preprint found).
+- `raw/research/weekly-2026-09-24/03-memristor-fabrication-database.md` — "A relational fabrication-to-modeling database for memristor devices" (University of Edinburgh, Prodromakis group). Academic primary, captured via arXiv PDF.
 
 ## Related
 
 - [[memristor-array-integration-gap]] — where these device-level numbers go to die
 - [[cmos-rram-beol-integration]] — a route onto CMOS without an embedded-RRAM foundry PDK
+- [[analog-training-nonidealities]] — device-level variability data this new dataset could sharpen once its Zenodo record opens
+- [[../benchmarks/neurobench]] — a parallel "measurement boundary and provenance discipline" effort, for system benchmarking rather than device characterization
 - [[../snn/snn-energy-hardware-realistic]] — crossbar non-idealities as a measured energy cost
 - [[../conflicts/snn-energy-payoff]] — device-level efficiency figures as Position A evidence
 - [[optoelectronic-rram-photonic-programming]] — a distinct optically-programmed device family not covered by this page's material-family taxonomy
 - [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep
 - [[../weekly-briefs/2026-08-27]] — brought in by the 2026-08-27 weekly sweep
+- [[../weekly-briefs/2026-09-24]] — brought in by the 2026-09-24 weekly sweep

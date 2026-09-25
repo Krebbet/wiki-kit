@@ -31,7 +31,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 | Page | Summary |
 |---|---|
-| [[devices/memristor-device-engineering]] | Material families, switching mechanisms, and the four engineering levers (doping, electrodes, interface layers, pulse protocol). Single-device comparison table — endurance to 10¹², 11-bit conductance resolution. |
+| [[devices/memristor-device-engineering]] | Material families, switching mechanisms, and the four engineering levers (doping, electrodes, interface layers, pulse protocol). Single-device comparison table — endurance to 10¹², 11-bit conductance resolution. First open characterization dataset (6,190 devices, 161K experiments) — access pending Zenodo release. |
 | [[devices/memristor-array-integration-gap]] | Why those device numbers don't survive to system level: ADC/DAC >70% of system power, static leakage, the energy-precision trade-off, and eleven itemized lab-to-fab blockers. The most load-bearing device page for the viability question. |
 | [[devices/fefet-analog-imc]] | FeFET analog in-memory compute — polarization switching, multi-level storage, analog shift-add. 14.47 TOPS/W with the ADC counted. Advantage erodes 1.56× → 1.37× at system level. **Simulation only; no endurance, retention or measured variability.** |
 | [[devices/analog-training-nonidealities]] | Why plain gradient descent fails on analog devices: response-function asymmetry, not defects. Analog SGD collapses below 15% where Tiki-Taka holds 97%. A device engineered for symmetry measures 61% skew on real silicon. |
@@ -47,6 +47,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[chips/loihi2-persistent-monitoring]] | Intel Loihi 2 — acoustic anomaly detection on a 16-chip VPX system. The wiki's first primary Loihi 2 source. Headline "two orders of magnitude" efficiency claim is dynamic-energy-only (474–496×); boundary-honest total-energy figure is 2.1–40.2×. |
+| [[chips/brainscales2-chiplet-interconnect]] | Heidelberg's chiplet-interconnect design for scaling analog BrainScaleS-2 past its area-constrained single die. Phit-level dynamic bandwidth partitioning for mixed spike/config traffic. **All figures are pre-silicon simulation**, no chiplet fabricated; worst-case system MTBF drops to minutes at 16×16-mesh scale. |
+| [[chips/ethereal-event-gnn-processor]] | First event-driven GNN processor chip (TSMC 28 nm, academic shuttle) — processes DVS events natively as a sparse graph. Silicon-measured 25.6 µs / 1.7 µJ per event, but the "comparable accuracy" claim is simulated, not chip-measured, and trails an FP64 A100 baseline on every dataset shown. |
 
 ---
 
@@ -58,6 +60,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[snn/snn-training-surrogate-gradients]] | How SNNs are trained at all. The Heaviside derivative annihilates gradients; surrogate gradients patch only the backward pass. Taxonomy of the four approaches, and why BPTT's O(NT) memory and non-local transport rule it out on-chip. 2019 vintage. |
 | [[snn/ann2snn-differential-coding]] | Training-free conversion at T=4–8. CNNs reach the favourable regime; **transformers cross energy ratio 1.0 exactly where accuracy reaches parity** — the converted SNN costs more than the ANN. Multi-threshold neurons, not differential coding, do most of the work. |
 | [[snn/snn-energy-breakeven-conditions]] | Capacity-matched analytical comparison against quantized ANNs. SNNs win only at T ≤ 5 and spike rate < ~5.7%; they lose on most realistic workloads, and by 3.8× on spiking Llama-2 7B. |
+| [[snn/hippocampus-bioinspired-memristor]] | Biologically-realistic, neuronal-diversity CA3 hippocampal SNN (179 Izhikevich neurons, 3 cell types) mapped to a real 20,000-device memristor crossbar. Not task-trained — tuned via Optuna to match resting-state dynamics. Power figure explicitly excludes DAC/ADC/IO. |
 
 ---
 
