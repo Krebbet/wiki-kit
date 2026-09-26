@@ -69,6 +69,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - RetireOPD (arXiv:2609.20784) — self-retiring teacher schedule for agentic OPD
 - When EOS Tokens Disagree (arXiv:2609.20511) — diagnoses OPD length-inflation via EOS-token disagreement
 - Negative Self-Distillation (arXiv:2609.11699) — learns to reason by avoiding flaws, not imitating
+- onPanda (arXiv:2609.24983) — token-level teacher correction of on-policy alignment data
+- Harness-Zero (arXiv:2609.24974) — agent-harness distillation via agent-as-harness, not weight distillation
 
 ## Process reward models
 
@@ -90,6 +92,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - Reflect, Retry, Reward (arXiv:2505.24726) — reward self-reflection tokens on retry-success; up to +34.7%, no synthetic data
 - ReSum (arXiv:2606.13316) — RLVR for compressing/organising reasoning trajectories via self-summarisation; novel self-improvement signal orthogonal to GRPO variants
+- RRSI (arXiv:2609.24972) — regularized recursive self-improvement of agent harnesses
 
 ## Test-time training and curriculum
 
@@ -103,6 +106,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - StudyBench (arXiv:2609.00787) — can self-evolution squeeze textbooks for olympiad capability; low-confidence, benchmark-flavored flag
 - CanvasAnneal (arXiv:2609.13060) — teacher-guided curriculum RL for diffusion LMs [domain caveat]
 - MATCH (arXiv:2609.20082) — curriculum scheduling + hierarchically-gated tool-learning rewards
+- Verifiable Hidden Dynamics Play (arXiv:2609.27321) — auto-curriculum via generated verifiable RL environments from solved mechanisms
 
 ## Variable-granularity / concept-level architectures
 
@@ -151,6 +155,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Chain-of-Experience (arXiv:2608.18027) — continual-improvement framing for LLMs via accumulated experience chains; uncertain forgetting-relevance, flagged for follow-up
 - RFT Naturally Mitigates Forgetting (arXiv:2507.05386) — RFT resists catastrophic forgetting across 7 multimodal tasks while SFT degrades; no replay needed; on Qwen2.5-VL-7B
 - E2H Curriculum RL (arXiv:2506.06632, ICLR 2026) — easy-to-hard curriculum RL rescues 1.5B–3B models that fail with vanilla RL; finite-sample complexity bounds proving E2H needs fewer total samples
+- ACLArena (arXiv:2609.23989) — agent continual-learning benchmark across multi-stage post-training
 
 ## RL optimizer miscellany
 
@@ -162,6 +167,11 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - The Rise of Verbal Reinforcement Learning (arXiv:2609.01597) — survey unifying natural-language feedback as grounding/deliberative/training signal
 - Score Centering Stabilizes Off-policy RL (arXiv:2609.20807) — reward/score-centering technique stabilizes off-policy RL
 - Compositional Reasoning under RL Post-Training (arXiv:2609.19465) — composed-task training transfers better to decomposed skills
+- Which Tokens Should SFT Actually Learn? (arXiv:2609.09707) — token-trimming perspective on mathematical-reasoning SFT
+- SFT or RL for Tool-Calling Agents? (arXiv:2609.17848) — controlled study across data, method, and scale
+- Critical-State RL (arXiv:2609.24985) — diagnoses trainable states for multi-turn tool use, learning-cliff-adjacent
+- Is Next-Chunk Reasoning RL Really Better than SFT? (arXiv:2608.23256) — revisits RLVR-vs-SFT training strategies under no-CoT data
+- Don't Mask the Environment (arXiv:2609.20715) — observation supervision changes how agents explore under RL
 
 ## Process reward models (cont.)
 
@@ -189,7 +199,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
-- [[weekly-briefs/2026-09-18]] — most recent weekly sweep (5 captures, deliberately diversified against the OPD glut; new critic-vs-critic-free conflict opened; 10 watchlist additions)
+- [[weekly-briefs/2026-09-25]] — most recent weekly sweep (5 captures spanning self-play/teacher-student-rl/rlvr-mechanics/ICL-theory; open conflict extended with a 5th and 6th paper; 10 watchlist additions)
+- [[weekly-briefs/2026-09-18]] — prior weekly sweep (5 captures, deliberately diversified against the OPD glut; new critic-vs-critic-free conflict opened; 10 watchlist additions)
 - [[weekly-briefs/2026-09-11]] — prior weekly sweep (5 captures, deliberately diversified against an OPD-mechanism glut; three independent papers converge against OPSA's teacher-free claim, extending the open conflict; 5 watchlist additions)
 - [[weekly-briefs/2026-09-04]] — prior weekly sweep (5 captures, all genuinely new after dedup caught 2 already-ingested candidates pre-capture; two independent OPD-mechanism-critique papers this week; 6 watchlist additions)
 - [[weekly-briefs/2026-08-28]] — prior weekly sweep (unusually conflict-dense week: 5 captures, all genuinely new; full-text ingest surfaced 3 fresh conflicts the abstract-only scan missed; 8 watchlist additions)

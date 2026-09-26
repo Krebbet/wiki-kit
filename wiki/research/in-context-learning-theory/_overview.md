@@ -10,6 +10,7 @@ ICL is the closest analogue in current LLMs to "single example imprints a concep
 - [[function-class-icl]] — Garg et al. 2022 (Stanford). Trained transformers in-context learn linear / sparse / NN / decision-tree classes at near-optimal rates.
 - [[icl-conceptual-belief-space]] — Bigelow et al. 2026 (arXiv:2605.12412). ICL as a smooth trajectory through a low-dim *conceptual belief space*; behaviour and residual-activation manifolds share geometry ($r=.92$); LLM emotion space ≅ human valence–arousal; steering entanglement ∝ manifold distance. Dynamical geometric complement to [[icl-bayesian-inference]].
 - [[bdh-cq-recurrent-latent-reasoning]] — Engdahl, Kosowski, Chorowski et al. 2026 (Pathway/Bielik/NYU, arXiv:2608.09888). A fourth mechanistic account: demonstrations update an explicit *recurrent memory state* $S_t$ (fixed weights), decoupled from a separate iterative latent-reasoning loop. New ARC-AGI-1 cost-efficiency SOTA (29.5% pass@2 at $0.0007/task); rich but mixed concept-binding/extrapolation/composition evidence.
+- [[icl-sft-rl-bayesian-unification]] — Fan 2026 (arXiv:2609.05111). A fifth account, but a *demoting* one: builds on [[icl-bayesian-inference]] and chains it forward into SFT (forward-KL projection) and KL-regularized RL (Gibbs posterior), explicitly treating the gradient-descent account as a secondary algorithmic realization of the Bayesian predictor rather than a primary foundation. Matched-budget Qwen3 experiments show sequence-level operators (PPO/GRPO) agree in update direction only under well-supported sampling; reward-weighted SFT's direction is genuinely different.
 
 ## Cross-cutting synthesis
 
@@ -60,7 +61,7 @@ Across all four accounts the same skeleton appears: a single example exerts its 
 
 ## Source
 
-This overview synthesises the four pages above. No new external sources.
+This overview synthesises the pages above. No new external sources.
 
 ## Related
 
@@ -69,3 +70,6 @@ This overview synthesises the four pages above. No new external sources.
 - [[icl-bayesian-inference]]
 - [[function-class-icl]]
 - [[icl-conceptual-belief-space]]
+- [[bdh-cq-recurrent-latent-reasoning]]
+- [[icl-sft-rl-bayesian-unification]]
+- [[../../weekly-briefs/2026-09-25]] — brought in by the 2026-09-25 weekly sweep

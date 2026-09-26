@@ -27,6 +27,14 @@ None of the three runs Position A's own diagnostics (noisy-only vs. teacher-free
 
 This doesn't resolve the conflict — if anything it complicates the resolution rule below, since Position A's own diagnostic (mode-reversal with fixed teacher/reference) is exactly the kind of ablation §21's resolution rule calls for, and it comes out **against** Position A's generality claim, independent of the three 2026-09-11 papers' same-origin/cross-origin angle. Four independent papers now bear on this conflict from four different angles (teacher-alignment mechanism, teacher-pass@1 ceiling, reliability-gating, and now cross-mode capability access) — none siding cleanly with either original position.
 
+## Extension (2026-09-25 weekly sweep) — a fifth and sixth paper add reliability-quantification and a third mechanistic axis, without resolving the conflict
+
+**[[../research/teacher-student-rl/uecr-grpo-entropy-calibrated-credit]]** (Zhang et al., "When and Where to Trust the Teacher," arXiv:2609.28385) is the first paper in this conflict's evidence base whose own title poses exactly the open question. Its Fig. 1 diagnostic *quantifies* naive-teacher unreliability directly: raw teacher preference conflicts with verifier correctness on 39.1–50.8% of correct/incorrect pairs, and agrees with a blinded independent quality judge on only 56.8% of verifier-tied pairs — strong, precisely-measured support for the reliability-gating logic TGOPD and the 2026-09-11 papers argue for. Working the other direction, its component ablation (Table 3) uses the *actual* frozen teacher's log-probabilities throughout (never a noise or teacher-free control) and shows accuracy rising monotonically as real teacher signal is added and structured — corroborating-but-not-decisive counter-evidence to Position A's content-independence claim, since the paper never runs OPSA's own diagnostic (noisy-only vs. teacher-free fixed-advantage) to isolate whether the gain requires genuine teacher content or just a well-shaped advantage signal.
+
+**[[../research/teacher-student-rl/ier-gradient-reliability-opd]]** ("1% of Tokens Can Be Enough," arXiv:2609.24432) supplies a *third* independent mechanistic account for why a small fraction of tokens can carry (nearly) all of OPD's useful gradient signal — alongside Position A's low-logp-suppression account and [[../research/teacher-student-rl/privileged-info-opsd]]'s cross-mode-capability-access account from the 2026-09-18 extension. IER's mechanism is Fisher-geometry gradient-estimation reliability (signal-to-noise of the score-function estimator), orthogonal to both prior accounts. It does not resolve the conflict either way: IER-selected tokens still depend on the teacher's distribution through $\rho(a) = \log(p_a/q_a)$, so the finding is compatible with — neither confirms nor refutes — teacher-content-dependence.
+
+Taken together, five weekly sweeps (2026-09-04 through 2026-09-25) have now surfaced six independent papers bearing on this conflict from six different angles: teacher-alignment mechanism (one-shot OPD), teacher-pass@1 ceiling (Sequential-Beats-Joint), reliability-gating gains (TGOPD), cross-mode capability access (privileged-info-opsd/AMPLE-MATH), reliability *quantification* (UECR-GRPO), and estimator-noise sparsity (IER). None sides cleanly with either original position; the accumulating pattern is that "why do few tokens/why does the teacher matter" has multiple simultaneously-true, non-exclusive answers depending on what's measured — which itself argues that the conflict's resolution rule (a joint ablation isolating same-origin vs. cross-origin, reliability-gated vs. ungated, and token-selection-mechanism variables) needs to hold more axes fixed than originally scoped, not fewer.
+
 ## Resolution rule
 
 *(Open — no ruling yet.)* The extension above sharpens what would resolve it: Position A's own noisy/teacher-free ablation, re-run (a) on a query the student never solves under one-shot OPD's setup, (b) at TGOPD's low-teacher-reliability prompts specifically, and (c) tracking whether the teacher-free variant's performance ceiling still tracks teacher pass@1 as in Sequential-Beats-Joint. If teacher-free training reproduces all three results, Position A survives intact and the three papers' causal *framing* (not their data) would be wrong. If it doesn't, Position A's generality claim (holds regardless of teacher quality/identity) would not survive.
@@ -41,7 +49,7 @@ Two threads worth separating before either position is dismissed:
 
 ## Source
 
-Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2–2.3, 3.1–3.2, in `raw/research/weekly-2026-09-04/.ingest/01-opsa-does-opd-really-distill.summary.md`. Extended via the 2026-09-11 weekly sweep with three independent papers (arXiv:2609.04172, 2609.04108, 2609.02998). Extended again via the 2026-09-18 weekly sweep with arXiv:2609.20612.
+Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2–2.3, 3.1–3.2, in `raw/research/weekly-2026-09-04/.ingest/01-opsa-does-opd-really-distill.summary.md`. Extended via the 2026-09-11 weekly sweep with three independent papers (arXiv:2609.04172, 2609.04108, 2609.02998). Extended again via the 2026-09-18 weekly sweep with arXiv:2609.20612. Extended again via the 2026-09-25 weekly sweep with arXiv:2609.28385 and arXiv:2609.24432.
 
 ## Related
 
@@ -53,6 +61,9 @@ Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2�
 - [[../research/teacher-student-rl/sequential-opd-then-rl]] — 2026-09-11 extension: teacher-pass@1-bounded ceiling
 - [[../research/teacher-student-rl/tgopd-verify-before-distill]] — 2026-09-11 extension: reliability-tied gating gains
 - [[../research/teacher-student-rl/privileged-info-opsd]] — 2026-09-18 extension: cross-mode capability access, mode-reversal evidence against Position A's specific mechanism
+- [[../research/teacher-student-rl/uecr-grpo-entropy-calibrated-credit]] — 2026-09-25 extension: quantifies teacher-preference/verifier-conflict rate; suggestive counter-evidence to Position A via real-teacher-signal ablation
+- [[../research/teacher-student-rl/ier-gradient-reliability-opd]] — 2026-09-25 extension: third mechanistic axis (gradient-estimation reliability) for OPD's sparse-token sufficiency
 - [[../../weekly-briefs/2026-09-04]] — brought in by the 2026-09-04 weekly sweep
 - [[../../weekly-briefs/2026-09-11]] — extended by the 2026-09-11 weekly sweep
 - [[../../weekly-briefs/2026-09-18]] — extended by the 2026-09-18 weekly sweep
+- [[../../weekly-briefs/2026-09-25]] — extended by the 2026-09-25 weekly sweep

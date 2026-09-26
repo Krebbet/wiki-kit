@@ -43,6 +43,8 @@ The "what proposer prompts the right question" engineering problem has at least 
 
 **Update 2026-07-31 (weekly-brief):** [[skill-self-play]] adds a tenth shape — a continuous medium-difficulty term ($1-2|v_\text{solve}-0.5|$, same family as SQLM/R-Zero Goldilocks gates) multiplied by a binary structural-validity gate, explicitly designed to block reward-hacking by an ungated proposer fabricating unsolvable tasks. Novel axis: the validity gate is computed against a persistent, evolving skill library (induce/prune/refine each iteration), not just the current task.
 
+**Update 2026-09-25 (weekly-brief):** [[self-play-pretraining-zero-data]] adds a 13th shape, and the first at the *pretraining-from-random-init* stage rather than RLVR post-training of a capable base model: a preconditioned **gradient-alignment / learning-progress reward** ($r_i = |\langle\nabla_\theta L(y_i;\theta_e), P_e \odot \delta\theta_e\rangle|$) scored against the learner's own recent parameter trajectory, with no verifier, task-success signal, or natural data of any kind. A concrete gradient-based operationalization of "propose at the frontier of the learner's competence" — the same design principle as Sukhbaatar's time-asymmetry, but computed directly from training dynamics. Explicitly rejects a naive prediction-difficulty reward as degenerate (arbitrarily-hard-to-predict programs can be constructed with no useful structure), the same Goldilocks-family failure mode this table's other entries guard against by different means.
+
 | Method | Reward shape | What it optimises for | Where the signal comes from |
 |---|---|---|---|
 | [[asymmetric-self-play]] (Sukhbaatar) | $R^A = \gamma \max(0, t_B - t_A)$ | Tasks Bob takes longer to do than Alice | Time-asymmetry; no external grader |
@@ -137,7 +139,7 @@ Single-model self-play is collapse-prone unless a stabiliser is in place. Four w
 
 ## Source
 
-Editorial synthesis. All claims trace to [[spag]], [[sqlm]], [[spice]], [[understanding-self-play]], [[asymmetric-self-play]], [[spiral]], [[spell]], [[alphazero]], [[debate]], [[spin]], [[sppo]], [[invisible-leash]], [[yue-rlvr-boundary]], [[two-stage-dynamic]], [[azr]], [[r-zero]], [[language-self-play]], [[rstar]], [[info-gain-self-play]], [[skill-self-play]] in this theme, plus the cross-referenced existing wiki pages.
+Editorial synthesis. All claims trace to [[spag]], [[sqlm]], [[spice]], [[understanding-self-play]], [[asymmetric-self-play]], [[spiral]], [[spell]], [[alphazero]], [[debate]], [[spin]], [[sppo]], [[invisible-leash]], [[yue-rlvr-boundary]], [[two-stage-dynamic]], [[azr]], [[r-zero]], [[language-self-play]], [[rstar]], [[info-gain-self-play]], [[skill-self-play]], [[self-play-pretraining-zero-data]] in this theme, plus the cross-referenced existing wiki pages.
 
 ## Related
 
@@ -151,3 +153,5 @@ Editorial synthesis. All claims trace to [[spag]], [[sqlm]], [[spice]], [[unders
 - [[../../conflicts/unified-vs-two-model-self-play]] — open conflict, stabiliser-vs-architecture resolution candidate
 - [[../single-sample-rl-finetuning/rlvr-incentivizes-reasoning]] — Wen et al.: counter-evidence to the Invisible-Leash family (CoT-Pass@K shows boundary extension)
 - [[../../weekly-briefs/2026-07-31]] — brought in by the 2026-07-31 weekly sweep ([[skill-self-play]])
+- [[self-play-pretraining-zero-data]] — 13th proposer-reward shape, first at the pretraining-from-random-init stage
+- [[../../weekly-briefs/2026-09-25]] — brought in by the 2026-09-25 weekly sweep
