@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-12
+last_reviewed: 2026-09-26
 ---
 
 # Watchlist — Identified But Not Captured
@@ -310,4 +310,29 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement (SJTU/Tsinghua)** — Provocative framing of RSI as an approaching phase transition rather than a current capability; extends [[huxley-godel-machine]] evolutionary self-improvement line. *(weekly-brief 2026-09-12.)*
 - **EvoSafeHarness: Evolving Model- and Domain-Specific Harnesses for Securing Agents (arXiv:2609.05903)** — Evolutionary method applied to agent-security harnesses rather than the LLM itself; HF 47 upvotes. *(weekly-brief 2026-09-12.)*
+
+## RL / post-training (continued — weekly-brief 2026-09-26)
+
+- **RRSI: Regularized Recursive Self-Improvement of Agent Harnesses (arXiv:2609.24972, Google Research)** — Regularized recursive self-improvement of agent scaffolds/harnesses; +14.1pp in-distribution / +4.7pp OOD, 30% fewer policy tokens. Code released. Adjacent to the "harness-as-training-target" cluster ([[macaron-v1]] / [[skillopt]] / [[memoharness]]). *(weekly-brief 2026-09-26.)*
+- **F²DR: Fine-Grained Full-Pipeline Reward Framework for DeepSearch Workflows (arXiv:2609.19827)** — Full-pipeline reward shaping for agentic deep-search workflows rather than sparse outcome reward. Adjacent to [[rrc-reward-ranking]]'s reward-design thread. *(weekly-brief 2026-09-26.)*
+- **GRPO-with-TRL: Fine-tuning a 350M Model for Structured Outputs in 100 Steps (HF blog)** — Practical low-step GRPO recipe for structured-output fine-tuning; ~107 HF upvotes. *(weekly-brief 2026-09-26.)*
+
+## Self-improving agents (continued — weekly-brief 2026-09-26)
+
+- **ClawGym II** — Black-box RL harness wrapping Claude Code/OpenClaw at the model boundary; surfaced via DAIR.AI weekly picks. Adjacent to [[openclaw]] / [[macaron-v1]] harness-as-training-target cluster. *(weekly-brief 2026-09-26.)*
+- **JIT-Agent** — Per-task synthesized agent harness (just-in-time scaffold generation); surfaced via DAIR.AI weekly picks. *(weekly-brief 2026-09-26.)*
+
+## Alignment & safety (weekly-brief 2026-09-26)
+
+- **Assistant-vs-delegate alignment gap** — Paper quantifying the gap between "assistant alignment" and "delegate alignment" as agent autonomy increases; surfaced via DAIR.AI weekly picks. *(weekly-brief 2026-09-26.)*
+- **"Capability laundering" attack** — Splits a harmful objective into innocuous-looking subquestions to evade safety filters; surfaced via DAIR.AI weekly picks. *(weekly-brief 2026-09-26.)*
+- **Import AI — METR capability-acceleration study** — METR analysis of where AI is currently accelerating real work: substantial in cyber, marginal in math, unclear in AI research itself. *(weekly-brief 2026-09-26.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-09-26)
+
+- **IntBMoE (Alibaba AMap)** — Block-conditioned MoE decoupling participation/execution/materialization stages; mentioned in HF trending roundups, direct paper URL unconfirmed this pass — verify before promoting. Adjacent to [[moe-architecture-survey]]. *(weekly-brief 2026-09-26.)*
+
+## Infrastructure (continued — weekly-brief 2026-09-26)
+
+- **Three simultaneous open-weight frontier launches (Xiaomi MiMo-V2.6 Pro/Flash, StepFun Step 5 Preview, Grok 4.7)** — Three non-US open-weight releases within 48h in the same capability band; landscape signal rather than a technique. *(weekly-brief 2026-09-26.)*
 - **Procedural Graphs: Self-Evolving Execution Structures for LLM Agents (arXiv:2609.09153)** — Self-evolving execution-graph structures for LLM agents outperforming memory-based baselines. *(weekly-brief 2026-09-12.)*

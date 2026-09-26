@@ -319,3 +319,23 @@ Watchlist additions: 10 (Thinking with Looped Flows, Semigroup-JEPA, MoE-overfit
 Reference-sources.md: no new recurring sources added this week — HF Daily Papers + alphaXiv trending + X feeds continued to cover the surfaced signal.
 
 Pre-existing uncommitted work at run start (not touched by this run's commit, unchanged from the last several runs — see master_notes.md 2026-08-01 entry for root cause): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
+
+## [2026-09-26] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-09-26). Sources already pinned in `wiki/reference-sources.md`; skipped survey step. 4 parallel subagents scanned: (1) HF Daily Papers + alphaXiv trending, (2) X/paper-feed accounts (AK/arankomatsuzaki/karpathy/dair_ai/alphaxiv/jackclarkSF/rohanpaul_ai), (3) r/MachineLearning + r/LocalLLaMA + r/MLScaling, (4) podcasts (Dwarkesh/Latent Space/Cognitive Revolution/TWIML) + the 9 probation GitHub awesome-lists.
+
+Reddit direct access remained blocked for WebSearch/WebFetch this run (site:reddit.com and JSON-API attempts all returned zero results); the subreddit subagent reconstructed likely top threads from secondary AI-news aggregators instead and explicitly flagged the results as unconfirmed against actual thread engagement — third+ consecutive week of this access gap (see master_notes.md 2026-08-08/2026-08-22 entries). Podcasts: no on-topic technical episodes in-window (three Cognitive Revolution eps were non-technical/fiction/governance; Latent Space covered OpenRouter business/infra). GitHub awesome-lists: no signal on any of the 9 probation repos, consistent with prior weeks — all recommended to remain on probation.
+
+Candidates surfaced: ~20 across the working scans. Selected 5 for capture based on multi-signal strength and mechanistic novelty: Memory Attention (alphaXiv + independently re-surfaced by the X-scan agent), JEV-as-a-Judge (HF Daily Papers + alphaXiv + independently confirmed), Evolution or Illusion? (general arXiv trending + independently inferred via reddit-adjacent scan), PoEM (alphaXiv, MIT CSAIL), Self-Play Pretraining with Zero Data (alphaXiv + independently flagged by the X-scan agent, though the latter couldn't confirm the URL directly).
+
+Captures: 5/5 succeeded via `capture_pdf --engine marker` (~100s/paper on CPU); `audit_captures` reported zero issues (no broken image refs, no thin extractions).
+
+Ingest: 5/5 subagent summaries validated against schema on first pass, no retries needed. `aggregate()`'s merge-candidate heuristic flagged 3 pairs as possible duplicates based on generic shared keywords ("arxiv", "self", "reward", "probabilities") — inspected and confirmed all false positives (each source proposed a genuinely distinct new page); no merges applied. No conflicts flagged by any subagent — all 5 sources are net-new subtopics or corroborating/complementary to existing pages, not contradictory.
+
+Pages written: 5 new — [[memory-attention]] (arXiv:2609.28399), [[jev-as-a-judge]] (arXiv:2609.26550), [[evolutionary-search-eval-rigor]] (arXiv:2609.19799), [[poem-predicting-rl-outcomes]] (arXiv:2609.30226), [[self-play-pretraining-zero-data]] (arXiv:2609.30063). [[evolutionary-search-eval-rigor]] required an explicit disambiguation note against [[conflicts/grpo-vs-evolution-strategies]] (shared "evolution" keyword, different subtopic — LLM-proposes-programs evaluation rigor vs. ES-as-RL-post-training-optimizer) to prevent a false merge; no conflict file opened or extended.
+
+Watchlist additions: 10 (RRSI: Regularized Recursive Self-Improvement of Agent Harnesses, F²DR full-pipeline reward framework, ClawGym II RL harness, JIT-Agent per-task harness synthesis, assistant-vs-delegate alignment gap paper, "capability laundering" attack, IntBMoE block-conditioned MoE, Import AI METR capability-acceleration study, GRPO-with-TRL structured-output fine-tuning recipe, three simultaneous open-weight frontier launches (Xiaomi MiMo-V2.6/StepFun Step 5/Grok 4.7)).
+
+Reference-sources.md: no new recurring sources added this week.
+
+Pre-existing uncommitted work at run start (not touched by this run's commit, unchanged from prior runs — see master_notes.md 2026-08-01 entry for root cause): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
