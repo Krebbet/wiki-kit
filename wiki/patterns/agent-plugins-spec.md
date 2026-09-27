@@ -42,8 +42,15 @@ Similarly, the spec's Agent Skills integration is scoped narrowly: it only defin
 
 Press coverage widely attributed Agent Plugins to a named coalition (OpenAI, AWS, Cursor/Anysphere, GitHub, Microsoft, Vercel), and this is plausibly accurate from the standard's announcement — but the captured spec document itself names no companies; it references governance living in a separate Technical Charter (`GOVERNANCE.md`) and speaks generically of "clients" throughout. Treat the co-developer list as collect-but-confirm from press sources, not something this spec document itself substantiates.
 
+## 2026-09-22 addendum: Claude Marketplace launch
+
+Anthropic launched the **Claude Marketplace** on 2026-09-22 (vendor-primary blog post, claude.com/blog/claude-marketplace), described as "one place to discover plugins, agents, and services from our partners." It brings together three categories in one place: (1) plugins and connectors, (2) agents and products, and (3) service partners — a single destination for customers to find tools/services, and a channel for builders/partners to reach teams already using Claude. The concrete example given: CodeRabbit put part of its Anthropic spend commitment toward Vercel (where its coding agents run), and Power Digital and ThoughtSpot did the same toward Snowflake (where their data lives) — i.e., committed Anthropic spend can be redirected to partner products through the Marketplace. It's live at claude.com/platform/marketplace.
+
+Read against the rest of this page: the Marketplace looks like a distribution/storefront layer sitting on top of the Agent Plugins packaging format documented above (MCP + Agent Skills as the underlying open standards) — but that linkage is an **inference, not a stated fact**. The captured source does not confirm that the Marketplace is built on the Agent Plugins spec specifically. The capture itself is also thin — mostly marketing copy, with several bullet lists from the original page not captured/rendered — so no partner counts or other unconfirmed figures are reproduced here.
+
 ## Source
 - Agent Plugins Specification v1.0.0, `spec/1.0.0.md` — https://github.com/agentplugins/agent-plugins-spec, captured 2026-08-09 — `raw/research/weekly-2026-08-09/02-openai-agent-plugins-spec.md`. Primary technical spec document.
+- Anthropic, "Claude Marketplace" — claude.com/blog/claude-marketplace, announced 2026-09-22 — `raw/research/weekly-2026-09-27/03-claude-marketplace.md`. Vendor-primary blog post; thinly captured (marketing copy, some bullet lists not rendered).
 
 ## Related
 - [[mcp-infrastructure]] — Agent Plugins layers a portable per-plugin `mcp.json` config and `PLUGIN_ROOT`/`PLUGIN_DATA` subprocess-env convention on top of raw MCP; the explicit non-solution of auth/governance here parallels that page's coverage of MCP's unresolved governance gap.

@@ -18,6 +18,26 @@ Prompts accumulate instructions that patch older models' weaknesses; these can d
 
 `/claude-api cost-optimize` profiles where application spend goes (via the Admin API usage/cost reports, per-response usage objects, or static estimation), then ranks savings starting with caching, request trimming (including a prompt-audit pass), output bounding, and Batch API use for unattended work. Across four public-benchmark test runs: one dropped thinking tokens from 102,779 to 8,284 with pass rate flat and cost down ~58% (caching a shared prefix + low effort + Batch API); one cut spend 73% with flat pass rate; one added batching + document caching to cut cost from $136.20 to $64.87; one found caching already correct and instead cut cost via medium effort + concise-output constraints (median steps per task 29→17, prompt tokens 75.2M→33.7M).
 
+### 2026-09-22: Opus 5.5 pricing cut and cache-durability harness changes
+
+Anthropic's Opus 5.5 launch post (claude.com/blog, "Claude Opus 5.5: built for coding sessions that use more context") frames the model's cost story specifically around long-running, context-heavy coding sessions, adding a fourth lever — cache *durability* — to this page's caching/anti-pattern/effort-calibration set.
+
+**Pricing:** vs. Opus 5, input and output token pricing is cut 20%, and cached-token pricing is cut 60%. Anthropic calls out the cached-token cut as the more significant number because cache reads make up the majority of agentic/coding-work cost.
+
+**Cache lifetime:** the API prompt cache's lifetime is extended to one hour (previously shorter for API/cloud-provider keys; subscribers already had the one-hour lifetime).
+
+**Harness changes that stop invalidating the cache mid-session:** previously, any of the following forced a full cache miss mid-conversation; Anthropic states its harness no longer breaks the cache on:
+- Changing effort level mid-session (Opus 5.5 and Fable 5.1).
+- Loading new tools / adding tools on demand mid-conversation.
+- Refreshing login.
+- Adding instructions mid-conversation.
+
+**Forked-subagent cache reuse:** forked subagents now start from the parent session's cache instead of re-paying for the same context — a direct, concrete cost mechanism for delegation/subagent and coordinator-thread architectures (see [[deployments/claude-code-projects]] in Related, below).
+
+**Reported aggregate effect:** Anthropic reports cache-miss rate on input dropped by more than 50%, and generation is more than 30% faster, as a combined result of the pricing, cache-lifetime, and harness changes plus six months of accumulated Claude Code feature work (not attributed to Opus 5.5 alone).
+
+**Collect-but-confirm caveat — turn-efficiency claim:** the post also claims Opus 5.5 can complete tasks in fewer turns than Opus 5 (citing a Zeta Labs result: fewer turns/tool calls, nearly half the cost, twice as many hardest-tier tasks completed). Anthropic explicitly scopes this claim itself, quoting a companion post ("What a task costs on Opus 5.5"): on a *well-scoped* task, both models finish in about the same number of turns and the price cut is the only gain; the turn-count gap is expected to appear on *open-ended* tasks, where a model can otherwise burn turns pursuing a wrong approach. This is **not** a general "fewer turns" claim — no benchmark methodology is given for the Zeta Labs figures, so treat both the specific numbers and the general framing as collect-but-confirm rather than established.
+
 ## Related
 
 - [[patterns/anthropic-context-engineering]] — canonical Anthropic context-engineering reference (JIT retrieval + compaction + structured-note-taking); this page adds prompt-caching mechanics (prefill/KV cache, byte-exact prefix requirement, TTL, cache-warming trick) at a level of technical depth that page doesn't cover
@@ -26,7 +46,9 @@ Prompts accumulate instructions that patch older models' weaknesses; these can d
 - [[deployments/deepseek-v4-1-flash]] — same week's parallel cost story from the opposite end of the stack: this page treats cost as a prompt/effort-calibration problem, DeepSeek treats it as a serving/KV-cache-architecture problem
 - [[patterns/agent-skills]] — `claude-api` is a concrete official Anthropic Agent Skill, now shipping three cost/perf subcommands; a fresh production instance for the skills-cluster hub page
 - [[patterns/effective-harnesses]] — shares the "optimization takes deliberate operational discipline, not just automatic gains" theme via a distinct lever set (caching/anti-patterns/effort vs. long-horizon context/recovery)
+- [[deployments/claude-code-projects]] — the forked-subagent cache-reuse mechanism below (parent-session cache reused instead of re-paying for context) is a concrete cost lever for that page's coordinator/thread delegation architecture. This is a **prompt-cache reuse** mechanism specifically, distinct from and not to be confused with that page's disputed "native shared memory across threads" claim, which is a separate, unresolved question covered in [[conflicts/claude-code-projects-shared-memory]].
 
 ## Source
 
 - `raw/research/weekly-2026-09-13/05-05-anthropic-claude-platform-cost-perf.md` — captured 2026-09-13 from claude.com/blog, "Reducing cost and improving performance with Claude Platform" (2026-09-08). **Vendor primary** — trustworthy per this wiki's source-authority convention; benchmark numbers are Anthropic-reported internal demonstrations (collect-but-confirm on exact figures, though the mechanism descriptions themselves are primary-source reliable).
+- `raw/research/weekly-2026-09-27/01-opus-5-5-coding-context.md` — captured 2026-09-27 from claude.com/blog, "Claude Opus 5.5: built for coding sessions that use more context" (2026-09-22). **Vendor primary.**

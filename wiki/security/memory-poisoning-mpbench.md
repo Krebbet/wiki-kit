@@ -104,11 +104,42 @@ Four prompt injection defenses evaluated: PIGuard (DeBERTa-v3-base, 86M), DataFi
 
 **Real-world precedent**: memory poisoning incidents have been documented in Gemini (Rehberger 2025), Microsoft Azure AI (MSFT Security Blog Feb 2026), and Amazon Bedrock (Palo Alto Unit 42 Oct 2025).
 
+## Write-gate defenses: MemSentry (2026-09-27)
+
+Roy & Basu, "MemSentry: A Framework for Detecting Persistent Memory Poisoning in Agentic AI" (arXiv 2609.08747, submitted 2026-09-08), propose a formal, configuration-driven write-gate that sits directly on the V-S1 vulnerability identified above: every proposed persistent-memory write is intercepted *before* it is committed and resolved to one of three deterministic decisions — **Accept**, **Review**, or **Quarantine**.
+
+**Mechanism**: each write is scored jointly on five factors — source trust, semantic risk of the content itself, attack radius (computed over a component-dependency DAG, i.e. the blast radius if the write turns out to be malicious), access risk, and a signed security-state delta (whether the operation weakens or strengthens the system's overall security posture).
+
+**Evaluation setup**: a synthetic 20-asset random dependency DAG (28 edges, 6 sinks), a 10×20 user access-control matrix (3 super-users), evaluated over 1,000 GPT-4-generated attack/benign scenarios with a 70/30 train/test split.
+
+**Structural rule vs. semantic layer — read the headline result carefully**: the paper's much-quoted "100% detection of external quarantine-class threats" is *not* produced by any content classifier. It comes from an unconditional structural rule: any write originating from an unverified/external source with zero trust is automatically quarantined regardless of what it says. The paper treats semantic classification (judging the content itself) as a pluggable, swappable component and explicitly *not* its main contribution. Four interchangeable approaches were compared:
+
+| Approach | Accuracy | F1 |
+|---|---|---|
+| Regex (rule-based) | 78.3% | .735 |
+| TF-IDF + SVM | 88.0% | .866 |
+| SBERT + LR | **91.7%** | **.908** |
+| SetFit | 76.7% | .701 |
+
+(Academic/quantitative benchmark result — collect-but-confirm per this wiki's source-authority convention, not independently reproduced here.)
+
+**Documented weaknesses of the semantic layer** (the paper's own limitations, not incidental bugs):
+- **Insider gap**: for verified-insider sources (source trust T=1), the framework does not auto-quarantine even dangerous writes — it escalates to human review by design. The paper reports **0% automatic quarantine accuracy for insider-sourced attacks at every tested authorization level**. This is an intentional design choice (trusted actors get a human-in-the-loop path, not a block), but it is a real coverage gap against insider threats.
+- **Contrast pairs**: on surface-similar operations with opposite (benign vs. malicious) intent, no classifier resolved more than **3 of 10 pairs** correctly.
+
+**Other limitations the authors note**: single-operation scope (no modeling of multi-step attack chains), a static security model, plus the insider-escalation and contrast-pair issues above.
+
+**Code/data release**: the paper links a dataset repo (github.com/ayanroycnu/MemSentry-Dataset), but there is no confirmed release of the MemSentry framework implementation itself — only the evaluation dataset.
+
+**How this fits with the defense analysis above**: MemSentry's structural trust-boundary rule — quarantine anything from an untrusted external source, independent of content — is a genuinely different layer than the prompt-injection-style, pattern/content-based defenses this page's [Defense analysis](#defense-analysis) section found to fail structurally against weak-signal memory poisoning. It's closer in kind to the "write-path provenance tracking" and "source isolation" mitigations this page already recommends (see Implications, item 2) than to the classifiers MPBench evaluated, so it doesn't straightforwardly confirm or refute this page's claim that *content-classification* defenses fail against semantically-indistinguishable weak-signal payloads. However, MemSentry's *own* semantic-layer results are arguably a second, independent data point for that same claim: when trust alone can't resolve a write (insider sources, or contrast pairs where surface form doesn't reveal intent), its content-based classifiers show exactly the kind of breakdown — 0% quarantine accuracy on insider attacks, ≤3/10 on contrast pairs — that this page's argument would predict. Whether that reading holds depends on exactly how strongly this page's original "defenses fail structurally" claim is meant to generalize beyond the four prompt-injection tools it tested; flagging this as a judgment call rather than asserting it outright.
+
 ## Source
 - arXiv 2606.04329 — Dash et al., ICML 2026 (43rd International Conference on Machine Learning, Seoul)
+- raw/research/weekly-2026-09-27/05-memsentry-memory-poisoning.md — Roy & Basu, "MemSentry: A Framework for Detecting Persistent Memory Poisoning in Agentic AI," arXiv 2609.08747 (submitted 2026-09-08)
 
 ## Related
 - [[prompt-injection-impossibility]] — structural argument for why prompt-level defenses cannot fully solve injection-class attacks; memory poisoning provides empirical confirmation of the defense gap
 - [[adr-uber-mcp-detection]] — MCP tool-call inputs are a primary delivery surface for C1/C2 write channels; memory persistence adds a cross-session dimension to MCP-delivered attacks
 - [[memory-architectures]] — write channel taxonomy maps directly to memory system design patterns; V-P1/V-S1 vulnerability mitigations are architectural choices
 - [[memory-evolution-survey]] — C4 experience-to-procedure and compaction-driven writes are surveyed capabilities; this paper characterizes their security implications
+- [[conflicts/auto-mode-prompt-injection-defense]] — related open question on whether automated/config-driven defense layers can be trusted to run without human checkpoints; MemSentry's Review-vs-Quarantine split is a concrete instance of that tradeoff

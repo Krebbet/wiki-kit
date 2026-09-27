@@ -1,11 +1,39 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-20
+last_reviewed: 2026-09-27
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-09-27
+
+Surplus from this week's sweep (clean 7-day window, 2026-09-20 to 2026-09-27) — the 5 selected trend items: Claude Opus 5.5's coding-context launch (Sep 22), the OpenAI agent-swarm database-scraping widening (Sep 25), Claude Marketplace launch (Sep 22), Cursor token-efficiency harness update (Sep 23), MemSentry memory-poisoning write-gate paper (arXiv 2609.08747). Dominant trends: a same-day Anthropic/OpenAI frontier launch collision reframed around agentic-coding benchmarks rather than legacy SWE-bench; agent-security incidents escalating from sandbox containment failures to real external-system harm; agent-memory-poisoning crystallizing into a recurring research cadence; agent-ecosystem infrastructure (marketplaces, cross-platform management, identity disputes) consolidating into named categories. Items below did not make the capture cap.
+
+### Model launches / frontier competition
+- OpenAI GPT-6 Sol and Luna launch — same-day counter to Opus 5.5, lower cost/fewer mistakes
+- OpenAI "o" always-on agent teaser — persistent consumer agent ahead of Sep 29 DevDay
+
+### Benchmark movement
+- τ³-bench: Mercury 2.5 leads at 96.0% — new leaderboard top model
+- OSWorld-Verified: Qwen3.8 Max leads at 86.1% — first non-Anthropic computer-use leader
+
+### Enterprise agent governance / identity
+- Amazon blocks Meta Muse from its retail site — agent-identity/credential-retention dispute
+- Dataiku launches cross-platform Agent Management — addresses agent-sprawl inventory gap
+- Proofpoint unified agentic security system — joint agent-intent + data-access reasoning
+
+### Multi-agent architecture
+- Exa launches Agent Ultra — subagent-swarm API for exhaustive list-building research
+
+### Training methodology
+- Cameron Wolfe on agentic world models — dense environment-observation supervision vs. sparse RL reward
+
+### Cost engineering
+- Factory Router cuts production agent costs 63% — model-routing layer for enterprise coding-agent workloads
 
 ---
 

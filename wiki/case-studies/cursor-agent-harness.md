@@ -5,6 +5,7 @@ Cursor's engineering blog describes their iterative harness development methodol
 ## Source
 
 - Cursor Engineering Blog, "Continually improving our agent harness," 2026-04-30 — `raw/research/weekly-2026-05-08/01-cursor-agent-harness.md`. Authored by the Cursor team. Primary practitioner source.
+- Cursor Blog, "Improved token efficiency for longer agent runs," 2026-09-23 (cursor.com/blog/improved-token-efficiency) — `raw/research/weekly-2026-09-27/04-cursor-token-efficiency.md`. Authored by the Cursor team. Vendor-primary source; aggregate % is self-reported.
 
 ## What Cursor evaluates the harness on
 
@@ -85,6 +86,22 @@ Cursor tested a more expensive model for context summarization and *"observed it
 
 A weekly Cloud Agent Automation searches logs, surfaces new or recently spiked issues, and creates or updates tickets in a Linear backlog with investigation notes. Cursor describes this as part of instantiating an *"automated software factory"* for the harness.
 
+## Token efficiency follow-up (2026-09-27)
+
+Cursor published a dedicated follow-up blog post, "Improved token efficiency for longer agent runs" (2026-09-23), reporting a further round of harness optimization work aimed squarely at token cost as agent runs get longer. Cursor frames this as a direct consequence of the trajectory above: as agents take on more ambitious, longer-running tasks, context assembly and management — not the model call itself — becomes the dominant cost driver. This optimization work is presented as a response to that structural shift, not a one-off cleanup pass.
+
+**Headline claim (self-reported, collect-but-confirm):** a 7% aggregate reduction in token cost across Cursor's agent harness, with no drop in agent quality. As with other Cursor-stated aggregate percentages, this is vendor-self-reported and not independently verified.
+
+Five concrete mechanisms drove the reduction, each with its own reported number:
+
+1. **System-prompt trimming** — cut roughly 66% of system-prompt tokens.
+2. **Dynamic/selective tool loading** — MCP tool definitions were moved out of the always-included system prompt and into dynamic context, loaded only when actually needed. Cursor notes most tools are used in under 20% of conversations. This mechanism alone cut total tokens by 46.9% across sessions that called an MCP tool, and Cursor cites a further ~60% offloading gain from applying the same dynamic-loading approach more broadly. This is a direct, concrete instance of the static→dynamic context shift documented above, applied specifically to tool definitions.
+3. **Explicit prompt-cache breakpoints** (for the GPT-5.6 model family) — cut cold-cache misses by roughly 20%.
+4. **Sparse/compressed file-read line-numbering** — reduced file-read token overhead, for an estimated ~1.6% aggregate savings.
+5. **Tightened subagent delegation** — removed over-prompted delegation patterns and restricted unnecessary model-switching in subagent calls.
+
+This follow-up reinforces rather than revises the static→dynamic context finding above: the same directional move (pull content out of always-on static context, fetch/load it dynamically only when needed) is now shown applied concretely to tool definitions, with a measured token-savings number attached.
+
 ## Notable claims and findings
 
 - **Harness quality > model selection.** The harness and model together determine agent quality; the post frames harness tuning as the primary lever distinct from model swaps.
@@ -114,3 +131,4 @@ A weekly Cloud Agent Automation searches logs, surfaces new or recently spiked i
 - [[patterns/context-folding]] — Cursor's summarization-model-no-diff null result sits adjacent to AgentFold's variable-granularity argument; the strategies tested may differ
 - [[patterns/sierra-monitor-eval-of-evals]] — peer LLM-as-judge methodology with a different calibration mechanism (Cursor: Keep Rate + judge as separate signals; Sierra: judge calibrated against multi-model + team-labeled agreement before deployment)
 - [[patterns/agent-development-lifecycle]] — concrete production instantiation of the Lifecycle's Test + Monitor phases (CursorBench + Keep Rate + LLM-judge + automated-Linear-ticket loop)
+- [[patterns/sol-pi-harness-efficiency]] — independent corroboration of the same static→dynamic-context / token-cutting direction from a different actor: production vendor (Cursor) vs. academic auto-research paper
