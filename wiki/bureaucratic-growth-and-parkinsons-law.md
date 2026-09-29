@@ -129,3 +129,4 @@ Note also that Aghion & Tirole supply a **second** growth-related result this pa
 - [[organizational-economics-of-the-state]] — carries the one size-positive datapoint in this area (Brown, Earle & Gehlbach: larger Russian regional bureaucracies, more effective privatisation), scoped to one country and period.
 - [[open-questions]] — Q7 (age vs. size vs. competitive pressure) and Q9 (does decay differ where output is measurable) both take evidence from this page.
 - [[formal-and-real-authority]] — the optimal-overload-as-commitment reading of the same observable, recorded on both pages as a framing tension rather than filed as a conflict.
+- [[whitehall-monitor-2026-case-profile]] — UK civil service 2016-2025: shock-driven headcount growth that persisted despite caps.

@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-22
+last_reviewed: 2026-09-29
 ---
 
 # Watchlist
@@ -114,12 +114,13 @@ existing page (Acemoglu, second-hand); 2 are listed here, both capture-blocked f
   wiki's non-Anglosphere coverage gap. **Capture blocked**: genuinely paywalled — both the landing page and
   the direct PDF path 403 even with a browser user-agent, distinct from the usual NBER landing-page trap.
   Worth a manual pull if institutional access is available.
-- The Allocative Cost of War (CEPR DP21886, Gorodnichenko, Amann & Talavera) — firm-level data from Russia's
+- ~~The Allocative Cost of War (CEPR DP21886, Gorodnichenko, Amann & Talavera) — firm-level data from Russia's
   invasion of Ukraine showing war destroys output partly via allocative-efficiency collapse, with a
   state-capacity/crisis-reallocation institutional-design angle. **Capture blocked**: CEPR's own landing-page
   trap (see `master_notes.md`, 2026-09-15) — the only capturable version so far is Marginal Revolution's
   discovery post, which carries just the abstract. Too thin for a full page; re-attempt via institutional
-  access or wait for a working-paper mirror (SSRN/author site).
+  access or wait for a working-paper mirror (SSRN/author site).~~
+  **Resolved 2026-09-29**: captured via the open-access IZA mirror (DP 18895, https://docs.iza.org/dp18895.pdf) and ingested as [[allocative-cost-of-war-ukraine]].
 
 ### Flagged for next sweep (uncertain timing, not a full candidate this week)
 
@@ -182,6 +183,42 @@ post-capture (Cloudflare landing-page trap) and listed here instead.
   than pointing at a new paper, so lower priority under this wiki's blog-cap convention. Pairs with
   [[regulatory-capture]] if promoted later.
 
+## Week of 2026-09-29
+
+Fifth sweep. A thin week: 3 sources captured (see `wiki/weekly-briefs/2026-09-29.md`) and 8 entries listed
+here. NBER, SSRN and arXiv in-window listings could not be surfaced through search this week, so the working-paper
+section is empty by search limitation, not because nothing was released.
+
+### Blogs, essays and commentary
+
+- No Doing, No Learning (Marginal Revolution) — nuclear construction costs reportedly +187% for reactors begun
+  1967-72 after regulation, a learning-by-doing-blocked-by-regulation mechanism; find the underlying paper
+  before capturing. https://marginalrevolution.com/marginalrevolution/2026/09/no-doing-no-learning.html
+- Merit vs. Tenure: Reforming Federal Firing (Statecraft) — practitioner account of federal removal
+  rules; discovery only, pairs with the OPM RIF rule page. https://www.statecraft.pub/p/merit-vs-tenure-reforming-federal
+- How to build a policy school (Statecraft, Will Howell) — tangential to institutional design proper; low
+  priority. https://www.statecraft.pub/p/how-to-build-a-policy-school
+- Did Liberals Break Liberal Democracy? (ProMarket, 2026-08-21) — second-hand review of Acemoglu's book *What
+  Happened to Liberal Democracy?* (2026); capture the book itself only if its text is obtainable per the books
+  convention. https://www.promarket.org/2026/08/21/did-liberals-break-liberal-democracy/
+
+### Data, indices and multilateral output
+
+- State HR and Benchmarking Study (Niskanen Center / NAPA) — how 40+ US states manage their workforces;
+  cross-state comparative evidence adjacent to the personnel-economics pages; not yet tried for capture.
+  https://www.niskanencenter.org/how-do-states-manage-their-workforces-anyway/
+- V-Dem Democracy Report 2026 — regime-level indicator report; low priority given the wiki's D122 stance on
+  such scores. https://www.v-dem.net/documents/75/V-Dem_Institute_Democracy_Report_2026_lowres.pdf
+
+### Journals
+
+- Deliberative preferences for collective adaptation: evidence from the Philippines and Viet Nam (Almaden,
+  *Journal of Institutional Economics*, vol. 22, Jan 2026) — meso-level institutions in Ostrom's polycentric
+  governance; non-Anglosphere, open-access venue, good odds of a clean capture.
+  https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/deliberative-preferences-for-collective-adaptation-evidence-from-the-philippines-and-viet-nam/C67D0F597A221BB09B04A2A6BC663DD9
+- Legacy of the 2015 JOIE debate on property versus possession (Pietri, *Journal of Institutional Economics*,
+  Jan 2026) — weak relevance; exact URL not located this sweep.
+
 ## Source
 
 - Seeded at bootstrap, 2026-08-19.
@@ -192,6 +229,8 @@ post-capture (Cloudflare landing-page trap) and listed here instead.
 - Weekly sweep, 2026-09-15 — see `wiki/weekly-briefs/2026-09-15.md` for the full candidate list and selection
   rationale.
 - Weekly sweep, 2026-09-22 — see `wiki/weekly-briefs/2026-09-22.md` for the full candidate list and selection
+  rationale.
+- Weekly sweep, 2026-09-29 — see `wiki/weekly-briefs/2026-09-29.md` for the full candidate list and selection
   rationale.
 
 ## Related

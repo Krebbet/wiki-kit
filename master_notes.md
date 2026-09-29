@@ -289,3 +289,28 @@ run that trusted `audit_captures`'s clean report would have ingested the challen
 article. `reference-sources.md`'s Administrative Science Quarterly / Organization Science row now carries a
 capture-blocked note for this pattern.
 **Status:** open
+
+### 2026-09-29 — `audit_captures` reports false "broken image refs" on `capture_pdf` (pymupdf) output
+**Scope:** kit
+**Observation:** Fifth `/weekly-brief` sweep: `tools.audit_captures` reported 43 broken image refs (42 in the
+allocative-cost-of-war capture, 1 in the OPM capture). The referenced files exist (for example
+`raw/research/weekly-2026-09-29/assets/allocative-cost-of-war/source.pdf-8-0.png`); the refs are written
+repo-root-relative, and the audit appears to resolve them relative to the markdown file's directory.
+**Implication:** Either `capture_pdf` should emit refs relative to the md file or `audit_captures` should also try
+repo-root resolution. Until fixed, treat "broken image refs" on pymupdf captures as suspect and `ls` the path.
+**Status:** open
+
+### 2026-09-29 — `capture_url` fails on direct PDF URLs
+**Scope:** kit
+**Observation:** `capture_url` on a direct `opm.gov` PDF URL failed (Playwright treats it as a download rather than
+a navigation).
+**Implication:** Use `curl -A 'Mozilla/5.0' -o <file> <url>` then `capture_pdf --src <local path>`. `capture_url`
+could detect a PDF content-type and delegate automatically. Recorded in `reference-sources.md` Local conventions.
+**Status:** open
+
+### 2026-09-29 — `poetry` not on PATH in the non-interactive shell
+**Scope:** kit
+**Observation:** `poetry` lives in `~/.local/bin`, which is not on PATH for non-interactive shells.
+**Implication:** Cron and `claude -p` invocations of `/weekly-brief` must export `PATH=$HOME/.local/bin:$PATH`
+first (or the crontab line should set it); otherwise every `poetry run` step fails.
+**Status:** open

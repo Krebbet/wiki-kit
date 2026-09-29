@@ -95,3 +95,4 @@ That last row is the most transferable finding on the page: it is a **market-pri
 - [[knowledge-hierarchies-and-the-cost-of-scale]] — micro-founds two of these costs as a pair (communication cost h, knowledge-acquisition cost c) and shows they push organisational form in opposite directions.
 - [[bureaucratic-growth-and-parkinsons-law]] — Niskanen's bureau is a worked case of a measurement failure: the sponsor cannot recover the bureau's true cost function from anything it observes.
 - [[efficiency-of-institutions-north-vs-williamson]] — open conflict on whether observed institutions should be presumed cost-economising.
+- [[allocative-cost-of-war-ukraine]] — a quantified case of reallocation frictions under wartime stress (un-refereed working paper).

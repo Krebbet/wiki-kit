@@ -48,6 +48,9 @@ substantive*. Rank candidates by, in order:
   read into the wiki.
 - **Never let a sweep capture five sources from the same camp.** If that is what the week offers, capture
   fewer and note the imbalance in the brief.
+- **Direct-PDF URLs on opm.gov fail with `capture_url`** (Playwright treats the PDF as a download, not a
+  navigation). Download with `curl -A 'Mozilla/5.0' -o <local.pdf> <url>`, then
+  `capture_pdf --src <local path>` (2026-09-29, OPM RIF memo).
 
 ---
 
@@ -109,6 +112,8 @@ manual browser session with a persistent cookie jar may clear it where Wiley's d
 | OECD Public Governance | Comparative public-sector performance | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | IMF / World Bank flagship reports | Institutions-and-growth chapters | 2026-08-19 | probation |
 | National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | UK NAO: active (2026-09-08); GAO capture-blocked (2026-08-25, confirmed 2026-09-08); Canada OAG untested |
+| OPM CHCOC memos / Federal Register (opm.gov/chcoc/latest-memos) | Primary reform documents for the US federal civil service | 2026-09-29 | active (2026-09-29) — one capture; PDFs need curl + `capture_pdf` (see Local conventions) |
+| IZA discussion papers (docs.iza.org) | Open-access mirror for CEPR/NBER papers that are gated | 2026-09-29 | active (2026-09-29) — recovered the CEPR-blocked Ukraine war paper |
 
 **Capture note (2026-08-25):** `oecd.org`/`oecd-ilibrary.org` and `gao.gov` both returned hard 403s to every
 URL pattern tried (landing page, docserver guesses, browser User-Agent) — no Cloudflare challenge page, just
@@ -130,9 +135,10 @@ slug>/` is a thin summary page, not the report body — use the direct PDF path
 | Broadstreet | Historical political economy, explicitly institutions-focused | 2026-08-19 | probation — dry sweep (2026-09-08), no posts in window |
 | Marginal Revolution | Discovery feed for institutional-economics papers | 2026-08-19 | active (2026-09-08) — not Cloudflare-gated; one capture this sweep |
 | Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | active (2026-09-08) — strong candidate surfaced, watchlisted |
-| Statecraft | Interviews on how government institutions actually operate | 2026-08-19 | probation |
+| Statecraft | Interviews on how government institutions actually operate | 2026-08-19 | probation | Noted 2026-09-29: the feed (https://www.statecraft.pub/feed) is a usable discovery channel; two posts watchlisted.
 | Institute for Government (UK) | Primary-document-grounded analysis of an administrative state | 2026-08-19 | probation |
 | Niskanen Center | State-capacity/vetocracy camp — deliberately included for balance against public-choice sources | 2026-08-19 | active (2026-08-25) |
+| ProMarket (Stigler Center) | Camp-balancing commentary and book reviews (antitrust, political economy); review-of-book route for second-hand book coverage | 2026-09-29 | probation — one entry watchlisted |
 | Mercatus Center | Public-choice camp — deliberately included for balance against state-capacity sources | 2026-08-19 | active (2026-08-25) — mercatus.org itself is Cloudflare-gated; captured via its Substack syndication mirror instead |
 
 ## Lectures, talks and long-form interviews
@@ -192,6 +198,10 @@ survey subagent.
   source hit its three-consecutive-dry-sweep retirement threshold. SSRN, Governance, APSR/AJPS, JEP, JEL,
   Broadstreet, Statecraft, Institute for Government, Niskanen and Mercatus were all dry or not surveyed with a
   strong-enough candidate this cycle.
+- Fifth sweep, 2026-09-29: thin week. IZA (open-access mirror) recovered a paper CEPR had blocked; OPM
+  memo captured through a curl-download + `capture_pdf` fallback; IfG (Whitehall Monitor) captured cleanly.
+  NBER/SSRN/arXiv in-window listings could not be surfaced through search, so those feeds are unconfirmed
+  rather than dry this cycle. All three captures were state-capacity/reform sources; none was public-choice.
 
 ## Related
 

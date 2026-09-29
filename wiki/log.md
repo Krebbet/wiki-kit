@@ -1727,3 +1727,20 @@ governance), 2 blocked OECD reports (trust-measurement guidelines, SOE risk gove
 article, and a handful of borderline single-programme audit reports (GAO, UK NAO).
 
 Full brief: `wiki/weekly-briefs/2026-09-22.md`.
+
+## [2026-09-29] ingest | weekly radar sweep
+
+Fifth sweep, a thin week: 3 sources captured and ingested, 0 conflicts opened. Pages written:
+[[allocative-cost-of-war-ukraine]] (IZA DP 18895; un-refereed working paper, mechanisms and policy claims
+conjectural; recovered a paper CEPR had blocked on 2026-09-15 via the IZA mirror),
+[[whitehall-monitor-2026-case-profile]] (IfG descriptive audit of the UK civil service; think-tank camp
+attributed), and [[opm-2026-rif-rule-performance-first-retention]] (OPM memo on the final RIF rule; design
+mechanism only, summarised from the agency memo rather than the rule text, no outcome evidence).
+
+**Capture notes.** The OPM PDF failed under `capture_url` (Playwright download navigation); recovered with
+curl plus `capture_pdf --src`. NBER/SSRN/arXiv in-window listings could not be surfaced via search, so the
+working-paper feeds are unconfirmed this week. All three captures come from the state-capacity/reform camp;
+none is public-choice, so the camp imbalance is noted in the brief.
+
+**Watchlist:** 8 new entries; the CEPR "Allocative Cost of War" entry marked resolved. Full brief:
+`wiki/weekly-briefs/2026-09-29.md`.

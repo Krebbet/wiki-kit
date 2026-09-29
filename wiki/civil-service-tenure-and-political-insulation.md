@@ -132,3 +132,4 @@ Consequently the source splits its own mechanisms across the sector line:
 - [[reform-levers]] — supplies candidate tier-(i) additions with their own quasi-experimental evidence: rule-based entry selection, progression-margin protection, promotion-criteria transparency; and one honest non-lever, anti-nepotism disclosure, which hits its target and does not move the outcome.
 - [[dimensions-of-institutional-variation]] — supplies **D100** (progression-margin protection, distinct from D70) and **D101** (horizontal vs. vertical selection trait).
 - [[open-questions]] — bears on Q3 and Q38 (the public/private argument and where it blurs), Q4 (selection now measured beyond the front door), Q11 (the Ujhelyi accountability-erosion result) and Q102.
+- [[opm-2026-rif-rule-performance-first-retention]] — the 2026 US federal RIF rule moves release order off seniority toward performance ratings (design only, no outcome evidence); acts on the progression margin.
