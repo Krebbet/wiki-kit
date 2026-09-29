@@ -71,6 +71,10 @@ The FTC study is itself a counter-power mechanism — the first sustained govern
 - **"Segmentation shadow."** A consumer-facing tool that runs deliberately distorted browser/device fingerprints against retailer sites to surface when search rankings or prices change — effectively a Turing test for personalisation.
 - **FTC-study commenting aggregator.** The FTC explicitly solicits public feedback on its interim findings. A civic tool that collects and submits structured consumer testimony into the regulatory record would amplify individual evidence.
 
+## Walmart: patents and denial
+
+Two 2026 Walmart patents (US12524776B2, US12572954B2) describe item-level dynamic pricing; Walmart categorically denies personalized pricing and says digital shelf labels carry one price per store. Filed as capability signal, deployment unconfirmed — not a FTC-named surveillance-pricing case. See [[mechanisms/walmart-pricing-patents]].
+
 ## Source
 
 - `raw/research/dynamic-pricing-landscape/04-ftc-issue-spotlight.md`
@@ -86,6 +90,7 @@ The FTC study is itself a counter-power mechanism — the first sustained govern
 
 ## Related
 
+- [[mechanisms/walmart-pricing-patents]] — capability signal, deployment unconfirmed
 - [[dynamic-pricing-overview]]
 - [[consumer-facing-dynamic-pricing]]
 - [[algorithmic-collusion]]

@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-21
+last_reviewed: 2026-09-28
 ---
 
 # Watchlist
@@ -68,6 +68,9 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - WAO FareShare — CSCW 2026 wage-audit tool for algorithmic deactivation; updates "drivers-seat-cooperative → watch WAO" stale-tech entry
 - Ghostery v10.5.40-41 — GPC signal + autoconsent DB updates (May 2026 release cadence)
 - AdNauseam v3.28.5 MV3 beta — Chrome Manifest V3 survival progress
+- Privacy Badger 2026.9.15 — bug-fix only; tracker-defence cadence continues
+- Natural Price — private beta since 2026-09-14; no public release yet
+- Glaze / Nightshade bypass erosion — LightShed, noisy upscaling; first-gen obfuscation weakening
 
 ## Open research-queue items
 
@@ -103,6 +106,8 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - DMA mandated-access surfaces as substrate for cooperative tooling — track EU final decision Jul 27 2026
 - Solidarity Stack 2026 global online course (PCC) — watchable federation-mechanism milestone if it produces curriculum / member roster / governance proposal
 - DID/VC issuer-governance under planetary cooperative federation (Solidarity Stack governance layer + Linux Foundation Decentralized Trust + W3C VC) — Keyring is the first instance to surface this concretely
+- Gig Workers First — NZ app-worker union launched 2026-08-30; collective-framing only, no artefact
+- Worker-owned data cooperatives — Workers Lab / In These Times coverage; exit-pathway hook, no primary artefact
 
 ## Empirical counter-power evidence
 
@@ -112,6 +117,8 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - ~~AlgorithmWatch Microsoft EU policy ghostwriting~~ — Apr 17 2026 *(referenced in 2026-04-27 brief trend bullets)*
 - webXray California GPC compliance audit — *captured 2026-04-27* — Google 86% / Meta 69% / Microsoft 50% non-compliance across 7,634 sites
 - PETS 2026 CCPA-Android opt-out audit (Zimmeck et al.) — only 48/100 top-free Android apps implement CCPA opt-out
+- arXiv 2606.30801 — AI agents automating black-box personalization audits
+- arXiv 2605.27689 — Test-Time Collective Action
 
 ## Recent additions (2026-04-27 weekly-brief overflow — re-filed into thematic sections above where applicable; remainder retained here)
 
@@ -333,7 +340,6 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 
 *(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
 
-- arXiv 2609.05119 "Understanding the Privacy-Preserving Potential of HTTP/2 Against Webpage Fingerprinting" (Sept 4 2026) — fingerprint-defence paper, just outside this week's window; watch for code release next cycle
 - Open Markets Institute "The Google Remedies Turn Landmark Verdicts Into a Whimper" (Sept 17 2026) — Google AdX remedies-ruling critique; weak-antitrust-remedy framing, no implementable hook
 - RealPage MDL private settlement opt-out deadline lapses Sept 22 2026 (one day after this run's window) — watch for opt-out count / total class size next sweep
 - FAccT 2026 accepted-papers page currently broken/unpopulated on the ACM site — re-check once live for algorithmic-pricing/consumer-side entries

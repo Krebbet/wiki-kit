@@ -213,6 +213,10 @@ Germany's TTDSG (Telekommunikation-Telemedien-Datenschutzgesetz) is the most rec
 - **Lever #11 (fingerprint parity network)** is conceptually aligned with Tor's uniformity approach — the parity network would make every member present the same apparent fingerprint, dodging inconsistency detection by collapsing entropy rather than randomizing it. The practical question is whether the network can be large enough that the parity fingerprint is itself blendable with organic traffic.
 - **The "blending in" paradox constrains tool design.** A tool that makes users *more unique* (heavy customisation) may worsen their identifiability. Uniformity strategies outperform randomization strategies for this reason.
 
+## Network-layer (traffic-analysis) fingerprinting
+
+Distinct surface from browser attributes: a passive on-path observer (ISP, VPN provider) infers the visited subpage from encrypted TCP metadata (sizes, timing, bursts); canvas/WebGL-layer defences do not cover it. Cebere et al. (CCS 2026) show HTTP/2-native client/server defences (H2PC, H2PS) and release the `wfaudit` benchmark. See [[mechanisms/http2-website-fingerprinting-defences]].
+
 ## Source
 
 - `raw/research/obfuscation-deep-dive/04-09-fingerprinting-tracing-shadows.md` — Lawall, *Fingerprinting and Tracing Shadows: The Development and Impact of Browser Fingerprinting on Digital Privacy*, arXiv 2411.12045. Origin: academic survey. Purpose: catalogue fingerprinting techniques and legal context. Trust: high.
@@ -222,6 +226,7 @@ Germany's TTDSG (Telekommunikation-Telemedien-Datenschutzgesetz) is the most rec
 
 ## Related
 
+- [[mechanisms/http2-website-fingerprinting-defences]] — network-layer traffic-analysis surface
 - [[obfuscation]]
 - [[adversarial-data-poisoning]]
 - [[privacy-badger]]

@@ -56,6 +56,8 @@ The trend-scan source set, grouped by stream. Update freely as outlets prove val
 - **USENIX Security / CCS** — when papers touch consumer-side counter-tools (spoof-ability of pricing inputs, tracker defeat, etc.).
 - **GitHub trending (week)** — filtered for privacy / anti-tracking / price-transparency / cooperative-platform topics. Watch `awesome-privacy`, `awesome-adversarial-machine-learning`, `awesome-platform-cooperativism` for new entries.
 - **Tracked-tool repos (releases / activity spikes)** — Glaze, Nightshade (SAND Lab), AdNauseam, Privacy Badger (EFF), Markup Citizen Browser, Keepa (drift), uBlock Origin, Tracker Control, Consent-O-Matic, and any repos surfaced via `tools/` wiki pages. Star-spike or release-tag triggers a look.
+- **poisoning.ai** — counter-algorithmic tier: Glaze/Nightshade efficacy and bypass research.
+- **GitHub EFForg/privacybadger releases feed** — tracked-tool repos; release cadence signal.
 - **Hacker News** — `show HN` and front-page filtered for consumer-tool / cooperative / privacy-tool launches.
 
 ### Platform / federation / cooperative builds
@@ -70,6 +72,7 @@ The trend-scan source set, grouped by stream. Update freely as outlets prove val
 - **noyb** press releases — when tied to a releasable DSAR-kit or template, not just complaints
 - **Mozilla Foundation** blog — when they ship consumer-side tools
 - `r/PlatformCooperatives` — hot, past week (re-evaluate after 4 runs)
+- **Workers Lab** / **In These Times** labor beat — platform/federation tier: discovery proxy for gig-worker data-coops.
 
 ### Counter-power research / think-tank — implementable-hook filter
 
@@ -94,6 +97,7 @@ Used to identify *where* new counter-tools are needed, not as primary captures. 
 - **404 Media** — surveillance / pricing / data-broker leaks
 - **Rest of World** — non-US platform-extraction coverage
 - **Hell Gate** + **Platformer** — critical tech press
+- **Fortune**, **Consumer Reports**, **Groundwork Collaborative**, **More Perfect Union** — extraction news tier: surveillance-pricing investigations, problem-framing.
 - **Wired**, **The Information**, **WSJ** business — headlines only
 
 ### Enforcement — watchlist-default

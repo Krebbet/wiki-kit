@@ -971,3 +971,7 @@ Completed weekly-brief run. Counter-algorithmic tooling tier had signal after tw
 ## 2026-09-21 — weekly-brief 2026-09-21
 
 Completed weekly-brief run. 0 captures — quietest week logged to date, no candidate cleared the capture bar on any of the 5 source-tier scan agents (counter-algorithmic tooling, platform/federation, think-tank research, extraction/enforcement, subreddits all came back structurally empty of new in-window material). Only enforcement development was RealPage/Pinnacle's proposed Final Judgment publishing in the Federal Register (Sept 18) — 6th landlord on the identical settlement template, no new tooling hook. ICA Panama General Assembly board elections resolved (Guarco re-elected president, 15 at-large directors, 8 new). Watchlist updated with 5 overflow entries; 2 duplicate ICA-Panama placeholder lines resolved. Subreddit-tier WebSearch gap recurred a third time (already flagged open in master_notes.md 2026-08-17, not re-logged). Brief committed and pushed to collective-consumer-action-wiki.
+
+## 2026-09-28 — weekly-brief 2026-09-28: 2 captured
+
+Completed weekly-brief run. 2 captures: (1) Fortune 2026-09-22 on Walmart's pricing patents — filed as capability signal, deployment unconfirmed; new page mechanisms/walmart-pricing-patents, surveillance-pricing-retail extended. (2) arXiv 2609.05119 (CCS 2026, code released) HTTP/2 webpage-fingerprinting defences — promoted from watchlist; new page mechanisms/http2-website-fingerprinting-defences, browser-fingerprinting extended. Second consecutive quiet week for counter-tool launches.
