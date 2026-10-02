@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-09-17
+last_reviewed: 2026-10-01
 ---
 
 # Watchlist
@@ -40,6 +40,8 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Nature Electronics News & Views on a room-temperature correlated-microwave-signal thin-film magnetic source — low confidence on neuromorphic relevance from abstract alone; needs the underlying paper's title/abstract to judge oscillator/coupled-oscillator-computing fit
 - Humidity-responsive Ni₂P₂O₇ memristor for non-contact sensory neuro-electronic applications (press-release relay, ScienceDirect journal/date unconfirmed, 2026-09-24) — porous oxide, humidity-modulated switching, retention over hundreds of cycles, >97% classification accuracy claimed; primary not yet captured, treat figures as unverified
 - Nature Electronics: large-scale stretchable neuromorphic circuit for on-body edge computing (doi s41928-026-01639-8) — 10,000-transistor/cm² stretchable OECT array with synaptic programming/retention, on-body health-data demo; ⚠️ likely hits the wiki's known nature.com structural-paywall capture failure, publication date inside/outside this week's window unconfirmed
+- Lead-free perovskite-inspired chalcogenide memristors (arXiv:2609.40300) — new material family; numbers not yet read
+- Tampere capacitive in-memory computing perspective (via Semiconductor Engineering) — device-to-systems; may be a review
 
 ## Chips & systems
 
@@ -56,6 +58,11 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Analog IMC competitors (EnCharge, Mythic, Rain, Axelera) — in scope, entirely unresearched
 - Fault-Tolerant Spike-Time Interface for Approximate Agreement in Distributed Neuromorphic Systems (arXiv:2608.18151) — multi-chip fault tolerance, less-common angle
 - EventKitchen stereo event-camera dataset (arXiv:2608.04865) — new benchmark-adjacent dataset, modest novelty
+- MorphAtt spiking-ViT attention accelerator (arXiv:2609.33207) — 32 nm synthesis only, 20–29 TOPS/W claimed, no tape-out
+- RISP open-source neuroprocessor (arXiv:2609.38432) — synchrony-loop simulation; open-source, simulation-focused
+- Benchmarking SNNs across sensing modalities on edge devices (arXiv:2609.00026) — open framework, NeuroBench-adjacent
+- Zephyr: SNN audio denoising on an FPGA PE array (arXiv:2609.37711) — FPGA, unread
+- Neuromorphic PRNG on a low-power FPGA (arXiv:2610.00719) — 3.24 mW at 120 kb/s, measured
 
 ## Algorithms & toolchains
 
@@ -78,6 +85,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Free-probability kernels for zero-rollout reservoir-computing hyperparameter selection (arXiv:2608.20998) — RC toolchain maturity angle
 - Gradient-tunneling STDP-compatible feedback learning for neural microcircuits (arXiv:2609.08070, submitted Nature Machine Intelligence) — on-chip/local-learning weight-transport angle, simulation-only, comparable-not-breakthrough vs leading SNN online methods
 - NMTK (NeuroMorphicToolKit) v0.6.5 — single-maintainer first public release claiming near-universal SNN-framework interop (snnTorch/Brian2/Lava/Nengo/Rockpool/PyNN/Akida via NIR); ⚠️ treat as unverified until independent adoption is seen, not an established toolchain like snnTorch/Rockpool/Nengo
+- SNN streaming qubit readout (arXiv:2610.02129) — novel application; hardware path unclear
+- Controllable stochastic quantization encoding for robust SNNs (arXiv:2610.01558) — adversarial robustness, no hardware
+- MTLiquid multi-task liquid neural networks (arXiv:2609.33232) — no hardware or code stated
 
 ## Benchmarks
 

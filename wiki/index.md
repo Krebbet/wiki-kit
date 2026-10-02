@@ -39,6 +39,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/cmos-rram-beol-integration]] | Inserting RRAM into commercial CMOS BEOL without a foundry embedded-RRAM PDK. 16×16 1T1R validated on 180 nm; larger arrays structural only. Evidence the foundry gate is tractable, not that it's solved. |
 | [[devices/optoelectronic-rram-photonic-programming]] | Optoelectronic RRAM (ORRAM) — memristive cells written with light, not voltage. 32-device IGZO array, µLED-array optical SET / electrical RESET, optical fading memory ~2500× longer than electrical relaxation. Academic-only; no endurance, retention, or CMOS-integrated ORRAM yet. |
 | [[devices/optoelectronic-reservoir-computing-si3n4-ttd]] | Foundry-fabricated Si3N4 true-time-delay chip closes a delayed-feedback reservoir computer's loop, at feedback gain >40× below prior optoelectronic reservoirs. Single device, bench system, no code/data release. Not spiking; the wiki's first reservoir-computing entry. |
+| [[devices/vmtj-cmos-izhikevich-neuron]] | The wiki's first spintronic entry: voltage-controlled MTJ + 22 nm CMOS Izhikevich-style neuron, 145 fJ/spike. Device data measured, circuit and spike-reduction (88.6%) claims simulated / software-proxy. |
 
 ---
 
@@ -49,6 +50,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[chips/loihi2-persistent-monitoring]] | Intel Loihi 2 — acoustic anomaly detection on a 16-chip VPX system. The wiki's first primary Loihi 2 source. Headline "two orders of magnitude" efficiency claim is dynamic-energy-only (474–496×); boundary-honest total-energy figure is 2.1–40.2×. |
 | [[chips/brainscales2-chiplet-interconnect]] | Heidelberg's chiplet-interconnect design for scaling analog BrainScaleS-2 past its area-constrained single die. Phit-level dynamic bandwidth partitioning for mixed spike/config traffic. **All figures are pre-silicon simulation**, no chiplet fabricated; worst-case system MTBF drops to minutes at 16×16-mesh scale. |
 | [[chips/ethereal-event-gnn-processor]] | First event-driven GNN processor chip (TSMC 28 nm, academic shuttle) — processes DVS events natively as a sparse graph. Silicon-measured 25.6 µs / 1.7 µJ per event, but the "comparable accuracy" claim is simulated, not chip-measured, and trails an FP64 A100 baseline on every dataset shown. |
+| [[chips/megatron-pcm-cim-soc]] | First measured PCM compute-in-memory silicon in the wiki: 28 nm FD-SOI SoC, 4Mi-cell analog PCM macro + RISC-V; 57.5 TOPS/W is macro-level with an unstated boundary. |
+| [[chips/loihi2-onchip-q-learning]] | LANL on-chip Q-learning on one Loihi 2 board; ">1000x" dynamic-energy headline vs ~67x board-level total recomputed from the paper's table. |
+| [[chips/spinnaker-event-pinball-closed-loop]] | Learning-free event-camera + SpiNNaker closed-loop pinball demonstrator; 148 µW is an assumed-per-event estimate, not a measurement. |
 
 ---
 
@@ -61,6 +65,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[snn/ann2snn-differential-coding]] | Training-free conversion at T=4–8. CNNs reach the favourable regime; **transformers cross energy ratio 1.0 exactly where accuracy reaches parity** — the converted SNN costs more than the ANN. Multi-threshold neurons, not differential coding, do most of the work. |
 | [[snn/snn-energy-breakeven-conditions]] | Capacity-matched analytical comparison against quantized ANNs. SNNs win only at T ≤ 5 and spike rate < ~5.7%; they lose on most realistic workloads, and by 3.8× on spiking Llama-2 7B. |
 | [[snn/hippocampus-bioinspired-memristor]] | Biologically-realistic, neuronal-diversity CA3 hippocampal SNN (179 Izhikevich neurons, 3 cell types) mapped to a real 20,000-device memristor crossbar. Not task-trained — tuned via Optuna to match resting-state dynamics. Power figure explicitly excludes DAC/ADC/IO. |
+| [[snn/multi-depth-temporal-fusion]] | Local-rule-only (STDP/R-STDP) TTFS convolutional SNN with multi-depth temporal fusion; simulation-only, code released, no energy numbers. |
 
 ---
 

@@ -72,6 +72,14 @@ This matters for the ruling below: it means the boundary problem this page track
 
 *(synthesis)* One qualification worth stating: NorthPole and the MatMul-free LLM result are **not spiking**. Their numbers belong to the boundary-honesty dispute, not to SNN evidence — do not merge them into spike-rate comparisons.
 
+## New evidence — 2026-10-01 weekly sweep
+
+Three more sources repeat the boundary problem; none resolves the dispute.
+
+- [[../chips/loihi2-onchip-q-learning]] — a second Loihi 2 source with a dynamic-only headline (">1000x"); the paper's own table recomputes to ~67x at board level, with x86 cores taking ~86% of board energy.
+- [[../chips/spinnaker-event-pinball-closed-loop]] — 148 µW is an assumed per-event, dynamic-only estimate; idle and board power are excluded and nothing was measured.
+- [[../chips/megatron-pcm-cim-soc]] — 57.5 TOPS/W is macro-level with an unstated boundary; the density figure excludes periphery and the SmolLM gains are simulated.
+
 ## What separates the positions
 
 Three things, all methodological:
@@ -120,5 +128,6 @@ What is **not** supported is any unconditioned multiplier — "500×", "83×", "
 - [[../players/brainchip]] · [[../players/roster]] — Position A claimants
 - [[../devices/memristor-array-integration-gap]] — the analog-side objection
 - [[../chips/loihi2-persistent-monitoring]] — same-paper dynamic-vs-total illustration
+- [[../chips/loihi2-onchip-q-learning]] · [[../chips/spinnaker-event-pinball-closed-loop]] · [[../chips/megatron-pcm-cim-soc]] — 2026-10-01 boundary-mismatch examples
 - [[../viability-ledger]] — what this dispute gates
 - [[../weekly-briefs/2026-08-20]] — brought in by the 2026-08-20 weekly sweep

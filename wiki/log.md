@@ -153,3 +153,13 @@ Fourth `/weekly-brief` run. 5 parallel survey subagents scanned aggregators/feed
 **4 watchlist additions + 1 in-place update** (well below the 10 cap): a humidity-responsive Ni₂P₂O₇ memristor (press-release only, primary unconfirmed), a paywall-risk Nature Electronics stretchable OECT circuit, Axelera AI's Europa AIPU launch (2 independent signals, digital-IMC edge competitor), and Mythic's Defense Advisory Board formation (viability signal, no technical content). The existing Lava-successor-SDK watchlist entry was updated in place with a new job-posting-level Intel hint rather than duplicated. Widely-circulating but unconfirmed "Loihi 3" specs (content-mill sources, self-contradicting) were explicitly **not** watchlisted, consistent with the 2026-08-20 precedent for excluding uncorroborated noise.
 
 Full brief: `wiki/weekly-briefs/2026-09-24.md`.
+
+## [2026-10-01] weekly-brief | 5 captured, 10 watchlisted, first PCM silicon and first spintronic entry
+
+Fifth `/weekly-brief` run. 5 arXiv sources captured (marker, audit clean) and ingested: MEGATRON 28 nm analog-PCM CiM SoC, Loihi 2 on-chip Q-learning, V-MTJ/CMOS Izhikevich neuron, SpiNNaker event-camera pinball, multi-depth temporal fusion for local-rule SNNs. Candidates were each seen in a single source (arXiv listing pages); selection was on technical merit. Industry week was quiet (no new Intel/SynSense/Innatera/Prophesee items).
+
+**Conflicts:** none opened. `snn-energy-payoff` extended with three new boundary-mismatch examples (Loihi 2 dynamic-only vs total, SpiNNaker estimated power, MEGATRON macro-level TOPS/W).
+
+**Kit note:** `capture_pdf` needs an `arxiv.org/pdf/<id>` URL (the `/abs/` form fails with a missing-weasyprint error); `poetry` was not on cron-less PATH (`~/.local/bin`).
+
+Full brief: `wiki/weekly-briefs/2026-10-01.md`.
