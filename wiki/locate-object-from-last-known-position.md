@@ -129,6 +129,16 @@ The practical rules, all implementable on the rig today:
 10. **Demo it geometry-only, then add the camera at step 5.** A persistent handle re-found across two runs is a complete, honest end-to-end demonstration of the object layer. The camera — hloc for the pose it is already good at, DINOv2 for the identity the LiDAR cannot supply — is the upgrade that turns `handle` into `name`, and its first job should be the verification step, because that is where the reference system's real-world failures were.
 11. **Before quoting any number:** ≥ 10 `locate_object` calls over ≥ 2 objects and ≥ 2 sessions, including at least one object deliberately moved and one deliberately occluded, with the outcome and the ground truth recorded by hand each time.
 
+## What this rig measured — the EDA236 discover-object routine (librarian note, 2026-10-02)
+
+Folded back from drone-prototype `docs/prototype-diary.md` entries **2026-10-01** and **2026-10-02** (PR #48); pointers, not a re-derivation. Routine described in drone-prototype `docs/discovery-algorithm.md`; open items `docs/parked.md` P-00073…P-00076.
+
+- **Relocalise the object, not just the rover, at every station** (protocol step 4 in practice). `bottle12` (10-01): 4 of 4 reached stations confirmed the spray bottle before scanning it, 2–12 cm from its map position. `bottle15` (10-02): 6 of 6 stations reached, bottle found at all 6, 3–9 cm (median 5 cm). The object's deviation is treated as the pose error.
+- **Cold start can be the thing that fails**, not the object: a 100° heading seed (true 344°) made every station report "0 returns on target" — indistinguishable from "hard to see" inside the pipeline. The operator's "I moved it" was the independent check that settled a disputed basin (P-00074).
+- **Height from one plane is a bracket, and it reads low.** A lift down-search bracket gave 0.2728–0.2791 m across three brackets vs a tape 0.290 m; tilt agrees and also reads low; a box read ~1 cm low on 09-28. Common term, unexplained (P-00073). Quote the spread between brackets, not one bracket's width — the same rule as `tilting-2d-lidar-multiplane-capture` §What this rig measured.
+- **A tilted cut meets the object at a height set by range**, so chords from different stations are different slices. Fitting one rectangle across body (7.3–7.8 cm at ~0.12 m) and neck (2.7–4.0 cm at ~0.18 m) chords produced a false "box 6.1 × 3.6 cm"; chords are now banded by cut height and the record is a **profile** (body Ø 7.5 cm, neck unresolved). The camera's silhouette width (11.9–12.3 cm) measures the widest part, so a width-agreement gate against one LiDAR cut rejects it for measuring a different thing (P-00076). This bears on §5 ("a compatible 2-D footprint"): compatibility must be compared at matching cut heights.
+- **Floor strikes masquerade as objects** below 2.5 cm (a "cylinder radius 3.06 m" fitted to the floor); filtered once at accumulation so every consumer gets clean points.
+
 ## Sources
 
 *(all accessed 2026-09-22)*
