@@ -139,6 +139,8 @@ Folded back from drone-prototype `docs/prototype-diary.md` entries **2026-10-01*
 - **A tilted cut meets the object at a height set by range**, so chords from different stations are different slices. Fitting one rectangle across body (7.3–7.8 cm at ~0.12 m) and neck (2.7–4.0 cm at ~0.18 m) chords produced a false "box 6.1 × 3.6 cm"; chords are now banded by cut height and the record is a **profile** (body Ø 7.5 cm, neck unresolved). The camera's silhouette width (11.9–12.3 cm) measures the widest part, so a width-agreement gate against one LiDAR cut rejects it for measuring a different thing (P-00076). This bears on §5 ("a compatible 2-D footprint"): compatibility must be compared at matching cut heights.
 - **Floor strikes masquerade as objects** below 2.5 cm (a "cylinder radius 3.06 m" fitted to the floor); filtered once at accumulation so every consumer gets clean points.
 
+**Addendum (librarian note, 2026-10-02, PR #50–#51).** The object record now exists: drone-prototype `docs/object-record-v1.md` (one folder per object, gallery, schema-validated saves, last-seen fields). Re-ID evidence in `eda/EDA241-object-reid/FINDING.md`: DINOv2 cut-out fingerprints picked the right object 55/55 across runs, but only at **category level** — a same-category saline spray matched the bottle on appearance at 0.72, so re-ID is now appearance AND size, three-way SAME / MAYBE / NEW (SAME ≥ 0.60). Known objects are planner keep-outs after a 20 cm object was clipped in a turn. Open: same kind and same size (P-00077), the 10 cm MOVED rule (P-00079), neighbour returns in the height probe (P-00080).
+
 ## Sources
 
 *(all accessed 2026-09-22)*
