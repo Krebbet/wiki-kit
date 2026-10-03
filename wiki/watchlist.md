@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-26
+last_reviewed: 2026-10-03
 ---
 
 # Watchlist — Identified But Not Captured
@@ -336,3 +336,28 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **Three simultaneous open-weight frontier launches (Xiaomi MiMo-V2.6 Pro/Flash, StepFun Step 5 Preview, Grok 4.7)** — Three non-US open-weight releases within 48h in the same capability band; landscape signal rather than a technique. *(weekly-brief 2026-09-26.)*
 - **Procedural Graphs: Self-Evolving Execution Structures for LLM Agents (arXiv:2609.09153)** — Self-evolving execution-graph structures for LLM agents outperforming memory-based baselines. *(weekly-brief 2026-09-12.)*
+
+## RL / post-training (continued — weekly-brief 2026-10-03)
+
+- **Scaling Properties of Same-Family On-Policy Distillation (arXiv:2609.32722)** — Scaling laws for OPD; smaller, well-trained teachers often beat larger ones as supervisors. Sibling of [[ride-opd-residual-extrapolation]] in this week's 5-paper OPD cluster. *(weekly-brief 2026-10-03.)*
+- **Post-Training Leaves Behavioral Shadows on Unrelated Decisions (arXiv:2609.29233)** — Active Taskless Distillation transfers skills via one-word outputs on unrelated prompts; ~+5 HumanEval+ on Qwen2.5-1.5B; code on GitHub. *(weekly-brief 2026-10-03.)*
+- **GAGAR: Groupwise Agentic Grading and Advantage Redistribution (arXiv:2609.32577)** — SFT'd grader ranks passing code-agent rollouts and redistributes advantage with group sum preserved; tested to 1T params. *(weekly-brief 2026-10-03.)*
+- **UniEvo-VL: On-policy Self-Distillation for Multimodal Self-improvement (arXiv:2609.38721)** — One model as student and critique-conditioned teacher over diffusion distributions; Qwen-Image GenEval 0.747 → 0.808. *(weekly-brief 2026-10-03.)*
+
+## Self-improving agents (continued — weekly-brief 2026-10-03)
+
+- **Recursive Language Models, RLM (arXiv:2512.24601)** — Prompt as REPL variable, root LM recurses over snippets; handles inputs ~100x past context window. Older paper trending again (Latent Space interview); companion to [[context-language-models]]. *(old-now-trending, weekly-brief 2026-10-03.)*
+- **Z.ai "Toward Recursive Self-Improvement" (GLM-5.3 builds inference infra for GLM-5.3 Flash)** — Company-reported outer RSI loop: production-ready in <2 weeks, 3x throughput; weights withheld, figures unverified. *(weekly-brief 2026-10-03.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-10-03)
+
+- **Decoding Looped Transformers Better for (Almost) Free, LoopCD (arXiv:2610.02185)** — Contrasts final recurrent pass with an earlier pass at decode time; Ouro-2.6B AIME24 61.9 → 73.3 with 22–48% fewer FLOPs. *(weekly-brief 2026-10-03.)*
+- **Hierarchical Continuous Diffusion Language Models, HC-DLM (arXiv:2610.02193)** — Latent as generative state, tokens decoded each step; results only on Sudoku/Countdown/LM1B. *(weekly-brief 2026-10-03.)*
+
+## Infrastructure (continued — weekly-brief 2026-10-03)
+
+- **The Other Half of the Memory Wall: 35B MoEs from SSD, Edge0 (arXiv:2609.18063)** — Prerouter predicts experts a layer ahead + recovery LoRA for int4 loss; 35B MoE at ~20 tok/s in 3 GiB active memory. *(weekly-brief 2026-10-03.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-10-03)
+
+- **World Labs Atlas (omni world model)** — Multimodal autoregressive diffusion transformer with camera geometry as native input; beats specialist sparse-view reconstruction on DTU/ETH3D/ScanNet; early access only. *(weekly-brief 2026-10-03.)*

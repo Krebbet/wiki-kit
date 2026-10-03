@@ -18,6 +18,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Architectures & sequence models
 
 | Page | Summary |
+| [[visionhope]] | VisionHOPE (arXiv:2609.33325): vision backbone on Nested Learning's self-referential HOPE (five within-image memories, non-expansive step-size control); gains over TTT baselines ~0.0-0.3pp, no seeds. |
 |---|---|
 | [[cosmos-3]] | NVIDIA Cosmos 3: omnimodal world model family (4B/16B/64B) with dual-tower MoT architecture; #1 open-weight T2I/T2V/I2V/robot-policy as of June 2026; first strong empirical evidence for Position B in [[conflicts/pure-video-vs-3d-world-models]]. |
 | [[deepseek-v4]] | DeepSeek-V4-Pro: 1.6T-param MoE (49B active, 1M context) with hybrid CSA+HCA attention (10% V3 KV cache, 27% V3 FLOPs), mHC residual connections, Muon optimizer; SOTA open-source LiveCodeBench 93.5, SWE-Verified 80.6. Sept 2026: extended with V4.1-Flash (552B backbone, Causal Encoder-Decoder + CSA2 + FP4 KV → 890 B/token, ~4× below V4-Flash), tops Opus-5.0 on Terminal-Bench 2.1/DeepSWE/Codeforces but regresses on pure-reasoning HLE. |
@@ -52,6 +53,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Training & optimization
 
 | Page | Summary |
+| [[sft-with-sampling]] | Projection sampling (MH) rewrites expert traces to fit the base model; plain SFT then beats OPSD and RL on chemistry/math with less forgetting. OPSD still wins on medical and Olmo chemistry (arXiv:2610.02140). |
+| [[ride-opd-residual-extrapolation]] | RIDE (arXiv:2609.36484): OPD that extrapolates the RL-teacher-minus-base hidden-state residual past the teacher; matches or beats the teacher on 4 pairs (math), while output-space ExOPD degrades. |
 |---|---|
 | [[eggroll]] | Oxford/MILA/NVIDIA Evolution Strategies at hyperscale: low-rank LoRA-style perturbations + counter-based PRNG → ~100× ES throughput. Beats GRPO on 14B RWKV-7 reasoning where GRPO is infeasible (Adam state). Pure-int8 RNN pretraining at population 2^20. |
 | [[polar-rl-harness]] | NVIDIA Polar: harness-agnostic async rollout framework for agentic RL via provider-compatible proxy; prefix-merging reconstruction; +22.6pt SWE-Bench Verified on Qwen3.5-4B with GRPO via Codex harness. |
@@ -104,6 +107,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Self-improving agents
 
 | Page | Summary |
+| [[co-cheating-crossfit]] | Co-cheating (shared wrong answers rewarded as agreement) in self-evolving search agents; CrossFit's source-level fold cross-fitting halves false agreement, +8-9 pts on Qwen3.5-4B/9B (arXiv:2609.39102). |
 |---|---|
 | [[huxley-godel-machine]] | KAUST/Schmidhuber HGM: tree-search self-improving coding agent that scores parents by *clade* (descendant-aggregated) success rate (CMP) instead of own benchmark score. Approximates Gödel Machine under stated assumptions. SWE-bench Verified 61.4%, top-10. |
 | [[skillopt]] | Microsoft Research (arXiv:2605.23904, May 2026). First systematic text-space optimizer for agent skills: a separate optimizer model proposes bounded add/delete/replace edits to a skill document, accepted only on strict validation improvement. Best-or-tied on all 52 (model × benchmark × harness) cells; +24.8 pp GPT-5.5 in Codex; skills transfer across models and harnesses. Zero deployment overhead. |
@@ -143,6 +147,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Agent frameworks & memory
 
 | Page | Summary |
+| [[context-language-models]] | Meta CLMs (arXiv:2609.37725): the LM rewrites its own live context as an editable file via Bash; beats summary/MEM1 zero-shot (BrowseComp-Plus 59.4%), efficiency-gated GRPO, SGLang suffix-cache reuse. No code/weights confirmed. |
 |---|---|
 | [[openclaw]] | OpenClaw: MIT-licensed, local-first AI agent runtime (formerly Moltbot/ClawdBot). Four-layer memory architecture (bootstrap files / session transcript / context window / retrieval index); plain-Markdown workspace; 70/30 vector/BM25 hybrid search; dreaming consolidation; providence labels (Apr 2026). |
 | [[openclaw-claude-code-memory]] | Giving Claude Code persistent memory via OpenClaw-derived patterns: Hindsight shared banks (bidirectional cross-tool recall), Channels/Telegram (always-on agent), Mem0 plugin (drop-in replacement). Known constraint: Anthropic stated Claude Code is not designed for always-on third-party agents at scale — production use should build a dedicated API harness. |

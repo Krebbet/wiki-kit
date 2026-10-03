@@ -339,3 +339,17 @@ Watchlist additions: 10 (RRSI: Regularized Recursive Self-Improvement of Agent H
 Reference-sources.md: no new recurring sources added this week.
 
 Pre-existing uncommitted work at run start (not touched by this run's commit, unchanged from prior runs — see master_notes.md 2026-08-01 entry for root cause): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
+
+## [2026-10-03] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-10-03). Sources already pinned in `wiki/reference-sources.md`; skipped survey step. One scan subagent covered HF weekly + trending papers, alphaXiv, Import AI, Latent Space AINews and web search. Reddit (r/MachineLearning, r/LocalLLaMA, r/MLScaling) was blocked for WebFetch again; no Reddit signal this run.
+
+Captures: 5/5 succeeded via `capture_pdf --engine pymupdf` (marker not attempted this run); `audit_captures` reported zero issues. Ingest: 5/5 summaries validated first pass. Extractions were read only to ~45-75% by subagents (Read truncation); appendices unread, flagged on each page.
+
+Pages written: 5 new — [[ride-opd-residual-extrapolation]] (2609.36484), [[sft-with-sampling]] (2610.02140), [[context-language-models]] (2609.37725), [[visionhope]] (2609.33325), [[co-cheating-crossfit]] (2609.39102). No conflicts opened or extended (all summaries flagged none; soft tensions with [[reasonmaxxer]] noted only).
+
+Watchlist additions: 10 (OPD scaling laws, Behavioral Shadows, GAGAR, UniEvo-VL, RLM (old-now-trending), Z.ai outer RSI loop, LoopCD, HC-DLM, Edge0, World Labs Atlas). Dropped: Periodic Neon (single source).
+
+Reference-sources.md: not edited this run (candidate additions Import AI archive + Latent Space AINews noted in the brief for the user to approve; the file's own rule says ask before mutating).
+
+Pre-existing uncommitted work at run start (not touched by this run's commit): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
