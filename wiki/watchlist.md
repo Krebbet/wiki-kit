@@ -34,6 +34,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - OPRD (arXiv:2606.06021) — on-policy representation distillation in hidden-state space; eliminates output-space sampling variance
 - Rethinking Divergence Regularization / DRPO (arXiv:2606.09821) — TV-aligned smooth regularizer replaces hard GRPO clipping; stable gradients
 - Multi-Layer GRPO (arXiv:2506.04746) — two-layer GRPO recycles rollouts for self-correction signal
+- GRAFT / Learning Beyond What You Sample (arXiv:2609.37868) — replaces all-fail groups with peer trajectories
+- Adapter Thickets (arXiv:2610.00991) — splitting an RLVR budget across small LoRA adapters + majority vote beats one adapter; sharpening shares errors
+- Range-GRPO (arXiv:2610.01548) — title-only triage, abstract unread
 
 ## Process reward models
 
@@ -71,6 +74,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Negative Self-Distillation (arXiv:2609.11699) — learns to reason by avoiding flaws, not imitating
 - onPanda (arXiv:2609.24983) — token-level teacher correction of on-policy alignment data
 - Harness-Zero (arXiv:2609.24974) — agent-harness distillation via agent-as-harness, not weight distillation
+- Scaling Properties of Same-Family OPD (arXiv:2609.32722) — held-out accuracy ~linear in √KL from init; useful-transfer regime
+- RIDE: The Teacher Is a Direction, Not a Destination (arXiv:2609.36484) — hidden-space residual extrapolation for OPD; code released
+- SAKI (arXiv:2609.36601) — TV-routed supervision allocation across tokens in distillation
 
 ## Process reward models
 
@@ -131,6 +137,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Critique-GRPO (arXiv:2506.03106, ICML 2026 Spotlight) — GRPO variant with natural-language critique as additional reward signal; +15–21% Pass@1 on AIME 2024
 - KDRL (arXiv:2506.02208) — unified KD (reverse-KL to teacher) + GRPO (verifiable reward) in single policy-gradient objective; outperforms RL-only and KD-only with better token efficiency
 - VibeThinker-3B (arXiv:2606.16140) — 3B curriculum SFT + multi-domain RL + offline self-distillation; AIME'26 94.3, matching flagship models; proposes Parametric Compression-Coverage Hypothesis
+- On Language Drift during RLVR (arXiv:2610.02015) — proves RLVR permits unbounded CoT language drift; supervised case bounded
 
 ## Decoding-time / activation steering
 
@@ -149,6 +156,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Diversity Collapse / BBG (arXiv:2606.15455) — formalizes Pass@1↑ / Pass@k↓ divergence as overtraining; Bayesian Boundary Gating (BBG) redirects optimization away from saturated problems
 - The Invisible Leash (arXiv:2507.14843) — empirical RLVR entropy-reward trade-off; whether RLVR can escape base model support; may extend [[conflicts/invisible-leash-vs-spiral-transfer]]
 - Spurious Rewards Paradox (arXiv:2601.11061, ICML 2026) — Anchor-Adapter circuit: RLVR can collapse into memorization retrieval; mechanistic dissection of when verifiable rewards select shortcuts
+- Sharpening Tax in Post-Training (arXiv:2610.01509) — pretrained+harness beats post-trained on agentic pass@K; counterpoint to invisible-leash framing
 
 ## Continual fine-tuning and forgetting
 
@@ -183,6 +191,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Post-Training LMs for Gold-Medal Coding Competitions (arXiv:2609.02849) — end-to-end SFT+RL post-training pipeline for competitive programming; borderline scope (benchmark-flavored) but has genuine method detail
 - Knowledge Distillation During Mid-Training Favors Reasoning over Factual Recall (arXiv:2609.01532) — "Switch Distillation"; relevant to the reasoning-vs-statistical-recall distinction central to the wiki thesis
 - Dynamic Important Example Mining for Reinforcement Finetuning (arXiv:2608.29252) — title suggests curriculum/data-selection relevance for RFT; content unconfirmed, low-confidence flag from this week's scan
+- Mathematical Transfer Follows Reasoning Approach More Than Topic (arXiv:2610.00331) — counterbalanced 2×2: same-approach data transfers better than same-topic; bears on concept-curriculum-method
 
 ## In-context learning theory
 
@@ -192,11 +201,14 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - CritICL (arXiv:2608.27455) — inference-time weak-to-strong generalization from small-model failure modes; loosely adjacent to teacher-student framing, leans "eval" more than "method"
 - Thought without systematicity? (arXiv:2609.13948) — evaluates reasoning models on rule-induction tasks
 - Convergent Emergence of ICL Across Modalities (arXiv:2609.14011) — ICL emergence patterns converge across modalities
+- Capturing ICL Dynamics with Task Operators (arXiv:2610.01054) — per-head affine map from context-masked output; code released
+- Rules Amortize, Pairings Don't (arXiv:2610.00526) — which ICL operations amortize into latent task vectors
 
 ---
 
 ## Related
 
+- [[weekly-briefs/2026-10-02]] — most recent weekly sweep (5 captures: multi-teacher OPD pair, OPD-vs-off-policy KL direction, ATD taskless distillation, random-reward reachability probe; new forgetting conflict; 10 watchlist additions)
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog
 - [[weekly-briefs/2026-09-25]] — most recent weekly sweep (5 captures spanning self-play/teacher-student-rl/rlvr-mechanics/ICL-theory; open conflict extended with a 5th and 6th paper; 10 watchlist additions)

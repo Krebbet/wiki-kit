@@ -14,6 +14,7 @@ Theme covering the *mechanics* of RL with verifier rewards (RLVR) for LLM reason
 - [[grpo-secretly-prm]] — Sullivan & Koller (arXiv:2509.21154, ICML 2026). Proves GRPO-with-outcome-reward is exactly equivalent to a Monte-Carlo PRM-aware objective (Theorem 1); λ-GRPO fixes a resulting process-set-frequency exploration/exploitation defect, ~2× training speedup. First formal bridge between this theme and [[../process-reward-models/_overview]].
 - [[ppo-critic-value-flattening]] — Value Flattening diagnosis (terminal-only reward ⇒ implicit variance penalty flattens the PPO critic) + SP³O sparse-critic-supervision fix. First critic/value-function-side entry in this theme; SP³O beats GRPO in controlled comparisons, tension with the "critic-free trend" flagged at [[../rl-optimizers/_overview]].
 - [[context-grounding-mechanism-reuse]] — Gupta & Gupta (arXiv:2609.00925). Causal head-knockout + base-estimated steering direction across 5 GRPO variants, 3 SFT arms, and DPO: gains (including DPO's near-ceiling gain) reuse pre-existing machinery rather than installing new machinery. First extension of the reuse-not-installation thesis beyond RLVR to SFT and DPO.
+- [[random-reward-reachability-probe]] — Mao et al. (arXiv:2610.01066, 2026-10-02): random-reward RL as a reachability probe; reframes the spurious-reward paradox around what training can attain from a checkpoint.
 
 ## Cross-cutting themes
 

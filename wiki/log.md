@@ -1077,3 +1077,9 @@ Autonomous weekly sweep. Source survey (4 parallel subagents: aggregators, curat
 **Watchlist:** 10 additions (onPanda, Harness-Zero, Which-Tokens-Should-SFT-Actually-Learn, SFT-or-RL-for-Tool-Calling-Agents, Critical-State-RL, Is-Next-Chunk-Reasoning-RL-Really-Better-than-SFT, ACLArena, RRSI, Verifiable-Hidden-Dynamics-Play, Dont-Mask-the-Environment). See `wiki/watchlist.md`.
 
 **Tooling:** pymupdf image-ref path-anchor false positive recurred again (6th+ occurrence across weekly sweeps) — same `sed 's#raw/research/<topic>/assets/#./assets/#g'` workaround applied to all 5 captures, 0 audit issues after. New failure mode this week: alphaXiv's `/explore/papers` WebFetch (JS-rendered page) returning fabricated, non-existent arXiv-ID-shaped strings rather than an error — logged to `master_notes.md` as a kit-level gotcha (scraping a JS SPA via WebFetch can hallucinate structured-looking content instead of failing loudly).
+
+---
+
+## [2026-10-02] weekly-brief | 2026-10-02 sweep (ingest step)
+
+Autonomous ingest of 5 captures from `raw/research/weekly-2026-10-02/`. All five captures are arXiv abs-page captures (abstract only, no full-text body); pages are abstract-level and flagged as such. Pages written: `teacher-student-rl/mopd-gradient-diagnosis` (2610.02179), `teacher-student-rl/dn-mopd-domain-normalized` (2609.35347, paired with prior; multi-teacher OPD comparison table lives there), `teacher-student-rl/opd-vs-offpolicy-kl-direction` (2609.35259), `teacher-student-rl/atd-active-taskless-distillation` (2609.29233), `rlvr-mechanics/random-reward-reachability-probe` (2610.01066). New conflict `conflicts/on-policy-forgetting-vs-lr-confound` (2609.35259 vs RL's Razor / RFT forgetting accounts). Capture notes: ATD abstract text garbled mid-sentence in the pymupdf capture; page-0 image refs are the known pymupdf artifact, ignored. Index, conflicts index, and the teacher-student-rl and rlvr-mechanics overviews updated.
