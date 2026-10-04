@@ -1,11 +1,35 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-27
+last_reviewed: 2026-10-04
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-10-04
+
+Thin-signal week (2026-09-27 to 2026-10-04): both scan agents found few dated in-window items. Captured: OpenAI Dots (deployments/openai-dots) and the Harness Engineering source study (patterns/harness-engineering-source-study). The items below are single-pass search hits, several older than the window — verify dates and sources before capture.
+
+### OpenAI DevDay 2026 follow-ups
+- DevDay recap: Agents API, ChatGPT plugins, Sign in with ChatGPT — primary recap page capture failed; retry
+- Codex Security Cloud — GitHub scanning, dedup, proposed fixes
+- GPT-6.1 Sol — claimed near-Astra quality at ~20% of token price
+
+### Memory security
+- Sleeper Memory Poisoning in LLM Agents (arXiv 2605.15338) — dormant payloads in agent memory
+- FARMA: forged reasoning attacks on agent memory (arXiv 2607.05029) — evades keyword defenses
+
+### Evaluation validity
+- Noise Floor Audit for Agent Benchmarks (arXiv 2608.22331) — run-to-run noise vs leaderboard gaps
+- The Unreliable Progress Bar (arXiv 2609.08589) — agents misreport own task progress
+- Permission Denied: policy-graded coding-agent eval (arXiv 2608.02670) — hardened-environment evaluation
+
+### Context / protocols
+- AI Agents Do Not Fail Alone: Context Fails First (arXiv 2607.14275) — multi-agent failure via context sharing
+- MCP 2026-07-28 stateless spec — adoption posts (Cloudflare, AWS AgentCore); spec itself pre-window
 
 ---
 
