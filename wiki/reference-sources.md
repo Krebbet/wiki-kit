@@ -68,6 +68,7 @@ Each item: one line, format `**<entity>** — <fact> — <1-line significance>`.
 - **Stratechery (Ben Thompson)** — strategy-level analysis of platform moves; paywalled.
 - **VentureBeat — AI** — https://venturebeat.com/category/ai/ — product launches, enterprise deployments.
 - **The Register — AI / Software** — practitioner-tone coverage of enterprise software moves; useful counter-signal to vendor PR.
+- **CyberScoop** — security-primary trade press; first-pass reporting on agent/AI vulnerability disclosures and government cyber response (added 2026-09-30).
 
 ## Tier 2 — practitioner friction surface (ground truth)
 
@@ -76,6 +77,9 @@ Each item: one line, format `**<entity>** — <fact> — <1-line significance>`.
 - **r/MachineLearning** — adjacent signal; useful for when ML research crosses into product land.
 - **G2 / Reddit / product-specific subreddits** — for offerings already profiled (e.g. r/Salesforce when tracking Agentforce adoption).
 - **GitHub issues + Stack Overflow question volume** on tracked products — for real-usage / real-limitation signal.
+- **claudeissues.com** — live tracker of anthropics/claude-code GitHub issues (open count, median time-to-close); surfaced 2026-08-19 as a concrete adoption-friction telemetry source, more direct than manually sampling the GitHub issue tracker.
+- **air.security** (blog) — original-discoverer AI-agent supply-chain security research (The Story of Skills → SkillJacking → Plugin4Shell, 2026-09); surfaced 2026-09-23 as a higher-signal primary source than trade-press paraphrase for this wiki's recurring coding-agent-CVE thread — prefer capturing directly from here over a secondary write-up when a new disclosure in this series lands.
+- **Zenity Labs blog** — agent-security vendor research (e.g. SalesBleed, 2026-09); primary source for agent-platform vulnerabilities but vendor-interested, so check fix verification against the affected vendor.
 
 ## Tier 3 — analyst / VC thesis (framing, with skepticism)
 
@@ -114,6 +118,8 @@ Hosts reproducibly block the capture scripts (logged in `master_notes.md`). When
 - **McKinsey** — HTTP/2 protocol error on HTML, read-timeout on PDFs (reproducible).
 - **GeekWire** — Cloudflare "Attention Required" (reproducible including with `--js`).
 - **OpenAI blog** — JS-heavy, `networkidle` times out at 30s; try `--js` with a longer timeout, or use a third-party summary / excerpt.
+- **Bloomberg** — "Are you a robot?" bot-check page on direct capture (reproducible, 2026-09-02). Workaround that worked: WebSearch for the story, then capture the same report via a syndication partner (e.g. `finance.yahoo.com/technology/ai/articles/...` — Yahoo Finance mirrors Bloomberg articles near-verbatim including the "(Bloomberg) --" byline) instead of retrying `bloomberg.com` directly.
+- **Axios** — Cloudflare "Just a moment" challenge on direct capture (reproducible, 2026-09-30). Workaround that worked: find the same story via a syndication/aggregator (e.g. Dataconomy) instead of retrying axios.com.
 
 ## Weekly sweep schedule
 

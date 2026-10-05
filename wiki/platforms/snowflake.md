@@ -89,6 +89,36 @@ Snowflake's 2026-04-21 press release expands both agentic product lines and posi
 - For greenfield buyers, source's bear case (20% growth, NRR to 120%, multiple compression) is the risk signal.
 - AI revenue must **5–10x by end of FY27** (to $500M+) for the competitive narrative to shift, per source.
 
+## Cortex stack deep-dive (web research 2026-10-05, via /query)
+
+Source: ad-hoc web research (Snowflake docs/release notes + practitioner blogs); not yet captured to `raw/`. Many details come from search snippets and fetch summaries — **re-verify before quoting**.
+
+### Semantic layer
+- **Semantic View** = schema-level object (logical tables, relationships, dimensions, facts, metrics); replaces the older YAML-on-stage semantic model. Feeds Cortex Analyst, CoWork, CoCo, Cortex Sense. Docs list no Analyst rate limits.
+- **Cortex Analyst** = REST text-to-SQL grounded in a semantic view. Model chosen automatically by region/access (docs preference list: Claude Sonnet 4.6/4.5, GPT-4.1, Arctic Text2SQL R1.5, then Mistral Large 2 / Llama 3.1 70b). Multi-turn re-sends history but cannot see prior results; long chats degrade.
+- **Semantic View Autopilot** (GA 2026-02-03): auto-generates views from table metadata, query history, SQL, Tableau/Power BI files (Power BI ingestion GA 2026-08-18); humans still review/certify. Docs advise <10 tables and ~50 columns per view → large estates need many scoped views (inference). Third-party-cited limits (unverified): 1 MB YAML, no ARRAY/VARIANT/OBJECT, no cross-account replication.
+- **OSI** (Open Semantic Interchange): spec v0.1 finalized 2026-01, Apache 2.0, 50+ members incl. Salesforce, Databricks, dbt; reportedly now "Apache Ossie (incubating)".
+- **Cortex Sense** (private preview, Summit 2026-06): runtime context layer learning from query history, metadata, BI dashboards. Vendor claim 47%→83% accuracy for CoCo/CoWork (secondhand, unverified).
+- **Pricing:** Analyst billed per message (~67 credits/1,000 per third parties, unconfirmed) + warehouse compute.
+
+### SQL agent accuracy — vendor claims only
+- "90%+" Cortex Analyst claim = internal 150-question BI set, blog 2024-08-29; no updated 2026 methodology, no independent replication found. Practitioners say it holds "when the semantic model is mature"; est. 60–70% without one (consultancy, unsourced).
+- Databricks claims "32%→90%+" on its own unreleased benchmark (2026-05-08) — the two 90% figures are **not comparable**.
+- Arctic-Text2SQL-R1 (2025-05): 71.83% BIRD-test (32B), open weights; no evidence it powers Analyst. Snowflake CoCo 72.1% vs 65.1% Claude Code/Codex on dbt Labs' ADE-bench (2026-01, vendor-run). Measures data-engineering, not BI Q&A.
+- Known failure modes (Snowflake's own docs + AtScale, biased): join hallucination, fan/chasm traps, valid-SQL-wrong-business-definition, conflicting metric definitions, low-cardinality categoricals.
+- **Gap:** no independent Cortex vs Genie vs Google head-to-head; no CoWork reliability reports. Build your own eval on your schema (verified queries + built-in Evaluations).
+
+### Agentic loop / harness
+- **Cortex Agents:** Plan → tool-use → reflect/respond loop within one request. Agent object = model + tools (Analyst, Search, code exec, UDF/proc custom tools, MCP, web search, skills) + `instructions.orchestration`/`response` + `tool_resources`. Server-side **threads** hold state. Configurable: orchestration token budget, `tool_choice` pinning, `background: true`; 15-min default stream timeout.
+- **2026-04-13:** agents on semantic views generate SQL directly (no separate Analyst call). **2026-08-28:** Snowflake "recommends transitioning" Analyst → Agents; semantic views carry over; no EOL date seen.
+- Models in agent docs: Claude Opus 5 / Sonnet 5 / Haiku 4.5, GPT-5.x, Gemini 3.1 Pro / 3.5 Flash.
+- **CoCo:** CLI/Desktop/Snowsight; Plan Mode (read-only, approve before run), Cloud Agents (managed runtime, browsing + FS + code exec), ACP, Agent SDK ("same loop as CLI"), OS sandboxing + tiered approvals. Underlying models not named in docs.
+- **Observability:** AI Observability on TruLens (LLM-as-judge relevance/groundedness/correctness + tracing).
+- **Governance:** `CORTEX_USER`/`CORTEX_AGENT_USER` roles + privileges on every tool's objects; per-user quotas GA (AI Functions, Agents, CoWork). Natoma intent announced 2026-05-27; closing status unchecked.
+- **Cost:** AI Credits $2.00 global / $2.20 home-region (since 2026-04-01). Agent cost = orchestration tokens + Analyst tokens + Search + warehouse compute for tools, spread over four Account Usage views. Anecdotes (cost-tool vendor, biased): 5–15 LLM calls per question; one team $200/wk test → $4,000/wk prod at 80 daily users; iteration caps of 5–10 cut cost 20–30%.
+- **Gotchas:** tool-name typos fail silently at `CREATE AGENT`; broken semantic-view refs surface only at runtime; Agents API unsupported from Streamlit-in-Snowflake warehouse runtime. Practitioner (QueryPlane): tool-description quality dominates tool selection; use 24–32k orchestration tokens.
+- **Gap:** rate limits, context size, model-routing internals, Horizon, Agent SDK internals not found.
+
 ## Source
 
 - `raw/research/enterprise-ai-landscape-2026/06-saastr-databricks-snowflake.md`

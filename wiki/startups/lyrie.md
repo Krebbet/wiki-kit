@@ -58,3 +58,4 @@ Original: GlobeNewswire — "Lyrie Completes $2 Million Preseed Round to Build t
 - [[landscape/mcp-rce-supply-chain-2026-05]] — OX Security MCP STDIO RCE disclosure; 7,000+ vulnerable servers; the concrete threat vector ATP's scope/attestation model is designed to address
 - [[llms/anthropic-claude-family]] — Anthropic CVP acceptance context
 - [[landscape/yc-w26-ai-batch]] — adjacent security-for-agents startup cluster signal
+- [[landscape/agent-identity-governance-2026-09]] — Cymphony, AIUC, and AWS AgentCore Identity's managed consent portal (Sep 2026); ATP's cryptographic identity/attestation approach is a distinct architectural answer to the same "agents need governance infrastructure" problem

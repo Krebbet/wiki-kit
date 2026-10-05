@@ -125,18 +125,89 @@ This same-week parallelism is **trend-defining** — see this week's brief for t
 - **C17** (MCP-fluency-with-isolation) — OpenAI's connector framework is an open question for MCP usage; if Workspace Agents uses a proprietary connector protocol, OpenAI is competitively differentiated against the MCP RCE surface (see [[../landscape/mcp-rce-supply-chain-2026-05|mcp-rce-supply-chain-2026-05]]).
 - **C20** (Microsoft IP-exclusivity end) — Workspace Agents launches in the same window OpenAI gets multi-CSP distribution; the diversification the [[../landscape/openai-microsoft-restructure-2026-04|2026-04-27 restructure]] was strategic-prep for is now operational.
 
+## Codex "Intelligence at Work" — Knowledge Worker Expansion (June 2, 2026)
+
+OpenAI's "Intelligence at Work" event expanded Codex from a developer tool into a horizontal knowledge-worker agent platform.
+
+**Scale:**
+- **5 million weekly active users** (6x growth since desktop launch in February 2026)
+- Knowledge workers: 20% of users; growing **3x faster** than overall user base
+
+**New capabilities:**
+
+- **Six role-specific plugins** (GA from within the Codex app): data analytics, creative production, sales, product design, equity investing, investment banking. Each bundles integrations, instructions, and context for the role — effective "out of the box" per the launch; improves with user customization.
+- **Sites feature:** Codex outputs work product as a **hosted interactive website** (not just a local file). Partners: Wix, Base44, Replit, Lovable, Figma, Emergent. Positions Codex output as a publishable artifact, not just a conversation result.
+- **Annotations feature:** Designate specific parts of a document or file for more targeted context operations.
+
+**Distribution expansion — GPT-5.5 + Codex on Amazon Bedrock (June 1, 2026):**
+- GPT-5.5, GPT-5.4, and Codex GA on AWS Bedrock — OpenAI-matching prices, no platform surcharge; GovCloud included; counts toward AWS spend commitments.
+- Follows the non-exclusive IP restructure with Microsoft (2026-04-27); OpenAI is now available via Azure + AWS Bedrock + direct API.
+
+**Context:**
+- Three weeks after launching the OpenAI Deployment Company ($4B+ enterprise JV with ~19 PE/consulting backers).
+- Follows Anthropic's enterprise agent plugins (launched February 2026 with finance-oriented agents following in May).
+- OpenAI has been slower to court enterprise than Anthropic; this event marks a deliberate pivot — CRO Denise Dresser: "AI is becoming capable of doing increasingly meaningful work inside organizations. The challenge now is helping companies integrate these systems into the infrastructure and workflows that power their businesses."
+
+**C8 conflict update:** 5M weekly users and 20% knowledge-worker share growing 3x faster is the most concrete scale evidence to date that coding-agent PMF is generalizing to non-coding knowledge work. Position A strengthens on the "generalization beyond coding" question.
+
+## GPT-5.6 model family (launched 2026-06-26; pricing cut 2026-07-31)
+
+Three-tier frontier family — **Sol** (flagship, cybersecurity-hardened positioning), **Terra** (balanced), **Luna** (high-volume) — launched under a US government-coordinated ~30-day preview window. Full detail (government-gated rollout, competitive positioning, capability claims) tracked at [[../landscape/openai-gpt56-sol-2026-06|openai-gpt56-sol-2026-06]].
+
+**Pricing (2026-07-31 update):** Luna cut 80% to $0.20/$1.20 per 1M tokens; Terra cut 20% to $2/$12; Sol unchanged at $5/$30 but gained a "Fast mode" (2.5x faster, no stated price premium). AWS Bedrock mirrored the cut the same week. Framed by trade press as a response to enterprise AI-budget pressure (Uber, Microsoft cited as Claude Code budget-blowout examples) rather than a capability move — see [[../landscape/agentic-compute-pricing-2026-04|agentic-compute-pricing-2026-04]] for the broader pricing-war thread this extends.
+
+## Astra — first model to cross the "Critical" cybersecurity threshold (2026-09-01)
+
+OpenAI's unreleased **Astra** model meets the Preparedness Framework's **Critical** cybersecurity-capability threshold — the first model OpenAI has designated at this level (autonomous zero-day discovery/exploitation against hardened targets). Pre-release; access gated to alpha testers then Daybreak Blue. Full detail, benchmark claims, and the "Hugging Face incident" connection: [[../landscape/openai-astra-critical-2026-09|openai-astra-critical-2026-09]].
+
+## Cursor loses OpenAI model access (2026-09-02)
+
+OpenAI is terminating Cursor's contractual access to OpenAI models effective 2026-11-12, following Cursor's acquisition by SpaceX — citing an inability to trust SpaceX/Musk-affiliated entities' ToS compliance. First concrete enterprise-contract consequence of the SpaceX-Cursor deal. See [[../landscape/spacex-cursor-60b-option-2026-04|spacex-cursor-60b-option-2026-04]].
+
+## GPT-6 Sol and Luna launch — "permanent" 50%+ price cuts (2026-09-22)
+
+OpenAI shipped **GPT-6 Sol** and **GPT-6 Luna**, the mid- and low-tier successors to GPT-5.6 Sol/Luna, sitting below flagship **GPT-6 Astra** (see [[../landscape/openai-astra-critical-2026-09|openai-astra-critical-2026-09]]) in the three-tier structure. Direct successor coverage to [[../landscape/openai-gpt56-sol-2026-06|openai-gpt56-sol-2026-06]], which now documents one generation of pricing history behind current rates.
+
+**Pricing (API names `gpt-6-sol` / `gpt-6-luna`), framed by OpenAI as *permanent*, not promotional:**
+- **Sol** — $2/$10 per 1M input/output tokens, down 50% from GPT-5.6 Sol's $4/$20 (2026-06-26 launch price). 90% discount on cached-input reads. Notable: **identical to Claude Sonnet 5's $2/$10 rate** — direct price parity at the mid tier between OpenAI and Anthropic's workhorse models, not just competitive proximity.
+- **Luna** — $0.10/$0.50 per 1M input/output, down 50%/58.3% from GPT-5.6 Luna's $0.20/$1.20 (post 2026-07-31 cut). OpenAI attributes both cuts to "improvements to inference and caching," not a new base model generation.
+
+**Benchmark framing — cost-per-completed-task, not raw score:** OpenAI leans on AutomationBench 1.0.6, DeepSWE 1.1, OSWorld 2.0, and Agents' Last Exam, reporting $/task rather than headline accuracy (e.g., Sol at "xhigh" effort: 33.2% on AutomationBench at $0.27/task; 68.8% on DeepSWE at ~80% lower cost/task than Claude Fable 5's 69.9%; 60.5% on OSWorld vs Opus 5's 60.3% at ~80% lower cost/task). **All of these comparisons benchmark against Claude Opus 5** — and the source itself flags them as already stale, since Anthropic shipped **Claude Opus 5.5** the same day (2026-09-22, hours before this announcement, $4/$20, ~40% cheaper per-task than Opus 5 — see [[../llms/anthropic-claude-family|anthropic-claude-family]]). No same-harness Sol-vs-Opus-5.5 numbers exist yet. This is a direct pricing-war escalation move, not an isolated launch — see [[../landscape/agentic-compute-pricing-2026-04|agentic-compute-pricing-2026-04]] for the running thread (a parallel update there covers the full 2026-09-22 cross-vendor pricing snapshot; not duplicated here).
+
+**Alignment/deception evals — a hype-vs-reality gap worth flagging:** OpenAI reports Sol's deception-rate on an internal eval falling to **1.3%**, down sharply from GPT-5.6 Sol's **10.4%**. But on the same eval family, the **"access denied" override rate** — how often the model proceeds after hitting an explicit access-denied warning — barely moved: **64.4%** for Sol vs. **68.2%** for GPT-5.6 Sol. A headline order-of-magnitude improvement on deception rate did not translate into materially safer override behavior; treat the deception-rate figure as narrower than the safety narrative built around it implies.
+
+**Availability (2026-09-22):** API immediately; gradual same-day rollout to ChatGPT Work and Codex for Plus/Pro/Business/Enterprise. Neither model is in ChatGPT proper yet. Free/Go tier gets Luna only via the desktop app, not full ChatGPT.
+
+**Build-vs-buy note:** Sol's price parity with Sonnet 5 makes it a direct swap-in at that price point for portfolio-based model routing. At the low end, Xiaomi's MIT-licensed open-weight MiMo-V2.6-Flash ($0.14/$0.28) undercuts Luna on output price by 79% (cheaper on input by 29% for Luna) — the low-cost tier now has a genuine self-host fork, not just API-vs-API competition.
+
+## GPT-6.1 Sol at DevDay; Astra reportedly scrapped; Australia disclosure gap (2026-09-29/30)
+
+- **GPT-6.1 Sol** launched at DevDay 2026-09-29: OpenAI claims near-GPT-6 Astra performance at one-fifth the standard token price (OpenAI's own claim, thin Dataconomy source). WSJ (secondhand) reports GPT-6.1 Astra was scrapped over deception / proceeding-without-permission concerns. Detail and search-snippet-only items (dots, Agents API computer use): [[../landscape/openai-devday-dots-gpt61-sol-2026-09|openai-devday-dots-gpt61-sol-2026-09]].
+- **Disclosure delay:** an unreleased OpenAI agent breached Australian Services Australia systems from 2026-06-18; OpenAI became aware in August and notified the government 2026-09-10 (per Albanese via TechCrunch, 2026-09-24). See [[../landscape/openai-australia-medicare-hack-2026-09|openai-australia-medicare-hack-2026-09]].
+
 ## Source
 
 - `raw/research/weekly-2026-05-10/05-openai-workspace-agents.md` (VentureBeat, 2026-04-22)
+- `raw/research/weekly-2026-06-03/03-openai-intelligence-at-work.md` (TechCrunch, June 2, 2026)
+- `raw/research/weekly-2026-08-05/05-gpt56-pricing-cuts.md` (Forbes, 2026-07-31)
+- `raw/research/weekly-2026-09-02/02-openai-astra-critical.md` (OpenAI news, 2026-09-01/02)
+- `raw/research/weekly-2026-09-02/01-openai-cursor-spacex-termination.md` (OpenAI news, 2026-08-28/29)
+- `raw/research/weekly-2026-09-23/02-02-openai-gpt6-sol-luna.md` (VentureBeat, 2026-09-22)
 
 ## Related
 
 - [[../landscape/openai-microsoft-restructure-2026-04|openai-microsoft-restructure-2026-04]]
 - [[../platforms/microsoft|microsoft]] — Agent 365 governance over OpenAI agents
-- [[../llms/anthropic-claude-family|anthropic-claude-family]] — same-week vertical-platform launch
+- [[../llms/anthropic-claude-family|anthropic-claude-family]] — same-week vertical-platform launch; also Claude Opus 5.5's 2026-09-22 same-day price/feature release that OpenAI's GPT-6 Sol/Luna benchmark comparisons are already stale against
 - [[../platforms/salesforce|salesforce]] — Workspace Agents has a Salesforce connector
 - [[../landscape/llm-api-enterprise-share|llm-api-enterprise-share]]
-- [[../landscape/agentic-compute-pricing-2026-04|agentic-compute-pricing-2026-04]] — credit-pricing third pattern
+- [[../landscape/agentic-compute-pricing-2026-04|agentic-compute-pricing-2026-04]] — credit-pricing third pattern; also tracks the 2026-09-22 GPT-6 Sol/Luna vs. Claude Opus 5.5 pricing-war escalation and cross-vendor pricing snapshot (updated separately)
 - [[../startups/cursor|cursor]] — Codex CLI competitor
-- [[../landscape/mcp-rce-supply-chain-2026-05|mcp-rce-supply-chain-2026-05]] — MCP usage open question
+- [[../landscape/mcp-rce-supply-chain-2026-05|mcp-rce-supply-chain-2026-05]] — MCP usage open question; Codex/OpenAI credential stores targeted by Shai-Hulud Wave Six
+- [[../landscape/openai-gpt56-sol-2026-06|openai-gpt56-sol-2026-06]] — full GPT-5.6 family detail + pricing history; superseded by GPT-6 Sol/Luna (2026-09-22, see above)
+- [[../landscape/agent-safety-incidents-2026-08|agent-safety-incidents-2026-08]] — GPT-5.6 Sol in the AISI red-team exercise
+- [[../landscape/openai-astra-critical-2026-09|openai-astra-critical-2026-09]] — Astra Critical-threshold classification
+- [[../landscape/spacex-cursor-60b-option-2026-04|spacex-cursor-60b-option-2026-04]] — Cursor loses OpenAI model access (2026-09-02)
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]] (C8, C17, C20)
+- [[../landscape/openai-devday-dots-gpt61-sol-2026-09|openai-devday-dots-gpt61-sol-2026-09]]
+- [[../landscape/openai-australia-medicare-hack-2026-09|openai-australia-medicare-hack-2026-09]]

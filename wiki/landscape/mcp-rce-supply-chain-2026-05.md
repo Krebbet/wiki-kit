@@ -164,11 +164,28 @@ This attack is part of an ongoing TeamPCP campaign spanning at least November 20
 3. **GovCloud credential targeting signals ambition.** AWS GovCloud regions are restricted to US government agencies and defense contractors. A credential stealer covering those AZs by design suggests TeamPCP is targeting or selling access to government-adjacent organizations.
 4. **Connects to MCP RCE theme here:** Both this and the MCP STDIO RCE are supply-chain events propagating silently through trusted build/runtime infrastructure. The common thread is that architectural trust decisions made once (in a CI workflow, in an SDK) propagate into every downstream consumer without re-evaluation. See also [[ai-infrastructure-frontiers-2026]] on enterprise security posture.
 
+## Shai-Hulud Wave Six — AI-agent-config payload campaign (2026-08-04)
+
+Sixth major campaign in the Shai-Hulud npm-worm lineage (Sept 2025 original → 2.0 → Golden Path → SAP compromise → Miasma/Red Hat June 2026 → Mini Shai-Hulud → **Wave Six**). Wiz confirms Wave Six is a direct descendant of Mini Shai-Hulud (identical `setup.mjs` hook filenames, pinned Bun 1.3.13, same credential-harvesting architecture, traced to an April 2026 PyPI `lightning` compromise).
+
+**What's new — first payloads inside AI-agent/IDE config files.** A hijacked maintainer account compromised `keyv` (127M weekly downloads) and 400+ related packages (2B+ combined monthly downloads: `flat-cache`, `file-entry-cache`, `cacheable-request`, `cacheable` family, `cache-manager`). For the first time, the worm plants persistence hooks inside `.claude/settings.json` (`SessionStart` hook) and `.vscode/tasks.json` (`folderOpen` task) — files no dependency scanner reads, and which execute **without any `npm install`** the moment a trusted workspace opens. Kodem Security: "Agent configuration files execute code, they live in repositories, and no dependency scanner reads them." Kodem predicts MCP server definitions and editor agent-rule files are next — same trust level, even less review than `package.json`.
+
+- **Credential sweep expanded ~70%** vs prior waves — now explicitly targets AI-agent credential stores for **Claude, OpenAI, Codex, Cursor, and Gemini**, alongside the existing sweep (npm/GitHub tokens, AWS incl. EC2 metadata endpoint, Kubernetes, HashiCorp Vault, Stripe/Slack, `.env`, SSH, Terraform state, Docker registry, crypto keystores).
+- **Novel C2 layer:** exfil commits to ~1,300 public GitHub repos; self-replication via stolen npm OIDC trusted-publishing tokens republished 50–100 newly-infected packages every few minutes at peak.
+- **Structural finding — attestation is not sufficient:** per Kodem, "Provenance, SLSA, and OIDC trusted publishing all worked as designed and all signed malicious artifacts." Two consecutive waves (Miasma, Wave Six) now use trusted publishing *as the propagation channel itself* rather than defeating it — reinforces the "trusting trust" gap flagged earlier on this page.
+- **Reversed incident-response order required:** a credential-revocation-triggered attacker handler punishes the standard "rotate credentials first" response. Kodem/SafeDep/Socket/Aikido/Snyk consensus sequence: (1) isolate host, (2) remove persistence artifacts from *both* installed packages and cloned repos, (3) pin to last-clean version + `npm install --ignore-scripts` + rebuild lockfile, (4) only then rotate credentials from a clean device.
+- **Workspace-trust caveat:** both VS Code and Claude Code require user approval before running such tasks automatically — but once a project is trusted, that gate may not re-fire on subsequent opens.
+
+**Source:** `raw/research/weekly-2026-08-05/03-npm-shaihulud-ai-agent-config.md` (TechTimes citing Kodem Security, Aikido, Wiz, Endor Labs, Cloudsmith, OX Security, SafeDep, Socket, Snyk; 2026-08-04/05)
+
+**ChainDrop = Wave Six (confirmed same campaign):** Pillar Security, Microsoft, Elastic, and Kodem Security independently confirmed that "ChainDrop" and "Shai-Hulud Wave Six" are the same malware lineage, disclosed 2026-08-04 under different vendor/researcher naming. ChainDrop is Wave Six — the sixth major campaign in the continuous Shai-Hulud npm-worm family running since September 2025. Both names refer to the same campaign that compromised `keyv`/`cacheable` (2B+ monthly installs), planting malicious hooks in `.claude/settings.json` and `.vscode/tasks.json`. The terminology split occurred because Pillar Security and other threat-intel vendors use "ChainDrop" for the campaign and its publicly-disclosed technical name, while Kodem/Wiz/security-research firms continue the "Wave Six" numbering from the earlier Shai-Hulud lineage. No evidence of a distinct copy-the-technique campaign — this is unified terminology variation, not two separate campaigns.
+
 ## Build-vs-buy signals
 
 - **Buy MCP-fluent platforms with vendor-provided isolation** — Google GEAP Model Armor, Salesforce Agent Fabric, Microsoft Agent 365 — defence-in-depth is layered above MCP, but the substrate vulnerability persists.
 - **Build:** if you adopt MCP, you inherit the RCE surface. Sandboxing + network isolation + untrusted-config handling is a **procurement requirement**, not optional.
 - **Watch:** alternative protocols (A2A, ANP, custom) are now competitively positioned. The "bet on MCP" thesis from C17 needs a security-overhead asterisk in any client advisory.
+- **New as of Wave Six:** treat `.claude/settings.json` `SessionStart` hooks and `.vscode/tasks.json` `folderOpen` tasks as code-execution surface requiring the same review as `package.json` scripts — for any team running Claude Code, Cursor, Copilot, or other AI coding agents against third-party/cloned repos. Static SCA/dependency scanning is confirmed insufficient; runtime/behavioral monitoring is now a stated requirement, not a nice-to-have.
 
 ## Anti-pattern lesson
 
@@ -178,6 +195,7 @@ STDIO transport with config-to-exec mapping = RCE-by-design. Worth flagging in a
 
 - `raw/research/weekly-2026-05-10/04-mcp-rce-vulnerability.md` (The Hacker News, citing OX Security disclosure 2026-05-08)
 - `raw/research/weekly-2026-05-28/05-tanstack-supply-chain.md` (The Hacker News, citing OpenAI disclosure, Mistral advisory, TanStack incident followup, Hunt.io analysis; updated 2026-05-16)
+- `raw/research/weekly-2026-08-05/03-npm-shaihulud-ai-agent-config.md` (TechTimes citing Kodem/Aikido/Wiz/Endor/Cloudsmith/OX/SafeDep/Socket/Snyk, 2026-08-04/05)
 
 ## Related
 
@@ -185,8 +203,10 @@ STDIO transport with config-to-exec mapping = RCE-by-design. Worth flagging in a
 - [[../platforms/salesforce|salesforce]] — Agent Fabric / Headless 360 MCP exposure
 - [[../platforms/microsoft|microsoft]] — Agent 365 Defender controls + MCP context mapping
 - [[../platforms/snowflake|snowflake]] — Cortex Code MCP integration
-- [[../llms/anthropic-claude-family|anthropic-claude-family]] — protocol-shepherd governance signal
-- [[../startups/cursor|cursor]] — affected (CVE-2025-54136 + Windsurf-shared codebase implication)
-- [[../llms/openai|openai]] — 2 employee devices compromised; code-signing cert revocation + macOS update requirement
+- [[../llms/anthropic-claude-family|anthropic-claude-family]] — protocol-shepherd governance signal; Claude Code named as a Wave Six config-execution vector; Inference Hooks (2026-08-05) as a governance response
+- [[../startups/cursor|cursor]] — affected (CVE-2025-54136 + Windsurf-shared codebase implication); also named among Wave Six's AI-agent credential targets
+- [[../llms/openai|openai]] — 2 employee devices compromised; code-signing cert revocation + macOS update requirement; Codex/OpenAI credential stores also targeted by Wave Six
 - [[ai-infrastructure-frontiers-2026]] — agent governance / MCP isolation; enterprise security posture
+- [[agent-safety-incidents-2026-08]] — parallel agentic-AI safety/security incident cluster, same week
+- [[blackhat-ai-coding-agent-cves-2026-08]] — Black Hat USA 2026 CI-harness RCE disclosures across Claude Code, Gemini CLI, Codex (2026-08-05); possible ChainDrop/Wave Six overlap
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]] (C17 reopened)

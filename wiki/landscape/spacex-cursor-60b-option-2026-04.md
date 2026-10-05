@@ -1,6 +1,16 @@
-# SpaceX–Cursor $60B Acquisition Option (2026-04-21)
+# SpaceX–Cursor $60B Acquisition — Completed 2026-08-14 (option announced 2026-04-21)
 
-On **2026-04-21**, SpaceX announced a partnership with **Cursor** to build a "coding and knowledge-work AI" using the **Colossus** supercomputer (xAI, claimed ~1M H100-equivalent), paired with an option to **acquire Cursor for $60B or pay $10B for the work**. Article frames the structure partly as an IPO value-add story for SpaceX. The deal reignites the harness-vs-model debate and compounds valuation-cycle concerns.
+**Update 2026-08-19: the option was exercised and the acquisition closed.** SpaceX completed its $60B all-stock acquisition of Cursor, merger effective **2026-08-14** — Cursor's common and preferred shares converted into the right to receive 389,289,254 SpaceX Class A shares; Cursor now operates as a wholly-owned subsidiary inside a new **SpaceXAI** division. Confirmed by multiple independent outlets (Seeking Alpha, Yahoo Finance, SatNews, crypto.news) cross-checked via WebSearch, plus VentureBeat's 2026-08-17 Origin-launch coverage citing Bloomberg. See [[../startups/cursor|cursor]] for the product/market follow-through (Origin code-hosting launch, three days after close).
+
+On **2026-04-21**, SpaceX had announced a partnership with **Cursor** to build a "coding and knowledge-work AI" using the **Colossus** supercomputer (xAI, claimed ~1M H100-equivalent), paired with an option to **acquire Cursor for $60B or pay $10B for the work**. Article frames the structure partly as an IPO value-add story for SpaceX. The deal reignited the harness-vs-model debate and compounded valuation-cycle concerns; the original announcement and analysis below is retained for the historical record.
+
+## OpenAI terminates Cursor's model access (2026-09-02)
+
+OpenAI announced it is **terminating Cursor's contractual access to OpenAI models**, effective **2026-11-12** (a ~10-week wind-down notice). Per OpenAI's own post: the decision follows Cursor's acquisition by SpaceX and rests on an inability to trust SpaceX/Musk-affiliated entities' terms-of-service compliance — OpenAI cites X/Twitter's past ToS violations post-Musk-acquisition, and xAI's own admitted-under-oath ToS violation via model distillation from OpenAI (Forbes, 2026-04-30), as the pattern informing this call. A change-of-control cancellation clause in the original OpenAI–Cursor commercial agreement is the mechanism enabling termination.
+
+**Why it's load-bearing for this page's thesis:** this is the first concrete, dated consequence of the **supplier-is-also-competitor** risk flagged in the "Why it's interesting" section above — materializing not as competitive product pressure but as an outright model-access cutoff triggered by *who owns Cursor*, not by anything Cursor did. It sharpens the harness-vs-model read: Cursor's $60B valuation assumed continued access to both Claude and GPT; losing one of its two model suppliers ~3 weeks after the SpaceX deal closed is a direct test of whether the harness (not the model) really is the asset. Cursor retains Claude access; whether it can maintain product parity model-less-diversified, and whether xAI/Grok models backfill the gap, are the open questions through the Nov 12 cutoff.
+
+See [[../startups/cursor|cursor]] for Cursor-side product/positioning follow-through and [[../llms/xai-grok-family|xai-grok-family]] for SpaceXAI organizational context.
 
 ## Deal structure
 
@@ -58,6 +68,8 @@ See [[../conflicts/open-questions-2026-04|open-questions-2026-04]] for updated p
 ## Source
 
 - `raw/research/weekly-2026-04-23/03-spacex-cursor-60b-option-2026-04.md` (TechCrunch, 2026-04-21)
+- Deal-completion update, 2026-08-19: `raw/research/weekly-2026-08-19/05-cursor-origin-launch-2026-08.md` (VentureBeat, 2026-08-17, citing Bloomberg) + WebSearch cross-verification (Seeking Alpha, Yahoo Finance, SatNews, crypto.news — merger effective 2026-08-14)
+- OpenAI model-access termination, 2026-09-02: `raw/research/weekly-2026-09-02/01-openai-cursor-spacex-termination.md` (OpenAI news, 2026-08-28/29; also CNBC)
 
 ## Related
 
@@ -68,3 +80,4 @@ See [[../conflicts/open-questions-2026-04|open-questions-2026-04]] for updated p
 - [[../llms/anthropic-claude-family|anthropic-claude-family]]
 - [[ai-infrastructure-frontiers-2026]]
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]] (C7, C8, C13)
+- [[../startups/cursor|cursor]] — post-close product/market follow-through
