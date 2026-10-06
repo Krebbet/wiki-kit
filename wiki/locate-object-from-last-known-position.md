@@ -141,6 +141,9 @@ Folded back from drone-prototype `docs/prototype-diary.md` entries **2026-10-01*
 
 **Addendum (librarian note, 2026-10-02, PR #50–#51).** The object record now exists: drone-prototype `docs/object-record-v1.md` (one folder per object, gallery, schema-validated saves, last-seen fields). Re-ID evidence in `eda/EDA241-object-reid/FINDING.md`: DINOv2 cut-out fingerprints picked the right object 55/55 across runs, but only at **category level** — a same-category saline spray matched the bottle on appearance at 0.72, so re-ID is now appearance AND size, three-way SAME / MAYBE / NEW (SAME ≥ 0.60). Known objects are planner keep-outs after a 20 cm object was clipped in a turn. Open: same kind and same size (P-00077), the 10 cm MOVED rule (P-00079), neighbour returns in the height probe (P-00080).
 
+
+**Correction (librarian note, 2026-10-06, PR #57–#59).** Station views (drone-prototype EDA243/EDA244) compared each LiDAR chord with the camera mask and read a ~2–3 cm "sideways" camera↔LiDAR offset (P-00086). EDA246 (`eda/EDA246-camlidar-calib/FINDING.md`) showed it was the extrinsic's **forward** term, 6.4 cm wrong: the LiDAR is ~2.2 cm *behind* the camera (tx +0.85 cm), and lens distortion is now applied when projecting LiDAR into the image. Chord-vs-mask misses fell to 0.13–0.42 cm. Camera-silhouette-vs-chord numbers from EDA243–EDA245 predate the fix; the object fit (EDA245, `docs/object-fit-design.md`) is to be re-run on the corrected extrinsic. Judge the extrinsic with same-tilt tests only.
+
 ## Sources
 
 *(all accessed 2026-09-22)*
