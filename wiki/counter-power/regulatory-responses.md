@@ -50,7 +50,7 @@ On August 19, 2026, the FTC voted 2-0 to seek public comment on a proposed enfor
 
 **Mechanism:** Section 5 FTC Act unfair-or-deceptive-practices authority, applied to non-disclosure of personalized pricing rather than to the practice itself.
 
-**Reach:** proposed, not final; no enforcement has occurred. Comment docket open through Sept 18, 2026.
+**Reach:** proposed, not final; no enforcement has occurred. Comment docket FTC-2026-1057 was extended and closed Sept 25, 2026 (originally Sept 18); final statement pending.
 
 ### DOJ — Live Nation / Ticketmaster (2024 → March 2026 settlement)
 DOJ + 39 states + DC sued Live Nation/Ticketmaster May 2024 for unlawfully wielding control over concert promotion, artist management, venue operations, and ticketing. **March 2026: DOJ + several states settled for $280M** (service-fee caps at certain amphitheatres; greater venue flexibility on promoters/ticket distributors). 33 states + DC declined the settlement and continued the trial — see § 3 State AGs below for the April 2026 jury verdict. Notre Dame law professor Roger Alford characterised the outcome as "a massive win for the state AGs and an historic miss for the DOJ." *(NPR Apr 15 2026; AP via NPR.)*
@@ -119,7 +119,7 @@ The AG letter argues that Instacart's existing disclosure — buried on a fine-p
 
 ### Connecticut PA 26-64 (SB4) — data-broker registry + centralized deletion + surveillance-pricing disclosure (May 2026)
 
-**Status:** **Signed into law May 14, 2026 as Public Act 26-64.** Passed Senate 31-4 on April 23 2026; passed House 141-6 on May 4 2026. Builds on the Connecticut Data Privacy Act (2022; CT was the fifth state to enact a comprehensive privacy law). Lead author: Sen. James Maroney (D-Milford), co-chair of the General Law Committee and the bipartisan AI Caucus. Co-passed alongside Connecticut SB5 (AI regulation).
+**Status:** **Signed into law May 14, 2026 as Public Act 26-64** (CGA public-act record and LegiScan, per `raw/research/weekly-2026-05-25/05-connecticut-sb4-pa26-64.md`; a later trade-press piece gives May 27 — see *Oct 1, 2026 first live compliance date* below; May 14 retained). Passed Senate 31-4 on April 23 2026; passed House 141-6 on May 4 2026. Builds on the Connecticut Data Privacy Act (2022; CT was the fifth state to enact a comprehensive privacy law). Lead author: Sen. James Maroney (D-Milford), co-chair of the General Law Committee and the bipartisan AI Caucus. Co-passed alongside Connecticut SB5 (AI regulation).
 
 **Phased rollout (three stages):**
 
@@ -137,7 +137,7 @@ Note: the "effective Jan 1 2027" shorthand captures only the registration deadli
 
 2. **Centralized one-request deletion mechanism ("kill switch").** DCP builds and operates a unified deletion portal spanning **all registered brokers** — a single authenticated consumer request propagates to every enrolled broker simultaneously. Operational July 2028; mandatory broker processing begins October 2028 with a 45-day check cadence. **First cross-broker API-equivalent surface in US law.** Structurally analogous to California's DELETE Act (SB 362) registry/portal architecture, but Connecticut adds surveillance-pricing and geolocation-sale prohibitions that California lacks. Distinct from prior state opt-out architectures (one-broker-at-a-time); the 45-day mandatory cadence ensures deletion signals propagate rather than going unprocessed.
 
-3. **Surveillance-pricing disclosure mandate.** Retail sellers and third-party delivery services prohibited from engaging in surveillance pricing unless they disclose when an automated pricing system uses consumer personal data to increase a price. Enforcement via **CUTPA (Connecticut Unfair Trade Practices Act) and DCP**. *Caution: no private right of action confirmed for this provision specifically — source implies CUTPA/DCP enforcement, not a standalone consumer PRA; verify against PA text.*
+3. **Surveillance-pricing restriction + disclosure mandate.** Two distinct provisions (corrected 2026-10-05; earlier wording "prohibited unless they disclose" conflated them): (a) retail sellers and third-party delivery services may not engage in surveillance pricing, subject to carve-outs (loyalty/rewards, discounts, supply/demand and delivery-distance differences); (b) a separate prescribed-label duty on online price *increases* set by a "price setting device" using personal data. Details in the Oct 1 section below. Enforcement via **CUTPA (Connecticut Unfair Trade Practices Act) and DCP**. *Caution: no private right of action confirmed for this provision specifically — source implies CUTPA/DCP enforcement, not a standalone consumer PRA; verify against PA text.*
 
 4. **Hard ban on selling precise geolocation data.** Outright prohibition on monetising consumer location data within a 1,750-foot radius. No consent-based workaround — unlike the surveillance-pricing provision, this is a categorical prohibition, not a disclosure regime.
 
@@ -151,7 +151,7 @@ Note: the "effective Jan 1 2027" shorthand captures only the registration deadli
 |---|---|---|---|---|
 | **NY APDA** (eff. Nov 10 2025) | **Disclosure** ("THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA") | All retail / surveillance-pricing sectors | No (per-platform self-implementation) | AG (proven operative — Instacart halt) |
 | **MD HB0895** (eff. Oct 1 2026) | **Prohibition** (categorical ban in sector) | Food retail >15,000 sq ft + 3rd-party delivery only | No | AG only; pre-empts MD CPA; no private right of action |
-| **CT PA 26-64** (signed May 14 2026; registry Jan 2027; portal Jul 2028) | **Disclosure + centralized deletion portal + broker registry + geolocation ban** | Retail sellers + 3rd-party delivery (surveillance-pricing); all data brokers (registry/deletion) | **Yes — centralized DCP deletion portal (Jul 2028)** | CUTPA / DCP (AG); no confirmed PRA for surveillance-pricing provision |
+| **CT PA 26-64** (signed May 14 2026; registry Jan 2027; portal Jul 2028) | **Prohibition (with carve-outs) + prescribed price-increase label + centralized deletion portal + broker registry + geolocation ban** (live Oct 1, 2026) | Retail sellers + 3rd-party delivery (surveillance-pricing); all data brokers (registry/deletion) | **Yes — centralized DCP deletion portal (Jul 2028)** | CUTPA / DCP (AG); no confirmed PRA for surveillance-pricing provision |
 | **NY One Fair Price Act** (S8623A; passed legislature June 4 2026; pending Hochul signature) | **Prohibition** (categorical ban — use of personal data to set individualised prices) | All sectors (no food-retail floor; broader than MD) — *bill text review required to confirm scope* | No | AG enforcement + private right of action reported; penalty up to $20,000/subsequent violation — *bill text review required* |
 
 CT differs from MD on three dimensions: (a) it is **broader in scope** for the data-broker register/deletion (all sectors, not just food retail); (b) it has a **substantively different architecture** — the cross-broker deletion portal is novel infrastructure, not just statutory text; (c) it adopts the **disclosure (not prohibition) approach** to surveillance pricing, aligning with NY rather than MD on that specific dimension. Together NY, MD, and CT establish that the state-legislative cluster is not converging on a single architectural pattern — three different theories of the case (disclose, ban, infrastructure-build) are running in parallel.
@@ -189,7 +189,7 @@ Passed NY Legislature June 4, 2026; **awaiting Governor Hochul's signature** as 
 *(Source: `raw/research/weekly-2026-06-29/05-ny-one-fair-price-act.md` — EPIC, June 4 2026: "New York Becomes Third State to Pass Surveillance Pricing Ban." Enforcement details to be confirmed against S8623A text at `https://legislation.nysenate.gov/pdf/bills/2025/S8623A`.)*
 
 ### Maryland HB0895 — Protection From Predatory Pricing Act (2026)
-Enacted April 2026; effective **October 1, 2026**. Cross-filed as SB0387; By Request of the Governor (Moore administration). 50+ House sponsors. **Substantive prohibition** (not disclosure):
+Enacted April 2026 (signed April 28, 2026 per trade press, `raw/research/weekly-2026-10-05/02-md-ct-surveillance-pricing-bans-oct-1.md`); effective **October 1, 2026**. Cross-filed as SB0387; By Request of the Governor (Moore administration). 50+ House sponsors. **Substantive prohibition** (not disclosure):
 
 - Bars **food retailers (>15,000 sq ft)** and **third-party delivery service providers** from engaging in dynamic pricing or using consumer personal data to set prices on consumer goods/services
 - Bars use of **protected-class data** to offer, advertise, or sell consumer goods/services under certain circumstances
@@ -252,8 +252,29 @@ Colorado aligns with Maryland on the prohibition model and with New York on AG-o
 
 *(Source: `raw/research/weekly-2026-05-18/01-01-co-hb1210-bill.md` — Colorado General Assembly official bill page; reengrossed version. Trust tag: authoritative / primary — bill text and legislative record. Note: the reengrossed version incorporates Senate amendments; the private-right-of-action language visible in strikethrough form in the legislative record was explicitly removed.)*
 
+### Oct 1, 2026 first live compliance date — CT SB4 and MD HB0895 side by side
+
+Source: Shopappy trade-press explainer (`raw/research/weekly-2026-10-05/02-md-ct-surveillance-pricing-bans-oct-1.md`; trust medium, secondary; penalty figures are "reported", not statutory text). Oct 1, 2026 is the first date US surveillance-pricing prohibitions bind (NY A3008 is disclosure-only, in force since Nov 10, 2025). Both regimes stack with NY; neither has a de minimis threshold or intent element.
+
+| | Connecticut SB4 (PA 26-64) | Maryland HB0895 |
+|---|---|---|
+| Scope | Retail sellers + third-party delivery, statewide, no size test | Grocery establishments >=15,000 sq ft + grocery delivery services |
+| Core rule | Bars surveillance pricing (customized price from personal data collected directly or indirectly); plus prescribed all-caps label on advertised online prices set by a "price setting device" | Bars personal-data price-setting that raises food prices or charges one consumer more than another; bars protected-class data use in offers/ads (no price increase needed) |
+| Label | Yes; not required where the device is used solely to offer a discount | None |
+| Enforcer | DCP; reported up to $200/day/consumer; cure period not specified | AG (Consumer Protection Division); reported up to $10k / $25k repeat; 45-day cure after notice |
+| Private action | No | No |
+| Carve-outs | Retention discounts; shipping, delivery timing, inventory, demand; public loyalty/senior/student/veteran programs; certain financial/insurance entities | Promotions, loyalty/rewards, subscriptions, geography/cost differences, consented data exchange, error corrections, outage resets |
+
+- **Gaps flagged (IAPP via trade press):** MD defines no baseline price (nominal list price plus personalised discounts remains open); prohibition attaches to individuals not groups (cohort pricing outside MD, inside CT's "consumer, or group of consumers" framing per firm summaries); loyalty exemption; AG-only enforcement. CT's discount-only label carve-out invites "high list price, personalise downward".
+- **Detection surface:** the CT label is fixed-wording and appears on email/push/retargeting/in-app surfaces as well as product pages, so label presence/omission is machine-detectable ([[tools/natural-price]]). With no private right of action in CT or MD, observation-based evidence packaging for AG/DCP complaints is the available enforcement lever *(editorial)*.
+- **Later regimes:** New Jersey Fair Price Protection Act (signed July 23, 2026; effective Aug 1, 2027; groceries; electronic-shelf-label deployment freeze; private right of action incl. class actions; AG up to $50k/violation, treble for willful). Vermont H.942 (ESL intraday-increase bar, 2026 session). NY One Fair Price Act reported as passing the legislature June 10, 2026 (earlier wiki text says June 4; unresolved, both from secondary sources) with reported penalties up to $5,000/$20,000.
+- **Federal context (trade-press, law-firm tracking):** FTC ANPR on pricing reported April 14, 2026; Senate Judiciary subcommittee hearing Aug 4, 2026; no federal preemption.
+- **Reconciliations of this run's flags (2026-10-05):** (1) *CT signing date* — source says May 27; the CGA public-act record (captured 2026-05-25) says May 14; wiki keeps May 14, treating May 27 as a secondary-source error (primary record outweighs trade press). (2) *CT framing* — corrected above from "disclosure-as-cure" to restriction plus separate label duty; law firms read the label as a de facto ban. (3) *MD enforcement* — AG-only is consistent with the existing no-private-action note; the source routes violations through the consumer protection act with a 45-day cure period, which is in tension with the earlier-captured claim (Pluralistic) that HB0895 pre-empts Maryland Consumer Protection Act rights. Unresolved; statute text not captured. Not elevated to a conflict file because the dispute is a single secondary-vs-secondary reading awaiting bill text. (4) CR's "ban" shorthand for MD/CT/NJ is consistent with (2).
+
 ### Municipal bans
 San Francisco, Philadelphia, and Minneapolis have moved to bar landlord use of algorithmic rent-setting software. *(ProPublica.)*
+
+**Seattle CB 121267 (consumer pricing).** City Council passed the Fair Pricing and Transparency Act, reported by Consumer Reports as the first city-level US ban on personalised pricing for groceries and essentials; pending Mayor Wilson's signature at capture. See [[regulatory/seattle-fair-pricing-and-transparency-act]]. CR describes MD, CT and NJ as having signed laws to "ban" surveillance pricing (advocacy shorthand; see Oct 1 section above).
 
 ## 4. International
 
@@ -345,6 +366,8 @@ Not a coordinated movement, but a recurring pattern. Each episode below produced
 | Crowded House (promoter used dynamic pricing without band approval) | 2020 | Band publicly demanded refunds for fans. |
 
 **Artists publicly refusing dynamic pricing:** Coldplay, Taylor Swift, Ed Sheeran, Iron Maiden, Robert Smith. *(Wikipedia.)*
+
+**Voluntary corporate pledge (2026-09-25).** Walmart's CEO publicly pledged not to set prices by income, shopping history, urgency or time of day, extending to its AI assistant Sparky and digital shelf labels; self-monitored, unenforceable except via possible Section 5 deception theory if broken. Arrives amid FTC study, state bills and CR/Groundwork grocery investigations. See [[mechanisms/walmart-pricing-patents]].
 
 The pattern suggests that **public disclosure** — whether by a journalist, a regulator, or an artist — is often the operative lever.
 
@@ -472,7 +495,7 @@ The table is deliberately flat — it does not rank by leverage. For design-rank
 
 **Exists but weak:**
 - Federal legislation (Preventing Algorithmic Collusion Act introduced, not enacted).
-- State disclosure regimes (NY A3008 is the first-mover disclosure regime; Maryland HB0895 — see § 3 above — is a *categorically different* first-mover prohibition regime in food retail / delivery; Connecticut SB4 (May 2026) adds a third architecture — disclosure-plus-infrastructure, with the **first-in-nation centralized cross-broker deletion mechanism**; Colorado HB26-1210 advancing similar prohibition with wage-setting addition. Cluster forming around three distinct theories of the case (disclose, ban, build-infrastructure), but still under-replicated nationally).
+- State disclosure regimes (NY A3008 is the first-mover disclosure regime; Maryland HB0895 — see § 3 above — is a *categorically different* first-mover prohibition regime in food retail / delivery; Connecticut SB4 (May 2026) adds a third architecture — restriction-plus-label-plus-infrastructure (corrected 2026-10-05; previously described as disclosure-only), with the **first-in-nation centralized cross-broker deletion mechanism**; Colorado HB26-1210 advancing similar prohibition with wage-setting addition. Cluster forming around three distinct theories of the case (disclose, ban, build-infrastructure), but still under-replicated nationally).
 - EU platform rules (DMA/DSA) — scope covers the large platforms but does not specifically reach algorithmic pricing collusion.
 - **Platform cooperatives as an exit lane** — structurally viable ([[mondragon]] at ~70K workers, [[coopcycle]] at 72-coop federation) but the capital conundrum keeps the scale limited against VC-funded incumbents. Works best in sectors meeting Sundararajan's conditions (see [[platform-cooperatives]]).
 
@@ -570,10 +593,16 @@ Additional sources for section 9 (transparency tools and observatory infrastruct
 - `raw/research/price-transparency-tools/05-07-markup-citizen-browser.md` — The Markup project announcement, October 2020.
 - `raw/research/price-transparency-tools/06-08-markup-facebook-inspector.md` — The Markup methodology piece, January 2021.
 
+- `raw/research/weekly-2026-10-05/02-md-ct-surveillance-pricing-bans-oct-1.md` — Shopappy, Oct 1 compliance explainer (captured 2026-10-05; trust medium).
+- `raw/research/weekly-2026-10-05/03-seattle-grocery-surveillance-pricing-ban.md` — Consumer Reports press release, Seattle CB 121267 (trust medium; advocacy).
+- `raw/research/weekly-2026-10-05/01-walmart-no-personalized-pricing-pledge.md` — The Shelby Report on Walmart CEO letter, 2026-09-25 (trust medium-low).
+
 (Origin / audience / purpose / trust metadata for each is summarised on the industry, mechanism, and overview pages where those sources are the primary basis. Here they are cited as contributing evidence to the consolidated counter-power landscape.)
 
 ## Related
 
+- [[regulatory/seattle-fair-pricing-and-transparency-act]]
+- [[mechanisms/walmart-pricing-patents]]
 - [[dynamic-pricing-overview]]
 - [[rental-housing-algorithmic-pricing]]
 - [[surveillance-pricing-retail]]

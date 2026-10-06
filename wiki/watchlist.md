@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-28
+last_reviewed: 2026-10-05
 ---
 
 # Watchlist
@@ -25,12 +25,15 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - House Oversight surveillance-pricing investigation — March 5 2026 letters; document responses arriving
 - CA AB 2564 — full surveillance-pricing ban (broader than HB0895); Senate passed Aug 31 2026 but **missed the Assembly concurrence deadline** — did not reach Governor's desk this session; watch for reintroduction next session
 - HB0895 first enforcement actions — effective Oct 1 2026; loophole-bound enforcement reach predicted
-- FTC proposed personalized-pricing enforcement policy statement — comment docket FTC-2026-1057 **extended to Sept 25 2026** (was Sept 18); captured 2026-08-24 ([[regulatory/ftc-personalized-pricing-policy]]); watch docket comments + whether a final statement issues
+- FTC proposed personalized-pricing enforcement policy statement — comment docket FTC-2026-1057 **comments closed Sept 25 2026** (extended from Sept 18); captured 2026-08-24 ([[regulatory/ftc-personalized-pricing-policy]]); final statement pending; watch whether it issues
 - RealPage MDL private-settlement ($359.9M+ pool) — opt-out deadline Sept 22 2026; final approval hearing Oct 15 2026
 - Connecticut PA 26-64 — signed May 14 2026; broker registry Jan 2027, deletion portal Jul 2028 — captured 2026-05-25
 - DOJ-RealPage Tunney Act final judgment — court-monitor + algorithm-certification regime entering effect
 - Camden Property Trust $53M — preliminary approval target May 15 2026
 - RealPage/Pinnacle proposed Final Judgment — published Federal Register Sept 18 2026, opens Tunney Act comment window; 6th landlord on the identical RealPage/Cortland/Greystar/LivCor/Willow Bridge settlement template — no new tooling hook, procedural not first-of-kind
+- RealPage state-AG Sixth Circuit appeal (No. 26-5655) — standing/remedy fight
+- DC AG Avenue5/Bell Partners $1.4M RealPage settlements — more state-AG enforcement
+- NJ Fair Price Protection Act + UFCW model paper-shelf-label bill — electronic-shelf-label audit surface
 
 ## Strategy-layer build candidates
 
@@ -71,6 +74,9 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - Privacy Badger 2026.9.15 — bug-fix only; tracker-defence cadence continues
 - Natural Price — private beta since 2026-09-14; no public release yet
 - Glaze / Nightshade bypass erosion — LightShed, noisy upscaling; first-gen obfuscation weakening
+- uBlock Origin 1.75.1 betas / AdNauseam 3.29.2 — tracked-tool release cadence
+- EPIC/CFA surveillance-pricing explainer (Aug 2026) — check for tooling hooks
+- Kadoa US food-prices tracker — price-transparency site, code status unknown
 
 ## Open research-queue items
 
@@ -108,6 +114,7 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - DID/VC issuer-governance under planetary cooperative federation (Solidarity Stack governance layer + Linux Foundation Decentralized Trust + W3C VC) — Keyring is the first instance to surface this concretely
 - Gig Workers First — NZ app-worker union launched 2026-08-30; collective-framing only, no artefact
 - Worker-owned data cooperatives — Workers Lab / In These Times coverage; exit-pathway hook, no primary artefact
+- App Drivers Union (Massachusetts) — first recognized US rideshare bargaining unit
 
 ## Empirical counter-power evidence
 

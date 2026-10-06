@@ -150,6 +150,15 @@ The first quantified field study of grocery-delivery surveillance pricing on the
 
 *(Source: `raw/research/weekly-2026-05-04/03-04-ny-ag-instacart-investigation.md` — NY AG press release citing the December 2025 Groundwork Collaborative + Consumer Reports field study. CT SB4 captured in `raw/research/weekly-2026-05-11/02-ct-sb4-passage.md`.)*
 
+### Grocery loyalty profiles and municipal response (Kroger, Seattle; Sept 2026)
+
+- **Kroger (CR, May 2025):** loyalty-data investigation; one shopper's state-privacy-law data request returned a 62-page profile with inferences on income, family size, education, gender.
+- **CR / Groundwork / More Perfect Union multi-shopper method (Dec 2025):** nearly 400 consumers shopped the same Instacart basket simultaneously; same-product/same-store/same-time price differences up to 23%, over $1,200/year per family (CR's own figures, relayed second-hand; the 437-shopper Groundwork/CR panel above is the same study family). Instacart ended item price tests afterward. The synchronised-basket design is a replicable collective-audit template ([[tools/natural-price]] is its automated analogue).
+- **Uber/Lyft (CR):** different prices for same-route rides ordered within minutes or seconds; advertised discounts off apparently inflated originals.
+- **Policy follow-on:** Seattle CB 121267, first city-level personalised-pricing ban for groceries/essentials, passed Council pending signature. See [[regulatory/seattle-fair-pricing-and-transparency-act]]. Walmart's 2026-09-25 CEO pledge is the retailer-side voluntary counterpart ([[mechanisms/walmart-pricing-patents]]).
+
+*(Source: `raw/research/weekly-2026-10-05/03-seattle-grocery-surveillance-pricing-ban.md`, Consumer Reports press release; advocacy source, trust medium.)*
+
 ## Cross-industry consumer backlash as a pattern
 
 Backlash moments surface recurrently across sources:
@@ -169,6 +178,7 @@ These are individual episodes, not a coordinated movement. But they establish th
 
 ## Source
 
+- `raw/research/weekly-2026-10-05/03-seattle-grocery-surveillance-pricing-ban.md` — Consumer Reports, Seattle Fair Pricing and Transparency Act press release (Kroger, Instacart, Uber/Lyft grocery/ride sections).
 - `raw/research/dynamic-pricing-landscape/03-wikipedia-dynamic-pricing.md`
   - **Origin:** Wikipedia (community-edited encyclopaedia).
   - **Audience:** general public.
@@ -192,6 +202,8 @@ These are individual episodes, not a coordinated movement. But they establish th
 
 ## Related
 
+- [[regulatory/seattle-fair-pricing-and-transparency-act]]
+- [[mechanisms/walmart-pricing-patents]]
 - [[dynamic-pricing-overview]]
 - [[surveillance-pricing-retail]]
 - [[rental-housing-algorithmic-pricing]]

@@ -42,6 +42,7 @@ Replaces the AI/ML-coded selection heuristic in `/weekly-brief` step 3. In order
 - **Watchlist overflow**: ≤10 per run (skill default). Surplus is discarded for the week.
 - **Index / log / revisions**: update `wiki/index.md`, `wiki/log.md`, `wiki/revisions.md` on every page write. See `wiki/CLAUDE.md` "Modifying the Wiki".
 - **`master_notes.md`**: append kit-level findings discovered mid-run with `Status: open`. Don't try to harvest in the same run.
+- **Scan method (noted 2026-10-05):** WebSearch is weak for date-windowed tooling scans; scan via direct feeds instead (arXiv API, GitHub releases `.atom`, hn.algolia.com date search). The `platform.coop/blog` URL returned 404 on 2026-10-05 — find the correct feed URL before the next platform-tier scan.
 
 ## Sources
 
@@ -59,6 +60,7 @@ The trend-scan source set, grouped by stream. Update freely as outlets prove val
 - **poisoning.ai** — counter-algorithmic tier: Glaze/Nightshade efficacy and bypass research.
 - **GitHub EFForg/privacybadger releases feed** — tracked-tool repos; release cadence signal.
 - **Hacker News** — `show HN` and front-page filtered for consumer-tool / cooperative / privacy-tool launches.
+- **Kadoa US food-prices tracker** — price-transparency watch; check for code/data release and methodology (code status unknown as of 2026-10-05).
 
 ### Platform / federation / cooperative builds
 
@@ -108,6 +110,7 @@ Captured only when a tooling hook is present (see Selection priority #5). Otherw
 - **DOJ Antitrust Division** press releases
 - **NY**, **CA**, **WA** state AG press releases
 - **EU Commission DG COMP** press releases
+- **Digital Policy Alert** (digitalpolicyalert.org) — cross-jurisdiction enforcement/legislation feed; use to surface state/city actions (e.g. municipal pricing bans) early.
 - **UK CMA** news
 - **CourtListener** — RSS for relevant docket filings (RealPage, Greystar, gig-economy pricing)
 
