@@ -38,6 +38,10 @@ A case-study page scoring the UK Department for Environment, Food & Rural Affair
 
 **[wiki synthesis]** Several things this audit gestures at cannot be scored cleanly from this one document. NAO's own strongest evidence is its quantified time series (food-price inflation vs. CPIH, the self-sufficiency ratio 1956–2025, the FTE figures above, Cabinet Office capability ratings); its weakest evidence is the bulk of the diagnostic claims about engagement quality, playbook adequacy, and departmental understanding, which rest on stakeholder interview impressions ("some stakeholders said," "several stakeholders told us") without independent verification — real signal, but not independently corroborated the way the quantitative figures are. The report also does not test whether large private firms exhibit the same named failure modes it finds in Defra (undefined risk appetite, decaying consultation forums, unassured contingency plans): it audits only the public side, so whether these are general bureaucratic-coordination pathologies or specific to public-sector accountability structures is left genuinely open by the source, not resolved by it. Finally, the report is scoped to England only — food policy is devolved, and the audit explicitly excludes the devolved governments, the Cabinet Office's own cross-government coordination role, and domestic food-production resilience/sustainability, flagging all three for future NAO work rather than covering them here.
 
+## Second NAO fragmented-authority case
+
+**[wiki synthesis]** The NAO's 2026 audit of the GB transmission-grid upgrade ([[uk-electricity-transmission-upgrade-nao-case-profile]]) shows the same pattern: several public bodies share levers and no one owns the portfolio. The unit differs, since there the delivery tier is a privately owned regulated monopoly with Ofgem-approved funding through bills, which is the mandated-investment comparator named above for food. The pages are kept separate for that reason.
+
 ## Source
 
 - `raw/research/weekly-2026-09-08/05-resilience-food-supply-chain-nao.md` — National Audit Office, "Resilience of the Food Supply Chain to Disruptions," 2026. https://www.nao.org.uk/reports/resilience-of-the-food-supply-chain-to-disruptions/
@@ -52,4 +56,5 @@ A case-study page scoring the UK Department for Environment, Food & Rural Affair
 - [[personnel-economics-of-the-state]] — the Food Supply Chain Resilience team's FTE increase (6.5→16.5, May 2026) is a dated staffing-capacity data point.
 - [[measurement-validity-framework]] — Defra's absent outcome metrics for its 2025 resilience strategy is a live instance of the auditing-an-institution's-own-KPI-system problem.
 - [[credible-commitment]] — Norway's power to compel business participation in emergencies is the reverse polarity of credible-commitment's usual ruler-cannot-expropriate-investors mechanism; a structurally distinct "commitment" concept, not a merge candidate.
+- [[uk-electricity-transmission-upgrade-nao-case-profile]] — second NAO fragmented-authority case: a policy-domain audit with a private regulated monopoly delivery tier and no portfolio owner.
 - [[reorganisation-base-rate]] — same NAO value-for-money audit genre; Defra's unmeasured strategy outcome echoes that batch's headline finding of departments failing to set outcome metrics.

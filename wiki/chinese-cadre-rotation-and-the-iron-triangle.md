@@ -20,6 +20,10 @@ Brødsgaard & Beck trace 359 participants of the China Executive Leadership Prog
 
 **[model]** Leading cadres rotate after two terms (~10 years), transferred upward or sideways without leadership responsibility, under age-gated informal norms (e.g. "68 down, 67 up" for Politburo re-election). **[wiki synthesis]** This is more rule-bound than typical Western executive tenure norms (usually informal or contractual) but serves a function comparable to term limits — worth reading alongside D129 ([[selectorate-theory-and-the-winning-coalition]]) as a distinct institutional route to the same anti-entrenchment goal.
 
+## The SOE-board end of the nomenklatura list
+
+**[empirical]** (documentary, via Zeng's law-journal history; the practice claims rest on 41 unreleased lawyer interviews) The appointing authority is split by firm tier: the Central Organisation Department appoints leaders of strategically important central SOEs, and SASAC appoints the rest subject to Department approval. Joint appointment (the same people on party committee, board and management) reached 89% of core central SOEs in Xi's first term versus 76% under Hu-Wen, and board chair = party secretary in more than 90% of firms (Leutert's counts, secondary). **[wiki synthesis]** This is the firm-side counterpart of the CELP rotation data above: the one-list personnel system does not stop at the appointment, it continues as a standing party organ inside the company. See [[party-organisation-control-of-chinese-soes]].
+
 ## Source
 
 - `raw/research/comparative-governing-philosophies/02-china-brodsgaard-cadre-management.md` — Kjeld Erik Brødsgaard & Kasper Ingeman Beck, "Big Business and Cadre Management in China," *Copenhagen Journal of Asian Studies* 39(2).
@@ -30,3 +34,4 @@ Brødsgaard & Beck trace 359 participants of the China Executive Leadership Prog
 - [[dimensions-of-institutional-variation]] — bears on **D131**; the pay-vs-rank finding is a caveat on incentive-intensity framings generally.
 - [[amakudari-and-institutionalized-capture]] — the paper's own explicit contrast case: Japan's amakudari runs government-to-business, informally and without a single controlling party; this runs business-to-government-and-Party, formally, under one appointing authority.
 - [[civil-service-tenure-and-political-insulation]] — Guo Xu's entry/progression protection framework, built from a different personnel system, for comparison.
+- [[party-organisation-control-of-chinese-soes]] — the firm-internal side: party committees, cross-holding posts and the 2024 Company Law formalisation.

@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-09-29
+last_reviewed: 2026-10-06
 ---
 
 # Watchlist
@@ -219,6 +219,43 @@ section is empty by search limitation, not because nothing was released.
 - Legacy of the 2015 JOIE debate on property versus possession (Pietri, *Journal of Institutional Economics*,
   Jan 2026) — weak relevance; exact URL not located this sweep.
 
+## Week of 2026-10-06
+
+Thin week. 4 captured (see `wiki/weekly-briefs/2026-10-06.md`), 9 listed here. The IMF candidate was dropped from
+capture after a hard 403 (direct PDF and browser UA).
+
+### Working-paper and preprint feeds
+
+- Institutions for Industrial Policy: The Foundation of Economic Development (Cherif, Hasanov & Xie, IMF
+  WP/26/63, Mar 2026) — institutional architecture for a leading agency drawing on Japan/Korea/Taiwan/Singapore;
+  closes part of the Japan/Korea gap; **imf.org 403'd on direct PDF**, try an author or RePEc mirror.
+  https://www.imf.org/-/media/files/publications/wp/2026/english/wpiea2026063-source-pdf.pdf
+- No Taxation Without Administration (Jensen & Weigel, NBER w34729 / JEL Mar 2026) — survey of tax-administration
+  organisation, personnel and legitimacy; pairs with the Besley et al. state-capacity pages; NBER block risk, try
+  author/HKS mirror. https://www.nber.org/papers/w34729
+- The Political Economy of Financial Crises (Calomiris & Jaremski, NBER w35101) — financial rules as a political
+  equilibrium; likely NBER-blocked. https://www.nber.org/papers/w35101
+- Tchuente, DAO monitoring companion paper (arXiv 2603.11222) — companion to the captured scale/monitoring
+  paper; wait for the nursing-home page to settle first. https://arxiv.org/abs/2603.11222
+
+### Journals
+
+- Trust, trust reforms and trust-based management in the Nordic public sector (Nordic Administrative Journal,
+  Vol. 102 No. 3, 2025 special issue) — Nordic-hosted, open access, abandoning control-based performance
+  management; pick one article. https://journals.oslomet.no/nat/issue/current
+- Sludge, transaction benefits, and cognitive institutions (Frolov, *Journal of Institutional Economics*, Jan
+  2026) — bears on the vocabulary question; JIE captures cleanly.
+- Institutional trust and the confiscation of real estate from organised crime (Fiorillo et al., *JIE*, Feb 2026)
+  — Italian data, non-Anglosphere.
+
+### Blogs, essays and commentary
+
+- The Everywhere Millionaire (Zidar & Zwick, book), reviewed in ProMarket 2026-09-23 — wealth-to-rule-writing
+  channel (power to institutions); second-hand only, counts toward the non-academic cap.
+  https://www.promarket.org/2026/09/23/wealth-buys-power-but-americans-are-focused-on-the-wrong-wealthy/
+- Greg Clark symposium (Econ Journal Watch, via Marginal Revolution 2026-10-05) — culture/status persistence;
+  camp-balancing venue, discovery only.
+
 ## Source
 
 - Seeded at bootstrap, 2026-08-19.
@@ -231,6 +268,8 @@ section is empty by search limitation, not because nothing was released.
 - Weekly sweep, 2026-09-22 — see `wiki/weekly-briefs/2026-09-22.md` for the full candidate list and selection
   rationale.
 - Weekly sweep, 2026-09-29 — see `wiki/weekly-briefs/2026-09-29.md` for the full candidate list and selection
+  rationale.
+- Weekly sweep, 2026-10-06 — see `wiki/weekly-briefs/2026-10-06.md` for the full candidate list and selection
   rationale.
 
 ## Related

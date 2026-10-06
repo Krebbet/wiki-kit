@@ -91,6 +91,8 @@ releases only) or has become the new baseline for all NBER papers.
 | Governance | Public administration and institutional reform | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | American Political Science Review / American Journal of Political Science | Power, veto players, accountability | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | Administrative Science Quarterly / Organization Science | Organisational theory, scale and hierarchy effects | 2026-08-19 | probation — capture-blocked (2026-09-22) |
+| Nordic Administrative Journal (journals.oslomet.no/nat) | Open-access Nordic-hosted public-administration research; fits the Nordic gap alongside SJPA | 2026-10-06 | probation — one special issue watchlisted |
+| Econ Journal Watch | Book symposia; camp-balanced coverage | 2026-10-06 | probation |
 | Journal of Economic Literature | Survey articles — high value per capture for a wiki still building its canon | 2026-08-19 | probation |
 
 **Capture note (2026-09-22):** `journals.sagepub.com` (Administrative Science Quarterly, and presumably other
@@ -113,6 +115,7 @@ manual browser session with a persistent cookie jar may clear it where Wiley's d
 | IMF / World Bank flagship reports | Institutions-and-growth chapters | 2026-08-19 | probation |
 | National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | UK NAO: active (2026-09-08); GAO capture-blocked (2026-08-25, confirmed 2026-09-08); Canada OAG untested |
 | OPM CHCOC memos / Federal Register (opm.gov/chcoc/latest-memos) | Primary reform documents for the US federal civil service | 2026-09-29 | active (2026-09-29) — one capture; PDFs need curl + `capture_pdf` (see Local conventions) |
+| IMF Working Papers (imf.org/wp) | Institutional-design content; open-PDF route around NBER blocks | 2026-10-06 | probation — direct PDF 403'd (2026-10-06, curl + browser UA too); try author/RePEc mirrors |
 | IZA discussion papers (docs.iza.org) | Open-access mirror for CEPR/NBER papers that are gated | 2026-09-29 | active (2026-09-29) — recovered the CEPR-blocked Ukraine war paper |
 
 **Capture note (2026-08-25):** `oecd.org`/`oecd-ilibrary.org` and `gao.gov` both returned hard 403s to every
@@ -202,6 +205,12 @@ survey subagent.
   memo captured through a curl-download + `capture_pdf` fallback; IfG (Whitehall Monitor) captured cleanly.
   NBER/SSRN/arXiv in-window listings could not be surfaced through search, so those feeds are unconfirmed
   rather than dry this cycle. All three captures were state-capacity/reform sources; none was public-choice.
+
+- Sixth sweep, 2026-10-06: thin week. arXiv econ.GN (scale/monitoring theory, an AI-and-institutions preprint) and
+  UK NAO (direct PDF) captured cleanly; an Essex open repository supplied the one China-gap capture (English-language
+  law scholarship about the party-state, not Chinese-language work). IMF working-paper PDF hard-403'd. Broadstreet
+  and Mercatus returned nothing in window (Broadstreet now two consecutive dry sweeps). Added IMF WPs, Nordic
+  Administrative Journal and Econ Journal Watch; Essex/HKU open repositories noted as a route for China-gap papers.
 
 ## Related
 

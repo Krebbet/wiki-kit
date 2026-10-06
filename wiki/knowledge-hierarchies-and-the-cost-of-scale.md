@@ -65,6 +65,10 @@ So depth can rise either because the organisation got bigger at fixed technology
 - **No power.** Who selects managers, who removes them, and to whom the organisation answers are absent. The one power-adjacent result is that under two-sided information asymmetry the efficient contract makes the most knowledgeable agent the full residual claimant — knowledge advantage converting directly into control rights.
 - **Association, not identification.** The authors say so themselves. The layer-wage results survive firm fixed effects, which is the strongest claim available here; nothing in the source is a randomised or quasi-experimental test of the mechanism.
 
+## Related scale-threshold account
+
+**[wiki synthesis]** [[network-scale-and-decentralised-monitoring]] gives a second threshold-like scale logic with a different mechanism. Here depth is cost-minimising under a knowledge constraint; there, decentralised oversight fails above a network size because local monitors do not internalise cross-unit spillovers (strategic complementarity). The unit also differs: layers within one organisation here, a monitored network of units there. That account rests on an un-refereed preprint with a count outcome and no causal identification, so it does not corroborate this page's results.
+
 ## Source
 
 - `raw/research/scale-effects/08-garicano-rossi-hansberg-knowledge-hierarchies.md` — Luis Garicano & Esteban Rossi-Hansberg, "Knowledge-based Hierarchies: Using Organizations to Understand the Economy", NBER Working Paper 20607, 2014. https://www.nber.org/system/files/working_papers/w20607/w20607.pdf
@@ -78,4 +82,5 @@ So depth can rise either because the organisation got bigger at fixed technology
 - [[path-dependence-and-increasing-returns]] — the stagnation result is a firm-level lock-in mechanism running on technology vintage, offered as a parallel, not as age evidence.
 - [[dimensions-of-institutional-variation]] — supplies D36 (span), D37 (depth), D39 (communication cost) and D40 (information-acquisition cost), and forces the supersession note on D25.
 - [[functional-vs-rent-seeking-growth]] — this page is the functional pole: layers as cost minimisation.
+- [[network-scale-and-decentralised-monitoring]] — an externality-based scale threshold for oversight regimes (nursing-home preprint evidence).
 - [[open-questions]] — Q3 (public/private invariance), Q7 (age vs. size) and Q24 (does this transfer to unpriced output).

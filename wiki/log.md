@@ -1744,3 +1744,7 @@ none is public-choice, so the camp imbalance is noted in the brief.
 
 **Watchlist:** 8 new entries; the CEPR "Allocative Cost of War" entry marked resolved. Full brief:
 `wiki/weekly-briefs/2026-09-29.md`.
+
+## [2026-10-06] weekly-brief | sixth radar sweep
+
+Thin week. 4 captured / 4 ingested (monitoring-scale theory, provisional LLM-institutions preprint, CCP/SOE party control, NAO transmission audit); IMF WP/26/63 dropped on a 403. 9 watchlisted. Camp balance: no public-choice source surfaced in window. Brief: `wiki/weekly-briefs/2026-10-06.md`.

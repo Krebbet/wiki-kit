@@ -157,3 +157,7 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-09-29 | update | index.md | Three new page rows added (weekly sweep). |
 | 2026-09-29 | update | reference-sources.md | Added OPM CHCOC memos, IZA discussion papers and ProMarket to watched sources; Statecraft feed noted as discovery channel; Local-conventions note that opm.gov direct-PDF URLs need curl + `capture_pdf`. |
 | 2026-09-29 | update | watchlist.md | `## Week of 2026-09-29` added (8 entries); the 2026-09-15 CEPR Allocative Cost of War entry marked resolved via the IZA mirror. last_reviewed bumped. |
+| 2026-10-06 | create | network-scale-and-decentralised-monitoring.md, when-institutions-beat-intelligence.md, party-organisation-control-of-chinese-soes.md, uk-electricity-transmission-upgrade-nao-case-profile.md | Sixth `/weekly-brief` sweep: 4 new pages from 4 captured sources (arXiv monitoring-scale theory, provisional arXiv LLM-institutions preprint, Essex-hosted CCP/SOE law article, UK NAO transmission audit). IMF WP/26/63 dropped (403). |
+| 2026-10-06 | update | knowledge-hierarchies-and-the-cost-of-scale.md, chinese-cadre-rotation-and-the-iron-triangle.md, defra-food-supply-chain-resilience-case-profile.md | Cross-notes and Related back-links to the new pages. |
+| 2026-10-06 | update | index.md | Four new page rows added (weekly sweep). |
+| 2026-10-06 | update | reference-sources.md, watchlist.md | Added IMF WPs, Nordic Administrative Journal, Econ Journal Watch; sixth-sweep note. `## Week of 2026-10-06` added (9 entries). last_reviewed bumped. |
