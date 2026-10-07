@@ -98,6 +98,15 @@ Cartographer's own FAQ: in 2D the correlative matcher "is computationally expens
 
 Net for §Recommendation: steps 1 (closing test) and 4 (standard metrics) are done at ½ day as predicted; step 2 (map with the odometry as-is) is running; step 3 (gyro) remains a human purchase decision (WitMotion WT901C-TTL shortlisted in [[usb-imu-candidates]]); step 5 (no learned corrector) held — after the constant fix the per-move residual is at the label noise floor.
 
+## What this rig measured (2026-10-06 → 07) — the gyro (librarian note)
+
+*Source: drone-prototype diary 2026-10-06 (night) and 2026-10-07 (late morning); `eda/EDA252-imu-turns/` (`turn_test.py`, `runs/20261007-091753/turns.json`); `src/drone/imu.py`; parked P-00103. Step 3 of §Recommendation, done with the [[usb-imu-candidates]] §10 fallback (Seeed XIAO nRF52840 Sense, own firmware), not the WitMotion.*
+
+- **Scale against the LiDAR (turn test, 6 turns):** LiDAR heading change = **1.0024 ×** the gyro projected on gravity-up, residual rms **0.26°**. Projecting on gravity rather than the board's z axis matters here: the board is mounted **4.6° off square**.
+- **In odometry (`--imu`), first room scan, 23 move sequences:** heading change vs the map-registered heading, median **0.16°** (worst 1.15°) for the IMU against **1.85°** (worst 6.59°) for the wheels: about 11×, in line with the ~10× the §3 arithmetic predicted. *Caveat:* that comparison has no committed script yet (PR #66 review N2), so treat it as a diary number until it does.
+- **Bench (before mounting):** 208 Hz, 0 drops, host clock fit p95 0.57 ms once the startup backlog is flushed (the backlog had faked 86 ms / "96 Hz"); heading drift −0.004° over 5 s after a rest zero.
+- **Pitfalls found:** a one-session single-sample gyro glitch (±17.85 dps) led to a despike filter. Its first version (upper median of 4 neighbours) would have turned vibration into a false rotation (+11°/10 s simulated); it was replaced by a symmetric 5-wide Hampel (P-00103; threshold still to be re-checked under motor vibration). The odometry refuses an IMU yaw unless the samples cover the whole move window, and that check uses host arrival time, so USB bursts may cause refusals (to be counted on the next `--imu` run).
+
 ## Sources
 
 - [Borenstein96] Borenstein & Feng, "Measurement and Correction of Systematic Odometry Errors in Mobile Robots", IEEE T-RA 12(6):869–880, 1996, doi:10.1109/70.544770. PDF: https://johnloomis.org/ece445/topics/odometry/borenstein/paper58.pdf (UMBmark §3.3; results §5, Table I: 317 → 21 mm; stop rule `E_max,syst < 3·SEM`)
