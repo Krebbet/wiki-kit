@@ -144,6 +144,17 @@ Folded back from drone-prototype `docs/prototype-diary.md` entries **2026-10-01*
 
 **Correction (librarian note, 2026-10-06, PR #57–#59).** Station views (drone-prototype EDA243/EDA244) compared each LiDAR chord with the camera mask and read a ~2–3 cm "sideways" camera↔LiDAR offset (P-00086). EDA246 (`eda/EDA246-camlidar-calib/FINDING.md`) showed it was the extrinsic's **forward** term, 6.4 cm wrong: the LiDAR is ~2.2 cm *behind* the camera (tx +0.85 cm), and lens distortion is now applied when projecting LiDAR into the image. Chord-vs-mask misses fell to 0.13–0.42 cm. Camera-silhouette-vs-chord numbers from EDA243–EDA245 predate the fix; the object fit (EDA245, `docs/object-fit-design.md`) is to be re-run on the corrected extrinsic. Judge the extrinsic with same-tilt tests only.
 
+**Room scan: anomaly candidates (librarian note, 2026-10-07, PR #66).** The first whole-room scan (drone-prototype diary 2026-10-07 (late morning); code `src/drone/patrol/analyse.py`, formerly EDA251; run `data/patrol/runs/20261007-094343_scan2`, gitignored) is the change-detection step of §6 done on returns rather than on stored footprints. Every return is projected through the tilt- and lift-aware rig model from the relocalised **sensor** pose. A return is *unexplained* when it is above the floor band, more than a gap from every mapped wall or furniture point, and inside the drivable polygon. Unexplained returns are pooled over the run and clustered on a 3 cm grid. Clusters are ranked by **evidence**, not size: distinct stops and postures that saw them, then return count. A cluster seen from one posture of one stop is kept but flagged weak. Known objects within 0.25 m of a stored position are labelled with their ID. Each cluster also gets a **kind**, and floor objects rank first:
+
+| Kind | Rule (as of PR #66) | What it was on scan2 |
+|---|---|---|
+| wall-hugging | median distance to the nearest wall < 10 cm | furniture or wall returns the map does not hold |
+| raised | lowest return > 20 cm (stands on something) | meant for things standing on furniture (the code names a desk and the ironing board); not itemised in the diary |
+| large object | footprint side > 45 cm | the unmapped office chair (a 54 cm arc, seen from all 6 stops) |
+| floor object | none of the above: compact, on the floor, clear of the walls | wastebasket (#1), pet carrier (#2), plush = obj-0003 (#5, 20 cm from its stored spot) |
+
+Each candidate was checked by eye against the frames facing it. A first draft named the 30 cm ring the chair; it was the wastebasket. **Caveat:** the thresholds were tuned on this one scan. Confirm them on the next room scan before treating a kind as a classification. Scan2 reached only 4 distinct positions: the planner found no path to 3 of the stops. The map still lacks the chair.
+
 ## Sources
 
 *(all accessed 2026-09-22)*
