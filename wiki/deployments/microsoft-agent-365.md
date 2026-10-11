@@ -74,6 +74,10 @@ The partner-services framing names **five governance pillars**: Inventory and ow
 
 A live "Ask Microsoft Anything" session is scheduled for Tuesday May 12, 2026 — useful follow-up signal source if any quantitative claims surface there.
 
+## MXC, agent identity, and local-agent management (2026-10)
+
+Microsoft's 2026-10-07 post on [[security/microsoft-execution-containers]] (MXC 1.0.0, GA) frames a three-pillar Windows agent platform: Containment (MXC, GA now), Identity and Manageability, the last two announced as "coming soon". Identity: Entra will separate agent activity from user activity in Agent 365, so a compromised agent can be restricted per agent or per group without blocking the employee. Manageability: Agent 365 extends from cloud-registered agents to local on-device agents, and Intune will push organizational policy that controls how Windows evaluates MXC process-container creation (Windows 11, "soon"). This turns the Defender/Intune local-agent *discovery* described above into discovery plus enforced boundaries. Windows 365 support for MXC (agents on Cloud PCs) is GA. None of the Entra or Intune pieces has shipped, so treat them as roadmap. Nvidia also integrated OpenShell into MXC ([[security/nvidia-open-agent-safety-platform]]).
+
 ## How this slots into the wiki
 
 - [[mcp-infrastructure]] — vendor data point on the *governance + audit + cross-vendor* axis the MCP 2026 roadmap explicitly defers; Defender's *"MCP servers configured for those agents"* mapping is the first vendor product to treat MCP server inventory as a first-class governance object.
@@ -87,3 +91,4 @@ A live "Ask Microsoft Anything" session is scheduled for Tuesday May 12, 2026 �
 - [[anthropic-claude-code-postmortem]], [[anthropic-internal-study]] — vendor-internal context for Claude Code, which Agent 365 explicitly names as a target for shadow-AI discovery and Intune blocking.
 - [[langchain-deep-agents]], [[effective-harnesses]] — coding-agent harness pages whose runtime (Claude Code, GH Copilot CLI) is what Agent 365 now claims discovery and blocking authority over.
 - [[externalization-survey]] — Agent 365 instantiates §6.2.5 (configuration/permissions/policy encoding) at vendor scale.
+- [[security/microsoft-execution-containers]] — MXC containment layer and the Entra/Intune/Agent 365 local-agent roadmap (2026-10).

@@ -1,11 +1,35 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-04
+last_reviewed: 2026-10-11
 ---
 
 # Watchlist
 
 Surplus candidates from weekly radar sweeps that didn't make the capture cap but are worth revisiting if signal hardens. Each `/weekly-brief` run appends up to 10 entries; old entries age out as they get captured, get retired for lack of signal, or the author prunes.
+
+---
+
+## Week of 2026-10-11
+
+Window 2026-10-04 to 2026-10-11. Captured: Sierra/Meta PAP, Nvidia Open Agent Safety Platform, Microsoft MXC, Learn2Play Bench, nanoMuse. Items below are search/aggregator hits; verify before capture.
+
+### Self-improvement / agent training
+- AgentGarten: Code Worlds for Evolving Agents (arXiv 2610.12374) — simulator+renderer worlds; claims ~4-round learning
+- Recursive Self-Improvement through Multi-Agent Self-Supervision (arXiv 2610.12176) — evolves multi-agent workflows, non-verifiable tasks
+- MiMo-V2.6 (arXiv 2610.11959) — Xiaomi RL-scaling toward self-improvement; open RL envs promised
+
+### Evaluation / safety
+- DecepEval (arXiv 2610.07967) — 1,532-case deception benchmark, fraud-theory framing
+- Passing the Test You Trained On (arXiv 2610.03448) — prompt-injection detectors fail to transfer across benchmarks (just outside window)
+- Anthropic unintended-behavior report / Philadelphia police false-tip incident — secondary press only; find primary report
+
+### Vendor launches
+- Claude Haiku 5.5 (~Oct 7) — cheap subagent model; secondary sources only, find claude.com primary
+
+### Open-source agents / practitioner
+- Talorys — self-hosted personal agent on Cloudflare free tier (HN 300+)
+- openrig — multi-agent networks across Claude Code/Codex/Pi CLIs (GitHub trending)
+- CockroachDB "coding agents as a medical team" — five-month practitioner report (HN)
 
 ---
 

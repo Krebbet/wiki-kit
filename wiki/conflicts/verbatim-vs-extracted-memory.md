@@ -114,6 +114,23 @@ A wider scan of open-source agent-memory systems (`raw/research/oss-agent-memory
 
 **Implication for this conflict:** EvoMemBench refines rather than simply reinforces the verbatim/no-extraction pole. The knowledge task evidence supports Position 1/3 on the same terms GroupMemBench does. But the execution task evidence shows that extraction-based methods retain meaningful lift for *procedural* memory at constrained budgets — a regime distinction the reconciling-axes table's "Query type" row was gesturing at but lacked direct evidence for. The conflict remains OPEN; the new data tightens the "when" rather than resolving the "who wins."
 
+## Experience-learning evidence: Learn2Play Bench (2026-10)
+
+[[evaluation/learn2play-bench]] (arXiv 2610.08215) tests cross-episode learning in 20 text games with hidden rules, a different regime from factual recall. With a **Kimi K3** backbone, MEMORY (complete raw interaction histories in the prompt) led all four metrics among the self-evolving methods (Max/Mean 63.3/48.0 vs Reflexion 61.6/40.4, ReasoningBank 59.9/40.1, AWM 56.1/37.0, EvoTest 62.4/48.0, NAIVE 54.7/31.9). The authors' account is that rules and strategies extracted early can freeze an incomplete understanding, while raw evidence lets earlier conclusions be revised (worked failure: a GEMFORGE rule forbidding combinations that would have succeeded).
+
+**It is not a clean win for the verbatim pole.** With **Opus 5**, EvoTest (66.1 Max / 51.3 Mean) and Reflexion (64.8 / 48.8) beat MEMORY (60.9 / 48.2) on Max and Mean; with GPT-5 Mini, MEMORY has the best Mean but Reflexion the best Max. Only three backbones, three trials and one seed per game; method implementations are the authors' own (collect-but-confirm).
+
+Two axes this adds to the reconciling-axes table above:
+
+| Axis | Verbatim wins when... | Extraction/abstraction wins when... |
+|---|---|---|
+| **Task type: factual recall vs experience-based rule learning** | Learning requires revising hypotheses against evidence; premature rules can lock in wrong beliefs, so raw records are the safer substrate | The model can reliably induce correct rules from few episodes, and prompt budget makes replaying full history costly |
+| **Backbone dependence** | Backbones (e.g., Kimi K3 here) that exploit long raw histories well | Backbones (e.g., Opus 5 here) whose reflections/rules are accurate enough to beat replay |
+
+Related practical points from the paper: replaying full history per action is expensive (MEMORY input tokens about 2.3x a generic flexible harness), and a context-budget cutoff drops the oldest episodes, so MEMORY degrades on long horizons. The suggested synthesis, distilled rules kept as revisable hypotheses with links to the raw interactions behind them, is a hybrid in the spirit of [[longmemeval]]'s verbatim-values-plus-extracted-keys recommendation.
+
+This is the third independent benchmark leaning toward raw/no-extraction on some regime (after [[memory/groupmembench]] and the knowledge-task half of [[memory/evomembench]]), but the backbone split means the conflict **stays OPEN**: it tightens the "when" rather than naming a winner.
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
@@ -148,3 +165,4 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[graphiti]] / [[cognee]] / [[supermemory]] / [[memori]] / [[mcp-memory-server]] — 2026-05-24; further extract-pole open-source instances (Graphiti adds bi-temporal automated conflict resolution; Memori extracts from agent execution). Illustrative, no new evidence.
 - [[claude-self-reflect]] — 2026-05-24; verbatim-with-index instance (conversation-history indexer) that also ships an optional extract layer — the straddle made concrete.
 - [[memory/evomembench]] — 2026-05-25; second independent empirical data point for no-extraction pole on knowledge tasks; first direct evidence that extraction-based methods retain lift on execution tasks at constrained context budgets — refines the conflict's "Query type" axis.
+- [[evaluation/learn2play-bench]] - 2026-10; experience-learning benchmark where raw histories beat reflection/rule-extraction on Kimi K3 but not uniformly across backbones; adds task-type and backbone-dependence axes.

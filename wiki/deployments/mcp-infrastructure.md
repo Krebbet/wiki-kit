@@ -80,6 +80,8 @@ This is the browser-present-human-auth gap this page's earlier "Enterprise readi
 
 The roadmap's "Agentic messaging primitives" workstream (maturing the Tasks extension per SEP-2663, Multi Round-Trip Requests per SEP-2322, server-initiated events/webhooks) is also a live data point for [[patterns/agent-communication-protocols]]'s prediction of a federated, OSI-style layered protocol stack. And [[patterns/agent-plugins-spec]] notes Agent Plugins v1.0 explicitly defers a permission/secrets/signing model — this MCP-side identity work is the protocol-layer effort that packaging-layer spec would eventually need to sit on top of.
 
+Note (2026-10): Sierra and Meta's announced [[patterns/personal-agent-protocol]] (spec unreleased) names MCP and OpenAPI as API-route options and uses an OAuth session for consumer-agent-to-business access; how that relates to the identity work above is an open question.
+
 ## Source
 
 - `raw/research/weekly-2026-04-22/02-mcp-infrastructure-maturity.md` (captured 2026-04-22 from https://thenewstack.io/model-context-protocol-roadmap-2026/)

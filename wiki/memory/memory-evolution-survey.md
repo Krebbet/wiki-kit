@@ -46,6 +46,10 @@ The survey cites Xiong et al. 2025 and Srivastava and He 2025 in claiming that "
 
 The survey adds an **abstraction-depth** axis to the existing conflict: Storage = verbatim-fidelity pole; Experience = full-abstraction pole; Reflection = middle ground. [[memory/longmemeval]]'s hybrid recommendation (verbatim values + extracted-fact keys) sits at the Storage/Reflection boundary. The survey does not resolve the conflict but locates each position on the evolutionary axis. See [[conflicts/verbatim-vs-extracted-memory]].
 
+## Empirical note: higher tiers not reliably better (Learn2Play Bench, 2026-10)
+
+[[evaluation/learn2play-bench]] (arXiv 2610.08215) compares raw-history memory against Reflection- and Experience-style methods (Reflexion, EvoTest, ReasoningBank, AWM) in hidden-rule text games. Raw histories led on Kimi K3 but not on Opus 5, so the Reflection/Experience tiers were not reliably better than raw Storage in this benchmark; the ranking depends on the backbone. This is one benchmark with three backbones and three trials (collect-but-confirm), and it does not settle the abstraction-depth question. See [[conflicts/verbatim-vs-extracted-memory]].
+
 ## Survey provenance and reproducibility
 
 Living GitHub survey repository accompanies the paper — a positive reproducibility signal for an arXiv preprint. No unified quantitative benchmark across stages exists yet; the Experience stage only emerged as a coherent research direction in late 2025 (recency bias acknowledged by authors). Treat any cited numbers from third-party systems as collect-but-confirm.
@@ -66,3 +70,4 @@ Living GitHub survey repository accompanies the paper — a positive reproducibi
 - [[memory/longmemeval]] — knowledge-updates axis is the dynamic-environment driver's benchmark instantiation.
 - [[patterns/skillos]] — maps to Explicit Experience (skill library with induction/reuse/refinement lifecycle).
 - [[patterns/externalization-survey]] — complementary vocabulary (where memory lives vs how it evolves).
+- [[evaluation/learn2play-bench]] - experience-learning benchmark; Reflection/Experience tiers not reliably better than raw storage (backbone-dependent).

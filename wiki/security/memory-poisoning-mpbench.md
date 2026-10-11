@@ -133,8 +133,13 @@ Roy & Basu, "MemSentry: A Framework for Detecting Persistent Memory Poisoning in
 
 **How this fits with the defense analysis above**: MemSentry's structural trust-boundary rule — quarantine anything from an untrusted external source, independent of content — is a genuinely different layer than the prompt-injection-style, pattern/content-based defenses this page's [Defense analysis](#defense-analysis) section found to fail structurally against weak-signal memory poisoning. It's closer in kind to the "write-path provenance tracking" and "source isolation" mitigations this page already recommends (see Implications, item 2) than to the classifiers MPBench evaluated, so it doesn't straightforwardly confirm or refute this page's claim that *content-classification* defenses fail against semantically-indistinguishable weak-signal payloads. However, MemSentry's *own* semantic-layer results are arguably a second, independent data point for that same claim: when trust alone can't resolve a write (insider sources, or contrast pairs where surface form doesn't reveal intent), its content-based classifiers show exactly the kind of breakdown — 0% quarantine accuracy on insider attacks, ≤3/10 on contrast pairs — that this page's argument would predict. Whether that reading holds depends on exactly how strongly this page's original "defenses fail structurally" claim is meant to generalize beyond the four prompt-injection tools it tested; flagging this as a judgment call rather than asserting it outright.
 
+## Open gap: memory provenance (nanoMuse, 2026-10-06)
+
+The nanoMuse project report ([[deployments/nanomuse]]) states as a limitation that its file-based memory lacks per-line provenance (writing model, date, confidence) and a re-check rule, and argues that user-written lines should outrank model-written ones. This is the write-time trust problem this page's write-path provenance recommendation points at, but as a self-reported design gap from a single academic group with no attack evaluation, so treat it as collect-but-confirm. It is a stated problem, not a tested defense. Meta's Muse prompt (secondary, prompt-copy-derived) reportedly tells the agent to search memory rather than trust recall and to show provenance on request, which is also unverified.
+
 ## Source
 - arXiv 2606.04329 — Dash et al., ICML 2026 (43rd International Conference on Machine Learning, Seoul)
+- raw/research/weekly-2026-10-11/05-nanomuse.md — nanoMuse project report, arXiv 2610.08699 (provenance gap note)
 - raw/research/weekly-2026-09-27/05-memsentry-memory-poisoning.md — Roy & Basu, "MemSentry: A Framework for Detecting Persistent Memory Poisoning in Agentic AI," arXiv 2609.08747 (submitted 2026-09-08)
 
 ## Related
@@ -143,3 +148,4 @@ Roy & Basu, "MemSentry: A Framework for Detecting Persistent Memory Poisoning in
 - [[memory-architectures]] — write channel taxonomy maps directly to memory system design patterns; V-P1/V-S1 vulnerability mitigations are architectural choices
 - [[memory-evolution-survey]] — C4 experience-to-procedure and compaction-driven writes are surveyed capabilities; this paper characterizes their security implications
 - [[conflicts/auto-mode-prompt-injection-defense]] — related open question on whether automated/config-driven defense layers can be trusted to run without human checkpoints; MemSentry's Review-vs-Quarantine split is a concrete instance of that tradeoff
+- [[deployments/nanomuse]] — file-based personal-agent memory that names missing per-line provenance as an open gap

@@ -57,6 +57,10 @@ Short-term pressure exists toward protocols that unify agent-to-agent and agent-
 - **MCP is stateless by design** and was designed for agent-to-context (tool/data) communication, not agent-to-agent. This is technically correct per Anthropic's own docs. [[mcp-infrastructure]]'s 2026 roadmap discussion and [[mcp-multi-agent-framework]]'s multi-agent use patterns describe extended/future use cases that go beyond MCP's design intent. Distinction: MCP-as-designed (context counterparty, stateless) vs. MCP-as-used (extended via A2A or application-layer patterns).
 - **A2A and MCP are complementary, not competing** (Google's explicit statement): [[mcp-infrastructure]] should not imply A2A integration is a settled MCP roadmap item — it is an unendorsed vendor proposal (as of the paper's publication).
 
+## Consumer-to-business layer: PAP
+
+Sierra and Meta announced the [[patterns/personal-agent-protocol]] (PAP) on 2026-10-06, a proposed open standard for how a consumer's personal agent authenticates with and acts on a business (website, APIs, or the company's own agent). It adds a counterparty type the nine classified protocols do not cover: consumer agent to business, with OAuth-based guest-to-authenticated sessions and user-chosen read or write scope. MCP and OpenAPI appear only as one of its API routes, so it layers around MCP rather than competing. The v0.1 spec is unreleased (promised for October 2026) and claims are vendor-stated, collect-but-confirm.
+
 ## Source
 
 - Raw: `raw/research/weekly-2026-06-28/04-llm-agent-protocol-taxonomy.md`
@@ -65,6 +69,7 @@ Short-term pressure exists toward protocols that unify agent-to-agent and agent-
 
 ## Related
 
+- [[patterns/personal-agent-protocol]] — consumer-to-business entrant (Sierra/Meta, spec unreleased)
 - [[mcp-infrastructure]] — MCP is one of the nine classified protocols; MCP-as-designed vs. MCP-as-used distinction
 - [[mcp-multi-agent-framework]] — context-retention failures map to interaction-state and schema-flexibility dimensions
 - [[patterns/topology-taxonomy]] — protocol choice maps to MAS topology concerns (hierarchical vs. equi-level)

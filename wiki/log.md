@@ -584,3 +584,9 @@ Autonomous `/weekly-brief` sweep for week of 2026-10-04. Two parallel scan agent
 - **harness-engineering-coding-agents** — first capture via the arXiv `/abs/` URL returned the abstract landing page again (fifth recurrence); re-captured via `/pdf/`.
 
 Wiki changes: 2 new pages (deployments/openai-dots, patterns/harness-engineering-source-study); index.md (2 entries); revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-04.md.
+
+## [2026-10-11] weekly-brief ingest | weekly radar sweep (5 captured, 5 ingested, 10 watchlisted)
+
+Autonomous `/weekly-brief` sweep for week of 2026-10-11. Two parallel scan agents (vendor/press and research/practitioner). 5 captures to `raw/research/weekly-2026-10-11/`: sierra-personal-agent-protocol, nvidia-open-agent-safety-platform (Constellation Research), microsoft-execution-containers, learn2play-bench (arXiv 2610.08215), nanomuse (arXiv 2610.08699). Audit clean, all 5 summaries valid.
+
+Wiki changes: 5 new pages; 9 extensions (incl. reinforcing notes on conflicts/auto-mode-prompt-injection-defense and conflicts/verbatim-vs-extracted-memory, both still OPEN); index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-11.md. Pre-existing uncommitted backlog untouched. Note: new pages link [[memory/openclaw]], which is untracked.
