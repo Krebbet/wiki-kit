@@ -30,3 +30,4 @@ Colignon & Usui document *amakudari* ("descent from heaven") as a **ministry-org
 - [[dimensions-of-institutional-variation]] — supplies **D132**.
 - [[chinese-cadre-rotation-and-the-iron-triangle]] — the paper's own explicit comparison case: China's rotation runs business-to-government under one controlling Party authority; Japan's runs government-to-business, informally, with no single controlling party.
 - [[career-concerns-and-managerial-risk-taking]] — a different personnel-economics question (does anticipated future market judgment distort present decisions); amakudari raises the adjacent but distinct question of *systemic, designed* post-tenure placement rather than an individual incentive distortion.
+- [[regulator-career-incentives-and-revolving-doors]] — the informal US analogue: a bunching study of federal salaries and an un-refereed option-payoff model of the same exit incentive; a pay-threshold cooling-off rule is exposed to *wataridori*-style evasion.

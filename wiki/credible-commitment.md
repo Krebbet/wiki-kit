@@ -90,3 +90,4 @@ Filed OPEN at [[constraint-vs-capacity-as-the-investment-mechanism]]. It adds a 
 - [[institutions-as-fundamental-cause]] — AJR's holdup channel is this page's mechanism generalised from the ruler-and-investor problem to the choice of institutions itself.
 - [[endogenous-state-capacity]] — the same Glorious Revolution case for a complementary mechanism: here the ruler cannot expropriate the investor, there the ruler will not invest in state capacity because a successor might inherit it.
 - [[culture-and-constitutional-compliance]] — the same Weingast self-enforcement logic (a constitution binds only if it is self-enforcing) tested with a new upstream determinant: national culture, across 115 countries.
+- [[organizational-lifespan-as-commitment]] — extends commitment from ruler self-restraint to an organisation's own lifespan (perpetuity vs sunset vs discretion); formal-only, un-refereed.

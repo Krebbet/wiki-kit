@@ -1748,3 +1748,7 @@ none is public-choice, so the camp imbalance is noted in the brief.
 ## [2026-10-06] weekly-brief | sixth radar sweep
 
 Thin week. 4 captured / 4 ingested (monitoring-scale theory, provisional LLM-institutions preprint, CCP/SOE party control, NAO transmission audit); IMF WP/26/63 dropped on a 403. 9 watchlisted. Camp balance: no public-choice source surfaced in window. Brief: `wiki/weekly-briefs/2026-10-06.md`.
+
+## [2026-10-13] weekly-brief | seventh radar sweep
+
+Thin week. 4 captured / 4 ingested (China SOE privatization productivity, regulator revolving-door option model, Hungarian construction state-demand case, foundation-lifespan commitment model); the Brennan-Freiman paper was dropped (Cambridge PDF served a stub; MR post too thin). 9 watchlisted. Camp balance: one public-choice-leaning item (revolving door); no state-capacity item surfaced. Brief: `wiki/weekly-briefs/2026-10-13.md`.

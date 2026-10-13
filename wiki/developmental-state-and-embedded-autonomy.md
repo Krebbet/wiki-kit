@@ -90,3 +90,4 @@ Wade's account of South Korean, Taiwanese and Singaporean catch-up growth is the
 - [[decay-as-real-vs-decay-as-overstated]] — the innovation-bureaucracy zig-zag is a cyclical-reorganisation datapoint that neither position in that conflict predicts.
 - [[dimensions-of-institutional-variation]] — D91 (performance-conditionality of institutional support, `promoted`) and D94 (embedded autonomy, `rejected`, with its readmission condition).
 - [[open-questions]] — Q90 (level of analysis), Q93 (whether constraint and conditional discipline are substitutes).
+- [[state-demand-and-preferential-allocation-in-hungarian-construction]] — a tension, not a refutation: preferential allocation to connected national champions in post-2010 Hungarian construction coincides with flat productivity and near-zero export intensity. **[wiki synthesis]** The missing performance conditionality may be the discriminating variable; untested, and descriptive evidence only.

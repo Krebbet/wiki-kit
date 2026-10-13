@@ -60,3 +60,4 @@ China only, state-controlled firms, 1949-2024, Leninist one-party state; stronge
 - [[developmental-state-and-embedded-autonomy]] — performance-conditional discipline vs enterprise subordinated to policy.
 - [[gradual-institutional-change]] — layering and conversion from intra-party practice to statute.
 - [[dimensions-of-institutional-variation]] — candidate new dimensions.
+- [[soe-privatization-vs-restructuring-in-china]] — productivity evidence on the same SOE universe (1998-2008): restructuring of kept SOEs, not ownership change, drove catch-up; no party-control variable (weekly sweep, 2026-10-13).

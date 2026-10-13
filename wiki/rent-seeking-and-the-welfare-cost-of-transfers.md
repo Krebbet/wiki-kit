@@ -73,3 +73,4 @@ All three run through the same lever: **reduce the size of contestable transfers
 - [[rational-actor-accounts-of-bureaucratic-behaviour]] — the batch's other public-choice sources; Downs and Wilson theorise bureaucratic *behaviour*, where Tullock theorises the *cost of the prize*, and Downs contains no rent-seeking mechanism at all.
 - [[dimensions-of-institutional-variation]] — supplies the framing of public-vs-private provision of an enforcement function as a relative-efficiency question rather than a categorical difference.
 - [[open-questions]] — bears on Q7 (age is absent here and the Gladstone comparison must not be read as an age claim) and on Q13 (which channel dominates in linking institutions to output).
+- [[state-demand-and-preferential-allocation-in-hungarian-construction]] — a worked sectoral instance (connected firms 56.1% of sector profits, 2024); it shows profit concentration, not dissipation, and cannot separate rent from return.

@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-06
+last_reviewed: 2026-10-13
 ---
 
 # Watchlist
@@ -255,6 +255,41 @@ capture after a hard 403 (direct PDF and browser UA).
   https://www.promarket.org/2026/09/23/wealth-buys-power-but-americans-are-focused-on-the-wrong-wealthy/
 - Greg Clark symposium (Econ Journal Watch, via Marginal Revolution 2026-10-05) — culture/status persistence;
   camp-balancing venue, discovery only.
+
+## Week of 2026-10-13
+
+Thin week. 4 captured (see `wiki/weekly-briefs/2026-10-13.md`), 9 listed here. The Brennan & Freiman paper was dropped
+from capture: the Cambridge PDF link returned a one-page stub and the Marginal Revolution post is too thin alone.
+
+### Working-paper and preprint feeds
+
+- Configurations, not thresholds: the middle-income trap in the CEE members of the OECD (Bartha, arXiv 2610.07974)
+  — companion to the captured Hungary case. https://arxiv.org/abs/2610.07974
+- Administrative Boundary Reforms and Firm Pollution in China (Chen & Qin, arXiv 2610.06374) — quasi-experiment on
+  how administrative restructuring changes local-government behaviour; borderline scope (environmental outcome).
+  https://arxiv.org/abs/2610.06374
+- Microfinance Competition in the Presence of Moneylenders (Chowdhury et al., arXiv 2610.12186) — formal vs
+  informal credit institutions; low priority, borderline scope. https://arxiv.org/abs/2610.12186
+
+### Journals
+
+- Against Laissez-Faire Democracy (Brennan & Freiman, Cambridge UP journal, via Marginal Revolution 2026-10-07) —
+  market-failure logic applied to democratic institutions; an argument, not evidence; camp-balancing. Find the
+  paper by DOI; the linked PDF returned a stub. https://marginalrevolution.com/marginalrevolution/2026/10/against-laissez-faire-democracy.html
+
+### Blogs, essays and commentary
+
+- America Became Rich Because of Liberalism (Boettke, ProMarket 2026-10-12) — classical-liberal institutional
+  argument; camp balance only, no evidence base, counts toward the non-academic cap.
+  https://www.promarket.org/2026/10/12/america-became-rich-because-of-liberalism/
+- American Antitrust Has Yet To Figure Out Conglomerates (Friederiszick, ProMarket 2026-10-10) — concentration
+  measurement dispute; borderline scope, low priority.
+  https://www.promarket.org/2026/10/10/american-antitrust-has-yet-to-figure-out-conglomerates/
+- Governing the Commons, 30 Years Later (van Laerhoven, Ostrom Workshop memorial lecture, 2026-10-01) — said to be
+  recorded; no recording URL found yet. Re-check for `fetch_transcript`.
+- Pendleton Act civil-service-reform brief (Cato research briefs) — date unverified, cato.org returned 403; a
+  possible public-choice source for the civil-service thread.
+- No Doing, No Learning (Marginal Revolution, 2026-09-29) — still unresolved from last week.
 
 ## Source
 

@@ -142,6 +142,7 @@ slug>/` is a thin summary page, not the report body — use the direct PDF path
 | Institute for Government (UK) | Primary-document-grounded analysis of an administrative state | 2026-08-19 | probation |
 | Niskanen Center | State-capacity/vetocracy camp — deliberately included for balance against public-choice sources | 2026-08-19 | active (2026-08-25) |
 | ProMarket (Stigler Center) | Camp-balancing commentary and book reviews (antitrust, political economy); review-of-book route for second-hand book coverage | 2026-09-29 | probation — one entry watchlisted |
+| Cato Institute research briefs (cato.org/research-briefs-economic-policy) | Public-choice/classical-liberal camp balance; civil-service reform briefs | 2026-10-13 | probation — cato.org 403'd on first test |
 | Mercatus Center | Public-choice camp — deliberately included for balance against state-capacity sources | 2026-08-19 | active (2026-08-25) — mercatus.org itself is Cloudflare-gated; captured via its Substack syndication mirror instead |
 
 ## Lectures, talks and long-form interviews
@@ -211,6 +212,12 @@ survey subagent.
   law scholarship about the party-state, not Chinese-language work). IMF working-paper PDF hard-403'd. Broadstreet
   and Mercatus returned nothing in window (Broadstreet now two consecutive dry sweeps). Added IMF WPs, Nordic
   Administrative Journal and Econ Journal Watch; Essex/HKU open repositories noted as a route for China-gap papers.
+- Seventh sweep, 2026-10-13: thin week. arXiv econ.GN was the only productive feed (four captures: China SOE
+  privatization, regulator revolving-door model, Hungarian construction case, foundation-lifespan model); its
+  monthly list (`arxiv.org/list/econ.GN/current`) is the most reliably searchable feed. NBER, SSRN, JIE and Mercatus
+  in-window listings could not be surfaced by search, so they are unconfirmed rather than dry. ProMarket and
+  Marginal Revolution surface dated items when searched by `domain + 2026/10`. Cambridge journal PDF links
+  behind a Marginal Revolution post returned a one-page stub.
 
 ## Related
 

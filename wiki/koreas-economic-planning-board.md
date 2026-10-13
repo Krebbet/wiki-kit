@@ -26,3 +26,4 @@ Korea's Economic Planning Board (EPB, 1961–1994) fused planning authority, bud
 - [[developmental-state-and-embedded-autonomy]] — Wade's East Asian material; this source's mechanism (concentration under personal presidential oversight) is a specific institutional variant within the same developmental-state family.
 - [[regionally-decentralized-authoritarianism]] — the opposite design choice within the same family: China decentralises to competing regions rather than concentrating in one central body.
 - [[decision-rights-and-authority-theory-of-the-firm]] — the decision-rights-decomposition literature this case's India contrast implicitly complicates.
+- [[state-demand-and-preferential-allocation-in-hungarian-construction]] — contrast case: directed capital to favoured firms without export discipline (connected-firm export intensity about 1%); descriptive, non-causal evidence.

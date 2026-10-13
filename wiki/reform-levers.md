@@ -97,3 +97,5 @@ Every lever surfaced by the `enabling-institutional-change` batch, sorted into t
 - [[veto-points-and-bureaucratic-autonomy]] — the interconnection-permitting lever's implicit count-alone framing, filed there as a third contested case alongside Fukuyama and Schleicher & Bagley (weekly sweep, 2026-08-25).
 - [[capital-requirements-and-entrepreneurial-entry]] — a tier-(i) entry-deregulation lever, RD-identified, no detected downside (weekly sweep, 2026-09-22).
 - [[ordeal-mechanisms-and-welfare-targeting]] — a tier-(i) lever shown to fail its stated goal while imposing first-order cost on the excluded population (weekly sweep, 2026-09-22).
+- [[soe-privatization-vs-restructuring-in-china]] — ownership transfer vs restructuring vs exit as separate levers; transfer small and transitory, restructuring dominant but unspecified; un-refereed preprint (weekly sweep, 2026-10-13).
+- [[organizational-lifespan-as-commitment]] — a formal-only (un-refereed preprint) charter-level sunset lever: optimal only under strong survival bias, with an interior date; no outcome evidence (weekly sweep, 2026-10-13).

@@ -59,3 +59,4 @@ Two things follow, and they are separable.
 - [[governance-structures]] — complementary and non-overlapping levels: TCE works at the organisational boundary, this at the individual agent inside a given firm with no boundary question in view.
 - [[dimensions-of-institutional-variation]] — supplies D47 (verifiability of an agent's private information).
 - [[open-questions]] — Q3, Q30, Q32 (does an aggregation from individual career concerns to institutional behaviour exist).
+- [[regulator-career-incentives-and-revolving-doors]] — career concerns with a convex (option-like) outside payoff push toward risk-seeking, the opposite sign to the concave reputation case here.
