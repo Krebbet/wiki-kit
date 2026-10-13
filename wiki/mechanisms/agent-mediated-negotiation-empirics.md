@@ -86,6 +86,10 @@ The wiki's [[clawnet-readout]] is optimistic about agent-mediated coordination a
 | [[possible-strategic-levers\|Lever #1, #4, #14, #16, #26]] | The wiki's strategy-layer levers that depend on agent-mediated coordination inherit the capability + bias profile documented here. |
 | [[data-disruption-strategy-map\|Tier 1 #1 (DSAR coordination)]] | Notably, DSAR coordination is **structurally not a negotiation** — it is information aggregation. The benchmarks here suggest DSAR coordination is a *better* fit for current LLM agent capability than direct buyer-seller bargaining. |
 
+## Market-level simulation evidence (Huang & Xiao 2026)
+
+Complementary market-setting result: executing consumer assistants cut adopter spending (13.7 to 8.7 USD per renter-day after seller adaptation) and unassisted consumers are not measurably harmed, in a simulation with adaptive LLM sellers. Different setting from the bilateral buyer-disadvantage result above; abstract-only source, preprint. See [[mechanisms/consumer-ai-assistant-market-simulation]].
+
 ## Source
 
 - Liu, Gu & Song. 2026. *AgenticPay: A Multi-Agent LLM Negotiation System for Buyer–Seller Transactions*. arXiv 2602.06008. UC Berkeley (SafeRL-Lab). Captured: `raw/research/clawnet-adjacent-methods/19-agenticpay-2026.md` + `08-agenticpay-2026-abs.md`. Trust tag: arXiv preprint, comprehensive benchmark with 111 tasks across 10 scenarios, 5 frontier + open-weight models tested.
@@ -99,3 +103,4 @@ The wiki's [[clawnet-readout]] is optimistic about agent-mediated coordination a
 - [[data-disruption-strategy-map]] — Tier 1 #1 (DSAR coordination) is structurally a better fit for current LLM agent capability than negotiation
 - [[possible-strategic-levers]] — strategy-layer levers depending on agent-mediated coordination inherit the capability + bias profile documented here
 - [[the-firms-view]] — none directly; firm-side framing of agent negotiation would emphasise the seller-favouring bias as a feature, not a bug
+- [[mechanisms/consumer-ai-assistant-market-simulation]] — market-level simulation counterpart (Huang & Xiao 2026)

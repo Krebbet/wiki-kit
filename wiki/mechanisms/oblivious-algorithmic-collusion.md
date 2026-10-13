@@ -68,3 +68,4 @@ In the all-informed equilibrium, prices converge to the competitive outcome *eff
 - [[adversarial-data-poisoning]] — poisoning competitor-price signals fed to informed sellers is an implied counter-power lever
 - [[transparency-tools]] — disclosure frameworks should elicit whether competitor prices are demand-model inputs
 - [[the-firms-view]] — firms may cite this paper to argue their oblivious algorithms are pro-competitive
+- [[mechanisms/learning-rate-delegation-pricing]] — mild tension: transient convergence as a strategically lengthened extraction window (abstract-only theory)

@@ -256,3 +256,15 @@ The `## Subreddits` stream in `wiki/reference-sources.md` (`r/PlatformCooperativ
 **Implication:** Two independent fixes needed: (1) broaden `_BOT_WALL_SIGNATURES` in `capture_url.py` with more block-page phrasings ("abusive automated request", "unable to process your request at this time", etc.) — this will always be an incomplete list, so (2) matters more: add a non-PDF minimum-content-length/word-count floor to `audit_captures.py`'s thin-capture check (independent of page_count) so any capture_url output under some absolute floor (e.g. <100 words) gets flagged regardless of source type. Government sites behind bot-walls are a recurring category (see 2026-04-21 capture_pdf 403 entry above) — when the HTML press-release page is blocked, checking for a same-document PDF at `<domain>/system/files/...` or similar is a viable capture fallback worth documenting in the skill.
 **Status:** open
 **Recurrence (2026-09-07):** Same exact failure mode against `ftc.gov/news-events/news/press-releases/...` again — `capture_url` silently returned the identical "request resembles an abusive automated request" block page (23-line frontmatter-only file), `audit_captures` again ran clean (0 issues). Same workaround worked again: located the FTC's own filed-document PDF via WebSearch (`ftc.gov/system/files/ftc_gov/pdf/AmazonAds-Complaint.pdf`) and re-captured via `capture_pdf --engine pymupdf`. Two runs, two ftc.gov bot-walls, same recovery path both times — this is now a confirmed pattern, not a one-off. Upgrading the suggested fix: `ftc.gov/news-events/news/press-releases/*` should go straight in a "known bot-walled hosts" list (alongside Fast Company, Wiley, MIT Press wip, GAO.gov from earlier entries) so future runs skip the doomed HTML capture attempt and go straight to searching for the underlying PDF at `ftc.gov/system/files/ftc_gov/pdf/`.
+
+### 2026-10-12 — audit_captures false "broken image refs" and capture_pdf fallback fails on arXiv abs URLs
+**Scope:** kit
+**Observation:** (1) `tools.audit_captures` reports false "broken image refs" for `capture_pdf` pymupdf-fallback outputs: the refs are repo-root-relative but the audit resolves them differently. (2) The `capture_pdf` pymupdf fallback fails with "No module named 'weasyprint'" on arXiv `/abs/` URLs, yielding abstract-only captures (2610.05823, 2610.11675 this run). Use arXiv `/pdf/` or `/html/` URLs instead.
+**Implication:** Fix ref resolution in audit_captures; make the weekly-brief capture step rewrite arXiv abs URLs to /pdf or /html, and flag abstract-only captures.
+**Status:** open
+
+### 2026-10-12 — weekly-brief cron environment lacks poetry on PATH
+**Scope:** kit
+**Observation:** poetry is installed at `~/.local/bin`, which is not on the cron PATH, so poetry-based tool invocations fail in the weekly-brief cron run unless PATH is exported first.
+**Implication:** Export `~/.local/bin` in the cron wrapper / skill preamble.
+**Status:** open

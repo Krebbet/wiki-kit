@@ -302,6 +302,12 @@ The European Commission issued **preliminary findings** under DMA Article 6(11) 
 
 **Strategic relevance.** If finalised, this is the first time commercial search-intent data is regulated-access-shared with third parties. Build #1 (Federated Pricing Observatory) on [[strategies/mechanism-synthesis-readout]] currently has no clean substrate; mandated FRAND access is a **candidate substrate**. Tier-1 #3 on [[strategies/data-disruption-strategy-map]] (probe-and-publish observatory) similarly gains a regulated-access surface that lowers adversarial data-acquisition cost. The public consultation is open — design-input opportunity for positioning cooperative access. *(Source: `weekly-2026-04-27/03-03-eu-dma-google-search-data-sharing.md` — EC DG COMP / DG CONNECT press release, April 16 2026.)*
 
+#### EU GDPR enforcement — Norwegian DPA fines Xandr EUR 8.5M (2026)
+
+noyb press release: the Norwegian Datatilsynet fined Microsoft-owned adtech firm Xandr about EUR 8.5M (NOK 92M) for processing Grindr-derived personal data, including sexual-orientation data, without a valid GDPR legal basis. Follows three 2020 complaints by noyb and the Norwegian Consumer Council (NCC) against Grindr and adtech recipients; complaint-to-decision lag roughly 5+ years. Consent validity for profiling is the enforcement hook. Decision text, appeal and payment status not captured. Source is advocacy (party to the complaint); facts medium-high trust, framing ("major blow to adtech") interested. See [[noyb]].
+
+**Rollback risk.** The same release says Big Tech lobbying has pushed the Commission, via the Digital Omnibus, to take online tracking IDs out of GDPR scope, which would remove the hook this fine relies on. Tension: GDPR enforcement is working as a lever while its scope is under legislative threat. *(editorial)* EUR 8.5M is small against Microsoft, so deterrence is contestable. Related: [[mechanisms/browser-fingerprinting]], [[mechanisms/dsar-and-data-deletion]].
+
 ### UK
 - **Competition and Markets Authority (CMA)** — investigating Ticketmaster's 2024 Oasis-tour dynamic pricing; concluded Ticketmaster "may have misled" fans. *(Wikipedia.)*
 - **Advertising Standards Authority** — received complaints on the same Oasis tour. *(Wikipedia.)*
@@ -529,6 +535,7 @@ Prioritised by closeness to existing gaps in counter-power infrastructure:
 
 ## Source
 
+- `raw/research/weekly-2026-10-12/03-noyb-xandr-fine.md` — noyb press release, Xandr EUR 8.5M fine (2026-10-12 capture).
 - `raw/research/dynamic-pricing-landscape/01-doj-realpage-lawsuit.md` — DOJ press release, August 2024.
 - `raw/research/dynamic-pricing-landscape/02-propublica-realpage-settlement.md` — ProPublica, late 2025 settlement coverage + retrospective on the full case arc.
 - `raw/research/dynamic-pricing-landscape/03-wikipedia-dynamic-pricing.md` — Wikipedia, as the catalogue of consumer-backlash episodes across industries (used here for the tabulated cases).

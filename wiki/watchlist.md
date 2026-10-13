@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-05
+last_reviewed: 2026-10-12
 ---
 
 # Watchlist
@@ -351,3 +351,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - RealPage MDL private settlement opt-out deadline lapses Sept 22 2026 (one day after this run's window) — watch for opt-out count / total class size next sweep
 - FAccT 2026 accepted-papers page currently broken/unpopulated on the ACM site — re-check once live for algorithmic-pricing/consumer-side entries
 - AlgorithmWatch + Ada Lovelace Institute — both quiet in-window but on an active algorithmic-accountability publishing cadence per recent (pre-window) output; re-check directly next week rather than via general web search
+
+## Recent additions (2026-10-12 weekly-brief overflow)
+
+*(These will be re-filed into thematic sections in next week's run, or promoted to captures if signal strengthens.)*
+
+- anti-dynamic-pricing-app (vojtkali) — promised price-personalization tracker, only ARCHITECTURE.md
+- Servio worker-owned home-services coop (India, ONDC/Beckn) — hackathon prototype, MIT, clone-prone
+- uBlock Origin 1.75.1b11 — beta cadence continues
+- Chrome built-in AI API fingerprinting claim — unverified HN thread
+- FoxProfile anti-detect browser profile manager — marginal fit, anti-detect framing
+- AdNauseam v3.29.2 — tracked-tool release 2026-09-25
+- TODO: full-text re-capture of arXiv 2610.05823 (Huang & Xiao) — abstract-only; use /pdf or html URL
+- TODO: full-text re-capture of arXiv 2610.11675 (Ashkenazi-Golan et al.) — abstract-only; use /pdf or html URL

@@ -79,8 +79,14 @@ noyb filed a complaint with the Austrian Data Protection Authority (DSB) in May 
 
 *(Source: `raw/research/weekly-2026-05-18/04-03-noyb-linkedin-art15.md` — noyb announcement of Austrian DPA complaint, May 2026. Trust tag: advocacy/litigant — factually thin (no full complaint text), normatively clear; primary source for noyb's legal theory but not a neutral legal analysis.)*
 
+## Xandr / Grindr adtech complaint outcome (Norwegian DPA fine, 2026)
+
+Outcome of the 2020 noyb + Norwegian Consumer Council complaints against Grindr and recipient adtech firms: the Norwegian DPA fined Microsoft's Xandr about EUR 8.5M (NOK 92M) for processing personal data, including sexual-orientation data, without a valid legal basis. Roughly 5+ years from complaint to decision; NGO + consumer-council co-complaint model, building on the NCC "Out of Control" technical audit. noyb frames it as a precedent for adtech profiling needing valid consent, and as under threat from the EU Digital Omnibus (tracking IDs possibly leaving GDPR scope). Advocacy source; decision text, appeal and payment status not captured. Detail in [[regulatory-responses]].
+
 ## Source
 
+- `raw/research/weekly-2026-10-12/03-noyb-xandr-fine.md`
+  - **Origin:** noyb press release. **Audience:** press, policymakers, privacy public. **Purpose:** publicise win, lobby against Digital Omnibus. **Trust:** medium-high on facts, lower on framing.
 - `raw/research/lever-implementations/09-09-wikipedia-noyb.md`
   - **Origin:** Wikipedia article *NOYB*.
   - **Audience:** general public, EU privacy-policy watchers, legal professionals.

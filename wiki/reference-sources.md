@@ -42,7 +42,7 @@ Replaces the AI/ML-coded selection heuristic in `/weekly-brief` step 3. In order
 - **Watchlist overflow**: ≤10 per run (skill default). Surplus is discarded for the week.
 - **Index / log / revisions**: update `wiki/index.md`, `wiki/log.md`, `wiki/revisions.md` on every page write. See `wiki/CLAUDE.md` "Modifying the Wiki".
 - **`master_notes.md`**: append kit-level findings discovered mid-run with `Status: open`. Don't try to harvest in the same run.
-- **Scan method (noted 2026-10-05):** WebSearch is weak for date-windowed tooling scans; scan via direct feeds instead (arXiv API, GitHub releases `.atom`, hn.algolia.com date search). The `platform.coop/blog` URL returned 404 on 2026-10-05 — find the correct feed URL before the next platform-tier scan.
+- **Scan method (updated 2026-10-12):** WebSearch is weak for date-windowed tooling scans; scan via direct feeds (arXiv API, GitHub releases `.atom`, hn.algolia.com date search). Working feeds: platform.coop `https://platform.coop/feed/` (`/blog/feed/`, `/news/feed/` 404), noyb `https://noyb.eu/en/rss.xml`, EFF `https://www.eff.org/rss/updates.xml`, AlgorithmWatch `https://algorithmwatch.org/en/feed/`, The Markup `https://themarkup.org/feeds/rss.xml`, Pluralistic `https://pluralistic.net/feed/`. arXiv API must be `https://export.arxiv.org/api/query` (http returns empty); pull latest ~150 per category and filter locally. Scanned arXiv categories: cs.CY, cs.CR, cs.GT (pricing-algorithm papers land there). FTC press XML returns 403. `gh api search/repositories` with `created:>=DATE` works for new-repo discovery (noisy). poetry lives at `~/.local/bin` (not on cron PATH; export PATH).
 
 ## Sources
 
@@ -51,6 +51,7 @@ The trend-scan source set, grouped by stream. Update freely as outlets prove val
 ### Counter-algorithmic tooling — primary capture surface
 
 - **arXiv cs.CY** (Computers and Society) — new listings in the past week, filtered for: adversarial consumer-side, obfuscation, DSAR, fingerprint defence, data poisoning, price-transparency, collective-bargaining mechanisms.
+- **arXiv cs.GT** (Computer Science and Game Theory) — pricing-algorithm / learning-in-games papers; filter locally for delegation, collusion, consumer-side agents.
 - **arXiv cs.CR** (Cryptography and Security) — new listings for privacy tools, differential-privacy deployments relevant to consumer-side, anti-tracking techniques.
 - **USENIX PETS proceedings** — Privacy Enhancing Technologies, latest volume + preprints.
 - **FAccT proceedings** — ACM Fairness, Accountability, and Transparency; monitor through the year, not just conference week.
