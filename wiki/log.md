@@ -388,3 +388,6 @@ Key flags for practitioner validation: (1) Anthropic's Opus 5.5 launch post itse
 Capture note: the Axios DevDay capture hit a Cloudflare "Just a moment" wall (2026-09-30); replaced by Dataconomy. Axios added to known bot-walled hosts in reference-sources.md. Local "Don't commit" convention followed; nothing committed. Two master_notes entries added (poetry PATH in cron shell; weekly-brief commit step vs local convention).
 
 Ingest summaries: raw/research/weekly-2026-09-30/.ingest/{01-nvidia-openshell-sentry,02-salesforce-salesbleed,04-amd-world-labs,05-openai-australia-medicare-hack,06-openai-devday-dots-sol}.summary.md
+
+## 2026-10-07 — weekly-brief
+Weekly radar sweep (window 2026-09-30 → 2026-10-07). 5 captured/ingested: Restate, Supabase/Turso, Armadin, Reflection Beam, Personal Agent Protocol. Scan was WebSearch-snippet based and thin for enterprise platforms; several items (Haiku 5.5, GPT-6 Intelligent UI, Nous, EliseAI) are aggregator-only and watchlisted unverified. Local "Don't commit" convention followed; nothing committed or pushed (also avoids absorbing 3 pre-existing dirty files: master_notes.md, platforms/snowflake.md, revisions.md). No new conflicts opened.

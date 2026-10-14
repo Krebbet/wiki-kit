@@ -119,6 +119,16 @@ Source: ad-hoc web research (Snowflake docs/release notes + practitioner blogs);
 - **Gotchas:** tool-name typos fail silently at `CREATE AGENT`; broken semantic-view refs surface only at runtime; Agents API unsupported from Streamlit-in-Snowflake warehouse runtime. Practitioner (QueryPlane): tool-description quality dominates tool selection; use 24–32k orchestration tokens.
 - **Gap:** rate limits, context size, model-routing internals, Horizon, Agent SDK internals not found.
 
+### Front-ends and custom deployment (web research 2026-10-05, via /query)
+Verdict: Cortex is **not** tied to Streamlit. Streamlit-in-Snowflake (SiS) is the easiest path; custom apps cost you the hosting/auth plumbing. Re-verify details — much from snippets/practitioner posts.
+- **Agents REST API** (`POST /api/v2/databases/{db}/schemas/{schema}/agents/{agent}:run`, SSE streaming; agent object ref or inline config) — callable from any language/backend. Auth: PAT (fastest start), key-pair JWT (headless backends), OAuth (end-user identity). Caller needs `CORTEX_USER`/`CORTEX_AGENT_USER` + USAGE on agent + warehouse + tool privileges. Unverified: PAT network-policy specifics, SSE buffering behind Next.js/API gateways.
+- **SiS warehouse runtime:** Conda-channel packages, slower start, per-viewer runtime; **Cortex Agents API unsupported** (per Snowflake quickstart + practitioner post).
+- **SiS container runtime:** Streamlit 1.50+, PyPI packages (needs external access integration, EAI), compute-pool billing (docs: "significantly less" than warehouse), no `_snowflake` module (read OAuth token from `/snowflake/session/token`, call REST via `requests`), not in gov regions. Practitioner: two EAIs needed (package index + Agents REST). Warehouse-runtime deprecation not confirmed (container-first is inference).
+- **SPCS** hosts any container (React/Next.js etc.) with a stable ingress URL, but ingress auth = Snowflake sign-in → **end users must be Snowflake users** (blocks customer-facing apps). Single-source cost gotcha (select.dev/Flexera): public-endpoint services auto-resume but don't auto-suspend on HTTP traffic; XS pool ≈ $4.32/day vs <$3/day Cloud Run.
+- **CoWork UI** customization limited to chart settings, agent colors/themes/fonts; no documented embed/white-label. Branded UI = REST + own front end.
+- **Native Apps:** Agents + MCP servers GA 2026-08-07; SPCS-hosted custom MCP servers usable by agents/CoWork (ISV distribution route; details unverified). Managed MCP server (`CREATE MCP SERVER`) wraps Search/Analyst/Agents/UDFs/procs, OAuth for external clients.
+- **Evidence quality:** mostly tutorials by Snowflake-affiliated authors; no neutral friction reports found (no Reddit/HN sweep).
+
 ## Source
 
 - `raw/research/enterprise-ai-landscape-2026/06-saastr-databricks-snowflake.md`

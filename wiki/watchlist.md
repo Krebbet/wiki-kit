@@ -624,3 +624,49 @@ Window 2026-09-02 → 2026-09-09. 5 sources captured (Nvidia confirms Hugging Fa
 - **Claude Sonnet 5.5** (2026-09-28).
 - **Nvidia Open Agent Safety Platform** — OpenShell + Sentry (2026-09-28, 100+ partners claimed) (→ [[landscape/nvidia-open-agent-safety-platform-2026-09]]).
 - **Meta Muse for Small Business** (2026-09-29) — single-source, unverified.
+
+## 2026-10-07 — weekly sweep
+
+### Vendor platform / product
+- **Claude Haiku 5.5** ($0.10/$0.50 per M tokens, 72.4% OSWorld 2.1 claimed) — aggregator-only, unverified; check anthropic.com before treating as real.
+- **OpenAI GPT-6 "Intelligent UI"** (inline buttons/charts/forms in ChatGPT; TechCrunch 2026-10-07) — not captured.
+- **Salesforce Agentforce "Hunter" + long-horizon runtime** (GA planned 2026-11; ppc.land, ~2026-09-14) — durable multi-day agent runtime; harness-thesis datapoint, not in wiki.
+- **Docker Agent** — open-source YAML agent builder (MCP, RAG); aggregator-only.
+- **Cloudflare Clef / Amazon Strands Decider 2B / Perplexity pplx-decider** (2026-10-01) — open "decision models" returning probabilities over typed options; new category for agent control flow; find primaries.
+- **Kimi K3 / Qwen3.8-Max** — open-weight reference points; possible wiki gap.
+
+### Practitioner friction
+- **Claude outages 2026-09-22 (~90 min) and 2026-09-29 (~2h08m)** (BleepingComputer) — extends the August outage cluster; no root cause published.
+- **Claude Code 2.1.290 regression / 2.1.291 fix** (2026-10-06) — dropped permission-prompt answers; auto-mode friction datapoint.
+- **Coding-tool share survey (Copilot 51%, Cursor 18%, Claude Code 10%)** — vendor blog, source survey unknown; would conflict with UserEvidence figures if real.
+
+### Governance / risk
+- **California SB 53 first enforcement subpoena** — unverified, low-quality source; find Cal AG/OES primary.
+- **Context7 MCP prompt injection CVE-2026-75130** — NVD only; check date.
+
+### Residual gap
+- **Temporal $550M round (~2026-09-14)** — cited in Restate coverage; not independently verified.
+- **Autoheal** ($7.9M seed, Innovation Endeavors; Evaluator/Healer meta-agents) — source too thin to capture.
+
+## New startups / funding & M&A / product launches — required standing coverage (2026-09-30 → 2026-10-07)
+
+*(Per `reference-sources.md` "Required briefing coverage". Several items are aggregator-sourced.)*
+
+**New startups:**
+- **Autoheal** — ~$8M seed, Innovation Endeavors; meta-agents that evaluate/heal customers' coding agents (2026-09-28).
+- **Healthleap** — $8M seed + $30M Series A (Hummingbird), hospital patient-flagging, 50+ hospitals (TechCrunch, 2026-10-07).
+- **Miter** — $40M, construction AI platform (2026-09-30, aggregator).
+- **Arceus Legal** — $17M, AI-driven law firm (2026-10-01, aggregator).
+- **Photon** — $5M, agents replacing mobile apps; thin.
+
+**Funding & M&A:**
+- **Armadin** — $255.5M Series B at >$2.5B, a16z/Accel (→ [[startups/armadin]]).
+- **Supabase** — $150M, GIC-led; acquires Turso (→ [[landscape/supabase-turso-agent-databases-2026-10]]).
+- **Restate** — $20M Series A, Singular-led (→ [[startups/restate]]).
+- **EliseAI** — $350M Series F at $4B, a16z/Bessemer (2026-09-29, aggregator).
+- **Nous Research** — $90M Series B at $1.5B, Robot Ventures-led; Hermes Agent ~24M downloads (aggregator).
+
+**Product launches:**
+- **Reflection Beam** — open-weight 501B MoE (→ [[llms/reflection-beam]]).
+- **Meta/Sierra Personal Agent Protocol** (→ [[landscape/personal-agent-protocol-2026-10]]).
+- **Claude Haiku 5.5**, **GPT-6 Intelligent UI**, **HackerRank Chakra AI Interviewer GA** — see above; unverified/aggregator.

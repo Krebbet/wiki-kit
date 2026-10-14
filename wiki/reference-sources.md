@@ -79,6 +79,8 @@ Each item: one line, format `**<entity>** — <fact> — <1-line significance>`.
 - **GitHub issues + Stack Overflow question volume** on tracked products — for real-usage / real-limitation signal.
 - **claudeissues.com** — live tracker of anthropics/claude-code GitHub issues (open count, median time-to-close); surfaced 2026-08-19 as a concrete adoption-friction telemetry source, more direct than manually sampling the GitHub issue tracker.
 - **air.security** (blog) — original-discoverer AI-agent supply-chain security research (The Story of Skills → SkillJacking → Plugin4Shell, 2026-09); surfaced 2026-09-23 as a higher-signal primary source than trade-press paraphrase for this wiki's recurring coding-agent-CVE thread — prefer capturing directly from here over a secondary write-up when a new disclosure in this series lands.
+- **releasebot.io/updates/anthropic/claude-code** — per-version Claude Code changelog tracker; regression tracking (added 2026-10-07; aggregator, point to primary).
+- **statusgator.com/services/anthropic/outage-history** — independent Anthropic outage history, avoids relying on vendor status page (added 2026-10-07).
 - **Zenity Labs blog** — agent-security vendor research (e.g. SalesBleed, 2026-09); primary source for agent-platform vulnerabilities but vendor-interested, so check fix verification against the affected vendor.
 
 ## Tier 3 — analyst / VC thesis (framing, with skepticism)
