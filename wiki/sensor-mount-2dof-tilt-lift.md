@@ -299,6 +299,18 @@ at counters with the camera) now varies with lift+tilt instead of being a single
 
 ---
 
+## What this rig measured — lift datum without homing (drone-prototype, 2026-09-24 → 10-14)
+
+*(librarian, 2026-10-15; prototype feedback. Sources: drone-prototype diary 2026-09-24 (close), 2026-10-05, 2026-10-08 (office-gap8), 2026-10-13 (gap9), 2026-10-14 (gap16b); `docs/parked.md` P-00061, P-00087, P-00093, P-00108.)*
+
+- **No automatic homing, by decision (human, 2026-09-24).** The optical stop's flag is a card that bends and fails by *missing*, so a start-up homing routine would drive past it. The stop is a failsafe; recalibration is supervised. `lift_steps_mm` 414.1 ± 1.0 %, axis vertical, travel ~205 mm (EDA232/EDA234).
+- **The firmware counts steps (2026-10-05)**, but an ESP32 reboot (a flash, a charge) loses the count (P-00093), and the loop refuses to start without it.
+- **Touch-off datum.** `lift_datum.py --apply` (human watching) found the stop after 60.0, 60.0 and 59.9 mm of the configured 60.0 after three separate reboots: the head does not move across a power cycle.
+- **Adopt instead of re-touching (2026-10-14).** `lift_datum.py --adopt` re-links the trail's last clean position to the new boot's counter without moving; it checks config against the trail and its age. The LiDAR floor-fit height check stays a cross-check only, because it is unstable at some spots (P-00108); a touch-off datum outranks it.
+- **Port discipline.** A second program opening the ESP's serial port split a run's replies; the link now takes an exclusive advisory lock.
+
+**Gap (TODO):** a homing reference that fails safe (one that cannot be missed), so a reboot does not need a human or a trusted trail.
+
 ## Source
 
 Web (≈2026, accessed 2026-06-16; verify prices before purchase — several marketplace prices are ranges):
