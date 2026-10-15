@@ -744,6 +744,20 @@ Optional, in priority order: **Liu, Liu & Zhang, T-RO 2023** (BALM2) for what a 
 
 ---
 
+## What this rig measured — a closed outline with a certainty per line (drone-prototype, 2026-10-08 → 10-14)
+
+*(librarian, 2026-10-15; prototype feedback. Sources: drone-prototype diary 2026-10-08 ("the floor plan is done only when its outline is closed"; "side quest: furniture against walls"), 2026-10-13 (office-gap10, recesses), 2026-10-14 (EDA255); `eda/EDA255-outline-swing/FINDINGS.md`; `docs/parked.md` P-00114, P-00123, P-00131, P-00135.)*
+
+This applies §0's "closure is formulation-bound" conclusion on the rover, from a from-scratch floor plan rebuilt during the task loop.
+
+- **Human rule (2026-10-08):** a floor plan is not done until its outline is closed; where the walls do not meet, hypothesise **closing lines** (to the corner, as a jog, or as a chord) that stay uncertain and are re-checked first, and give **every line a certainty**.
+- **Score:** certainty = f_hit × (1 − 0.5^stations) × (1 − f_thru). A hit counts only within 4 cm of the line *and* with the 10–16 cm in front clear (a wall is a thin surface seen from the room); a closing line that rays pass through is an "opening?". Each RANSAC line is refitted by least squares on its inliers; lines > 15° off the two dominant directions are not trusted as wall (a Manhattan prior, P-00123); same-facing parallels within 6 cm merge and keep the **outermost**.
+- **Furniture against walls (P-00114):** rules for outermost faces, corner completion and re-explaining tiles; an ablation showed **re-explaining** (a tile on no current wall for two updates stops being wall) did most of the work. A short line 6–20 cm *behind* a wall leaves the outline as a **recess** (one live case, probably a window reveal; P-00131).
+- **Results:** outlines close at 11.7–12.5 m in the 3 × 3 m office, with 0.7–3.5 m unresolved depending on the run; the loop chases the unresolved gaps. The locked reference map is **not** ground truth in the NW corner (level rays crossed 22 of its 27 cells there).
+- **Open:** the outline score swings by ±0.1–0.15 between stations with no new evidence, because a long wall's fit drifts 4–5 cm across a 2–3 cell wall band and puts the wall's own cells in the "clear in front" strip (EDA255). Every evidence-side fix separated walls from non-walls worse; a hit-weighted refit + 15 cm end trim steadied it but failed the sim's reference check. Nothing shipped (P-00135).
+
+**Gap (TODO, not researched in this pass):** a line fit to thick (2–3 cell) wall bands that is stable across re-fits, or an evidence score that does not depend on the fitted line's exact offset.
+
 ## 10. Open gaps — in this page and in the literature
 
 *(honest scope note)*

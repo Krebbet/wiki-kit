@@ -451,3 +451,8 @@ Dated notes citing the drone-prototype diary 2026-10-06 (night) and 2026-10-07 (
 ### 2026-10-07 — research: robot-task-orchestration
 
 New page [[robot-task-orchestration]] (~65 sources) answering the human's question of how other robots organise varied tasks (planning, acting, revising beliefs) and whether to prioritise deterministically or with a model. Recommendation: a deterministic scored agenda over an object-centric belief store, executed by a thin behaviour tree / the existing scripts; LLM/VLM only at judgement seams later; POMDP lookahead only if greedy wastes stations. Most entries cited from memory; arXiv ids for Panoptic Multi-TSDFs, Khronos, POCD, DovSG, MEXEC, M2020 onboard planner and AEGIS re-checked.
+
+
+### 2026-10-15 — librarian periodic pass (drone-prototype PR #105: task loop v1 campaign, 2026-10-07 → 10-15)
+
+Dated "What this rig measured" sections citing the drone-prototype diary and EDA253–257 on `robot-task-orchestration` (§8), `door-aperture-detection`, `stop-and-go-navigation-on-a-locked-map`, `sensor-mount-2dof-tilt-lift`, `lidar-floorplan-extraction` and `active-slam-exploration`; a superseded-in-part banner on the canonical scan-plane CORRECTION of `tilting-2d-lidar-multiplane-capture` (0.334 m, tilt zero −2.5°, roll −0.2°, 2026-10-05); `home-tidy-drone-prototype` freshness banner refreshed. Ten pages still quoting 0.2972 m are listed as stale in `revisions.md`. Branch stacks the unmerged 2026-10-02/10-06/10-07 librarian work and the `research-task-orchestration` page. No research run; gaps left as TODO.
