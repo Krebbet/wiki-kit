@@ -447,3 +447,7 @@ Dated corrections citing drone-prototype `eda/EDA246-camlidar-calib/FINDING.md` 
 ### 2026-10-07 — librarian periodic pass (drone-prototype PR #66: IMU odometry, first room scan)
 
 Dated notes citing the drone-prototype diary 2026-10-06 (night) and 2026-10-07 (late morning): gyro results on `odometry-closed-loop-pipeline` and `usb-imu-candidates`; room-scan anomaly kinds on `locate-object-from-last-known-position`. Flags: `imu-vio-integration-reality` partly stale (yaw gyro fitted), `home-tidy-drone-prototype` freshness banner; other stale pages listed in the revisions row. No research run.
+
+### 2026-10-07 — research: robot-task-orchestration
+
+New page [[robot-task-orchestration]] (~65 sources) answering the human's question of how other robots organise varied tasks (planning, acting, revising beliefs) and whether to prioritise deterministically or with a model. Recommendation: a deterministic scored agenda over an object-centric belief store, executed by a thin behaviour tree / the existing scripts; LLM/VLM only at judgement seams later; POMDP lookahead only if greedy wastes stations. Most entries cited from memory; arXiv ids for Panoptic Multi-TSDFs, Khronos, POCD, DovSG, MEXEC, M2020 onboard planner and AEGIS re-checked.
