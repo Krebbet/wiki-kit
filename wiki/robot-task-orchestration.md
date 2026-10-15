@@ -273,7 +273,7 @@ Symbolic AI's answer to conflicting beliefs is the **truth maintenance system**:
 
 ## 8. What this rig measured — task loop v1 on the rover (drone-prototype, 2026-10-07 → 10-15)
 
-*(librarian, 2026-10-15; prototype feedback, not literature. Source: drone-prototype `docs/prototype-diary.md` entries 2026-10-07 (night) → 2026-10-15 and its §"Campaign summary — task loop v1". Numbers are from those entries.)*
+*(librarian, 2026-10-15; prototype feedback, not literature. Source: drone-prototype `docs/prototype-diary.md` entries 2026-10-07 (night) → 2026-10-15 and the campaign map `docs/campaign-task-loop-v1.md`. Numbers are from those entries.)*
 
 **What was built.** Option (a) at stage S1, human-approved 2026-10-07: one belief store, tasks (floor plan, targets, coverage, camera floor items, doors/windows), a deterministic prioritiser behind a swappable interface, station value = Σ importance × (1 − certainty); beliefs persist unless contradicted; the floor plan is rebuilt from scratch with the September locked map kept only as a reference. Code: `src/drone/agent/`, runner `src/rover/task_loop.py`, a `decisions.jsonl` log per run.
 
