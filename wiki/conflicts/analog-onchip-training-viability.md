@@ -62,6 +62,13 @@ The practical consequence is a shift in where the difficulty sits: **defect tole
 
 Pending resolution condition 1, [[../devices/memristor-array-integration-gap]] carries a pointer to this file rather than a rewritten claim.
 
+## Added 2026-10-15 — two simulation-only data points (neither settles it)
+
+- [[../devices/reciprocal-tau-cell-log-domain-learning]]: SPICE-only symmetric equilibrium circuit; in-situ learning lifts the four worst mismatched draws from 53–63% to 88–96% on Iris. Digitally coded weights, so no asymmetric analog memory device is involved; speaks to circuit mismatch, not to the response-asymmetry failure of Position B.
+- [[../devices/two-state-synapse-equilibrium-propagation]]: a non-SGD local-learning route (EqProp) with a device spec but all non-idealities ideal; matches EqProp on MNIST in software. No evidence either way on asymmetry.
+
+Resolution condition unchanged: a network trained on a *fabricated* analog array with realistic asymmetry.
+
 ## Source
 
 - `raw/research/neuromorphic-commercial-viability/04-memristor-codesign-review.md` — Position A, via review paraphrase of Li et al. and Jeon et al.
@@ -73,5 +80,7 @@ Pending resolution condition 1, [[../devices/memristor-array-integration-gap]] c
 - [[../devices/analog-training-nonidealities]] — the full evidence on both algorithms and devices
 - [[../devices/memristor-array-integration-gap]] — where Position A is recorded
 - [[../snn/snn-training-surrogate-gradients]] — the architectural constraint on on-chip learning
+- [[../devices/reciprocal-tau-cell-log-domain-learning]] — simulated mismatch recovery
+- [[../devices/two-state-synapse-equilibrium-propagation]] — EqProp device spec
 - [[snn-energy-payoff]] — the other open dispute
 - [[../viability-ledger]]

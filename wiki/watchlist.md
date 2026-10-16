@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-10-01
+last_reviewed: 2026-10-15
 ---
 
 # Watchlist
@@ -42,6 +42,11 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Nature Electronics: large-scale stretchable neuromorphic circuit for on-body edge computing (doi s41928-026-01639-8) — 10,000-transistor/cm² stretchable OECT array with synaptic programming/retention, on-body health-data demo; ⚠️ likely hits the wiki's known nature.com structural-paywall capture failure, publication date inside/outside this week's window unconfirmed
 - Lead-free perovskite-inspired chalcogenide memristors (arXiv:2609.40300) — new material family; numbers not yet read
 - Tampere capacitive in-memory computing perspective (via Semiconductor Engineering) — device-to-systems; may be a review
+- IOP NCE: neuromodulable current-mode silicon neuron, 180 nm CMOS (doi 10.1088/2634-4386/aeaf14, 2026-10-15) — experimentally verified silicon, open access; ⚠️ iopscience article page bot-walled (678-byte capture), retry or find arXiv/PDF
+- Monolithic 3D memristor–TFT reservoir computing (Nat. Comms. s41467-026-78364-5, 2026-10-03) — likely hardware-measured; abstract not read
+- Solution-processed Ti/Pt/NiOx/Ag RRAM, 30 intermediate states (arXiv:2610.14322) — ≈5-bit, 1000 s stable; single device, no array/endurance
+- Programmable memristive circuits as Ising pseudospins (arXiv:2610.15346) — measured order, learning results device-calibrated simulation
+- Cross-layer printed-memristor stateful-logic adders (arXiv:2610.20109) — 2n+6 cycles claimed; measured-vs-simulated split unstated
 
 ## Chips & systems
 
@@ -63,6 +68,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Benchmarking SNNs across sensing modalities on edge devices (arXiv:2609.00026) — open framework, NeuroBench-adjacent
 - Zephyr: SNN audio denoising on an FPGA PE array (arXiv:2609.37711) — FPGA, unread
 - Neuromorphic PRNG on a low-power FPGA (arXiv:2610.00719) — 3.24 mW at 120 kb/s, measured
+- FerroNDS: neural dynamical systems on ferroelectric compute-in-memory (IOP NCE aeac81, 2026-10-14) — 14.7 nJ/neuron/inference at 10 kHz, simulation only (LTspice-fitted behavioral models)
+- Graded-spike SNN accelerator on ZCU102 FPGA (IOP NCE aeaf15) — 251 FPS, 54.96 GOPS/W on DVS-Gesture; measured-vs-estimated unstated
+- STISA single-shot SNN FPGA accelerator (arXiv:2610.19973) — no methodology in abstract; may be a late upload of a 2026 TCAS-I paper
 
 ## Algorithms & toolchains
 
@@ -88,6 +96,8 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - SNN streaming qubit readout (arXiv:2610.02129) — novel application; hardware path unclear
 - Controllable stochastic quantization encoding for robust SNNs (arXiv:2610.01558) — adversarial robustness, no hardware
 - MTLiquid multi-task liquid neural networks (arXiv:2609.33232) — no hardware or code stated
+- CAFE differential encoding for FeFET compute-in-memory (arXiv:2610.19697) — variation robustness, reads as simulation; two independent survey signals
+- Hybrid LIF-ABRF SNN spike detection for brain-machine interfaces (IOP NCE aea4ec) — 4.3× less memory; algorithm-level
 
 ## Benchmarks
 

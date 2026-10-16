@@ -191,6 +191,11 @@ Preferences specific to *this* wiki. The agent running `/weekly-brief` in this c
 - **A candidate (BrainChip AKD1500 PCIe card) was independently resurfaced by two vendor-survey passes and nearly double-counted** as a new capture — it was the identical 2026-09-17 press release already ingested the prior week, just reached via a different syndication URL. The selection step has no dedup check against already-ingested `wiki/*.md` content; caught by manual inspection, not by process. See `master_notes.md` 2026-09-24 entry for the proposed fix (cross-check candidate URLs/topics against recent `wiki/*.md` Source sections before dispatching a capture).
 - **A survey-reported figure ($99 BrainChip PCIe card price) did not exist in any source text** — same failure class as the 2026-08-27 KAIST figure-hallucination finding, but this time the fabrication was about to be hand-written directly into a wiki page edit by the orchestrator rather than filtered by the ingest-subagent read-only-source safeguard. Caught by grepping the raw captures before finalizing the edit.
 
+**2026-10-15 — 4 captures, no source-status changes.** Vendor/trade-press, toolchain and programme lanes found nothing verifiable in the 14-day window (the web-search tool is weak on recent dates; direct newsroom fetches would be more reliable). Process notes:
+
+- **IOPscience article pages are now Radware-walled for `capture_url`** (678-byte capture of an NCE article), contradicting the earlier "captures cleanly" note. IOP stays `active` for discovery (Crossref gives dates/abstracts) but demote capture expectations; prefer arXiv versions.
+- `capture_pdf` needs `arxiv.org/pdf/<id>`; the `/abs/` form fails (weasyprint). `poetry` lives in `~/.local/bin`, not on the default PATH.
+
 ## Related
 
 - [[watchlist]] — the persistent radar this file feeds

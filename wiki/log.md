@@ -163,3 +163,11 @@ Fifth `/weekly-brief` run. 5 arXiv sources captured (marker, audit clean) and in
 **Kit note:** `capture_pdf` needs an `arxiv.org/pdf/<id>` URL (the `/abs/` form fails with a missing-weasyprint error); `poetry` was not on cron-less PATH (`~/.local/bin`).
 
 Full brief: `wiki/weekly-briefs/2026-10-01.md`.
+
+## [2026-10-15] weekly-brief | 4 captured, 1 capture failed, 10 watchlisted, IGZO / HZO reliability / EqProp / log-domain learning pages
+
+Survey: five parallel agents; vendors/trade-press, toolchains and programmes lanes returned nothing verifiable in the window (arXiv API 429-limited for one). Four arXiv papers captured via `capture_pdf --engine marker` (`/pdf/` URLs) and ingested; all four are device-level or simulation-only. `analog-onchip-training-viability` extended, not resolved.
+
+**Skipped:** IOP NCE neuromodulable 180 nm silicon neuron (aeaf14) — `capture_url` returned 678 bytes (Radware wall); watchlisted.
+
+Full brief: `wiki/weekly-briefs/2026-10-15.md`.

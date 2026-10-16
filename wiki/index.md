@@ -40,6 +40,10 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/optoelectronic-rram-photonic-programming]] | Optoelectronic RRAM (ORRAM) — memristive cells written with light, not voltage. 32-device IGZO array, µLED-array optical SET / electrical RESET, optical fading memory ~2500× longer than electrical relaxation. Academic-only; no endurance, retention, or CMOS-integrated ORRAM yet. |
 | [[devices/optoelectronic-reservoir-computing-si3n4-ttd]] | Foundry-fabricated Si3N4 true-time-delay chip closes a delayed-feedback reservoir computer's loop, at feedback gain >40× below prior optoelectronic reservoirs. Single device, bench system, no code/data release. Not spiking; the wiki's first reservoir-computing entry. |
 | [[devices/vmtj-cmos-izhikevich-neuron]] | The wiki's first spintronic entry: voltage-controlled MTJ + 22 nm CMOS Izhikevich-style neuron, 145 fJ/spike. Device data measured, circuit and spike-reduction (88.6%) claims simulated / software-proxy. |
+| [[devices/igzo-2t0c-multilevel-readout]] | IGZO 2T0C four-level memory: re-estimating thresholds from ~8 reference devices cuts misclassification 4.3% → 0.15%. **Isolated-TFT DC sweeps only** — no cell, pulse or array data; reference-cell overhead ≥12.5%. |
+| [[devices/hzo-ferroelectric-capacitor-reliability]] | 5 nm HZO capacitor: polarization loss depends on access rate (delay between pulses), attributed to vacancy-to-electrode electron transfer. Single stack, 10¹⁰-cycle figure extrapolated; capacitor not FeFET. |
+| [[devices/two-state-synapse-equilibrium-propagation]] | Volatile + non-volatile synapse carrying EqProp's free/nudged comparison; matches EqProp on MNIST (≈2.0% error) in software. Device spec only; code released. |
+| [[devices/reciprocal-tau-cell-log-domain-learning]] | Log-domain CMOS equilibrium circuit with exact latched gradient; Iris 90% and mismatch recovery 53–63% → 88–96%. **SPICE only, SKY130, no silicon.** |
 
 ---
 
