@@ -53,6 +53,9 @@ Fast-moving daily/weekly trending-paper feeds — checked directly rather than p
 |---|---|---|---|---|
 | Hugging Face Daily Papers | https://huggingface.co/papers | Community-upvoted daily arXiv paper feed; fastest-moving trending signal, effectively replaced the awesome-lists as this wiki's primary weekly aggregator (2026-08-01: all 7 pinned awesome-lists showed zero commits in the sweep window; confirmed again 2026-08-22, second consecutive zero-signal sweep — see GitHub awesome-lists demoted to probation below). | 2026-08-01 | active |
 | alphaXiv trending | https://www.alphaxiv.org/ | Social layer around arXiv; surfaces trending papers with discussion. Companion to @alphaxiv (already tracked above). | 2026-08-01 | active |
+| Hugging Face Papers weekly/monthly views | https://huggingface.co/papers/week/2026-W42 (and /papers/month/2026-10) | Fetchable ranked view with upvote counts (unlike Reddit/X/alphaXiv, unreachable in the 2026-10-17 sweep); gives quantitative trending rank. | 2026-10-17 | probation |
+
+2026-10-17: Reddit (both domains), alphaXiv and X were not fetchable in the weekly sweep — treat as single-source HF signal until a browser route exists.
 
 ## GitHub awesome-lists
 
@@ -78,6 +81,7 @@ Podcasts with RSS feeds can be programmatically sampled for episode titles + des
 |---|---|---|---|---|
 | Dwarkesh Podcast | https://www.dwarkesh.com/podcast | Long-form interviews with frontier researchers (OpenAI, DeepMind, Anthropic). Alignment, scaling, capabilities. | 2026-04-21 | active |
 | Latent Space | https://www.latent.space/ | AI-engineering deep dives; fast to cover new techniques. | 2026-04-21 | active |
+| Latent Space AINews | https://www.latent.space/archive | Daily AINews digest of arXiv/X links grouped by RL, architectures, memory, self-improving agents, benchmarks; dense multi-source signal. | 2026-10-17 | active |
 | The Cognitive Revolution | https://www.cognitiverevolution.ai/ | Nathan Labenz — balance of technical and strategic AI content. | 2026-04-21 | active |
 | TWIML AI Podcast | https://twimlai.com/podcast/twimlai/ | Sam Charrington — research-oriented ML interviews. Long-running, broad. | 2026-04-21 | active |
 | Practical AI | https://changelog.com/practicalai | Applied ML; occasionally surfaces tooling relevant to fine-tuning / MLOps. | 2026-04-21 | probation |

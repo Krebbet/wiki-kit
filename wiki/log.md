@@ -353,3 +353,11 @@ Watchlist additions: 10 (OPD scaling laws, Behavioral Shadows, GAGAR, UniEvo-VL,
 Reference-sources.md: not edited this run (candidate additions Import AI archive + Latent Space AINews noted in the brief for the user to approve; the file's own rule says ask before mutating).
 
 Pre-existing uncommitted work at run start (not touched by this run's commit): modified wiki/weekly-briefs/2026-06-06.md, 2026-06-13.md, 2026-06-27.md, 2026-07-04.md; untracked wiki/openclaw.md, wiki/openclaw-claude-code-memory.md.
+
+## [2026-10-17] weekly-brief | 5 captured
+
+Autonomous weekly sweep (week of 2026-10-17). The 2026-10-10 sweep was skipped, so the window covered ~14 days. Reddit, X and alphaXiv were unreachable; signal for the arXiv items came from Hugging Face only (HF weekly/trending papers).
+
+Captures: waypoint-opd (2610.21601), self-evolving-agent-harness (2610.18813), logra (2610.06647), reflection-beam (HF blog), muse-spark-open (HF blog). Ingest: 5/5 summaries validated.
+
+Pages written: 5 new — [[waypoint-opd]], [[self-evolving-agent-harness]], [[logra]], [[reflection-beam]], [[muse-spark-open]]. No conflicts opened or extended. Soft tension recorded in-page: the held-out-split reuse critique in [[self-evolving-agent-harness]] applies to validation-gated methods such as [[skillopt]], [[memoharness]] and [[argus-agentic-runtime]]. [[reflection-beam]] and [[muse-spark-open]] cross-linked as a shared open-frontier-MoE data point (256 experts, top-8, 1M context). Source-reported model name "Qwen3.8-27B" in [[logra]] preserved verbatim, unverified.

@@ -361,3 +361,25 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 ## Computer vision / 3D (continued — weekly-brief 2026-10-03)
 
 - **World Labs Atlas (omni world model)** — Multimodal autoregressive diffusion transformer with camera geometry as native input; beats specialist sparse-view reconstruction on DTU/ETH3D/ScanNet; early access only. *(weekly-brief 2026-10-03.)*
+
+## RL / post-training (continued — weekly-brief 2026-10-17)
+
+- **Rethinking Cross-Tokenizer On-Policy Distillation (https://arxiv.org/abs/2610.08448)** — OPD between teacher/student with different tokenizers; reframes alignment coverage vs supervision reliability. HF trending W41. *(weekly-brief 2026-10-17.)*
+- **Cross-Teacher Guarding for Multi-Teacher On-Policy Distillation (https://arxiv.org/abs/2610.13521)** — Multi-teacher OPD with a guard against conflicting teachers; HF trending W42. Joins Waypoint-OPD, RIDE, DOPD in the OPD cluster. *(weekly-brief 2026-10-17.)*
+- **QwenGyre (https://arxiv.org/abs/2609.33848)** — RL framework for very long-horizon agents; moves GPUs between rollout and training, treats branching runs as trajectory trees. Surfaced via AINews + Qwen on X. *(weekly-brief 2026-10-17.)*
+
+## Self-improving agents (continued — weekly-brief 2026-10-17)
+
+- **Harness²: Recursive Agent Harnessing for an Open World (https://arxiv.org/abs/2610.14224)** — Recursive harness refinement with continual learning; test-time harness evolution without a verifier. Sibling of the newly ingested [[self-evolving-agent-harness]]. *(weekly-brief 2026-10-17.)*
+- **RSI-Anything: Unlocking Recursive Self-Improvement with World Models (https://arxiv.org/abs/2610.13912)** — World-model-guided recursive self-improvement. *(weekly-brief 2026-10-17.)*
+- **AgentGarten: Code Worlds for Evolving Agents (https://arxiv.org/abs/2610.12374)** — Code-based environments for evolving agents; #1 on HF weekly W41. *(weekly-brief 2026-10-17.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-10-17)
+
+- **LoopVL: Recurrent Visual Intelligence (https://arxiv.org/abs/2609.38426)** — Looped/recurrent vision-language architecture; HF monthly 484 upvotes. Related: [[hyperloop-transformers]], [[gram-recursive-reasoning]]. *(weekly-brief 2026-10-17.)*
+- **STEPQuant: When and Where Errors Matter in Delta-Rule Recurrent State Quantization (https://arxiv.org/abs/2609.38169)** — Quantizing recurrent state in delta-rule models; serving-side concern for linear-attention/SSM stacks. *(weekly-brief 2026-10-17.)*
+
+## Infrastructure (continued — weekly-brief 2026-10-17)
+
+- **REMORY: Learning Residual Memory for Context Compaction (https://arxiv.org/abs/2610.11287)** — Learned residual memory for context compaction in agents. *(weekly-brief 2026-10-17.)*
+- **Async/efficient RL infra cluster (vendor/X-reported, no arXiv links)** — ThunderSync (gradients computed as rewards arrive, reported up to 1.9x); vLLM bitwise-consistent train/inference for RL (zero train-inference KL, 87.5% rollout throughput kept); TRL AsyncGRPO tree packing (reported 26x trainer-compute cut); Modal heterogeneous async RL. Source: Latent Space AINews Oct 14/16. *(weekly-brief 2026-10-17.)*
