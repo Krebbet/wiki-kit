@@ -37,6 +37,10 @@ Also a new data point for [[../decoding-time-steering/_overview]]'s cross-source
 
 Possible (not confirmed) tension with [[../catastrophic-forgetting/mechanistic-forgetting-circuits]]'s claim that RL retains more base circuit heads than SFT (72.5% vs. 59.0%) — this paper finds conflict-SFT arms *also* recover 7/8 of the base model's grounding-specific causal heads, nearly matching GRPO/DPO. The two papers measure different behaviors/granularities, so this may not be a true conflict, but the numbers are close enough to warrant a follow-up look.
 
+## Related: mode-control reuse in hybrid reasoning models
+
+[[thinking-leakage-no-think-rl]] (arXiv:2610.14270) applies the same causal toolkit (head knockout, activation-subspace patching, weight scaling) to GRPO in no-think mode on hybrid Qwen3. An 8-dim think subspace carries ~75% of the RL gain and a handful of heads reading the empty think block mediate it; extrapolated updates approach but never exceed the model's own think-mode accuracy. Reuse-not-installation therefore extends from capability reuse to reuse of a mode switch.
+
 ## Source
 
 - arXiv: [2609.00925](https://arxiv.org/abs/2609.00925) — "Context-Grounding Gains Are Mediated by Pre-existing Machinery: Auditing GRPO, SFT, and DPO"
@@ -52,4 +56,5 @@ Possible (not confirmed) tension with [[../catastrophic-forgetting/mechanistic-f
 - [[../../conflicts/mcpo-vs-dapo-mastered-prompts]] — another instance of the advantage-collapse/mastered-prompts failure mode
 - [[../selective-finetuning/rome]] — shares the CounterFact knowledge-conflict evaluation protocol
 - [[../rl-optimizers/dpo]] — multi-scale/multi-family DPO effect-size table
+- [[thinking-leakage-no-think-rl]] — mode-control variant of the same reuse thesis (hybrid Qwen3 think/no-think)
 - [[../../weekly-briefs/2026-09-25]] — brought in by the 2026-09-25 weekly sweep

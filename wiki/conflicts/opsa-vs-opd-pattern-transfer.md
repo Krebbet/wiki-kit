@@ -67,3 +67,12 @@ Surfaced via the 2026-09-04 weekly sweep. OPSA (arXiv:2608.31046), Sections 2.2�
 - [[../../weekly-briefs/2026-09-11]] — extended by the 2026-09-11 weekly sweep
 - [[../../weekly-briefs/2026-09-18]] — extended by the 2026-09-18 weekly sweep
 - [[../../weekly-briefs/2026-09-25]] — extended by the 2026-09-25 weekly sweep
+
+## 2026-10-16 extension (weekly sweep)
+
+Two datapoints, both scoping rather than settling the dispute:
+
+- [[../research/teacher-student-rl/opd-skill-vs-knowledge-transfer]] (Tang & Yang, 2610.09639) — Position B (teacher-specific transfer) datapoint: a skill-bearing teacher yields 79.10% on unseen tree structures vs 0.72% for the matched frozen-student control. Caveats: synthetic digit-lookup composition; the control is a frozen student copy, not OPSA's teacher-free ablation, so Position A isn't directly tested; teacher-specific supervision matters for compositional skill, not facts; one model, one run, teachers fine-tuned on the eval set.
+- [[../research/teacher-student-rl/semi-opd-offline-student-rollouts]] (2610.11291) — teacher-alignment datapoint: OPD gains/losses track initial teacher–student top-64 overlap (r=−0.73, n=17); at low overlap OPD can degrade and a frozen-rollout baseline wins, supporting the view that teacher–student compatibility governs outcomes. Correlational, math-only.
+
+- [[../weekly-briefs/2026-10-16]] — extended by the 2026-10-16 weekly sweep

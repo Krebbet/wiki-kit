@@ -146,3 +146,9 @@ The theme's load-bearing contribution to the skeleton: **the student's condition
 - [[../self-improvement/_overview]] — STaR is the teacher-less ancestor TRICE generalises
 - [[../critique-self-correction/_overview]] — teacher-as-critic flavour; principle decomposition in CAI is adjacent to Saha RQ3 personalisation
 - [[../synthesis/single-sample-concept-skeleton]] — project skeleton; theme provides the dense-reward slot candidate via Sakana RLT
+
+## Update 2026-10-16 (weekly-brief)
+
+- [[opd-skill-vs-knowledge-transfer]] (Tang & Yang, 2610.09639): reverse-KL OPD installs compositional skill, driven by student rollouts, but not new factual knowledge (needs forward KL or a hybrid); extends the support-bounded reuse thesis from RLVR to distillation. Read OPD pass@k coverage expansion as skill-type only, and the few-sample regime ([[one-shot-opd]]) as skill-installing; evidence is synthetic.
+- [[semi-opd-offline-student-rollouts]] (2610.11291): adds a rollout-freezing axis and a cheap Overlap@64 diagnostic. Low-overlap pairs favour frozen initial-student rollouts, high-overlap pairs (~89%) favour OPD/FastOPD; tempers ESR-style truncation ([[esr-early-stopping-opd]]) since full-trajectory coverage matters. OPD-variant gains measured on poorly aligned pairs may be overstated.
+- [[../../weekly-briefs/2026-10-16]] — brought in by the 2026-10-16 weekly sweep

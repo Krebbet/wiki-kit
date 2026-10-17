@@ -27,8 +27,12 @@ Provides the theoretical scaffolding that makes single-sample RL plausible. For 
 - Raw markdown: `../../../raw/research/single-sample-llm-learning/03-03-rlvr-incentivizes-reasoning.md`
 - Raw PDF: `../../../raw/research/single-sample-llm-learning/pdfs/03-rlvr-incentivizes-reasoning.pdf`
 
+## Soft tension (2026-10-16)
+[[../rlvr-mechanics/thinking-leakage-no-think-rl]] (arXiv:2610.14270) finds that GRPO gains in no-think mode on hybrid Qwen3 are largely reactivation of the model's own think-mode reasoning, capped at think-mode accuracy (causal patching/knockout evidence). That cuts against reading accuracy gains as boundary extension. Scope is narrow (one hybrid no-think recipe, no CoT-Pass@K or large-$k$ pass@k), so this is a soft tension, not a rebuttal; CoT-Pass@K with a think-mode baseline would discriminate.
+
 ## Related
 - [[1-shot-rlvr]]
 - [[deepseek-r1]]
 - [[../rlvr-mechanics/_overview]]
 - [[../process-reward-models/_overview]]
+- [[../rlvr-mechanics/thinking-leakage-no-think-rl]]

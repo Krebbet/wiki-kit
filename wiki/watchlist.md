@@ -22,6 +22,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Seirênes (arXiv:2605.11636) — adversarial self-play w/ evolving in-loop distractors; shared-param verifiable-reasoning RL. **User-tagged load-bearing 2026-05-19: strong self-play exemplar — evaluate/ingest when building any self-play-inclusive proposal.** Promotion triggered (user tag) but deferred per instruction; pull in at proposal time. Hub pointer: [[research/synthesis/proposer-reward-shapes#Candidates earmarked for self-play-inclusive proposals]].
 - DUEL (arXiv:2605.24794) — adversarial self-play for VLMs: Challenger generates hard negative image-grounded claims; Solver verifies; extends self-play to multimodal without human annotation
 - CoSPlay (arXiv:2605.23491) — cooperative test-time self-play: model proposes code + unit tests, self-verifies correctness
+- Selection Is Not Learning (arXiv:2610.22029) — self-evolving loops accept non-improving updates; fresh-question commit checks (HeirCommit)
 
 ## Post-GRPO RL optimizers
 
@@ -37,6 +38,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - GRAFT / Learning Beyond What You Sample (arXiv:2609.37868) — replaces all-fail groups with peer trajectories
 - Adapter Thickets (arXiv:2610.00991) — splitting an RLVR budget across small LoRA adapters + majority vote beats one adapter; sharpening shares errors
 - Range-GRPO (arXiv:2610.01548) — title-only triage, abstract unread
+- GGPO (arXiv:2610.20814) — Gibbs-gap off-policy RLVR without importance weights; beats GRPO/AGRO under staleness; code released
 
 ## Process reward models
 
@@ -77,6 +79,12 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Scaling Properties of Same-Family OPD (arXiv:2609.32722) — held-out accuracy ~linear in √KL from init; useful-transfer regime
 - RIDE: The Teacher Is a Direction, Not a Destination (arXiv:2609.36484) — hidden-space residual extrapolation for OPD; code released
 - SAKI (arXiv:2609.36601) — TV-routed supervision allocation across tokens in distillation
+- CriticOPD (arXiv:2610.20572) — teacher critiques wrong student attempts, student rewrites then trains critique-free; code released
+- Do As I Do, Not As I Say (arXiv:2610.20989) — VLM OPD inherits teacher; works only while teacher reliable on student trajectories; code released
+- Road-MOPD (arXiv:2610.13521) — cross-teacher critics + gradient projection for multi-teacher OPD; >5 pts under high conflict
+- DiffGate (arXiv:2610.04596) — difficulty-gated teacher guidance: GRPO plus teacher only on failed groups
+- STOPD (arXiv:2610.21337) — truncated OPD rollouts; 1.3–2.2× faster at comparable accuracy
+- Compatibility Matters (arXiv:2610.21234) — token-level teacher selection in OPD improves pass@k
 
 ## Process reward models
 
@@ -164,6 +172,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - RFT Naturally Mitigates Forgetting (arXiv:2507.05386) — RFT resists catastrophic forgetting across 7 multimodal tasks while SFT degrades; no replay needed; on Qwen2.5-VL-7B
 - E2H Curriculum RL (arXiv:2506.06632, ICLR 2026) — easy-to-hard curriculum RL rescues 1.5B–3B models that fail with vanilla RL; finite-sample complexity bounds proving E2H needs fewer total samples
 - ACLArena (arXiv:2609.23989) — agent continual-learning benchmark across multi-stage post-training
+- Continually Post-training Small Models via Synthetic Self-distillation (arXiv:2610.13113) — larger same-family rewriter fixes SDFT failure on small models
 
 ## RL optimizer miscellany
 
@@ -180,6 +189,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Critical-State RL (arXiv:2609.24985) — diagnoses trainable states for multi-turn tool use, learning-cliff-adjacent
 - Is Next-Chunk Reasoning RL Really Better than SFT? (arXiv:2608.23256) — revisits RLVR-vs-SFT training strategies under no-CoT data
 - Don't Mask the Environment (arXiv:2609.20715) — observation supervision changes how agents explore under RL
+- Learning to Steer, Steering to See (arXiv:2609.34344) — geometry of RLVR via trainable steering vectors; code released
 
 ## Process reward models (cont.)
 
@@ -208,6 +218,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Related
 
+- [[weekly-briefs/2026-10-16]] — most recent weekly sweep (5 captures: OPD skill-vs-knowledge, Semi-OPD, RLVR OOD answer-format, thinking leakage, majority-vote gradient coherence; 10 watchlist additions)
 - [[weekly-briefs/2026-10-02]] — most recent weekly sweep (5 captures: multi-teacher OPD pair, OPD-vs-off-policy KL direction, ATD taskless distillation, random-reward reachability probe; new forgetting conflict; 10 watchlist additions)
 - [[reference-sources]] — what the weekly brief scans + local conventions for this wiki
 - [[index]] — wiki-wide page catalog

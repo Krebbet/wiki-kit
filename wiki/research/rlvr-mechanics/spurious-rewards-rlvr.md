@@ -50,12 +50,17 @@ where $\rho_{i,t} = \pi_\theta / \pi_{\theta_\text{old}}$. When a behaviour has 
 
 - **Partial tension with DAPO / Dr. GRPO motivation.** DAPO removes the KL penalty (addressing Dymetman's mode-collapse worry) but retains the PPO clip. This paper's clipping-bias finding suggests DAPO's Clip-Higher asymmetry may still be susceptible to spurious amplification — the clip's directional bias favours promoting already-high-prior tokens. Not a direct contradiction; the papers address different pathologies, but both now motivate scrutinising Qwen-only evaluations of RLVR variants.
 
+## Batch-level incoherence account of reward-noise robustness
+
+Added 2026-10-16. [[wrong-votes-right-gradients]] (arXiv:2610.20898) gives a second, complementary explanation for why noisy or uninformative rewards still train: at batch level, label errors that are incoherent across prompts cancel in the summed gradient ($\sim B^{1/2}$ growth) while the shared correct signal adds ($\sim B$). Independent flips up to 30% leave the expected update parallel to gold ($c_\infty\approx 1.00$-$1.04$, pure shrinkage $(1-2\varepsilon)$), whereas same-rate flips by a shared rule drop it to 0.29 (20%) and -0.13 (31%). So robustness depends on error *coherence*, not rate. This is orthogonal to the clip-bias mechanism above (prior amplification under any reward) and the two can stack; it also predicts that robustness fails for coherent errors and for N=1 training, where no batch averaging exists.
+
 ## Source
 
 - `raw/research/weekly-2026-06-05/05-spurious-rewards-rlvr.md`
 
 ## Related
 
+- [[wrong-votes-right-gradients]] — batch-level error-incoherence account; complements the clip-bias account
 - [[deepseekmath-grpo]] — GRPO clip objective and group-relative advantage; clip term analysed here
 - [[binary-rewards-rl-challenges]] — Dymetman's information-geometric mode collapse; complementary failure-mode account
 - [[rethinking-rl-sparse-selection]] — Akgul's token-level 0%-shifted finding; same cluster, different mechanism

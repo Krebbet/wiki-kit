@@ -48,8 +48,13 @@ TEMPO claims sustained pass@k while baselines collapse. [[../self-play/invisible
 4. No formal convergence guarantees for the alternation.
 5. Some Qwen3-14B pass@k deltas negative on OlymMath / AIME 26 despite avg@k positive — diversity-vs-mode tradeoff partially survives.
 
+## Gradient-level justification for MV/TTRL (added 2026-10-16)
+
+[[../rlvr-mechanics/wrong-votes-right-gradients]] (arXiv:2610.20898) explains why majority-vote pseudo-labels, the TTRL baseline TEMPO's M-step builds on, work at all: MV errors are incoherent across prompts (pairwise gradient cosine 30-60x below gold's), so the expected batch update is $\approx(1-\beta)G_{gold}$ plus a small orthogonal term, with $c_\infty\approx 1.00$ on 5 models. Caveats relevant here: the equivalence is per-step and on raw gradients; gold still ends ahead on held-out maj@64 (0.845 vs 0.772); MV mainly sharpens maj@1; labels must come from the current policy (frozen-base labels deliver far less of the gold update); and the argument needs $B\gg 37$-50 diverse prompts, so it does not license MV labels in a one-prompt TTT regime.
+
 ## Related
 
+- [[../rlvr-mechanics/wrong-votes-right-gradients]] — batch-incoherence account of why MV rewards track gold
 - [[_overview]] — TTT theme overview
 - [[ttt-few-shot]] — Akyürek et al. per-input synthetic-SFT TTT
 - [[algorithm-distillation]] — in-context RL TTT

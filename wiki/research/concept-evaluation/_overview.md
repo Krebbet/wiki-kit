@@ -69,6 +69,10 @@ Sources whose datasets are useful as test-data resources for the project, but wh
 |---|---|---|---|
 | **Learning from Less** (arXiv:2604.18381) | (1) **Counting Problems** — templated sequence-counting with conditional filters + transformations; basic / conditional / threshold / arithmetic / extrema / bitwise operators; compositional depth 1–7 steps. (2) **Graph Reasoning** — procedurally-generated graph-theoretic problems (vertex cover, max clique, Hamiltonian path, graph metrics, etc.); 5–25 nodes; networkx-validatable. (3) **Spatial Reasoning** — 2D grid + particles + movement/rotation actions; absolute and relative-location queries; deterministic simulator ground-truth (extends Dsouza et al. 2025). | All three: programmatic ground-truth, controllable complexity, exact-match evaluation, no LLM-as-judge dependency. **Marked 2026-05-14**: paper itself low-relevance for this wiki's frame; datasets retained as future test-set candidates for concept-evaluation / RCL **E1**-style batteries. | `raw/research/dataset-references/01-learning-from-less.md` |
 
+## Evaluation validity of transfer claims
+
+Added 2026-10-16 ([[../rlvr-mechanics/rlvr-ood-gain-answer-format]], arXiv:2610.20639). Re-scoring stored outputs of released SimpleRL base/RL pairs with one fixed extractor $\omega$ shows 82% of the reported OOD multiple-choice gain (harness mean +22.5 vs fixed +4.0 pts) is answer-format gain: RL moves stated answers into `\boxed{}`. Reported gain can differ by a median 15.1 pts across extractors on identical outputs. Implication for this theme: a transfer claim counts as concept-learning evidence only if the scorer is format-invariant. Required check: report gain under at least two independent extractors (plus log-likelihood or LLM-reader scoring where feasible), abstain-as-wrong, and compare where the answer is written in base vs tuned outputs. Prefer programmatic-ground-truth batteries (e.g. the dataset references above) over text-extracted MC.
+
 ## Related themes
 
 - [[../concept-learning/_overview]] — sibling theme; concept-as-architectural-commitment (CBM, RCE) where this theme is concept-as-evaluation-target

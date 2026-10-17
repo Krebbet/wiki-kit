@@ -30,3 +30,9 @@ Surfaced via the 2026-08-28 weekly sweep. ReViSQL-K2.6 (Thinking Machines Lab bl
 - [[../research/rlvr-mechanics/spurious-rewards-rlvr]] — Position B paper
 - [[../research/rlvr-mechanics/_overview]] — RLVR mechanics theme overview
 - [[../weekly-briefs/2026-08-28]] — brought in by the 2026-08-28 weekly sweep
+
+## 2026-10-16 reconciling note (weekly sweep)
+
+[[../research/rlvr-mechanics/wrong-votes-right-gradients]] (2610.20898) finds error *coherence* across prompts, not error rate, decides whether label noise hurts: independent flips up to 30% leave the expected update parallel to gold, while same-rate shared-rule flips give $c_\infty$ = 0.29 at 20% and −0.13 at 31%. ReViSQL's 32.8% execution-match false positives are plausibly coherent (systematic over-acceptance of a query kind), which would explain why they hurt while random/spurious rewards in Shao et al. do not. This is a testable prediction, not a ruling: neither source measured error coherence directly, and both are batch-training results that say nothing about N=1.
+
+- [[../weekly-briefs/2026-10-16]] — extended by the 2026-10-16 weekly sweep

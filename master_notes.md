@@ -272,3 +272,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Implication:** Any workflow that WebFetches a JS-rendered page for structured data (paper IDs, prices, dates, etc.) should treat the result as unverified until cross-checked against a second, non-JS-rendered source (direct site search, a stable API, a community mirror) — especially for content that will be captured/cited/committed downstream. Worth a note in `/research` and `/weekly-brief`'s source-scanning steps: "if a source is JS-rendered and WebFetch is the only access path, treat its structured output (IDs, numbers, names) as unverified and re-check before use," not just "if WebFetch fails, fall back to WebSearch." The failure mode here isn't WebFetch failing — it's WebFetch silently succeeding with fabricated content.
 
 **Status:** open
+
+### 2026-10-16 — Ingest subagents silently read only ~55–70% of long captures
+
+**Scope:** kit
+
+**Observation:** In the 2026-10-16 weekly-brief, all 5 ingest subagents reported their Read of the raw capture was truncated (e.g. lines 1–954 of 1358; 1–909 of 2248), and `wiki/index.md` truncated at line 207 of 403, so appendices and later index sections were never seen. Cross-ref candidates were drawn only from the first half of the index. The `/ingest` subagent prompt does not tell agents to page with offset/limit.
+
+**Implication:** Add to the ingest subagent template: "If Read truncates, continue with offset/limit until the whole file is read (or state explicitly what was skipped); grep the full index for cross-ref names." Also recurrences this run: `poetry` not on PATH and marker/weasyprint unavailable.
+
+**Status:** open

@@ -36,3 +36,7 @@ Caveat: abstract only; the scales (7B?) and LR grids were not captured, and the 
 - [[../catastrophic-forgetting/rft-data-perspective]] — on-policy data account
 - [[../../conflicts/on-policy-forgetting-vs-lr-confound]] — opened by this page
 - [[../../weekly-briefs/2026-10-02]] — brought in by the 2026-10-02 weekly sweep
+
+## Corroboration: facts vs skill
+
+[[opd-skill-vs-knowledge-transfer]] (Tang & Yang, arXiv:2610.09639) reaches the same direction-over-prefix conclusion in a controlled synthetic setting: forward KL installs held-out facts equally from student or teacher prefixes (Qwen3-4B 54.10 vs 54.05), while reverse KL barely does (13.12% mean single-step held-out-fact accuracy across four models; Qwen3-4B 10.95%). It adds a split this page lacks: reverse-KL on-policy rollouts do transfer compositional skill (79.10% on unseen trees), so direction gates facts while rollouts drive skill. Toy domain; see that page for caveats.

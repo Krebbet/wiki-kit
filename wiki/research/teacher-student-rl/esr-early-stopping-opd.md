@@ -66,8 +66,13 @@ Li et al. (arXiv:2604.13016, *Rethinking OPD*) note in passing that student pref
 - Evaluated only on small open-source models (<100B); whether the story holds at industrial scale (trillion-parameter models, millions of trajectories) is untested.
 - Not evaluated on multi-modal or long-horizon tasks where positional signal-quality patterns may differ.
 
+## Counter-evidence: truncation vs full-trajectory coverage (Semi-OPD)
+
+[[semi-opd-offline-student-rollouts]] (arXiv:2610.11291) agrees with the Off-policy Teacher Decay diagnosis (teacher signal degrades on long student prefixes) but argues truncation discards needed supervision on later reasoning stages: truncating cached initial-student traces to the first 1/4 at fixed token budget slows convergence and lowers accuracy. Its remedy is to freeze short initial-student rollouts (full-trajectory coverage, no drift) rather than truncate evolving ones; it wins on 14/17 pairs, with gain predicted by initial top-64 overlap ($r=-0.73$). Scope tension, not refutation: ESR truncates fresh on-policy rollouts, Semi-OPD ablates truncation on cached ones, and the two are not compared head-to-head (Semi-OPD compares against FastOPD, a prefix-truncation method, where it wins on low-overlap pairs and is roughly tied on a high-overlap one).
+
 ## Related
 
+- [[semi-opd-offline-student-rollouts]] — frozen initial-student rollouts; counter-evidence on truncation
 - [[_overview]] — teacher-student RL theme overview
 - [[rlt-followups-2026]] — OPD landscape; ESR adds a position-based failure-mode diagnosis
 - [[mad-opd]] — debate-as-privileged-info approach to breaking the OPD teacher ceiling; ESR breaks the ceiling via sub-mode commitment instead
