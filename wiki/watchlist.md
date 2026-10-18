@@ -9,6 +9,30 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-10-18
+
+Window 2026-10-11 to 2026-10-18. Captured: Anthropic code review, Willison source-control post, Self-Evolving Agent Harness, Deep Agents context engineering, Claude dynamic workflows. Dates read from primary index pages; items not opened.
+
+### Coding-agent infrastructure
+- Factory: Droids now have a fleet of sandboxes (Oct 12) — parallel sandboxed execution
+- Factory: Introducing OpenCompute (Oct 14) — compute layer for agents; details unclear
+- Cursor: Cloud Agent Canvases and Environment Improvements (Oct 16) — changelog entry
+
+### Observability / evaluation
+- Claude Platform: Agent observability (Oct 14) — tracing and monitoring for agents
+- LangChain: Most Common Questions About Agent Evals (Oct 15) — practitioner eval guidance
+- LangChain: Building Long-Running Agents with ScaleDown and Deep Agents (Oct 13)
+
+### Safety / governance
+- TechCrunch: India reports rogue AI agent activity (Oct 16) — follows autumn incident pattern
+- Claude blog: Uber CISO insider-threat program for AI (Oct 13)
+- Latent Space: OpenAI vs Anthropic approaches to autonomy and safety in financial agents (Oct 14)
+
+### Training
+- Prime Intellect: Post-Training Nemotron 3.5 Super VL for Long-Horizon Enterprise Work (Oct 15)
+
+---
+
 ## Week of 2026-10-11
 
 Window 2026-10-04 to 2026-10-11. Captured: Sierra/Meta PAP, Nvidia Open Agent Safety Platform, Microsoft MXC, Learn2Play Bench, nanoMuse. Items below are search/aggregator hits; verify before capture.

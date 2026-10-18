@@ -144,3 +144,4 @@ The skills chapter is particularly underrepresented in the existing wiki: [[skil
 - [[langchain-deep-agents]] — four-component harness decomposition congruent with the survey's framing.
 - [[ai-scientist-v2]] — node-tuple state pattern as materialised state externalization.
 - [[anthropic-internal-study]], [[willison-cognitive-cost]], [[notion-token-town]] — practitioner counterparts to the architectural shift the survey describes.
+- [[patterns/harness-self-evolution-survey]] - dedicated treatment of the §8.3 "self-evolving harnesses" direction: update-target taxonomy, generalization/retention/admission bounds, and a four-claim evaluation framework (abstract-level capture).

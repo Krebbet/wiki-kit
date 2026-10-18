@@ -52,6 +52,14 @@ Test-impact analysis picks which tests run per change based on past test-result 
 
 **Forward-looking guidance:** assume 25× load within two quarters when designing infra ("always plan for the exponential" — scaling patches buy less time each iteration, while full redesigns now take *less* time than a year ago since code-writing is no longer the bottleneck); budget for 10–20× perceived scale in v0 designs; instrument services to be legible to Claude ("Claude's eyes and ears") so it can hill-climb fixes; keep state out of processes from the start; avoid single-instance critical services unless heavily measured with canaries. A companion post, "AI CI/CD on-call using Claude Tag" (beta), is referenced but not yet captured in the wiki.
 
+## Code review deep dive (2026-10)
+
+A later Anthropic post details the Claude Code team's review system: continuous pre-PR verification, multi-agent verified PR review (parallel finders plus a voting group), risk-tiered human approval (low none, medium one, high two; agent approval never fills a human slot), incident-derived daily evals, and a documented convergence failure (50+ round loop, ~59% of later flags were pre-existing code). It restates the 16% to 54% substantive-comment figure and notes the missing piece: no circuit breakers that tighten approval when reverts move. Full treatment in [[governance/claude-code-review-at-anthropic]]. Rounds of iterative review are therefore not unconditionally beneficial: they need a convergence policy.
+
+## Source control at agent scale
+
+Simon Willison's link-post (2026-10-13) summarizes an Anthropic post on replacing Git with an internal system (Scion) plus a code-review tool (Antique), because merged changes grew from ~2,500/day (May 2026) to 30,000+/day (Sept), roughly 12x: the same exponential-load story as the CI section above, one layer down. Figures quoted via Willison (vendor-stated): ~100 GB main-branch history, >25 GB working copy, ~25M CI checkouts/day, naive Git traffic >600 PB/day; a 7-person team completed migration in 5 months, with no offline support since Claude is always online. Prior art credited: Google Piper, Meta Sapling. Willison's "Subversion-like centralized" read and his guess that Fable/Mythos-class models drive velocity are his impressions, not evidence. He also relays that Anthropic's adversarial review is effective but "myopic", needing skilled engineers to steer Claude away from over-engineering ([[case-studies/willison-vibe-agentic-convergence]] is the nearest practitioner parallel). **Secondary source, collect-but-confirm; the Anthropic primary is not captured.**
+
 ## How this fits the wiki
 
 - [[governance/claude-code-auto-mode]] — the "Claude Code on auto mode" play (Stage 3: Build) frames classifier-gated auto-accept as enabling parallel worktree sessions and as a graduated on-ramp (tuned CLAUDE.md + skills + hooks + test suite) rather than a single toggle; the securing post's risk-tiered approval logging + human sampling is a parallel automated-gate-with-human-backstop philosophy.
@@ -71,9 +79,12 @@ Test-impact analysis picks which tests run per change based on past test-result 
 - `raw/research/weekly-2026-08-23/02-anthropic-ai-native-sdlc-playbook.md` — captured 2026-08-23 from `claude.com/blog/the-ai-native-sdlc-playbook` (~2026-08-19/21). **Vendor primary.**
 - `raw/research/weekly-2026-08-23/03-anthropic-securing-ai-native-sdlc.md` — captured 2026-08-23 from `claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle` (~2026-08-19/21, Jason Clinton, Deputy CISO). **Vendor primary.** Internal metrics (80% AI-authored code, 16%→54% review comments, 1/3 of incidents catchable) are self-reported — collect-but-confirm.
 - `raw/research/weekly-2026-09-20/04-anthropic-ci-test-impact-analysis.md` — captured 2026-09-20 from `claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic` (2026-09-14). **Vendor primary.**
+- `raw/research/weekly-2026-10-18/01-claude-code-review-at-anthropic.md` — captured 2026-10-18; **vendor primary** (see [[governance/claude-code-review-at-anthropic]]).
+- `raw/research/weekly-2026-10-18/02-anthropic-source-control-redesign.md` — captured 2026-10-18; Simon Willison link-post (2026-10-13), **secondary**, collect-but-confirm.
 
 ## Related
 
+- [[governance/claude-code-review-at-anthropic]]
 - [[governance/claude-code-auto-mode]]
 - [[patterns/effective-harnesses]]
 - [[patterns/agentic-harness-engineering]]

@@ -127,6 +127,10 @@ The harness-state convergence-criteria taxonomy subsumes the implicit convergenc
 
 MOSS is the first wiki entry that closes the loop from benchmark-validated self-evolution all the way through to production deployment with rollback. It sits squarely in the execution-based tier of the harness-state formality spectrum (CI/health-probe signals drive convergence) and demonstrates that the self-evolving-harness class is production-viable, not just lab-viable.
 
+## Model-authored topology (2026-10-18)
+
+Anthropic's dynamic workflows ("flows") for Claude Managed Agents add a case the four topologies above assume away: the topology is not chosen by the developer at design time but written by the lead agent at run time, as an orchestration program that launches agents and routes results. Developers can still pass pre-configured subagents and set a session budget; the model does not see its budget. Subagents share a filesystem with no direct messaging API. Demo shape was fan-out then review. Secondary source only (collect-but-confirm); see [[deployments/anthropic-dynamic-workflows]]. Structurally convergent with RLM-style programmatic orchestration ([[coding-agents/langchain-rlms]]).
+
 ## Source
 
 - `raw/research/effective-agentic-patterns/08-arxiv-2601-12560-agentic-ai-taxonomy.md` — "Agentic Artificial Intelligence: Architectures, Taxonomies, and Evaluation of LLM Agents" (Arunkumar V, Anna University; Gangadharan G.R., NIT Tiruchirappalli; Rajkumar Buyya, University of Melbourne; arXiv 2601.12560, January 2026).

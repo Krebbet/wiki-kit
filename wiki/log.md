@@ -590,3 +590,9 @@ Wiki changes: 2 new pages (deployments/openai-dots, patterns/harness-engineering
 Autonomous `/weekly-brief` sweep for week of 2026-10-11. Two parallel scan agents (vendor/press and research/practitioner). 5 captures to `raw/research/weekly-2026-10-11/`: sierra-personal-agent-protocol, nvidia-open-agent-safety-platform (Constellation Research), microsoft-execution-containers, learn2play-bench (arXiv 2610.08215), nanomuse (arXiv 2610.08699). Audit clean, all 5 summaries valid.
 
 Wiki changes: 5 new pages; 9 extensions (incl. reinforcing notes on conflicts/auto-mode-prompt-injection-defense and conflicts/verbatim-vs-extracted-memory, both still OPEN); index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-11.md. Pre-existing uncommitted backlog untouched. Note: new pages link [[memory/openclaw]], which is untracked.
+
+## [2026-10-18] weekly-brief ingest | weekly radar sweep (5 captured, 5 ingested, 10 watchlisted)
+
+Autonomous `/weekly-brief` sweep for week of 2026-10-18. Two search-based scans found nothing date-verified; a third direct-fetch scan of primary index pages produced the candidates. 5 captures to `raw/research/weekly-2026-10-18/`: claude-code-review-at-anthropic, anthropic-source-control-redesign (Willison link-post), self-evolving-agent-harness (HF abstract), deep-agents-context-engineering, claude-dynamic-workflows. Audit clean, all 5 summaries valid.
+
+Wiki changes: 4 new pages; 7 extensions; index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-18.md. langchain-deep-agents.md deliberately NOT extended (pre-existing uncommitted edits); new page links to it instead. No conflict files opened. Pre-existing uncommitted backlog untouched.

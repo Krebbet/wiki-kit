@@ -49,6 +49,10 @@ Quadratic O(n²) attention complexity. Mistral-7B requires 122× more compute go
 
 [[patterns/anthropic-context-engineering]] is the canonical Anthropic engineering-blog treatment of context engineering as an operational discipline. It names the JIT/compaction/note-taking triad as the three load-bearing long-horizon techniques, frames the attention budget as the governing constraint, and positions Claude Code as the main production instance. It serves as the primary-vendor complement to the arXiv survey formalisation above.
 
+## Deep Agents implementation
+
+LangChain's Deep Agents harness is a concrete middleware-based implementation of the context management layer: offload large tool results to files, summarize at a threshold (default 85% of the window) with the full history archived, load skills on demand, isolate noisy work in subagents, and keep memory as plain files. See [[patterns/deep-agents-context-engineering]]. *(2026-10, vendor blog; no benchmarks.)*
+
 ## Relation to fine-tuning
 
 The survey explicitly frames context engineering and fine-tuning as **complementary, not substitutes**. See [[fine-tuning-vs-context-engineering]] for the decision framework synthesized across five sources.
@@ -67,3 +71,4 @@ The survey explicitly frames context engineering and fine-tuning as **complement
 - [[memory-architectures]] — deep-dive on the `c_mem` component.
 - [[codified-context]], [[context-folding]], [[cognitive-fabric-nodes]] — three 2026 instances of context-management mechanisms.
 - [[patterns/anthropic-context-engineering]] — primary-vendor articulation; JIT/compaction/note-taking triad as the operational technique cluster.
+- [[patterns/deep-agents-context-engineering]] — Deep Agents middleware implementation (offloading, recoverable summarization, skills, subagents, file memory).

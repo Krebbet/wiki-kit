@@ -55,3 +55,4 @@ At 64k the plain agent mostly keeps up, with lower latency. At 128k the plain ag
 - [[patterns/context-engineering]] — RLMs as a mechanism alongside JIT retrieval and compaction
 - [[patterns/topology-taxonomy]] — programmatic orchestration adds an execution-layer dimension to agent topology
 - [[patterns/skill-distillation]] — RLMs invert skill-distillation: recurse one model into many vs. collapse many into one
+- [[deployments/anthropic-dynamic-workflows]] — convergent Anthropic approach: Claude Managed Agents "flows" have the lead agent write an orchestration program that launches agents and designs its own topology, the same model-writes-the-orchestration idea as RLMs (secondary source, collect-but-confirm)

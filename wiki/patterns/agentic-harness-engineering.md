@@ -102,6 +102,10 @@ SWE-Cycle (arXiv 2605.13139) provides a formal benchmark framing for the long-ho
 
 **Framing gap to note honestly.** MOSS's Table 1 claims no prior application-level self-evolving system touches the harness and does not cite AHE. AHE clearly does evolve the harness layer. The reconciliation MOSS implies is "academic minimal scaffolds (AHE) vs application-level production substrates (MOSS)" — a plausible distinction, but it leaves AHE as the academic-setting precedent that MOSS's novelty claim overlooks rather than engages.
 
+## Evaluation lens: selection, activation, attribution, improvement
+
+The Harness RSI survey ([[patterns/harness-self-evolution-survey]], HF 2610.18813; abstract-level capture, collect-but-confirm) proposes four separable claims behind any reported harness gain: *selection* (is the estimate independent of the search?), *activation* (did the accepted update operate in the scored runs?), *attribution* (did it cause the difference under controlled conditions?), and *improvement* (does it hold beyond the producing tasks?). Applied here as a suggested reading, not a finding of the survey: AHE's change-manifest verification speaks most directly to attribution, its SWE-bench-verified transfer numbers to improvement, and the structural-components-carry-the-lift result to activation; selection (search-aware estimates on Terminal-Bench 2) is the claim to check against the AHE paper's protocol.
+
 ## Related
 
 - [[effective-harnesses]] — Anthropic's hand-designed counterpart; AHE explicitly cites it (ref [29]).
@@ -120,3 +124,4 @@ SWE-Cycle (arXiv 2605.13139) provides a formal benchmark framing for the long-ho
 - [[skillos]] — closest peer 2026 self-evolving system; same frozen-base + RL-on-external-structure pattern, scoped to skills only (vs whole-harness here). Different attribution mechanism (grouped-task downstream rewards vs change-manifest verification). Independent confirmation that **executor-grounded training matters more than curator scale** (8B-RL beats Gemini-2.5-Pro-without-RL) parallels AHE's structural-components-carry-the-lift finding.
 - [[agent-development-lifecycle]] — vendor-side (LangChain) Build → Test → Deploy → Monitor framing; AHE is the machine-evolved automation of the Monitor → Iterate → Build feedback loop.
 - [[patterns/moss-production-self-evolution]] — production counterpart; same LLM-driven harness-evolution loop, failure-batch signal instead of benchmark, full container-swap deployment lifecycle. MOSS rewrites harness source code where AHE evolves discrete harness components.
+- [[patterns/harness-self-evolution-survey]] - dedicated survey/framework for harness self-evolution; source of the four-claim evaluation lens above.

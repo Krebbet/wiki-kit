@@ -48,6 +48,10 @@ AGENTS.md is referenced across several wiki pages before this dedicated page exi
 
 AGENTS.md is the *static project-context specification*: what the project is, how it works, what the agent should know before starting. It is the entry point, not the system.
 
+## REVIEW.md: a reviewer-specific companion
+
+Anthropic pairs CLAUDE.md with a short, code-owner-written REVIEW.md that the automated PR reviewer loads: nit caps, required file+line evidence, skip paths, and a summary that opens with a finding count. The team also checks that the reviewer actually follows it. See [[governance/claude-code-review-at-anthropic]] and [[governance/anthropic-ai-native-sdlc]] (vendor-primary; a data point for short, owner-maintained context files in [[conflicts/agents-md-effectiveness]]).
+
 ## Related
 
 - [[governance/aaif]] — the foundation now stewarding AGENTS.md as an open standard
@@ -58,3 +62,4 @@ AGENTS.md is the *static project-context specification*: what the project is, ho
 - [[deployments/openai-symphony]] — production harness using AGENTS.md as a TOC layer
 - [[case-studies/cursor-agent-harness]] — named AGENTS.md adopter
 - [[patterns/harness-design-space]] — AGENTS.md found in the wild in empirical harness survey
+- [[governance/claude-code-review-at-anthropic]] — REVIEW.md as reviewer-specific context file
