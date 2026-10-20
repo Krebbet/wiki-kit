@@ -165,3 +165,7 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-10-13 | update | credible-commitment.md, institutional-sclerosis.md, reform-levers.md, regulatory-capture.md, amakudari-and-institutionalized-capture.md, career-concerns-and-managerial-risk-taking.md, party-organisation-control-of-chinese-soes.md, property-rights-theory-of-the-firm.md, developmental-state-and-embedded-autonomy.md, koreas-economic-planning-board.md, rent-seeking-and-the-welfare-cost-of-transfers.md | Related back-links to the new pages. |
 | 2026-10-13 | update | index.md | Four new page rows added (weekly sweep). |
 | 2026-10-13 | update | reference-sources.md, watchlist.md | Seventh-sweep note; Cato added as a watched source; `## Week of 2026-10-13` added (9 entries). last_reviewed bumped. |
+| 2026-10-20 | create | china-municipal-venture-capital.md | New page from Works in Progress essay "How China became rich" (tier b, second-hand data). |
+| 2026-10-20 | update | regionally-decentralized-authoritarianism.md, developmental-state-and-embedded-autonomy.md, state-capacity-and-level-of-government.md | See-also back-links to the new page. |
+| 2026-10-20 | update | index.md | One new page row added (weekly sweep). |
+| 2026-10-20 | update | reference-sources.md, watchlist.md | Eighth-sweep note; JIE Cambridge issue-page route and SIDE login-shell trap noted; ProMarket and Works in Progress status updates; `## Week of 2026-10-20` added. last_reviewed bumped. |

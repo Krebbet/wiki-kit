@@ -104,6 +104,10 @@ Distinguish from Wiley's Cloudflare block (Governance, APSR/AJPS, OECD Public Go
 challenge page is dynamic (a Ray ID, a "waiting for X to respond" message) rather than a static block — a
 manual browser session with a persistent cookie jar may clear it where Wiley's does not; untested.
 
+Capture note: JIE issues are listed on the Cambridge Core issue page (open access, no block), so use that route when
+search cannot resolve an article URL. SIDE extranet PDFs are login pages that capture as a "Log in" shell: check the
+captured title before ingesting.
+
 ## Data, indices and multilateral output
 
 | Source | What | Added | Status |
@@ -137,11 +141,11 @@ slug>/` is a thin summary page, not the report body — use the direct PDF path
 | VoxEU / CEPR columns | Economist-authored summaries of new institutional research | 2026-08-19 | probation — capture-blocked (2026-09-08): cepr.org Cloudflare bot-check, `--js` retry also blocked; capture-blocked (2026-09-15): a direct `cepr.org/publications/<id>` discussion-paper capture returns exit 0 but is a landing-page trap (site chrome repeating the abstract, not the paper — see `master_notes.md` 2026-09-15). Prefer a syndicated discovery mirror (e.g. Marginal Revolution's post about the paper) over the CEPR URL directly, same workaround as Mercatus below — but note the mirror alone is usually abstract-only, too thin for a full page. |
 | Broadstreet | Historical political economy, explicitly institutions-focused | 2026-08-19 | probation — dry sweep (2026-09-08), no posts in window |
 | Marginal Revolution | Discovery feed for institutional-economics papers | 2026-08-19 | active (2026-09-08) — not Cloudflare-gated; one capture this sweep |
-| Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | active (2026-09-08) — strong candidate surfaced, watchlisted |
+| Works in Progress | State capacity, regulatory design, why institutions fail to build | 2026-08-19 | active (2026-10-20) — captured |
 | Statecraft | Interviews on how government institutions actually operate | 2026-08-19 | probation | Noted 2026-09-29: the feed (https://www.statecraft.pub/feed) is a usable discovery channel; two posts watchlisted.
 | Institute for Government (UK) | Primary-document-grounded analysis of an administrative state | 2026-08-19 | probation |
 | Niskanen Center | State-capacity/vetocracy camp — deliberately included for balance against public-choice sources | 2026-08-19 | active (2026-08-25) |
-| ProMarket (Stigler Center) | Camp-balancing commentary and book reviews (antitrust, political economy); review-of-book route for second-hand book coverage | 2026-09-29 | probation — one entry watchlisted |
+| ProMarket (Stigler Center) | Camp-balancing commentary and book reviews (antitrust, political economy); review-of-book route for second-hand book coverage | 2026-09-29 | probation — Chicago-School series (Oct 2026) watchlisted |
 | Cato Institute research briefs (cato.org/research-briefs-economic-policy) | Public-choice/classical-liberal camp balance; civil-service reform briefs | 2026-10-13 | probation — cato.org 403'd on first test |
 | Mercatus Center | Public-choice camp — deliberately included for balance against state-capacity sources | 2026-08-19 | active (2026-08-25) — mercatus.org itself is Cloudflare-gated; captured via its Substack syndication mirror instead |
 
@@ -218,6 +222,11 @@ survey subagent.
   in-window listings could not be surfaced by search, so they are unconfirmed rather than dry. ProMarket and
   Marginal Revolution surface dated items when searched by `domain + 2026/10`. Cambridge journal PDF links
   behind a Marginal Revolution post returned a one-page stub.
+
+- Eighth sweep, 2026-10-20: thin week (1 capture). Works in Progress was the productive source. The JIE listing is
+  reachable via the Cambridge Core issue page. SIDE extranet PDFs are login pages that capture "successfully" as the
+  log-in shell, the same landing-page-trap class as the stubs seen earlier. Marginal Revolution and ProMarket surface
+  dated items by `domain + 2026/10` search. NBER, SSRN and IZA in-window listings remain unconfirmed.
 
 ## Related
 

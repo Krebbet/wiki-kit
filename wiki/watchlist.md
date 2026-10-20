@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-13
+last_reviewed: 2026-10-20
 ---
 
 # Watchlist
@@ -306,6 +306,44 @@ from capture: the Cambridge PDF link returned a one-page stub and the Marginal R
   rationale.
 - Weekly sweep, 2026-10-06 — see `wiki/weekly-briefs/2026-10-06.md` for the full candidate list and selection
   rationale.
+
+
+## Week of 2026-10-20
+
+Thin week. 1 captured (see `wiki/weekly-briefs/2026-10-20.md`), the rest listed here. Two journal items failed capture
+(login-gated SIDE PDF; unresolved JIE URL).
+
+### Journals
+
+- Institutions and property rights over 200 years (Savoia, Sen & Tagem, JIE Vol 22, 2 Oct 2026) — V-Dem panel of 161
+  countries on whether political-institution change drives rule of law and property rights; bears on the wiki's V-Dem
+  stance. Exact URL unresolved; snippet-only, unverified. Issue page:
+  https://www.cambridge.org/core/journals/journal-of-institutional-economics/issue/B7C0FDCC11BBC41654A87ADEB7F70E95
+- Role of Adjudication Procedures in Judicial Timeliness: Quasi-Experimental Evidence (Melcarne, Ramello & Skiba, JIE,
+  30 Sep 2026) — RDD on 652k Turin cases at a EUR 1,100 threshold; fairness-based rulings about one month faster;
+  discretion vs rules in court bureaucracy, non-Anglosphere. SIDE draft PDF is login-gated and abstracts disagree
+  (1 vs about 6 months); try the JIE open-access version.
+- Trust reform implementation in a Norwegian municipality (Administration & Society, 2026) — Nordic gap, qualitative.
+  SAGE likely Cloudflare-blocked; mirror https://sage.cnpereading.com/doi/10.1177/00953997261459593; date unconfirmed.
+- Econ Journal Watch Vol 23 No 2 — Danish housing policy 1939-45 item; borderline scope (Clark symposium already listed).
+
+### Data, indices and multilateral output
+
+- UK NAO Justice Transcribe AI case study (14 Oct) and DWP 2025-26 overview (13 Oct) — low-medium value; resolve direct
+  PDF paths.
+- OECD "Ownership and Governance of State-Owned Enterprises 2026" — launches 22 Oct; re-check next sweep (OECD is
+  403-blocked; look for mirrors).
+
+### Blogs, essays and commentary
+
+- How George Stigler and the Chicago School Opened the Marketplace of Ideas to Business (ProMarket 2026-10-19) —
+  history of capture theory, progressive/antitrust critique; part of a ~6-piece series.
+  https://www.promarket.org/2026/10/19/how-george-stigler-and-the-chicago-school-opened-the-marketplace-of-ideas-to-business/
+- Anti-Monopoly as Industrial Policy: The Chicago School versus Adam Smith (ProMarket 2026-10-20) — same series.
+  https://www.promarket.org/2026/10/20/anti-monopoly-as-industrial-policy-the-chicago-school-versus-adam-smith/
+- India has more restrictive labor law than Germany (Marginal Revolution) — the real target is Cowen & Rajagopalan,
+  "Premature Imitation" (2019); the wiki has no page on that concept; find a capturable version.
+  https://marginalrevolution.com/marginalrevolution/2026/10/india-has-more-restrictive-labor-law-than-germany.html
 
 ## Related
 

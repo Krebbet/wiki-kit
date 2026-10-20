@@ -314,3 +314,13 @@ could detect a PDF content-type and delegate automatically. Recorded in `referen
 **Implication:** Cron and `claude -p` invocations of `/weekly-brief` must export `PATH=$HOME/.local/bin:$PATH`
 first (or the crontab line should set it); otherwise every `poetry run` step fails.
 **Status:** open
+
+### 2026-10-20 — `capture_pdf` on a login-gated PDF URL exits 0 and captures the log-in page
+**Scope:** kit
+**Observation:** Eighth `/weekly-brief` sweep: `capture_pdf` on a SIDE extranet PDF URL exited 0 and captured the
+log-in page (title "Log in") as if it were the paper. Same landing-page-trap class as the Cambridge stub and the
+Cloudflare challenge page.
+**Implication:** `audit_captures` should flag titles like "Log in", "Sign in" and "Just a moment". Separately,
+`poetry` is at `~/.local/bin`, which is not on the cron/`sh` PATH; `/weekly-brief` should export
+`PATH=$HOME/.local/bin:$PATH` itself rather than relying on the crontab line.
+**Status:** open

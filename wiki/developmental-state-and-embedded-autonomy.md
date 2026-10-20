@@ -91,3 +91,4 @@ Wade's account of South Korean, Taiwanese and Singaporean catch-up growth is the
 - [[dimensions-of-institutional-variation]] — D91 (performance-conditionality of institutional support, `promoted`) and D94 (embedded autonomy, `rejected`, with its readmission condition).
 - [[open-questions]] — Q90 (level of analysis), Q93 (whether constraint and conditional discipline are substitutes).
 - [[state-demand-and-preferential-allocation-in-hungarian-construction]] — a tension, not a refutation: preferential allocation to connected national champions in post-2010 Hungarian construction coincides with flat productivity and near-zero export intensity. **[wiki synthesis]** The missing performance conditionality may be the discriminating variable; untested, and descriptive evidence only.
+- [[china-municipal-venture-capital]] — see also: a popular essay locating Chinese industrial strategy in the city tier, a competing picture to the centralised-pilot-agency model.

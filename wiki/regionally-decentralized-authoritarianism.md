@@ -34,3 +34,4 @@ Xu's account of China's fundamental institution — **regionally decentralized a
 - [[koreas-economic-planning-board]] — the opposite institutional design choice within the same developmental-state family: concentration in one central body under direct presidential supervision, rather than decentralisation to competing regions.
 - [[chinese-cadre-rotation-and-the-iron-triangle]] — a different empirical window on the same personnel-control apparatus, focused on elite SOE-to-Party rotation rather than provincial-leader tournaments.
 - [[multitask-incentive-theory]] — the mechanism behind RDA's stated pathology: rewarding the measurable (GDP) crowds out the unmeasured (environment, inequality, rule of law).
+- [[china-municipal-venture-capital]] — popular-essay account (Southwood & Rivaton 2026) of Chinese cities as venture-capital-like growth machines; tier (b), second-hand data, winners-only evidence..

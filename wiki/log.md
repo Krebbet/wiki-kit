@@ -1752,3 +1752,7 @@ Thin week. 4 captured / 4 ingested (monitoring-scale theory, provisional LLM-ins
 ## [2026-10-13] weekly-brief | seventh radar sweep
 
 Thin week. 4 captured / 4 ingested (China SOE privatization productivity, regulator revolving-door option model, Hungarian construction state-demand case, foundation-lifespan commitment model); the Brennan-Freiman paper was dropped (Cambridge PDF served a stub; MR post too thin). 9 watchlisted. Camp balance: one public-choice-leaning item (revolving door); no state-capacity item surfaced. Brief: `wiki/weekly-briefs/2026-10-13.md`.
+
+## [2026-10-20] weekly-brief | eighth radar sweep
+
+Thin week. 1 captured / 1 ingested (China municipal venture-capital essay, Works in Progress). Two capture failures: the Melcarne/Ramello/Skiba adjudication paper (the SIDE PDF is a login page and only a 2020 draft exists; the capture was a log-in shell) and the Savoia/Sen/Tagem JIE article (exact URL unresolvable by search); both watchlisted. Camp balance: no public-choice item; one state-capacity/progress essay. Brief: `wiki/weekly-briefs/2026-10-20.md`.
