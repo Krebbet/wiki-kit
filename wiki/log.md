@@ -460,3 +460,7 @@ Dated "What this rig measured" sections citing the drone-prototype diary and EDA
 ### 2026-10-20 — librarian periodic pass (drone-prototype PR #115: large objects, architecture fixes 1–4)
 
 Dated "Superseded-in-part (2026-10-20)" banners on [[system-architecture]], [[user-comms-layer]], [[comms-prototype-mandate]] and [[world-model-architecture]], pointing at drone-prototype `docs/architecture-proposal-2026-10.md`. Stale points named: no ROS 2 / rosbridge; file-based world store per world dir instead of SQLite / vector DB; LiDAR locked map + live map instead of hloc / RTAB; the drone-app 2026-06-07 cloud-relay / onboard-realtime pivot; permanence classes disagree (prototype: permanent / semi-permanent / non-permanent). Pages not rewritten: the human has not signed off on the new architecture. No research run.
+
+### 2026-10-21 — librarian periodic pass (drone-prototype PR #141: the 2026-10-21 improvement rounds)
+
+New page [[improvement-rounds-2026-10-21]] (walls EDA266/269, large objects EDA267/272, identification EDA268/271, reach EDA270; offline replays only; cites each FINDINGS). Banners on [[system-architecture]], [[user-comms-layer]], [[comms-prototype-mandate]], [[world-model-architecture]] updated: the architecture was signed off 2026-10-20, rewrite owed. Stale flags carried: ten pages still quote the 0.2972 m scan plane. Branch `librarian-2026-10-21` stacks on `librarian-2026-10-20` (wiki PR #6). No research run.
