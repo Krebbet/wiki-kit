@@ -670,3 +670,51 @@ Window 2026-09-02 → 2026-09-09. 5 sources captured (Nvidia confirms Hugging Fa
 - **Reflection Beam** — open-weight 501B MoE (→ [[llms/reflection-beam]]).
 - **Meta/Sierra Personal Agent Protocol** (→ [[landscape/personal-agent-protocol-2026-10]]).
 - **Claude Haiku 5.5**, **GPT-6 Intelligent UI**, **HackerRank Chakra AI Interviewer GA** — see above; unverified/aggregator.
+
+## 2026-10-14 — weekly-brief
+Window 2026-10-07 → 2026-10-14. Thin, aggregator-heavy scan. Ingested: [[startups/arena]], [[landscape/manus-butterfly-effect-raise-2026-10]].
+
+- **Anthropic IPO timing** — confidential S-1 filed 2026-06-01; reports conflict (mid-Oct marketing vs November vs post-midterms); $965B/$65B Series H figures unverified. Check EDGAR for a public S-1 — https://www.startuphub.ai/ai-news/ipo-watch/2026/anthropic-ipo-investor-meetings-fall-2026-07-19
+- **Gemini 4** — in early post-training, "much earlier" than year-end; Gemini 3.5 Pro still unreleased (2026-09-25) — https://www.infoworld.com/article/4226642/google-plans-gemini-4-release-before-year-end-2.html
+- **Microsoft Copilot Autopilot / Foundry autopilot agents** — admin controls, cost limits, Entra Agent ID; Agent 365 GA 2026-05-01, E7 $99/user/mo. Needs a Microsoft primary — https://www.hubsite365.com/en-ww/crm-pages/microsoft-ai-update-september-2026.htm
+- **Crunchbase: 195 AI-on-AI acquisitions in 2026** (OpenAI 10, Sierra 3) — M&A base rate — https://aiweekly.co/alerts/crunchbase-ai-startups-have-acquired-195-other-ai-companies-in-2026-openai
+- **SpaceX–Cursor ($60B, mid-Aug) and Stripe–OpenRouter (>$7B)** — weak-source M&A reports; verify.
+- **Sierra–Takeoff** — acquisition 2026-07-23, long-horizon agent platform — https://dealroom.co/news/140759-sierra-acquires-takeoff-the-long-horizon-ai-agent-platform/
+- **Snowflake Natoma (MCP) acquisition + Cortex Sense memory layer** (June 2026) — verify wiki Snowflake pages cover both.
+- **AutoSynthData** — HF blog on synthetic training data for enterprise agents (~2026-10-02); primary not found.
+- **Caveat:** the 2026-10-07 "GPT-6 Intelligent UI" item may be a DD.MM date confusion (10.07 = 10 July); treat as suspect.
+
+### Standing coverage (2026-10-07 → 2026-10-14)
+**New startups:** none verified in-window.
+**Funding & M&A:**
+- **Arena** — $200M Series B at $3.1B, Lightspeed/Khosla — eval layer now a billion-dollar category (→ [[startups/arena]]).
+- **Butterfly Effect (Manus)** — >$500M, Boyu/IDG; ~$4B valuation unconfirmed (→ [[landscape/manus-butterfly-effect-raise-2026-10]]).
+- **Veir** — $110M Series C, AI data-center power delivery — tangential, single aggregator.
+**Product launches:** none verified in-window.
+
+## 2026-10-21 sweep
+Window 2026-10-14 → 2026-10-21. Ingested: [[platforms/servicenow]], [[platforms/notion-ai]], [[platforms/workday]], [[landscape/cert-in-agent-incidents-2026-10]].
+
+- **Gemini 4 Argon (10-14)** — intro pricing $2/$10 per M tokens through Nov 30, then $4/$20 from Dec 1; task mode with 40+ apps; access restricted (Fairwind Program preview / trusted cyber defenders); no official Google page found. CORRECTS the 2026-10-14 "Gemini 4 in early post-training" line — https://letsdatascience.com/news/gemini-4-argon-undercuts-claude-on-price-73027210
+- **Perplexity SPACE (~10-17)** — Firecracker microVM agent sandbox; aggregator-only — https://aiagentstore.ai/ai-agent-news/2026-october
+- **Microsoft Copilot Studio / Frontier-preview agents** with own Entra identity, mailbox, Teams presence (reported 10-18); needs a Microsoft primary — https://aiagentstore.ai/ai-agent-news/2026-october
+- **Google universal Gemini agent (10-16)** — crypto identity, sandboxing, Agent Gateway; not yet available — https://aiagentstore.ai/ai-agent-news/2026-october
+- **Google Cloud "Gemini for government services" preview (10-20)** — FOIA/redaction agents — https://aiagentstore.ai/ai-agent-news/2026-october
+- **Motive industry fleet agents (10-20)** — https://aiagentstore.ai/ai-agent-news/2026-october
+- **WorkOS agent-to-agent SSO explainer (10-20)** — https://aiagentstore.ai/ai-agent-news/2026-october
+- **Anthropic & OpenAI IPOs** — both only confidentially filed (Anthropic 06-01, ~$965B; OpenAI ~late May/early June, ~$852B); no public S-1 found as of 10-21.
+- **Legora** $550M Series D at $5.55B; **Shield AI** $1.5B Series G at $12.7B (undated, from a 10-13 blog; verify) — https://blog.mean.ceo/?p=11147
+- **Wikimedia/OpenAI rogue-agent edits (10-05)** and **Tencent Cloud agents probing Alibaba Amap (2,600+ attempts)** — unattributed-agent pattern; see also [[landscape/cert-in-agent-incidents-2026-10]] — https://helpnetsecurity.com/2026/10/06/openai-rogue-agents-wikimedia-wikipedia , https://www.esecurityplanet.com/artificial-intelligence/news-tencent-ai-agents-alibaba-amap-security-china-apac/
+
+### Standing coverage (2026-10-14 → 2026-10-21)
+**New startups:**
+- **Apate** (AU) — agents posing as scam victims; Disrupt Battlefield finalist (2026-10-15).
+- **Floqer** — agent fleets maintaining account data; open-source early 2027; aggregator only.
+
+**Funding & M&A:**
+- **Rocket Software** acquires **Geniez AI** (mainframe agents; undisclosed; 2026-10-14; single aggregator).
+- **Opsin** — growth round, undisclosed (~2026-10-17).
+- **Hone** — $60M seed at $285M, Benchmark/Index (date unverified, likely week of 10-05) — https://dealroom.co/news/161745-hone-raises-60m-seed-to-build-ai-that-owns-business-outcomes/
+
+**Product launches:**
+- **Gemini 4 Argon** (see above); **Workday Sana + Agent Harness** (10-14, → [[platforms/workday]]); **ServiceNow AI Passport** (10-15, Q4 availability, → [[platforms/servicenow]]); **Notion agent harness** (10-20/21, → [[platforms/notion-ai]]); **DefensX AI Guard One** (10-19); **DXC–LangChain partnership** (10-14).

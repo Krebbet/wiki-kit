@@ -170,6 +170,10 @@ Luna beats Sonnet 5 on raw rate by ~95% both directions, but against open-weight
 
 **Source:** `raw/research/weekly-2026-09-23/01-01-anthropic-opus-5-5.md` (Anthropic launch post, 2026-09-22); `raw/research/weekly-2026-09-23/02-02-openai-gpt6-sol-luna.md` (VentureBeat, 2026-09-22).
 
+## Update 2026-10-21 — Notion credit-pool restructure
+
+Notion moved Business/Enterprise to two monthly pools per seat: 1,500 Standard credits (Notion picks the model via its `Auto` router) and 500 Select credits (user picks the model or runs own Custom Agents); admins buy extra workspace credits for shared agents, high-consumption models (named: Fable, Astra) and overage. New customers 2026-10-21; existing customers switch 2026-11-02. Partial BYOK (ChatGPT plans for the personal agent; Enterprise BYOK in alpha) bypasses the pools. Vendor-claimed: Auto ~90% cheaper than frontier models at "similar results" (20+ use cases, no methodology); Custom Agent runs ~30% cheaper in testing. Reading: split pools protect cheap default usage from expensive power usage, and push top-priced models into paid add-ons, so it doubles as margin control. Same direction as the Copilot credit cuts above. Also: Workday prices Agent Harness and Sana Home on consumption "Flex Credits" with no published rates (2026-10-21, vendor-stated via Constellation). See [[platforms/notion-ai]], [[platforms/workday]].
+
 ## Conflict-flag cross-refs
 
 - **C8** — "Coding agents = AGI for near-term enterprise tasks." GitHub's signup pause is *evidence agents are being used productively at scale by individual developers*, not just enterprise. This strengthens the C8 position A (coding agents are working). The counter (still fails on long-horizon / integration-heavy enterprise work) remains — the failure mode has shifted from "do agents work?" to "can we afford to run them?"
@@ -211,3 +215,5 @@ Adjacent (not captured in this batch):
 - [[../llms/deepseek|deepseek]]
 - [[landscape/agentcore-payments-x402-2026-05]]
 - [[landscape/openai-gpt56-sol-2026-06]] (2026-07-31 pricing cut)
+- [[../platforms/notion-ai]] (2026-10-21 credit pools)
+- [[../platforms/workday]] (Flex Credits)

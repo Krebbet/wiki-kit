@@ -18,6 +18,10 @@ Out-of-band monitoring on separate hardware; least-privilege "remove all rights 
 ## Open
 Independent test of Sentry against a real escape scenario; adoption beyond the vendor-listed names; whether OpenAI joins. Watch, do not assume it works.
 
+## Update 2026-10-21 — first named enterprise-platform integration: ServiceNow
+
+ServiceNow names NVIDIA a "design and launch partner" for AI Passport, with a production-ready enforcement implementation on the Open Agent Safety Platform (OpenShell secure runtime plus Sentry). Vendor-announced (Help Net Security, 2026-10-21); no ship date. Passports would be verified at the edge/infrastructure layer (e.g. OpenShell), making enforcement separable from the ServiceNow platform. See [[platforms/servicenow]].
+
 ## Source
 - `raw/research/weekly-2026-09-30/01-nvidia-openshell-sentry.md` (TechCrunch, 2026-09-28)
 
@@ -33,3 +37,4 @@ Independent test of Sentry against a real escape scenario; adoption beyond the v
 - [[../platforms/microsoft]]
 - [[../llms/anthropic-claude-family]]
 - [[../llms/openai]]
+- [[../platforms/servicenow]] — first named enterprise-platform integration (AI Passport)

@@ -134,3 +134,14 @@ Hosts reproducibly block the capture scripts (logged in `master_notes.md`). When
 `0 7 * * 0` = 07:00 Sunday. (The prior 2026-04-22 and 2026-04-23 runs fired on Wednesday and Thursday respectively as interactive runs, before the Sunday cadence was set.)
 
 The `git checkout` step ensures the run lands on the intended weekly-brief branch even if the working tree was left on `main` after a `/harvest` or other operation.
+
+## Additions (2026-10-14)
+- **SEC EDGAR full-text search (Anthropic/OpenAI)** — catch a public S-1 flip for the Anthropic IPO.
+- **Arena / LMArena leaderboard + Alignment Index** — practitioner-verifiable model reliability signal.
+- **TechCrunch Disrupt (2026-10-13→15)** — launch/funding cluster; scan next window.
+
+## Additions (2026-10-21)
+- **aiagentstore.ai daily digest** — aggregator; lead-finding only, confirm every item with a primary.
+- **Help Net Security, The Hacker News, eSecurityPlanet** — security sites with fast agent-security disclosure coverage.
+- **Constellation Research** — enterprise vendor launch analysis (secondary; relays vendor statements).
+- **Techzine** — enterprise platform coverage.

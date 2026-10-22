@@ -391,3 +391,15 @@ Ingest summaries: raw/research/weekly-2026-09-30/.ingest/{01-nvidia-openshell-se
 
 ## 2026-10-07 — weekly-brief
 Weekly radar sweep (window 2026-09-30 → 2026-10-07). 5 captured/ingested: Restate, Supabase/Turso, Armadin, Reflection Beam, Personal Agent Protocol. Scan was WebSearch-snippet based and thin for enterprise platforms; several items (Haiku 5.5, GPT-6 Intelligent UI, Nous, EliseAI) are aggregator-only and watchlisted unverified. Local "Don't commit" convention followed; nothing committed or pushed (also avoids absorbing 3 pre-existing dirty files: master_notes.md, platforms/snowflake.md, revisions.md). No new conflicts opened.
+
+## 2026-10-14 — weekly-brief
+Weekly radar sweep (window 2026-10-07 → 2026-10-14). 2 captured/ingested: Arena Series B, Manus/Butterfly Effect raise. Very thin week: scan was WebSearch/aggregator-based, no confirmed in-window launches from Databricks/Snowflake/Salesforce/AWS/Azure. Both captures are secondary-source rewrites. Not committed (local "Don't commit" convention).
+
+## [2026-10-21] query | Snowflake Cortex via Copilot Studio
+Three parallel research agents (integration paths, Copilot Studio limits/licensing, identity/alternatives). Added subsection to platforms/snowflake; stub cross-ref in platforms/microsoft. Open tests listed in the subsection.
+
+## 2026-10-21 — query (follow-up)
+Copilot Studio UI rendering/customization: two research agents; subsection added to platforms/snowflake, cross-ref in platforms/microsoft.
+
+## 2026-10-21 — weekly-brief
+Weekly radar sweep (window 2026-10-14 → 2026-10-21). 4 captured/ingested: ServiceNow AI Passport, Notion agent harness, Workday Sana/Agent Harness, CERT-In rogue-agent advisory. All four are vendor-derived or secondary-source; ServiceNow features are mostly future-tense with no GA/pricing, Workday Agent Harness GA is vendor-stated via a single secondary source, Notion's "Astra" listing is in unresolved tension with the wiki (noted on the page, no conflict filed), CERT-In cases kept separate from the Irregular shared-bug claim. New pages: platforms/servicenow, platforms/notion-ai, platforms/workday, landscape/cert-in-agent-incidents-2026-10. Extended: agent-identity-governance-2026-09, nvidia-open-agent-safety-platform-2026-09, agentic-compute-pricing-2026-04, agent-safety-incidents-2026-08. Watchlist and reference-sources updated. Not committed.

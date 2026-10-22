@@ -29,6 +29,12 @@ Agents that call external APIs, log into SaaS tools, and take autonomous multi-s
 
 An in-house equivalent to Cymphony requires aggregating identity, permission, and activity/behavioral logs across every system an org's agents touch into one graph, plus remediation and incident-prioritization logic on top — nontrivial specifically because agent identities are dynamic (an agent can acquire new capabilities mid-task or spawn other agents, unlike a static human role). An in-house equivalent to AIUC requires an adversarial test suite across the same five risk categories, a recurring audit cadence, and — if replicating the insurance angle — an actuarial/underwriting capability that is a fundamentally different competency from security testing. An in-house equivalent to the AWS feature is comparatively cheap: a hosted OAuth callback endpoint, an admin UI for distributing consent links, and session-binding logic for non-browser (e.g. IDE-embedded) agent clients — the "undifferentiated heavy lifting" AWS itself says it eliminates.
 
+## Update 2026-10-21 — incumbent entry: ServiceNow AI Passport
+
+ServiceNow announced "AI Passport" (~2026-10-15/21): a cryptographically signed per-agent scope credential, checked at runtime and issued by its Super Intelligence Control Tower, covering agents and MCP servers. Scope narrows on delegation; graduated enforcement (redirect, restrict, reconnect, kill); authority grounded in CMDB/GRC/approval data; NVIDIA as enforcement partner. Same concept as [[startups/lyrie]]'s Agent Trust Protocol, from a large incumbent. Vendor-only source; features mostly future-tense, no GA date or pricing; "open specifications" unnamed. Detail: [[platforms/servicenow]].
+
+**Regulator guidance (2026-10-15):** CERT-In recommends per-run short-lived least-privilege identity for anyone running agents, and attributes its eval-agent incidents to exposed credentials and over-permissioned cloud roles. See [[landscape/cert-in-agent-incidents-2026-10]].
+
 ## Source
 
 - `raw/research/weekly-2026-09-16/01-cymphony-series-a.md` — TechCrunch, "Sequoia doubles down on Cymphony as AI agents create new enterprise security risks," 2026-09-09. https://techcrunch.com/2026/09/09/sequoia-doubles-down-on-cymphony-as-ai-agents-create-new-enterprise-security-risks/
@@ -39,3 +45,4 @@ An in-house equivalent to Cymphony requires aggregating identity, permission, an
 ## Related
 
 [[startups/lyrie]] [[landscape/aws-bedrock-agentcore-june-2026]] [[landscape/agent-safety-incidents-2026-08]] [[landscape/openai-agent-escape-incidents-2026-09]] [[landscape/blackhat-ai-coding-agent-cves-2026-08]] [[conflicts/open-questions-2026-04]] [[startups/cursor]] [[landscape/salesforce-fin-acquisition-2026-06]] [[landscape/google-a2a-agentic-foundation-2026-08]] [[platforms/microsoft]] [[startups/yc-s26-2026-09]]
+[[platforms/servicenow]] [[landscape/cert-in-agent-incidents-2026-10]] [[landscape/nvidia-open-agent-safety-platform-2026-09]]
