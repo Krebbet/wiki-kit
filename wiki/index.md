@@ -43,6 +43,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/igzo-2t0c-multilevel-readout]] | IGZO 2T0C four-level memory: re-estimating thresholds from ~8 reference devices cuts misclassification 4.3% → 0.15%. **Isolated-TFT DC sweeps only** — no cell, pulse or array data; reference-cell overhead ≥12.5%. |
 | [[devices/hzo-ferroelectric-capacitor-reliability]] | 5 nm HZO capacitor: polarization loss depends on access rate (delay between pulses), attributed to vacancy-to-electrode electron transfer. Single stack, 10¹⁰-cycle figure extrapolated; capacitor not FeFET. |
 | [[devices/two-state-synapse-equilibrium-propagation]] | Volatile + non-volatile synapse carrying EqProp's free/nudged comparison; matches EqProp on MNIST (≈2.0% error) in software. Device spec only; code released. |
+| [[devices/analog-local-learning-imperfect-synapses]] | CwSG: layer-local, sign-only analog learning, simulated on measured PCM/FM device trajectories; beats BP under write noise, no array demo. |
 | [[devices/reciprocal-tau-cell-log-domain-learning]] | Log-domain CMOS equilibrium circuit with exact latched gradient; Iris 90% and mismatch recovery 53–63% → 88–96%. **SPICE only, SKY130, no silicon.** |
 
 ---
@@ -56,6 +57,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[chips/ethereal-event-gnn-processor]] | First event-driven GNN processor chip (TSMC 28 nm, academic shuttle) — processes DVS events natively as a sparse graph. Silicon-measured 25.6 µs / 1.7 µJ per event, but the "comparable accuracy" claim is simulated, not chip-measured, and trails an FP64 A100 baseline on every dataset shown. |
 | [[chips/megatron-pcm-cim-soc]] | First measured PCM compute-in-memory silicon in the wiki: 28 nm FD-SOI SoC, 4Mi-cell analog PCM macro + RISC-V; 57.5 TOPS/W is macro-level with an unstated boundary. |
 | [[chips/loihi2-onchip-q-learning]] | LANL on-chip Q-learning on one Loihi 2 board; ">1000x" dynamic-energy headline vs ~67x board-level total recomputed from the paper's table. |
+| [[chips/neuroml2loihi-celegans]] | NeuroML→Loihi 2 compiler; 302-neuron C. elegans measured on-chip, energy comparison vs Jetson not like-for-like. |
+| [[chips/neuromorphic-fault-recovery-migration]] | SpikeRelay: simulator-only (Loihi-class, 1,024 cores) permanent-fault recovery by migrating computation, not data; no hardware validation. |
 | [[chips/spinnaker-event-pinball-closed-loop]] | Learning-free event-camera + SpiNNaker closed-loop pinball demonstrator; 148 µW is an assumed-per-event estimate, not a measurement. |
 
 ---
@@ -70,6 +73,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[snn/snn-energy-breakeven-conditions]] | Capacity-matched analytical comparison against quantized ANNs. SNNs win only at T ≤ 5 and spike rate < ~5.7%; they lose on most realistic workloads, and by 3.8× on spiking Llama-2 7B. |
 | [[snn/hippocampus-bioinspired-memristor]] | Biologically-realistic, neuronal-diversity CA3 hippocampal SNN (179 Izhikevich neurons, 3 cell types) mapped to a real 20,000-device memristor crossbar. Not task-trained — tuned via Optuna to match resting-state dynamics. Power figure explicitly excludes DAC/ADC/IO. |
 | [[snn/multi-depth-temporal-fusion]] | Local-rule-only (STDP/R-STDP) TTFS convolutional SNN with multi-depth temporal fusion; simulation-only, code released, no energy numbers. |
+| [[snn/spikeduet-mcu-sparse-snn]] | Measured CPU+accelerator co-execution of sparse SNNs on an EFR32MG24 MCU: 1.27–1.87× faster, 11–34% less energy than sparse-CPU; no ANN or neuromorphic baseline. |
 
 ---
 

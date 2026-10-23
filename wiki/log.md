@@ -171,3 +171,9 @@ Survey: five parallel agents; vendors/trade-press, toolchains and programmes lan
 **Skipped:** IOP NCE neuromodulable 180 nm silicon neuron (aeaf14) — `capture_url` returned 678 bytes (Radware wall); watchlisted.
 
 Full brief: `wiki/weekly-briefs/2026-10-15.md`.
+
+## [2026-10-22] weekly-brief | 4 captured, 8 watchlisted, local-learning / fault-recovery / NeuroML2Loihi / SpikeDuet pages
+
+Survey: two scan agents (arXiv/journals, industry news). Industry lane verified only two dated BrainChip releases (Sequora IP 2026-10-14, AKD1500 SPI chip 2026-10-22), neither with a BrainChip-owned benchmark number — watchlisted, not captured. Four arXiv papers captured via `capture_pdf --engine marker` and ingested; audit clean. Only SpikeDuet (MCU) and NeuroML2Loihi (Loihi 2) report measured hardware; the analog local-learning and fault-recovery papers are simulation-only.
+
+Full brief: `wiki/weekly-briefs/2026-10-22.md`.

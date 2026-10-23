@@ -69,6 +69,10 @@ Pending resolution condition 1, [[../devices/memristor-array-integration-gap]] c
 
 Resolution condition unchanged: a network trained on a *fabricated* analog array with realistic asymmetry.
 
+## Added 2026-10-22 — a third simulation-only data point (does not settle it)
+
+[[../devices/analog-local-learning-imperfect-synapses]]: a forward-only, layer-local sign-based rule (CwSG) trained CNNs on PCM and filamentary-memristor pairs with single unverified sub-1 V pulses, matching backprop on PCM with 59× fewer pulses and beating it on FM. Updates replay measured single-device trajectories (1,189 PCM / 1,268 FM devices), but nothing was trained on an array and no energy figure is given. It supports Position B's premise (BP-style training is fragile) and suggests a non-BP route around it — in simulation only. Resolution condition unchanged: a network trained on a fabricated array.
+
 ## Source
 
 - `raw/research/neuromorphic-commercial-viability/04-memristor-codesign-review.md` — Position A, via review paraphrase of Li et al. and Jeon et al.

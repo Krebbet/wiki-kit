@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-10-15
+last_reviewed: 2026-10-22
 ---
 
 # Watchlist
@@ -48,6 +48,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Programmable memristive circuits as Ising pseudospins (arXiv:2610.15346) — measured order, learning results device-calibrated simulation
 - Cross-layer printed-memristor stateful-logic adders (arXiv:2610.20109) — 2n+6 cycles claimed; measured-vs-simulated split unstated
 
+
 ## Chips & systems
 
 - IBM NorthPole *Science* paper (doi 10.1126/science.adh1174) — ⚠️ science.org hangs; primary for the 25× claim
@@ -71,6 +72,10 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - FerroNDS: neural dynamical systems on ferroelectric compute-in-memory (IOP NCE aeac81, 2026-10-14) — 14.7 nJ/neuron/inference at 10 kHz, simulation only (LTspice-fitted behavioral models)
 - Graded-spike SNN accelerator on ZCU102 FPGA (IOP NCE aeaf15) — 251 FPS, 54.96 GOPS/W on DVS-Gesture; measured-vs-estimated unstated
 - STISA single-shot SNN FPGA accelerator (arXiv:2610.19973) — no methodology in abstract; may be a late upload of a 2026 TCAS-I paper
+- UnO-NeSy neuro-symbolic FeFET in-memory system (arXiv:2610.26530) — likely circuit-level simulation; unread
+- PSA pruning-friendly sparse SNN conv accelerator (arXiv:2610.21313) — FPGA/ASIC-sim unclear
+- BrainChip AKD1500 SPI co-processor chip (2026-10-22) — MCU-class Akida; only a third-party forecast quoted
+- SpikeAid streaming spiking hearing aid (arXiv:2610.24696) — application-level; hardware unstated
 
 ## Algorithms & toolchains
 
@@ -98,6 +103,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - MTLiquid multi-task liquid neural networks (arXiv:2609.33232) — no hardware or code stated
 - CAFE differential encoding for FeFET compute-in-memory (arXiv:2610.19697) — variation robustness, reads as simulation; two independent survey signals
 - Hybrid LIF-ABRF SNN spike detection for brain-machine interfaces (IOP NCE aea4ec) — 4.3× less memory; algorithm-level
+- SpikeDuet follow-up: ANN and neuromorphic baselines on the same MCU — would size the SNN-energy gap
 
 ## Benchmarks
 
@@ -110,6 +116,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - dorsaVi 22nm RRAM-CMOS validation chip fab start — ⚠️ single small-cap-stock-tipster source (smallcaps.com.au), unverified against any primary; dorsaVi's known business is biomechanical sensors, not chips — treat as unconfirmed until a second source corroborates
 - Axelera AI Europa AIPU launch (2026-09-15, syndicated through 2026-09-23) — 629 TOPS INT8 digital-IMC edge/enterprise accelerator, named OEM partners (Dell, Supermicro), $1.5B pipeline claimed; digital-IMC competitive baseline per [[reference-sources]], 2 independent signals (Axelera press room + trade-press syndication)
 - Mythic Defense Advisory Board formation (2026-09-16) — analog compute-in-memory (APU) vendor building a US DoD/IC procurement channel; viability signal for a named analog-IMC competitor, no technical content
+- BrainChip Sequora licensable gen-AI IP (2026-10-14) — state-space models to 3B params claimed; no benchmark, no licensee
+- Unconventional AI $475M seed — undated in search; verify date and scope before use
+- BrainChip Sept-quarter 4C — not yet lodged; expect late October
 
 ## Programmes & policy
 

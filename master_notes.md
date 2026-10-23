@@ -135,3 +135,9 @@ Confirms the same `/abs/` vs `/pdf/` failure recurred on the 2026-09-24 run: `ca
 **Observation:** (1) `capture_pdf` on `arxiv.org/abs/...` failed again with the weasyprint error; `/pdf/` URLs worked. (2) `poetry` was not on the default PATH in this shell (`~/.local/bin`), so the first capture batch failed silently-ish ("command not found" inside a `|| true` loop). (3) `capture_url` on an IOPscience article returned 678 bytes with exit 0 (Radware wall) — below the 2 KB thin heuristic only because `audit_captures` didn't flag it (it checks PDF-paired lines, not URL captures).
 **Implication:** `capture_pdf` should rewrite `/abs/` to `/pdf/` for arxiv.org automatically; `weekly-brief` should export `PATH=$HOME/.local/bin:$PATH` in step 0; `audit_captures` should flag sub-2 KB URL captures.
 **Status:** open
+
+### 2026-10-22 — `poetry` off PATH again; arXiv-title-only survey agent gave unverifiable "signals"
+**Scope:** kit
+**Observation:** `poetry` was again missing from the default PATH (`~/.local/bin`); fourth-ish recurrence. The arXiv scan agent returned candidates from titles only (no abstracts), so selection leaned on judgment; industry agent correctly refused undated items.
+**Implication:** weekly-brief step 0 should export `PATH=$HOME/.local/bin:$PATH`; survey prompts should require reading abstracts for shortlisted items.
+**Status:** open

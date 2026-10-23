@@ -80,6 +80,10 @@ Three more sources repeat the boundary problem; none resolves the dispute.
 - [[../chips/spinnaker-event-pinball-closed-loop]] — 148 µW is an assumed per-event, dynamic-only estimate; idle and board power are excluded and nothing was measured.
 - [[../chips/megatron-pcm-cim-soc]] — 57.5 TOPS/W is macro-level with an unstated boundary; the density figure excludes periphery and the SmolLM gains are simulated.
 
+## New evidence — 2026-10-22 weekly sweep
+
+[[../snn/spikeduet-mcu-sparse-snn]]: measured on an EFR32MG24 MCU (inference only), splitting sparse-SNN layers across the Cortex-M33 and its on-chip dense accelerator gives 1.27–1.87× speedup and 11–34% less energy than optimized sparse-CPU execution. Sparsity gains obtained in software on non-neuromorphic silicon bear against the claim that SNN sparsity needs neuromorphic hardware; the paper has no ANN or neuromorphic baseline, so it does not size the gap. [[../chips/neuroml2loihi-celegans]] reports 1.8–1.9× lower power than NEURON on a Jetson, but the comparison is not like-for-like (chip total vs idle-subtracted).
+
 ## What separates the positions
 
 Three things, all methodological:
