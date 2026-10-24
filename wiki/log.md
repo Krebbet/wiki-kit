@@ -1087,3 +1087,7 @@ Autonomous ingest of 5 captures from `raw/research/weekly-2026-10-02/`. All five
 ## [2026-10-16] weekly-brief | 2026-10-16 sweep
 
 Autonomous sweep (window ~14 days since 10-02; no 10-09 run). 5 captures from `raw/research/weekly-2026-10-16/`, full text via pymupdf: `teacher-student-rl/opd-skill-vs-knowledge-transfer` (2610.09639), `teacher-student-rl/semi-opd-offline-student-rollouts` (2610.11291), `rlvr-mechanics/rlvr-ood-gain-answer-format` (2610.20639), `rlvr-mechanics/thinking-leakage-no-think-rl` (2610.14270), `rlvr-mechanics/wrong-votes-right-gradients` (2610.20898). Two existing conflicts extended (opsa-vs-opd-pattern-transfer, revisql-vs-spurious-rewards-noise-robustness); no new conflicts. 10 watchlist additions. Ingest subagents saw only the first ~55–70% of each capture (Read truncation); appendices unsummarised.
+
+## [2026-10-23] weekly-brief | 2026-10-23 sweep
+
+Autonomous sweep. 5 captures from `raw/research/weekly-2026-10-23/` (full text via pymupdf; appendices unread in most summaries): `teacher-student-rl/reverse-kl-distillation-guarantees` (2610.30844), `gift-gradient-informed-filtering` (2610.30796), `bsd-bridged-self-distillation` (2610.26397), `pi-opsd-effectiveness-prediction` (2610.22512), `rlvr-mechanics/wait-marker-provenance` (2610.30882). 10 watchlist additions. Extended opsa-vs-opd-pattern-transfer conflict; updated teacher-student-rl and rlvr-mechanics overviews. Note: first capture used arxiv.org/abs URLs (HTML abstract page); redone with arxiv.org/pdf.

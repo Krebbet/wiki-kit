@@ -76,3 +76,12 @@ Two datapoints, both scoping rather than settling the dispute:
 - [[../research/teacher-student-rl/semi-opd-offline-student-rollouts]] (2610.11291) — teacher-alignment datapoint: OPD gains/losses track initial teacher–student top-64 overlap (r=−0.73, n=17); at low overlap OPD can degrade and a frozen-rollout baseline wins, supporting the view that teacher–student compatibility governs outcomes. Correlational, math-only.
 
 - [[../weekly-briefs/2026-10-16]] — extended by the 2026-10-16 weekly sweep
+
+## 2026-10-23 extension (weekly sweep)
+
+Two soft datapoints, neither settling the dispute:
+
+- [[../research/teacher-student-rl/pi-opsd-effectiveness-prediction]] (2610.22512) — Position B leaning: mismatched-trajectory privileged information nearly halves performance, so gains depend on real teacher content, not only low-logp suppression. Agentic 4B setting, not OPSA's ablation.
+- [[../research/teacher-student-rl/bsd-bridged-self-distillation]] (2610.26397) — trace content matters (+2.2 over answer-only RLSD) but there is no matched trace-less self-teacher control, so it does not isolate teacher-specific signal.
+
+- [[../weekly-briefs/2026-10-23]] — extended by the 2026-10-23 weekly sweep

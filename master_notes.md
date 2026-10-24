@@ -282,3 +282,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Implication:** Add to the ingest subagent template: "If Read truncates, continue with offset/limit until the whole file is read (or state explicitly what was skipped); grep the full index for cross-ref names." Also recurrences this run: `poetry` not on PATH and marker/weasyprint unavailable.
 
 **Status:** open
+
+### 2026-10-23 — capture_pdf with an arxiv.org/abs URL silently captures the HTML abstract page (pymupdf)
+
+**Scope:** kit
+
+**Observation:** In the 2026-10-23 weekly-brief, `capture_pdf --src https://arxiv.org/abs/<id> --engine pymupdf` produced a "pdf"-method capture of the arXiv abs HTML page (nav boilerplate, ~180 lines, title "Computer Science > Machine Learning"); audit_captures flagged only broken image refs, not the wrong content. Re-running with `https://arxiv.org/pdf/<id>` gave the full text (1.5k–4.5k lines). The weekly-brief template's `--src <URL>` example is ambiguous on this.
+
+**Implication:** weekly-brief step 4 should say to pass `arxiv.org/pdf/<id>`; capture_pdf should resolve abs→pdf or hard-fail on HTML content; audit_captures should flag captures whose title is a site-chrome string or whose line count is ~constant (~180) across sources.
+
+**Status:** open

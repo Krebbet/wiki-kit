@@ -152,3 +152,11 @@ The theme's load-bearing contribution to the skeleton: **the student's condition
 - [[opd-skill-vs-knowledge-transfer]] (Tang & Yang, 2610.09639): reverse-KL OPD installs compositional skill, driven by student rollouts, but not new factual knowledge (needs forward KL or a hybrid); extends the support-bounded reuse thesis from RLVR to distillation. Read OPD pass@k coverage expansion as skill-type only, and the few-sample regime ([[one-shot-opd]]) as skill-installing; evidence is synthetic.
 - [[semi-opd-offline-student-rollouts]] (2610.11291): adds a rollout-freezing axis and a cheap Overlap@64 diagnostic. Low-overlap pairs favour frozen initial-student rollouts, high-overlap pairs (~89%) favour OPD/FastOPD; tempers ESR-style truncation ([[esr-early-stopping-opd]]) since full-trajectory coverage matters. OPD-variant gains measured on poorly aligned pairs may be overstated.
 - [[../../weekly-briefs/2026-10-16]] — brought in by the 2026-10-16 weekly sweep
+
+## Update 2026-10-23 (weekly-brief)
+
+- [[reverse-kl-distillation-guarantees]] (2610.30844): first minimax theory for reverse-KL distillation; full-distribution feedback is exponentially cheaper than action-only, offline trajectories can match online, standard local refitting provably fails. Worst-case, no LLM experiments, so it qualifies rather than refutes the empirical on-policy-superiority framing
+- [[gift-gradient-informed-filtering]] (2610.30796): joint OPSD+GRPO with gradient-geometry token filtering and coverage annealing claims +1.59 pp over sequential OPSD-then-GRPO; soft tension with [[sequential-opd-then-rl]] (different models/teachers)
+- [[bsd-bridged-self-distillation]] (2610.26397): teacher-agnostic (cross-tokenizer, closed API) privileged self-distillation gated by verifier sign; no matched trace-less control, so a weak data point in [[../../conflicts/opsa-vs-opd-pattern-transfer]]
+- [[pi-opsd-effectiveness-prediction]] (2610.22512): offline KL metrics pre-screen which privileged information helps; mismatched PI roughly halves performance, so gains are not purely teacher-free
+- [[../../weekly-briefs/2026-10-23]] — brought in by the 2026-10-23 weekly sweep

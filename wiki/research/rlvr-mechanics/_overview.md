@@ -76,3 +76,8 @@ The cluster gives Position A in [[../../conflicts/invisible-leash-vs-spiral-tran
 - [[thinking-leakage-no-think-rl]] (Zhu et al., 2610.14270): extends reuse-not-installation to the think/no-think switch on hybrid Qwen3. An 8-dim subspace and a handful of heads carry ~75% of the no-think GRPO gain; weight extrapolation approaches but never exceeds think-mode accuracy. Drift toward think-like outputs traces to the signed-advantage contrast within a group.
 - [[wrong-votes-right-gradients]] (Wilson, Huang & Huang, 2610.20898): batch-level account of reward-noise robustness alongside the clip-bias account. Majority-vote and random-flip errors cancel across prompts ($c_\infty\approx 1.0$); coherent errors (length rule, confidence rewards) do not (0.29 at 20% flips). Needs ~37–50+ diverse prompts per batch, so N=1 training requires gold or highly reliable labels.
 - [[../../weekly-briefs/2026-10-16]] — brought in by the 2026-10-16 weekly sweep
+
+## Update 2026-10-23 (weekly-brief)
+
+- [[wait-marker-provenance]] (2610.30882): the 'wait' reflection marker is inherited from mid-training or reasoning-trace SFT; zero-RL from marker-free bases lifts accuracy without it. Token-form evidence for RL-as-selection, and a caution against using marker frequency as evidence of acquired reasoning
+- [[../../weekly-briefs/2026-10-23]] — brought in by the 2026-10-23 weekly sweep

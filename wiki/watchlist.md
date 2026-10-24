@@ -39,6 +39,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Adapter Thickets (arXiv:2610.00991) — splitting an RLVR budget across small LoRA adapters + majority vote beats one adapter; sharpening shares errors
 - Range-GRPO (arXiv:2610.01548) — title-only triage, abstract unread
 - GGPO (arXiv:2610.20814) — Gibbs-gap off-policy RLVR without importance weights; beats GRPO/AGRO under staleness; code released
+- TreeOPSD (arXiv:2610.23181) — critic-free tree credit via bounded teacher distribution; +4.97 over GRPO on Qwen3-30B-A3B
 
 ## Process reward models
 
@@ -85,6 +86,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - DiffGate (arXiv:2610.04596) — difficulty-gated teacher guidance: GRPO plus teacher only on failed groups
 - STOPD (arXiv:2610.21337) — truncated OPD rollouts; 1.3–2.2× faster at comparable accuracy
 - Compatibility Matters (arXiv:2610.21234) — token-level teacher selection in OPD improves pass@k
+- AskDistill (arXiv:2610.27450) — student-initialized question synthesizer rewarded for dense teacher signal; answer-free OPD, code released; close to ATD
+- MCPD, One Teacher Many Views (arXiv:2610.30880) — averages self-teacher distributions over partial reference views; fixes reference-sensitive OPSD targets
+- OPMD (arXiv:2610.14022) — hidden-state on-policy distillation via student-compatible teacher; no code, mechanism claim unverified
 
 ## Process reward models
 
@@ -173,6 +177,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - E2H Curriculum RL (arXiv:2506.06632, ICLR 2026) — easy-to-hard curriculum RL rescues 1.5B–3B models that fail with vanilla RL; finite-sample complexity bounds proving E2H needs fewer total samples
 - ACLArena (arXiv:2609.23989) — agent continual-learning benchmark across multi-stage post-training
 - Continually Post-training Small Models via Synthetic Self-distillation (arXiv:2610.13113) — larger same-family rewriter fixes SDFT failure on small models
+- HERD (arXiv:2610.31401) — recursive harness-to-weights distillation with drift anchors; agent-flavored continual learning
 
 ## RL optimizer miscellany
 
@@ -190,6 +195,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Is Next-Chunk Reasoning RL Really Better than SFT? (arXiv:2608.23256) — revisits RLVR-vs-SFT training strategies under no-CoT data
 - Don't Mask the Environment (arXiv:2609.20715) — observation supervision changes how agents explore under RL
 - Learning to Steer, Steering to See (arXiv:2609.34344) — geometry of RLVR via trainable steering vectors; code released
+- MOER (arXiv:2610.30873) — shrinking expert prefix with full-trace fallback, GRPO+SFT mix; code released; LUFFY/ExGRPO lineage
+- EDEN (arXiv:2610.16105) — embedding-space perturbation rollouts for small GRPO groups; relevant to few-rollout regimes
 
 ## Process reward models (cont.)
 
@@ -215,6 +222,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Rules Amortize, Pairings Don't (arXiv:2610.00526) — which ICL operations amortize into latent task vectors
 
 ---
+- Depth growth and looping vs ICL (arXiv:2610.31421) — grown/looped models acquire and retain ICL sooner; induction heads carry over
+- Heavy-Ball discovery under CoT supervision (arXiv:2610.31089) — trajectory supervision makes transformer beat its GD teacher in-context
+- Conditional no-hair theorem (arXiv:2610.24133) — prompt influence decays as power law; how LMs forget their prompt
 
 ## Related
 
