@@ -42,3 +42,4 @@ No code released as of capture. PyTorch + torch.compile, no custom kernels. No p
 - [[manifold-constrained-hyper-connections]] — direct predecessor; Hyperloop simplifies and re-applies mHC at loop granularity.
 - [[test-time-training]] — looped Transformers as depth-wise RNNs share the "compute as variable depth" framing; logit-lens analysis suggests early-exit potential.
 - [[watchlist]] — Universal Transformers (Dehghani 2018), ALBERT, middle-cycle looping (Bae 2025, Saunshi 2025), Geiping 2025, Prairie 2026.
+- [[par-progress-aligned-recurrence]] — retrofitted looped LM with progress-aligned targets + RMS norm anchoring; 16× length extrapolation

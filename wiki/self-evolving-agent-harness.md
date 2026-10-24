@@ -48,3 +48,4 @@ Companion repo github.com/zgcagi/Harness-RSI. Brand new, no external uptake; agg
 ## Related
 
 [[skillopt]], [[memoharness]], [[argus-agentic-runtime]], [[macaron-v1]], [[gepa-reflective-prompt-evolution]], [[huxley-godel-machine]], [[disco-arex-skill]], [[skill-self-play]], [[evolutionary-search-eval-rigor]], [[co-cheating-crossfit]], [[ai-agents-open-ended-research]], [[research-swarm-whistleblowing]], [[openclaw-claude-code-memory]], [[openclaw]], [[deepseek-v4]], [[agents-a1-horizon-scaling]], [[polar-rl-harness]]
+- [[coevo-rsi]] — model+harness co-evolution instance (checkpoint archive, TIMR); [[socratic-skill-learning]] — teacher-in-the-loop skill acquisition

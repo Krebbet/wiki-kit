@@ -42,3 +42,4 @@ Directly compares against [[gepa-reflective-prompt-evolution]] (genetic-Pareto p
 - [[agentflow]] — multi-role agentic pipeline trained on-policy; SkillOpt's optimizer-model/target-model split is a related decomposition
 - [[eggroll]] — applies ES training discipline to LLM weights; SkillOpt applies analogous discipline to text space
 - [[seal-self-adapting]] — RL-trained self-edit generation for weight updates; SkillOpt is the prompt/skill-document counterpart
+- [[socratic-skill-learning]] — Educator-coached, Student-authored skills; Expert Authoring barely helps (+0.5 pp)

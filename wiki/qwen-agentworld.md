@@ -58,3 +58,4 @@ Constraints:
 - [[moonlake-world-models]] — both target world models for agent training; Moonlake proposes 3D-visual hybrid pipelines for embodied settings with no quantitative results; Qwen-AgentWorld is language-action-space with benchmarks — different modality, same goal.
 - [[agentflow]] — AgentFlow uses on-policy RL inside a multi-step agent loop; Qwen-AgentWorld generates the synthetic environments in which such agent RL could run — an upstream relationship; both are Qwen-ecosystem-adjacent.
 - [[memagent]] — both apply RL to solve a non-differentiable objective in an agentic setting (memory overwrite policy vs. world-model fidelity); Multi-Conv DAPO and Qwen-AgentWorld's hybrid rubric+rule rewards are sibling credit-assignment approaches in agentic RL.
+- [[wildawm-cua-environment-synthesis]] — executable-code computer-use worlds with gated verified tasks (vs LLM-simulated environments)

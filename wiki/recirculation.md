@@ -58,3 +58,4 @@ Brand-new preprint (captured 2026-08-22) — no citation or community signal yet
 - [[test-time-training]] — parallel inference/adaptation-time enhancement to a frozen or lightly-adapted model without full retraining; different mechanism (activation mixing vs. fast-weight/TTT updates).
 - [[in-place-ttt]] — parallel: both are drop-in, training-free-or-nearly-so modifications to a pretrained checkpoint with no architecture change. Recirculation's adaptive variant (frozen backbone + small trained MLP) is structurally close to in-place-ttt's "repurpose existing components, no full retrain" ethos.
 - [[gram-recursive-reasoning]] / [[hrm]] / [[hrm-text]] — reference frame for classifying recurrent/looped-reasoning models; recirculation is inference-time-only and much cheaper than HRM/GRAM's trained dual-timescale recurrence.
+- [[par-progress-aligned-recurrence]] — trained (not training-free) recurrent depth; per-iteration targets make extra loops useful

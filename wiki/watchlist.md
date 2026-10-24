@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-03
+last_reviewed: 2026-10-24
 ---
 
 # Watchlist — Identified But Not Captured
@@ -383,3 +383,28 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **REMORY: Learning Residual Memory for Context Compaction (https://arxiv.org/abs/2610.11287)** — Learned residual memory for context compaction in agents. *(weekly-brief 2026-10-17.)*
 - **Async/efficient RL infra cluster (vendor/X-reported, no arXiv links)** — ThunderSync (gradients computed as rewards arrive, reported up to 1.9x); vLLM bitwise-consistent train/inference for RL (zero train-inference KL, 87.5% rollout throughput kept); TRL AsyncGRPO tree packing (reported 26x trainer-compute cut); Modal heterogeneous async RL. Source: Latent Space AINews Oct 14/16. *(weekly-brief 2026-10-17.)*
+
+## RL / post-training (continued — weekly-brief 2026-10-24)
+
+- **TraceForge: Distilling with Your Own Thinking (https://arxiv.org/abs/2610.29680)** — Rewrites teacher answers into reasoning traces in the student's own style before SFT; improves coding scores. No code. *(weekly-brief 2026-10-24.)*
+- **AgenticRoboRL (https://arxiv.org/abs/2610.28589)** — Multi-turn RL on a 9B planner lifts LIBERO-PRO success 18.1% → 71.0%; code released. *(weekly-brief 2026-10-24.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-10-24)
+
+- **Deep Fusion Memory: Chunk-Level Parametric Memory for LLMs (https://arxiv.org/abs/2610.25100)** — Injects predicted memory via gated cross-attention, no online retrieval. No code. *(weekly-brief 2026-10-24.)*
+- **Meta Expert: Cross-Layer Expert Sharing for MoE (https://arxiv.org/abs/2610.27598)** — Shares experts across layers to cut MoE storage/retrieval cost. No code. *(weekly-brief 2026-10-24.)*
+
+## Self-improving agents (continued — weekly-brief 2026-10-24)
+
+- **Right Screen, Wrong Transition: World Models as Verifiers for GUI Agents (https://arxiv.org/abs/2610.11942)** — Action-conditioned world model predicts the next screen to verify GUI transitions; HF weekly 170 upvotes; code (jiamingzhang94/lgwm). *(weekly-brief 2026-10-24.)*
+- **Sage-A1.5 (https://arxiv.org/abs/2610.28578)** — 35B/3B-active MoE agent with subagent orchestration and self-verification; code (InternScience/Agents-A1). *(weekly-brief 2026-10-24.)*
+- **AgentKV / IntentKV / SideQuest (concurrent agent-oriented KV eviction)** — Cited by [[akv-cache-engineering]] as concurrent work; SideQuest limited to tool results. Not yet located/verified. *(weekly-brief 2026-10-24.)*
+
+## Benchmarks & evaluation (continued — weekly-brief 2026-10-24)
+
+- **RAG Compositionality (https://arxiv.org/abs/2610.29722)** — 450 RAG configurations show individually strong techniques often don't compose; code (dolev31/lasagna). *(weekly-brief 2026-10-24.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-10-24)
+
+- **Correction Training for Diffusion Models (https://arxiv.org/abs/2610.14136)** — Learned corrector reduces exposure bias, distillable into the base model; code. *(weekly-brief 2026-10-24.)*
+- **Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation (https://arxiv.org/abs/2610.29989)** — Auxiliary future-chunk prediction improves physical plausibility; HF weekly 164 upvotes; code (TencentARC). *(weekly-brief 2026-10-24.)*

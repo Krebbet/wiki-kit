@@ -361,3 +361,9 @@ Autonomous weekly sweep (week of 2026-10-17). The 2026-10-10 sweep was skipped, 
 Captures: waypoint-opd (2610.21601), self-evolving-agent-harness (2610.18813), logra (2610.06647), reflection-beam (HF blog), muse-spark-open (HF blog). Ingest: 5/5 summaries validated.
 
 Pages written: 5 new — [[waypoint-opd]], [[self-evolving-agent-harness]], [[logra]], [[reflection-beam]], [[muse-spark-open]]. No conflicts opened or extended. Soft tension recorded in-page: the held-out-split reuse critique in [[self-evolving-agent-harness]] applies to validation-gated methods such as [[skillopt]], [[memoharness]] and [[argus-agentic-runtime]]. [[reflection-beam]] and [[muse-spark-open]] cross-linked as a shared open-frontier-MoE data point (256 experts, top-8, 1M context). Source-reported model name "Qwen3.8-27B" in [[logra]] preserved verbatim, unverified.
+
+## [2026-10-24] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-10-24). Sources: HF daily papers API (10-21..10-23), HF weekly view, Latent Space AINews; Reddit, X, alphaXiv unreachable (seen only as links in AINews). Single-signal arXiv items mostly HF + AINews.
+
+**Captured and ingested (marker engine, audit clean, 5/5 summaries validated):** [[akv-cache-engineering]] (2610.28577), [[par-progress-aligned-recurrence]] (2610.27628), [[coevo-rsi]] (2610.25078), [[wildawm-cua-environment-synthesis]] (2610.26828), [[socratic-skill-learning]] (2610.17860). No conflicts opened. Soft tension recorded in-page: AKV vs [[context-language-models]]; CoEvo-RSI harness-only ablation vs frozen-model optimisers ([[memoharness]], [[skillopt]]). Summaries for coevo-rsi, wildawm and socratic were partial reads (appendices unreviewed) — noted in pages. 6 backlink edits; reference-sources gained the HF daily_papers API. Note: `poetry` was not on PATH in the non-interactive shell (used ~/.local/bin).

@@ -72,3 +72,4 @@ arXiv:2609.37725 (Sept 2026; title not captured, "(untitled)" in raw). Context L
 - [[terminal-universe]] — shared TerminalBench 2.1 benchmark.
 - [[openclaw]] — context window and memory layers; CLM is a model-native alternative.
 - [[conflicts/long-context-attention-vs-recurrent-memory]] — adds a context-management third angle.
+- [[akv-cache-engineering]] — cache-level alternative (drop/reposition KV) to text-level context editing; critiques CLM's session-local suffix-cache reuse

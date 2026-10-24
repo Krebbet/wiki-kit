@@ -54,8 +54,9 @@ Fast-moving daily/weekly trending-paper feeds — checked directly rather than p
 | Hugging Face Daily Papers | https://huggingface.co/papers | Community-upvoted daily arXiv paper feed; fastest-moving trending signal, effectively replaced the awesome-lists as this wiki's primary weekly aggregator (2026-08-01: all 7 pinned awesome-lists showed zero commits in the sweep window; confirmed again 2026-08-22, second consecutive zero-signal sweep — see GitHub awesome-lists demoted to probation below). | 2026-08-01 | active |
 | alphaXiv trending | https://www.alphaxiv.org/ | Social layer around arXiv; surfaces trending papers with discussion. Companion to @alphaxiv (already tracked above). | 2026-08-01 | active |
 | Hugging Face Papers weekly/monthly views | https://huggingface.co/papers/week/2026-W42 (and /papers/month/2026-10) | Fetchable ranked view with upvote counts (unlike Reddit/X/alphaXiv, unreachable in the 2026-10-17 sweep); gives quantitative trending rank. | 2026-10-17 | probation |
+| Hugging Face daily_papers API | https://huggingface.co/api/daily_papers?date=YYYY-MM-DD | Fetchable JSON per day with upvotes, summaries and GitHub links; worked via WebFetch in the 2026-10-24 sweep when Reddit/X/alphaXiv did not (weekly HTML view truncates after ~12 papers). | 2026-10-24 | active |
 
-2026-10-17: Reddit (both domains), alphaXiv and X were not fetchable in the weekly sweep — treat as single-source HF signal until a browser route exists.
+2026-10-17: Reddit (both domains), alphaXiv and X were not fetchable in the weekly sweep — treat as single-source HF signal until a browser route exists. 2026-10-24: same again (Reddit/X appeared only as links inside Latent Space AINews).
 
 ## GitHub awesome-lists
 
