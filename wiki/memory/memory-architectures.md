@@ -133,3 +133,9 @@ Two new memory-adjacent instances surfaced the week of 2026-05-04:
 
 - **[[agentic-harness-engineering]]'s `LongTermMEMORY.md`** — machine-evolved persistent cross-session knowledge; instance of the *episodic + structured working memory* family, with the twist that the contents are now machine-evolved rather than human- or runtime-agent-authored. AHE's component-ablation finding (+memory only +5.6 pp; +system_prompt only −2.3 pp) is the cleanest empirical isolation to date of *which* externalization carries the lift in coding-agent harnesses.
 - **[[notion-token-town]]'s "memory is just pages and databases"** — primitive-composition data point: Notion deliberately *does not* invent a memory primitive for its Custom Agents. *"If you wanna give a memory, just give it a page and give it edit access to that page."* Same for inter-agent communication: agents file issues into a shared "issues" database that a manager agent reads. Sits adjacent to the dedicated-memory-primitive lineage (MemGPT, Letta, Mem0, MemPalace) as a counter-design that says: the dedicated primitive may not be necessary if the existing data primitives can carry the semantics.
+
+[[memory/raw-rag-baseline]] (arXiv 2610.30755, 2026-10-25; author-run, collect-but-confirm) adds a coverage-vs-utilization decomposition to the recall-vs-use gap: across systems, evidence coverage varies 19-45% while utilization given sufficient evidence stays 80-90%, and a raw-window dense+rerank baseline has the top coverage. It challenges the premise that the write-manage-read loop adds value on conversation benchmarks.
+
+## Related (addendum)
+
+- [[memory/raw-rag-baseline]] - naive RAG baseline that tops 12 memory systems in 6 of 7 settings.

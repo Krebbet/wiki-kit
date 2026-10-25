@@ -131,6 +131,10 @@ The post draws a **three-tier** choice: this self-managed stack (Mem0 on AWS-man
 - `raw/research/oss-agent-memory/02-aws-mem0-persistent-memory.md` (https://aws.amazon.com/blogs/database/build-persistent-memory-for-agentic-ai-applications-with-mem0-open-source-amazon-elasticache-for-valkey-and-amazon-neptune-analytics/ — AWS deployment pattern; captured 2026-05-24)
 - `raw/research/oss-agent-memory/08-aws-strands-memory.md` (https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/strands-sdk-memory.html — AgentCore Memory + Strands SDK, the distinct first-party AWS path; captured 2026-05-24)
 
+## Independent re-evaluation (2026-10-25)
+
+[[memory/raw-rag-baseline]] (arXiv 2610.30755, author-run, collect-but-confirm) includes Mem0 as a baseline: 66.88 on LoCoMo (GPT-4o-mini) vs 89.07 for a naive raw-window dense+rerank retriever, and a MEME tracking path score of 47.66% vs 62.34%. Its analysis finds few of Mem0's proposed mutations take effect. Not like-for-like with the Mem0 paper's claims (different baseline: OpenAI memory vs reranked raw RAG).
+
 ## Related
 
 - [[memory-architectures]] — survey's *retrieval-augmented memory stores* family; Mem0 is a 2025 production instance.
@@ -141,3 +145,4 @@ The post draws a **three-tier** choice: this self-managed stack (Mem0 on AWS-man
 - [[memory/groupmembench]] — reports Mem0 ~25.7% avg / ~4.67% Knowledge Update vs BM25 ~43.2% on multi-party corpora; different regime from LOCOMO.
 - [[claude-code-memory-ecosystem]] — practitioner landscape of Claude Code memory options; Mem0's CC integration is the commercial anchor.
 - [[claude-mem]] — closest community-plugin peer; same extract-and-inject doctrine, different implementation (AI-compress, ChromaDB+SQLite, open-source).
+- [[memory/raw-rag-baseline]] - 2026-10-25; independent baseline where raw-history retrieval beats Mem0 on LoCoMo (66.88 vs 89.07).

@@ -131,6 +131,11 @@ MOSS is the first wiki entry that closes the loop from benchmark-validated self-
 
 Anthropic's dynamic workflows ("flows") for Claude Managed Agents add a case the four topologies above assume away: the topology is not chosen by the developer at design time but written by the lead agent at run time, as an orchestration program that launches agents and routes results. Developers can still pass pre-configured subagents and set a session budget; the model does not see its budget. Subagents share a filesystem with no direct messaging API. Demo shape was fan-out then review. Secondary source only (collect-but-confirm); see [[deployments/anthropic-dynamic-workflows]]. Structurally convergent with RLM-style programmatic orchestration ([[coding-agents/langchain-rlms]]).
 
+## Fold-in decision rule (2026-10-25)
+
+Anthropic's guidance adds a default-to-single-loop step before choosing a multi-agent topology: keep subagents only for context bloat, parallel fresh-context work, or tool/instruction conflicts, and split by context rather than by problem type (problem-type splits cause lossy handoffs). See [[patterns/fold-subagents-into-main-loop]] (vendor-primary; comparisons unquantified).
+
+
 ## Source
 
 - `raw/research/effective-agentic-patterns/08-arxiv-2601-12560-agentic-ai-taxonomy.md` — "Agentic Artificial Intelligence: Architectures, Taxonomies, and Evaluation of LLM Agents" (Arunkumar V, Anna University; Gangadharan G.R., NIT Tiruchirappalli; Rajkumar Buyya, University of Melbourne; arXiv 2601.12560, January 2026).
@@ -166,3 +171,4 @@ Anthropic's dynamic workflows ("flows") for Claude Managed Agents add a case the
 - [[alphaevolve-impact]] — single-agent + evaluator at vendor scale; positive data point for high-Metric-Freedom = single-agent
 - [[patterns/code-as-agent-harness]] — four-level harness-state formality spectrum; topology-complexity-inversely-correlates-with-substrate-formality reframe; convergence-criteria + role taxonomies (arXiv 2605.18747)
 - [[patterns/moss-production-self-evolution]] — production instantiation of the self-evolving-harness class: failure-batch curation → ephemeral-container verification → consent-gated container swap with health-probe rollback (arXiv 2605.22794)
+- [[patterns/fold-subagents-into-main-loop]] — vendor decision rule and staged method for folding subagents into one loop; context-split heuristic.

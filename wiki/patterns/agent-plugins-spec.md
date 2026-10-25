@@ -48,6 +48,10 @@ Anthropic launched the **Claude Marketplace** on 2026-09-22 (vendor-primary blog
 
 Read against the rest of this page: the Marketplace looks like a distribution/storefront layer sitting on top of the Agent Plugins packaging format documented above (MCP + Agent Skills as the underlying open standards) — but that linkage is an **inference, not a stated fact**. The captured source does not confirm that the Marketplace is built on the Agent Plugins spec specifically. The capture itself is also thin — mostly marketing copy, with several bullet lists from the original page not captured/rendered — so no partner counts or other unconfirmed figures are reproduced here.
 
+## Claude Code Mods (code-executing plugins)
+
+Claude Code Mods are TS/JS plugins that hook harness events (prompt, tool call, render) and run inside the harness; six ship built in, and a `plugin-authoring` skill lets Claude write them. Per Anthropic docs relayed by a Latent Space post (secondary, collect-but-confirm), "mods aren't sandboxed": they can read/write files and see every prompt. That matches this spec's v1 gap of no permission model or signing, and sharpens the supply-chain concern for any plugin ecosystem that executes code. See [[deployments/claude-code-mods]].
+
 ## Source
 - Agent Plugins Specification v1.0.0, `spec/1.0.0.md` — https://github.com/agentplugins/agent-plugins-spec, captured 2026-08-09 — `raw/research/weekly-2026-08-09/02-openai-agent-plugins-spec.md`. Primary technical spec document.
 - Anthropic, "Claude Marketplace" — claude.com/blog/claude-marketplace, announced 2026-09-22 — `raw/research/weekly-2026-09-27/03-claude-marketplace.md`. Vendor-primary blog post; thinly captured (marketing copy, some bullet lists not rendered).
@@ -59,3 +63,4 @@ Read against the rest of this page: the Marketplace looks like a distribution/st
 - [[governance/aaif]] — both are cross-vendor, standards-body-flavored interoperability efforts (AAIF stewards MCP and AGENTS.md under the Linux Foundation); whether Agent Plugins' separate Technical Charter is affiliated with or independent of AAIF is an open question this spec doesn't answer.
 - [[patterns/agents-md]] — a sibling portable, vendor-neutral standardization effort (project context, rather than component packaging); worth treating as part of the same "portable agent standards" cluster.
 - [[evaluation/continualskillbench]] — Agent Plugins' `skills/` distribution format assumes human-authored, well-designed skills as the unit of value; ContinualSkillBench's finding that autonomous, agent-driven skill creation underdelivers relative to that ideal is a relevant caution for anyone building a plugin ecosystem around agent-authored skills.
+- [[deployments/claude-code-mods]] — code-executing Claude Code plugins with an unsandboxed trust model, relevant to the spec's missing permission/signing layer.

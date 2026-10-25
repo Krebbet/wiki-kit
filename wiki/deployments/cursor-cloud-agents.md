@@ -86,6 +86,10 @@ A follow-on product launch packages the state-decoupling + Subscriptions primiti
 
 Projects runs on its own cloud computer, so closing the laptop doesn't stop it; when something needs local-machine testing, the coordinator spins up a local agent for that step (paralleling the Self-Hosted Machines split between cloud inference/planning and local/customer-machine execution, 2026-09-02 above). Subscriptions (Slack/schedule/PR triggers, 2026-08-19) now attach to the coordinator, so a Project can act on inbound signals without a fresh prompt. No benchmark/quantitative data given — product-launch capture. Available in beta, rolling out to all users starting 2026-09-10.
 
+## 2026-10: PR Routing & Approval (secondary)
+
+Per a Latent Space writeup relaying Cursor docs (collect-but-confirm): Cursor routes reviewers by ownership and commit history, auto-approves low-risk PRs when a risk score is under a threshold, folds in Bugbot/Security findings, and reads repo policy files. Policy is read from the base branch, so a PR that edits an approval policy cannot relax review on itself. Cursor docs say it "does not replace a full code review". See [[deployments/claude-code-mods]].
+
 ## Source
 
 - `raw/research/weekly-2026-05-25/01-cursor-cloud-agents.md` — captured 2026-05-25 from the Cursor engineering blog, "What we've learned building cloud agents." Analyst summary at `raw/research/weekly-2026-05-25/.ingest/01-cursor-cloud-agents.summary.md`. **Primary vendor engineering writeup** — architectural descriptions of what Cursor built and decided are trustworthy; reliability metrics and PR-share figures are vendor self-reported (collect-but-confirm).
@@ -106,3 +110,4 @@ Projects runs on its own cloud computer, so closing the laptop doesn't stop it; 
 - [[patterns/agent-skills]] — Custom Modes (pin a skill as always-on) is a concrete product mechanism for skill invocation/persistence
 - [[case-studies/latent-space-async-agents]] — that page's "always-on agent direction" theme (Cognition CPO + OpenInspect, May 2026) is directly instantiated here by Subscriptions + `/goal`
 - [[deployments/mcp-infrastructure]] — the outbound-only worker-connection pattern is a network-trust-boundary choice relevant to the agent-identity/enterprise-security workstream tracked there, though Self-Hosted Machines doesn't discuss auth/identity tokens directly
+- [[deployments/claude-code-mods]] — contrasts team-policy attention interfaces (Cursor PR approval) with user-programmable Claude Code mods

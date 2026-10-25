@@ -131,6 +131,14 @@ Related practical points from the paper: replaying full history per action is ex
 
 This is the third independent benchmark leaning toward raw/no-extraction on some regime (after [[memory/groupmembench]] and the knowledge-task half of [[memory/evomembench]]), but the backbone split means the conflict **stays OPEN**: it tightens the "when" rather than naming a winner.
 
+## RAW-RAG matched-benchmark evidence (2026-10-25)
+
+[[memory/raw-rag-baseline]] (arXiv 2610.30755) supplies the closest thing yet to the matched comparison this page says is missing: a naive raw-history baseline (256-token windows, dense retrieval, cross-encoder rerank, no LLM at write time) run against 12 agentic memory systems on LoCoMo, LongMemEval-S, MEME and MemoryAgentBench. Reported (author-run, collect-but-confirm): it ranks first in 6 of 7 benchmark-model settings, e.g. LoCoMo 89.07 vs [[mem0]] 66.88 (GPT-4o-mini). Adding atomic-fact extraction to it costs 19.62 points on MemoryAgentBench (summaries -5.81, graph expansion -5.78), and transformed stores on MEME stay 7.58-29.38 points below a raw-evidence control.
+
+New reconciling axis: **coverage vs utilization.** Systems differ far more in whether sufficient evidence is retrieved (coverage 19-45%) than in using it (80-90%), and tracking questions need relations and dependency order, which lossy writes drop. Cost also separates the poles: about 12 min for RAW-RAG vs 2.9-8.8 h for memory-management systems on MEME.
+
+Limits: the LongMemEval margin is 0.13 (a tie), Full-context beats RAW-RAG by about 20 points on DeepSeek MEME, MemMachine wins that setting, and scope is offline conversation benchmarks with no deletion/privacy or interactive settings. The comparison with Mem0's own LOCOMO claim (26% J gain over OpenAI memory, 92% lower p95 latency vs full context) is not like-for-like. Extends Position 1 evidence (alongside [[memory/groupmembench]] and [[memory/evomembench]]); **status remains OPEN.**
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:
@@ -166,3 +174,4 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - [[claude-self-reflect]] — 2026-05-24; verbatim-with-index instance (conversation-history indexer) that also ships an optional extract layer — the straddle made concrete.
 - [[memory/evomembench]] — 2026-05-25; second independent empirical data point for no-extraction pole on knowledge tasks; first direct evidence that extraction-based methods retain lift on execution tasks at constrained context budgets — refines the conflict's "Query type" axis.
 - [[evaluation/learn2play-bench]] - 2026-10; experience-learning benchmark where raw histories beat reflection/rule-extraction on Kimi K3 but not uniformly across backbones; adds task-type and backbone-dependence axes.
+- [[memory/raw-rag-baseline]] - 2026-10-25; author-run matched-benchmark evidence for the verbatim pole (raw dense+rerank beats 12 memory systems in 6 of 7 settings; adding extraction hurts); adds coverage-vs-utilization axis.

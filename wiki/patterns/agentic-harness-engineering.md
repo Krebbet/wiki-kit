@@ -106,6 +106,10 @@ SWE-Cycle (arXiv 2605.13139) provides a formal benchmark framing for the long-ho
 
 The Harness RSI survey ([[patterns/harness-self-evolution-survey]], HF 2610.18813; abstract-level capture, collect-but-confirm) proposes four separable claims behind any reported harness gain: *selection* (is the estimate independent of the search?), *activation* (did the accepted update operate in the scored runs?), *attribution* (did it cause the difference under controlled conditions?), and *improvement* (does it hold beyond the producing tasks?). Applied here as a suggested reading, not a finding of the survey: AHE's change-manifest verification speaks most directly to attribution, its SWE-bench-verified transfer numbers to improvement, and the structural-components-carry-the-lift result to activation; selection (search-aware estimates on Terminal-Bench 2) is the claim to check against the AHE paper's protocol.
 
+## Generalization caveats (2026-10-25)
+
+A later controlled study of unconstrained self-revision on ARC-AGI-3 (arXiv 2610.30499) cites AHE as prior art and finds that development gains overstate held-out transfer: +8.42 dev versus +2.80 held-out (CI spanning zero) after two revisions, and passing proximal checks did not predict improvement. This echoes AHE's own finding that self-attribution is blind to regressions. Different benchmark and setup; collect-but-confirm. See [[evaluation/harness-adaptation-gap-arc-agi-3]].
+
 ## Related
 
 - [[effective-harnesses]] — Anthropic's hand-designed counterpart; AHE explicitly cites it (ref [29]).
@@ -125,3 +129,4 @@ The Harness RSI survey ([[patterns/harness-self-evolution-survey]], HF 2610.1881
 - [[agent-development-lifecycle]] — vendor-side (LangChain) Build → Test → Deploy → Monitor framing; AHE is the machine-evolved automation of the Monitor → Iterate → Build feedback loop.
 - [[patterns/moss-production-self-evolution]] — production counterpart; same LLM-driven harness-evolution loop, failure-batch signal instead of benchmark, full container-swap deployment lifecycle. MOSS rewrites harness source code where AHE evolves discrete harness components.
 - [[patterns/harness-self-evolution-survey]] - dedicated survey/framework for harness self-evolution; source of the four-claim evaluation lens above.
+- [[evaluation/harness-adaptation-gap-arc-agi-3]] - held-out generalization caveats for self-evolved harnesses

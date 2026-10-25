@@ -33,6 +33,10 @@ Reliable deployment requires continual validation as task distributions and eval
 
 Not claims from the paper; these are suggested mappings to confirm once the body is read. [[patterns/agentic-harness-engineering]] and [[patterns/autodesign-meta-harness]] are executable-change instances; [[patterns/skillos]] is an interpreted-state instance with a learned admission policy. [[evaluation/continualskillbench]]'s null result for agent-driven skill maintenance reads naturally as an activation/attribution question. See the lens applied to AHE in [[patterns/agentic-harness-engineering]].
 
+## Empirical held-out evidence: ARC-AGI-3 controlled study
+
+A controlled study (arXiv 2610.30499; 27 lineages, two self-revisions each, no human edits) gives cautionary data for the retained-gain claim: held-out gain was only +2.80 RHAE (95% CI [-1.44, 7.35]) against +8.42 on development games, a harness adaptation gap of 5.62 (CI [1.78, 9.77]). 15 lineages gained and 12 lost. Post hoc selecting the best-dev snapshot did better (+4.53), supporting abstention and rollback as part of adaptation. Single preprint, one benchmark; collect-but-confirm. See [[evaluation/harness-adaptation-gap-arc-agi-3]].
+
 ## Source
 
 - HuggingFace papers 2610.18813, "Self-Evolving Agent Harness" (page captured 2026-10-18; abstract-level only). Related titles listed by an automated bot, not read: RSIFlow, Harness Continual Learning, Safety Must Survive Self-Improvement, Harness^2, AgentEvolver, VERSE, MemScope.
@@ -49,3 +53,4 @@ Not claims from the paper; these are suggested mappings to confirm once the body
 - [[patterns/harness-design-space]] - static empirical taxonomy, complementary to the update-target view
 - [[patterns/agent-plugins-spec]] - plugin packaging standard relevant to plugin composition as an update target
 - [[evaluation/learn2play-bench]] - cross-episode learning and harness-swap sensitivity bear on retained-gain evaluation
+- [[evaluation/harness-adaptation-gap-arc-agi-3]] - controlled held-out test of self-revision; dev gains overstate transfer

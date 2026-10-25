@@ -58,6 +58,11 @@ This is a substantive companion/contrast to [[patterns/sierra-monitor-eval-of-ev
 
 [[deployments/anthropic-finance-agents]] (2026-05-08) packaged its vertical Managed Agents release as "skills + connectors + **subagents**." This piece argues directly against subagent-per-domain design for commerce. This is flagged as a **potential, unconfirmed tension** rather than a formal conflict: finance verticals like KYC plausibly fit this piece's named "full hand-off to a domain with its own compliance surface" exception, and neither source states the reconciliation explicitly. Not elevated to `wiki/conflicts/` this run — worth revisiting if finance-agents' actual subagent usage pattern gets more detail in a future source, or if a third Anthropic vertical release states the architecture guidance more generally.
 
+## Generalized guidance (2026-10-25)
+
+Anthropic's follow-up post generalizes this page's single-loop-plus-skills architecture into a decision rule: fold subagents into the main loop unless there is context bloat, a need for parallel fresh contexts, or tool/instruction conflicts. Details and the staged migration method are on [[patterns/fold-subagents-into-main-loop]] (vendor-claimed comparisons, collect-but-confirm).
+
+
 ## Source
 
 - `raw/research/weekly-2026-09-06/02-02-anthropic-commerce-agents.md` — Anthropic, "Building commerce agents with Claude" (claude.com/blog, 2026-09-02). Vendor primary.
@@ -76,3 +81,4 @@ This is a substantive companion/contrast to [[patterns/sierra-monitor-eval-of-ev
 - [[conflicts/auto-mode-prompt-injection-defense]] — sanitize-and-fence is a new input-sanitization-layer defense-in-depth data point.
 - [[governance/org-control-layer]] — the maker-checker, approve/apply-at-recheck-time pattern is a concrete production instance of the execution-boundary control class OCL formalizes.
 - [[patterns/sierra-monitor-eval-of-evals]] — companion/contrasting eval methodology (snapshot-construction vs. path-grading; critique of simulated-user evals as a primary metric).
+- [[patterns/fold-subagents-into-main-loop]] — generalized vendor guidance and staged fold-in method behind this page's architecture.

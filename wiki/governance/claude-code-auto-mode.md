@@ -39,6 +39,10 @@ Anthropic states auto mode "does not eliminate risk" and still recommends human 
 
 The post frames auto mode as the unlock that makes "models built for long-running work, like Claude Opus 5, more practical to leave running for hours," and cites customer testimonials of overnight, unattended runs (Nuro's overnight research agents; a cited 10pm–5am agent session). This sits in soft tension with Anthropic's earlier (April 2026) stated position that Claude Code is "not designed to power always-on third-party agents at scale — production always-on should use the Claude API directly" (see [[memory/openclaw-claude-code-memory]]). The distinction may be a single long *session* versus a persistent multi-session *daemon*, which would make the two claims compatible rather than contradictory — but the framing has visibly shifted toward encouraging longer autonomous stretches, and is worth tracking as Anthropic's position evolves.
 
+## Reuse in Claude Duet (2026-10-25)
+
+Anthropic's Claude Duet safety post says its always-on cloud personal agent runs an automated check alongside each action that is built on this auto mode classifier, extended for Duet and run outside the working model so page-embedded instructions cannot influence it; it also covers unattended routines. Vendor-claimed; no classifier accuracy is published for Duet. See [[security/claude-duet-safety-architecture]].
+
 ## Source
 - Anthropic, "Auto mode is now the default in Claude Code for Pro, Max, and Team plans," 2026-08-07 — `raw/research/weekly-2026-08-09/01-anthropic-auto-mode-default.md`. Vendor primary source.
 
@@ -51,3 +55,4 @@ The post frames auto mode as the unlock that makes "models built for long-runnin
 - [[patterns/effective-harnesses]] — auto mode removing interruption-by-approval-prompt is a precondition for the multi-hour unattended runs this page's harness-recovery-substrate argument assumes.
 - [[deployments/cognition-cloud-agents]] — parallel overnight/always-on framing; both position 2026 as the year unattended agent runtime becomes a product default rather than a power-user workaround.
 - [[governance/aaif]] — loosely related Anthropic-adjacent governance activity in the same period, but AAIF is open-protocol stewardship (MCP/AGENTS.md/Goose), not a permission-classifier architecture.
+- [[security/claude-duet-safety-architecture]] — Duet reuses this classifier out-of-model for a consumer always-on agent.

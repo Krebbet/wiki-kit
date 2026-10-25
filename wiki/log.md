@@ -596,3 +596,9 @@ Wiki changes: 5 new pages; 9 extensions (incl. reinforcing notes on conflicts/au
 Autonomous `/weekly-brief` sweep for week of 2026-10-18. Two search-based scans found nothing date-verified; a third direct-fetch scan of primary index pages produced the candidates. 5 captures to `raw/research/weekly-2026-10-18/`: claude-code-review-at-anthropic, anthropic-source-control-redesign (Willison link-post), self-evolving-agent-harness (HF abstract), deep-agents-context-engineering, claude-dynamic-workflows. Audit clean, all 5 summaries valid.
 
 Wiki changes: 4 new pages; 7 extensions; index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-18.md. langchain-deep-agents.md deliberately NOT extended (pre-existing uncommitted edits); new page links to it instead. No conflict files opened. Pre-existing uncommitted backlog untouched.
+
+## [2026-10-25] weekly-brief ingest | weekly radar sweep (5 captured, 5 ingested, 10 watchlisted)
+
+Autonomous `/weekly-brief` sweep for week of 2026-10-25. Two scan agents (vendor/press via primary index pages; research/practitioner via arXiv/HF/HN/Willison). 5 captures to `raw/research/weekly-2026-10-25/`: fold-subagents-into-main-loop, claude-duet-safety, claude-mods-latent-space, llm-improve-own-harness-arc-agi-3, naive-rag-vs-agentic-memory. Audit clean. Reddit (old.reddit.com), openai.com and marktechpost.com were unreachable; poetry needed `~/.local/bin` on PATH.
+
+Wiki changes: 5 new pages; 12 extensions (incl. reinforcing notes on conflicts/auto-mode-prompt-injection-defense and conflicts/verbatim-vs-extracted-memory, both still OPEN); index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-25.md. Pre-existing uncommitted backlog left untouched.

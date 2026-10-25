@@ -9,6 +9,28 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-10-25
+
+Window 2026-10-18 to 2026-10-25. Captured: Anthropic fold-subagents guidance, Claude Duet safety, Claude Mods (Latent Space), ARC-AGI-3 harness self-revision study, RAW-RAG memory baseline. Dates read from primary index pages / arXiv abs pages; items not opened.
+
+### Coding-agent / context patterns
+- LangChain: Context Engineering Starts with Retrieval (Oct 23) — "retrieve, offload, delegate" pattern
+- Claude Duet (Oct 21) — proactive background agent app; product page, pairs with captured safety doc
+- Simon Willison: Donating Agent Skills to the Agentic AI Foundation (Oct 22) — Skills standard to Linux Foundation; find Anthropic primary
+- MCP vs CLI for AI Agents (arXiv 2610.30157) — empirical tool-integration comparison
+
+### Evaluation / benchmarks
+- Sierra: τ-Entity (Oct 22) — voice agents capturing and correcting details
+- Sierra: τ-i18n (Oct 21) — τ-Voice across five languages
+- What the Trace Shows and What the Label Says (arXiv 2610.30491) — behavioral-detector labels miss trace evidence
+- LangChain/Numan: eval-first AI health coach (Oct 19) — per-category judges, simulated patients
+
+### Safety / memory
+- Agent Mosaic (arXiv 2610.30418) — agents aggregate permitted docs into prohibited conclusions
+- Governance-State Corruption in Long-Term Memory (arXiv 2610.30698) — memory-integrity stress test
+
+---
+
 ## Week of 2026-10-18
 
 Window 2026-10-11 to 2026-10-18. Captured: Anthropic code review, Willison source-control post, Self-Evolving Agent Harness, Deep Agents context engineering, Claude dynamic workflows. Dates read from primary index pages; items not opened.
