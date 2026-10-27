@@ -446,6 +446,8 @@ The orientation-toward-governance-or-bargaining lane. Where [[platform-cooperati
 
 **Strategic implication.** The "legal opt-out at scale" lever (GPC + statutory rights) is not currently operative at population scale. This shifts weight in [[strategies/data-disruption-strategy-map]] toward (a) mass-complaint enforcement-pressure pipelines (cf. NOYB) and (b) tooling-side disruption levers that don't depend on platform compliance with opt-out signals.
 
+**Extension to agents (Oct 2026, preprint).** Kochar et al. (arXiv 2610.29929) argue GPC-style opt-outs should be extended to AI agents via MCP/A2A signals; their 30-product audit finds only 14 of 29 offer an ad sale/sharing opt-out and 6 of 30 a human-review opt-out. Enforceability depends on a legal duty to honor signals, which the webXray results above show is weak on the web and which has no US federal analogue for agents. See [[agentic-privacy-preference-taxonomy]].
+
 ### Transparency / crowdsourced-audit tools
 
 The [[transparency-tools]] mechanism page is the anchor. Three functional sub-categories of live transparency tools:
@@ -535,6 +537,7 @@ Prioritised by closeness to existing gaps in counter-power infrastructure:
 
 ## Source
 
+- `raw/research/weekly-2026-10-26/06-agentic-privacy-preferences.md` — Kochar et al., arXiv 2610.29929 (GPC for agents).
 - `raw/research/weekly-2026-10-12/03-noyb-xandr-fine.md` — noyb press release, Xandr EUR 8.5M fine (2026-10-12 capture).
 - `raw/research/dynamic-pricing-landscape/01-doj-realpage-lawsuit.md` — DOJ press release, August 2024.
 - `raw/research/dynamic-pricing-landscape/02-propublica-realpage-settlement.md` — ProPublica, late 2025 settlement coverage + retrospective on the full case arc.

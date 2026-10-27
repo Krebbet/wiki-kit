@@ -46,9 +46,14 @@ The RTB Control case illustrates the opt-in default failure mode at scale. Any u
 
 The technical gap — RTB Control does not reach first-party personalisation — also defines the remaining attack surface: retailer-side pricing algorithms operating on account history and on-site behaviour are invisible to bid-request-layer controls.
 
+## Security externality: RTB as spyware delivery (AdFection)
+
+Citizen Lab's AdFection disclosure (via EFF, 2026-10) shows the RTB stack doubling as a malware delivery path: winning bidders can run JavaScript in the recipient's browser, and advertising IDs / IP / device data let a front company (Discover-Tech) release Candiru/Integrity Labs zero-click spyware only to selected journalists. RTB Control's suppression of IDs and IP in bid requests would not remove the script-execution surface; it is also opt-in and covers only Google-mediated auctions. EFF uses the case to restate its ask for a ban on behavioral advertising. Details and trust tag: [[adfection-ad-delivered-spyware]].
+
 ## Source
 
 - `raw/research/weekly-2026-07-06/01-google-rtb-control.md`
+- `raw/research/weekly-2026-10-26/04-adfection-lessons.md` — EFF secondary write-up of Citizen Lab (AdFection section only).
   - **Origin:** EFF Deeplinks blog, January 2026.
   - **URL:** https://www.eff.org/deeplinks/2026/01/google-settlement-may-bring-new-privacy-controls-real-time-bidding
   - **Audience:** general public, privacy advocates, policymakers.
@@ -63,3 +68,4 @@ The technical gap — RTB Control does not reach first-party personalisation —
 - [[dsar-and-data-deletion]] — complementary individual data-control mechanism
 - [[regulatory-responses]] — RTB settlement fits the consolidated counter-power litigation landscape
 - [[algorithmwatch]] — algorithmic accountability research context
+- [[adfection-ad-delivered-spyware]]

@@ -268,3 +268,8 @@ The `## Subreddits` stream in `wiki/reference-sources.md` (`r/PlatformCooperativ
 **Observation:** poetry is installed at `~/.local/bin`, which is not on the cron PATH, so poetry-based tool invocations fail in the weekly-brief cron run unless PATH is exported first.
 **Implication:** Export `~/.local/bin` in the cron wrapper / skill preamble.
 **Status:** open
+
+## 2026-10-26 weekly-brief: arXiv abs URL capture
+- Status: open
+- Scope: kit
+- capture_pdf on arxiv.org/abs/<id> silently captures the abstract page (no error; audit_captures stays clean). Always pass /pdf/<id>. Recurrence of the 2026-10-12 abstract-only issue.

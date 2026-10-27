@@ -6,7 +6,7 @@ Privacy Badger is an **algorithmic tracker-blocker browser extension** developed
 
 - **Developer:** EFF.
 - **License:** free and open-source.
-- **Platforms:** Chrome, Firefox, Edge, Brave, Opera, Firefox for Android.
+- **Platforms:** Chrome, Firefox, Edge, Brave, Opera, Firefox for Android; Safari on macOS 26.5+ added Oct 2026 (see below).
 - **Source:** github.com/EFForg/privacybadger.
 - **Distribution:** primary store presence (Chrome Web Store, Firefox Add-ons) — EFF's institutional backing insulates it from the kind of ad-hoc removal that hit [[adnauseam|AdNauseam]].
 
@@ -45,8 +45,32 @@ Privacy Badger is the architectural template for a **learn-the-pattern-then-bloc
 - **Passive blocking, not active counterfeiting.** Where [[adnauseam|AdNauseam]] corrupts tracker signals with fake clicks, Privacy Badger just withholds signals. Weaker in raising the extractor's cost but stronger in legal tractability and sustainability.
 - **Does not reach pricing algorithms directly.** The retailer's own pricing algorithm can still personalise on IP, account, fingerprint, and purchase history. Privacy Badger degrades *cross-site* personalisation inputs, not *on-site* ones.
 
+## Safari macOS release (Oct 2026)
+
+Per EFF's announcement (primary source for availability; self-promotional for user counts and efficacy):
+
+- **Availability:** Privacy Badger now runs on Safari for macOS, requiring **Safari 26.5+**. Installed **via the App Store only**. EFF says this completes coverage of all major desktop browsers; Safari support was a long-requested feature (GitHub issue #549), enabled by improvements in Safari's extension support.
+- **iOS Safari:** not yet supported; EFF says it will look into it after macOS issues are ironed out.
+- **GPC default:** automatically sends the Global Privacy Control signal. EFF states GPC is legally binding in a growing number of states, including CA, CO, NJ, CT (*self-reported; EFF cites a third-party compliance blog, not statute*).
+- **Widget placeholders:** blocks tracking widgets (embedded tweets, comments, video players) and replaces them with click-to-activate placeholders.
+- **Learning:** same heuristic learning model; EFF claims it blocks trackers that other tools do not know about or choose not to block (*self-reported*).
+- **Beyond Safari defaults:** EFF says Safari's default mode limits tracker access but still lets trackers load; Privacy Badger blocks loading, including email-identifier techniques that bypass Safari protections (*EFF claim*).
+- **Feedback loop:** per-site disable and a "Report broken site" button in the popup.
+- **User base:** "more than 4 million" users (*EFF self-report, Oct 2026*). Differs from the 1M figure in [[consumer-price-tools]]; basis and date unreconciled.
+- **Platform dependency:** the Safari port depends on Apple extension support and App Store distribution (gatekeeper constraint). Desktop only; tracker blocking, not pricing.
+
+## Security rationale (AdFection)
+
+EFF's AdFection write-up (Citizen Lab disclosure of ad-delivered zero-click spyware aimed at journalists) lists Privacy Badger among individual mitigations, alongside network-wide ad blocking and resetting or disabling the mobile ad ID. This adds a security rationale to tracker blocking beyond privacy. EFF itself concedes individual measures are limited and names a behavioral-ad ban as the structural fix (*EFF advocacy position*). See [[mechanisms/adfection-ad-delivered-spyware]].
+
 ## Source
 
+- `raw/research/weekly-2026-10-26/01-privacy-badger-safari.md`
+  - **Origin:** EFF Deeplinks blog post, "Announcing Privacy Badger for Safari on macOS".
+  - **Audience:** Safari/macOS users, EFF supporters.
+  - **Purpose:** product launch plus awareness/fundraising.
+  - **Trust:** primary for availability and features; self-promotional for user counts and efficacy; GPC legal status linked to a third-party blog.
+- `raw/research/weekly-2026-10-26/04-adfection-lessons.md` (EFF post summarising Citizen Lab research; advocacy-framed secondary source; basis for the security rationale section)
 - `raw/research/lever-implementations/12-04-wikipedia-privacy-badger.md`
   - **Origin:** Wikipedia article *Privacy Badger*.
   - **Audience:** general public, privacy-tool researchers.
@@ -55,6 +79,8 @@ Privacy Badger is the architectural template for a **learn-the-pattern-then-bloc
 
 ## Related
 
+- [[mechanisms/adfection-ad-delivered-spyware]]
+- [[consumer-price-tools]]
 - [[obfuscation]]
 - [[adnauseam]]
 - [[nightshade-glaze]]

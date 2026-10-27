@@ -69,3 +69,4 @@ In the all-informed equilibrium, prices converge to the competitive outcome *eff
 - [[transparency-tools]] — disclosure frameworks should elicit whether competitor prices are demand-model inputs
 - [[the-firms-view]] — firms may cite this paper to argue their oblivious algorithms are pro-competitive
 - [[mechanisms/learning-rate-delegation-pricing]] — mild tension: transient convergence as a strategically lengthened extraction window (abstract-only theory)
+- [[collusion-enforcement-audit]] — parallel finding: rival-ignoring rules in LLM/RL agents produce cartel-like outcomes without punishment

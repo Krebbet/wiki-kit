@@ -71,6 +71,8 @@ The industry reception on the whole validates the mechanism's design: ad-network
 
 ## Related
 
+- Tension: auto-clicking and rendering ads raises malvertising exposure of the kind in [[adfection-ad-delivered-spyware]] (ad-delivered zero-click spyware). *(synthesis)*
+
 - [[obfuscation]]
 - [[nightshade-glaze]]
 - [[privacy-badger]]

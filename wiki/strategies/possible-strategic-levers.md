@@ -45,8 +45,9 @@ Scope note: this page deliberately includes levers that would face legal frictio
 | 27 | Switching-cost observatory | G. Economic-structural | *(editorial — no wiki precedent)* | Per-category switching-cost estimator + automated switch tool (account closure, contract termination) | **Y** — full mechanism design |
 | 28 | Mass-signup threshold coordination | G. Economic-structural | [[community-choice-aggregation]] (inverse of opt-out default) | Coordinated simultaneous opt-in / switch events at pre-announced moments | **Y** — credible-commitment and signalling design |
 | 29 | CCA-equivalent default opt-out port | H. Regulatory-proxy | [[community-choice-aggregation]] | Map existing default-aggregation statutes in non-electricity sectors; build on them | **Y** — statutory-mapping research across healthcare, insurance, broadband, pharma |
+| 30 | Repeal anticircumvention / legalise reverse engineering | H. Regulatory-proxy | [[adversarial-interoperability]] (Doctorow 2026, advocacy), [[keep-android-open]] | Policy campaign; legal-defence fund; public per-device jailbreak repositories and local-LLM unlock assistants once legal | **Y** — jurisdictional mapping (s.1201, EU/trade-partner analogues) and exemption-process feasibility *(editorial)* |
 
-**Count:** 29 levers across 8 categories. As of 2026-04-23: 5 levers have no remaining research gap; 4 levers have partial reference-layer support with a specific remaining gap flagged; 20 levers still have an open research gap.
+**Count:** 30 levers (lever 30 added 2026-10-26) across 8 categories. As of 2026-04-23: 5 levers have no remaining research gap; 4 levers have partial reference-layer support with a specific remaining gap flagged; 20 levers still have an open research gap.
 
 ### Antitrust treatment by lever (added 2026-04-26)
 
@@ -274,6 +275,10 @@ Leverage existing law / statute rather than pushing for new legislation.
 #### 29. CCA-equivalent default opt-out port to other sectors
 
 [[community-choice-aggregation|CCA]] authorises opt-out default aggregation only for electricity in 9 US states. Per the reference-layer gap analysis on [[regulatory-responses]], no comparable opt-out default exists for broadband, insurance, pharmaceuticals, or data-privacy. Look for equivalent statutory constructs already in force and leverage existing authority. **Research needed** on statutory-mapping across these sectors.
+
+#### 30. Repeal anticircumvention / legalise reverse engineering
+
+Remove the legal ban on circumventing device locks (DMCA s.1201 and exported equivalents) so jailbreak and interop tooling can be published, audited and commercialised; individual jailbreaks cannot form alternative app-store or generic-ink markets while circumvention is criminal. Documented argument: [[adversarial-interoperability]] (advocacy source); sideloading parallel: [[keep-android-open]]. Companion tech: public per-device recipe repos, local-LLM unlock assistants. *(editorial)* **Research needed** on jurisdictional mapping and on narrower interim routes (exemption rulemakings, DMA-style interoperability duties).
 
 ---
 

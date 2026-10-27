@@ -89,6 +89,10 @@ A consumer-counter-power deployment of ClawNet that handles payment credentials,
 - W3C OAuth 2.0 / OpenID Connect specifications.
 - CVE-2025-1198 (token replay), CVE-2024-7042 (agent exploitation), CWE-306 (missing authentication), CWE-200 (unauthorized exposure), CWE-1220 (coarse-grained access control).
 
+## Privacy preference propagation (GPC for MCP/A2A)
+
+Kochar et al. (arXiv 2610.29929, preprint) extend Global Privacy Control to agent protocols: preference signals ride MCP/A2A headers and interceptors check them at each delegation hop to enforce data minimization (task-bound sharing, secondary-use and human-review opt-outs, post-task persistence limits). Eight prototypes released at https://github.com/privacy-tech-lab/gpc-ai-agents-prototypes. Open problems: end-to-end signal verifiability across multi-hop chains, and no collective layer. Detail in [[agentic-privacy-preference-taxonomy]].
+
 ## Related
 
 - [[clawnet-readout]] — governance overlay running on top of A2A; inherits A2A's protocol-layer vulnerabilities
@@ -96,3 +100,4 @@ A consumer-counter-power deployment of ClawNet that handles payment credentials,
 - [[agent-mediated-negotiation-empirics]] — negotiation-layer behaviour above the protocol
 - [[data-disruption-strategy-map]] — risk class 3 (authenticated-endpoint automation) is the operational frame
 - [[the-firms-view]] — none directly; A2A security is symmetric (firm-side and consumer-side both benefit from hardening)
+- [[agentic-privacy-preference-taxonomy]] — privacy-signal layer over the same MCP/A2A substrate

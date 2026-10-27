@@ -51,6 +51,12 @@ arXiv 2604.15825 (Frick, Cornell, April 2026) closes the convergence-speed open 
 
 **Detection implication.** The reward-punishment mechanism is a detectable signal if price-series data are available: a competing seller's defection (temporary price cut) followed by coordinated margin recovery among rivals is a statistical signature that price-series monitoring tools can flag.
 
+## Enforcement vs outcome: LLM/RL agents (Tran & Yu 2026)
+
+arXiv 2610.28787 (Tran and Yu, UMass, preprint) audits whether cartel-like prices from LLM and RL agents are enforced, using a counterfactual paired-deviation test (see [[collusion-enforcement-audit]]). In stylised trading and logit-Bertrand games, small RL-trained LLMs mostly learn fixed habits or deterrence; they match rival price cuts but rarely learn the costly price war, and enforce only thinly (4 of 9 seeds, only against large cuts). Prompted LLMs punish in 1 of 9 pricing runs. Tabular Q-learners do enforce in pricing, consistent with the Calvano line of work. Outcome indices alone therefore cannot establish collusion.
+
+**Partial tension with Frick 2026.** Frick attributes deep-RL convergence to a learned reward-punishment mechanism. Tran and Yu find punishment thin or absent in small GRPO-trained LLMs. The agent classes differ (deep RL pricing agents vs small LLMs in stylised games), so this is partial tension, not contradiction; it does show the detection signature in the Frick section should be confirmed by a counterfactual test, not inferred from price series. No existing conflict page covers this theme, so none is opened.
+
 ## Open questions
 
 - **[Updated 2026-06-22]** Convergence speed for deep RL agents is now empirically bounded by Frick 2026 — matching observed market dynamics. The open problem narrows to: (a) whether the result holds across market structures beyond repeated Bertrand competition, and (b) whether the learned reward-punishment scheme is detectable in live market data at sufficient statistical power.
@@ -76,6 +82,7 @@ arXiv 2604.15825 (Frick, Cornell, April 2026) closes the convergence-speed open 
   - **Purpose:** interdisciplinary survey of algorithmic collusion theory, experiments, and open problems.
   - **Trust:** preprint accepted at peer-reviewed venue.
 - `raw/research/dynamic-pricing-landscape/01-doj-realpage-lawsuit.md` — used here as the empirical anchor for the explicit-coordination variant (full treatment at [[rental-housing-algorithmic-pricing]]).
+- `raw/research/weekly-2026-10-26/07-enforcing-the-cartel.md` — Tran & Yu, arXiv 2610.28787; preprint, moderate-high trust on method (full entry at [[collusion-enforcement-audit]]).
 - `raw/research/weekly-2026-06-22/03-rl-collusion-convergence.md`
   - **Origin:** arXiv 2604.15825 (Frick, Cornell, April 2026). Economics preprint.
   - **Audience:** Economists and AI-policy researchers.
@@ -90,3 +97,4 @@ arXiv 2604.15825 (Frick, Cornell, April 2026) closes the convergence-speed open 
 - [[regulatory-responses]]
 - [[regulatory/ftc-amazon-ad-auction-lawsuit]] — single-firm covert auction-price override (not multi-firm collusion, but same extraction-via-nominally-neutral-mechanism pattern)
 - [[mechanisms/learning-rate-delegation-pricing]] — non-communicative route via deliberately slow learning (abstract-only theory)
+- [[collusion-enforcement-audit]] — paired-deviation audit; outcome-based collusion evidence does not show enforcement

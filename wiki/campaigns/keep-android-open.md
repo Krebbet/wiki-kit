@@ -79,6 +79,10 @@ The mandate extends Google's gatekeeping authority from its own marketplace to e
 
 This replicates at the OS layer what MV3 did at the browser-extension layer: using platform-control mechanisms to foreclose counter-power tooling without formally banning it.
 
+## Related legal framing: anticircumvention law
+
+Doctorow (opinion, 2026-10-21) argues that jailbreaking an iPhone to use alternative app stores is not enough to create those stores; the law banning jailbreaking (DMCA s.1201 and its exported equivalents) must be repealed so a would-be store can raise capital and staff up, and he cites Apple's ~$100b "app tax" as the stake. The same logic applies to Android: sideloading is a technical freedom that Google can tighten, whereas legal permission to circumvent platform locks is what lets alternative distribution form a market. Advocacy source, not independently verified. See [[adversarial-interoperability]].
+
 ## Source
 
 Captured from [keepandroidopen.org](https://keepandroidopen.org) on 2026-07-06. Campaign site aggregating the mandate's details, coalition signatories, press coverage, and action items. Source is advocacy material; secondary sources cited within (F-Droid, EFF, Ars Technica, The Register, TechCrunch, MEP Schaldemose) are independently verifiable.
@@ -93,3 +97,4 @@ Raw capture: `raw/research/weekly-2026-07-06/02-keep-android-open.md`
 - [[platform-cooperatives]] — F-Droid, Aurora Store, GrapheneOS represent cooperative/FOSS distribution models; this mandate is a live stress test of their viability
 - [[consumer-price-tools]] — any counter-algorithmic or price-comparison tool targeting Android distribution faces this registration gate
 - [[privacy-badger]] — EFF is a primary voice in this campaign; extension/app distribution under platform-gatekeeper pressure is a shared constraint
+- [[adversarial-interoperability]] — anticircumvention law as the legal layer under sideloading and alternative-store freedom (Doctorow, advocacy)

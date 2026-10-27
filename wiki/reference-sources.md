@@ -43,6 +43,7 @@ Replaces the AI/ML-coded selection heuristic in `/weekly-brief` step 3. In order
 - **Index / log / revisions**: update `wiki/index.md`, `wiki/log.md`, `wiki/revisions.md` on every page write. See `wiki/CLAUDE.md` "Modifying the Wiki".
 - **`master_notes.md`**: append kit-level findings discovered mid-run with `Status: open`. Don't try to harvest in the same run.
 - **Scan method (updated 2026-10-12):** WebSearch is weak for date-windowed tooling scans; scan via direct feeds (arXiv API, GitHub releases `.atom`, hn.algolia.com date search). Working feeds: platform.coop `https://platform.coop/feed/` (`/blog/feed/`, `/news/feed/` 404), noyb `https://noyb.eu/en/rss.xml`, EFF `https://www.eff.org/rss/updates.xml`, AlgorithmWatch `https://algorithmwatch.org/en/feed/`, The Markup `https://themarkup.org/feeds/rss.xml`, Pluralistic `https://pluralistic.net/feed/`. arXiv API must be `https://export.arxiv.org/api/query` (http returns empty); pull latest ~150 per category and filter locally. Scanned arXiv categories: cs.CY, cs.CR, cs.GT (pricing-algorithm papers land there). FTC press XML returns 403. `gh api search/repositories` with `created:>=DATE` works for new-repo discovery (noisy). poetry lives at `~/.local/bin` (not on cron PATH; export PATH).
+- **Scan method (updated 2026-10-26):** arXiv API returned HTTP 429 on all retries; fallback `https://arxiv.org/list/<cat>/pastweek?show=250` works for cs.CY/cs.GT/cs.CR title scans. Capture arXiv papers via `https://arxiv.org/pdf/<id>` — the `/abs/` URL yields only the abstract page. hn.algolia.com `search_by_date` needs one query per call (OR-joined queries fail).
 
 ## Sources
 
@@ -62,6 +63,9 @@ The trend-scan source set, grouped by stream. Update freely as outlets prove val
 - **GitHub EFForg/privacybadger releases feed** — tracked-tool repos; release cadence signal.
 - **Hacker News** — `show HN` and front-page filtered for consumer-tool / cooperative / privacy-tool launches.
 - **Kadoa US food-prices tracker** — price-transparency watch; check for code/data release and methodology (code status unknown as of 2026-10-05).
+
+- **Citizen Lab** — ad-tech / spyware findings (e.g. AdFection); primary reports behind EFF write-ups.
+- **The Markup privacy section** — Blacklight-style scan outcomes (e.g. tracker-removal after investigation).
 
 ### Platform / federation / cooperative builds
 

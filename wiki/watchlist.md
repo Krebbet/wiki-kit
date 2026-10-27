@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-12
+last_reviewed: 2026-10-26
 ---
 
 # Watchlist
@@ -364,3 +364,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - AdNauseam v3.29.2 — tracked-tool release 2026-09-25
 - TODO: full-text re-capture of arXiv 2610.05823 (Huang & Xiao) — abstract-only; use /pdf or html URL
 - TODO: full-text re-capture of arXiv 2610.11675 (Ashkenazi-Golan et al.) — abstract-only; use /pdf or html URL
+
+## Recent additions (2026-10-26 weekly-brief overflow)
+
+- noyb win: Berlin DPA finds party microtargeting unlawful — first DPA ruling, no tool
+- AP/CNN/Walmart patent surveillance-pricing backlash coverage — Walmart shelf-tag patent angle
+- arXiv 2610.30408 price-discrimination surplus limits — theory bound, no code
+- arXiv 2610.31366 AfterDeleteBench — DSAR-verification benchmark for agent memory
+- arXiv 2610.00619 collusive behaviour in deep-RL execution games — related to collusion-enforcement-audit
+- Fauxx (digital-grease) tracking data-poisoning tool — HN, unverified, not in wiki
+- uBlock Origin 1.75.1rc0 (2026-10-26) — rc after beta series
+- noyb on EU Council "digital expropriation" for AI training — opt-out erosion
+- Citizen Lab original AdFection report — capture primary source for adfection page
+- EFF "Interoperability vs. Security" (2026-10-21) — parallel to Doctorow, uncaptured
