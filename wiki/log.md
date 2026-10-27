@@ -1756,3 +1756,7 @@ Thin week. 4 captured / 4 ingested (China SOE privatization productivity, regula
 ## [2026-10-20] weekly-brief | eighth radar sweep
 
 Thin week. 1 captured / 1 ingested (China municipal venture-capital essay, Works in Progress). Two capture failures: the Melcarne/Ramello/Skiba adjudication paper (the SIDE PDF is a login page and only a 2020 draft exists; the capture was a log-in shell) and the Savoia/Sen/Tagem JIE article (exact URL unresolvable by search); both watchlisted. Camp balance: no public-choice item; one state-capacity/progress essay. Brief: `wiki/weekly-briefs/2026-10-20.md`.
+
+## [2026-10-27] weekly-brief | ninth radar sweep
+
+Thin week. 1 captured / 1 ingested (Colombian procurement threshold manipulation, arXiv 2610.28965; closes part of the Latin America gap). Search surfaced almost nothing dated in window for NBER, IZA, IfG, ProMarket, Statecraft or JIE (unconfirmed, not dry); the arXiv monthly list fetched directly was the only reliable feed. Carried-over watchlist items unchanged.

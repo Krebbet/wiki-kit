@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-20
+last_reviewed: 2026-10-27
 ---
 
 # Watchlist
@@ -344,6 +344,28 @@ Thin week. 1 captured (see `wiki/weekly-briefs/2026-10-20.md`), the rest listed 
 - India has more restrictive labor law than Germany (Marginal Revolution) — the real target is Cowen & Rajagopalan,
   "Premature Imitation" (2019); the wiki has no page on that concept; find a capturable version.
   https://marginalrevolution.com/marginalrevolution/2026/10/india-has-more-restrictive-labor-law-than-germany.html
+
+## Week of 2026-10-27
+
+Thin week. 1 captured (see `wiki/weekly-briefs/2026-10-27.md`), the rest listed here. Most in-window searches returned
+nothing dated; carried-over items from earlier weeks are unchanged.
+
+### Working-paper and preprint feeds
+
+- Revenue Growth and Staff Expense: A Public-Company Follow-Up to Eclipse of Rent-Sharing (arXiv 2610.23869) — firm-side
+  rent-sharing; borderline scope, un-refereed.
+- HKU Centre for Quantitative History, "State Capacity, Institutions and Development" series (working papers dated
+  Feb and Apr 2026) — candidate historical state-capacity papers; not yet checked for capturability.
+
+### Journals
+
+- Bypassing weak institutions in a large late-comer economy (Gonchar et al., JIE) — Russia; undated HSE news item,
+  URL unresolved; non-Anglosphere.
+
+### Data, indices and multilateral output
+
+- UK NAO, Risk management in government: improving capability and decision-making — listed in the NAO work programme
+  for autumn 2026; re-check next sweep for a direct PDF.
 
 ## Related
 

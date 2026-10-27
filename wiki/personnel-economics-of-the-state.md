@@ -128,3 +128,4 @@ Registered as [[dimensions-of-institutional-variation]] **D104**, `candidate`, *
 - [[rational-actor-accounts-of-bureaucratic-behaviour]] — Downs's C.9 (bureaus raise goal-homogeneity by recruiting for ideology rather than indoctrinating after hire) is the theory-only counterpart to this page's randomised recruitment and ad-framing results; a clean model-versus-evidence pairing on one lever.
 - [[opm-2026-rif-rule-performance-first-retention]] — a live large-scale move from a seniority-weighted to a performance-weighted layoff rule (design only, no outcome evidence).
 - [[whitehall-monitor-2026-case-profile]] — UK civil-service churn incentives, pay progression and Senior Civil Service pay, from an IfG audit (think-tank synthesis of official series).
+- [[threshold-manipulation-in-colombian-procurement]] — see also: Colombian procurement bunching; elected territorial buyers bunch more than appointed national ones.

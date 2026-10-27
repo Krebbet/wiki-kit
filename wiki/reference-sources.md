@@ -228,6 +228,13 @@ survey subagent.
   log-in shell, the same landing-page-trap class as the stubs seen earlier. Marginal Revolution and ProMarket surface
   dated items by `domain + 2026/10` search. NBER, SSRN and IZA in-window listings remain unconfirmed.
 
+- Ninth sweep, 2026-10-27: thin week (1 capture). The arXiv econ.GN monthly list, fetched directly with curl
+  (`arxiv.org/list/econ.GN/2026-10?skip=0&show=250`) and filtered by title keywords, surfaced a Colombian procurement
+  paper that web search never returned; use this in preference to search for arXiv. Search returned nothing dated in
+  window for NBER, IZA, IfG, ProMarket, Statecraft, Marginal Revolution or JIE (unconfirmed, not dry). `poetry` lives in
+  `~/.local/bin` and is not on the default PATH in this shell. Latin America gap partly closed again by
+  [[threshold-manipulation-in-colombian-procurement]].
+
 ## Related
 
 - [[watchlist]] — overflow candidates from sweeps that were not captured.

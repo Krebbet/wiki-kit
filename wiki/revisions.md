@@ -169,3 +169,7 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-10-20 | update | regionally-decentralized-authoritarianism.md, developmental-state-and-embedded-autonomy.md, state-capacity-and-level-of-government.md | See-also back-links to the new page. |
 | 2026-10-20 | update | index.md | One new page row added (weekly sweep). |
 | 2026-10-20 | update | reference-sources.md, watchlist.md | Eighth-sweep note; JIE Cambridge issue-page route and SIDE login-shell trap noted; ProMarket and Works in Progress status updates; `## Week of 2026-10-20` added. last_reviewed bumped. |
+| 2026-10-27 | create | threshold-manipulation-in-colombian-procurement.md | New page from arXiv 2610.28965 (Colombian procurement bunching; tier a, un-refereed preprint). |
+| 2026-10-27 | update | state-capacity-and-level-of-government.md, personnel-economics-of-the-state.md, dimensions-of-institutional-variation.md | See-also back-links to the new page. |
+| 2026-10-27 | update | index.md | One new page row added (weekly sweep). |
+| 2026-10-27 | update | reference-sources.md, watchlist.md | Ninth-sweep note; arXiv monthly-list scraping route noted; `## Week of 2026-10-27` added. last_reviewed bumped. |
