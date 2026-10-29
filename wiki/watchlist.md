@@ -718,3 +718,17 @@ Window 2026-10-14 → 2026-10-21. Ingested: [[platforms/servicenow]], [[platform
 
 **Product launches:**
 - **Gemini 4 Argon** (see above); **Workday Sana + Agent Harness** (10-14, → [[platforms/workday]]); **ServiceNow AI Passport** (10-15, Q4 availability, → [[platforms/servicenow]]); **Notion agent harness** (10-20/21, → [[platforms/notion-ai]]); **DefensX AI Guard One** (10-19); **DXC–LangChain partnership** (10-14).
+
+## 2026-10-28 — weekly sweep
+Window 2026-10-21 → 2026-10-28. Ingested: [[startups/doubleai]], [[landscape/anthropic-opaque-acquihire-2026-10]], [[landscape/microsoft-foundry-agent-harness-2026-09]], [[platforms/sap]], [[landscape/gemini-at-work-agent-2026-10]].
+
+- [2026-10-28] **Amazon / Decart ~$7B acquisition talks (WSJ, via aggregator)** — Decart was ~$4B after a $300M raise in May; Anthropic reportedly withdrew at ~$6B in September; unconfirmed. Decart page exists in the wiki — https://letsdatascience.com/news/amazon-in-talks-to-acquire-decart-for-around-7-billion-e3e3c9e2
+- [2026-10-28] **Flapping Airplanes $1B Series A at ~$6B (Index + Lux, 2026-10-21)** — a one-year-old lab; single syndicated source, needs a second source — https://thedailystar.net/news/technology/news/year-old-ai-startup-flapping-airplanes-raises-1-billion-series-funding-4304921
+- [2026-10-28] **Tenstorrent $1.5B Series E at $6.2B** — October 2026 date unverified; from a monthly funding roundup — https://valueaddvc.com/blog/october-2026-ai-funding-rounds-tenstorrent-typesafe-modal
+- [2026-10-28] **x402 agent-payment SDK V12 disclosure (2026-10-22)** — 25 vulnerabilities, 3 critical; second-hand via a CSA Labs listing, find the primary. Extends [[landscape/agentcore-payments-x402-2026-05]] — https://labs.cloudsecurityalliance.org/research/
+- [2026-10-28] **Oracle AI World 2026 (Las Vegas, ~10-25 → 10-29)** — no keynote coverage indexed yet; re-scan next window.
+- [2026-10-28] **Anthropic "Agent Skills moved to a foundation" (10-22) and Claude Duet waitlist** — single low-quality source, unverified; needs an Anthropic primary — https://orcarouter.ai/blog/claude-news-what-anthropic-shipped-in-october-2026
+- [2026-10-28] **Automation Anywhere acquires Boost.ai (2026-10-07)** — terms undisclosed; aggregator roundup — https://aifunding.me/roundups/october-2026
+- [2026-10-28] **Collibra acquires trail ML (2026-10-05); Proofpoint / Acuvity (undated)** — agent-governance and security consolidation; Collibra from the same roundup, Proofpoint from https://threatcluster.io — https://aifunding.me/roundups/october-2026
+- [2026-10-28] **Open-weight cluster: Kimi K3, GLM-5.3, Qwen3.8, Nemotron 3.5 Bolt, Muse Spark Open** — SEO comparison source only; verify via Hugging Face / Artificial Analysis — https://pasqualepillitteri.it/en/news/24368/best-open-weight-models-october-2026-compared
+- [2026-10-28] **Cursor outage 2026-10-13 (~2h45m); Claude 183 outages since Oct 2025 (isdown.app)** — vendor-reliability and lock-in datapoint — https://sessionwatcher.com/news/cursor-outage-october-13-2026

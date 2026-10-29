@@ -20,6 +20,8 @@ SAP and Anthropic announced at SAP Sapphire (2026-05-17) that Claude will become
 
 Quotes on record: SAP CEO Christian Klein and Anthropic co-founder/president Daniela Amodei. No practitioner signal yet.
 
+Update (2026-10-28): see [[platforms/sap]] for the SAP Connect (2026-10-06) Joule Work/Assistants GA timeline (Oct 2026 to Q1 2027); that source does not mention Anthropic or Claude.
+
 ---
 
 ## Claude Platform on AWS (GA, 2026-05-11)

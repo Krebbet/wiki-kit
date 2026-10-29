@@ -397,6 +397,7 @@ Available via the Claude Platform and "on all platforms, including Amazon Web Se
 - [[../platforms/microsoft|microsoft]] (Agent 365 governs Anthropic finance agents in M365)
 - [[../platforms/salesforce|salesforce]] (competitor for financial-services agents)
 - [[openai|openai]]
+- [[../landscape/anthropic-opaque-acquihire-2026-10|anthropic-opaque-acquihire-2026-10]] (~2026-10-13 license-and-hire of confidential-AI startup Opaque; structure disputed across outlets, terms undisclosed)
 - [[../conflicts/open-questions-2026-04|open-questions-2026-04]]
 - [[../landscape/anthropic-enterprise-distribution-2026-05|anthropic-enterprise-distribution-2026-05]]
 - [[../startups/lyrie|lyrie]]

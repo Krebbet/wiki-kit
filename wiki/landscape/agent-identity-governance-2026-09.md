@@ -46,3 +46,7 @@ ServiceNow announced "AI Passport" (~2026-10-15/21): a cryptographically signed 
 
 [[startups/lyrie]] [[landscape/aws-bedrock-agentcore-june-2026]] [[landscape/agent-safety-incidents-2026-08]] [[landscape/openai-agent-escape-incidents-2026-09]] [[landscape/blackhat-ai-coding-agent-cves-2026-08]] [[conflicts/open-questions-2026-04]] [[startups/cursor]] [[landscape/salesforce-fin-acquisition-2026-06]] [[landscape/google-a2a-agentic-foundation-2026-08]] [[platforms/microsoft]] [[startups/yc-s26-2026-09]]
 [[platforms/servicenow]] [[landscape/cert-in-agent-incidents-2026-10]] [[landscape/nvidia-open-agent-safety-platform-2026-09]]
+
+[[landscape/microsoft-foundry-agent-harness-2026-09]] - Foundry Routines GA and the identity lifecycle caveat (no maturity label, 2026-09-24).
+
+[[landscape/gemini-at-work-agent-2026-10]] - Google Gemini agent (2026-10-08): per-agent attested identity, audit attribution, Agent Gateway and Sandbox; vendor-only, private preview.

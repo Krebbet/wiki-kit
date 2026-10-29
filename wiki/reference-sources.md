@@ -145,3 +145,10 @@ The `git checkout` step ensures the run lands on the intended weekly-brief branc
 - **Help Net Security, The Hacker News, eSecurityPlanet** — security sites with fast agent-security disclosure coverage.
 - **Constellation Research** — enterprise vendor launch analysis (secondary; relays vendor statements).
 - **Techzine** — enterprise platform coverage.
+
+## Additions (2026-10-28)
+- **aifunding.me weekly roundups** — funding tracker; lead-finding only, confirm every round with a primary or tier-1 press.
+- **valueaddvc.com** — monthly funding roundups; lead-finding only, dates often unverified.
+- **sessionwatcher.com** — outage aggregator; use to find incidents, then point to the vendor status page or primary.
+- **erp.today** — SAP / enterprise-apps trade press; useful for SAP Joule and ERP-vendor agent launches.
+- **Constellation Research** — already listed (2026-10-21); still used for enterprise vendor launch analysis.
