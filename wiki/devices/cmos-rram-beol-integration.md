@@ -108,3 +108,4 @@ Evidence that the CMOS/BEOL integration gate is **technically tractable without 
 - [[memristor-device-engineering]] — HfOₓN_y/TiN in the wider stack landscape
 - [[../viability-ledger]] — maturity anchor point
 - [[../players/roster]] — Edinburgh/Prodromakis as a named group
+- [[hafnia-beol-synaptic-weights-xp018]] — see also: ferroelectric hafnia (two-terminal) BEOL post-processing on commercial 180 nm XP018

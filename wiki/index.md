@@ -37,6 +37,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/analog-training-nonidealities]] | Why plain gradient descent fails on analog devices: response-function asymmetry, not defects. Analog SGD collapses below 15% where Tiki-Taka holds 97%. A device engineered for symmetry measures 61% skew on real silicon. |
 | [[devices/event-cameras]] | Event-based vision sensors — the front end that makes workloads natively sparse. Real commercial parts from 3 mW to 12 W. Named automotive design wins (vendor-claimed). The processing gap: most pipelines densify events back into frames. |
 | [[devices/cmos-rram-beol-integration]] | Inserting RRAM into commercial CMOS BEOL without a foundry embedded-RRAM PDK. 16×16 1T1R validated on 180 nm; larger arrays structural only. Evidence the foundry gate is tractable, not that it's solved. |
+| [[devices/hafnia-beol-synaptic-weights-xp018]] | ETH Zurich 2-terminal ferroelectric hafnia synapses post-processed onto commercial XFAB 180 nm CMOS; NMOS survive a 500 °C anneal. Single-device evidence only; MNIST results are software simulation. |
 | [[devices/optoelectronic-rram-photonic-programming]] | Optoelectronic RRAM (ORRAM) — memristive cells written with light, not voltage. 32-device IGZO array, µLED-array optical SET / electrical RESET, optical fading memory ~2500× longer than electrical relaxation. Academic-only; no endurance, retention, or CMOS-integrated ORRAM yet. |
 | [[devices/optoelectronic-reservoir-computing-si3n4-ttd]] | Foundry-fabricated Si3N4 true-time-delay chip closes a delayed-feedback reservoir computer's loop, at feedback gain >40× below prior optoelectronic reservoirs. Single device, bench system, no code/data release. Not spiking; the wiki's first reservoir-computing entry. |
 | [[devices/vmtj-cmos-izhikevich-neuron]] | The wiki's first spintronic entry: voltage-controlled MTJ + 22 nm CMOS Izhikevich-style neuron, 145 fJ/spike. Device data measured, circuit and spike-reduction (88.6%) claims simulated / software-proxy. |
@@ -53,6 +54,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | Page | Summary |
 |---|---|
 | [[chips/loihi2-persistent-monitoring]] | Intel Loihi 2 — acoustic anomaly detection on a 16-chip VPX system. The wiki's first primary Loihi 2 source. Headline "two orders of magnitude" efficiency claim is dynamic-energy-only (474–496×); boundary-honest total-energy figure is 2.1–40.2×. |
+| [[chips/loihi-birdsong-axonal-delays]] | Loihi 1 (not 2) birdsong syllable recognition by axonal-delay template matching. 8.71 J / 0.75 W is Loihi network only, no CPU baseline; ~17 ms/syllable is throughput; no numeric on-chip WER. |
+| [[chips/texel-gas-classification]] | Groningen TEXEL mixed-signal chip, fly-inspired 1-bit Hebbian gas classifier: 74.6% at 482 nJ/inference (dynamic, read-out only) and 27 µW static; "matches SVM" holds only for a 64-bit read-out; no on-chip baseline. |
 | [[chips/brainscales2-chiplet-interconnect]] | Heidelberg's chiplet-interconnect design for scaling analog BrainScaleS-2 past its area-constrained single die. Phit-level dynamic bandwidth partitioning for mixed spike/config traffic. **All figures are pre-silicon simulation**, no chiplet fabricated; worst-case system MTBF drops to minutes at 16×16-mesh scale. |
 | [[chips/ethereal-event-gnn-processor]] | First event-driven GNN processor chip (TSMC 28 nm, academic shuttle) — processes DVS events natively as a sparse graph. Silicon-measured 25.6 µs / 1.7 µJ per event, but the "comparable accuracy" claim is simulated, not chip-measured, and trails an FP64 A100 baseline on every dataset shown. |
 | [[chips/megatron-pcm-cim-soc]] | First measured PCM compute-in-memory silicon in the wiki: 28 nm FD-SOI SoC, 4Mi-cell analog PCM macro + RISC-V; 57.5 TOPS/W is macro-level with an unstated boundary. |
@@ -74,6 +77,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[snn/hippocampus-bioinspired-memristor]] | Biologically-realistic, neuronal-diversity CA3 hippocampal SNN (179 Izhikevich neurons, 3 cell types) mapped to a real 20,000-device memristor crossbar. Not task-trained — tuned via Optuna to match resting-state dynamics. Power figure explicitly excludes DAC/ADC/IO. |
 | [[snn/multi-depth-temporal-fusion]] | Local-rule-only (STDP/R-STDP) TTFS convolutional SNN with multi-depth temporal fusion; simulation-only, code released, no energy numbers. |
 | [[snn/spikeduet-mcu-sparse-snn]] | Measured CPU+accelerator co-execution of sparse SNNs on an EFR32MG24 MCU: 1.27–1.87× faster, 11–34% less energy than sparse-CPU; no ANN or neuromorphic baseline. |
+| [[snn/spiking-mmwave-isac-fpga]] | 132-neuron SNN on a ZCU208 RFSoC FPGA for mmWave activity recognition: 3.4×/7.6× less PL dynamic energy than same-device ANNs, but over idle only, static power dominates, accuracy ~1.5 pt optimistic. FPGA, not neuromorphic silicon. |
 
 ---
 

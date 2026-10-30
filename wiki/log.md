@@ -177,3 +177,9 @@ Full brief: `wiki/weekly-briefs/2026-10-15.md`.
 Survey: two scan agents (arXiv/journals, industry news). Industry lane verified only two dated BrainChip releases (Sequora IP 2026-10-14, AKD1500 SPI chip 2026-10-22), neither with a BrainChip-owned benchmark number — watchlisted, not captured. Four arXiv papers captured via `capture_pdf --engine marker` and ingested; audit clean. Only SpikeDuet (MCU) and NeuroML2Loihi (Loihi 2) report measured hardware; the analog local-learning and fault-recovery papers are simulation-only.
 
 Full brief: `wiki/weekly-briefs/2026-10-22.md`.
+
+## [2026-10-29] weekly-brief | 4 captured, 7 watchlisted, hafnia BEOL / TEXEL gas / Loihi birdsong / mmWave FPGA pages
+
+Survey: two agents (arXiv/journals; industry). Industry lane verified nothing dated in the window (BrainChip Sept-quarter 4C not yet lodged as of search; brainchip.com/news showed no Oct 2026 items). arXiv lane covered only ~42 most recent API entries; journals/Crossref/IEDM not scanned. Four arXiv papers captured via `capture_pdf --engine marker` and ingested: ferroelectric hafnia synapses in BEOL of commercial 180 nm CMOS (single-device), TEXEL on-chip gas classification (chip-only dynamic energy), Loihi 1 birdsong axonal-delay matching, FPGA SNN for mmWave ISAC. No new conflicts opened.
+
+Full brief: `wiki/weekly-briefs/2026-10-29.md`.

@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-10-22
+last_reviewed: 2026-10-29
 ---
 
 # Watchlist
@@ -47,7 +47,8 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Solution-processed Ti/Pt/NiOx/Ag RRAM, 30 intermediate states (arXiv:2610.14322) — ≈5-bit, 1000 s stable; single device, no array/endurance
 - Programmable memristive circuits as Ising pseudospins (arXiv:2610.15346) — measured order, learning results device-calibrated simulation
 - Cross-layer printed-memristor stateful-logic adders (arXiv:2610.20109) — 2n+6 cycles claimed; measured-vs-simulated split unstated
-
+- ReS2/hBN/InSe van der Waals floating-gate optoelectronic synapse (arXiv:2610.34738) — on/off >10⁶, retention >10⁴ s, single device
+- KCuCl3-x memristors (arXiv:2610.35436) — ~99% MNIST in simulated training only
 
 ## Chips & systems
 
@@ -76,6 +77,10 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - PSA pruning-friendly sparse SNN conv accelerator (arXiv:2610.21313) — FPGA/ASIC-sim unclear
 - BrainChip AKD1500 SPI co-processor chip (2026-10-22) — MCU-class Akida; only a third-party forecast quoted
 - SpikeAid streaming spiking hearing aid (arXiv:2610.24696) — application-level; hardware unstated
+- Hardware-matched SNNs for Purkinje-cell spike classification (arXiv:2610.37104) — MCU + SKY130 circuit; silicon-vs-simulation unstated, battery life estimated
+- FPGAFly: 166.7k-neuron fruit-fly connectome on one FPGA (arXiv:2610.38118) — abstract unread; no energy figures verified
+- Memristor accelerator for depression detection, CNN-LSTM (arXiv:2610.39420) — measured vs simulated unknown; vs CPU/GPU baselines
+- ChroNoC network-on-chip (arXiv:2610.34083) — one-line summary only; unread
 
 ## Algorithms & toolchains
 
@@ -104,6 +109,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - CAFE differential encoding for FeFET compute-in-memory (arXiv:2610.19697) — variation robustness, reads as simulation; two independent survey signals
 - Hybrid LIF-ABRF SNN spike detection for brain-machine interfaces (IOP NCE aea4ec) — 4.3× less memory; algorithm-level
 - SpikeDuet follow-up: ANN and neuromorphic baselines on the same MCU — would size the SNN-energy gap
+- Power-of-two LIF neurons (arXiv:2610.33658) — modeled energy only, no hardware
 
 ## Benchmarks
 

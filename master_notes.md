@@ -141,3 +141,9 @@ Confirms the same `/abs/` vs `/pdf/` failure recurred on the 2026-09-24 run: `ca
 **Observation:** `poetry` was again missing from the default PATH (`~/.local/bin`); fourth-ish recurrence. The arXiv scan agent returned candidates from titles only (no abstracts), so selection leaned on judgment; industry agent correctly refused undated items.
 **Implication:** weekly-brief step 0 should export `PATH=$HOME/.local/bin:$PATH`; survey prompts should require reading abstracts for shortlisted items.
 **Status:** open
+
+### 2026-10-29 — survey coverage gaps; page-writer subagents can't link-check a not-yet-written brief
+**Scope:** kit
+**Observation:** The arXiv survey agent's WebFetch of the export API truncated at 100k chars, so only the newest ~42 entries were read; journals/Crossref/IEDM lanes were skipped by the agent. Industry agent did not fetch ASX/investor.brainchip.com or trade-press pages directly. Page-writer subagents emit the required `[[../weekly-briefs/<date>]]` bullet before the brief exists (dangling until step 6). `poetry` again needed `PATH=$HOME/.local/bin:$PATH`.
+**Implication:** Split arXiv scan by category and cap query size; require direct newsroom/ASX fetches in the industry lane; write the brief file before (or in the same step as) page links.
+**Status:** open
