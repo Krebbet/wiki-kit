@@ -97,3 +97,8 @@ Conflict between captured wiki pages (no single raw doc — this is a cross-sour
 - Position B: [[../research/self-play/spiral]] (game-self-play transfer)
 - Refinement: [[../research/self-play/two-stage-dynamic]] (Stage-1-scoping)
 - Counter-evidence to A: [[../research/single-sample-rl-finetuning/rlvr-incentivizes-reasoning]] (Wen et al., CoT-Pass@K boundary extension)
+
+## Update 2026-10-30 (weekly-brief)
+
+- [[../research/rlvr-mechanics/what-outcome-rl-buys]] (2610.34894) — supports the Invisible Leash side: net reach <= 2.1 pp across 20 recipes, 3.5% of RL-only physics wins hold up, 0/26 decisive RL steps absent from base samples. Thinking bases, math/physics only; ProRL v2 leaves a large-scale effect open. Does not test game-self-play transfer (Position B).
+- [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep

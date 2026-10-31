@@ -292,3 +292,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Implication:** weekly-brief step 4 should say to pass `arxiv.org/pdf/<id>`; capture_pdf should resolve abs→pdf or hard-fail on HTML content; audit_captures should flag captures whose title is a site-chrome string or whose line count is ~constant (~180) across sources.
 
 **Status:** open
+
+### 2026-10-30 — Ingest summarizers read only part of index.md and long sources; one emitted a wrong page path
+
+**Scope:** kit
+
+**Observation:** In the 2026-10-30 weekly-brief, ingest summarizers read only the first ~200 of 413 `index.md` lines and part of long sources (appendices unread). The index is too large for a single Read, so cross-ref candidates skew to early sections. Summary 05 also emitted a wrong page path (`research/rl-optimizers/deepseekmath-grpo`; the page is at `research/rlvr-mechanics/deepseekmath-grpo`), caught only by the orchestrator's link check.
+
+**Implication:** Give subagents a compact page-name list (path-per-line, no summaries) instead of the full index. The orchestrator must link-check all cross-refs against disk before writing pages.
+
+**Status:** open

@@ -85,3 +85,11 @@ Two soft datapoints, neither settling the dispute:
 - [[../research/teacher-student-rl/bsd-bridged-self-distillation]] (2610.26397) — trace content matters (+2.2 over answer-only RLSD) but there is no matched trace-less self-teacher control, so it does not isolate teacher-specific signal.
 
 - [[../weekly-briefs/2026-10-23]] — extended by the 2026-10-23 weekly sweep
+
+## Update 2026-10-30 (weekly-brief)
+
+- [[../research/teacher-student-rl/wisd-weakening-induced-opsd]] (2610.38681) — Position A flavour: no teacher and no privileged info (original-vs-weakened self contrast), +4.0/+5.5 pp avg. Confounded by response shortening and tuned weakening strength.
+- [[../research/teacher-student-rl/opst-data-free-self-training]] (2610.32770) — Position B: placebo PI (40.2) and no PI (40.6) recover only ~3 of 10.2 MMLU points vs full 47.7; sample-specific content matters, residual is EMA self-distillation.
+- [[../research/teacher-student-rl/fin-sd-hindsight-self-distillation]] (2610.36082) — leans A on information content: placebo hint (72.52) matches the informative hint (72.19); but no hint-free truncation control and CIs overlap.
+- Ledger: nine papers now bear on this conflict; still no clean ruling.
+- [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep

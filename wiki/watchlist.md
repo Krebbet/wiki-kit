@@ -89,6 +89,10 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - AskDistill (arXiv:2610.27450) — student-initialized question synthesizer rewarded for dense teacher signal; answer-free OPD, code released; close to ATD
 - MCPD, One Teacher Many Views (arXiv:2610.30880) — averages self-teacher distributions over partial reference views; fixes reference-sensitive OPSD targets
 - OPMD (arXiv:2610.14022) — hidden-state on-policy distillation via student-compatible teacher; no code, mechanism claim unverified
+- FSPO, Function-Space Temporal Self-Distillation (arXiv:2610.19687) — fixed historical next-token targets replace the moving self-teacher; ~+4 over best baseline on Olmo3-7B, memory 70→56 GB; no code
+- MASS, Multi-mask Selective Self-Distillation (arXiv:2610.38154) — several masked views of one verified solution drive OPSD, only reliable token corrections pass; sibling of MCPD; no code
+- MultiAgent-OPD (arXiv:2610.23234) — frozen teacher supervises Searcher intermediate tokens in a hierarchical multi-agent system plus team reward for Leader; application paper
+- Nemotron-Labs-Diffusion-Uni (arXiv:2610.36466) — cross-paradigm OPD from AR and flow models into a unified diffusion LLM [domain caveat: diffusion/multimodal]
 
 ## Process reward models
 
@@ -111,6 +115,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Reflect, Retry, Reward (arXiv:2505.24726) — reward self-reflection tokens on retry-success; up to +34.7%, no synthetic data
 - ReSum (arXiv:2606.13316) — RLVR for compressing/organising reasoning trajectories via self-summarisation; novel self-improvement signal orthogonal to GRPO variants
 - RRSI (arXiv:2609.24972) — regularized recursive self-improvement of agent harnesses
+- LongZero (arXiv:2610.30132) — model writes multi-hop questions, expands evidence into long contexts, trains GRPO with no external data; code github.com/zhennan1/LongZero
 
 ## Test-time training and curriculum
 
@@ -125,6 +130,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - CanvasAnneal (arXiv:2609.13060) — teacher-guided curriculum RL for diffusion LMs [domain caveat]
 - MATCH (arXiv:2609.20082) — curriculum scheduling + hierarchically-gated tool-learning rewards
 - Verifiable Hidden Dynamics Play (arXiv:2609.27321) — auto-curriculum via generated verifiable RL environments from solved mechanisms
+- A-RSI, Adaptive Task Refresh for Zero-Data Multimodal Self-Improvement (arXiv:2610.38568) — refresh task pool when reward variance/accuracy plateau; 11-benchmark avg 57.77→61.05 with 800 fresh tasks
 
 ## Variable-granularity / concept-level architectures
 
@@ -150,6 +156,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - KDRL (arXiv:2506.02208) — unified KD (reverse-KL to teacher) + GRPO (verifiable reward) in single policy-gradient objective; outperforms RL-only and KD-only with better token efficiency
 - VibeThinker-3B (arXiv:2606.16140) — 3B curriculum SFT + multi-domain RL + offline self-distillation; AIME'26 94.3, matching flagship models; proposes Parametric Compression-Coverage Hypothesis
 - On Language Drift during RLVR (arXiv:2610.02015) — proves RLVR permits unbounded CoT language drift; supervised case bounded
+- What a Weight Update Buys: Leverage Across Training Stages (arXiv:2610.37719) — Fisher-quadratic leverage; post-training updates (SFT/RL/DPO) have far higher leverage than pretraining on Olmo-3/Tülu-3; relevant to sparse-update/localization stack
 
 ## Decoding-time / activation steering
 
@@ -178,6 +185,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - ACLArena (arXiv:2609.23989) — agent continual-learning benchmark across multi-stage post-training
 - Continually Post-training Small Models via Synthetic Self-distillation (arXiv:2610.13113) — larger same-family rewriter fixes SDFT failure on small models
 - HERD (arXiv:2610.31401) — recursive harness-to-weights distillation with drift anchors; agent-flavored continual learning
+- RL Forgets! Towards Continual Policy Optimization (CPO, arXiv:2607.04364) — standard RL still forgets because the KL regularizer is on current-task data; replay-free prior-task KL; code github.com/MaolinLuo/CPO; tension with Retaining by Doing (2510.18874) and RFT-mitigates-forgetting
 
 ## RL optimizer miscellany
 
@@ -197,6 +205,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Learning to Steer, Steering to See (arXiv:2609.34344) — geometry of RLVR via trainable steering vectors; code released
 - MOER (arXiv:2610.30873) — shrinking expert prefix with full-trace fallback, GRPO+SFT mix; code released; LUFFY/ExGRPO lineage
 - EDEN (arXiv:2610.16105) — embedding-space perturbation rollouts for small GRPO groups; relevant to few-rollout regimes
+- FORK, Eat Your Precision (arXiv:2610.33512) — precision term in rubric-RL mitigates reward hacking (HealthBench win rate 22.1%→74.1%); non-verifiable, low priority
+- Amortizing Sequential Experimental Design in Reasoning LLMs (arXiv:2610.20832) — rewarding information gain trains information-gathering as a reasoning skill; loosely related to question-asking in concept learning; no code
 
 ## Process reward models (cont.)
 

@@ -160,3 +160,10 @@ The theme's load-bearing contribution to the skeleton: **the student's condition
 - [[bsd-bridged-self-distillation]] (2610.26397): teacher-agnostic (cross-tokenizer, closed API) privileged self-distillation gated by verifier sign; no matched trace-less control, so a weak data point in [[../../conflicts/opsa-vs-opd-pattern-transfer]]
 - [[pi-opsd-effectiveness-prediction]] (2610.22512): offline KL metrics pre-screen which privileged information helps; mismatched PI roughly halves performance, so gains are not purely teacher-free
 - [[../../weekly-briefs/2026-10-23]] — brought in by the 2026-10-23 weekly sweep
+
+## Update 2026-10-30 (weekly-brief)
+
+- [[wisd-weakening-induced-opsd]] (2610.38681): privileged-info-free OPSD; distills the original-vs-quantized/pruned self contrast on cached rollouts, +4.0/+5.5 pp avg on five reasoning models. Teacher-free data point, but untuned-baseline and length effects are not excluded
+- [[fin-sd-hindsight-self-distillation]] (2610.36082): localize the first faulty step, distill a hint-conditioned self-copy for 100 tokens; a placebo hint matches the informative hint and a self-writer matches a 120B writer, so supervision site matters more than hint content (wide, overlapping CIs)
+- [[opst-data-free-self-training]] (2610.32770): topic-seeded synthetic questions + privileged rationale, EMA self-teacher, +10.2 MMLU on Gemma 4 E2B; placebo-PI ablation (40.2 vs 47.7 full) shows sample-specific PI matters
+- [[../../weekly-briefs/2026-10-30]] — brought in by the 2026-10-30 weekly sweep

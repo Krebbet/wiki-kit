@@ -44,3 +44,9 @@ Surfaced via the 2026-04-23 weekly sweep. KnowRL (arXiv:2604.12627) Sec 4.2 and 
 - [[../research/teacher-student-rl/rstg-selective-negative-group-distillation]] — third axis: which groups get teacher signal at all (2026-08-07)
 - [[../weekly-briefs/2026-04-23]] — brought in by the 2026-04-23 weekly sweep
 - [[../weekly-briefs/2026-08-07]] — brought in by the 2026-08-07 weekly sweep
+
+## Update 2026-10-30 (weekly-brief)
+
+- [[../research/teacher-student-rl/fin-sd-hindsight-self-distillation]] (2610.36082) — a third position: once the error site is localized, hint content and writer strength barely matter (placebo 72.52 vs informative 72.19; self writer = 120B writer). Soft evidence against content-sensitive hint design; CIs overlap and there is no hint-free control.
+- [[../research/rlvr-mechanics/what-outcome-rl-buys]] (2610.34894) — hint channel in an 8B outcome-RL probe gave +0.01 [-0.01,0.03] held-out over plain RL; teacher derivation -0.05. Small-scale null for knowledge installation via hints (1 seed, 1 domain).
+- [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep
