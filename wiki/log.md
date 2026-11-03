@@ -1760,3 +1760,7 @@ Thin week. 1 captured / 1 ingested (China municipal venture-capital essay, Works
 ## [2026-10-27] weekly-brief | ninth radar sweep
 
 Thin week. 1 captured / 1 ingested (Colombian procurement threshold manipulation, arXiv 2610.28965; closes part of the Latin America gap). Search surfaced almost nothing dated in window for NBER, IZA, IfG, ProMarket, Statecraft or JIE (unconfirmed, not dry); the arXiv monthly list fetched directly was the only reliable feed. Carried-over watchlist items unchanged.
+
+## [2026-11-03] weekly-brief | tenth radar sweep
+
+Thin week. 1 captured / 1 ingested (Cumming, "Owning What Can Quit", arXiv 2611.02302: journal owner vs. editorial board, property-rights test). Page: [[owner-board-disputes-and-alienable-reputation]]. 5 items watchlisted. No conflicts opened. Search surfaced nothing dated in window for NBER, IZA, IfG, JIE or Statecraft (unconfirmed, not dry).

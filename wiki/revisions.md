@@ -173,3 +173,6 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-10-27 | update | state-capacity-and-level-of-government.md, personnel-economics-of-the-state.md, dimensions-of-institutional-variation.md | See-also back-links to the new page. |
 | 2026-10-27 | update | index.md | One new page row added (weekly sweep). |
 | 2026-10-27 | update | reference-sources.md, watchlist.md | Ninth-sweep note; arXiv monthly-list scraping route noted; `## Week of 2026-10-27` added. last_reviewed bumped. |
+| 2026-11-03 | create | owner-board-disputes-and-alienable-reputation.md | New page from Cumming arXiv 2611.02302 (weekly sweep). |
+| 2026-11-03 | update | property-rights-theory-of-the-firm.md, index.md | Related back-link; index row added. |
+| 2026-11-03 | update | reference-sources.md, watchlist.md | Tenth-sweep note; `## Week of 2026-11-03` added. last_reviewed bumped. |

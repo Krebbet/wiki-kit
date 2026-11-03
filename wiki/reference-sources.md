@@ -235,6 +235,11 @@ survey subagent.
   `~/.local/bin` and is not on the default PATH in this shell. Latin America gap partly closed again by
   [[threshold-manipulation-in-colombian-procurement]].
 
+- Tenth sweep, 2026-11-03: thin week (1 capture). The arXiv econ.GN monthly list (curl) was again the only productive
+  feed: Cumming's journal-governance paper. Search returned nothing dated in window for NBER, IZA, IfG, Statecraft or JIE
+  (unconfirmed, not dry); Marginal Revolution post pages now serve a Cloudflare challenge to curl. `capture_pdf` on an
+  arXiv PDF leaves broken figure-image refs under pymupdf but the text is complete.
+
 ## Related
 
 - [[watchlist]] — overflow candidates from sweeps that were not captured.

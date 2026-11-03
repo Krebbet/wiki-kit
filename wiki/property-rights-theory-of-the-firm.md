@@ -144,3 +144,4 @@ Gibbons also supplies the sharper aphorism for the "never a free lunch" result a
 - [[decision-rights-and-authority-theory-of-the-firm]] — Gibbons's critique in full, plus the fourth elemental theory built on the never-contractible decision this page's dP formulation excludes.
 - [[formal-and-real-authority]] — takes this page's formal-authority result as given and models what happens to effective control afterwards.
 - [[soe-privatization-vs-restructuring-in-china]] — Chinese panel where privatization adds little within-firm gain; stated as an open tension with this page's model, not a refutation (weekly sweep, 2026-10-13).
+- [[owner-board-disputes-and-alienable-reputation]] — empirical test: 57 journal mass resignations; owners never reversed after exit (2026-11-03).

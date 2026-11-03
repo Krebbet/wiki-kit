@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-27
+last_reviewed: 2026-11-03
 ---
 
 # Watchlist
@@ -366,6 +366,24 @@ nothing dated; carried-over items from earlier weeks are unchanged.
 
 - UK NAO, Risk management in government: improving capability and decision-making — listed in the NAO work programme
   for autumn 2026; re-check next sweep for a direct PDF.
+
+## Week of 2026-11-03
+
+Thin week. 1 captured (see `wiki/weekly-briefs/2026-11-03.md`). Search surfaced nothing dated in window for NBER, IZA, IfG, JIE or Statecraft.
+
+### Working-paper and preprint feeds
+
+- Public salience mobilizes nationwide responses to violence against women (arXiv 2611.02647) — Italy; state response to salience, borderline scope.
+- Learning about Markets from Models: AI hiring platform (arXiv 2611.01226) — platform-as-institution angle, weak fit.
+
+### Blogs, essays and commentary
+
+- MR, "Will bystander economies be able to finance their governments?" (Oct 2026) — fiscal capacity under AI shift; Cloudflare-gated, unread.
+
+### Journals
+
+- JIE meso-institutions symposium (2026) — intro piece and tomato supply chain paper; Cambridge Core issue page not yet checked.
+- Frolov / "Institutional Conflicts of Interest: A Novel Functionalist Account" (JIE, Apr 2026) — conceptual.
 
 ## Related
 
