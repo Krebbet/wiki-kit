@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-26
+last_reviewed: 2026-11-02
 ---
 
 # Watchlist
@@ -377,3 +377,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - noyb on EU Council "digital expropriation" for AI training — opt-out erosion
 - Citizen Lab original AdFection report — capture primary source for adfection page
 - EFF "Interoperability vs. Security" (2026-10-21) — parallel to Doctorow, uncaptured
+
+## Recent additions (2026-11-02 weekly-brief overflow)
+
+- Fnac Darty CNIL €7M app-tracker fine — noyb-origin, routine, no tooling
+- EFF "Same Product, Different Price" event (Nov 5) — capture after it happens
+- Open Terms Archive engine v17.0.0 — ToS-diff tool, major release
+- Ghostery 10.6.10 / uBlock Origin 1.75.3rc1 — blocker release drift
+- DuckDuckGo tracker-radar 2026.10.20 — reusable tracker dataset refresh
+- EFF: Siri AI per-app exclusion (iOS 27.2) — OS-level agent opt-out
+- Subfaro subscription/price-hike tracker — commercial, closed, Show HN
+- arXiv 2610.35633 Cheap Reverse Engineering — AI-driven RE vs law; pairs with adversarial interop
+- arXiv 2610.39139, 2610.36306, 2610.38897 — pricing/collusion theory, no code
+- Pluralistic "Autodoxing" (Nov 2) — age-verification exposure context

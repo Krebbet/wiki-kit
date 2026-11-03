@@ -44,3 +44,4 @@ Academic arXiv preprint, not peer-reviewed; written for multi-agent-systems and 
 - [[tools/dpagent-dark-pattern-repair]]
 - [[consumer-collective-bargaining]]
 - [[possible-strategic-levers]]
+- [[mechanisms/agents-vs-ecommerce-opacity]] — commentary predicting sellers block shopping agents rather than compete for them

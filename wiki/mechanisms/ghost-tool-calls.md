@@ -67,3 +67,4 @@ Several specific concerns for the wiki's framing:
 - [[the-firms-view]] — counter-perspective; firms (search providers, pricing APIs, retailers) receive commercially valuable intent signals from ghost calls and have no incentive to suppress them
 - [[dsar-and-data-deletion]] — data rights context; DSAR frameworks are designed for explicit-collection events and may not capture pre-authorization disclosures
 - [[agent-interop-protocols]] — agent interaction protocols; speculative dispatch is a runtime optimization decision in the protocol layer
+- [[privacytrace-mcp-leakage]] — MCP tool-call traces as a profiling side channel (arXiv 2610.41885); ordinary authorized calls leak attributes, extending the ghost-call concern

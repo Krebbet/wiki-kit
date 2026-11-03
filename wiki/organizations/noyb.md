@@ -83,8 +83,13 @@ noyb filed a complaint with the Austrian Data Protection Authority (DSB) in May 
 
 Outcome of the 2020 noyb + Norwegian Consumer Council complaints against Grindr and recipient adtech firms: the Norwegian DPA fined Microsoft's Xandr about EUR 8.5M (NOK 92M) for processing personal data, including sexual-orientation data, without a valid legal basis. Roughly 5+ years from complaint to decision; NGO + consumer-council co-complaint model, building on the NCC "Out of Control" technical audit. noyb frames it as a precedent for adtech profiling needing valid consent, and as under threat from the EU Digital Omnibus (tracking IDs possibly leaving GDPR scope). Advocacy source; decision text, appeal and payment status not captured. Detail in [[regulatory-responses]].
 
+## Scale AI / Outlier platform-worker complaints (October 2026)
+
+noyb, with Intérêt à Agir, DiPLab and Reversing.Works, filed five GDPR complaints (FR, IT, NL, AT) against Scale AI over the Outlier AI-training platform (900k+ "freelance" workers): consentless third-party trackers, repeated Persona biometric verification, data minimisation, and unanswered Art. 15 access requests. Extends the portfolio from consumers to platform workers. Advocacy source, no complaint texts or outcomes yet. Detail in [[noyb-outlier-platform-workers]].
+
 ## Source
 
+- `raw/research/weekly-2026-11-02/04-noyb-outlier-platform-workers.md` (Outlier complaints; noyb press release)
 - `raw/research/weekly-2026-10-12/03-noyb-xandr-fine.md`
   - **Origin:** noyb press release. **Audience:** press, policymakers, privacy public. **Purpose:** publicise win, lobby against Digital Omnibus. **Trust:** medium-high on facts, lower on framing.
 - `raw/research/lever-implementations/09-09-wikipedia-noyb.md`
@@ -95,6 +100,7 @@ Outcome of the 2020 noyb + Norwegian Consumer Council complaints against Grindr 
 
 ## Related
 
+- [[noyb-outlier-platform-workers]]
 - [[possible-strategic-levers]]
 - [[algorithmwatch]]
 - [[consumer-collective-bargaining]]

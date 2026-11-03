@@ -104,3 +104,4 @@ Complementary market-setting result: executing consumer assistants cut adopter s
 - [[possible-strategic-levers]] — strategy-layer levers depending on agent-mediated coordination inherit the capability + bias profile documented here
 - [[the-firms-view]] — none directly; firm-side framing of agent negotiation would emphasise the seller-favouring bias as a feature, not a bug
 - [[mechanisms/consumer-ai-assistant-market-simulation]] — market-level simulation counterpart (Huang & Xiao 2026)
+- [[mechanisms/agents-vs-ecommerce-opacity]] — commentary: sellers' opacity incentives predict blocking of shopping agents (Doctorow)

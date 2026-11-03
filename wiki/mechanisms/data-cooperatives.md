@@ -105,3 +105,4 @@ The Ada Lovelace report emphasises that this model has "positive" rather than "n
 - [[data-market-mechanism-design]] — mechanism-design layer for fair revenue distribution among contributing members (Shapley-based, with documented governance tensions)
 - [[buyer-cartels-antitrust]] — antitrust frame for cooperative bargaining activity
 - [[clawnet-readout]] / [[decentralized-agent-identity]] — agent-mediated coordination substrates above the cooperative governance layer
+- [[gesis-surf-data-donation]] — open-source consented browsing-data donation client with on-device per-domain minimization (no member governance layer)

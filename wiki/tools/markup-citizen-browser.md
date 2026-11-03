@@ -82,3 +82,4 @@ Non-transferable: the social-media focus and the specific panel-demographic requ
 - [[open-tenant-screening]]
 - [[regulatory-responses]]
 - [[surveillance-pricing-retail]]
+- [[gesis-surf-data-donation]]

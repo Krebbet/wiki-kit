@@ -233,3 +233,4 @@ Distinct surface from browser attributes: a passive on-path observer (ISP, VPN p
 - [[transparency-tools]]
 - [[possible-strategic-levers]]
 - [[obfuscation-strategic-readout]]
+- [[mechanisms/chatbot-contextual-leakage]] — AI chatbot UIs leak conversation titles/prompts to third-party trackers (42-platform audit)
