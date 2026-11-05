@@ -732,3 +732,14 @@ Window 2026-10-21 → 2026-10-28. Ingested: [[startups/doubleai]], [[landscape/a
 - [2026-10-28] **Collibra acquires trail ML (2026-10-05); Proofpoint / Acuvity (undated)** — agent-governance and security consolidation; Collibra from the same roundup, Proofpoint from https://threatcluster.io — https://aifunding.me/roundups/october-2026
 - [2026-10-28] **Open-weight cluster: Kimi K3, GLM-5.3, Qwen3.8, Nemotron 3.5 Bolt, Muse Spark Open** — SEO comparison source only; verify via Hugging Face / Artificial Analysis — https://pasqualepillitteri.it/en/news/24368/best-open-weight-models-october-2026-compared
 - [2026-10-28] **Cursor outage 2026-10-13 (~2h45m); Claude 183 outages since Oct 2025 (isdown.app)** — vendor-reliability and lock-in datapoint — https://sessionwatcher.com/news/cursor-outage-october-13-2026
+
+## 2026-11-04 — weekly sweep
+- [2026-11-04] **Anthropic "single agent beats multi-agent" claim** — only aggregator write-ups seen; find the Anthropic primary post before citing — https://pub.towardsai.net/kill-your-agent-swarm-why-anthropic-now-says-one-agent-is-enough-48cd509abc44
+- [2026-11-04] **Tilde.run** — agent sandbox with transactional, versioned filesystem (rollback); Show HN via mirror, date unverified — https://home6.southeastasia.cloudapp.azure.com/show?p=2
+- [2026-11-04] **Mistle** — open-source sandboxed coding agents, credentials injected via proxy; HN mirror only — https://home6.southeastasia.cloudapp.azure.com/show?p=2
+- [2026-11-04] **Salesforce Agent Optimizer GA (Oct) / Hunter agent GA (Nov)** — dates from low-quality pages; confirm with Salesforce newsroom — https://letsdatascience.com/news/salesforce-launches-job-ready-ai-agents-for-sales-and-servic-1dca2741
+- [2026-11-04] **Replit Agent 2026.10.30** — 44th release of 2026 per tracker; content unseen — https://www.havoptic.com/r/replit-agent-2026-10-30
+- [2026-11-04] **"Comment and Control" prompt injection (Claude Code Security Review, Gemini CLI Action, Copilot agent)** — patched ~Apr-May 2026, stale — https://www.securityweek.com/claude-code-gemini-cli-github-copilot-agents-vulnerable-to-prompt-injection-via-comments/amp/
+- [2026-11-04] **Character.AI Chapter 11 (10-12) with Disney stalking-horse** — consumer-chat failure case; single source, verify — (scan agent report, no URL)
+- [2026-11-04] **Gallatin AI $50M Series A; Mave $28M Series A (Red Dot)** — product unknown; leads from SiliconReport index — https://www.siliconreport.com/ai/archive/2026-10
+- [2026-11-04] **Anthropic S-1 financials (profit vs $80.7B-loss reports conflict)** — resolve on EDGAR primary — https://letsdatascience.com/news/anthropic-files-s-1-for-nasdaq-ipo-under-ticker-ant-d013b0b0

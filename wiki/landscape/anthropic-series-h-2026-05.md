@@ -161,3 +161,4 @@ Anthropic's disclosed compute commitments have compounded into a running tally o
 - [[alphabet-85b-equity-2026-06]] — Alphabet $85B equity raise; AI IPO pipeline signal
 - [[llms/openai]] — OpenAI competitive context; concurrent S-1 filing
 - [[startups/sierra]] — enterprise AI comparison ($950M raised, $15B valuation)
+- [[landscape/anthropic-s1-ipo-filing-2026-10]] — S-1 filed 2026-10-26 (secondary report); governance share classes

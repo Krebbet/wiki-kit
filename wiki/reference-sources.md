@@ -152,3 +152,10 @@ The `git checkout` step ensures the run lands on the intended weekly-brief branc
 - **sessionwatcher.com** — outage aggregator; use to find incidents, then point to the vendor status page or primary.
 - **erp.today** — SAP / enterprise-apps trade press; useful for SAP Joule and ERP-vendor agent launches.
 - **Constellation Research** — already listed (2026-10-21); still used for enterprise vendor launch analysis.
+
+## Additions (2026-11-04)
+- **github.blog/changelog** — first-party Copilot/agent feature dates and policy details.
+- **SiliconReport AI archive** (siliconreport.com/ai/archive) — weekly headline index; lead-finding only, confirm elsewhere.
+- **havoptic.com** — coding-agent release tracker; aggregator, point to primary.
+- **SecurityWeek, OODA Loop** — agent-security trade coverage.
+- **Scan caveat:** search index was stale for Databricks/Snowflake/AWS/Google/Azure this window; open vendor newsrooms directly next run.

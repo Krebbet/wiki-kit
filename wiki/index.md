@@ -104,6 +104,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[landscape/anthropic-opaque-acquihire-2026-10\|anthropic-opaque-acquihire-2026-10]] | Anthropic licenses Opaque (confidential computing) plus partial hire (~2026-10-13); trade press disagrees on structure; thin |
 | [[landscape/microsoft-foundry-agent-harness-2026-09\|microsoft-foundry-agent-harness-2026-09]] | Foundry Routines / Tool Search / A2A GA; Insights, resilience, voice in preview; agent identity lifecycle has no maturity label |
 | [[landscape/gemini-at-work-agent-2026-10\|gemini-at-work-agent-2026-10]] | Google Gemini work agent (2026-10-08): 4 memory types, per-agent identity, Agent Gateway/Sandbox, Claude routing; private preview, vendor-only |
+| [[landscape/microsoft-project-perception-guardian-agents-2026-10\|microsoft-project-perception-guardian-agents-2026-10]] | Microsoft Project Perception + Guardian Agents (2026-10): per-agent identity, Dynamic Agent Risk, MXC; preview, analyst-skeptical |
+| [[landscape/github-copilot-local-sandboxing-2026-10\|github-copilot-local-sandboxing-2026-10]] | GitHub Copilot local sandboxing GA (2026-10-07): MXC-based, free, org-enforceable; vendor changelog only |
+| [[landscape/anthropic-s1-ipo-filing-2026-10\|anthropic-s1-ipo-filing-2026-10]] | Anthropic S-1 (filed 2026-10-26, ticker ANT): share classes, LTBT; secondary report, unverified |
 | [[watchlist\|watchlist]] | Signals surfaced during weekly radar sweeps that didn't merit full capture — future research targets |
 | [[reference-sources\|reference-sources]] | Signal-source hierarchy scanned by `/weekly-brief` for this wiki's domain |
 
