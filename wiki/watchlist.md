@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-10-29
+last_reviewed: 2026-11-05
 ---
 
 # Watchlist
@@ -17,6 +17,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 ---
 
 ## Devices & materials
+
+- HippocamPEX (arXiv 2611.05415, 2026-11-05) / HippocamFLEX FPGA prototype (2610.40932) — mixed-signal hippocampal architecture; silicon not verified
+
 
 - Noh et al. ECRAM Tiki-Taka (Sci. Adv. eadl3350) — ⚠️ science.org hangs; the wiki's only ECRAM primary
 - Tiki-Taka retention-aware zero-shifting — same paper, same access problem
@@ -52,6 +55,11 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 
 ## Chips & systems
 
+- BrainChip Sept-quarter 4C (due ~2026-10-31) — still not located; next yield/cash checkpoint
+- SpikePID (arXiv 2611.00104) — small SNN on low-resource FPGA, drift-chamber cluster counting; niche
+- IEDM 2026 (Dec 12–16) Neuromorphic & Novel Computing papers / ISSCC 2027 (Feb 14–18) program — not yet public
+
+
 - IBM NorthPole *Science* paper (doi 10.1126/science.adh1174) — ⚠️ science.org hangs; primary for the 25× claim
 - NorthPole IEEE HPEC 2024 paper (modha.org) — likely names the unnamed GPU baselines
 - Intel's replacement SDK + next-generation Loihi — announced, undated, unshipped
@@ -83,6 +91,10 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - ChroNoC network-on-chip (arXiv:2610.34083) — one-line summary only; unread
 
 ## Algorithms & toolchains
+
+- Frequency-selective spiking reservoirs with resonate-and-fire neurons (arXiv 2610.37906) — reportedly beats LIF reservoirs on ten benchmarks; no hardware evidence
+- RobustNCL fault-tolerant neuromorphic continual learning (arXiv 2610.31954) — injected faults, simulation
+
 
 - Systematic surrogate-gradient function comparison — the 2019 "doesn't much matter" claim is still uncontrolled
 - **SNN training energy vs ANN training energy** — no source in this wiki addresses it
@@ -127,6 +139,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - BrainChip Sept-quarter 4C — not yet lodged; expect late October
 
 ## Programmes & policy
+
+- NICE 2027 (Apr 6–8, Sussex): paper deadline 2026-11-11
+
 
 - Lava (Intel) successor SDK — still unannounced as of 2026-09-24. New weak signal this run: an Intel job posting (2026-09-23, "AI Software Development Engineer – Neuromorphic Computing") references building kernels for "current and next-generation neuromorphic hardware" and "future neuromorphic products" — job-posting-level only, no SDK name, no chip name, no ship date. Widely-circulating "Loihi 3" specs (8M neurons, 4nm) trace to content-mill sources that self-contradict by admitting no official product sheet exists — not corroborated, not elevated here.
 - DARPA "Firefox" programme (proposers day held 2026-09-21) — solicits neuromorphic photonics, in-sensor computing, and analog/optical hardware; $4–7M across Phases 1–3; BCI-centric framing, borderline wiki-fit (photonics-adjacent rather than a core spiking chip programme) but a dated, named-owner leading indicator worth a second look if a concrete award follows

@@ -183,3 +183,9 @@ Full brief: `wiki/weekly-briefs/2026-10-22.md`.
 Survey: two agents (arXiv/journals; industry). Industry lane verified nothing dated in the window (BrainChip Sept-quarter 4C not yet lodged as of search; brainchip.com/news showed no Oct 2026 items). arXiv lane covered only ~42 most recent API entries; journals/Crossref/IEDM not scanned. Four arXiv papers captured via `capture_pdf --engine marker` and ingested: ferroelectric hafnia synapses in BEOL of commercial 180 nm CMOS (single-device), TEXEL on-chip gas classification (chip-only dynamic energy), Loihi 1 birdsong axonal-delay matching, FPGA SNN for mmWave ISAC. No new conflicts opened.
 
 Full brief: `wiki/weekly-briefs/2026-10-29.md`.
+
+## [2026-11-05] weekly-brief | 3 captured, 7 watchlisted, HyVox / SOT-MTJ synapses / DYNAP-SE neuromodulation pages
+
+Survey: three agents (arXiv/feeds; vendors/industry; journals/toolchains). Vendor and journal lanes verified nothing dated in the window (BrainChip Sept-quarter 4C still unlocated; IEDM/ISSCC programs not yet public). arXiv lane (API listing for "neuromorphic") yielded the captures: 2611.03735, 2611.08405, 2610.41265, via `capture_pdf --engine pymupdf` (audit reports missing image refs only; text intact). Pages: chips/hyvox-xylo-speaker-id, devices/sot-mtj-multiweight-wafer-scale-synapse, chips/dynapse-neuromodulation-gain-reservoir. No conflict files opened.
+
+Full brief: `wiki/weekly-briefs/2026-11-05.md`.
