@@ -63,3 +63,5 @@ Re-benchmark your own stack against a naked reasoning-model baseline periodicall
 - [[reasoning-frameworks]]
 - [[slm-agents]]
 - [[agentic-context-engineering]]
+
+See also: [[evaluation/terminal-bench-continuous-benchmarks]] — Terminal-Bench 2.0 had issues in ~30% of tasks (fixed in 2.1); time limits shift harness gaps.

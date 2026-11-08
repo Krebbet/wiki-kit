@@ -132,3 +132,5 @@ This follow-up reinforces rather than revises the static→dynamic context findi
 - [[patterns/sierra-monitor-eval-of-evals]] — peer LLM-as-judge methodology with a different calibration mechanism (Cursor: Keep Rate + judge as separate signals; Sierra: judge calibrated against multi-model + team-labeled agreement before deployment)
 - [[patterns/agent-development-lifecycle]] — concrete production instantiation of the Lifecycle's Test + Monitor phases (CursorBench + Keep Rate + LLM-judge + automated-Linear-ticket loop)
 - [[patterns/sol-pi-harness-efficiency]] — independent corroboration of the same static→dynamic-context / token-cutting direction from a different actor: production vendor (Cursor) vs. academic auto-research paper
+
+See also: [[coding-agents/factory-droid-frontier-harness]] — Factory's Droid 1.0 (2026-10-29): per-model harness tuning via an agent-driven loop, plus programmatic tool calling as default; benchmarks against Cursor (vendor-self-run).

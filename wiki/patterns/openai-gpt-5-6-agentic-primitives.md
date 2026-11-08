@@ -39,3 +39,5 @@ OpenAI's claim is that smaller 5.6-family models (Terra, Luna) now approach flag
 - [[evaluation/agents-last-exam]] — this page cites new GPT-5.6 Sol results on the same benchmark; a same-benchmark, newer-model data point worth appending there
 - [[patterns/harness-design-space]] and [[patterns/agentic-harness-engineering]] — model-vendor-native primitives absorbing prior harness-level design choices is a data point for the "where does capability live" discussion in these pages
 - [[patterns/model-cost-routing]] — same week's other cost-engineering thread; different mechanism (frontier-vs-cheap routing vs. cheaper-frontier-model-itself) toward the same goal of lower agent spend
+
+See also: [[coding-agents/factory-droid-frontier-harness]] — harness-side programmatic tool calling (Script tool) as a cross-vendor default, with cost and request-count numbers.

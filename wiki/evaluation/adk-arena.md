@@ -82,3 +82,5 @@ Generation succeeds for **57% of runs** (232/408). Per-agent generation cost ran
 - [[wiki/evaluation/llm-as-judge.md]] — LLM-as-a-Developer is the same scalable-proxy paradigm applied to the developer role
 - [[wiki/coding-agents/langchain-deep-agents.md]] — LangChain is the ecosystem dependency hub; ADK Arena results directly benchmark LangChain agent quality
 - [[wiki/patterns/harness-design-space.md]] — ADK Arena's three-level validate-and-repair pipeline and Docker isolation is a concrete harness engineering case study
+
+See also: [[evaluation/terminal-bench-continuous-benchmarks]] — Terminal-Bench scores depend on task defects (2.0 to 2.1) and wall-clock limits.

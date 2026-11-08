@@ -208,5 +208,10 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[deployments/claude-code-mods]] | *(2026-10-25)* Claude Code Mods — TS/JS plugins hooking harness events, framed as a user-programmable "attention interface"; supervisor mod fired 99/111 turns, ~5-6k tokens/check, unsandboxed. Secondary source, collect-but-confirm. |
 | [[evaluation/harness-adaptation-gap-arc-agi-3]] | *(2026-10-25)* arXiv 2610.30499 — 27 self-revising harness lineages on ARC-AGI-3: +2.80 held-out (CI spans zero) vs +8.42 dev, a 5.62 adaptation gap; supports abstention/rollback. Single preprint, collect-but-confirm. |
 | [[memory/raw-rag-baseline]] | *(2026-10-25)* arXiv 2610.30755 — no-extraction dense retrieval + rerank over raw chat ranks first among 12 agentic memory systems in 6/7 settings; fact extraction costs 19.6 pts. Author-run, collect-but-confirm. |
+| [[evaluation/terminal-bench-continuous-benchmarks]] | *(2026-11-08)* arXiv 2611.08417 — "benchmark maintenance debt"; audit of Terminal-Bench 2.0 found issues in ~30% of tasks (fixed in 2.1, >10pp accuracy shift); wall-clock limits swing harness gaps. Abstract-only capture. |
+| [[patterns/compaction-over-long-context]] | *(2026-11-08)* NVIDIA arXiv 2611.05306 — frequent compaction keeps accuracy on long SWE tasks; later-position tokens cost up to 7x more. Abstract-only; collect-but-confirm. |
+| [[patterns/async-subagents]] | *(2026-11-08)* LangChain Deep Agents async subagents — non-blocking orchestrator + background workers, task tools, interrupt/enqueue update strategy. Vendor blog, no numbers. |
+| [[coding-agents/factory-droid-frontier-harness]] | *(2026-11-08)* Factory Droid 1.0 (2026-10-29) — programmatic tool calling default, agent-driven harness-improvement loop, prompt-cache cuts; Terminal-Bench claims vendor-run. |
+| [[governance/welfare-regard-multi-agent]] | *(2026-11-08)* Anthropic Fellows study of inter-model welfare regard across 7 settings/5 models; widespread but inconsistent, swings with recipient label. |
 
 ---

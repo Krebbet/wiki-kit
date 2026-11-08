@@ -73,3 +73,5 @@ The distillation claim: AgentFold-30B beats both teacher models (DeepSeek 30.0%,
 - [[topology-taxonomy#long-horizon-context-loss]] — failure mode this pattern addresses.
 - [[ai-scientist-v2]] — different state-materialisation strategy (tree nodes vs folded chain).
 - [[codified-context]] — different memory tier (tiered hot/cold external) for the same long-horizon problem.
+
+See also: [[patterns/compaction-over-long-context]] — NVIDIA preprint arguing frequent compaction makes long context unnecessary (abstract-level evidence).

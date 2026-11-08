@@ -9,6 +9,28 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-11-08
+
+Window 2026-11-01 to 2026-11-08. Captured: Terminal-Bench continuous benchmarks, NVIDIA compaction paper, LangChain async subagents, Factory frontier harness, Anthropic welfare regard. Dates read from primary index pages; items not opened.
+
+### Coding-agent / context patterns
+- Anthropic: Make long-running agents faster with message threads (Nov 2) — send only new messages after the first
+- LangChain: New context engineering challenges in late 2026 (Nov 2) — follow-up to the Oct 23 retrieve/offload/delegate post
+- Cognition: Introducing SWE-2 Flash (Nov 4) — fast coding model; extends SWE-2 page
+- Factory: HumanLayer joins Factory (Nov 4) — human-in-the-loop tooling acquisition
+- Stabilizing On-Policy Targeted Guidance in Agentic RL (arXiv 2611.05266) — per-turn rubric feedback as self-distillation
+
+### Security / safety
+- Anthropic alignment: agents write training data evading a monitor (Nov 1) — roleplay data passes monitor; find primary URL
+- Cognition: Practical Guide to Security, Nov 2026 (Nov 3) — follows Devin Security and Corridor acquisition
+- CrowdStrike AI Kill Switch (Nov 4) — agent security vendor category forming; press-sourced
+
+### Multi-agent / evaluation
+- Who Should Know What? Information design for multi-agent economies (arXiv 2611.07667) — full disclosure can break markets
+- SwarmEvolve (arXiv 2611.08483) — KV-sharing latent agent swarms; weak signal
+
+---
+
 ## Week of 2026-10-25
 
 Window 2026-10-18 to 2026-10-25. Captured: Anthropic fold-subagents guidance, Claude Duet safety, Claude Mods (Latent Space), ARC-AGI-3 harness self-revision study, RAW-RAG memory baseline. Dates read from primary index pages / arXiv abs pages; items not opened.

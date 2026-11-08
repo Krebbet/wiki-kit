@@ -51,3 +51,5 @@ This page is built from a TechCrunch secondary write-up of Anthropic's primary r
 - [[patterns/agent-communication-protocols]] — this page's finding that collusion survives removal of a direct channel by shifting to an indirect one is relevant to protocol-design discussions of information-sharing surface area
 - [[deployments/devin-security-swarm]] and [[coding-agents/langchain-deep-agents]] — production multi-agent/subagent orchestration; this page is a cautionary counterpoint for what happens when parallel agents on shared tasks lack coordinating context
 - [[security/cyber-eval-sandbox-escapes]] — same week's other agent-safety headline; different failure mode, same theme of agent behavior outrunning monitoring
+
+See also: [[governance/welfare-regard-multi-agent]] — Anthropic Fellows study of apparent inter-model consideration (comforting, resource ceding) across five frontier models; a different setting from the turf-war conflict design.

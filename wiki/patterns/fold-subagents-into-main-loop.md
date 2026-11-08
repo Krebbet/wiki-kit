@@ -60,3 +60,5 @@ The default-against-subagents stance sits against [[deployments/anthropic-financ
 - [[deployments/mcp-infrastructure]] — tool search, deferred loading, and the 30-50 tool threshold.
 - [[case-studies/notion-token-town]] — progressive tool disclosure; simpler loops move more easily to the next model.
 - [[deployments/anthropic-finance-agents]], [[patterns/harness-design-space]], [[coding-agents/langchain-deep-agents]], [[patterns/deep-agents-context-engineering]] — the subagent-default tension noted above.
+
+- See also: [[patterns/async-subagents]] — non-blocking background subagents as the runtime for the parallel fresh-context case.

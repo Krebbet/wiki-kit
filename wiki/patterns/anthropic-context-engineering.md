@@ -52,3 +52,5 @@ The post is explicitly production-oriented, authored by the Applied AI team work
 - [[claude-code-session-memory]] — compaction mechanics described here (model summarises history + five most recently accessed files) are the same mechanism; this post adds tuning advice (max-recall-first → precision-iterate).
 - [[context-folding]] — peer long-horizon mechanism; compaction is Anthropic's production answer, AgentFold is the research answer.
 - [[memory-architectures]] — structured note-taking maps to write-manage-read loop; JIT retrieval maps to retrieval-augmented stores; compaction is a lightweight mechanism not foregrounded in the existing taxonomy.
+
+See also: [[patterns/compaction-over-long-context]] — NVIDIA preprint arguing frequent compaction makes long context unnecessary (abstract-level evidence).

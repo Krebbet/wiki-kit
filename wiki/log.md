@@ -602,3 +602,9 @@ Wiki changes: 4 new pages; 7 extensions; index.md; revisions.md; watchlist.md (1
 Autonomous `/weekly-brief` sweep for week of 2026-10-25. Two scan agents (vendor/press via primary index pages; research/practitioner via arXiv/HF/HN/Willison). 5 captures to `raw/research/weekly-2026-10-25/`: fold-subagents-into-main-loop, claude-duet-safety, claude-mods-latent-space, llm-improve-own-harness-arc-agi-3, naive-rag-vs-agentic-memory. Audit clean. Reddit (old.reddit.com), openai.com and marktechpost.com were unreachable; poetry needed `~/.local/bin` on PATH.
 
 Wiki changes: 5 new pages; 12 extensions (incl. reinforcing notes on conflicts/auto-mode-prompt-injection-defense and conflicts/verbatim-vs-extracted-memory, both still OPEN); index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-10-25.md. Pre-existing uncommitted backlog left untouched.
+
+## [2026-11-08] weekly-brief ingest | weekly radar sweep (5 captured, 5 ingested, 10 watchlisted)
+
+Autonomous `/weekly-brief` sweep for week of 2026-11-08. One scan agent over primary index pages. 5 captures to `raw/research/weekly-2026-11-08/`: terminal-bench-continuous, no-long-context, langchain-agents-async, factory-frontier-harness, welfare-regard. Audit clean. The two arXiv captures are abstract-only (full text not extracted) so numbers are collect-but-confirm. OpenAI blog unreachable (403). The Anthropic monitor-evasion post was not captured because its URL was not found.
+
+Wiki changes: 5 new pages; 8 see-also extensions; index.md; revisions.md; watchlist.md (10 entries); weekly-briefs/2026-11-08.md. Pre-existing uncommitted backlog left untouched. Soft tensions noted (no conflict files opened): async-subagents vs fold-subagents-into-main-loop; Factory model-independent harness vs openai-gpt-5-6-agentic-primitives.
