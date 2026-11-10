@@ -324,3 +324,8 @@ Cloudflare challenge page.
 `poetry` is at `~/.local/bin`, which is not on the cron/`sh` PATH; `/weekly-brief` should export
 `PATH=$HOME/.local/bin:$PATH` itself rather than relying on the crontab line.
 **Status:** open
+
+## 2026-11-10 — weekly-brief re-captured last week's paper (kit)
+The arXiv monthly-list route surfaced 2611.02302, already ingested on 2026-11-03; the sweep only noticed after the
+ingest subagent flagged a duplicate. **Implication:** step 1/3 should grep `raw/research/` and `wiki/` for each
+candidate's arXiv id/URL before selection. **Scope:** kit. **Status:** open

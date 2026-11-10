@@ -71,6 +71,10 @@ Wade's account of South Korean, Taiwanese and Singaporean catch-up growth is the
 
 **[wiki synthesis]** National economy and state apparatus, with the agency-level naming above as narrative colour rather than measurement. Every institution discussed is part of the state or organised capital inside a state-directed relationship; the source is silent on whether any of it generalises to private institutions, and the one public/public comparison (Bank of England against developmental ministries) is used for a different purpose. Record the silence as a silence.
 
+## Terminology note: "embedded" (added 2026-11-10)
+
+**[wiki synthesis]** Do not confuse embedded autonomy with the "Embedded State" of Heldring, Kedrosky, Robinson and Weigand (NBER WP 35130). Here, embeddedness is the tie between insulated, salaried bureaucrats and industrial elites. There, the term (Polanyi-derived) names a state that rests on unpaid local elites motivated by status, i.e. close to the opposite of a Weberian insulated bureaucracy. The constructs share a word, not a mechanism. See [[embedded-state-and-unpaid-public-service]].
+
 ## Source
 
 - `raw/research/institutions-and-growth/06-wade-developmental-state-dead-or-alive.md` — Robert H. Wade, "The Developmental State: Dead or Alive?", *Development and Change* 49(2), 2018, 518–546. DOI 10.1111/dech.12381. https://researchonline.lse.ac.uk/id/eprint/87356/1/Wade_%20Developmental%20State.pdf
@@ -92,3 +96,4 @@ Wade's account of South Korean, Taiwanese and Singaporean catch-up growth is the
 - [[open-questions]] — Q90 (level of analysis), Q93 (whether constraint and conditional discipline are substitutes).
 - [[state-demand-and-preferential-allocation-in-hungarian-construction]] — a tension, not a refutation: preferential allocation to connected national champions in post-2010 Hungarian construction coincides with flat productivity and near-zero export intensity. **[wiki synthesis]** The missing performance conditionality may be the discriminating variable; untested, and descriptive evidence only.
 - [[china-municipal-venture-capital]] — see also: a popular essay locating Chinese industrial strategy in the city tier, a competing picture to the centralised-pilot-agency model.
+- [[embedded-state-and-unpaid-public-service]] — terminology disambiguation: a different "embedded" construct (added 2026-11-10).

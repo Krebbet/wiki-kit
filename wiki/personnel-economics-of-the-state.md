@@ -107,6 +107,10 @@ Registered as [[dimensions-of-institutional-variation]] **D104**, `candidate`, *
 - **Silent on scale and age.** No headcount, hierarchy-depth or organisational-age variable anywhere; the chapter explicitly brackets management practice as out of scope. The only scale-adjacent moderator is country income.
 - **Ideological prior**: the randomista / J-PAL-adjacent tradition, technocratic-reformist and pro-state-capacity — government quality is treated as instrumentally central rather than as something to shrink.
 
+## Unpaid-office selection (added 2026-11-10)
+
+**[empirical]** Heldring et al. (NBER WP 35130, un-refereed) study 258 English boroughs in 1835, where about 95% of at least 148,000 local posts were unpaid. Unpaid positions score higher on the commissioners' performance measures (0.09 on a mean of 0.61), but the authors' own decomposition attributes the gap to selection: unpaid posts attract higher-ability, prestige-seeking local elites, and with those individuals removed paid and unpaid posts perform equally. **[wiki synthesis]** A historical analogue of the selection-over-incentive results on this page, with non-monetary pay (prestige, career ladder, flexibility) as the sorting device, and a cost side: patronage, corruption, and failure to staff onerous tasks such as policing. Evidence is a single cross-section scored from one inspection report. See [[embedded-state-and-unpaid-public-service]].
+
 ## Source
 
 - `raw/research/enabling-institutional-change/03-finan-olken-pande-personnel-economics.md` — Frederico Finan, Benjamin A. Olken & Rohini Pande, "The Personnel Economics of the State", NBER Working Paper 21825, December 2015 (prepared for the *Handbook of Field Experiments*). https://www.nber.org/system/files/working_papers/w21825/w21825.pdf
@@ -129,3 +133,4 @@ Registered as [[dimensions-of-institutional-variation]] **D104**, `candidate`, *
 - [[opm-2026-rif-rule-performance-first-retention]] — a live large-scale move from a seniority-weighted to a performance-weighted layoff rule (design only, no outcome evidence).
 - [[whitehall-monitor-2026-case-profile]] — UK civil-service churn incentives, pay progression and Senior Civil Service pay, from an IfG audit (think-tank synthesis of official series).
 - [[threshold-manipulation-in-colombian-procurement]] — see also: Colombian procurement bunching; elected territorial buyers bunch more than appointed national ones.
+- [[embedded-state-and-unpaid-public-service]] — unpaid-office selection in 1835 English boroughs; selection rather than incentive (added 2026-11-10).

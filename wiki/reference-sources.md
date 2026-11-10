@@ -240,6 +240,14 @@ survey subagent.
   (unconfirmed, not dry); Marginal Revolution post pages now serve a Cloudflare challenge to curl. `capture_pdf` on an
   arXiv PDF leaves broken figure-image refs under pymupdf but the text is complete.
 
+- Eleventh sweep, 2026-11-10: thin week (3 ingested). The arXiv econ.GN monthly list (curl) again the only productive
+  feed (two captures). NBER's direct PDF path (`system/files/working_papers/w35130/w35130.pdf`) returned 200 and a real
+  paper for an April 2026 working paper, so the block seen on September releases does not apply to older papers; the
+  NBER and BFI landing pages surface through plain web search when the paper is not new. Duplicate-capture trap: an
+  arXiv monthly-list candidate (2611.02302) had already been captured the previous week; grep `raw/research/` and
+  `wiki/` for the arXiv id before capturing. Search returned nothing dated in window for NBER, IZA, IfG, Statecraft, JIE
+  or Marginal Revolution (unconfirmed, not dry).
+
 ## Related
 
 - [[watchlist]] — overflow candidates from sweeps that were not captured.

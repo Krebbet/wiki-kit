@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-11-03
+last_reviewed: 2026-11-10
 ---
 
 # Watchlist
@@ -384,6 +384,22 @@ Thin week. 1 captured (see `wiki/weekly-briefs/2026-11-03.md`). Search surfaced 
 
 - JIE meso-institutions symposium (2026) — intro piece and tomato supply chain paper; Cambridge Core issue page not yet checked.
 - Frolov / "Institutional Conflicts of Interest: A Novel Functionalist Account" (JIE, Apr 2026) — conceptual.
+
+## Week of 2026-11-10
+
+4 captured, 3 ingested (see `wiki/weekly-briefs/2026-11-10.md`). Search surfaced nothing dated in window for NBER, IZA, IfG, Statecraft or JIE.
+
+### Working-paper and preprint feeds
+
+- Economies of scale and the equity-efficiency trade-off: piped water network in rural Bangladesh (arXiv 2611.08031) — incentivised WTP experiment; pricing of network infrastructure.
+- Fiscal Commitment and the Additionality of Philanthropy (arXiv 2611.12459) — donor gifts under a shared discretionary public budget; model.
+- Winning Reviews, Losing Discovery? Co-evolutionary game of AI research and peer review (arXiv 2611.10791) — science-governance model; pairs with the journal-governance page.
+- Prizes, Shared Hazard, and the Speed of Frontier AI (arXiv 2611.04266) — sibling of the verification-windows paper; same author cluster.
+- Sanctions, Evasion, and Deterrence: Speeding Enforcement (arXiv 2611.09337) — enforcement design evidence.
+
+### Blogs, essays and commentary
+
+- UNU-WIDER WP 2026/32, South African preferential procurement — bureaucratic failure from capability vs. incentive misalignment; PDF 403'd.
 
 ## Related
 

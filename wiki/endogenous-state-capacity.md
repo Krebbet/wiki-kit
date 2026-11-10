@@ -66,6 +66,10 @@ Fiscal and legal capacity are **supermodular** in payoff, hence complements: rai
 
 **[wiki synthesis]** The national state throughout. The model's quantities aggregate to national tax rate, national legal capacity and national income; every cited empirical measure is a country-year panel or a country-level historical share. **No sub-national, firm-level or individual-institution unit appears anywhere.** Capacity is measured by four indicators each for fiscal and legal capacity (contract enforcement, property-rights protection, tax-structure measures, scaled 0–1), all national scalars. Nothing here scores an agency.
 
+## Measurement-premise note (added 2026-11-10)
+
+**[wiki synthesis]** Heldring et al. (NBER WP 35130, un-refereed) explicitly target the identification of state capacity with tax revenue (citing Besley and Persson 2009), arguing that 1835 English boroughs delivered public goods at roughly 10% national tax/GDP through unpaid local officers. The scopes differ (pre-modern local tier versus a national model of fiscal and legal investment), so this is a scope note, not a ruling or a conflict file; the open point is whether fiscal capacity is the right capacity measure outside the national, modern setting. See [[embedded-state-and-unpaid-public-service]].
+
 ## Source
 
 - `raw/research/institutions-and-growth/05-besley-persson-state-capacity.md` — Timothy J. Besley & Torsten Persson, "State Capacity, Conflict and Development", NBER Working Paper 15088, June 2009 (the basis for Persson's 2008 Econometric Society Presidential Address). https://www.nber.org/system/files/working_papers/w15088/w15088.pdf
@@ -82,3 +86,4 @@ Fiscal and legal capacity are **supermodular** in payoff, hence complements: rai
 - [[what-is-an-institution]] — a formal example of treating institutional *capacity* as accumulated public capital distinct from institutions as constraints, which is a distinction that page does not currently draw.
 - [[dimensions-of-institutional-variation]] — θ was checked against the register and found already present at D7; γ enters as D93, `candidate`, with its level-of-analysis problem stated.
 - [[open-questions]] — Q90 (level of analysis), Q91 (the affirmative camp's internal split).
+- [[embedded-state-and-unpaid-public-service]] — challenges the fiscal-capacity measurement premise in a pre-modern local setting (added 2026-11-10); scope note.

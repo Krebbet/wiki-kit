@@ -176,3 +176,6 @@ Concise record of all wiki modifications. One row per logical change.
 | 2026-11-03 | create | owner-board-disputes-and-alienable-reputation.md | New page from Cumming arXiv 2611.02302 (weekly sweep). |
 | 2026-11-03 | update | property-rights-theory-of-the-firm.md, index.md | Related back-link; index row added. |
 | 2026-11-03 | update | reference-sources.md, watchlist.md | Tenth-sweep note; `## Week of 2026-11-03` added. last_reviewed bumped. |
+| 2026-11-10 | create | embedded-state-and-unpaid-public-service.md, public-pay-revisions-and-judicial-review-of-cuts.md, verification-windows-and-treaty-decay.md | Three new pages from the weekly sweep (NBER w35130, arXiv 2611.12565, arXiv 2611.04272). |
+| 2026-11-10 | update | weberian-structure-and-growth.md, personnel-economics-of-the-state.md, developmental-state-and-embedded-autonomy.md, endogenous-state-capacity.md | Dated 2026-11-10 notes linking the embedded-state paper (scope note, selection channel, terminology disambiguation, measurement premise). |
+| 2026-11-10 | update | index.md, reference-sources.md, watchlist.md | Three index rows; eleventh-sweep note; `## Week of 2026-11-10` added. last_reviewed bumped. |
