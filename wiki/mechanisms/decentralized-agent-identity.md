@@ -114,3 +114,4 @@ The Garzon et al. prototype validates DID/VC architecturally but leaves the "is 
 - [[platform-cooperatives]] — natural governance shell for issuer-trust curation
 - [[data-cooperatives]] / [[collective-bargaining-for-data]] / [[noyb]] — wiki-anchored use cases for member-bound identity
 - [[federated-learning]] — complementary substrate (identity layer; FL is data-sharing layer)
+- [[clear-human-web-blind-token]] — 2026-11-09 weekly-brief cross-ref

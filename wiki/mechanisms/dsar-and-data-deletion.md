@@ -35,3 +35,4 @@ California's data broker regulatory regime — CCPA plus the 2023 Delete Act —
 - [[regulatory-responses]] — CCPA and the Delete Act are the regulatory substrate; the private right of action gap is a live legislative target.
 - [[browser-fingerprinting]] — GPC/OOPS operates at the same browser-signal layer as fingerprinting countermeasures; the mechanisms interact.
 - [[adversarial-data-poisoning]] — structural parallel: both this page and adversarial-data-poisoning document cases where the regulated/tracked party uses technical means to degrade the effectiveness of the extraction mechanism.
+- [[iab-gpp-consent-propagation]] — 2026-11-09 weekly-brief cross-ref

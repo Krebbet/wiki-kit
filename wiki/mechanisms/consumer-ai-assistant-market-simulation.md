@@ -45,3 +45,5 @@ Academic arXiv preprint, not peer-reviewed; written for multi-agent-systems and 
 - [[consumer-collective-bargaining]]
 - [[possible-strategic-levers]]
 - [[mechanisms/agents-vs-ecommerce-opacity]] — commentary predicting sellers block shopping agents rather than compete for them
+- [[artificial-shoppers-attention-competition]] — 2026-11-09 weekly-brief cross-ref
+- [[generative-search-brand-bias-audit]] — 2026-11-09 weekly-brief cross-ref

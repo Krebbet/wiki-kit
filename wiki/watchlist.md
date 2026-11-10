@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-11-02
+last_reviewed: 2026-11-09
 ---
 
 # Watchlist
@@ -390,3 +390,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - arXiv 2610.35633 Cheap Reverse Engineering — AI-driven RE vs law; pairs with adversarial interop
 - arXiv 2610.39139, 2610.36306, 2610.38897 — pricing/collusion theory, no code
 - Pluralistic "Autodoxing" (Nov 2) — age-verification exposure context
+
+## Recent additions (2026-11-09 weekly-brief overflow)
+
+- arXiv 2611.00822 AdKnob — LLM native-ad intensity control and labeling
+- Poison-id (Semplicementeio) — tracker-poisoning extension, 2 stars, unverified
+- Restock (d-plenty) — Australian supermarket price tracker, new, 0 stars
+- pcdealcheck.com — PC-part price check, Show HN, closed
+- Starlink dynamic pricing (Techdirt, Nov 6) — new extraction deployment
+- Dissent "Life Under the Algorithm" — surveillance pricing / wage discrimination commentary
+- EFF "Google Summaries Aren't About AI" — lock-in framing, no tooling
+- Pluralistic "AI fatfinger economy" (Nov 4) — forced-AI UI, receipts-app example
+- Pluralistic "Without CDA 230, Facebook will own the internet" — interoperability/liability context
+- Ghostery v10.6.11 / uBlock Origin 1.76.1b0 — blocker release drift (supersedes 11-02 entry)

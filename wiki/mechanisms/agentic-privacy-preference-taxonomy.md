@@ -55,3 +55,4 @@ Eight prototypes mirroring real agentic apps (search, medical, memory, writing, 
 ## Related
 
 [[agent-interop-protocols]], [[credential-disclosure-assistants]], [[adversarial-prompt-injection-defense]], [[auto-enrollment-opt-out]], [[health-data-opt-out-dark-patterns]], [[dpagent-dark-pattern-repair]], [[transparency-tools]], [[ghost-tool-calls]], [[possible-strategic-levers]]
+- [[agentic-crawler-tracker-measurement]] — 2026-11-09 weekly-brief cross-ref

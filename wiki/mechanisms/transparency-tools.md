@@ -143,3 +143,6 @@ Transparency tools are the mechanism that requires least coordination — an ind
 - [[regulatory-responses]]
 - [[surveillance-pricing-retail]]
 - [[consumer-facing-dynamic-pricing]]
+- [[iab-gpp-consent-propagation]] — 2026-11-09 weekly-brief cross-ref
+- [[agentic-crawler-tracker-measurement]] — 2026-11-09 weekly-brief cross-ref
+- [[generative-search-brand-bias-audit]] — 2026-11-09 weekly-brief cross-ref

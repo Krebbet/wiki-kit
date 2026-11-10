@@ -273,3 +273,8 @@ The `## Subreddits` stream in `wiki/reference-sources.md` (`r/PlatformCooperativ
 - Status: open
 - Scope: kit
 - capture_pdf on arxiv.org/abs/<id> silently captures the abstract page (no error; audit_captures stays clean). Always pass /pdf/<id>. Recurrence of the 2026-10-12 abstract-only issue.
+
+## 2026-11-09 weekly-brief: marker engine too slow; pkill -f self-kill
+- Status: open
+- Scope: kit
+- `capture_pdf --engine marker` ran >10 min CPU-bound on a single arXiv paper (unattended run); weekly-brief should default to `--engine pymupdf` or put a timeout on marker. Also `pkill -f <pattern>` inside the same Bash call kills the invoking shell (exit 1, no output); kill by PID.

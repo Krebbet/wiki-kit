@@ -33,3 +33,6 @@ Doctorow (Pluralistic, 2026-10-28) argues that ecommerce opacity (surveillance p
 - [[counter-power/regulatory-responses]] — drip pricing and junk fee enforcement
 - [[mechanisms/transparency-tools]] — comparison tools depend on legible prices
 - [[mechanisms/the-firms-view]] — firm incentives against legibility
+- [[artificial-shoppers-attention-competition]] — 2026-11-09 weekly-brief cross-ref
+- [[generative-search-brand-bias-audit]] — 2026-11-09 weekly-brief cross-ref
+- [[clear-human-web-blind-token]] — 2026-11-09 weekly-brief cross-ref
