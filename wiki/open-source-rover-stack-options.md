@@ -24,7 +24,7 @@ benchmark. Do not adopt ROS 2 + Nav2 wholesale.
 - Nav2 MPPI: https://docs.ros.org/en/humble/p/nav2_mppi_controller/. Regulated Pure Pursuit:
   https://docs.nav2.org/configuration/packages/configuring-regulated-pp.html. Costmap filters:
   https://docs.nav2.org/tutorials/docs/navigation2_with_speed_filter.html
-- OMPL 2.0 release notes (nanobind bindings, pip wheels, numpy >= 2): https://ompl.kavrakilab.org/releaseNotes.html,
+- OMPL 2.0 release notes (nanobind bindings, pip wheels; numpy requirement unverified -- the 2.0.1 wheel declares none): https://ompl.kavrakilab.org/releaseNotes.html,
   https://pypi.org/project/ompl/
 - Beluga (ROS-agnostic C++17 MCL, nav2_amcl parity): https://github.com/Ekumen-OS/beluga; ROSCon 2024 talk:
   https://roscon.ros.org/2024/talks/Beluga_AMCL-_A_modern_Monte_Carlo_Localization_implementation_for_ROS.pdf
@@ -33,7 +33,7 @@ benchmark. Do not adopt ROS 2 + Nav2 wholesale.
   https://answers.ros.org/question/395174/how-to-properly-use-the-localization-mode-of-slam_toolbox/
 - small_gicp: https://github.com/koide3/small_gicp. KISS-ICP: https://github.com/PRBonn/kiss-icp. Kinematic-ICP
   (2D LaserScan, wheeled, ROS 2 only): https://github.com/PRBonn/kinematic-icp
-- elevation_mapping_cupy (Python + CuPy core, ROS 2 Jazzy node, numpy < 2):
+- elevation_mapping_cupy (Python + CuPy core, ROS 2 Jazzy node; numpy not pinned on main / release/jazzy):
   https://leggedrobotics.github.io/elevation_mapping_cupy/
 - Isaac ROS nvblox requirements: https://nvidia-isaac-ros.github.io/repositories_and_packages/isaac_ros_nvblox/index.html
 - micro-ROS ESP-IDF component: https://components.espressif.com/components/micro-ros/micro_ros_espidf_component/versions/25.0.0/examples;
@@ -57,16 +57,16 @@ benchmark. Do not adopt ROS 2 + Nav2 wholesale.
   laptop it means RoboStack / pixi conda packages (`ros-jazzy-navigation2` exists) or Docker [src: REP 2000, RoboStack].
 - **Compute.** i7-11800H, 15 GB RAM shared with other sessions (often under 4 GB free). An **RTX 3050 Mobile with
   4 GB** is present, but it is not guaranteed on a future robot computer.
-- **Two Pythons.** The numpy 1.x env blocks OMPL 2.0 (numpy >= 2). The numpy 2.x env blocks elevation_mapping_cupy
-  (numpy < 2) [src: OMPL notes, emcupy docs]. Pick the env per library.
+- **Two Pythons.** We run numpy 1.25 (python3.10) and numpy 2.4 (anaconda). Neither OMPL 2.0 nor elevation_mapping_cupy
+  declares a numpy pin we could find; check the env fit at install time (unverified).
 
 ## 2. Area → candidate map
 
 | Our area (pain today) | Best open-source counterpart | Route | Licence | Verdict |
 |---|---|---|---|---|
-| Cold-start localisation in a near-mirror room (refusals; mirror accepted 1/30) | **Monte Carlo localisation** (Beluga core / nav2_amcl): keeps both mirror modes and lets a known motion kill the wrong one | Beluga: C++ (no Python bindings), ROS 2 wrappers. Or ~300 LOC numpy | Apache-2.0 / LGPL-2.1 (nav2_amcl) | **Test first.** Disable adaptive shrink until the modes separate: AMCL converges prematurely in symmetric rooms [src: 2501.01153] |
+| Cold-start localisation in a near-mirror room (refusals; mirror accepted 1/30) | **Monte Carlo localisation** (Beluga core / nav2_amcl): keeps both mirror modes and lets a known motion kill the wrong one | Beluga: C++ (no Python bindings), ROS 2 wrappers. Or ~300 LOC numpy | Apache-2.0 / LGPL-2.1 (nav2_amcl) | **Test first.** Disable adaptive shrink until the modes separate: AMCL can converge prematurely in symmetric rooms (general MCL behaviour; 2501.01153 does not directly back it) |
 | Route search (0.6-1.1 s median, 8.3 s max; can miss routes; hand-picked constants) | **Nav2 Smac State Lattice** (any footprint, collision checks precomputed per heading bin, diff-drive primitives, 50-200 ms) [src: smac docs]. **OMPL 2.0** as a comparator | Smac: ROS 2 C++ only, so port the design. OMPL: pip, 4.6 MB | Apache-2.0 / BSD-3 | **Test.** The bottleneck is per-move Python rule judging. Rasterise the rules into per-heading masks, then search. A Python validity callback into OMPL would not be faster |
-| Scan registration (works; ~30 ms per ICP) | **small_gicp** (pip 0.4 MB, works with numpy 1.25) | pip | MIT | **Measured** (§3): ~9x faster, slightly less tight. Use as the coarse stage only |
+| Scan registration (works; ~30 ms per ICP) | **small_gicp** (pip 0.4 MB, works with numpy 1.25) | pip | MIT | **Measured** (§3): 8-9x faster, slightly less tight. Use as the coarse stage only |
 | Floor vs low objects at 2 cm | **elevation_mapping_cupy core**: per-cell height + variance Kalman fusion, outlier rejection, traversability layer | Lift the Python + CuPy core out of the ROS node | MIT | **Test after the error budget.** The gain is capped by pose / tilt / lift error, not by the fusion method |
 | Keep-outs that must clear; coverage | OctoMap (pip wheels) log-odds with free-space ray clearing | pip | BSD / MIT | Optional comparator. 2-4 cm voxels are coarse vs a 2 cm threshold |
 | Mapping / pose graph (passes its honest checks) | slam_toolbox (Karto + Ceres; localisation mode; multi-session) | ROS 2 only | LGPL-2.1 | **Benchmark only.** Localisation mode needs an initial pose, so it does not solve the mirror [src: answers.ros] |
@@ -92,7 +92,7 @@ benchmark. Do not adopt ROS 2 + Nav2 wholesale.
 | ±5 cm / ±5° | 0.12 cm / 0.04°, 100 % within 2 cm and 1°, 32 ms | 0.33 cm / 0.07°, 89 %, 3.5 ms |
 | ±30 cm / ±30° | 0.13 cm / 0.04°, 99 %, 31 ms | 0.35 cm / 0.07°, 86 %, 4.1 ms |
 
-*(synthesis)* Registration is not where the stack is weak. A library is a speed lever (~9x) for the places that run
+*(synthesis)* Registration is not where the stack is weak. A library is a speed lever (8-9x) for the places that run
 many ICPs: the cold start's multi-start, and relocalisation inside the planning worker.
 
 ## 4. Ranked shortlist (gain on a current pain / integration cost)
