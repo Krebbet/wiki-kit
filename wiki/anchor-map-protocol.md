@@ -1,5 +1,7 @@
 # Anchor-Map Protocol — how to build a good navigation-anchor map (passive stereo)
 
+> **RETIRED as project guidance (human, 2026-11-12; librarian banner).** The drone-prototype's June-campaign tenets are retired. This page served those tenets: SfM / hloc poses as the map-build trajectory, LiDAR-SfM consensus fusion, joint-consistency refinement of trajectory, map and camera POVs, SfM over the camera-LiDAR extrinsic, and the locked June map as substrate. The rover now maps from a tilting 2D LiDAR plus closed-loop wheel odometry at stop-and-scan stations ([[stop-and-scan-room-mapping]], [[odometry-closed-loop-pipeline]]), with no SfM in the loop. The method survey below is still valid as reference. Do not read its "our problem" framing or its recommendations as the project's current plan. Kept as history.
+
 > **Trajectory-source update (2026-06-07 campaign):** for the *offline map-build* trajectory, **adopt hloc
 > SfM global poses as the default**, replacing RTAB-Map odometry. RTAB fails to loop-close on 2 of 3 test
 > rooms (drift 15 m / 5.6 m); hloc SfM poses fix it (room_sweep3 15.34→0.15 m, generalizes 2nd room). The

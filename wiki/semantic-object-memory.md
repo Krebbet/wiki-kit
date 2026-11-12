@@ -1,5 +1,7 @@
 # Semantic Mapping & Object-Location Memory
 
+> **STALE against the rover prototype (librarian flag, 2026-11-12).** Newest content is from 2026-06. The rover now keeps one object bank (record v2) with per-scan re-observation and permanence-aware removal (drone-prototype EDA348). A 3-state certainty model is proposed and not yet built: see [[object-certainty-model]] and [[object-detector-measured-rates]]. The literature survey below is unchanged.
+
 Semantic object-location memory is a persistent spatial representation that encodes not only *where objects are* but *where they belong* — the cognitive substrate for instructions like "tidy the toys" or "return the mug to the kitchen." The dominant architecture is the 3D scene graph: a layered structure linking geometry, objects, rooms, and buildings, queryable by language. Open-vocabulary CLIP-fused variants (ConceptGraphs, HOV-SG) extend this to arbitrary object classes without retraining; 3D Gaussian Splatting (3DGS) semantic SLAM is emerging as a photorealistic alternative. Nearly all mature results come from ground robots; aerial deployment of full semantic graphs has one published end-to-end demo.
 
 ---

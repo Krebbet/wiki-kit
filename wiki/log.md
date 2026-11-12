@@ -488,3 +488,19 @@ New page `task-conditioned-object-maps`, answering the human's 2026-11-07 questi
 ### 2026-11-12 — open-source rover stack options (prototyper-dispatched, EDA336)
 
 New page `open-source-rover-stack-options`, answering the human's 2026-11-12 question (we built everything from scratch; which open-source packages could we test for navigation, mapping and planning). Load-bearing findings: the classic parts (registration, pose graph, A*, guard) work and a library only buys speed there (measured small_gicp ~9x); the pain is route-search time (Smac-style per-heading lattice is the standard answer), mirror-room cold start (MCL across a known motion is the standard answer), the 2 cm floor call (elevation-map variance fusion, capped by the sensor error budget) and check-first drivability (no equivalent). Platform constraint: Ubuntu 22.04 means Humble (EOL 2027-05) or Jazzy via pixi/Docker. Recommendation piecemeal + one offline ROS 2 benchmark; adoption is an open human decision. Catalogued in `index.md`.
+
+### 2026-11-12 (b) — librarian periodic pass (drone-prototype PRs #255–#275): four method pages, June tenets retired, stale flags
+
+**New pages** (project method knowledge written back from the day's EDAs; each cites its FINDINGS and states its status):
+- [[object-certainty-model]]: EDA355 design (PR #274, approved, NOT built, human decisions owed). Covers the 3-state H/M/N belief, tempered same-view looks, and static + mobile decay by permanence class.
+- [[object-detector-measured-rates]]: EDA348 / EDA356 measured rates with their caveats. Truth is judged, from one office, offline only. The wall-art rate is not a detector rate (EDA355 Part B).
+- [[incremental-large-object-update]]: EDA353 (PR #277, in a fix round, replay only).
+- [[hard-values-in-config]]: EDA354 and `docs/rules-index.md` (human rule 2026-11-12).
+
+**Retired as project guidance** (human 2026-11-12: "retire the June-campaign (SfM / refinement) tenets"). Each page got a banner and an index tag; the method content is unchanged: [[reconciling-competing-signals]], [[trajectory-refinement-and-fusion]], [[lidar-sfm-map-alignment-methods]], [[sfm-error-sources]], [[global-alignment-wall-refinement]], [[anchor-map-protocol]]. The last two pages' missing index rows were added. [[robust-evidence-mapping-principle]] is NOT retired: the human's retirement list (the prototype's memory notes) does not include it.
+
+**Stale flags** (banner only, facts left as written): [[semantic-object-memory]], [[object-fingerprint-memory]] (newest content 2026-06), [[dynamic-object-handling]] (2026-08; overtaken by EDA346 live agent tracking), [[floor-map-sensing-options]] (2026-05; passive-stereo premise). Still flagged from the morning pass: `home-tidy-drone-prototype`, `stop-and-go-navigation-on-a-locked-map`.
+
+**Recurring gaps, updated.** Gap 2 (floor estimation / drive-over) is partly filled by the measured camera floor-check rates. Gap 4 (OSS options) is filled: `eda336-oss-options` was merged into this line. Gaps 1 and 3 (planning under uncertain occupancy; exploration station selection) are still open.
+
+**Branch hygiene.** This branch (`librarian-2026-11-12b`) starts from `librarian-2026-11-12` (PR #9, still unmerged) and merges the local-only `eda336-oss-options`, so it is the newest tip. Merging it alone brings `ai-drone-wiki` up to date.
