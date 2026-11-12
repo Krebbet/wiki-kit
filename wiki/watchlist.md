@@ -743,3 +743,17 @@ Window 2026-10-21 → 2026-10-28. Ingested: [[startups/doubleai]], [[landscape/a
 - [2026-11-04] **Character.AI Chapter 11 (10-12) with Disney stalking-horse** — consumer-chat failure case; single source, verify — (scan agent report, no URL)
 - [2026-11-04] **Gallatin AI $50M Series A; Mave $28M Series A (Red Dot)** — product unknown; leads from SiliconReport index — https://www.siliconreport.com/ai/archive/2026-10
 - [2026-11-04] **Anthropic S-1 financials (profit vs $80.7B-loss reports conflict)** — resolve on EDGAR primary — https://letsdatascience.com/news/anthropic-files-s-1-for-nasdaq-ipo-under-ticker-ant-d013b0b0
+
+## 2026-11-11 — weekly sweep
+Window 2026-11-04 → 2026-11-11. Ingested: [[landscape/snowflake-expedition-2026-11]], [[landscape/claude-unified-enterprise-2026-10]], [[startups/fal]], [[landscape/mcphantom-deprecated-mcp-servers-2026-11]], [[landscape/google-agentic-data-cloud-cross-cloud-2026-11]].
+
+- [2026-11-11] **Sierra acquires Anon (2026-11-05)** — browser-agent tech so agents work behind logins on sites without APIs; terms undisclosed; dealroom only — https://dealroom.co/news/170115-sierra-buys-anon-to-let-its-ai-agents-work-behind-website-logins/
+- [2026-11-11] **Meta acquires Conductor (~2026-11-06)** — runs multiple coding agents in parallel; for Superintelligence Labs; single aggregator, verify — https://aiagentsdirectory.com/news/ai-agents-news-brief-november-6-2026
+- [2026-11-11] **Five9 to buy Level AI (~$325M cash, ~2026-11-05)** — CX agent-assist consolidation; verify with a primary — https://aiagentsdirectory.com/news/ai-agents-news-brief-november-6-2026
+- [2026-11-11] **Palo Alto Networks / Clutch Security (~$500M, reported talks)** — agent-credential security; unconfirmed — https://aiagentsdirectory.com/news/ai-agents-news-brief-november-6-2026
+- [2026-11-11] **NVIDIA NemoClaw CVE-2026-65105 (Oasis Security)** — malicious website gives control of local Ollama model server; publication date unseen — https://www.scworld.com/brief/nvidia-nemoclaw-vulnerability-allows-full-control-of-ai-agents-local-model-server
+- [2026-11-11] **Humble Robotics $51M Series A (Obvious Ventures, 2026-11-05)** — autonomous freight; out-of-core, funding-flow datapoint — https://techstartups.com/?p=140149
+- [2026-11-11] **Finpilot $10M Series A (Lobby Capital, 2026-11-04)** — AI for institutional investors; thin — https://unite.ai/no/finpilot-secures-10m-series-a-to-build-ai-for-institutional-investors
+- [2026-11-11] **Databricks Connect AI (Agent Bricks over MCP to hundreds of systems)** — from a weekly roundup; confirm on Databricks newsroom — https://www.rtinsights.com/real-time-analytics-news-for-the-week-ending-november-8/
+- [2026-11-11] **Launch HN cluster: Omnara, Ardent, Voker, Terminal Use, Mantlecore, Blaxel** — agent sandboxes/hosting/analytics; dates unverified — https://news.ycombinator.com/launches
+- [2026-11-11] **Cortex AI Gateway Sandboxes/Abuse Detection/Trace Intelligence** — private preview per Snowflake; track for GA — see [[landscape/snowflake-expedition-2026-11]]

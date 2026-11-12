@@ -409,3 +409,6 @@ Weekly radar sweep (window 2026-10-21 → 2026-10-28, ad-hoc Wednesday run). 5 c
 
 ## 2026-11-04 — weekly-brief
 Weekly radar sweep (window 2026-10-28 → 2026-11-04). Search index returned little dated inside the window; 3 captured/ingested: Microsoft Project Perception/Guardian Agents (Dark Reading), GitHub Copilot local sandboxing GA (2026-10-07 changelog), Anthropic S-1 filing (secondary aggregator; verify on EDGAR). New pages: landscape/microsoft-project-perception-guardian-agents-2026-10, landscape/github-copilot-local-sandboxing-2026-10, landscape/anthropic-s1-ipo-filing-2026-10. Extended Related on anthropic-series-h-2026-05 and agent-identity-governance-2026-09. platforms/microsoft.md deliberately not edited (pre-existing uncommitted changes). 9 watchlist additions. No conflicts opened.
+
+## 2026-11-11 — weekly-brief
+Weekly radar sweep (window 2026-11-04 → 2026-11-11). 5 captured/ingested: Snowflake Expedition 2026 (Business Ontology, Cortex AI Gateway), Claude unified chat+Cowork for Enterprise, fal $1.3B Series F, Glow Labs MCPhantom, Google Agentic Data Cloud cross-cloud. Search index again thin on AWS/Azure/Databricks/OpenAI first-party items. Left pre-existing dirty files (master_notes.md, platforms/microsoft.md, platforms/snowflake.md) untouched.

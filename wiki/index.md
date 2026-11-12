@@ -101,12 +101,17 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[landscape/openai-devday-dots-gpt61-sol-2026-09\|openai-devday-dots-gpt61-sol-2026-09]] | DevDay 2026-09-29: GPT-6.1 Sol claimed near-Astra at 1/5 price; Astra reportedly scrapped (WSJ, secondhand); dots/Agents API unverified; thin source |
 | [[startups/yc-s26-2026-09\|yc-s26-2026-09]] | YC Summer 2026 (S26) Demo Day, 2026-09-10 — 235 companies (largest batch ever), ~60% AI; agent infrastructure (identity, memory, evals, cost-routing) crystallizes into the dominant startup category; standouts Inkbox, Understudy Labs, HyperProbe, Assemble |
 | [[startups/doubleai\|doubleai]] | doubleAI (Tel Aviv, Shashua) — Maxwell "code execution model" binary-level optimizer; $200M Series A (2026-10-19, Lightspeed/Bessemer, Nvidia, Dell); benchmarks vendor-claimed, unverified |
+| [[startups/fal\|fal]] | fal (generative-media inference): $1.3B Series F at $16B led by Bessemer (2026-11-03); revenue claim unconfirmed |
 | [[landscape/anthropic-opaque-acquihire-2026-10\|anthropic-opaque-acquihire-2026-10]] | Anthropic licenses Opaque (confidential computing) plus partial hire (~2026-10-13); trade press disagrees on structure; thin |
 | [[landscape/microsoft-foundry-agent-harness-2026-09\|microsoft-foundry-agent-harness-2026-09]] | Foundry Routines / Tool Search / A2A GA; Insights, resilience, voice in preview; agent identity lifecycle has no maturity label |
 | [[landscape/gemini-at-work-agent-2026-10\|gemini-at-work-agent-2026-10]] | Google Gemini work agent (2026-10-08): 4 memory types, per-agent identity, Agent Gateway/Sandbox, Claude routing; private preview, vendor-only |
 | [[landscape/microsoft-project-perception-guardian-agents-2026-10\|microsoft-project-perception-guardian-agents-2026-10]] | Microsoft Project Perception + Guardian Agents (2026-10): per-agent identity, Dynamic Agent Risk, MXC; preview, analyst-skeptical |
 | [[landscape/github-copilot-local-sandboxing-2026-10\|github-copilot-local-sandboxing-2026-10]] | GitHub Copilot local sandboxing GA (2026-10-07): MXC-based, free, org-enforceable; vendor changelog only |
 | [[landscape/anthropic-s1-ipo-filing-2026-10\|anthropic-s1-ipo-filing-2026-10]] | Anthropic S-1 (filed 2026-10-26, ticker ANT): share classes, LTBT; secondary report, unverified |
+| [[landscape/snowflake-expedition-2026-11\|snowflake-expedition-2026-11]] | Snowflake Expedition 2026 (2026-11-03): Business Ontology + expanded Cortex AI Gateway for agent governance; mixed GA/preview; single vendor press release |
+| [[landscape/claude-unified-enterprise-2026-10\|claude-unified-enterprise-2026-10]] | Anthropic unifies Claude chat and Cowork for Enterprise (2026-11-11): cloud-VM agent sessions, usage-based pricing, four admin cost controls incl. Efficient mode |
+| [[landscape/mcphantom-deprecated-mcp-servers-2026-11\|mcphantom-deprecated-mcp-servers-2026-11]] | Glow Labs "MCPhantom" (2026-11): coding agents install archived, unpatched MCP servers from training-data memory; single secondary source |
+| [[landscape/google-agentic-data-cloud-cross-cloud-2026-11\|google-agentic-data-cloud-cross-cloud-2026-11]] | Google Agentic Data Cloud (~2026-11-04): GA cross-cloud interconnect/caching for AWS+Azure, Iceberg federation with Unity/Horizon/Glue; lock-in readthrough |
 | [[watchlist\|watchlist]] | Signals surfaced during weekly radar sweeps that didn't merit full capture — future research targets |
 | [[reference-sources\|reference-sources]] | Signal-source hierarchy scanned by `/weekly-brief` for this wiki's domain |
 

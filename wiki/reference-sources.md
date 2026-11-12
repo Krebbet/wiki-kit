@@ -159,3 +159,9 @@ The `git checkout` step ensures the run lands on the intended weekly-brief branc
 - **havoptic.com** — coding-agent release tracker; aggregator, point to primary.
 - **SecurityWeek, OODA Loop** — agent-security trade coverage.
 - **Scan caveat:** search index was stale for Databricks/Snowflake/AWS/Google/Azure this window; open vendor newsrooms directly next run.
+
+## Additions (2026-11-11)
+- **snowflake.com/en/news/press-releases** — first-party press releases are directly capturable; use instead of aggregator relays.
+- **claude.com/blog** — Anthropic product/admin posts (distinct from anthropic.com/news).
+- **aiagentsdirectory.com daily briefs** — lead-finding only, M&A leads; confirm with a primary.
+- **Scan caveat:** AWS, Azure, Databricks and OpenAI first-party items again not surfaced by search; open newsrooms directly next run.
