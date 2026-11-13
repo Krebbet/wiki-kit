@@ -337,6 +337,18 @@ Our mandate includes identifying door-like transformable objects. What 2D-LiDAR 
 
 ---
 
+## What this rig measured — a floor coverage map and camera wall coverage (drone-prototype, 2026-10-08 → 10-15)
+
+*(librarian, 2026-10-15; prototype feedback. Sources: drone-prototype diary 2026-10-08 (coverage map; office-cov1), 2026-10-13 (driven floor), 2026-10-15 (EDA257); `src/drone/agent/coverage.py`; `docs/parked.md` P-00118, P-00120, P-00125, P-00140, P-00141.)*
+
+- **Coverage is recorded per 4 cm floor cell as the LOWEST height any beam passed through**, measured above the floor the same scan saw nearby; a cell is LiDAR-searched when a beam crossed it below 5 cm (so anything ≥ 5 cm would have been hit). The camera's floor footprint (with line of sight on the floor plan) is a second layer; floor the rover drove over counts as **driven**, reported apart, never as searched.
+- **A first version lied:** marking a height band "seen" if a beam passed anywhere in it claimed 99.6 % of the floor was seen and called a toy's spot searched. Tracing beams cell by cell showed the toy WAS in the LiDAR and had been dropped by an absolute 3 cm floor cut.
+- **Geometry limit:** a station cannot search its own surroundings within ~0.67 m (where a −20° beam first drops below 5 cm); steep tilts (−12°, −20°) raised LiDAR-searched floor by 14 points with half the stations. Late runs reached 92–96 % sensor-searched (office-gap16c, -gap19b).
+- **As a utility term it saturated** at every candidate (P-00120), so it stopped steering station choice.
+- **Camera wall coverage (EDA257):** "framed" = a wall point at 0.9 m height lands inside a level/+10° frame 0.8–2.5 m away with clear line of sight. Over a whole 12-station run, 0 of 5 window points were framed, because the single camera heading per station always went to objects. That motivated a second camera-only look per station toward the most unframed wall (see [[robot-task-orchestration]] §8, [[door-aperture-detection]] §What this rig measured).
+
+**Gap (TODO):** a camera next-best-view term that competes fairly with object views; "framed" is geometric, not "the detector could have seen it" (P-00141).
+
 ## 9. Synthesis — what to build, in order
 
 *(synthesis — the whole of this section is a project recommendation, not a citation.)*

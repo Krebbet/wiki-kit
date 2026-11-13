@@ -7,6 +7,9 @@ Recommendation: keep 0° as the map/registration/guard plane, add a **stepped la
 
 ## CORRECTION (updated 2026-09-24, measured on the rig — read before §5 and §6)
 
+
+> **SUPERSEDED IN PART (librarian, 2026-10-15; provenance: drone-prototype diary 2026-10-05, `eda/EDA233-tilt-sweep/ROLL-FWD.md` + `TILT-ZERO.md`, `src/drone/rig_geometry.py`).** Two numbers in this section moved on **2026-10-05**, measured on the rover after the tilt was re-modelled as a rotation about the **rover's** axis rather than the LiDAR's: the scan height is now **`SCAN_H_M` = 0.334 m**, taken together with a tilt zero of **−2.5°** (the 0.2972 m figure assumed no tilt offset; held to about ±1.5 cm until the tilt scale is settled), and the rig roll is **−0.2°** (the −1.8 ± 0.4° roll was the tilt applied about the wrong axis). Pages whose scan-plane notes still say 0.2972 m inherit this correction: read them as "~0.33 m". The argument of this section (the rover sees desk legs and is blind *above* its plane) is unchanged.
+
 **This page's §5–§6 reason from a 1.10 m scan plane. The prototype rover's is 0.2972 m.**
 
 | figure | platform / provenance | status |

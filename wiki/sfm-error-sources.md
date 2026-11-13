@@ -1,5 +1,7 @@
 # Sources of Error in Monocular / Visual SfM — Why the Camera Path Bows Away from Metric Truth
 
+> **RETIRED as project guidance (human, 2026-11-12; librarian banner).** The drone-prototype's June-campaign tenets are retired. This page served those tenets: SfM / hloc poses as the map-build trajectory, LiDAR-SfM consensus fusion, joint-consistency refinement of trajectory, map and camera POVs, SfM over the camera-LiDAR extrinsic, and the locked June map as substrate. The rover now maps from a tilting 2D LiDAR plus closed-loop wheel odometry at stop-and-scan stations ([[stop-and-scan-room-mapping]], [[odometry-closed-loop-pipeline]]), with no SfM in the loop. The method survey below is still valid as reference. Do not read its "our problem" framing or its recommendations as the project's current plan. Kept as history.
+
 A diagnostic catalogue of **where monocular Structure-from-Motion (SfM) error comes from**, how each error *manifests*, how to *detect* it, and how to *mitigate / add metric grounding* — written to explain **why our hloc monocular SfM camera path disagrees with the metric 2D-LiDAR trajectory by a smooth, spatially-varying ~13 cm warp** (not random scatter, not a single jump). *(synthesis — assembled from the cited primary sources.)*
 
 This is the **upstream, cause-side** companion to the three reconciliation pages, which assume the warp already exists and ask how to fuse it away:

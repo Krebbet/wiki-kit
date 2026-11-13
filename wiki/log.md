@@ -437,3 +437,70 @@ Two pages ahead of the object/levels campaign the human scoped for after the H2 
 `locate-object-from-last-known-position` — 31 sources. The classical object schemas store pose + extent + class + confidence and **none stores the observing viewpoint or a usable last-seen time**; the 2025–26 memory agents built to go back and look (STAR, EmbodiedLGR, Khronos) store exactly that, which is the precedent for the extra field. Load-bearing negative result: SLiM (ICRA 2020) — a known-but-noisy **static** prior on object location made search *worse than no prior at all* (33 % vs 83–100 %), independently echoed by COS-POMDP where estimated correlations underperformed reversed ones; so the last-known location is a hint with a growing covariance, scaled by permanence class. Association gates should be **loose**, not tight (AB3DMOT: IoU_min 0.01→0.25 takes ID switches 0→19; nuScenes replaced IoU with a 2 m centre distance because small objects score zero IoU under small translation error — directly relevant to a 5 cm footprint map). POCD is named as an **anti-pattern**: its visibility test is pure frustum containment, so an object occluded by nearer furniture is pushed toward deletion. On one 1.1 m plane "identified" can honestly mean only *re-observed at the expected place with a compatible 2-D footprint* — every published single-plane recogniser mounts at 30–40 cm and two state 80 cm is already too high. Tilt buys coverage and change detection, **not semantics**; the camera buys identity, and raw DINOv2 in-the-wild instance top-1 is 47.3 % against a ~43–50 % chance floor.
 
 Scoping consequence folded back into `docs/next-campaign-scoping.md`: geometry-only identity first with the camera entering at *verification*, and the object record carries `last_seen_from` plus presence intervals rather than a single timestamp.
+
+
+### 2026-10-06 — librarian close-out (PR #57–#59: camera↔LiDAR extrinsic correction)
+
+Dated corrections citing drone-prototype `eda/EDA246-camlidar-calib/FINDING.md` on `camera-lidar-spatiotemporal-calibration` (§3) and `locate-object-from-last-known-position`: the LiDAR sits ~2.2 cm behind the camera (forward term was 6.4 cm wrong; tx +0.85 cm), lens distortion applied; the earlier "sideways offset" was the forward error.
+
+
+### 2026-10-07 — librarian periodic pass (drone-prototype PR #66: IMU odometry, first room scan)
+
+Dated notes citing the drone-prototype diary 2026-10-06 (night) and 2026-10-07 (late morning): gyro results on `odometry-closed-loop-pipeline` and `usb-imu-candidates`; room-scan anomaly kinds on `locate-object-from-last-known-position`. Flags: `imu-vio-integration-reality` partly stale (yaw gyro fitted), `home-tidy-drone-prototype` freshness banner; other stale pages listed in the revisions row. No research run.
+
+### 2026-10-07 — research: robot-task-orchestration
+
+New page [[robot-task-orchestration]] (~65 sources) answering the human's question of how other robots organise varied tasks (planning, acting, revising beliefs) and whether to prioritise deterministically or with a model. Recommendation: a deterministic scored agenda over an object-centric belief store, executed by a thin behaviour tree / the existing scripts; LLM/VLM only at judgement seams later; POMDP lookahead only if greedy wastes stations. Most entries cited from memory; arXiv ids for Panoptic Multi-TSDFs, Khronos, POCD, DovSG, MEXEC, M2020 onboard planner and AEGIS re-checked.
+
+
+### 2026-10-15 — librarian periodic pass (drone-prototype PR #105: task loop v1 campaign, 2026-10-07 → 10-15)
+
+Dated "What this rig measured" sections citing the drone-prototype diary and EDA253–257 on `robot-task-orchestration` (§8), `door-aperture-detection`, `stop-and-go-navigation-on-a-locked-map`, `sensor-mount-2dof-tilt-lift`, `lidar-floorplan-extraction` and `active-slam-exploration`; a superseded-in-part banner on the canonical scan-plane CORRECTION of `tilting-2d-lidar-multiplane-capture` (0.334 m, tilt zero −2.5°, roll −0.2°, 2026-10-05); `home-tidy-drone-prototype` freshness banner refreshed. Ten pages still quoting 0.2972 m are listed as stale in `revisions.md`. Branch stacks the unmerged 2026-10-02/10-06/10-07 librarian work and the `research-task-orchestration` page. No research run; gaps left as TODO.
+
+### 2026-10-20 — librarian periodic pass (drone-prototype PR #115: large objects, architecture fixes 1–4)
+
+Dated "Superseded-in-part (2026-10-20)" banners on [[system-architecture]], [[user-comms-layer]], [[comms-prototype-mandate]] and [[world-model-architecture]], pointing at drone-prototype `docs/architecture-proposal-2026-10.md`. Stale points named: no ROS 2 / rosbridge; file-based world store per world dir instead of SQLite / vector DB; LiDAR locked map + live map instead of hloc / RTAB; the drone-app 2026-06-07 cloud-relay / onboard-realtime pivot; permanence classes disagree (prototype: permanent / semi-permanent / non-permanent). Pages not rewritten: the human has not signed off on the new architecture. No research run.
+
+### 2026-10-21 — librarian periodic pass (drone-prototype PR #141: the 2026-10-21 improvement rounds)
+
+New page [[improvement-rounds-2026-10-21]] (walls EDA266/269, large objects EDA267/272, identification EDA268/271, reach EDA270; offline replays only; cites each FINDINGS). Banners on [[system-architecture]], [[user-comms-layer]], [[comms-prototype-mandate]], [[world-model-architecture]] updated: the architecture was signed off 2026-10-20, rewrite owed. Stale flags carried: ten pages still quote the 0.2972 m scan plane. Branch `librarian-2026-10-21` stacks on `librarian-2026-10-20` (wiki PR #6). No research run.
+
+### 2026-11-05 — fast visual hazard detection research (prototyper-dispatched)
+
+New page `fast-visual-hazard-detection`: how to build the rover's fast live "something is off ahead" trigger (HOLD -> RESOLVE -> RESUME) the human specified 2026-11-05. Load-bearing findings: every shipping robot stops on class-agnostic geometry and lets classifiers only steer; the human's expectation subtraction is the published free-space-violation test (Dynablox, nvblox) and should be done in 3D against map + bank cuboids; the trigger path fits easily on an Orin Nano (SGM 17 ms, YOLO26n ~4.6 ms FP16) — rate is not the constraint at 0.10 m/s, false remainders from pose/bank error and stereo starvation are. COCO lacks a rabbit class. Recommended staged build: A geometric subtraction -> C stationary differencing -> B detector -> re-ID. Catalogued in `index.md`.
+
+### 2026-11-07 — task-conditioned object maps research (prototyper-dispatched)
+
+New page `task-conditioned-object-maps`, answering the human's 2026-11-07 question (store objects efficiently, map only the task-relevant ones onto the live floor map by their 3D shape; the rover can drive under the desk, a mug is ON the desk) and the follow-up asking for a comparison of the proposed pattern with the literature. Load-bearing findings: no surveyed navigation stack projects stored object instances by task — maintained costmaps project every sensed point in a fixed height band with no identity, and task selection in the literature (SayPlan, Taskography SCRUB, Clio) serves LLM context / symbolic planning / map building, not collision; the closest prior is VLMaps' on-the-fly per-embodiment obstacle maps plus MoveIt's task-curated planning scene, so the pattern is a fair recombination rather than a new paradigm. Every curated system keeps a task-independent sensed layer (Clio keeps places/mesh, VLMaps intersects with the sensed projection, NavPatch overlays) — the safety condition for the pattern. Rig gap found in drone-prototype: `task_loop.known_keepouts` stamps all small bank objects as z-blind floor discs. Recommended first step: structured `support` on bank records (hostgate at filing) + z-aware projection gated on HeightEvidence, replay-tested against the EDA311/315 invariant. Catalogued in `index.md`.
+
+### 2026-11-12 — librarian periodic pass (stale pages + recurring gaps; no new research)
+
+**Stale pages flagged** (banner at the top, facts left to their owner): `home-tidy-drone-prototype` (newest content 2026-06-02, no banner until now), `stop-and-go-navigation-on-a-locked-map` (planner sections predate the 11-09 redesign), and a further-update line under the 2026-10-20 banner on `world-model-architecture`. `system-architecture` already carries the 2026-10-20 banner, which still points at the right place. `home-tidy-drone-prototype` and `system-architecture` are the pages the drone-prototype SessionStart hook points every session at, so their staleness costs every session; the current as-built design lives in drone-prototype `docs/architecture/`.
+
+**Recurring gaps** (the prototype keeps re-deriving these; candidates for prototyper-dispatched research, not done in this pass):
+1. Planning under uncertain occupancy -- priced / probabilistic costmaps, "check on the way" (drive-with-checking), and keeping the route search and the verifier on one rule set (drone-prototype EDA318–EDA334). Partly touched by [[ros2-nav2]] and [[stop-and-go-navigation-on-a-locked-map]]; no page on the method itself.
+2. Floor-surface estimation and small-obstacle / drive-over detection with a tilting 2D LiDAR (2 cm drive-over bar, floor bias by tilt posture; drone-prototype EDA330, P-01150, EDA335 pending as PR #255). No page.
+3. Exploration station selection (diverse candidates, cost-to-go, forgetting failed stations; EDA331, EDA334). [[active-slam-exploration]] covers frontier exploration but not this.
+4. Open-source equivalents for the rover stack -- being filled by drone-prototype EDA336 on wiki branch `eda336-oss-options` (page `open-source-rover-stack-options`, not merged).
+
+**Branch hygiene flag:** no librarian or research branch since 2026-10-02 has been merged into `ai-drone-wiki` (it stops at the 2026-09-24 corrections). Worse, the line had FORKED: `librarian-2026-11-05-hazard-detection` (+ the 11-07 page) was cut from the 10-02 tip, so it lacked the 10-06 → 10-21 work (extrinsic correction, task orchestration, the 2026-10-20 superseded banners, improvement rounds). This branch `librarian-2026-11-12` re-joins them: it is `librarian-2026-10-21` + a merge of `librarian-2026-11-05-hazard-detection` + this pass, so merging it alone into `ai-drone-wiki` brings in everything through 11-12. `eda336-oss-options` still forks from the 11-05 line; rebase or merge it onto this branch before it lands. Needs the human (the librarian does not push to the wiki's main line).
+
+### 2026-11-12 — open-source rover stack options (prototyper-dispatched, EDA336)
+
+New page `open-source-rover-stack-options`, answering the human's 2026-11-12 question (we built everything from scratch; which open-source packages could we test for navigation, mapping and planning). Load-bearing findings: the classic parts (registration, pose graph, A*, guard) work and a library only buys speed there (measured small_gicp ~9x); the pain is route-search time (Smac-style per-heading lattice is the standard answer), mirror-room cold start (MCL across a known motion is the standard answer), the 2 cm floor call (elevation-map variance fusion, capped by the sensor error budget) and check-first drivability (no equivalent). Platform constraint: Ubuntu 22.04 means Humble (EOL 2027-05) or Jazzy via pixi/Docker. Recommendation piecemeal + one offline ROS 2 benchmark; adoption is an open human decision. Catalogued in `index.md`.
+
+### 2026-11-12 (b) — librarian periodic pass (drone-prototype PRs #255–#275): four method pages, June tenets retired, stale flags
+
+**New pages** (project method knowledge written back from the day's EDAs; each cites its FINDINGS and states its status):
+- [[object-certainty-model]]: EDA355 design (PR #274, approved, NOT built, human decisions owed). Covers the 3-state H/M/N belief, tempered same-view looks, and static + mobile decay by permanence class.
+- [[object-detector-measured-rates]]: EDA348 / EDA356 measured rates with their caveats. Truth is judged, from one office, offline only. The wall-art rate is not a detector rate (EDA355 Part B).
+- [[incremental-large-object-update]]: EDA353 (PR #277, in a fix round, replay only).
+- [[hard-values-in-config]]: EDA354 and `docs/rules-index.md` (human rule 2026-11-12).
+
+**Retired as project guidance** (human 2026-11-12: "retire the June-campaign (SfM / refinement) tenets"). Each page got a banner and an index tag; the method content is unchanged: [[reconciling-competing-signals]], [[trajectory-refinement-and-fusion]], [[lidar-sfm-map-alignment-methods]], [[sfm-error-sources]], [[global-alignment-wall-refinement]], [[anchor-map-protocol]]. The last two pages' missing index rows were added. [[robust-evidence-mapping-principle]] is NOT retired: the human's retirement list (the prototype's memory notes) does not include it.
+
+**Stale flags** (banner only, facts left as written): [[semantic-object-memory]], [[object-fingerprint-memory]] (newest content 2026-06), [[dynamic-object-handling]] (2026-08; overtaken by EDA346 live agent tracking), [[floor-map-sensing-options]] (2026-05; passive-stereo premise). Still flagged from the morning pass: `home-tidy-drone-prototype`, `stop-and-go-navigation-on-a-locked-map`.
+
+**Recurring gaps, updated.** Gap 2 (floor estimation / drive-over) is partly filled by the measured camera floor-check rates. Gap 4 (OSS options) is filled: `eda336-oss-options` was merged into this line. Gaps 1 and 3 (planning under uncertain occupancy; exploration station selection) are still open.
+
+**Branch hygiene.** This branch (`librarian-2026-11-12b`) starts from `librarian-2026-11-12` (PR #9, still unmerged) and merges the local-only `eda336-oss-options`, so it is the newest tip. Merging it alone brings `ai-drone-wiki` up to date.

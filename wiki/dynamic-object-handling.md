@@ -1,5 +1,7 @@
 # Dynamic Object Handling
 
+> **Partly overtaken by the rover prototype (librarian flag, 2026-11-12).** Newest content is from 2026-08. drone-prototype EDA346 built live LiDAR tracking of people and pets (camera-confirmed). The human decided on 2026-11-12 that the planner acts only on the CURRENT tracked position. Semi-static object change is handled by re-observation (EDA348), and a probabilistic treatment is proposed in [[object-certainty-model]].
+
 How indoor robots cope with a world that changes: objects moving during a navigation session (fast dynamics), objects moved between sessions (semi-static), and room-level changes across many runs (lifelong). Three distinct problem classes requiring three distinct mechanisms.
 
 ## Source

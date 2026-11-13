@@ -331,6 +331,22 @@ Two facts about our scan plane are worth stating before the recipe. **1.07–1.1
 
 ---
 
+## What this rig measured — doors and windows v1 (drone-prototype EDA256/EDA257, 2026-10-14 → 10-15)
+
+*(librarian, 2026-10-15; prototype feedback. Sources: drone-prototype `eda/EDA256-doors-windows/FINDINGS.md`, `eda/EDA257-camera-wall-coverage/FINDINGS.md`, diary 2026-10-14 → 10-15, `docs/parked.md` P-00136, P-00140…P-00144. The rover's scan plane is ~0.33 m, not 1.1 m: see [[tilting-2d-lidar-multiplane-capture]] §CORRECTION.)*
+
+**Scope agreed with the human:** each door/window is an object on the closed floor-plan outline (wall, place, width). Open/closed state and sill height are out.
+
+**Method as built.** Doors = **LiDAR doorway candidates** (closing-line runs 0.5–1.3 m wide in the outline) **confirmed by a camera door detection** (Grounding DINO, no score threshold), tied to the wall stretch it covers by projecting the outline into the frame. Windows = camera detections **above the scan plane**, placed on the LiDAR wall, confirmed from **2 stations**. Five rules each came from a traced miss: decoy labels (wardrobe, cabinet, shelf, desk, outlet; later monitor, computer); a door's own leaf does not block its line of sight; wall points looked for at several heights so close-ups count; a 20 cm hinge pad; a door detection on a wall with **no** gap becomes "door?" (a closed door is flush, as §What happens when the door closes predicts). Hypotheses are voted against by framed looks that detect nothing and expire after a view budget.
+
+**Results.** Offline on 3 office worlds: NW door confirmed in all 3 (0.05–0.18 m off), SW door 1/3 confirmed, window 1/3 confirmed; **0 false confirmed**, 1–2 false door hypotheses per world. Live: doors confirmed in office-gap17; the desk **monitor** was confirmed as a window there (fixed by decoys; "a screen" was deliberately *not* added, because DINO merges phrases and a real window's insect screen would then be dropped); in office-gap19b the window was confirmed live for the first time (26 cm from an approximate ground truth). A confirmed door resolves its outline gap (outline score 0.55 → 0.71 in replay).
+
+**Failure modes seen (add to §Practical failure modes).** Raw detector labels are unreliable for this: the wardrobe read as "door frame", an outlet as "hinge", white doors drew frame-filling "window" boxes. A door seen from its **hinge edge** places a hypothesis ~0.55 m from its centre (gap13, gap18b, gap19b). A single-station hinge detection confirmed a false door in a cluttered corner (P-00144). Confirmed doors go **stale** when the outline under them is re-fitted (P-00144). A window is only found if the camera is turned toward it; nothing pulls the camera to a wall that never produced a detection (P-00140, EDA257).
+
+**Gaps (TODO, not researched in this pass):** persisting an aperture belief when the wall model under it moves; whether one detector pass over a framed stretch is enough to call a window absent (P-00141).
+
+---
+
 ## Open questions
 
 - We have never tested what our rig returns off the glass in the kitchen's window-door. Until we do, every glass claim on this page is borrowed, not measured.

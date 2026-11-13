@@ -94,6 +94,8 @@ Motion-based calibration is only as observable as the **motion excites it**. The
 
 ---
 
+> **What the rover measured — correction (librarian note, 2026-10-06).** This page is judged against the June *hand-held* rig; the rover's head carries the same two sensors on one tilting mount, and its camera↔LiDAR translation was **wrong along the optical axis**, not sideways. drone-prototype `eda/EDA246-camlidar-calib/FINDING.md` (PR #59): the LiDAR sits **~2.2 cm BEHIND the camera**, not 4.3 cm in front (forward term off by 6.4 cm; applied **tx +0.85 cm, tz −6.42 cm**, two independent sets agree to 0.06 cm), and the left lens's distortion is now applied in the forward projection (the pinhole was off by up to ~22 px at the frame edge). Median chord-vs-mask miss 1.8–2.7 → 0.13–0.42 cm on held-out data. The earlier "~2–3 cm **sideways** offset" (P-00086) *was* this forward error: it shows only as an object moves across the frame, and the discovery stations all had the object right of centre. A planar wall board cannot see it either (the board-to-wall offset trades with it). Method rule: **judge the extrinsic with same-tilt tests only** (each LiDAR chord against the frame taken at the same tilt) — joint fits that pair frames with other tilts leak the open tilt-scale error into the camera. Yaw vs sideways is still not separated (P-00092); an independent tape check of lens vs LiDAR spin centre is still owed.
+
 ## 4. Reconciling the two trajectory estimates & attributing the residual
 
 (The mechanics live in [[trajectory-refinement-and-fusion.md]] and [[reconciling-competing-signals.md]]; here is the **time-and-extrinsic-aware** layer on top.)

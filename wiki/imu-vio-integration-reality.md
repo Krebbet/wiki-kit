@@ -10,6 +10,8 @@ hloc bake-off — the IMU is **no longer on the critical path**. It exists so th
 robustification ladder + visual-inertial-slam page + the prototype's own EDA003 finding and rig
 architecture; carries their raw-source citations through.)*
 
+> **STALE in part (librarian flag, 2026-10-07).** "Buy nothing yet" was about VIO for the passive-stereo campaign. The rover has since fitted a cheap USB gyro for **wheel-odometry yaw only** (no VIO, no camera sync), on the reasoning in [[odometry-closed-loop-pipeline]] §3, and it measured ~11× better heading than the wheels (that page's §What this rig measured (2026-10-06 → 07)). The two-clock sync argument below still stands for VIO; yaw-only fusion needs the samples to cover each move window, not ~1 ms frame alignment (the window check currently uses host arrival time; whether USB bursts cause refusals is still to be counted). Read §TL;DR and §4 as the June position.
+
 ## TL;DR — buy nothing yet
 
 1. **The IMU does not fix the problem we were actually stuck on.** It bridges **< 1 s** of feature

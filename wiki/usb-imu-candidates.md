@@ -85,6 +85,10 @@ Context: [[system-architecture]] (rover chassis: laptop tethered over a self-pow
 | Spatial Phidget MOT1102_1 + VINT hub | VINT/USB | 50 Hz max | ≈80 (phidgets.com) | Phidget22 | No — rate |
 | Yost 3-Space USB | USB | ≤ 1000 Hz | unavailable / quote | Yost API | No |
 
+## What was fitted (librarian note, 2026-10-07)
+
+The rover carries the **§10 fallback, the Seeed XIAO nRF52840 Sense** with the project's own firmware (`firmware/xiao_imu_stream.ino`, device µs stamps + sequence numbers), not the WitMotion. Bench: 208 Hz, 0 drops, clock residual p95 0.57 ms after flushing the startup backlog on open. On the rover it is mounted 4.6° off square, so yaw is the gyro projected on gravity-up. Measured results (LiDAR = 1.0024 × IMU, rms 0.26°; room-scan heading median 0.16° vs wheels 1.85°) are in [[odometry-closed-loop-pipeline]] §What this rig measured (2026-10-06 → 07). Source: drone-prototype diary 2026-10-06 (night), 2026-10-07 (late morning).
+
 ## Sources
 
 - WitMotion WT901C-TTL datasheet v20-0707 (specs, protocol, registers): https://m.media-amazon.com/images/I/81mYIe9A97L.pdf (accessed 2026-09-17)

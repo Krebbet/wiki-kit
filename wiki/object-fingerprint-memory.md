@@ -1,5 +1,7 @@
 # Object-Fingerprint Memory — Model & Method Choices
 
+> **STALE against the rover prototype (librarian flag, 2026-11-12).** Newest content is from 2026-06. For how the rover now re-observes, removes and identifies objects, see [[object-certainty-model]] (design) and [[object-detector-measured-rates]] (measured rates). The model and method choices below are unchanged.
+
 Concrete model + method knowledge for the per-instance **object-fingerprint memory
 bank**: as objects come in, segment + cut out each one, extract a feature vector, and
 store a fingerprint (object-only images, metric dimensions, embeddings, provenance,
