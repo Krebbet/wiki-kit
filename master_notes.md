@@ -147,3 +147,9 @@ Confirms the same `/abs/` vs `/pdf/` failure recurred on the 2026-09-24 run: `ca
 **Observation:** The arXiv survey agent's WebFetch of the export API truncated at 100k chars, so only the newest ~42 entries were read; journals/Crossref/IEDM lanes were skipped by the agent. Industry agent did not fetch ASX/investor.brainchip.com or trade-press pages directly. Page-writer subagents emit the required `[[../weekly-briefs/<date>]]` bullet before the brief exists (dangling until step 6). `poetry` again needed `PATH=$HOME/.local/bin:$PATH`.
 **Implication:** Split arXiv scan by category and cap query size; require direct newsroom/ASX fetches in the industry lane; write the brief file before (or in the same step as) page links.
 **Status:** open
+
+### 2026-11-12 — arXiv API returns empty bodies; only the cs.NE listing page worked
+**Scope:** kit
+**Observation:** `export.arxiv.org/api/query` returned HTTP 200 with a zero-byte body (rate-limit), and `arxiv.org/list/cs.AR|cs.ET|cond-mat.mtrl-sci/recent` returned a ~6.6 KB error page after the cs.NE listing succeeded. Survey agent also could not wait out back-off (`sleep` blocked). Crossref worked for IOP NCE.
+**Implication:** Space listing fetches out (one per call, retry later in the run), and prefer Crossref/listing HTML over the API in survey prompts.
+**Status:** open

@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-11-05
+last_reviewed: 2026-11-12
 ---
 
 # Watchlist
@@ -21,7 +21,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - HippocamPEX (arXiv 2611.05415, 2026-11-05) / HippocamFLEX FPGA prototype (2610.40932) — mixed-signal hippocampal architecture; silicon not verified
 
 
-- Noh et al. ECRAM Tiki-Taka (Sci. Adv. eadl3350) — ⚠️ science.org hangs; the wiki's only ECRAM primary
+- Noh et al. ECRAM Tiki-Taka (Sci. Adv. eadl3350) — ⚠️ science.org hangs; array-scale ECRAM primary (single-device STP source now in [[devices/ecram-short-term-plasticity-neuron]])
 - Tiki-Taka retention-aware zero-shifting — same paper, same access problem
 - Li et al. in-situ defect-tolerance training — **read this to settle [[conflicts/analog-onchip-training-viability]]**
 - A fabricated CurFe/ChgFe FeFET array with endurance and retention data
@@ -52,6 +52,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Cross-layer printed-memristor stateful-logic adders (arXiv:2610.20109) — 2n+6 cycles claimed; measured-vs-simulated split unstated
 - ReS2/hBN/InSe van der Waals floating-gate optoelectronic synapse (arXiv:2610.34738) — on/off >10⁶, retention >10⁴ s, single device
 - KCuCl3-x memristors (arXiv:2610.35436) — ~99% MNIST in simulated training only
+- Ag/SiOx/Pt volatile memristor relaxation timescales (NCE aebe57, 2026-11-05) — Al2O3 interlayer extends retention to seconds; ⚠️ iopscience Radware wall (659 B)
+- Spintronic skyrmion-synapse DCGAN (NCE aebe56) — 6-bit synapse, 0.192 pJ domain-wall Leaky ReLU; likely model-level simulation
+- Single-Josephson-junction reservoir computing (NCE aeb825) — numerical simulation only, cryogenic
 
 ## Chips & systems
 
@@ -89,6 +92,9 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - FPGAFly: 166.7k-neuron fruit-fly connectome on one FPGA (arXiv:2610.38118) — abstract unread; no energy figures verified
 - Memristor accelerator for depression detection, CNN-LSTM (arXiv:2610.39420) — measured vs simulated unknown; vs CPU/GPU baselines
 - ChroNoC network-on-chip (arXiv:2610.34083) — one-line summary only; unread
+- BrainChip Sept-quarter 4C — Kalkine snippet claims US$16.4M cash, ~20k AKD1500 chips received, EdgeAI/Frontgrade Gaisler tape-outs Q4; ⚠️ unverified, no primary or date; fetch from ASX
+- SpikePose lightweight video pose estimation (arXiv 2611.06594) — hardware unstated; unread
+- Fast local learnable SNN via neural-activity synchronization (arXiv 2611.11053) — algorithm-level; unread
 
 ## Algorithms & toolchains
 
@@ -122,10 +128,14 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Hybrid LIF-ABRF SNN spike detection for brain-machine interfaces (IOP NCE aea4ec) — 4.3× less memory; algorithm-level
 - SpikeDuet follow-up: ANN and neuromorphic baselines on the same MCU — would size the SNN-energy gap
 - Power-of-two LIF neurons (arXiv:2610.33658) — modeled energy only, no hardware
+- EventCLR contrastive self-supervised few-shot event vision SNN (NCE aebe58) — software only
+- Deep spiking Q-networks, encoding vs energy trade-offs (NCE aebaba) — game environments; energy basis unread
+- Recurrent modular SNN reinforcement learning (arXiv 2611.14262) — simulation; unread
 
 ## Benchmarks
 
 - ANTShapes: event-based neuromorphic object classification benchmark dataset (arXiv:2608.27150) — new dataset, modest novelty, NeuroBench-adjacent
+- NeuroBench 2.4.0 (2026-11-10) — adds Keyword FSCIL leaderboard entry SNN-CL2N; changelog only, no numbers
 
 ## Players & funding
 
@@ -140,7 +150,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 
 ## Programmes & policy
 
-- NICE 2027 (Apr 6–8, Sussex): paper deadline 2026-11-11
+- ~~NICE 2027 (Apr 6–8, Sussex): paper deadline 2026-11-11~~ *(deadline passed; accepted-paper list next)*
 
 
 - Lava (Intel) successor SDK — still unannounced as of 2026-09-24. New weak signal this run: an Intel job posting (2026-09-23, "AI Software Development Engineer – Neuromorphic Computing") references building kernels for "current and next-generation neuromorphic hardware" and "future neuromorphic products" — job-posting-level only, no SDK name, no chip name, no ship date. Widely-circulating "Loihi 3" specs (8M neurons, 4nm) trace to content-mill sources that self-contradict by admitting no official product sheet exists — not corroborated, not elevated here.

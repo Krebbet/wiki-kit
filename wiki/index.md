@@ -49,6 +49,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[devices/reciprocal-tau-cell-log-domain-learning]] | Log-domain CMOS equilibrium circuit with exact latched gradient; Iris 90% and mismatch recovery 53–63% → 88–96%. **SPICE only, SKY130, no silicon.** |
 
 ---
+| [[devices/ecram-short-term-plasticity-neuron]] | MoS2/PEO:LiClO4 ECRAM volatile conductance decay used as short-term plasticity in a delay-feedback LIF neuron. Only the single device (3 devices) is measured; ~2 pJ circuit energy (inconsistent with ~8 pJ Monte Carlo) and network results are simulated. |
 
 ## Chips & systems
 
@@ -83,6 +84,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[snn/spiking-mmwave-isac-fpga]] | 132-neuron SNN on a ZCU208 RFSoC FPGA for mmWave activity recognition: 3.4×/7.6× less PL dynamic energy than same-device ANNs, but over idle only, static power dominates, accuracy ~1.5 pt optimistic. FPGA, not neuromorphic silicon. |
 
 ---
+| [[snn/spike-encoding-iot-sensing]] | Six IoT tasks, SNN input encoders: FP32 45 nm arithmetic energy estimates and measured Jetson AGX Orin rail energy rank encoders differently. No neuromorphic silicon measured. |
+| [[snn/fly-connectome-snn-fault-assessment]] | Simulation-only (Brian 2) Drosophila-connectome LIF network under connection-row deletion: relay 0/48 vs proportional 11/48 collisions at 50% deletion; weak warnings (2/13), checker caught 81/87 corruptions. |
 
 ## Benchmarks
 

@@ -189,3 +189,9 @@ Full brief: `wiki/weekly-briefs/2026-10-29.md`.
 Survey: three agents (arXiv/feeds; vendors/industry; journals/toolchains). Vendor and journal lanes verified nothing dated in the window (BrainChip Sept-quarter 4C still unlocated; IEDM/ISSCC programs not yet public). arXiv lane (API listing for "neuromorphic") yielded the captures: 2611.03735, 2611.08405, 2610.41265, via `capture_pdf --engine pymupdf` (audit reports missing image refs only; text intact). Pages: chips/hyvox-xylo-speaker-id, devices/sot-mtj-multiweight-wafer-scale-synapse, chips/dynapse-neuromodulation-gain-reservoir. No conflict files opened.
 
 Full brief: `wiki/weekly-briefs/2026-11-05.md`.
+
+## [2026-11-12] weekly-brief | 3 captured, 10 watchlisted, ECRAM STP neuron / IoT spike encoding / fly-connectome fault pages
+
+Survey: three agents. Industry lane verified nothing dated in window (BrainChip Sept-quarter 4C only via an unverifiable Kalkine snippet); arXiv API returned empty bodies (rate-limited), so arXiv lane was rebuilt from the cs.NE listing (other listings returned error pages). Journals lane used Crossref for NCE. Captured: 2611.11317, 2611.06940 (marker), NCE aeb971 (capture_url, open access, full body). Skipped: NCE aebe57 (Radware wall, 659 B), NeuroBench 2.4.0 release (changelog only; watchlisted).
+
+Full brief: `wiki/weekly-briefs/2026-11-12.md`.
