@@ -12,7 +12,7 @@ offline, and none were re-measured live.
 drone-prototype repo, master `1fda3950` (2026-11-12):
 - `eda/EDA348-object-reobservation/FINDINGS.md` §2 (PR #272): `rates.py`, 6 training worlds, office-fresh1 held out
 - `eda/EDA356-camera-first-floor/FINDINGS.md` "Answer first" (PR #275): camera floor-check rates, train vs held out
-- `eda/EDA355-object-certainty/WALLART.md` (PR #274, open): why the wall-art rate is not a detector rate
+- `eda/EDA355-object-certainty/WALLART.md` (branch `eda355-object-certainty`, PR #274, open): why the wall-art rate is not a detector rate
 - parked P-01233, P-01236, P-01281, P-01291, P-01292, P-01310…P-01313
 
 ## Re-observation rates (EDA348)
@@ -47,9 +47,14 @@ rate (P-01291).
   understate misses about 1.4x per look and 2.7x at two looks.
 - **Looks are not independent.** An object the detector cannot see is missed from every station, so the chance that all
   k looks miss falls far slower than 0.5^k. Held-out LiDAR bodies give M(4) = 0.25 and M(6) = 0.10.
-- **Consequence:** with these rates the camera-first gate (built, switch OFF) fired on 0 of 20 unknown-floor blockers
-  across four recorded worlds. That is a finding, not a failure. The gate's 0 wrong clears means nothing, because it
-  cleared nothing.
+- **The gate's config rates are deliberately conservative, not the table's.** Per k, the config M(k) is the **larger**
+  of two upper bounds: the train camera items' 95 % bound and fresh1's camera-independent LiDAR-body bound. That gives
+  [0.705, 0.571]. Because it uses fresh1's bodies, fresh1 is no longer fully held out for this one value.
+- **Consequence:** under those config rates, the camera-first gate (built, switch OFF) fired on 0 of 20 unknown-floor
+  blockers across four recorded worlds. With these rates the gate can clear priors only up to 0.084 at threshold 0.95.
+  The 0.40 unknown-floor prior (`P_UNKNOWN`, a hand value) is therefore what blocks all 20. Even with the naive rates, 0
+  fired, because of camera coverage. This is a finding, not a failure. The gate's 0 wrong clears means nothing, because
+  it cleared nothing.
 - No rug or other floor surface has rates (P-01312). Range and angle terms are unsupported (P-01313).
 
 ## How to use these numbers

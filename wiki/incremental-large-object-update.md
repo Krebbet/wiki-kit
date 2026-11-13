@@ -5,7 +5,8 @@ SAM, voted into 2 cm voxels across camera frames and carved by LiDAR free space.
 recomputing over the full history at every station to an incremental fold of only the new observation. The pattern is
 general: any multi-view voxel-voting step whose state grows with station count can be kept bounded this way. **Status:
 replay-verified only; PR #277 is in a review fix round on 2026-11-12, so the numbers may still move. It has not run
-live (P-01257).**
+live (P-01257).** PR #277 also changes body segmentation. Its office-cont1 legacy-vs-geometric filing trade-off
+(P-01259) was misreported and is being corrected in the fix round. This page summarises only the memory work.
 
 ## Source
 
@@ -38,7 +39,9 @@ k = 20, then OOM-killed. 51 office-fresh1 stations, peak 266 MB. Soft stop 0.13â
 ## What the incremental form gives up (P-01250, P-01253)
 
 - A frame-voxel pair is voted once, with the occluders known at that time. A later occluder does not un-vote it.
-- Memory is bounded, but time still grows linearly with the station count (rays, frames, ID-check views).
+- Memory stays under the cap but still grows slowly: about +0.3 GB over 95 stations (peak 443 MB on office-cont1).
+  Time also still grows linearly with the station count (rays, frames, ID-check views).
+- Parity with the full recompute is not exact: 17 of 22 parts land within 10 cm of it (P-01250).
 - Detection costs ~29 s per observation (median; 82 s max) on 2 CPU threads, at a resolution not measured against labels (P-01251, P-01252).
 
 ## Related
