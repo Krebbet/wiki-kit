@@ -504,3 +504,18 @@ New page `open-source-rover-stack-options`, answering the human's 2026-11-12 que
 **Recurring gaps, updated.** Gap 2 (floor estimation / drive-over) is partly filled by the measured camera floor-check rates. Gap 4 (OSS options) is filled: `eda336-oss-options` was merged into this line. Gaps 1 and 3 (planning under uncertain occupancy; exploration station selection) are still open.
 
 **Branch hygiene.** This branch (`librarian-2026-11-12b`) starts from `librarian-2026-11-12` (PR #9, still unmerged) and merges the local-only `eda336-oss-options`, so it is the newest tip. Merging it alone brings `ai-drone-wiki` up to date.
+
+### 2026-11-13 — librarian periodic pass (drone-prototype PRs #276–#294, the overnight 11-12 → 11-13 build): seven method pages
+
+**New pages** (each cites its FINDINGS / diary entry and states its status first; independent checks are kept apart from self-scored or agreement-only numbers):
+- [[wall-seating-on-own-hits]]: EDA357 (PR #281, switch ON, one office).
+- [[floor-lateral-term-and-surface-layer]]: EDA359 (PR #283, surface OFF); the rover-fixed result passed, its pre-registered confirmations failed, the live plan is the real test.
+- [[mcl-shadow-localiser]]: EDA360 (PR #288, shadow OFF); measured vs agreement split.
+- [[spin-centre-rigid-point]]: EDA361 (PR #286, correction OFF); (a) and (b) inseparable from LiDAR data.
+- [[new-room-start]]: EDA362 (PR #290) + the bank-frame follow-up (PR #294); never run end to end.
+- [[relocalisation-far-check]]: EDA363 (PR #291, rule ON, n = 1).
+- [[camera-vote-uninitialised-mask]]: EDA364, **PR #293 still OPEN** (fix round); update when it merges or closes.
+
+**Updated:** [[incremental-large-object-update]] status (PR #277 merged 2026-11-13).
+
+**Branch hygiene.** `librarian-2026-11-13` starts from `ai-drone-wiki` after PR #10 merged, so it is the tip. Older open PRs #6–#8 are already contained in the merged line (#9/#10) and can be closed by the human.

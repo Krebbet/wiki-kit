@@ -4,13 +4,13 @@ How the rover's large-object identification was made to fit a 1.5 GB process cap
 SAM, voted into 2 cm voxels across camera frames and carved by LiDAR free space. The fix changes the update from
 recomputing over the full history at every station to an incremental fold of only the new observation. The pattern is
 general: any multi-view voxel-voting step whose state grows with station count can be kept bounded this way. **Status:
-replay-verified only; PR #277 is in a review fix round on 2026-11-12, so the numbers may still move. It has not run
-live (P-01257).** PR #277 also changes body segmentation. Its office-cont1 legacy-vs-geometric filing trade-off
+replay-verified only. PR #277 MERGED 2026-11-13 (librarian update; numbers as merged). It has not run
+live (P-01257); turning it on for the discovery run is a human decision (drone-prototype `docs/next-run-plan.md` §5 item 1).** PR #277 also changes body segmentation. Its office-cont1 legacy-vs-geometric filing trade-off
 (P-01259) was misreported and is being corrected in the fix round. This page summarises only the memory work.
 
 ## Source
 
-drone-prototype repo, branch `eda353-object-identification` (PR #277, open):
+drone-prototype repo, branch `eda353-object-identification` (PR #277, merged 2026-11-13):
 - `eda/EDA353-object-identification/FINDINGS.md` "Answer first", §1 (where the memory went), §2 (what changed)
 - `src/drone/agent/largeobj/incremental.py`, `largeobj/models.py --serve` (on the branch)
 - parked P-00150, P-01015 (resolved in replay on that branch), P-01250…P-01259
