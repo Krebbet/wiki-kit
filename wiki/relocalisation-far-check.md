@@ -25,7 +25,7 @@ The replay reproduces every logged basin exactly. MCL in shadow got this case ri
 
 ## How rare (counted)
 
-3993 accepted relocalisations (210 episodes, 09-22 → 11-13): 1 same-ticks contradiction in 792 multi-fix groups. A
+3993 accepted relocalisations (210 episodes, 09-22 → 11-13): 1 detected wrong accept (a same-ticks contradiction) in 792 multi-fix groups. A
 full-circle re-search of 593 replayed fixes finds a stronger basin elsewhere only for blind3. EDA363 found 0
 camera-caused wrong accepts, but it counted accepts only. EDA364 later found 3 camera-caused refusals
 ([[camera-vote-uninitialised-mask]]).
@@ -42,7 +42,8 @@ re-fix and is blind to a first fix); a second posture (agrees with the wrong bas
 ## Limits
 
 n = 1 positive. The "switched" path ran once, at ratio 0.74, just under the 0.75 ambiguity bar; a slightly worse
-scan would have been refused, not switched. Wrong accepts near their prior are not triggered (P-01461). A wrong
+scan would have been refused, not switched. Wrong accepts near their prior are not triggered (P-01461); the count found 0 of 360 random near-prior fixes with a
+stronger basin round the full circle, a 95 % upper bound of about 0.8 %. A wrong
 bearings / camera accept becomes a prior the far check cannot see through (P-01462; EDA364 proposes a post-accept
 verify). 10 % of recorded captures no longer reproduce their logged registration (P-01464).
 

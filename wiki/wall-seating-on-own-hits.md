@@ -37,7 +37,7 @@ chained along the east wall were really wall returns (P-01255).
 | check | before | after | kind |
 |---|---|---|---|
 | agreement with the locked September map | 2.4–7.7 cm | ≤ 1.2 cm on all 8 worlds (4 held out) | **independent** |
-| bodies hugging the September map's walls | 7, 9, 9, 5, 5 | 1, 2–3, 0, 0 | **independent** |
+| bodies hugging the September map's walls | 7/9/9/5/5 | 1/2/3/0/0 | **independent** |
 | per-station worst wall offset | 2.8–8.0 cm | ≤ 0.8 cm | self-scored (same returns the seat used) |
 | bodies hugging the seated walls | 5–8 | 0 | self-scored |
 

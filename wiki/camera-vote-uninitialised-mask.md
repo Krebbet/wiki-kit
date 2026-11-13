@@ -7,7 +7,7 @@ move. Replay only, one room; nothing ran on the rover (P-01472). Update this pag
 ## Source
 
 drone-prototype PR #293 (branch `eda364-camera-vote`): PR body; `eda/EDA364-camera-vote/` on the branch;
-`tests/test_camera_vote_eda364.py`. Parked P-01450 (the symptom), P-01462 (wrong accept as a prior), P-01470…P-01474
+`tests/test_camera_vote_eda364.py`. Parked P-01450 (the symptom), P-01462 (wrong accept as a prior), P-01470…P-01477
 (on the branch).
 
 ## The bug
@@ -36,7 +36,11 @@ General rule: when `F is None` (or not a single valid 3×3), the mask is meaning
 | `bearings_verify` | 15zc | after a bearings accept, the next fixes re-check the beaten rivals on the new view; a contradicted fix is refused |
 
 Replay evidence (9 recorded live bearings runs): all 7 accepts kept, the 2 camera-caused refusals become right
-accepts, 0 wrong; all 470 valid-F calls count the same as before. For P-01462, replaying each accept from its losing
+accepts, 0 wrong; all 470 valid-F calls count the same as before. **Caveat (P-01474):** the 2 refusals become right
+accepts in replay even with every switch OFF. The garbage bytes depend on the process heap, so the replay reproduces
+none of the 3 live wrong votes. The credit for the fix rests on the mechanism, not on the replay: those pairs have only
+7–13 ratio matches and no valid F; a fresh heap sums hundreds of "inliers" for them; the sim probe drops from 49 / 60 to
+0 / 60 with the geometry fix alone. For P-01462, replaying each accept from its losing
 hypothesis: the far check catches 1 / 6, a cold start 0 / 6, `bearings_verify` 6 / 6.
 
 ## Related

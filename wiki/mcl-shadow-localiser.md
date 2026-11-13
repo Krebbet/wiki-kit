@@ -26,7 +26,7 @@ was: P-01398). So "agrees" below means agreement with our localiser, not truth.
 | set | n | result | kind |
 |---|---|---|---|
 | seeded localisations | 2355 | 2181 agree, 174 undecided, 0 decided off the fix (0 in 11 775 over 5 seeds); pose 2.0 cm / 0.66° median | agreement with accepted ICP fixes |
-| cold starts with a seeded reference | 80 | 80 right, 0 wrong | **measured against a seeded reference** |
+| cold starts with a seeded reference | 80 | 80 agree with a seeded reference, 0 disagree | seeded reference (itself an accepted live fix, propagated by wheel ticks) |
 | cold starts judged by ICP inlier ranking | 57 | agree | agreement only (near-circular) |
 | cold starts undecided | 12 | top mode on the mirror, mostly draw luck | — |
 | our ICP cold start's 63 refusals | 63 | MCL resolves 56 (14 vs a later accepted fix, 42 by ICP agreement only) | mixed |

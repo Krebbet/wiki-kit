@@ -10,10 +10,10 @@ live (P-01257); turning it on for the discovery run is a human decision (drone-p
 
 ## Source
 
-drone-prototype repo, branch `eda353-object-identification` (PR #277, merged 2026-11-13):
+drone-prototype repo, master (PR #277, merged 2026-11-13):
 - `eda/EDA353-object-identification/FINDINGS.md` "Answer first", §1 (where the memory went), §2 (what changed)
-- `src/drone/agent/largeobj/incremental.py`, `largeobj/models.py --serve` (on the branch)
-- parked P-00150, P-01015 (resolved in replay on that branch), P-01250…P-01259
+- `src/drone/agent/largeobj/incremental.py`, `largeobj/models.py --serve`
+- parked P-00150, P-01015 (resolved in replay), P-01250…P-01259
 
 ## The diagnosis: one function, not the model
 

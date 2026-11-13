@@ -20,8 +20,9 @@ A rotation-centre offset q and a lever error dl give the same centre shift after
 
 `shift = (I − R(θ)) (q − dl)`
 
-So spins, or anything that uses LiDAR alone, can only measure q − dl. Separating (a) a physical offset from (b) a
-mis-measured lever needs an external reference (a floor mark).
+So spins, or anything that uses LiDAR alone, can only measure q − dl. A floor mark does NOT separate (a) from (b)
+either: it separates a physical offset from a registration-frame offset (see below). Nothing planned separates (a) from
+(b).
 
 ## Model choice: decided by extrapolation, not random CV
 
