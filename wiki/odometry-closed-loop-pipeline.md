@@ -1,5 +1,9 @@
 # Closed-Loop Odometry → Scan Matching: the Standard Pipeline from Here
 
+> **Stale for the live pose path (librarian, 2026-11-14).** This page is the 2026-09-17 calibration view. It is still
+> right about the standard calibration procedure. The rover's pose is now owned by one PoseService, and its move model
+> has a fitted mean correction (OFF until a live shadow test). Read [[pose-service-and-mean-move-model]] first.
+
 **Summary.** With wheel-velocity PI + tick pose integration in place, the *standard* remaining calibration for a differential/mecanum base is three scalars (distance scale, heading/track scale, per-side or lateral ratio) found from ~10 closed-path runs, and it is finished when the systematic return-to-start error drops below ~3× the random scatter [Borenstein96] — this rig's tick model (σ 2.2 cm / 3.15° per move, effective track already fitted) is at or past that line. Every mainstream 2D scan matcher tolerates a prior error of ±0.1–0.25 m and ±20° per matching step (Cartographer RTCSM 0.1 m/20°, SLAM Toolbox/Karto 0.5 m grid/±20°, Olson "0.5 m, 20°" typical incremental window) [Cartographer-cfg][SLAMToolbox-cfg][Olson09]; our odometry is 10–50× inside that, so more odometry calibration buys nothing for mapping. The one measurably weak channel is heading (3.15°/turn, walk σ 4.6°); the standard fix is a $3–15 MEMS gyro fused for yaw rate (≈0.1–0.3°/turn after a one-time scale calibration), not more encoder campaigns — and even that is optional once scan matching is the pose source.
 
 ## Related
