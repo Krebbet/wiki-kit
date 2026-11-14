@@ -1,20 +1,21 @@
-# The camera vote's "hundreds of inliers" were an uninitialised mask (drone-prototype EDA364, PR OPEN)
+# The camera vote's "hundreds of inliers" were an uninitialised mask (drone-prototype EDA364)
 
-A general OpenCV pitfall found in the rover's cold-start "bearings" camera vote. **Status: PR #293 is still OPEN, in
-a review fix round (last verdict REQUEST_CHANGES) on 2026-11-13. Nothing here is on master yet, and the numbers may
-move. Replay only, one room; nothing ran on the rover (P-01472). Update this page when the PR merges or closes.**
+A general OpenCV pitfall found in the rover's cold-start "bearings" camera vote. **Status: merged (PR #293, 2026-11-13); rules 15zb a-c
+and 15zc `bearings_verify` default ON. Replay only, one room; nothing ran on the rover (P-01472). P-01450 and P-01462
+are closed by it. Review leftovers: P-01488.** *(Librarian 2026-11-14: status updated from "PR OPEN"; the inlier range
+below widened to the merged FINDINGS' heap-dependent range, as P-01488 asked.)*
 
 ## Source
 
-drone-prototype PR #293 (branch `eda364-camera-vote`): PR body; `eda/EDA364-camera-vote/` on the branch;
-`tests/test_camera_vote_eda364.py`. Parked P-01450 (the symptom), P-01462 (wrong accept as a prior), P-01470…P-01477
-(on the branch).
+drone-prototype PR #293 (merged; master): `eda/EDA364-camera-vote/FINDINGS.md`;
+`tests/test_camera_vote_eda364.py`. Parked P-01450 (the symptom), P-01462 (wrong accept as a prior), P-01470…P-01477,
+P-01488 (review leftovers).
 
 ## The bug
 
 `cv2.findFundamentalMat` with RANSAC can find no fundamental matrix. In OpenCV 4.13 it then returns `F = None`
 together with an **uninitialised inlier mask**. `CameraEvidence._inliers` summed that mask, so it counted garbage
-bytes as inliers. A recorded pair with 13 ratio-test matches scored 184–676 "inliers" depending on the heap.
+bytes as inliers. A recorded pair with 13 ratio-test matches scored hundreds to over 1000 "inliers", heap-dependent (184–676 in one process, 1300–1481 in the reviewer's; EDA364 FINDINGS).
 
 General rule: when `F is None` (or not a single valid 3×3), the mask is meaningless. Count only mask entries equal to
 1, and cap the count at the number of matches.

@@ -519,3 +519,22 @@ New page `open-source-rover-stack-options`, answering the human's 2026-11-12 que
 **Updated:** [[incremental-large-object-update]] status (PR #277 merged 2026-11-13).
 
 **Branch hygiene.** `librarian-2026-11-13` starts from `ai-drone-wiki` after PR #10 merged, so it is the tip. Older open PRs #6–#8 are already contained in the merged line (#9/#10) and can be closed by the human.
+
+### 2026-11-14 — librarian periodic pass (drone-prototype PRs #293, #296–#309, #279): the pose path, status updates
+
+**New page:** [[pose-service-and-mean-move-model]]. It covers the EDA350 PoseService S0–S3 build (PRs #305, #306) and the EDA367 Kalman EDA + mean move model (PRs #307–#309), written from their BUILD / FINDINGS on master. The status comes first. Replay agreement is kept apart from accuracy. The post-hoc pass of the mean model is labelled as post hoc.
+
+**Updated (status, cited):**
+- [[camera-vote-uninitialised-mask]]: PR #293 merged; the inlier range widened to the FINDINGS' heap-dependent range (P-01488).
+- [[object-certainty-model]]: built by PR #299, with the human's two changes (no decay; interim camera 2-station rule, P-01512).
+- [[hard-values-in-config]]: stage 2 (PR #304).
+- [[mcl-shadow-localiser]]: MCL is now a shadow producer to the PoseService.
+- [[spin-centre-rigid-point]]: the spin term is now also in the mean model (OFF); PR #279 merged.
+- [[odometry-closed-loop-pipeline]]: banner saying it is the 09-17 calibration view, with a pointer to the new page.
+
+**Stale flags, not changed this pass (no new research):**
+- [[relocalization-method-bakeoff]] is the June passive-stereo relocalisation history. Today the rover relocalises by LiDAR ICP with the far check, feeding the PoseService: read [[relocalisation-far-check]] and the new pose page first.
+- Drone-prototype pages that still cite open PRs: none after this pass.
+- Not written up yet (candidate pages for the next pass): EDA365, the lattice route search as default (PR #297), and EDA366, the not-floor detector comparison (PR #298, no build; alternatives next week).
+
+**Branch hygiene.** `librarian-2026-11-14` starts from `ai-drone-wiki` after PR #11 merged, so it is the tip.

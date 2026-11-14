@@ -6,6 +6,14 @@ index naming who decided it, where it is implemented, and its config keys.** The
 repeat values in a bunch of different places ... It is crazy that we have battery cutoff written all over the code."
 A heavier YAML rule registry (EDA352, PR #270) was proposed and not adopted. The plain index won.
 
+*Update 2026-11-14 (stage 2, PR #304, FINDINGS §8):* 491 more numbers and 58 rule switches moved into config. The
+inventory fell from 1,582 to 1,091 numbers; names copied across files with one value fell from 31 to 19. The values sit
+in 31 module blocks (`params.block(section, block)`, each key documented) plus 26 shared keys, with new
+`config/motion.json`, `blocking.json` and `perception.json`. The per-tool goal tolerances stay as separate keys (human
+11-13; no recorded reason, P-01554). A snapshot read all 1,564 values identical before and after. Left for stage 3
+(P-01550): pose / odometry / Navigator values, which wait for the PoseService (P-01551, [[pose-service-and-mean-move-model]]),
+and the Agent loop (P-01558). P-01267 (`FLOOR_Z_M` has five meanings) is closed.
+
 ## Source
 
 drone-prototype repo, master `1fda3950`:

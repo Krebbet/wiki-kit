@@ -5,14 +5,16 @@ the shift depends on the turn direction. EDA361 shows that one fixed point expla
 cannot say whether that point is a real rotation-centre offset or an error in the LiDAR lever. **Status: merged (PR
 #286, 2026-11-13); the correction is built behind `body.spin_centre_on`, default OFF (`DRONE_SPIN_CENTRE`). Offline on
 recorded episodes. A floor-mark test is needed before turning it ON (P-01420; drone-prototype `docs/next-run-plan.md`
-§2.4).**
+§2.4).** *(Update 2026-11-14: a per-direction spin-centre term is also part of the EDA367 mean move model, built behind
+`pose.mean_model` (default OFF; PR #308). The pre-registered spin + IMU-scale form alone does not pass the held-out bar; the full model does, post hoc. See
+[[pose-service-and-mean-move-model]].)*
 
 ## Source
 
 drone-prototype repo, master:
 - `eda/EDA361-spin-centre/FINDINGS.md`; diary entry 2026-11-13 "why spins shift the rover centre"
 - `config/body.json` (`spin_centre_on`, `camera_from_centre_m`); `bodymodel.NAV_LEVER_M`; `tests/test_spin_centre_eda361.py`
-- parked P-01420…P-01425; background EDA350 (central odometry, PR #279 open), EDA219 / EDA223 / EDA282 (lever fits)
+- parked P-01420…P-01425; background EDA350 (central odometry, PR #279, merged 2026-11-14), EDA219 / EDA223 / EDA282 (lever fits)
 
 ## The identity
 

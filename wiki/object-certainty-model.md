@@ -1,7 +1,11 @@
 # Object certainty model (drone-prototype EDA355 design: 3-state belief, tempered looks, static + mobile decay)
 
-**Status: proposed design. It is NOT built, and the human's decisions are still owed** (drone-prototype PR #274, approved
-by review on 2026-11-12). The design replaces the rover's hard re-observation rules with one posterior per object. The
+**Status (updated 2026-11-14): BUILT on master by PR #299 (2026-11-13; `eda/EDA355-build/FINDINGS.md`,
+`src/drone/objects/certainty.py`, `config/certainty.json`), offline only. Two differences from the design below, both
+human decisions of 11-13: NO time decay (the hazard knobs are kept in config, OFF), and camera floor items still file by
+the 2-station rule as an interim (P-01512, a KNOWN BUG, priority HIGH). Gone small objects mostly stay on the map
+(P-01510, accepted for now); one unopposed LiDAR station files a body (P-01513). The design PR #274 is still open.**
+Original status (2026-11-12): proposed design, not built (drone-prototype PR #274, approved by review). The design replaces the rover's hard re-observation rules with one posterior per object. The
 rules it replaces are "N distinct contrary stations", "contrary looks spread over 45 deg", the 2-station filing rule and
 the sticky person/pet hold. Every decision then becomes a threshold on that posterior. This page records the method,
 because it is reusable for any "is the thing still there?" memory built from a noisy detector. The project record is

@@ -4,6 +4,9 @@ Results of running Monte Carlo localisation (a particle filter over the locked 2
 ICP cold start, logging both answers and acting on neither. **Status: merged (PR #288, 2026-11-13), switch
 `localise.mcl_shadow` default OFF (`DRONE_MCL_SHADOW`). Replay only, one room. The live check L-S5 (two cold
 starts with the shadow on) is queued in the drone-prototype `docs/next-run-plan.md` §2.2. MCL is not adopted.**
+*(Update 2026-11-14: since the PoseService build (PR #305), MCL offers its answer to the one pose owner as a SHADOW
+producer: ledgered, never applied (P-01538, decision 7). The EKF stage S7 is shelved (D-00023 D2). See
+[[pose-service-and-mean-move-model]].)*
 
 ## Source
 
