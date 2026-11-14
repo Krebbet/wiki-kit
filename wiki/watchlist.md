@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-10-24
+last_reviewed: 2026-11-14
 ---
 
 # Watchlist — Identified But Not Captured
@@ -408,3 +408,28 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **Correction Training for Diffusion Models (https://arxiv.org/abs/2610.14136)** — Learned corrector reduces exposure bias, distillable into the base model; code. *(weekly-brief 2026-10-24.)*
 - **Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation (https://arxiv.org/abs/2610.29989)** — Auxiliary future-chunk prediction improves physical plausibility; HF weekly 164 upvotes; code (TencentARC). *(weekly-brief 2026-10-24.)*
+
+## RL / post-training (continued — weekly-brief 2026-11-14)
+
+- **Reframe: Observation-Aligned Multi-Teacher OPD (https://arxiv.org/abs/2611.12886)** — Multi-teacher OPD for agentic visual reasoning; HF 40 upvotes; code (EliYuan30/Reframe). Sibling of [[p2-mopd]]. *(weekly-brief 2026-11-14.)*
+- **Incentivizing Self-Learning in LLMs via RL (https://arxiv.org/abs/2610.39671)** — Model generates its own learning signal under RL; HF 35 upvotes; no code. *(weekly-brief 2026-11-14.)*
+- **SteerDistill (https://arxiv.org/abs/2611.13410)** — Distillation-aware quantization of LLM agents via closed-loop teacher steering; code. *(weekly-brief 2026-11-14.)*
+
+## Self-improving agents (continued — weekly-brief 2026-11-14)
+
+- **InfraRSI (https://arxiv.org/abs/2611.11558)** — Recursive self-improvement aimed at training infrastructure; siblings Infrathon (2611.11995) and Evolving Infra (2611.12304); code. *(weekly-brief 2026-11-14.)*
+- **Sage-Taiyi (https://arxiv.org/abs/2611.12762)** — Metacognitive architecture for scientific discovery; HF 57 upvotes; code (Alpha-Innovator). *(weekly-brief 2026-11-14.)*
+- **Tree-Ising (https://arxiv.org/abs/2611.14210)** — Repairs LMs with bit-level Ising edits; weight-editing cousin of [[weight-space-programming]]; code. *(weekly-brief 2026-11-14.)*
+
+## Benchmarks & evaluation (continued — weekly-brief 2026-11-14)
+
+- **Actor, Judge, or Teacher? Decision Models in Long-Horizon Agents (https://arxiv.org/abs/2611.17167)** — Where single-pass decision models help agents; code (ZJU-REAL). Companion to [[so-arena]]. *(weekly-brief 2026-11-14.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-11-14)
+
+- **SimpleHC: On the Design of Hyper-Connections (https://arxiv.org/abs/2611.05984)** — Simplified, stable hyper-connections; builds on [[manifold-constrained-hyper-connections]]; code. *(weekly-brief 2026-11-14.)*
+- **Inkling 2 Small (Thinking Machines)** — 594B/17B-active MoE, closed at launch via Tinker; open weights reported but conflicting; vendor claims unverified. *(weekly-brief 2026-11-14.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-11-14)
+
+- **Few-Step Streaming Video Generation via Condition Shifting (https://arxiv.org/abs/2611.14033)** — HF #1 on 11-11 (88 upvotes). *(weekly-brief 2026-11-14.)*

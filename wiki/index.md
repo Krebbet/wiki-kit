@@ -56,6 +56,10 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Training & optimization
 
 | Page | Summary |
+| [[deletion-tuning]] | arXiv:2611.10866. Learned binary mask zeroing <0.05% of gate weights matches full fine-tuning under GRPO/SFT/SDFT; 0.5–30 MB adapters, less forgetting. Code released. |
+| [[p2-mopd]] | arXiv:2611.03953 (StepFun/Adelaide). Multi-teacher OPD with trainable student weights plus learnable expert task-vector coefficients; 94.7% vs 80.9% recovery. Code released. |
+| [[weight-space-programming]] | MIT CSAIL blog (2026-11-02). GPT-6 Astra edits 0.016% of Qwen3.5-0.8B's weights without gradients (MATH-500 7.9%→48.1%); blog not paper, vendor-dependent, contested. |
+| [[so-arena]] | arXiv:2611.15777 (NUS). Benchmark of 21 no-CoT decision models separating capability from reliability (order stability, missing-answer recognition); companion to [[jev-as-a-judge]]. |
 | [[sft-with-sampling]] | Projection sampling (MH) rewrites expert traces to fit the base model; plain SFT then beats OPSD and RL on chemistry/math with less forgetting. OPSD still wins on medical and Olmo chemistry (arXiv:2610.02140). |
 | [[ride-opd-residual-extrapolation]] | RIDE (arXiv:2609.36484): OPD that extrapolates the RL-teacher-minus-base hidden-state residual past the teacher; matches or beats the teacher on 4 pairs (math), while output-space ExOPD degrades. |
 |---|---|
@@ -156,6 +160,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Agent frameworks & memory
 
 | Page | Summary |
+| [[evidence-linked-memory]] | WikiTrace (arXiv:2611.14320). Agent memory can regress performance; lessons linked to source trajectories cut regression 9.7%→4.5% (avg 90.2 vs 79.5). |
 | [[context-language-models]] | Meta CLMs (arXiv:2609.37725): the LM rewrites its own live context as an editable file via Bash; beats summary/MEM1 zero-shot (BrowseComp-Plus 59.4%), efficiency-gated GRPO, SGLang suffix-cache reuse. No code/weights confirmed. |
 |---|---|
 | [[openclaw]] | OpenClaw: MIT-licensed, local-first AI agent runtime (formerly Moltbot/ClawdBot). Four-layer memory architecture (bootstrap files / session transcript / context window / retrieval index); plain-Markdown workspace; 70/30 vector/BM25 hybrid search; dreaming consolidation; providence labels (Apr 2026). |
