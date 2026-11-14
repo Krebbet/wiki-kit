@@ -130,3 +130,8 @@ All five compose. A practical R_w pipeline could (a) use [[pit]]-style ordering,
 ## Source
 
 Theme synthesised 2026-05-13 from 15 captured papers in `raw/research/selective-finetuning/`. Per-paper traceability lives in each sibling page's `## Source` section. The cross-cutting "information is isolable in identifiable parameters" claim is itself a cross-source synthesis, not a direct quotation from any single paper; the parameter-scale numbers in the localisation table trace to their respective sources.
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[deletion-tuning]] (2611.10866): binary-mask deletion of <0.05% of gate-proj weights matches full FT across RLVR/SFT/SDFT with near-zero prior-task loss — a new primitive for the R_w stack alongside Skill-Localization masks and O-LoRA
+- [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep

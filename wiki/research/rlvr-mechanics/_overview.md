@@ -87,3 +87,8 @@ The cluster gives Position A in [[../../conflicts/invisible-leash-vs-spiral-tran
 - [[what-outcome-rl-buys]] (Yang, 2610.34894): pass@1 gain of 20 outcome-RL recipes decomposes into finishing (82% at 4k/8k budgets), reliability, and reach <= 2.1 pp; strong evidence for RL-as-behaviour-change and for budget-aware evaluation (report fin@1(B); compare at/above training cap). Hint channel gave no held-out gain over plain RL in an 8B probe
 - [[s3ac-actor-critic-reasoning]] (2610.35518): critic recipe (coverage pretraining, small value-head init, grad-clip 10) beats GRPO-X from 1.5B to 397B and sustains K=1 rollout at 35B; DAPS reuses the critic for Goldilocks prompt selection. Second critic-side data point after [[ppo-critic-value-flattening]]
 - [[../../weekly-briefs/2026-10-30]] — brought in by the 2026-10-30 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[dense-rewards-grpo-matched-compute]] (2611.13560): at matched tokens/GPU-hours no dense-reward variant beats outcome-only GRPO; p≈0.5 prompt selection helps modestly and a retuned LR nearly matches it — third critic-free-leaning datapoint against [[s3ac-actor-critic-reasoning]]'s critic-side win
+- [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep

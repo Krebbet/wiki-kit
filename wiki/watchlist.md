@@ -93,6 +93,10 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - MASS, Multi-mask Selective Self-Distillation (arXiv:2610.38154) — several masked views of one verified solution drive OPSD, only reliable token corrections pass; sibling of MCPD; no code
 - MultiAgent-OPD (arXiv:2610.23234) — frozen teacher supervises Searcher intermediate tokens in a hierarchical multi-agent system plus team reward for Leader; application paper
 - Nemotron-Labs-Diffusion-Uni (arXiv:2610.36466) — cross-paradigm OPD from AR and flow models into a unified diffusion LLM [domain caveat: diffusion/multimodal]
+- Janus-MOPD (arXiv:2611.15341) — multi-teacher OPD Expansion/Consolidation/Optimization phases, subspace locking
+- P²-MOPD (arXiv:2611.03953) — student+expert parameter mixing as priors; 1.7B recovers 94.7% vs 80.9% for MOPD
+- Reframe (arXiv:2611.12886) — observation-gated multi-teacher OPD for visual tool agents [agentic; low priority]
+- PhysOPSD (arXiv:2611.12411) — executable simulation code as privileged context for OPSD in video, ~3K samples [domain caveat: video]
 
 ## Process reward models
 
@@ -116,6 +120,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - ReSum (arXiv:2606.13316) — RLVR for compressing/organising reasoning trajectories via self-summarisation; novel self-improvement signal orthogonal to GRPO variants
 - RRSI (arXiv:2609.24972) — regularized recursive self-improvement of agent harnesses
 - LongZero (arXiv:2610.30132) — model writes multi-hop questions, expands evidence into long contexts, trains GRPO with no external data; code github.com/zhennan1/LongZero
+- Experience-Handoff RL (arXiv:2611.16409) — scalar-reward RL plus learned playbooks
+- Knowledge in the Harness, Reliability in the Weights (arXiv:2611.15268) — teacher-free self-diagnosed rules plus GRPO LoRA on a 12B model; code released
 
 ## Test-time training and curriculum
 
@@ -169,6 +175,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 - Select and Improve (arXiv:2606.13125) — two-mechanism decomposition of RL post-training: strategy *selection* (activated by diverse SFT data) + strategy *improvement* (activated by increasing RL difficulty); tested on Qwen-2.5-1.5B
 - Zero-shot Context Generalization from Few Training Contexts (arXiv:2507.07348) — **captured 2026-07-03**; see [[research/single-sample-rl-finetuning/cebe-context-generalization]]
+- WARC, How Many Exposures Does a World Model Need? (arXiv:2611.12324) — 35M model with test-time full-parameter updates learns a mechanic in ~80 exposures; code github.com/third-intelligence/WARC [non-LLM setting]
 
 ## RLVR dynamics and limits
 
@@ -176,6 +183,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - The Invisible Leash (arXiv:2507.14843) — empirical RLVR entropy-reward trade-off; whether RLVR can escape base model support; may extend [[conflicts/invisible-leash-vs-spiral-transfer]]
 - Spurious Rewards Paradox (arXiv:2601.11061, ICML 2026) — Anchor-Adapter circuit: RLVR can collapse into memorization retrieval; mechanistic dissection of when verifiable rewards select shortcuts
 - Sharpening Tax in Post-Training (arXiv:2610.01509) — pretrained+harness beats post-trained on agentic pass@K; counterpoint to invisible-leash framing
+- Shortcuts and Boundaries (arXiv:2611.12865) — 25% conflict data yields 97.9% rule-violating reward hacking; binary contextual penalty helps
+- Learning the Task or Learning the Verifier? (arXiv:2611.08318) — exposing success criteria inflates in-benchmark gains that vanish under altered criteria
 
 ## Continual fine-tuning and forgetting
 
@@ -219,6 +228,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Knowledge Distillation During Mid-Training Favors Reasoning over Factual Recall (arXiv:2609.01532) — "Switch Distillation"; relevant to the reasoning-vs-statistical-recall distinction central to the wiki thesis
 - Dynamic Important Example Mining for Reinforcement Finetuning (arXiv:2608.29252) — title suggests curriculum/data-selection relevance for RFT; content unconfirmed, low-confidence flag from this week's scan
 - Mathematical Transfer Follows Reasoning Approach More Than Topic (arXiv:2610.00331) — counterbalanced 2×2: same-approach data transfers better than same-topic; bears on concept-curriculum-method
+- Incentivizing Self-Learning via RL, BookNavigator (arXiv:2610.39671) — 35B textbook-proof accuracy 51.5%→79.5%; no code
 
 ## In-context learning theory
 

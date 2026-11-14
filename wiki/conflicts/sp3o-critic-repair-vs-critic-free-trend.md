@@ -32,3 +32,8 @@ Surfaced via the 2026-09-18 weekly sweep. SP³O / Value Flattening (arXiv:2609.1
 
 - [[../research/rlvr-mechanics/s3ac-actor-critic-reasoning]] (2610.35518) — second independent critic-side data point, at far larger scale: S3AC beats GRPO-X from 1.5B to 397B (35B: 76.4 -> 80.5) and sustains K=1 rollouts at 35B (80.9 vs 70.4 REINFORCE++). Margin small at 1.5B, 27-40% more compute, no multi-seed variance. Favours Position B (critic repair), still no ruling.
 - [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[../research/rlvr-mechanics/dense-rewards-grpo-matched-compute]] (2611.13560) — critic-free side: learned/dense-reward variants end at or below outcome-only GRPO at equal training time (1,668 runs, 6 models). Indirect (MC dense reward, not a PPO critic). Counterweight to S3AC. No ruling.
+- [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep

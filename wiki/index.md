@@ -80,6 +80,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rlvr-mechanics/s3ac-actor-critic-reasoning]] | arXiv:2610.35518 (2026-10-30 sweep) — critic recipe (coverage pretraining, small value-head init, relaxed clip) beats GRPO-X 1.5B-397B and sustains K=1 rollouts at 35B; DAPS critic-reuse prompt selection |
 | [[research/rlvr-mechanics/thinking-leakage-no-think-rl]] | Zhu et al. (arXiv:2610.14270, 2026-10-16 sweep) — no-think GRPO gains on hybrid Qwen3 are largely reactivation of think-mode reasoning: an 8-dim subspace carries ~75% of gain, few think-reading heads mediate it, extrapolation never exceeds think-mode accuracy. Single-sample RL on hybrid Qwen3 needs a think-mode baseline. |
 | [[research/rlvr-mechanics/wrong-votes-right-gradients]] | Wilson, Huang & Huang (arXiv:2610.20898, 2026-10-16 sweep) — majority-vote self-labels give an expected GRPO update parallel to gold because errors are incoherent across prompts; coherence, not error rate, decides (random 30% flips fine, shared-rule 20% flips $c_\infty$=0.29). Needs diverse batches; N=1 needs gold labels. |
+| [[research/rlvr-mechanics/dense-rewards-grpo-matched-compute]] | Singh et al. (arXiv:2611.13560, 2026-11-13 sweep) — 1,668 matched-compute runs: MC dense reward loses 14.3 pts to outcome-only GRPO at equal tokens; p≈0.5 prompt selection +0.8-1.7 pts, near-matched by a retuned LR; code released |
 
 ### Process reward models
 
@@ -210,6 +211,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/teacher-student-rl/opst-data-free-self-training]] | OPST (arXiv:2610.32770, 2026-10-30 sweep) — data-free OPSD: topic-seeded synthetic questions + privileged rationale, EMA teacher; +10.2 MMLU on Gemma 4 E2B; placebo-PI ablation shows sample-specific PI matters |
 | [[research/teacher-student-rl/pi-opsd-effectiveness-prediction]] | arXiv:2610.22512 (2026-10-23 sweep) — 16 privileged-information configs for OPSD on agentic tasks; KL-based offline metrics predict gains, utility metric inflated by leakage |
 | [[research/teacher-student-rl/semi-opd-offline-student-rollouts]] | Semi-OPD (arXiv:2610.11291, 2026-10-16 sweep) — distilling on student rollouts frozen once from the initial student beats OPD on 14/17 pairs (up to +13.6% acc, 11.4x speedup); gain predicted by initial top-64 teacher–student overlap (r=−0.73). Tempers ESR-style truncation. |
+| [[research/teacher-student-rl/opd-mismatch-tolerance]] | arXiv:2611.11450 (2026-11-13 sweep) — OPD tolerates >200x standard-engine rollout mismatch (FP8, stale weights) where REINFORCE/GRPO break at ~12-60x; model-specific budget plus a cheap offline admission check; code released |
+| [[research/teacher-student-rl/topsd-teachable-prefixes]] | TOPSD (arXiv:2611.08179, 2026-11-13 sweep) — names Teacher Drift in OPSD (reference-conditioned teacher follows student errors as prefix grows); supervise only teachable early prefixes (~7-10% of tokens); +1-3 pp multilingual PolyMath, math only |
 
 ### RL optimisers
 
@@ -255,6 +258,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/catastrophic-forgetting/mechanistic-forgetting-circuits]] | arXiv:2605.28860 — circuit-level RL vs. SFT comparison via DBM on Qwen2.5-3B; RL retains 72.5% base circuit heads vs. SFT 59.0% (13.5 pp); RL = distributed adaptor; SFT = compressor; KL dissociates from circuit retention; mechanistic substrate for rls-razor behavioral account. |
 | [[research/catastrophic-forgetting/empirical-forgetting]] | Luo et al. 2023 (arXiv:2308.08747) — foundational SFT-forgetting baseline: scale, task order, decoder-vs-encoder. |
 | [[research/catastrophic-forgetting/composing-cl-anchors-long-horizon]] | Zhang et al. (JHU, arXiv:2609.06986, 2026-09-18 sweep) — no single classic CL mechanism (replay/distillation/importance-regularisation) prevents forgetting across 100 sequential SFT tasks, but composing all three + LoRA-merging raises retention 28× (1.2%→34.9%), super-additively. Explicit-anchor sub-thread, complementary to this theme's RL-implicit-resistance cluster. |
+| [[research/catastrophic-forgetting/capability-drift-multilingual-post-training]] | Saksena et al. (arXiv:2611.15717, 2026-11-13 sweep) — GRPO on multilingual MoE: +36 MATH (95% boxed-emission) but -19 F1 on unrewarded Indic extraction; judge round collapses extraction again; reward-free distillation from earlier checkpoint restores it |
 
 ### MoE via delta/LoRA adapters (new theme 2026-05-16)
 
@@ -389,6 +393,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/selective-finetuning/dora]] | Liu et al. (ICML 2024 Oral, arXiv:2402.09353) — weight = **magnitude × direction** decomposition; LoRA on direction only. Mimics full-FT update geometry. |
 | [[research/selective-finetuning/pit]] | Jiang et al. (2024, arXiv:2402.12847) — **Pre-Instruction-Tuning**: instruction-tune on QA before CPT on documents. Direct knowledge-injection recipe that preserves QA format. |
 | [[research/selective-finetuning/knowledge-editing-survey]] | Yao, Wang et al. (ACM Computing Surveys 2024, arXiv:2310.16218) — landscape: three-category taxonomy (external-memorisation / global-optimisation / local-modification); six evaluation metrics including the *locality* criterion. |
+| [[research/selective-finetuning/deletion-tuning]] | Deletion Tuning (arXiv:2611.10866, 2026-11-13 sweep) — learn a binary mask zeroing <0.05% of gate weights; matches full FT under GRPO/SFT/SDFT at 7B-30B with 1-30 MB adapter; prior-task loss within ~1 pt vs up to 5.4 for FT/LoRA |
 
 ### Synthesis (cross-theme, editorial)
 

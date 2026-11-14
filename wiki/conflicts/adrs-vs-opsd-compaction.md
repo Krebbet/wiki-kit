@@ -37,3 +37,8 @@ Surfaced via the 2026-08-21 weekly sweep. ADRS (arXiv:2608.03223) §5.6, Conflic
 - [[../research/teacher-student-rl/wisd-weakening-induced-opsd]] (2610.38681) — capability-gain side: +4.0/+5.5 pp avg (up to +13 on Qwen3.5-4B) from weakening-contrast self-distillation, though responses also shorten, so compaction is not excluded.
 - [[../research/teacher-student-rl/opst-data-free-self-training]] (2610.32770) — capability-gain side: +10.2 MMLU from synthetic-PI OPSD on an instruction-tuned (no RLVR stage) base; authors frame it as amplifying latent capability, which may reconcile with compaction on RLVR-trained models.
 - [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[../research/teacher-student-rl/topsd-teachable-prefixes]] (2611.08179) — weakly supports the compaction side: the teacher adds information only while it stays outside the student's error basin. No ruling.
+- [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep

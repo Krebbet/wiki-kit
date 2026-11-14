@@ -30,3 +30,10 @@ Surfaced via the 2026-10-02 weekly sweep: arXiv:2609.35259 abstract, `raw/resear
 - [[../research/catastrophic-forgetting/rft-data-perspective]] — Position A
 - [[../research/catastrophic-forgetting/_overview]]
 - [[../weekly-briefs/2026-10-02]] — brought in by the 2026-10-02 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[../research/catastrophic-forgetting/capability-drift-multilingual-post-training]] (2611.15717) — leans against Position A: heavy forgetting under on-policy GRPO when the reward is blind; no matched SFT/LR control, so not clean evidence for B.
+- [[../research/selective-finetuning/deletion-tuning]] (2611.10866) — leans A (forward KL predicts forgetting; deletion lowers it further); no rollout-policy/LR variation.
+- [[../research/rlvr-mechanics/dense-rewards-grpo-matched-compute]] (2611.13560) — analogous confound: an LR retune erased most of the apparent method gain.
+- [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep

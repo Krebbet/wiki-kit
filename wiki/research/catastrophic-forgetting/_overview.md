@@ -67,3 +67,8 @@ The corpus offers three distinct ways to stack skills without catastrophic inter
 ## Source
 
 Theme synthesised 2026-05-16 from the existing EWC seed plus 6 papers captured in `raw/research/rlvr-forgetting/`. Per-paper traceability in each page's `## Source`. The "three nested constraints" framing and the implicit/explicit/architectural trichotomy are editorial cross-source synthesis, not claims from any single paper.
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[capability-drift-multilingual-post-training]] (2611.15717): on-policy GRPO regressed an unrewarded capability (-19 F1) while the rewarded gain was mostly answer format; reward-free distillation from an earlier checkpoint recovers most of it. Reward-blind forgetting under on-policy data; no LR/SFT control
+- [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep

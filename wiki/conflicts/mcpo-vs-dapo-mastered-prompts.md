@@ -37,3 +37,8 @@ Surfaced via the 2026-04-23 weekly sweep. MCPO (arXiv:2604.16972) Sec 4.1 critiq
 - [[../weekly-briefs/2026-04-23]] — brought in by the 2026-04-23 weekly sweep
 - [[../weekly-briefs/2026-08-07]] — brought in by the 2026-08-07 weekly sweep
 - [[../weekly-briefs/2026-08-14]] — brought in by the 2026-08-14 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[../research/rlvr-mechanics/dense-rewards-grpo-matched-compute]] (2611.13560) — bears against DAPO's rationale: dynamic sampling lost 1.8 pts and informative-group share did not predict gain; p≈0.5 selection gains 0.8-1.7 pts, near-matched by a retuned LR. No ruling.
+- [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep

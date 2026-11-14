@@ -302,3 +302,13 @@ Only 1 of 5 was a real broken link (an aspirational page that didn't exist). Net
 **Implication:** Give subagents a compact page-name list (path-per-line, no summaries) instead of the full index. The orchestrator must link-check all cross-refs against disk before writing pages.
 
 **Status:** open
+
+### 2026-11-13 — capture_pdf needs /pdf/ URL and `poetry` is not on cron PATH
+
+**Scope:** kit
+
+**Observation:** Second occurrence: `capture_pdf --src https://arxiv.org/abs/<id>` fails with `No module named 'weasyprint'` (treated as HTML). `arxiv.org/pdf/<id>` works. Also `poetry` lives in `~/.local/bin`, not on the default PATH of the session.
+
+**Implication:** weekly-brief step 4 should say pass `arxiv.org/pdf/<id>` and `export PATH=$HOME/.local/bin:$PATH`; capture_pdf should rewrite abs→pdf.
+
+**Status:** open

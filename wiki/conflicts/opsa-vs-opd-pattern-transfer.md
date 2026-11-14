@@ -93,3 +93,8 @@ Two soft datapoints, neither settling the dispute:
 - [[../research/teacher-student-rl/fin-sd-hindsight-self-distillation]] (2610.36082) — leans A on information content: placebo hint (72.52) matches the informative hint (72.19); but no hint-free truncation control and CIs overlap.
 - Ledger: nine papers now bear on this conflict; still no clean ruling.
 - [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[../research/teacher-student-rl/topsd-teachable-prefixes]] (2611.08179) — Teacher Drift: the self-teacher's signal collapses into the student's error basin as prefixes lengthen; mild relevance, supports limiting supervision to recoverable prefixes. No ruling.
+- [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep

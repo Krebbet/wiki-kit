@@ -167,3 +167,9 @@ The theme's load-bearing contribution to the skeleton: **the student's condition
 - [[fin-sd-hindsight-self-distillation]] (2610.36082): localize the first faulty step, distill a hint-conditioned self-copy for 100 tokens; a placebo hint matches the informative hint and a self-writer matches a 120B writer, so supervision site matters more than hint content (wide, overlapping CIs)
 - [[opst-data-free-self-training]] (2610.32770): topic-seeded synthetic questions + privileged rationale, EMA self-teacher, +10.2 MMLU on Gemma 4 E2B; placebo-PI ablation (40.2 vs 47.7 full) shows sample-specific PI matters
 - [[../../weekly-briefs/2026-10-30]] — brought in by the 2026-10-30 weekly sweep
+
+## Update 2026-11-13 (weekly-brief)
+
+- [[opd-mismatch-tolerance]] (2611.11450): OPD stays stable to >200x standard-engine rollout mismatch where RL breaks at 12-60x; model-specific budget with offline admission check — de-risks FP8/async stacks for OPD/OPSD
+- [[topsd-teachable-prefixes]] (2611.08179): Teacher Drift — a reference-conditioned self-teacher follows student errors as the prefix grows; supervise only teachable early prefixes. A failure-mode datapoint for the OPSD privileged-info debate
+- [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep
