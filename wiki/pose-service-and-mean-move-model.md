@@ -3,7 +3,8 @@
 How the rover's pose ("where am I, how sure") is produced since 2026-11-14, and what a held-out test said about
 adding a Kalman filter. **Status: merged (PRs #305, #306, #307, #308, #309, 2026-11-14). Proved offline on recorded
 episodes only: the rover was not driven. The PoseService S0–S3 is the live code path on master. The mean move model is
-built behind `pose.mean_model`, default OFF. Its first properly pre-registered test is a live SHADOW run, still owed
+built behind `pose.mean_model`, default OFF; its offline gain (TEST p95 4.26 → 3.44 cm) is POST HOC (the
+pre-registered spin-only form failed). Its first properly pre-registered test is a live SHADOW run, still owed
 (P-01570). The refit heading sigma is ON.**
 
 ## Source
@@ -54,7 +55,8 @@ The yardstick is the ICP fix, which is not ground truth (P-01563).
   - heading −0.010 deg [−0.022, −0.002] (real, but tiny).
 
   The reason: one fix is about 0.24 cm / 0.18 deg, one move about 1.4 cm / 0.5 deg, and the rover relocalises after
-  nearly every move. The fitted EKF gain is about 0.96, which is the same as replacing the pose with the fix. **At this
+  nearly every move. The fitted EKF gain is about 0.9–0.96 for position (median 0.89 after one move, 0.96 after two or more; heading 0.63
+  after one move), which is the same as replacing the pose with the fix. **At this
   fix cadence a Kalman filter is replace-on-fix with extra steps.** Revisit only if fixes become sparse or the
   localiser starts to emit a covariance.
 - **The gain is the mean move model.** These are biases the tick model leaves in its mean:
