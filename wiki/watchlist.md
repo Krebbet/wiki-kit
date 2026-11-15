@@ -9,6 +9,29 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-11-15
+
+Window 2026-11-08 to 2026-11-15. Captured: Cursor Build Live Apps, Forge Decision Context, Teamknitt, DeepSeek Super-Agent. Scan was web-search based; items below not opened unless noted.
+
+### Memory / learning
+- When Correction Memory Fails (NeurIPS 2026) — no memory variant gives reproducible gain for pairwise judges; counterpoint to forge_dc
+- Claude Managed Agents: dreaming, outcomes, multiagent orchestration (claude.com/blog/new-in-claude-managed-agents, May 2026) — scheduled memory curation across sessions; pairs with forge_dc
+- "Lucy Syndrome" paper (Claude Code production logs, corrections lost between sessions) — hook-based enforcement; low-confidence aggregator source
+
+### Coding-agent products / harnesses
+- Cursor Voice Chat with Agents (Nov 6) — realtime voice to cloud agents; third-party reported only
+- OpenAI open-sources Harness, the Codex engine (Aug 20) — check whether captured elsewhere
+- DeepSeek Harness v0.1 (Aug 13, MIT) — plugin-based runtime; precursor to Super-Agent
+- TrueFoundry TrueForge — open-source Claude Agents rival; weak signal
+
+### Security
+- Black Hat 2026: prompt-injection RCE in Anthropic, Google, OpenAI coding agents (CVE-2026-54316) — hidden trust assumptions in harnesses; press-sourced
+
+### Ecosystem
+- Anthropic x IDC post (claude.com, Oct 28) — enterprise adoption data; unopened
+
+---
+
 ## Week of 2026-11-08
 
 Window 2026-11-01 to 2026-11-08. Captured: Terminal-Bench continuous benchmarks, NVIDIA compaction paper, LangChain async subagents, Factory frontier harness, Anthropic welfare regard. Dates read from primary index pages; items not opened.

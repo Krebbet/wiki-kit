@@ -136,6 +136,10 @@ Anthropic's dynamic workflows ("flows") for Claude Managed Agents add a case the
 Anthropic's guidance adds a default-to-single-loop step before choosing a multi-agent topology: keep subagents only for context bloat, parallel fresh-context work, or tool/instruction conflicts, and split by context rather than by problem type (problem-type splits cause lossy handoffs). See [[patterns/fold-subagents-into-main-loop]] (vendor-primary; comparisons unquantified).
 
 
+## Configurable deterministic topologies (2026-11-15)
+
+[[patterns/teamknitt-team-configuration]] (arXiv 2611.12545, single-author, no results reported) proposes human-configured teams of 1-16 agents with 14 deterministic routing topologies or custom graphs, sharing profiles limiting what flows along routes, and human-led intervention. Contrasts with model-authored topology above; conceptual only.
+
 ## Source
 
 - `raw/research/effective-agentic-patterns/08-arxiv-2601-12560-agentic-ai-taxonomy.md` — "Agentic Artificial Intelligence: Architectures, Taxonomies, and Evaluation of LLM Agents" (Arunkumar V, Anna University; Gangadharan G.R., NIT Tiruchirappalli; Rajkumar Buyya, University of Melbourne; arXiv 2601.12560, January 2026).

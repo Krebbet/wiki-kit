@@ -139,6 +139,10 @@ New reconciling axis: **coverage vs utilization.** Systems differ far more in wh
 
 Limits: the LongMemEval margin is 0.13 (a tie), Full-context beats RAW-RAG by about 20 points on DeepSeek MEME, MemMachine wins that setting, and scope is offline conversation benchmarks with no deletion/privacy or interactive settings. The comparison with Mem0's own LOCOMO claim (26% J gain over OpenAI memory, 92% lower p95 latency vs full context) is not like-for-like. Extends Position 1 evidence (alongside [[memory/groupmembench]] and [[memory/evomembench]]); **status remains OPEN.**
 
+## Use-time format evidence: Forge Decision Context (2026-11-15, abstract-only)
+
+[[memory/forge-decision-context]] (NeurIPS 2026 listing) reports that behavioral corrections are followed reliably when compiled into imperative RULE directives injected at decision points (95% compliance) but unreliably as raw retrieved text (55%). This is a *use-time format* argument, distinct from the storage-time extraction debate: it can coexist with verbatim-first storage if compilation happens at read/inject time. Self-built benchmark (71 scenarios), abstract-only; status stays OPEN.
+
 ## Status — why this is OPEN
 
 A direct empirical comparison would require:

@@ -90,6 +90,14 @@ Projects runs on its own cloud computer, so closing the laptop doesn't stop it; 
 
 Per a Latent Space writeup relaying Cursor docs (collect-but-confirm): Cursor routes reviewers by ownership and commit history, auto-approves low-risk PRs when a risk score is under a threshold, folds in Bugbot/Security findings, and reads repo policy files. Policy is read from the base branch, so a PR that edits an approval policy cannot relax review on itself. Cursor docs say it "does not replace a full code review". See [[deployments/claude-code-mods]].
 
+## 2026-11-05: Build Live Apps
+
+Cursor changelog (vendor primary, 2026-11-05): cloud agents can now build, provision and deploy internal web apps to a shareable link. The agent scaffolds the app, spins up Postgres if needed, puts auth behind Cursor SSO, provisions hosting, and asks for secrets for external systems; the user picks a domain and publishes. Deploys from new or existing repos on Cursor Origin and GitHub (GitLab "coming soon"); sharing is scoped to people/groups/team behind Cursor sign-in (public sharing only on individual plans). Available on all paid plans with cloud agents enabled. Closed, proprietary.
+
+- **Publish gate:** deterministic plus agentic security checks (secrets in app files, exposed credentials); nothing goes live until checks pass and the user explicitly publishes. Admins see every app and secret, can add custom review rules, approve blocked publishes, and unpublish any app.
+- **Collect-but-confirm:** no numbers given; check coverage/efficacy is unquantified, secrets are held by Cursor, and org-wide app creation raises shadow-IT/sprawl risk. A companion Voice Chat with Agents feature (Nov 6) is third-party reported only (watchlist).
+- Source: `raw/research/weekly-2026-11-15/02-cursor-build-live-apps.md`. See also [[case-studies/willison-vibe-agentic-convergence]] for the vibe-coding-to-production trust concern.
+
 ## Source
 
 - `raw/research/weekly-2026-05-25/01-cursor-cloud-agents.md` — captured 2026-05-25 from the Cursor engineering blog, "What we've learned building cloud agents." Analyst summary at `raw/research/weekly-2026-05-25/.ingest/01-cursor-cloud-agents.summary.md`. **Primary vendor engineering writeup** — architectural descriptions of what Cursor built and decided are trustworthy; reliability metrics and PR-share figures are vendor self-reported (collect-but-confirm).

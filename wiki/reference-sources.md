@@ -68,6 +68,8 @@ These are high-signal writeups from the labs shipping frontier agent products. W
 | Sierra / Bret Taylor | https://sierra.ai/blog | Enterprise agent deployment writeups. | 2026-04-22 | probation |
 | Prime Intellect Blog | https://www.primeintellect.ai/blog | Open-source self-improving RLM agent harness (Prime Agent) with a fast, recurring release cadence (v0.9.1 update Sep 4, launched Aug 6); surfaced twice in one window via the 2026-09-06 sweep. New watch, probation pending a second high-signal week. | 2026-09-06 | probation |
 | Anthropic Alignment Blog | https://alignment.anthropic.com | Anthropic Fellows/alignment research on agent oversight, monitor evasion, multi-agent behaviour (e.g. welfare-regard, captured 2026-11-08). Index page is directly fetchable. | 2026-11-08 | probation |
+| NeurIPS 2026 virtual site | https://neurips.cc/virtual/2026 | Accepted-paper abstracts (agent memory, evaluation) fetchable by `capture_url`; source of Forge Decision Context. New watch 2026-11-15. | 2026-11-15 | probation |
+| releases.sh coding-agents digest | https://releases.sh/collections/coding-agents | Weekly AI-generated digests of coding-agent changelogs (Cursor, Cognition); secondary, good for spotting vendor changelog URLs. New watch 2026-11-15. | 2026-11-15 | probation |
 
 ## GitHub awesome-lists
 

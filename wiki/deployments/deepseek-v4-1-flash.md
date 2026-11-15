@@ -22,6 +22,7 @@ Pre-training: 45T multimodal tokens (7:1 text-to-multimodal), sparse attention t
 - [[patterns/topology-taxonomy]] — candidate mitigation class (model/serving-architecture KV compression) for the cross-cutting long-horizon-context-loss synthesis page, distinct from the harness/agent-layer classes already listed
 - [[patterns/openai-gpt-5-6-agentic-primitives]] — parallel frontier-lab bet that some context-cost problems belong at the model-training/architecture layer rather than the harness layer; contrast: open-weight (MIT) vs. closed API-only
 - [[evaluation/osworld-v2]] — parallel observation that long-horizon computer-use agents show sharply nonlinear token/cost curves; V4.1-Flash's near-flat decode-FLOPs scaling is a direct architectural response to that curve, though unverified against OSWorld-style benchmarks specifically
+- [[coding-agents/deepseek-super-agent]] — same vendor's Harness team released an open-source proactive coding-agent prototype (~2026-10-31); any model/harness link is unconfirmed
 
 ## Source
 
