@@ -120,6 +120,7 @@ captured title before ingesting.
 | National audit bodies (GAO, UK NAO, Canada OAG) | Primary evidence on institutional performance | 2026-08-19 | UK NAO: active (2026-09-08); GAO capture-blocked (2026-08-25, confirmed 2026-09-08); Canada OAG untested |
 | OPM CHCOC memos / Federal Register (opm.gov/chcoc/latest-memos) | Primary reform documents for the US federal civil service | 2026-09-29 | active (2026-09-29) — one capture; PDFs need curl + `capture_pdf` (see Local conventions) |
 | IMF Working Papers (imf.org/wp) | Institutional-design content; open-PDF route around NBER blocks | 2026-10-06 | probation — direct PDF 403'd (2026-10-06, curl + browser UA too); try author/RePEc mirrors |
+| IGC (theigc.org) lectures and working papers | Open-access state-capacity/development material | 2026-11-17 | probation — one capture (Besley slides) |
 | IZA discussion papers (docs.iza.org) | Open-access mirror for CEPR/NBER papers that are gated | 2026-09-29 | active (2026-09-29) — recovered the CEPR-blocked Ukraine war paper |
 
 **Capture note (2026-08-25):** `oecd.org`/`oecd-ilibrary.org` and `gao.gov` both returned hard 403s to every
@@ -247,6 +248,8 @@ survey subagent.
   arXiv monthly-list candidate (2611.02302) had already been captured the previous week; grep `raw/research/` and
   `wiki/` for the arXiv id before capturing. Search returned nothing dated in window for NBER, IZA, IfG, Statecraft, JIE
   or Marginal Revolution (unconfirmed, not dry).
+
+- Twelfth sweep, 2026-11-17: thin week (4 ingested). The arXiv econ.GN monthly list (curl) again the only productive in-window feed (three captures); the fourth capture was a Besley lecture-slide deck found on IGC's site (theigc.org) via search, a new open-access route for state-capacity material (second-hand, slides only). Search returned nothing dated in window for NBER, IZA, IfG, Statecraft, JIE, Works in Progress or Marginal Revolution (unconfirmed, not dry). The poetry venv had lost httpx; `poetry install` repaired it.
 
 ## Related
 

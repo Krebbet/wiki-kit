@@ -1768,3 +1768,7 @@ Thin week. 1 captured / 1 ingested (Cumming, "Owning What Can Quit", arXiv 2611.
 ## [2026-11-10] weekly-brief | eleventh radar sweep
 
 4 captured, 3 ingested, 1 dropped as duplicate (Cumming "Owning What Can Quit" was already captured 2026-11-03). Pages: [[embedded-state-and-unpaid-public-service]], [[public-pay-revisions-and-judicial-review-of-cuts]], [[verification-windows-and-treaty-decay]]. 6 items watchlisted. No conflicts opened; the state-capacity measurement tension with [[endogenous-state-capacity]] is recorded as a scope note. Search surfaced nothing dated in window for NBER, IZA, IfG, Statecraft, JIE or Marginal Revolution.
+
+## [2026-11-17] weekly-brief | twelfth radar sweep
+
+4 captured, 4 ingested. New pages: [[information-institutions-and-the-regulatory-charge]], [[institutions-as-a-design-space-for-artificial-agents]], [[pay-dispersion-and-the-direction-of-scientific-work]]; extended [[endogenous-state-capacity]] (Besley IGC lecture slides) and [[multitask-incentive-theory]]. 5 items watchlisted. No conflicts opened; the Besley paradox-of-power vs developmental-state tension is a scope note. Poetry venv was missing httpx and was repaired with `poetry install`.

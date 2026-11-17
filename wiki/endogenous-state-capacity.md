@@ -74,6 +74,12 @@ Fiscal and legal capacity are **supermodular** in payoff, hence complements: rai
 
 - `raw/research/institutions-and-growth/05-besley-persson-state-capacity.md` — Timothy J. Besley & Torsten Persson, "State Capacity, Conflict and Development", NBER Working Paper 15088, June 2009 (the basis for Persson's 2008 Econometric Society Presidential Address). https://www.nber.org/system/files/working_papers/w15088/w15088.pdf
 
+## Norms, reciprocity and a cultural multiplier (2026-11-17, lecture slides)
+
+Besley's IGC lecture deck "State Capacity, Conflict and Development" (un-refereed slides; figures and equations lost in capture, so treat as a second-hand summary) extends the investment framework with a norms channel. **[model]** Constrained-executive institutions and a reciprocity-based civic culture are complements that jointly yield "common-interest" states; capacity can rise without more formal coercive power when compliance is quasi-voluntary (a "paradox of power": capacity depends on constraints). **[empirical]** Support is correlational (country clusters, World Values Survey items aggregated by country and generation), not instrumented.
+
+**[wiki synthesis]** Scope tension, not a conflict, with [[developmental-state-and-embedded-autonomy]]: fast-growth East Asian cases built capacity with weak executive constraints, but the deck's claim concerns long-run common-interest states, not catch-up growth. Candidate [[dimensions-of-institutional-variation]] rows: constraints vs openness of access; coercive vs consent-based compliance. Related: [[culture-and-constitutional-compliance]], [[fast-and-slow-moving-institutions]], [[social-norms-and-conditional-preferences]]. Source: `raw/research/weekly-2026-11-17/04-igc-state-capacity-conflict.md`.
+
 ## Related
 
 - [[credible-commitment]] — the same England case for a complementary mechanism: that page's ruler cannot expropriate the investor; here the ruler will not invest because a successor might expropriate the state.

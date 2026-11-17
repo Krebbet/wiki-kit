@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-11-10
+last_reviewed: 2026-11-17
 ---
 
 # Watchlist
@@ -400,6 +400,18 @@ Thin week. 1 captured (see `wiki/weekly-briefs/2026-11-03.md`). Search surfaced 
 ### Blogs, essays and commentary
 
 - UNU-WIDER WP 2026/32, South African preferential procurement — bureaucratic failure from capability vs. incentive misalignment; PDF 403'd.
+
+## Week of 2026-11-17
+
+4 captured, 4 ingested (see `wiki/weekly-briefs/2026-11-17.md`). Search surfaced nothing dated in window for NBER, IZA, IfG, Statecraft, JIE or Works in Progress.
+
+### Working-paper and preprint feeds
+
+- Corporate Stances on Societal Issues in the US (arXiv 2611.19068) — firm political positioning; governance angle unclear.
+- Human Capital in Context: Employment Survival and Worker-Firm Match (arXiv 2611.16058) — firm-internal selection evidence.
+- A new typology of AI use in organisations (arXiv 2611.15371) — organisational-theory framing; pairs with the AI-occupants page.
+- The Origins of the State's Institutional Capacity (SIOE 2026 programme paper 1808) — directly on state capacity; find the working-paper PDF.
+- World Bank WP 11279 on institutional capacity as ability to implement mandates — measurement angle for state capacity.
 
 ## Related
 

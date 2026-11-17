@@ -99,6 +99,10 @@ The elemental incentive-system theory treats **asset ownership as one more contr
 - **No account of who selects or removes the principal.** The principal is an unexamined unitary actor with unquestioned authority to set the contract. There is no board, no ownership diffusion, no accountability structure above the dyad.
 - **The lecture's generalisation from dyad to firm architecture is done by analogy**, not by formal argument. Any use of this material above the level of a single employment relationship is an extrapolation the sources do not themselves perform.
 
+## A field test in academic science (2026-11-17, un-refereed)
+
+**[empirical]** Cao (arXiv 2611.16747; see [[pay-dispersion-and-the-direction-of-scientific-work]]) finds across 4,839 US public-university departments that pay dispersion unexplained by the rank ladder goes with more publications and citations but less disruptive, less novel work. This is the composition prediction at population scale, with disruption/novelty as the hard-to-observe task. Observational; the author disclaims causality and several matched tests are null.
+
 ## Source
 
 - `raw/research/incentives-and-institutional-form/01-holmstrom-nobel-lecture.md` — Bengt Holmström, "Pay For Performance and Beyond", Nobel Prize Lecture, 8 Dec 2016. https://www.nobelprize.org/uploads/2018/06/holmstrom-lecture.pdf
