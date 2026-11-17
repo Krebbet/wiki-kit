@@ -996,3 +996,6 @@ Thin week for tooling/federation news; platform.coop RSS feed found compromised 
 
 Thin week: no new counter-algorithmic tool with released code; platform/federation stream unobserved again (platform.coop feed spam, AlgorithmWatch/Markup stale). 5 arXiv captures (pymupdf engine; marker too slow): (1) Artificial Shoppers & Attention Competition (2611.09399) — AI assistants can soften price competition; (2) IAB GPP consent propagation (2611.02014) — opt-out signals mostly not honored downstream; (3) Agentic crawler tracker measurement (2611.06197) — agent crawlers see more trackers than humans; (4) Clear Human Web (2611.06286) — blind-token personhood; (5) Generative-search brand bias audit (2611.07614). 10 watchlist additions. No conflicts opened.
 
+
+## [2026-11-16] weekly-brief
+Week of 2026-11-16: 5 captures (pymupdf): (1) Mozilla fingerprinting-in-the-wild (Ritter et al., released code/data; Firefox 143 mitigations); (2) SEAL face cloaking (2611.14254, code); (3) uBlock Origin element-picker UXSS; (4) Accuracy Is Not Welfare for AI buyers (2611.16471) — tension with consumer-ai-assistant-market-simulation noted on-page; (5) Verifiable local energy market settlement (2611.16495). 10 watchlist additions (NYC surveillance-pricing ban etc.). No conflicts opened. Poetry venv lacked httpx (fixed, logged in master_notes).

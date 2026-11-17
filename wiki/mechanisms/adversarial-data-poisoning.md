@@ -144,3 +144,7 @@ The Wang et al. attack taxonomy and the Solanki et al. ACA formalism together de
 - [[possible-strategic-levers]]
 - [[obfuscation-strategic-readout]]
 - [[federated-learning]] — substrate technology + dual-use Byzantine-robustness defences
+
+## See also
+
+- [[seal-face-cloaking]] — SEAL (2026), sparse face-photo cloaking against diffusion personalization; shows the same robustness-vs-quality arms race and fragility to JPEG/resizing preprocessing.

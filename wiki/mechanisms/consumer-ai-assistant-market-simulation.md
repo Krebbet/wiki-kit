@@ -47,3 +47,7 @@ Academic arXiv preprint, not peer-reviewed; written for multi-agent-systems and 
 - [[mechanisms/agents-vs-ecommerce-opacity]] — commentary predicting sellers block shopping agents rather than compete for them
 - [[artificial-shoppers-attention-competition]] — 2026-11-09 weekly-brief cross-ref
 - [[generative-search-brand-bias-audit]] — 2026-11-09 weekly-brief cross-ref
+
+## See also: accuracy versus equilibrium welfare
+
+[[accuracy-not-welfare-ai-buyers]] (Ning 2026, arXiv 2611.16471; single-author synthetic preprint) is in tension with this page's finding that adopters gain after seller adaptation: in a synthetic duopoly a more accurate calculator-assisted buyer (84.00% vs 68.57% optimal offers) yields lower consumer-worst equilibrium surplus than verified-total disclosure (32.92 vs 53.06), though the ranking is not robust to re-solving equilibria.

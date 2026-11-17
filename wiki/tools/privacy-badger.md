@@ -86,3 +86,4 @@ EFF's AdFection write-up (Citizen Lab disclosure of ad-delivered zero-click spyw
 - [[nightshade-glaze]]
 - [[transparency-tools]]
 - [[possible-strategic-levers]]
+- [[ubo-element-picker-uxss]] — sibling blocker extension's security failure; same extension threat model

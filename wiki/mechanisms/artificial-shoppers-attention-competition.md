@@ -44,3 +44,5 @@ Theory-only mechanism page. Guo, Xu & Zhang (arXiv 2611.09399) model a retail pl
 - [[industries/surveillance-pricing-retail]] — type-aware pricing and choice shaping
 - [[tools/consumer-price-tools]] — evaluation criterion for user-side tools
 - [[counter-power/regulatory-responses]] — audit of interfaces on induced choices
+
+See also: [[accuracy-not-welfare-ai-buyers]] — parallel result that buyer-side AI accuracy does not guarantee consumer welfare once sellers respond (synthetic single-author preprint).

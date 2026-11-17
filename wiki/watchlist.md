@@ -403,3 +403,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - Pluralistic "AI fatfinger economy" (Nov 4) — forced-AI UI, receipts-app example
 - Pluralistic "Without CDA 230, Facebook will own the internet" — interoperability/liability context
 - Ghostery v10.6.11 / uBlock Origin 1.76.1b0 — blocker release drift (supersedes 11-02 entry)
+
+## Recent additions (2026-11-16 weekly-brief overflow)
+
+- NYC Council surveillance-pricing ban (Gothamist, Nov 12) — first municipal ban, online + in-store, up to $1,000/transaction; layers on June NY state law; creates measurable compliance surface
+- arXiv 2611.17012 "Anonymous in Name Only" — re-identification attack on EC DMA Art. 6(11) Google Search data anonymization; stress-tests DMA mandated-access substrate
+- arXiv 2611.16800 "A Code-Level Audit of X" — DSA recommender-code disclosure audit method, reusable
+- arXiv 2611.13527 "Repertoires of Contention" — computational tools for community resistance (bitcoin-mining plant); transferable counter-power template
+- arXiv 2611.15838 "Before AI Agents Negotiate for Us" — nine-architecture negotiation tournament; code at AILabFr8tech/wehaveadeal
+- arXiv 2611.17980 "Algorithmic Opacity as a Principal-Agent Problem" — disclosure test hook for demand templates
+- arXiv 2611.12167 FraudBench — legal evaluation of LLM-agent deception
+- arXiv 2611.15019 obfsgen — generative tunnel obfuscation, adjacent to fingerprint/traffic defence
+- Pluralistic "Uber's labor crash" (Nov 12) — gig-labor economics framing
+- Weather app → data brokers teardown (hermandaniel.com, Nov 11) — location/Wi-Fi/cell-tower leakage traffic analysis

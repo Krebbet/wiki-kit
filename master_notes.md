@@ -278,3 +278,8 @@ The `## Subreddits` stream in `wiki/reference-sources.md` (`r/PlatformCooperativ
 - Status: open
 - Scope: kit
 - `capture_pdf --engine marker` ran >10 min CPU-bound on a single arXiv paper (unattended run); weekly-brief should default to `--engine pymupdf` or put a timeout on marker. Also `pkill -f <pattern>` inside the same Bash call kills the invoking shell (exit 1, no output); kill by PID.
+
+## 2026-11-16 weekly-brief: poetry env missing httpx
+- Status: open
+- Scope: kit
+- `poetry run python -m tools.capture_*` failed with `ModuleNotFoundError: httpx` (declared in pyproject but venv not installed). Fixed with `poetry install --no-root`. weekly-brief should verify the venv (`poetry run python -c "import httpx,fitz"`) before step 4.

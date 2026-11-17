@@ -81,3 +81,7 @@ Relationship to other wiki mechanisms:
 - [[platform-cooperatives]]
 - [[data-cooperatives]]
 - [[regulatory-responses]]
+
+## See also
+
+- [[verifiable-local-energy-market-settlement]] — 2026-11-16 weekly-brief cross-ref: ZK-auditable settlement layer for community energy operators (preprint, simulated)

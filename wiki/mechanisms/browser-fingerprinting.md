@@ -224,6 +224,10 @@ Distinct surface from browser attributes: a passive on-path observer (ISP, VPN p
 - `raw/research/weekly-2026-04-27/05-05-pets-2026-fingerprint-defenses.md` — PETS 2026 (PoPETs / Calgary) accepted-papers list, captured April 2026 for the fingerprint-defence cluster (Ephemeral, Dodge, PriVA-C, Schramm et al. awareness baseline, Berke et al. entropy measure, EXADPrinter Android, Song et al. multi-agent LLM attack, MV3 ad-blocker effectiveness paper). Origin: peer-reviewed venue proceedings. Purpose: defence-side research disclosure. Trust: high — peer-reviewed; artifact badges (Available / Functional / Reproduced) independently assigned by the PETS artifact committee.
 - `raw/research/weekly-2026-05-11/03-jetblue-class-action.md` — ClassAction.org coverage (April 29 2026) of *Phillips v. JetBlue Airways Corporation* (1:26-cv-02405, US District Court, filed April 22 2026). Origin: plaintiff-aligned secondary reporting on a court-filed complaint. Purpose: report case caption, class scope, named third-party vendors (PROS Holdings, FullStory), and the complaint's "clear your cache" admission anchor. Trust: case-caption / docket / vendor-naming claims are checkable against the public docket; allegations are unproven pending discovery and class certification. Used here only for the *alleged-mechanism* layer of the case (cookie / cache-based pricing); not relied on for empirical claims about fingerprinting techniques.
 
+## Population-scale measurement and Firefox 143 mitigations
+
+Ritter et al. (CCS 2026) measure uniqueness across ~25M Firefox users: baseline 75.7% (Fingerprint Pro), 60.9% (Signifyd), 18.2% (Akamai); Firefox 143 protections cut Fingerprint Pro uniqueness from ~75% to ~44-46%. Uniqueness is concentrated in a few characteristics (Software Canvas, available screen resolution, timezone). See [[mozilla-fingerprinting-in-the-wild]].
+
 ## Related
 
 - [[mechanisms/http2-website-fingerprinting-defences]] — network-layer traffic-analysis surface

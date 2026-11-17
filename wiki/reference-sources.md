@@ -46,6 +46,7 @@ Replaces the AI/ML-coded selection heuristic in `/weekly-brief` step 3. In order
 - **Scan method (updated 2026-10-26):** arXiv API returned HTTP 429 on all retries; fallback `https://arxiv.org/list/<cat>/pastweek?show=250` works for cs.CY/cs.GT/cs.CR title scans. Capture arXiv papers via `https://arxiv.org/pdf/<id>` — the `/abs/` URL yields only the abstract page. hn.algolia.com `search_by_date` needs one query per call (OR-joined queries fail).
 - **Scan method (updated 2026-11-02):** platform.coop `/feed/` is now compromised (casino/betting SEO spam since ~Nov 1) — scan the site HTML/newsletter instead. AlgorithmWatch `/en/feed/` and The Markup RSS stale since Oct 15. arXiv `pastweek` list pages still work (API not retried).
 - **Scan method (updated 2026-11-09):** arXiv `pastweek` list pages parse well with a short regex over `<dt>`/`list-title` blocks; abstracts via `citation_abstract` meta tag on `/abs/<id>`. platform.coop HTML listing has no dates — fetch individual post pages or diff slugs against a saved list. HN search is fuzzy (use narrow single-topic queries, `points>5`); GitHub `created:>=` search is noise — use release atoms for tracked tools. EFF feed works (14 items in window). noyb quiet since Oct 29. marker engine took >10 min CPU per paper — use `--engine pymupdf` for the weekly run. `pkill -f` inside a Bash call kills the invoking shell; don't.
+- **Scan method (updated 2026-11-16):** poetry venv may lack httpx — run `poetry install --no-root` first. noyb feed is now `https://noyb.eu/en/rss` (old `/en/rss.xml` redirects). Techdirt `/feed/` returns 403 to curl. platform.coop still unobserved (3rd week). arXiv pastweek link markup is `href ="/abs/ID"` (space before `=`). HN numeric filter `created_at_i>` works with narrow queries.
 
 ## Sources
 
@@ -67,6 +68,9 @@ The trend-scan source set, grouped by stream. Update freely as outlets prove val
 - **OpenTermsArchive/engine** and **duckduckgo/tracker-radar** GitHub releases — ToS-diff and tracker-dataset tooling (added 2026-11-02).
 - **AdguardTeam/AdguardBrowserExtension** GitHub releases (`releases.atom`) — tracked-tool release cadence (added 2026-11-09).
 - **Techdirt** dynamic-pricing beat — extraction-tier problem framing (added 2026-11-09).
+- **fingerprinting.study** + `tomrittervg/fingerprinting_paper_artifacts` + Mozilla anti-fingerprinting Firefox release notes — fingerprint-defence evidence base (added 2026-11-16).
+- **iter.ca** security blog + `gorhill/uBlock` security advisories — tracked-tool security findings (added 2026-11-16).
+- **Gothamist / The City / NYC Council Legistar** — municipal surveillance-pricing legislation (added 2026-11-16).
 - **Kadoa US food-prices tracker** — price-transparency watch; check for code/data release and methodology (code status unknown as of 2026-10-05).
 
 - **Citizen Lab** — ad-tech / spyware findings (e.g. AdFection); primary reports behind EFF write-ups.

@@ -242,3 +242,4 @@ For consumer-collective tools aimed at pricing algorithms, the practical read: *
 - [[possible-strategic-levers]]
 - [[obfuscation-strategic-readout]]
 - [[lever-implementation-readout]]
+- [[mozilla-fingerprinting-in-the-wild]] — population-scale fingerprint uniqueness baselines relevant to identity-rotation obfuscation

@@ -78,6 +78,8 @@ All major products at scale use an affiliate-commission business model — their
 
 - `raw/research/bootstrap-2026-05-27/01-consumer-price-tools-landscape.md` — web research capture, 2026-05-27 (Chrome Web Store, Wikipedia, FTC, company press releases, Sensor Tower). Trust: medium-high.
 
+**Security caveat (Hook 5 / extension distribution):** privacy extensions are themselves attack surface; see [[ubo-element-picker-uxss]] (uBlock Origin one-click UXSS via its element picker, fixed Nov 2026).
+
 ## Related
 
 - [[transparency-tools]] — mechanism anchor for price transparency tools; Hannak et al. 2014 foundational detection methodology; Keepa and paypal-honey are existing entries
@@ -90,3 +92,4 @@ All major products at scale use an affiliate-commission business model — their
 - [[privacy-badger]] — Privacy Badger EFF tool (cooperative framing template)
 - [[bootstrap-strategy]] — strategy-layer page defining the three hooks and entry-point design
 - [[regulatory-responses]] — regulatory acceleration context
+- [[ubo-element-picker-uxss]] — extension-security case (uBO UXSS)
