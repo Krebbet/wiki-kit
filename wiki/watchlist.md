@@ -757,3 +757,17 @@ Window 2026-11-04 → 2026-11-11. Ingested: [[landscape/snowflake-expedition-202
 - [2026-11-11] **Databricks Connect AI (Agent Bricks over MCP to hundreds of systems)** — from a weekly roundup; confirm on Databricks newsroom — https://www.rtinsights.com/real-time-analytics-news-for-the-week-ending-november-8/
 - [2026-11-11] **Launch HN cluster: Omnara, Ardent, Voker, Terminal Use, Mantlecore, Blaxel** — agent sandboxes/hosting/analytics; dates unverified — https://news.ycombinator.com/launches
 - [2026-11-11] **Cortex AI Gateway Sandboxes/Abuse Detection/Trace Intelligence** — private preview per Snowflake; track for GA — see [[landscape/snowflake-expedition-2026-11]]
+
+## 2026-11-18 — weekly sweep
+Window 2026-11-11 → 2026-11-18. Ingested: [[landscape/claude-fable-5-2-2026-11]], [[landscape/ibm-microsoft-imagine-enterprise-2026-11]], [[startups/langchain]], [[landscape/cloudflare-kitesurf-2026-11]].
+
+- [2026-11-18] **Mercor $750M Series D at $20B (2026-11-10, Reuters)** — expert-data/training-labor layer; Nvidia, Benchmark, General Catalyst; reportedly includes employee tender — https://aiweekly.co/alerts/mercor-raises-750m-series-d-at-20b-doubling-in-a-year
+- [2026-11-18] **Rox $100M Series B at $1.3B (2026-11-11)** — agentic CRM challenging Salesforce; General Catalyst, March Capital, Databricks Ventures; ARR/NRR claims vendor-supplied — https://www.siliconreport.com/rox-raises-100-million-series-b-at-1-3-billion-valuation
+- [2026-11-18] **OpenAI Agent Builder and Evals shutdown 2026-11-30 (announced 06-03)** — lock-in/platform-churn datapoint; vector stores don't auto-migrate; OpenAI also bought Odessia 11-10 — https://community.openai.com/t/deprecation-notice-agent-builder/1382650
+- [2026-11-18] **Databricks ~$3B EMEA investment over 3 years (2026-11-11)** — sovereignty/regional expansion; also Unity Gateway added Fable 5.2, Genie One MCP beta EOL 11-30 — https://www.hpcwire.com/bigdatawire/this-just-in/databricks-plans-3b-investment-in-europe-and-the-middle-east/
+- [2026-11-18] **Salesforce Agentforce Coworker (2026-11-05)** — vendor-claimed 21x usage in 3 months, 185k users, $50/user/month; Hunter agent GA due Nov — https://www.salesforce.com/ap/news/press-releases/2026/11/05/sg-salesforces-agentforce-coworker-usage-soars-21x-in-three-months-as-enterprises-delegate-real-work-to-ai/
+- [2026-11-18] **Thinking Machines ~$5B round at ~$40B pre (reported ~11-06, unconfirmed)** — aggregators misprint size/stage — https://thenextweb.com/news/thinking-machines-lab-6bn-round-nvidia-accel
+- [2026-11-18] **Anthropic S-1 financials (Q2 op. profit ~$974M on ~$11.6B revenue, reported)** — still unresolved vs $80.7B-loss reports; check EDGAR primary and any amended S-1 — https://thepaypers.com/fintech/news/anthropic-files-s-1-with-us-sec-for-proposed-nasdaq-ipo
+- [2026-11-18] **MCP Inspector OAuth RCE (CVE-2026-119025 per CSA briefing)** — CVE ID looks odd; verify on NVD — https://labs.cloudsecurityalliance.org/research/ciso-daily-briefing-20261115/
+- [2026-11-18] **Odessia (OpenAI acquisition, 2026-11-10)** — AI travel agent, $6M pre-seed (Sequoia); price undisclosed — see OpenAI row above
+- [2026-11-18] **Microsoft Ignite 2026 (11-17→11-20)** — no indexed coverage yet; re-scan next run

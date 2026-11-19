@@ -165,3 +165,11 @@ The `git checkout` step ensures the run lands on the intended weekly-brief branc
 - **claude.com/blog** — Anthropic product/admin posts (distinct from anthropic.com/news).
 - **aiagentsdirectory.com daily briefs** — lead-finding only, M&A leads; confirm with a primary.
 - **Scan caveat:** AWS, Azure, Databricks and OpenAI first-party items again not surfaced by search; open newsrooms directly next run.
+
+## Additions (2026-11-18)
+- **aiweekly.co/alerts** — fast funding/launch alerts; lead-finding only, confirm with a primary.
+- **labs.cloudsecurityalliance.org** (CISO daily briefing) — agent/MCP vulnerability roundups; verify CVE IDs on NVD.
+- **docs.databricks.com release notes** — first-party Databricks changelog (first Databricks primary to surface in weeks).
+- **thenextweb.com** — reliably capturable funding/launch coverage.
+- **Capture caveat:** a search-reported IBM URL returned an unrelated older watsonx page; confirm captured text mentions the event before ingest.
+- **Scan caveat:** AWS/Azure first-party items still not surfaced; Ignite 2026 not yet indexed.

@@ -412,3 +412,6 @@ Weekly radar sweep (window 2026-10-28 → 2026-11-04). Search index returned lit
 
 ## 2026-11-11 — weekly-brief
 Weekly radar sweep (window 2026-11-04 → 2026-11-11). 5 captured/ingested: Snowflake Expedition 2026 (Business Ontology, Cortex AI Gateway), Claude unified chat+Cowork for Enterprise, fal $1.3B Series F, Glow Labs MCPhantom, Google Agentic Data Cloud cross-cloud. Search index again thin on AWS/Azure/Databricks/OpenAI first-party items. Left pre-existing dirty files (master_notes.md, platforms/microsoft.md, platforms/snowflake.md) untouched.
+
+## 2026-11-18 — weekly-brief
+Weekly radar sweep (window 2026-11-11 → 2026-11-18). 4 captured/ingested: Claude Fable 5.2 / Mythos 5.2 (Anthropic primary), Microsoft + IBM Imagine Enterprise (CIO Dive; first IBM-URL capture was the wrong page and was replaced), LangChain $300M Series C, Cloudflare Kitesurf (source says Rust/Wasm and not yet open-sourced, contradicting aggregator summaries). A 5th capture (Anthropic S-1, The Paypers) had no financials and duplicated an existing page; dropped. Search index still thin on AWS/Azure first-party items; Ignite 2026 coverage not yet indexed. Note: poetry venv was missing and was rebuilt with `poetry install`.
