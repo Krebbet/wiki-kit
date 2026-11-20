@@ -1,5 +1,7 @@
 # Object certainty model (drone-prototype EDA355 design: 3-state belief, tempered looks, static + mobile decay)
 
+**Update 2026-11-20 (librarian):** since 11-19 the AREA CHECK updates beliefs through `drone.beliefs` ([[drone-beliefs-update]]), which keeps its own existence log-odds and a second state store (`data/beliefs/<world>/state.json`) beside the records until every updater moves over (P-01765). The 11-18 check-belief trace also found floor items' learned rates inverted (own-miss ~0.55 > 1 − pf, so a present look lowers P(here); P-01758, open). D-00025 (11-16) put this posterior into the planning grid: only permanent / semi-permanent records that are certain AND well located become solid no-go, on their stored footprint only.
+
 **Status (updated 2026-11-14): BUILT on master by PR #299 (2026-11-13; `eda/EDA355-build/FINDINGS.md`,
 `src/drone/objects/certainty.py`, `config/certainty.json`), offline only. Two differences from the design below, both
 human decisions of 11-13: NO time decay (the hazard knobs are kept in config, OFF), and camera floor items still file by

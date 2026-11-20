@@ -538,3 +538,20 @@ New page `open-source-rover-stack-options`, answering the human's 2026-11-12 que
 - Not written up yet (candidate pages for the next pass): EDA365, the lattice route search as default (PR #297), and EDA366, the not-floor detector comparison (PR #298, no build; alternatives next week).
 
 **Branch hygiene.** `librarian-2026-11-14` starts from `ai-drone-wiki` after PR #11 merged, so it is the tip.
+
+### 2026-11-20 — librarian periodic pass (drone-prototype PRs #311–#356, 11-14 → 11-20): floor check + drone.beliefs
+
+**New pages (project records, from the diary / parked list / code; no web research):**
+- [[floor-check-visual-first]]: EDA368–EDA385 — candidates A / B / C fail alone under pre-registration; the fused visual gate, the crop-DINO cascade, the object-first rule (now default, mode "first"), the LiDAR ring-continuity rule.
+- [[drone-beliefs-update]]: drone.beliefs — one update / one new-belief path for the area check, reference-image identity, session-VLM questions, the filing gate, geometry V4, the 11-20 live relocation run and its limits.
+
+**Committed for the first time:** [[floor-object-detection-methods]] (11-13) and [[visual-floor-anomaly-methods]] (11-17), written by research subagents and left untracked in the main wiki checkout; both got a `## Source` section and index rows.
+
+**Status notes:** [[object-certainty-model]] (drone.beliefs keeps its own existence state; P-01758 floor-item rate inversion; D-00025 in the grid), [[object-fingerprint-memory]] (per-belief reference images), [[home-tidy-drone-prototype]] (staleness re-confirmed).
+
+**Stale flags, not changed this pass:**
+- [[home-tidy-drone-prototype]] still needs an owner refresh (newest body content 2026-06).
+- [[dynamic-object-handling]], [[semantic-object-memory]]: 11-12 stale banners still apply.
+- Not written up yet (candidates for the next pass): EDA365 lattice route search (PR #297); EDA366 not-floor detector (PR #298); D-00025 certainty-in-grid as its own page if planning work resumes; the aimed in-place check (PRs #321, #324) and lift auto-home (#325, #331).
+
+**Branch hygiene.** `librarian-2026-11-20` starts from `origin/ai-drone-wiki` after PR #12. The main checkout at `wiki-drone/` sits on the stale `librarian-2026-11-05-hazard-detection` branch (PR #8 open) with the two research pages untracked and a one-line home-tidy edit; this branch carries all three, so those working-tree copies can be dropped after merge.
