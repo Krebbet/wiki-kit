@@ -1,6 +1,6 @@
 # Object-Fingerprint Memory — Model & Method Choices
 
-> **STALE against the rover prototype (librarian flag, 2026-11-12).** Newest content is from 2026-06. For how the rover now re-observes, removes and identifies objects, see [[object-certainty-model]] (design) and [[object-detector-measured-rates]] (measured rates). The model and method choices below are unchanged.
+> **STALE against the rover prototype (librarian flag, 2026-11-12).** Newest content is from 2026-06. For how the rover now re-observes, removes and identifies objects, see [[object-certainty-model]] (design) and [[object-detector-measured-rates]] (measured rates). The model and method choices below are unchanged. **2026-11-20:** the rover now uses per-belief DINOv2 reference images for identity (match bar 0.65, up to 6 references, a VLM for unclear cases): see [[drone-beliefs-update]].
 
 Concrete model + method knowledge for the per-instance **object-fingerprint memory
 bank**: as objects come in, segment + cut out each one, extract a feature vector, and
