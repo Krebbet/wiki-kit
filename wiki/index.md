@@ -50,6 +50,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 ---
 | [[devices/ecram-short-term-plasticity-neuron]] | MoS2/PEO:LiClO4 ECRAM volatile conductance decay used as short-term plasticity in a delay-feedback LIF neuron. Only the single device (3 devices) is measured; ~2 pJ circuit energy (inconsistent with ~8 pJ Monte Carlo) and network results are simulated. |
+| [[devices/memristor-state-dependent-stdp]] | Hybrid local-STDP + threshold-memristor state update: 95.15% MNIST / 85.92% Fashion-MNIST in HSPICE-compact-model simulation; update asymmetry collapses learning; training-time faults absorbed. Simulation only. |
 
 ## Chips & systems
 
@@ -59,6 +60,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[chips/loihi-birdsong-axonal-delays]] | Loihi 1 (not 2) birdsong syllable recognition by axonal-delay template matching. 8.71 J / 0.75 W is Loihi network only, no CPU baseline; ~17 ms/syllable is throughput; no numeric on-chip WER. |
 | [[chips/texel-gas-classification]] | Groningen TEXEL mixed-signal chip, fly-inspired 1-bit Hebbian gas classifier: 74.6% at 482 nJ/inference (dynamic, read-out only) and 27 µW static; "matches SVM" holds only for a 64-bit read-out; no on-chip baseline. |
 | [[chips/hyvox-xylo-speaker-id]] | UMass HyVox: SynSense Xylo Audio 3 + STM32L476 speaker ID. Measured 3.8 mJ total / 1.63 mJ dynamic per 3-s window, 5.8× / 13.5× below int8 ANNs on a different MCU; idle 2.30 mW and non-iso-accuracy caveats. |
+| [[chips/eventspikeseg-mixed-signal-gf180]] | Mixed-signal GF180 architecture study for event-camera segmentation: 143,824 weights but 30.98 M resident membrane states; module-level simulation (41.7 µW core, 3.3 pJ read), 24.26% vs 26.22% mIoU calibrated forward pass. No silicon. |
 | [[chips/dynapse-neuromodulation-gain-reservoir]] | INI DYNAP-SE chip-in-the-loop neuromodulation: +17.3 pp on binary SHD, but only +4.7 ± 7.7 pp (n.s.) over a retrained readout. Off-chip modulator; no energy numbers. |
 | [[chips/brainscales2-chiplet-interconnect]] | Heidelberg's chiplet-interconnect design for scaling analog BrainScaleS-2 past its area-constrained single die. Phit-level dynamic bandwidth partitioning for mixed spike/config traffic. **All figures are pre-silicon simulation**, no chiplet fabricated; worst-case system MTBF drops to minutes at 16×16-mesh scale. |
 | [[chips/ethereal-event-gnn-processor]] | First event-driven GNN processor chip (TSMC 28 nm, academic shuttle) — processes DVS events natively as a sparse graph. Silicon-measured 25.6 µs / 1.7 µJ per event, but the "comparable accuracy" claim is simulated, not chip-measured, and trails an FP64 A100 baseline on every dataset shown. |
@@ -85,6 +87,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 ---
 | [[snn/spike-encoding-iot-sensing]] | Six IoT tasks, SNN input encoders: FP32 45 nm arithmetic energy estimates and measured Jetson AGX Orin rail energy rank encoders differently. No neuromorphic silicon measured. |
+| [[snn/memristive-snn-model-inversion-privacy]] | SDMI model inversion on simulated memristive SNNs: threshold perturbations raise reconstruction SSIM up to 51.8%, weight noise lowers it 35.7%; variability is not inherently private. Simulation only. |
 | [[snn/fly-connectome-snn-fault-assessment]] | Simulation-only (Brian 2) Drosophila-connectome LIF network under connection-row deletion: relay 0/48 vs proportional 11/48 collisions at 50% deletion; weak warnings (2/13), checker caught 81/87 corruptions. |
 
 ## Benchmarks

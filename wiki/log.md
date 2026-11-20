@@ -195,3 +195,8 @@ Full brief: `wiki/weekly-briefs/2026-11-05.md`.
 Survey: three agents. Industry lane verified nothing dated in window (BrainChip Sept-quarter 4C only via an unverifiable Kalkine snippet); arXiv API returned empty bodies (rate-limited), so arXiv lane was rebuilt from the cs.NE listing (other listings returned error pages). Journals lane used Crossref for NCE. Captured: 2611.11317, 2611.06940 (marker), NCE aeb971 (capture_url, open access, full body). Skipped: NCE aebe57 (Radware wall, 659 B), NeuroBench 2.4.0 release (changelog only; watchlisted).
 
 Full brief: `wiki/weekly-briefs/2026-11-12.md`.
+
+## [2026-11-19] weekly-brief | Ninth-week sweep
+Three arXiv captures (marker): 2611.18524 (EventSpikeSeg, GF180 mixed-signal architecture study, no silicon), 2611.00119 (device-informed STDP on threshold memristor, simulation), 2610.39688 (model-inversion privacy in memristive SNNs, simulation). Pages: chips/eventspikeseg-mixed-signal-gf180, devices/memristor-state-dependent-stdp, snn/memristive-snn-model-inversion-privacy. 8 watchlist additions. Industry/funding lane found nothing verifiable. Poetry venv lacked httpx; `poetry install` fixed it.
+
+Full brief: `wiki/weekly-briefs/2026-11-19.md`.
