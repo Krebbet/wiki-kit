@@ -18,6 +18,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Architectures & sequence models
 
 | Page | Summary |
+| [[loopback-transformer]] | arXiv:2611.07226. Looped-Transformer residual aggregation (decayed per-block updates + parameter-free attention); beats matched-depth Transformers on ClimbMix with 40-75% of params; beats Hyperloop/mHC by 0.005-0.011 nats. |
+| [[multi-branch-transformer]] | arXiv:2611.19800. Parallel full-block branches with Joint-KV; claims 1.16-1.26x compute-equivalent quality, 19-34% less KV cache, up to 51.4% faster decode. No code link seen. |
 | [[visionhope]] | VisionHOPE (arXiv:2609.33325): vision backbone on Nested Learning's self-referential HOPE (five within-image memories, non-expansive step-size control); gains over TTT baselines ~0.0-0.3pp, no seeds. |
 |---|---|
 | [[reflection-beam]] | Reflection Beam-1.0: Apache-2.0 501B-A23B text MoE, 1M context; 256 experts/top-8 no shared expert, 5:1 sliding/global attention (NoPE global layers), 1/sqrt(k) variance-preserving residuals; vendor SWE-Verified 81.6, Terminal-Bench 2.1 80.1; TRL/Miles recipes.
@@ -56,6 +58,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Training & optimization
 
 | Page | Summary |
+| [[steering-vectors-rl-dit]] | arXiv:2611.26627. Fixed per-block steering vectors fitted by velocity matching recover 90-96% of RL reward gain on six image DiTs; RL post-training of DiTs ≈ constant shift. |
+| [[regularized-score-centering]] | arXiv:2611.21791. Reverse-KL penalty added to score centering stabilizes async/off-policy RL; best on six agentic benchmarks, +14.3% AppWorld. |
 | [[deletion-tuning]] | arXiv:2611.10866. Learned binary mask zeroing <0.05% of gate weights matches full fine-tuning under GRPO/SFT/SDFT; 0.5–30 MB adapters, less forgetting. Code released. |
 | [[p2-mopd]] | arXiv:2611.03953 (StepFun/Adelaide). Multi-teacher OPD with trainable student weights plus learnable expert task-vector coefficients; 94.7% vs 80.9% recovery. Code released. |
 | [[weight-space-programming]] | MIT CSAIL blog (2026-11-02). GPT-6 Astra edits 0.016% of Qwen3.5-0.8B's weights without gradients (MATH-500 7.9%→48.1%); blog not paper, vendor-dependent, contested. |
@@ -116,6 +120,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Self-improving agents
 
 | Page | Summary |
+| [[resolution-hypothesis]] | arXiv:2611.23068. 1,030-run audit: agent-evolution stalls on noisy selection (~48.6% pairwise), not proposals; reported margins within run noise. |
 | [[co-cheating-crossfit]] | Co-cheating (shared wrong answers rewarded as agreement) in self-evolving search agents; CrossFit's source-level fold cross-fitting halves false agreement, +8-9 pts on Qwen3.5-4B/9B (arXiv:2609.39102). |
 |---|---|
 | [[self-evolving-agent-harness]] | Harness RSI (arXiv:2610.18813): taxonomy of harness self-evolution (interpreted-state vs executable: component/repository/plugin) plus stability and fresh-validation admission bounds; critiques held-out-split reuse. No new experiments; secondhand SpreadsheetBench/EIP numbers.

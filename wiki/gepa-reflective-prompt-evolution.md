@@ -66,3 +66,5 @@ Code at https://github.com/gepa-ai/gepa. Appendices include full optimized promp
 - [[huxley-godel-machine]] — both are self-improving systems using evolutionary / tree-search over candidate programs (HGM: clade scoring; GEPA: Pareto illumination).
 - [[conflicts/grpo-vs-evolution-strategies]].
 - [[watchlist]] — MIPROv2, TextGrad, APO, Trace/OptoPrime, MAP-Elites.
+
+- See also: [[resolution-hypothesis]] - evaluation-resolution caveat: GEPA selection ~48.6% pairwise accuracy; reported margins within single-run noise.

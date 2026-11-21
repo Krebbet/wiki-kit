@@ -63,3 +63,5 @@ Preprint (April 2026); no evidence of independent reproduction, citations, or le
 - [[titans-miras]] — Titans uses recurrent memory to sidestep KV cache growth; TriAttention compresses it instead. Contrasting strategies for the same bottleneck.
 - [[test-time-training]] — cluster page on TTT-flavoured approaches; TriAttention is a non-TTT inference-time efficiency method, worth linking as a counterpoint.
 - [[watchlist]] — SnapKV, R-KV, VATP, StreamingLLM cited as prior art but not captured.
+
+- See also: [[multi-branch-transformer]] - architectural KV reduction (Joint-KV, 19-34% less cache), complementary to compression.

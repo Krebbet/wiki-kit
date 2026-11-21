@@ -43,3 +43,5 @@ No code released as of capture. PyTorch + torch.compile, no custom kernels. No p
 - [[test-time-training]] — looped Transformers as depth-wise RNNs share the "compute as variable depth" framing; logit-lens analysis suggests early-exit potential.
 - [[watchlist]] — Universal Transformers (Dehghani 2018), ALBERT, middle-cycle looping (Bae 2025, Saunshi 2025), Geiping 2025, Prairie 2026.
 - [[par-progress-aligned-recurrence]] — retrofitted looped LM with progress-aligned targets + RMS norm anchoring; 16× length extrapolation
+
+- See also: [[loopback-transformer]] - successor residual aggregation (decayed update memory + parameter-free attention); beats Hyperloop's mHC by 0.005-0.011 nats in its own setup.

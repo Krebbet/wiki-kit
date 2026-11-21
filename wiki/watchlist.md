@@ -433,3 +433,28 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 ## Computer vision / 3D (continued — weekly-brief 2026-11-14)
 
 - **Few-Step Streaming Video Generation via Condition Shifting (https://arxiv.org/abs/2611.14033)** — HF #1 on 11-11 (88 upvotes). *(weekly-brief 2026-11-14.)*
+
+## Self-improving agents (continued — weekly-brief 2026-11-21)
+
+- **Self-Improvement Memory Enables Continual Recursive Self-Improvement (https://arxiv.org/abs/2611.18856)** — Memory inside the harness optimizer; coding score +2.36 over harness-only (p=0.003); HF 36. Makes the RSI optimizer stateful; see [[resolution-hypothesis]] for the noise caveat. *(weekly-brief 2026-11-21.)*
+- **Piccolo: Co-Evolving Decision Models and Data through Recursive Self-Improvement (https://arxiv.org/abs/2611.24651)** — Research agents build and iterate the training data for 0.8B–27B decision models; code (agentscope-ai/Piccolo). Extends [[so-arena]] / System One line. *(weekly-brief 2026-11-21.)*
+- **LM Harnesses Are Compositional Generalizers (MIT CSAIL; no arXiv id found)** — Harness keeps each LLM call in-distribution, enabling synthetic per-call training; seen in AINews 11-20 and alphaXiv; unverified. *(weekly-brief 2026-11-21.)*
+
+## RL / post-training (continued — weekly-brief 2026-11-21)
+
+- **CurvDelta: Low-Curvature Delta Modeling for Surgical Learning and Unlearning (https://arxiv.org/abs/2611.24654)** — K-FAC curvature picks update directions that spare general ability; also CurvLoRA; HF 26. Sibling of [[deletion-tuning]]. *(weekly-brief 2026-11-21.)*
+- **RepoFactory / Environment Evolution Loop (https://arxiv.org/abs/2611.21152)** — 10,159 repo-derived RL environments; evolution loop +22.6 vs +17.5 on NL2Repo; code (IQuestLab/RepoFactory). *(weekly-brief 2026-11-21.)*
+- **TeleChat to Xing4 (https://arxiv.org/abs/2611.22115)** — 285B model pretrained on 8,192 Ascend 910C chips plus TeleGym RL platform; HF 167 (top of week); vendor-reported. *(weekly-brief 2026-11-21.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-11-21)
+
+- **Jeveration: System One Models Now Generate (https://arxiv.org/abs/2611.24738)** — Frozen VLM emits a 512px image in 78 ms, up to 122x faster than unified models; HF 148; code. Extends [[jev-as-a-judge]] to generation. *(weekly-brief 2026-11-21.)*
+- **Posterior Matching Distillation (https://arxiv.org/abs/2611.26629)** — Few-step diffusion distillation without reverse-KL mode collapse; best 4-step FID on SDXL / FLUX.2 klein; code. Companion to [[steering-vectors-rl-dit]]. *(weekly-brief 2026-11-21.)*
+
+## Self-supervised learning (continued — weekly-brief 2026-11-21)
+
+- **Counterfactual World Models: JEPAs That Reason About "What If" (https://arxiv.org/abs/2611.24778)** — Counterfactual R² reported 86–96% (AINews figure, unverified in paper); alphaXiv-trending. *(weekly-brief 2026-11-21.)*
+
+## Infrastructure (continued — weekly-brief 2026-11-21)
+
+- **Tideway: Phase-Aware Tiered Memory for MoE Inference on Consumer Devices (https://arxiv.org/abs/2611.14848)** — HF 67; code (Afterglow231/Tideway). *(weekly-brief 2026-11-21.)*

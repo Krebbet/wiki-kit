@@ -58,3 +58,5 @@ This finding is in direct tension with [[token-gradient-cancellation]] (DFPO). D
 - [[tempo-test-time-rl]] — test-time RL as EM; also questions RLVR inefficiency but from the continual-learning angle.
 - [[eggroll]] — Evolution Strategies as GRPO alternative at scale; another axis of the same conflict ([[conflicts/grpo-vs-evolution-strategies]]). ReasonMaxxer adds a third: RL-free contrastive fine-tuning.
 - [[agentflow]] — Flow-GRPO broadcasts outcome reward across multi-turn modules; assumes RL is necessary at the trajectory level. ReasonMaxxer's result doesn't directly address multi-turn credit assignment but raises the question of whether the same sparse-correction pattern appears there.
+
+- See also: [[steering-vectors-rl-dit]] - diffusion-side analogue: constant per-block steering vectors recover 90-96% of RL gain on DiTs.

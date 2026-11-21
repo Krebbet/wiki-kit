@@ -372,3 +372,9 @@ Autonomous weekly sweep (week of 2026-10-24). Sources: HF daily papers API (10-2
 Autonomous weekly sweep (week of 2026-11-14). Sources: HF daily_papers API (11-09..11-13), HF weekly W46, Latent Space AINews (11-03..11-12), WebSearch; Reddit, X, GitHub trending, podcasts not reachable/checked.
 
 **Captured and ingested (pymupdf engine, audit clean, 5/5 summaries validated):** [[deletion-tuning]] (2611.10866), [[p2-mopd]] (2611.03953), [[evidence-linked-memory]] (2611.14320), [[so-arena]] (2611.15777), [[weight-space-programming]] (blog). No conflicts opened. Summaries were partial reads of ~35–60KB of larger sources; flagged in pages. Mild tension noted: [[deletion-tuning]] (LoRA rank 1–4 underperforms) vs [[reasonmaxxer]] (rank-32 LoRA suffices).
+
+## [2026-11-21] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-11-21). Sources: HF daily_papers API (11-16..11-20; 11-14/15 empty), HF weekly W47, Latent Space AINews (11-20), alphaXiv (reachable), arXiv abs for verification. Reddit/X/podcasts not checked.
+
+**Captured and ingested (pymupdf, audit clean, 5/5 summaries validated):** [[steering-vectors-rl-dit]] (2611.26627), [[resolution-hypothesis]] (2611.23068), [[loopback-transformer]] (2611.07226), [[multi-branch-transformer]] (2611.19800), [[regularized-score-centering]] (2611.21791). No conflict files opened; [[resolution-hypothesis]] caveats [[skillopt]] / [[gepa-reflective-prompt-evolution]] via backlinks. Summaries were partial reads (appendices skipped). Poetry venv had to be rebuilt (`poetry install`) before capture.

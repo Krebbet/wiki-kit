@@ -43,3 +43,5 @@ Directly compares against [[gepa-reflective-prompt-evolution]] (genetic-Pareto p
 - [[eggroll]] — applies ES training discipline to LLM weights; SkillOpt applies analogous discipline to text space
 - [[seal-self-adapting]] — RL-trained self-edit generation for weight updates; SkillOpt is the prompt/skill-document counterpart
 - [[socratic-skill-learning]] — Educator-coached, Student-authored skills; Expert Authoring barely helps (+0.5 pp)
+
+- See also: [[resolution-hypothesis]] - evaluation-resolution caveat: SkillOpt-Lite audited (not necessarily SkillOpt); selection ~48.6% pairwise, margins within single-run noise.

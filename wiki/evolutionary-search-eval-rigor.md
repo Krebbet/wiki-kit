@@ -33,3 +33,5 @@ Built on the open SkyDiscover framework (reusing its strategy implementations, t
 - [[evolution-fine-tuning]] — both are 2026 sources on LLM-driven evolutionary search over programs/tasks. Soft note, not a formal conflict: evolution-fine-tuning's "Finch-8B + nanodiscover SoTA on two circle-packing tasks" claim and this paper's own Circle Packing appendix evaluation (different strategy set) both sit in a benchmark family this paper shows is budget-sensitive — worth a budget-grid sanity check before treating either SoTA claim as settled.
 
 **Distinct from [[conflicts/grpo-vs-evolution-strategies]]** despite the shared "evolution" keyword: that conflict concerns Evolution Strategies as a gradient-free *weight-space* optimizer replacing GRPO for RL post-training ([[eggroll]], [[es-solution-coverage]]); this page concerns evaluation rigor for LLMs *proposing programs/prompts* in an evolutionary search loop. Different mechanism, different question — not merged.
+
+- See also: [[resolution-hypothesis]] - evaluation-resolution caveat: selection accuracy ~48.6% pairwise, within-noise margins; audits SkillOpt-Lite, not necessarily SkillOpt.

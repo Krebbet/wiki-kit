@@ -52,3 +52,5 @@ Code release stated as anonymous via GitHub; no active link in captured PDF. Pub
 - [[rlsd-self-distilled-rlvr]] — RLSD targets privileged-info leakage in self-distillation; DFPO targets gradient non-cancellation in group objectives. Complementary diagnoses on the same lineage.
 - [[neural-garbage-collection]] — concurrent GRPO-line extension (action-space, KV cache); composable with DFPO at the trainer.
 - [[watchlist]] — DAPO (Yu 2025), DCPO (Yang 2025), SSPO (Yang 2025), TEPO (2604.12736).
+
+- See also: [[regularized-score-centering]] - score centering plus reverse-KL for off-policy/async RL.

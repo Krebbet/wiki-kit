@@ -55,8 +55,11 @@ Fast-moving daily/weekly trending-paper feeds — checked directly rather than p
 | alphaXiv trending | https://www.alphaxiv.org/ | Social layer around arXiv; surfaces trending papers with discussion. Companion to @alphaxiv (already tracked above). | 2026-08-01 | active |
 | Hugging Face Papers weekly/monthly views | https://huggingface.co/papers/week/2026-W42 (and /papers/month/2026-10) | Fetchable ranked view with upvote counts (unlike Reddit/X/alphaXiv, unreachable in the 2026-10-17 sweep); gives quantitative trending rank. | 2026-10-17 | probation |
 | Hugging Face daily_papers API | https://huggingface.co/api/daily_papers?date=YYYY-MM-DD | Fetchable JSON per day with upvotes, summaries and GitHub links; worked via WebFetch in the 2026-10-24 sweep when Reddit/X/alphaXiv did not (weekly HTML view truncates after ~12 papers). | 2026-10-24 | active |
+| Thinking Machines blog | https://thinkingmachines.ai/blog | Primary-source training/interpretability write-ups that AINews pointed to repeatedly; added 2026-11-21 (unverified fetchability). | 2026-11-21 | probation |
 
 2026-10-17: Reddit (both domains), alphaXiv and X were not fetchable in the weekly sweep — treat as single-source HF signal until a browser route exists. 2026-10-24: same again (Reddit/X appeared only as links inside Latent Space AINews).
+
+2026-11-21: alphaXiv home page was reachable and useful (ordering reflects view counts, a signal HF lacks).
 
 ## GitHub awesome-lists
 
