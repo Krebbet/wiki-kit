@@ -81,6 +81,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/rlvr-mechanics/thinking-leakage-no-think-rl]] | Zhu et al. (arXiv:2610.14270, 2026-10-16 sweep) — no-think GRPO gains on hybrid Qwen3 are largely reactivation of think-mode reasoning: an 8-dim subspace carries ~75% of gain, few think-reading heads mediate it, extrapolation never exceeds think-mode accuracy. Single-sample RL on hybrid Qwen3 needs a think-mode baseline. |
 | [[research/rlvr-mechanics/wrong-votes-right-gradients]] | Wilson, Huang & Huang (arXiv:2610.20898, 2026-10-16 sweep) — majority-vote self-labels give an expected GRPO update parallel to gold because errors are incoherent across prompts; coherence, not error rate, decides (random 30% flips fine, shared-rule 20% flips $c_\infty$=0.29). Needs diverse batches; N=1 needs gold labels. |
 | [[research/rlvr-mechanics/dense-rewards-grpo-matched-compute]] | Singh et al. (arXiv:2611.13560, 2026-11-13 sweep) — 1,668 matched-compute runs: MC dense reward loses 14.3 pts to outcome-only GRPO at equal tokens; p≈0.5 prompt selection +0.8-1.7 pts, near-matched by a retuned LR; code released |
+| [[research/rlvr-mechanics/rl-take-off-successful-groups]] | Sanchez-Corcuera et al. (arXiv:2611.26084, 2026-11-20 sweep) — in a synthetic world, successful-group count predicts whether GRPO makes a rare action take off (below threshold RL sharpens, above it discovers); repeats help, restarts hurt |
+| [[research/rlvr-mechanics/blind-spots-travel-judge-rewards]] | arXiv:2611.25191 (2026-11-20 sweep) — structured-judge false rejections generalise by category, so judge blind spots travel to the policy; judge-free own-vote reward as alternative |
 
 ### Process reward models
 
@@ -213,6 +215,8 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/teacher-student-rl/semi-opd-offline-student-rollouts]] | Semi-OPD (arXiv:2610.11291, 2026-10-16 sweep) — distilling on student rollouts frozen once from the initial student beats OPD on 14/17 pairs (up to +13.6% acc, 11.4x speedup); gain predicted by initial top-64 teacher–student overlap (r=−0.73). Tempers ESR-style truncation. |
 | [[research/teacher-student-rl/opd-mismatch-tolerance]] | arXiv:2611.11450 (2026-11-13 sweep) — OPD tolerates >200x standard-engine rollout mismatch (FP8, stale weights) where REINFORCE/GRPO break at ~12-60x; model-specific budget plus a cheap offline admission check; code released |
 | [[research/teacher-student-rl/topsd-teachable-prefixes]] | TOPSD (arXiv:2611.08179, 2026-11-13 sweep) — names Teacher Drift in OPSD (reference-conditioned teacher follows student errors as prefix grows); supervise only teachable early prefixes (~7-10% of tokens); +1-3 pp multilingual PolyMath, math only |
+| [[research/teacher-student-rl/agentic-opd-react-patterns]] | arXiv:2611.19244 (2026-11-20 sweep) — agentic OPD transfers ReAct patterns, with negative transfer (tau2 41.5→6.6); signed-Delta token selection beats advantage/random masking |
+| [[research/teacher-student-rl/mrpd-replay-consolidation]] | MRPD (arXiv:2611.24059, 2026-11-20 sweep) — ordered replay of expert logs plus dense reverse-KL; matches MOPD at ~1/3 cost; distillation term adds ~0.5–1 pt over PG/SFT/RAFT on identical logs |
 
 ### RL optimisers
 
@@ -259,6 +263,7 @@ Research wiki for the development of a novel fine-tuning method for small LLMs (
 | [[research/catastrophic-forgetting/empirical-forgetting]] | Luo et al. 2023 (arXiv:2308.08747) — foundational SFT-forgetting baseline: scale, task order, decoder-vs-encoder. |
 | [[research/catastrophic-forgetting/composing-cl-anchors-long-horizon]] | Zhang et al. (JHU, arXiv:2609.06986, 2026-09-18 sweep) — no single classic CL mechanism (replay/distillation/importance-regularisation) prevents forgetting across 100 sequential SFT tasks, but composing all three + LoRA-merging raises retention 28× (1.2%→34.9%), super-additively. Explicit-anchor sub-thread, complementary to this theme's RL-implicit-resistance cluster. |
 | [[research/catastrophic-forgetting/capability-drift-multilingual-post-training]] | Saksena et al. (arXiv:2611.15717, 2026-11-13 sweep) — GRPO on multilingual MoE: +36 MATH (95% boxed-emission) but -19 F1 on unrewarded Indic extraction; judge round collapses extraction again; reward-free distillation from earlier checkpoint restores it |
+| [[research/catastrophic-forgetting/curvdelta-curvlora]] | CurvDelta/CurvLoRA (arXiv:2611.24654, 2026-11-20 sweep) — K-FAC low-curvature delta with a forgetting-preservation bound |
 
 ### MoE via delta/LoRA adapters (new theme 2026-05-16)
 

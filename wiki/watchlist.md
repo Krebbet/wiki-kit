@@ -52,6 +52,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Teacher-student RL
 
+- M3OPD-Reasoner (arXiv:2611.23034) — open multi-teacher OPD recipe, code released
+- AutoMaster / Skill-FT (arXiv:2611.26510) — skills-in-teacher-prompt SFT; code RUCAIBox/AutoMaster
 - Rethinking On-Policy Distillation (arXiv:2604.13016) — necessary conditions for OPD success; mechanistic phenomenology
 - Temporal Curriculum in OPD (TCOD, arXiv:2604.24005, Tongyi) — temporal curriculum scheduling within multi-turn OPD-RL
 - Uni-OPD (arXiv:2605.03677) — unifying LLM/MLLM OPD via dual-perspective student-exploration + teacher-order-consistency; 16-benchmark sweep
@@ -173,6 +175,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Single-sample / few-context generalization
 
+- Language Models Can Rewrite Their Own Weights (arXiv:2611.21885) — self-directed weight editing; single-sample adaptation relevance
 - Select and Improve (arXiv:2606.13125) — two-mechanism decomposition of RL post-training: strategy *selection* (activated by diverse SFT data) + strategy *improvement* (activated by increasing RL difficulty); tested on Qwen-2.5-1.5B
 - Zero-shot Context Generalization from Few Training Contexts (arXiv:2507.07348) — **captured 2026-07-03**; see [[research/single-sample-rl-finetuning/cebe-context-generalization]]
 - WARC, How Many Exposures Does a World Model Need? (arXiv:2611.12324) — 35M model with test-time full-parameter updates learns a mechanic in ~80 exposures; code github.com/third-intelligence/WARC [non-LLM setting]
@@ -188,6 +191,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Continual fine-tuning and forgetting
 
+- CoLiR (arXiv:2611.25989) — policy-improvement-guided replay for continual RL
+- Represented but Misread (arXiv:2611.26584) — post-training changes readout, not representation; forgetting-relevant
 - Chain-of-Experience (arXiv:2608.18027) — continual-improvement framing for LLMs via accumulated experience chains; uncertain forgetting-relevance, flagged for follow-up
 - RFT Naturally Mitigates Forgetting (arXiv:2507.05386) — RFT resists catastrophic forgetting across 7 multimodal tasks while SFT degrades; no replay needed; on Qwen2.5-VL-7B
 - E2H Curriculum RL (arXiv:2506.06632, ICLR 2026) — easy-to-hard curriculum RL rescues 1.5B–3B models that fail with vanilla RL; finite-sample complexity bounds proving E2H needs fewer total samples
@@ -202,6 +207,10 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## RLVR mechanics (cont.)
 
+- Budget Internalization (arXiv:2611.26172) — fixed-budget RLVR; compute-budget framing
+- Regularized Score Centering (arXiv:2611.21791) — stabilises asynchronous RL training
+- Evidence-Based Credit Assignment, ECA (arXiv:2611.23824) — credit assignment variant for RLVR
+- Calibrated Decision Rewards, RLCDR (arXiv:2611.25135) — calibration-aware reward design for RL
 - Aggregation-Induced Reward Hacking in Multi-Reward RL (arXiv:2609.00213) — scalarizing multiple reward dimensions in RLVR post-training creates a hackable aggregate signal
 - The Rise of Verbal Reinforcement Learning (arXiv:2609.01597) — survey unifying natural-language feedback as grounding/deliberative/training signal
 - Score Centering Stabilizes Off-policy RL (arXiv:2609.20807) — reward/score-centering technique stabilizes off-policy RL
@@ -224,6 +233,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 
 ## Data-efficient / mid-training
 
+- General progress substitutes for specific training data (arXiv:2611.24844) — data-substitution claim; code released
 - Post-Training LMs for Gold-Medal Coding Competitions (arXiv:2609.02849) — end-to-end SFT+RL post-training pipeline for competitive programming; borderline scope (benchmark-flavored) but has genuine method detail
 - Knowledge Distillation During Mid-Training Favors Reasoning over Factual Recall (arXiv:2609.01532) — "Switch Distillation"; relevant to the reasoning-vs-statistical-recall distinction central to the wiki thesis
 - Dynamic Important Example Mining for Reinforcement Finetuning (arXiv:2608.29252) — title suggests curriculum/data-selection relevance for RFT; content unconfirmed, low-confidence flag from this week's scan

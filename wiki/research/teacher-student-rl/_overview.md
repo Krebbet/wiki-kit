@@ -173,3 +173,5 @@ The theme's load-bearing contribution to the skeleton: **the student's condition
 - [[opd-mismatch-tolerance]] (2611.11450): OPD stays stable to >200x standard-engine rollout mismatch where RL breaks at 12-60x; model-specific budget with offline admission check — de-risks FP8/async stacks for OPD/OPSD
 - [[topsd-teachable-prefixes]] (2611.08179): Teacher Drift — a reference-conditioned self-teacher follows student errors as the prefix grows; supervise only teachable early prefixes. A failure-mode datapoint for the OPSD privileged-info debate
 - [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep
+- [[agentic-opd-react-patterns]] (2611.19244): agentic OPD transfers ReAct patterns incl. negative transfer; signed-Delta token selection
+- [[mrpd-replay-consolidation]] (2611.24059): ordered expert-log replay plus dense reverse-KL matches MOPD at ~1/3 cost

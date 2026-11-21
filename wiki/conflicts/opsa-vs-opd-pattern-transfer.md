@@ -98,3 +98,9 @@ Two soft datapoints, neither settling the dispute:
 
 - [[../research/teacher-student-rl/topsd-teachable-prefixes]] (2611.08179) — Teacher Drift: the self-teacher's signal collapses into the student's error basin as prefixes lengthen; mild relevance, supports limiting supervision to recoverable prefixes. No ruling.
 - [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep
+
+## Update 2026-11-20 (weekly-brief)
+
+- [[../research/teacher-student-rl/agentic-opd-react-patterns]] (2611.19244) — signed-Delta token selection beats advantage and random masking, and the student's ask-call pattern is not a copy of the teacher's behaviour. Bears on what OPD transfers. No ruling.
+- [[../research/teacher-student-rl/mrpd-replay-consolidation]] (2611.24059) — on identical expert logs the distillation term adds ~0.5–1 pt over PG/SFT/RAFT; small but consistent. No ruling.
+- [[../weekly-briefs/2026-11-20]] — extended by the 2026-11-20 weekly sweep

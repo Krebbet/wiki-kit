@@ -1099,3 +1099,7 @@ Autonomous sweep. 5 captures from `raw/research/weekly-2026-10-30/` (full text v
 ## [2026-11-13] weekly-brief | 2026-11-13 sweep
 
 Autonomous sweep (window 11-06→11-13; no 11-06 run). 5 captures from `raw/research/weekly-2026-11-13/` (marker; appendices mostly skimmed): `teacher-student-rl/opd-mismatch-tolerance` (2611.11450), `teacher-student-rl/topsd-teachable-prefixes` (2611.08179), `rlvr-mechanics/dense-rewards-grpo-matched-compute` (2611.13560), `selective-finetuning/deletion-tuning` (2611.10866), `catastrophic-forgetting/capability-drift-multilingual-post-training` (2611.15717). 10 watchlist additions. Extended 5 conflict pages and 4 theme overviews. Brief: `wiki/weekly-briefs/2026-11-13.md`.
+
+## [2026-11-20] weekly-brief | 2026-11-20 sweep
+
+Autonomous sweep. 5 captures from `raw/research/weekly-2026-11-20/` (full text via pymupdf from /pdf/ URLs; appendices partly unread in the summaries): `rlvr-mechanics/rl-take-off-successful-groups` (2611.26084), `teacher-student-rl/agentic-opd-react-patterns` (2611.19244), `rlvr-mechanics/blind-spots-travel-judge-rewards` (2611.25191), `teacher-student-rl/mrpd-replay-consolidation` (2611.24059), `catastrophic-forgetting/curvdelta-curvlora` (2611.24654). 10 watchlist additions. Extended 3 conflict pages and 3 theme overviews. Notes: `poetry` was not on PATH in the non-interactive shell and the venv had to be rebuilt via `poetry install` with ~/.local/bin on PATH; first attempt captured /abs/ pages instead of PDFs and was redone. Brief: `wiki/weekly-briefs/2026-11-20.md`.

@@ -92,3 +92,5 @@ The cluster gives Position A in [[../../conflicts/invisible-leash-vs-spiral-tran
 
 - [[dense-rewards-grpo-matched-compute]] (2611.13560): at matched tokens/GPU-hours no dense-reward variant beats outcome-only GRPO; p≈0.5 prompt selection helps modestly and a retuned LR nearly matches it — third critic-free-leaning datapoint against [[s3ac-actor-critic-reasoning]]'s critic-side win
 - [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep
+- [[rl-take-off-successful-groups]] (2611.26084): successful-group count predicts RL take-off on rare actions; repeats help, restarts hurt
+- [[blind-spots-travel-judge-rewards]] (2611.25191): structured-judge false rejections generalise by category; judge-free own-vote reward

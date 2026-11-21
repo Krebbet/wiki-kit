@@ -36,3 +36,8 @@ Surfaced via the 2026-08-28 weekly sweep. ReViSQL-K2.6 (Thinking Machines Lab bl
 [[../research/rlvr-mechanics/wrong-votes-right-gradients]] (2610.20898) finds error *coherence* across prompts, not error rate, decides whether label noise hurts: independent flips up to 30% leave the expected update parallel to gold, while same-rate shared-rule flips give $c_\infty$ = 0.29 at 20% and −0.13 at 31%. ReViSQL's 32.8% execution-match false positives are plausibly coherent (systematic over-acceptance of a query kind), which would explain why they hurt while random/spurious rewards in Shao et al. do not. This is a testable prediction, not a ruling: neither source measured error coherence directly, and both are batch-training results that say nothing about N=1.
 
 - [[../weekly-briefs/2026-10-16]] — extended by the 2026-10-16 weekly sweep
+
+## Update 2026-11-20 (weekly-brief)
+
+- [[../research/rlvr-mechanics/blind-spots-travel-judge-rewards]] (2611.25191) — structured-judge false rejections generalise by category, supporting the view that the resolution axis is error *structure* (random vs category-coherent) rather than error rate. Reinforces the 2026-10-16 note; still untested head-to-head.
+- [[../weekly-briefs/2026-11-20]] — extended by the 2026-11-20 weekly sweep

@@ -102,3 +102,8 @@ Conflict between captured wiki pages (no single raw doc — this is a cross-sour
 
 - [[../research/rlvr-mechanics/what-outcome-rl-buys]] (2610.34894) — supports the Invisible Leash side: net reach <= 2.1 pp across 20 recipes, 3.5% of RL-only physics wins hold up, 0/26 decisive RL steps absent from base samples. Thinking bases, math/physics only; ProRL v2 leaves a large-scale effect open. Does not test game-self-play transfer (Position B).
 - [[../weekly-briefs/2026-10-30]] — extended by the 2026-10-30 weekly sweep
+
+## Update 2026-11-20 (weekly-brief)
+
+- [[../research/rlvr-mechanics/rl-take-off-successful-groups]] (2611.26084) — regime-dependent reconciliation: below a successful-group-count threshold RL sharpens, above it discovers. Caveat: tiny synthetic world, and the rare action still had nonzero base probability. No ruling.
+- [[../weekly-briefs/2026-11-20]] — extended by the 2026-11-20 weekly sweep
