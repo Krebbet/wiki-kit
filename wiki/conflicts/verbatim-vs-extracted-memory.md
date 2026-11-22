@@ -162,6 +162,10 @@ No such comparison exists in the captured sources. Until one does, the wiki keep
 - `raw/research/cc-memory-ecosystem/04-basic-memory-cc.md` — Basic Memory as the user-authored third stance
 - `raw/research/cc-memory-ecosystem/05-mcp-knowledge-graph.md` — mcp-knowledge-graph as verbatim-pole CC plugin instance
 
+## Gated consolidation note (2026-11-22, status stays OPEN)
+
+[[memory/memoir]] (secondary-source, unverified) reports merging memories only after a judge confirms evidence preservation — a hybrid between extraction and verbatim storage. Baseline is bare cosine, not raw RAG, so it does not resolve the conflict.
+
 ## Related
 
 - [[memory-architectures]] — Positions 1 and 2 live in the *retrieval-augmented memory stores* family; Position 3 challenges the family-defining assumption that an index exists.

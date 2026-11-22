@@ -136,6 +136,10 @@ Two new memory-adjacent instances surfaced the week of 2026-05-04:
 
 [[memory/raw-rag-baseline]] (arXiv 2610.30755, 2026-10-25; author-run, collect-but-confirm) adds a coverage-vs-utilization decomposition to the recall-vs-use gap: across systems, evidence coverage varies 19-45% while utilization given sufficient evidence stays 80-90%, and a raw-window dense+rerank baseline has the top coverage. It challenges the premise that the write-manage-read loop adds value on conversation benchmarks.
 
+## Addition (2026-11-22)
+
+[[memory/memoir]] — usage-feedback lifecycle (retrospective attribution + judge-gated merges); unverified secondary report.
+
 ## Related (addendum)
 
 - [[memory/raw-rag-baseline]] - naive RAG baseline that tops 12 memory systems in 6 of 7 settings.

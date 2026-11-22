@@ -145,6 +145,11 @@ Anthropic's guidance adds a default-to-single-loop step before choosing a multi-
 - `raw/research/effective-agentic-patterns/08-arxiv-2601-12560-agentic-ai-taxonomy.md` — "Agentic Artificial Intelligence: Architectures, Taxonomies, and Evaluation of LLM Agents" (Arunkumar V, Anna University; Gangadharan G.R., NIT Tiruchirappalli; Rajkumar Buyya, University of Melbourne; arXiv 2601.12560, January 2026).
 - `raw/research/effective-agentic-patterns/01-anthropic-building-effective-agents.md` — Anthropic engineering blog.
 
+## Additions (2026-11-22)
+
+- Front-door orchestrator with a declared-routing escape hatch (Agent Script): [[deployments/salesforce-agentforce-multi-agent-orchestration]] (vendor marketing, unmeasured).
+- Self-evolving harness with policy co-training: [[patterns/self-hpo-harness-policy-optimization]].
+
 ## Related
 
 - [[building-effective-agents]]

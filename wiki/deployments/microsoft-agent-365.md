@@ -83,6 +83,10 @@ Microsoft's 2026-10-07 post on [[security/microsoft-execution-containers]] (MXC 
 - [[mcp-infrastructure]] — vendor data point on the *governance + audit + cross-vendor* axis the MCP 2026 roadmap explicitly defers; Defender's *"MCP servers configured for those agents"* mapping is the first vendor product to treat MCP server inventory as a first-class governance object.
 - [[topology-taxonomy]] — control-plane-as-substrate framing introduces a new infrastructure tier *(governance-and-identity substrate)*, analogous to how [[cognitive-fabric-nodes]] lifts memory out of the agent. Different mitigation axis from the existing context-/state-side classes — addresses *organizational blast radius* rather than long-horizon context loss.
 
+## See also (2026-11-22)
+
+[[deployments/langsmith-agent-platform]] — framework-vendor counterpart: immutable agent ID + OTLP ingestion vs Entra identity per agent.
+
 ## Related
 
 - [[mcp-infrastructure]] — the MCP 2026 governance roadmap that Agent 365 is the first vendor response to.

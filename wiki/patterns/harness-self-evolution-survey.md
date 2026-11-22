@@ -37,6 +37,10 @@ Not claims from the paper; these are suggested mappings to confirm once the body
 
 A controlled study (arXiv 2610.30499; 27 lineages, two self-revisions each, no human edits) gives cautionary data for the retained-gain claim: held-out gain was only +2.80 RHAE (95% CI [-1.44, 7.35]) against +8.42 on development games, a harness adaptation gap of 5.62 (CI [1.78, 9.77]). 15 lineages gained and 12 lost. Post hoc selecting the best-dev snapshot did better (+4.53), supporting abstention and rollback as part of adaptation. Single preprint, one benchmark; collect-but-confirm. See [[evaluation/harness-adaptation-gap-arc-agi-3]].
 
+## Co-evolving the policy (Self-HPO, added 2026-11-22)
+
+[[patterns/self-hpo-harness-policy-optimization]] moves beyond the survey's weight-fixed scope: alternating harness search and GRPO policy updates gave +8.5 on SWE-Verified, 1.6 above the sum of harness-only and policy-only gains (authors' runs).
+
 ## Source
 
 - HuggingFace papers 2610.18813, "Self-Evolving Agent Harness" (page captured 2026-10-18; abstract-level only). Related titles listed by an automated bot, not read: RSIFlow, Harness Continual Learning, Safety Must Survive Self-Improvement, Harness^2, AgentEvolver, VERSE, MemScope.

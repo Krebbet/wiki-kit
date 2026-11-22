@@ -612,3 +612,9 @@ Wiki changes: 5 new pages; 8 see-also extensions; index.md; revisions.md; watchl
 Autonomous `/weekly-brief` sweep for week of 2026-11-15. Web-search scan (primary vendor indexes returned nothing dated November for Anthropic/LangChain; MCP quiet since 2026-07-28 spec). 4 captures to `raw/research/weekly-2026-11-15/`: cursor-build-live-apps, decision-context, teamknitt, deepseek-super-agent (first DeepSeek capture, a truncated RuntimeWire article, was dropped and replaced with Entrepreneur India).
 
 Wiki changes: 3 new pages; 4 extensions; index.md; revisions.md; watchlist.md (10 entries); reference-sources.md (2 probation sources); weekly-briefs/2026-11-15.md. Pre-existing uncommitted backlog left untouched. Soft tension noted (no conflict file opened): forge_dc "rules beat raw text" vs Learn2Play "raw histories beat rule extraction" — likely task-type scoped.
+
+## [2026-11-22] weekly-brief ingest | weekly radar sweep (4 captured, 4 ingested, 10 watchlisted)
+
+Autonomous `/weekly-brief` sweep for week of 2026-11-22. Web-search scan; November coverage thin. 4 captures to `raw/research/weekly-2026-11-22/`: langsmith-rebuilt-around-agent, salesforce-multi-agent-orchestration, memoir-agent-memory (secondary source, unverified), harness-policy-optimization (arXiv 2610.22791, marker). Local poetry env had to be installed first (`poetry install`).
+
+Wiki changes: 4 new pages; 6 see-also extensions; index.md; revisions.md; watchlist.md (10 entries); reference-sources.md (1 probation source); weekly-briefs/2026-11-22.md. Pre-existing uncommitted backlog left untouched. No conflict files opened; MEMOIR noted on the open verbatim-vs-extracted conflict.

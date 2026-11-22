@@ -9,6 +9,30 @@ Surplus candidates from weekly radar sweeps that didn't make the capture cap but
 
 ---
 
+## Week of 2026-11-22
+
+Window 2026-11-15 to 2026-11-22. Captured: LangSmith Agent Platform, Salesforce Agentforce Multi-Agent Orchestration, MEMOIR (secondary source), Self-HPO. Scan was web-search based; items below not opened unless noted. Search coverage of November was thin (many results undated or older).
+
+### Memory / learning
+- Preprints.org 202611.0572 (Nov 2026) — separate durable state, retrieval, memory; study of 12 memory systems finds no dominant architecture
+- MEMOIR primary arXiv paper (Nov 5, 2026) — capture to verify the secondary-source numbers on [[memory/memoir]]
+- MOSS auditable agentic memory (arXiv 2607.04391) — agent-driven retrieval over relational DB; auditability angle
+
+### Harness self-evolution
+- EvoUndo (arXiv 2608.28363) — recoverability-constrained harness self-evolution
+- Harness Updating Is Not Harness Benefit (arXiv 2605.30621) — disentangles evolution capability from harness benefit; skeptical counterpart to Self-HPO
+- HASE (arXiv 2607.03935) — single model either solves tasks or edits harness; agentic RL
+
+### Enterprise orchestration / governance
+- Camunda agent orchestration with MCP connector — BPMN-side multi-agent orchestration
+- IBM watsonx Orchestrate agent-to-agent collaboration — vendor orchestration counterpart to Agentforce
+
+### Coding agents / evaluation
+- OSWorld-Verified near saturation (top ~86%, aggregator-reported Oct 2026) vs OSWorld 2.0 best ~20.6% — harder benchmarks now spread models
+- Claude Meetings beta (Nov 12, release notes) — Claude as visible meeting participant; agent-in-the-room deployment shape
+
+---
+
 ## Week of 2026-11-15
 
 Window 2026-11-08 to 2026-11-15. Captured: Cursor Build Live Apps, Forge Decision Context, Teamknitt, DeepSeek Super-Agent. Scan was web-search based; items below not opened unless noted.

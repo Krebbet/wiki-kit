@@ -201,3 +201,10 @@ A standalone `audit_links.py` tool in `tools/` would be the right home for this 
 **Observation:** `capture_url` on `openai.com/index/devday-2026-recap/` returned an intro paragraph plus empty section headings (213 words); the `--js` Playwright retry returned 23 words. `tools.audit_captures` reported "Total issues: 0" for the 213-word stub because its thin-capture check only compares lines to PDF pages. The stub was only caught when the summary subagent flagged it.
 **Implication:** Add a word-count floor (e.g. <300 words, or headings with no body) to `audit_captures` for URL captures, so the orchestrator drops or retries them before dispatching subagents.
 **Status:** open
+
+### 2026-11-22 — weekly-brief assumes a ready poetry env; fresh machine/branch has none
+
+**Scope:** kit
+**Observation:** `poetry` was not on PATH in the non-interactive shell (lives in `~/.local/bin`) and the project's venv had never been created (`ModuleNotFoundError: httpx`), so all capture tools failed until `poetry install` ran.
+**Implication:** weekly-brief step 4 should first run `export PATH=$HOME/.local/bin:$PATH; poetry run python -c "import httpx"` and `poetry install` on failure.
+**Status:** open

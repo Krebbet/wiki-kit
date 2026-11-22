@@ -155,6 +155,7 @@ Added 2026-09-13. General-purpose AI/ML news sites that publish original technic
 | Source | URL | Role | Added | Status |
 |---|---|---|---|---|
 | MarkTechPost | https://www.marktechpost.com | Technical writeups on model/agent releases with architecture-level detail (KV-cache mechanisms, training recipes, benchmark tables); sole source for 2 of 5 captures in the 2026-09-13 sweep (Cognition SWE-2, DeepSeek-V4.1-Flash). New watch, probation pending a second high-signal week. | 2026-09-13 | probation |
+| Emergent.sh news | https://emergent.sh/news | Quick write-ups of fresh arXiv agent/memory papers (sole source for MEMOIR capture, 2026-11-22); secondary, numbers unverified. New watch 2026-11-22. | 2026-11-22 | probation |
 
 ## Standards & spec repositories
 

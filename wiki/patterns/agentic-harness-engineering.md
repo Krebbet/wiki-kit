@@ -110,6 +110,10 @@ The Harness RSI survey ([[patterns/harness-self-evolution-survey]], HF 2610.1881
 
 A later controlled study of unconstrained self-revision on ARC-AGI-3 (arXiv 2610.30499) cites AHE as prior art and finds that development gains overstate held-out transfer: +8.42 dev versus +2.80 held-out (CI spanning zero) after two revisions, and passing proximal checks did not predict improvement. This echoes AHE's own finding that self-attribution is blind to regressions. Different benchmark and setup; collect-but-confirm. See [[evaluation/harness-adaptation-gap-arc-agi-3]].
 
+## See also (2026-11-22)
+
+[[patterns/self-hpo-harness-policy-optimization]] adds policy RL on top of harness evolution and reports the two are complementary.
+
 ## Related
 
 - [[effective-harnesses]] — Anthropic's hand-designed counterpart; AHE explicitly cites it (ref [29]).
