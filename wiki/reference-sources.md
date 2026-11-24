@@ -87,7 +87,7 @@ releases only) or has become the new baseline for all NBER papers.
 | Source | Focus | Added | Status |
 |---|---|---|---|
 | Journal of Economic Perspectives | Accessible surveys; frequent institutional-economics symposia | 2026-08-19 | probation |
-| Journal of Institutional Economics | Core venue for the field | 2026-08-19 | active (2026-09-08) — open access since 2025, no Cloudflare block; two captures this sweep |
+| Journal of Institutional Economics | Core venue for the field | 2026-08-19 | active (2026-11-24) — open access since 2025, no Cloudflare block; RePEc `ideas.repec.org/a/cup/jinsec/` lists new articles with Cambridge identifier URLs |
 | Governance | Public administration and institutional reform | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | American Political Science Review / American Journal of Political Science | Power, veto players, accountability | 2026-08-19 | probation — capture-blocked (2026-08-25) |
 | Administrative Science Quarterly / Organization Science | Organisational theory, scale and hierarchy effects | 2026-08-19 | probation — capture-blocked (2026-09-22) |
@@ -250,6 +250,8 @@ survey subagent.
   or Marginal Revolution (unconfirmed, not dry).
 
 - Twelfth sweep, 2026-11-17: thin week (4 ingested). The arXiv econ.GN monthly list (curl) again the only productive in-window feed (three captures); the fourth capture was a Besley lecture-slide deck found on IGC's site (theigc.org) via search, a new open-access route for state-capacity material (second-hand, slides only). Search returned nothing dated in window for NBER, IZA, IfG, Statecraft, JIE, Works in Progress or Marginal Revolution (unconfirmed, not dry). The poetry venv had lost httpx; `poetry install` repaired it.
+
+- Thirteenth sweep, 2026-11-24: thin week (5 ingested). The arXiv econ.GN monthly list (curl, `arxiv.org/list/econ.GN/2026-11?skip=0&show=500`) again the only productive in-window feed (four captures, filtered by title; ids grep-checked against `wiki/` and `raw/research/` first to avoid duplicates). JIE yielded one capture: the Cambridge Core `identifier/<id>/type/journal_article` URL (found via the RePEc `ideas.repec.org/a/cup/jinsec/` listing) captured cleanly with `capture_url`, full text. Search returned nothing dated in window for NBER, IZA, Statecraft, Works in Progress or Marginal Revolution (unconfirmed, not dry); IfG surfaced only its annual Whitehall Monitor. Latin America gap partly closed again by [[colombia-rural-margin-of-territorial-peace]].
 
 ## Related
 

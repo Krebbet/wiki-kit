@@ -1772,3 +1772,7 @@ Thin week. 1 captured / 1 ingested (Cumming, "Owning What Can Quit", arXiv 2611.
 ## [2026-11-17] weekly-brief | twelfth radar sweep
 
 4 captured, 4 ingested. New pages: [[information-institutions-and-the-regulatory-charge]], [[institutions-as-a-design-space-for-artificial-agents]], [[pay-dispersion-and-the-direction-of-scientific-work]]; extended [[endogenous-state-capacity]] (Besley IGC lecture slides) and [[multitask-incentive-theory]]. 5 items watchlisted. No conflicts opened; the Besley paradox-of-power vs developmental-state tension is a scope note. Poetry venv was missing httpx and was repaired with `poetry install`.
+
+## [2026-11-24] weekly-brief | thirteenth radar sweep
+
+5 captured, 5 ingested. New pages: [[colombia-rural-margin-of-territorial-peace]], [[place-based-policy-in-italys-inner-areas]], [[structural-number-of-parties]], [[democracy-epistocracy-and-information-specificity]], [[ai-and-the-organisation-of-knowledge-work-in-legal-services]]. 5 watchlisted. Camp balance: formal-theory/measurement/empirical mix, no single camp dominant. Latin America gap partly closed again (Colombia).

@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-11-17
+last_reviewed: 2026-11-24
 ---
 
 # Watchlist
@@ -412,6 +412,21 @@ Thin week. 1 captured (see `wiki/weekly-briefs/2026-11-03.md`). Search surfaced 
 - A new typology of AI use in organisations (arXiv 2611.15371) — organisational-theory framing; pairs with the AI-occupants page.
 - The Origins of the State's Institutional Capacity (SIOE 2026 programme paper 1808) — directly on state capacity; find the working-paper PDF.
 - World Bank WP 11279 on institutional capacity as ability to implement mandates — measurement angle for state capacity.
+
+## Week of 2026-11-24
+
+5 captured, 5 ingested (see `wiki/weekly-briefs/2026-11-24.md`). Search surfaced nothing dated in window for NBER, IZA, Statecraft, Works in Progress or Marginal Revolution.
+
+### Working-paper and preprint feeds
+
+- Taste or Strategy? Nationalistic Bias and Competitor Penalties in Figure Skating Judging (arXiv 2611.13194) — bias in expert judging panels; institutional-design angle on evaluator incentives.
+- The Private Production of Safety Outside Options and the Burden of Protection (arXiv 2611.30735) — private provision substituting for public protection; check relevance.
+- Winning Reviews, Losing Discovery? Co-Evolution of AI Research and Peer Review (arXiv 2611.10791) — peer review as institution under load.
+
+### Journals
+
+- Lodato, Mavridis & Vaccari, "The unelected hand? Bureaucratic influence and electoral accountability" (JLEO 2026) — bureaucrats under imperfect electoral accountability; test paywall.
+- Whitehall Monitor 2026 (Institute for Government) — annual primary-document view of the UK civil service; check for new data vs the 2025 capture.
 
 ## Related
 
