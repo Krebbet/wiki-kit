@@ -243,3 +243,5 @@ For consumer-collective tools aimed at pricing algorithms, the practical read: *
 - [[obfuscation-strategic-readout]]
 - [[lever-implementation-readout]]
 - [[mozilla-fingerprinting-in-the-wild]] — population-scale fingerprint uniqueness baselines relevant to identity-rotation obfuscation
+- [[mechanisms/face-cloak-evaluation-protocol]] — cloak efficacy overstated by unrealistic evaluation
+- [[mechanisms/pgpo-relational-fidelity-obfuscation]] — platform-side text obfuscation

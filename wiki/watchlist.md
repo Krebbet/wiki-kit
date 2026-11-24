@@ -1,6 +1,6 @@
 ---
 setup_approved: true
-last_reviewed: 2026-11-09
+last_reviewed: 2026-11-23
 ---
 
 # Watchlist
@@ -416,3 +416,16 @@ Format per item: `- <title> — <≤8-word tag>`. No URLs, no multi-sentence des
 - arXiv 2611.15019 obfsgen — generative tunnel obfuscation, adjacent to fingerprint/traffic defence
 - Pluralistic "Uber's labor crash" (Nov 12) — gig-labor economics framing
 - Weather app → data brokers teardown (hermandaniel.com, Nov 11) — location/Wi-Fi/cell-tower leakage traffic analysis
+
+## Recent additions (2026-11-23 weekly-brief overflow)
+
+- arXiv 2611.22033 "Thinking Harder Doesn't Lead to Better Choices" — LLM shopping-agent miscalibrated confidence
+- arXiv 2611.22223 GapLeak — privacy-preserving web agents escalate to unauthorized sources
+- arXiv 2611.24989 "Signed, Valid, and Unauthorized" — companion to mandate-binding paper
+- arXiv 2611.26936 SecretAgent — multi-agent adversarial image privacy vs VLMs
+- arXiv 2611.20670 imputing AI-agent acts to delegators — legal liability hook
+- GrapheneOS vs Google bootloader-unlock pressure (Nov 20) — exit-pathway threat; pairs with keep-android-open
+- Quad9 leaves France over DNS blocking — infrastructure-for-exit squeezed
+- EFF "Voters reject ALPRs at the ballot box" (Nov 18) — empirical counter-power win; Flock organizing comic sibling
+- Pluralistic "Enshittifiers groom us for scammers" (Nov 18) — problem framing; bank blocks GrapheneOS
+

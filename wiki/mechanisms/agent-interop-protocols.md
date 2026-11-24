@@ -101,3 +101,4 @@ Kochar et al. (arXiv 2610.29929, preprint) extend Global Privacy Control to agen
 - [[data-disruption-strategy-map]] — risk class 3 (authenticated-endpoint automation) is the operational frame
 - [[the-firms-view]] — none directly; A2A security is symmetric (firm-side and consumer-side both benefit from hardening)
 - [[agentic-privacy-preference-taxonomy]] — privacy-signal layer over the same MCP/A2A substrate
+- [[mechanisms/agent-payment-mandate-binding]] — payment-rail authorization gap

@@ -139,6 +139,10 @@ Catalog of all pages below. Updated on every ingest, research run, and strategy 
 | [[ubo-element-picker-uxss]] | uBlock Origin element-picker universal XSS (Nov 2026): a web page could inject trusted filters and run JS on any site; fixed in 1.76.x; security lessons for extension-based collective tooling. |
 | [[accuracy-not-welfare-ai-buyers]] | Ning (arXiv 2611.16471): synthetic duopoly study — calculator-assisted AI buyer is more accurate yet does worse on worst-case consumer welfare than verified-total disclosure; single-author preprint. |
 | [[verifiable-local-energy-market-settlement]] | Fabi & Leloup (arXiv 2611.16495): community operator + Besu chain + ZK proofs give households auditable settlement of local energy market; simulated 10 households, no code found. |
+| [[mechanisms/os-agent-screen-capture]] | Signal (blog, 2026-11-20): OS-level AI agents (Siri onscreen awareness, Gemini Intelligence, Recall) read app screens below E2EE; Signal's screenshot-block / auto Screen-security workaround is admittedly incomplete; no developer opt-out API. Single advocacy source. |
+| [[mechanisms/face-cloak-evaluation-protocol]] | Parlayici et al. (arXiv 2611.21923, preprint): published >90% face-cloak protection comes from evaluation without detect-align-crop; same files lose 56% dodging protection under realistic pipelines; threshold and saturation defects; rankings change. |
+| [[mechanisms/pgpo-relational-fidelity-obfuscation]] | Lin et al. (arXiv 2611.23236, preprint): GRPO-trained LLM rewrites item text to resist embedding inversion while preserving similarity topology; platform-side, defence on par with baselines, low consumer actionability. |
+| [[mechanisms/agent-payment-mandate-binding]] | You et al. (arXiv 2611.25821, preprint): x402/AP2 agent stablecoin payments enforce only signed fields; 98.7% of sampled Base USDC authorizations bearer-redeemable; MANDATELOCK nonce-commitment fix at +25% gas. |
 
 ---
 

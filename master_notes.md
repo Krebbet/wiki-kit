@@ -283,3 +283,8 @@ The `## Subreddits` stream in `wiki/reference-sources.md` (`r/PlatformCooperativ
 - Status: open
 - Scope: kit
 - `poetry run python -m tools.capture_*` failed with `ModuleNotFoundError: httpx` (declared in pyproject but venv not installed). Fixed with `poetry install --no-root`. weekly-brief should verify the venv (`poetry run python -c "import httpx,fitz"`) before step 4.
+
+## 2026-11-23 weekly-brief: audit_captures false-positive on pymupdf images; ingest summaries skim long papers
+- Status: open
+- Scope: kit
+- `audit_captures` flagged 27 broken image refs for pymupdf captures although the PNGs exist under `assets/<slug>/` (path-prefix mismatch in the checker). Also: ingest subagents only read part of 1300-3400 line papers (flagged in their warnings); consider a section-aware read hint in the ingest prompt.

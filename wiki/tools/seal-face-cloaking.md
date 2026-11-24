@@ -20,6 +20,10 @@ SEAL ("Location Matters: Sparse Latent-Variance Attacks for Face Privacy against
 - Only fine-tuning attacks tested; no independent replication captured.
 - Individual, not collective; could be offered as a shared service *(editorial)*.
 
+## Evaluation-realism caveat
+
+See [[mechanisms/face-cloak-evaluation-protocol]]: reported cloak efficacy drops sharply under detect-align-crop pipelines (arXiv 2611.21923); the resampling mismatch it identifies plausibly explains the resize fragility above.
+
 ## Source
 
 - `raw/research/weekly-2026-11-16/02-seal-sparse-latent-variance-face-privacy.md`

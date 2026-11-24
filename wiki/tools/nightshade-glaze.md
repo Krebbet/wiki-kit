@@ -81,3 +81,4 @@ Nightshade/Glaze is the clearest working analogue for [[possible-strategic-lever
 ## See also
 
 - [[seal-face-cloaking]] — SEAL (2026), a sparse-perturbation face-cloaking alternative; contrast on robustness (SEAL is largely removed by JPEG/blur/resizing; Nightshade claims robustness to these).
+- [[mechanisms/face-cloak-evaluation-protocol]]

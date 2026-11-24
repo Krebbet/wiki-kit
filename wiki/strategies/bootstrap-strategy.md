@@ -225,3 +225,4 @@ Raw research sources added 2026-05-27:
 - [[noyb]] — strategic litigation / war-chest model at membership scale
 - [[algorithmic-collective-action]] — threshold dynamics
 - [[strategies/index|Strategies section index]]
+- [[mechanisms/os-agent-screen-capture]] — OS-agent exposure for mobile-first tools

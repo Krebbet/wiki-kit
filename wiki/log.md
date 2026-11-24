@@ -999,3 +999,6 @@ Thin week: no new counter-algorithmic tool with released code; platform/federati
 
 ## [2026-11-16] weekly-brief
 Week of 2026-11-16: 5 captures (pymupdf): (1) Mozilla fingerprinting-in-the-wild (Ritter et al., released code/data; Firefox 143 mitigations); (2) SEAL face cloaking (2611.14254, code); (3) uBlock Origin element-picker UXSS; (4) Accuracy Is Not Welfare for AI buyers (2611.16471) — tension with consumer-ai-assistant-market-simulation noted on-page; (5) Verifiable local energy market settlement (2611.16495). 10 watchlist additions (NYC surveillance-pricing ban etc.). No conflicts opened. Poetry venv lacked httpx (fixed, logged in master_notes).
+
+## [2026-11-23] weekly-brief
+Week of 2026-11-23: thin week for released-code tools; platform/federation stream unobserved. 5 captures (pymupdf): (1) Signal blog on OS-agent screen capture; (2) face-cloak evaluation re-assessment (2611.21923); (3) WF-CNN vs FRONT padding (2611.19864, folded into http2-website-fingerprinting-defences); (4) PGPO relational-fidelity obfuscation (2611.23236, code link unverified); (5) agent-payment mandate binding (2611.25821). 9 watchlist additions. No conflicts opened.

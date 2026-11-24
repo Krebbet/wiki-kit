@@ -29,6 +29,10 @@ Cebere, Kumar, Chatel, Lueks & Rossow (CISPA; arXiv 2609.05119; ACM CCS 2026) sh
 - Does not hide IP, domain, DNS, or SNI; DoH/ECH are orthogonal. Complements Tor/VPN.
 - Dual-use: the attack techniques are extraction-side tools.
 
+## Padding defences vs lightweight deep-learning attackers (WF-CNN, arXiv 2611.19864)
+
+A 95,103-parameter, CPU-trained 1-D CNN on raw cell-direction sequences beats feature-based attacks by 15.7 pp (54.2% vs 38.5% top-1, 95 sites) on FRONT-padded Tor traffic, but only 1.8 pp undefended. Permuting cell order drops accuracy to 7.6%, so the signal is order-derived: count/volume padding does not hide local ordering. Scope caveats: closed-world, FRONT only, direction-only (no timing), self-built proxy baselines, no code release stated; at input length 1000 the CNN no longer beats k-FP. Preprint, medium-high trust; tangential to the pricing mandate. Raw: `raw/research/weekly-2026-11-23/03-wf-cnn-defeats-front-padding.md` (https://arxiv.org/pdf/2611.19864).
+
 ## Source
 
 - `raw/research/weekly-2026-09-28/02-http2-wf-defence.md` — arXiv 2609.05119, CCS 2026.
