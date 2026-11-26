@@ -38,6 +38,8 @@ Separate agent identity from user identity; zero-start permissions with task-sco
 
 ## Related
 
+- [[landscape/microsoft-ignite-2026-11]] — 2026-11-17: Microsoft states Perception is generally available
+
 - [[platforms/microsoft]] — Agent 365 / E7 profile
 - [[landscape/agent-identity-governance-2026-09]] — per-agent identity category and peers
 - [[landscape/microsoft-foundry-agent-harness-2026-09]] — Microsoft agent identity lifecycle

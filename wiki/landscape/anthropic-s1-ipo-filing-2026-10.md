@@ -1,6 +1,17 @@
 # Anthropic S-1 IPO filing (2026-10-26)
 
-A secondary aggregator (Let's Data Science, captured 2026-11-04) reports Anthropic, PBC filed a Form S-1 on 2026-10-26 for a Nasdaq Global Select listing of Class A stock under "ANT". **Watch:** the filing is a vendor-risk and capital-structure event, not a product one. Every figure below is secondary and unverified; confirm against the primary S-1 on SEC EDGAR before relying on any of it. Share count and price range are blank, and the source reports no valuation, revenue or loss figures.
+A secondary aggregator (Let's Data Science, captured 2026-11-04) reports Anthropic, PBC filed a Form S-1 on 2026-10-26 for a Nasdaq Global Select listing of Class A stock under "ANT". **Watch:** the filing is a vendor-risk and capital-structure event, not a product one. Every figure below is secondary and unverified; confirm against the primary S-1 on SEC EDGAR before relying on any of it. The filing-stage source had blank share count and price range and no financials; **the IPO has since priced and begun trading** (see below, 2026-11-25 update).
+
+## IPO pricing and first week of trading (2026-11-18 to 11-24)
+
+Press reporting (CNBC 11-18, TechCrunch 11-24); the primary prospectus was not checked.
+
+- Priced at $83, above the $70-78 range; upsized to about 980M shares (company plus seven co-founders), $81.3B raised; fully diluted value about $1.5T. Google, Microsoft, Nvidia, AMD and others agreed to invest $26B at the IPO price.
+- Nine months to 2026-09-30: revenue $33.24B (up about 1,200%); GAAP net loss $104B, mostly change in fair value of convertible notes and derivative liabilities. Run-rate revenue about $81B at end-October.
+- Debut reported at $111.50 (source does not say open or close; a linked article slug suggests a different figure). Intraday low $76 on 11-24, below the issue price.
+- "Largest on record": above SpaceX's $75B initial raise, below its $85.7B after overallotment.
+- **Profit vs loss:** a GAAP net loss is reported; operating profit or loss still cannot be determined from these sources.
+- The earlier $2T+ target was missed (about $1.5T).
 
 ## Reported facts (secondary, unverified)
 
@@ -28,6 +39,8 @@ No direct signal. Indirect: control of a key model supplier sits with founders a
 ## Source
 
 - `raw/research/weekly-2026-11-04/03-anthropic-s1-filing.md` (letsdatascience.com, captured 2026-11-04)
+- `raw/research/weekly-2026-11-25/09-anthropic-ipo-pricing.md` (CNBC, 2026-11-18)
+- `raw/research/weekly-2026-11-25/05-anthropic-ipo-debut.md` (TechCrunch, 2026-11-24)
 
 ## Related
 

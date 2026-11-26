@@ -415,3 +415,6 @@ Weekly radar sweep (window 2026-11-04 → 2026-11-11). 5 captured/ingested: Snow
 
 ## 2026-11-18 — weekly-brief
 Weekly radar sweep (window 2026-11-11 → 2026-11-18). 4 captured/ingested: Claude Fable 5.2 / Mythos 5.2 (Anthropic primary), Microsoft + IBM Imagine Enterprise (CIO Dive; first IBM-URL capture was the wrong page and was replaced), LangChain $300M Series C, Cloudflare Kitesurf (source says Rust/Wasm and not yet open-sourced, contradicting aggregator summaries). A 5th capture (Anthropic S-1, The Paypers) had no financials and duplicated an existing page; dropped. Search index still thin on AWS/Azure first-party items; Ignite 2026 coverage not yet indexed. Note: poetry venv was missing and was rebuilt with `poetry install`.
+
+## 2026-11-25 — weekly-brief
+Weekly radar sweep (window 2026-11-18 → 2026-11-25). 5 stories captured/ingested: Claude Ship, Microsoft Ignite 2026 (catch-up, dated 11-17), MONAI Label agent-found zero-day (NVD/KEV/PyPI checked; captures stale on patch status), Amazon/Decart, Anthropic IPO pricing and first week. First MONAI capture (The Register) returned navigation only and was replaced. No conflict files changed. platforms/microsoft.md left untouched (pre-existing uncommitted edits).

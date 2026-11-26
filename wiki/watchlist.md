@@ -771,3 +771,17 @@ Window 2026-11-11 → 2026-11-18. Ingested: [[landscape/claude-fable-5-2-2026-11
 - [2026-11-18] **MCP Inspector OAuth RCE (CVE-2026-119025 per CSA briefing)** — CVE ID looks odd; verify on NVD — https://labs.cloudsecurityalliance.org/research/ciso-daily-briefing-20261115/
 - [2026-11-18] **Odessia (OpenAI acquisition, 2026-11-10)** — AI travel agent, $6M pre-seed (Sequoia); price undisclosed — see OpenAI row above
 - [2026-11-18] **Microsoft Ignite 2026 (11-17→11-20)** — no indexed coverage yet; re-scan next run
+
+## 2026-11-25 — weekly sweep
+Window 2026-11-18 → 2026-11-25. Ingested: [[landscape/claude-ship-2026-11]], [[landscape/microsoft-ignite-2026-11]], [[landscape/monai-label-agent-zero-day-2026-11]], [[landscape/amazon-decart-2026-11]], [[landscape/anthropic-s1-ipo-filing-2026-10]] (IPO).
+
+- [2026-11-25] **Gemini 4 Neon (reported 11-18)** — $3/$15 per 1M, 1M context, per secondary coverage; no Google primary found — https://www.vktr.com/ai-platforms/meet-gemini-4-neon-googles-middle-child-built-for-long-running-agents/
+- [2026-11-25] **GPT-6.2 Astra/Sol (11-17; ChatGPT chat 11-23/24)** — not yet profiled in the wiki; pricing from secondary reports — https://help.openai.com/en/articles/6825453-chatgpt-release-notes
+- [2026-11-25] **Palo Alto Networks / Applied Compute $4.5B stock (11-18)** — security vendor buying open-weight model capability; pending clearance — https://thenextweb.com/news/palo-alto-networks-applied-compute-4-5bn-open-weight-ai
+- [2026-11-25] **Microsoft agent-framework PyPI hijack (about 11-17)** — versions 1.26.1/1.26.2 reported as credential stealer — https://bleepingcomputer.com/news/security/microsofts-agent-framework-pypi-package-compromised-to-steal-credentials
+- [2026-11-25] **ChatGPT merges Chat and Work usage limits (11-25)** — heavy users may hit limits sooner; pricing signal — https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/
+- [2026-11-25] **Databricks Unity Gateway Smart Routing (beta, 11-18)** — routes coding subagents to external models — https://docs.databricks.com/aws/en/release-notes/unity-gateway/
+- [2026-11-25] **Sierra $1.75B at $30B (11-23)** — ARR over $400M vendor-claimed; counter-evidence to app-layer-death (C1) — https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/
+- [2026-11-25] **Workday completes C1.ai acquisition (11-23)** — agent identity moves into an HR/finance platform — https://www.prnewswire.com/news-releases/workday-completes-acquisition-of-c1ai-302947290.html
+- [2026-11-25] **Claude computer use beta for Team/Enterprise (11-20)** — per release notes — https://support.claude.com/en/articles/12138966-release-notes
+- [2026-11-25] **Cognition talks at $75B (reported, date unverified)** — confirm before citing — https://thenextweb.com/news/cognition-funding-75bn-valuation-bloomberg-devin

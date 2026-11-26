@@ -173,3 +173,12 @@ The `git checkout` step ensures the run lands on the intended weekly-brief branc
 - **thenextweb.com** — reliably capturable funding/launch coverage.
 - **Capture caveat:** a search-reported IBM URL returned an unrelated older watsonx page; confirm captured text mentions the event before ingest.
 - **Scan caveat:** AWS/Azure first-party items still not surfaced; Ignite 2026 not yet indexed.
+
+## Additions (2026-11-25)
+- **help.openai.com ChatGPT release notes** — first-party OpenAI dates.
+- **claude.com/resources/articles** — Anthropic product launch articles; directly capturable, may lack a date.
+- **AWS What's New** (aws.amazon.com/about-aws/whats-new) — first-party AWS launches; domain-restricted search surfaces them.
+- **docs.databricks.com/aws/en/release-notes/unity-gateway** — gateway and routing changes.
+- **NVD API and CISA KEV** — verify CVE IDs and patch status before ingest.
+- **Capture caveat:** a theregister.com article returned navigation only; use The Hacker News or CSA instead.
+- **Cron caveat:** `poetry` is in `~/.local/bin`, which may be missing from PATH in unattended runs.
