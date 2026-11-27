@@ -1,7 +1,7 @@
 ---
 setup_approved: 2026-08-19
 seeded: false
-last_reviewed: 2026-11-19
+last_reviewed: 2026-11-26
 ---
 
 # Watchlist
@@ -57,10 +57,14 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - MoS2 flake Schottky-barrier memristive behaviour (arXiv 2611.12484) — single exfoliated device; unread
 - KCuCl3-x lead-free memristors, forming-free gradual switching (2610.35436) — device-level; unread
 - TiOx/NiOx heterojunction synaptic learning (2610.11992) — device-level; unread
+- Diffusive memristor arrays with SoC (Nat. Mater. s41563-026-02815-z) — 28×14 array; ⚠️ paywalled
+- 4 K 3-bit HZO FeCAP in-memory computing (arXiv 2611.23489) — captured, not ingested; small arrays, endurance >1e9
+- Monolayer hBN atomristor (Nat. Commun. s41467-026-79568-5) — device-level; unread
+- Superconducting LIF neuron, 4.2 K measured chips (NCE aec588) — page may be bot-walled
 
 ## Chips & systems
 
-- BrainChip Sept-quarter 4C (due ~2026-10-31) — still not located; next yield/cash checkpoint
+- ~~BrainChip Sept-quarter 4C~~ *(captured 2026-11-26)*
 - SpikePID (arXiv 2611.00104) — small SNN on low-resource FPGA, drift-chamber cluster counting; niche
 - IEDM 2026 (Dec 12–16) Neuromorphic & Novel Computing papers / ISSCC 2027 (Feb 14–18) program — not yet public
 
@@ -93,11 +97,14 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - FPGAFly: 166.7k-neuron fruit-fly connectome on one FPGA (arXiv:2610.38118) — abstract unread; no energy figures verified
 - Memristor accelerator for depression detection, CNN-LSTM (arXiv:2610.39420) — measured vs simulated unknown; vs CPU/GPU baselines
 - ChroNoC network-on-chip (arXiv:2610.34083) — one-line summary only; unread
-- BrainChip Sept-quarter 4C — Kalkine snippet claims US$16.4M cash, ~20k AKD1500 chips received, EdgeAI/Frontgrade Gaisler tape-outs Q4; ⚠️ unverified, no primary or date; fetch from ASX
 - SpikePose lightweight video pose estimation (arXiv 2611.06594) — hardware unstated; unread
 - Fast local learnable SNN via neural-activity synchronization (arXiv 2611.11053) — algorithm-level; unread
 - SpikeAD multiplication-free spike-controlled architecture (2611.00112) — small-object detection; hardware basis unread
 - Compiling Constraints into Neuromorphic Ising Machines (2611.25352) — compiler angle; likely simulation/FPGA
+- Xylo Audio 2 rover integration (arXiv 2611.27953) — captured, not ingested; proof of concept
+- Diffusion LMs on 16-chip 28nm eFlash AIMC (arXiv 2611.32223) — captured, not ingested; mostly simulation
+- Differential-time SNN accelerators (arXiv 2611.32758) — ASAP7 synthesis vs Loihi; no silicon
+- SynSense Speck vs GPU energy post (2026-11-23) — vendor claim; underlying paper not located
 
 ## Algorithms & toolchains
 
@@ -136,6 +143,7 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - AdaS-ViT test-time adaptive routing for spiking ViTs (2611.23728) — "ultra-high" energy claim; boundary unread
 - EM-SDTrack spike-driven event-camera tracking (2611.22700) — software; energy basis unread
 - Scenario-aware adaptive neuromorphic multimodal fusion (2611.07830) — unread
+- ChronoProp timestep-decoupled SNN training (arXiv 2611.34381) — simulation; memory/time gains claimed
 
 ## Benchmarks
 
@@ -151,7 +159,8 @@ Persistent radar for this wiki: things identified as worth tracking but not yet 
 - Mythic Defense Advisory Board formation (2026-09-16) — analog compute-in-memory (APU) vendor building a US DoD/IC procurement channel; viability signal for a named analog-IMC competitor, no technical content
 - BrainChip Sequora licensable gen-AI IP (2026-10-14) — state-space models to 3B params claimed; no benchmark, no licensee
 - Unconventional AI $475M seed — undated in search; verify date and scope before use
-- BrainChip Sept-quarter 4C — not yet lodged; expect late October
+- ~~BrainChip Sept-quarter 4C~~ *(captured 2026-11-26)*
+- T-Systems–Sparxity letter of intent (2026-11-03) — deployment planned 2028; not captured
 
 ## Programmes & policy
 

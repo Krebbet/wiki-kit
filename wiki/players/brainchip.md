@@ -2,6 +2,8 @@
 
 Publicly listed Australian vendor of the Akida fully-digital, event-based neuromorphic processor family. As of the June 2026 quarter BrainChip is one of the few neuromorphic companies with a named product shipping in production volume from a named foundry on a named node — the AKD1500, built by GlobalFoundries on 22FDX — which makes it the wiki's strongest single datapoint for the "shipping niche now" side of the [[../conflicts/snn-energy-payoff|commercial timeline]] question. The same quarter also disclosed that initial production yield ran **below expectations** and that cash fell to US$20.3M against roughly US$5.3M/quarter of operating outflow. Shipping has started; it is not yet yield-mature and not yet self-funding.
 
+**Latest (primary filing, quarter to 30 Sept 2026):** cash US$16.4M, operating outflow US$4.3M, customer receipts US$273K, ~20,000 more AKD1500 chips received. See [[#September 2026 quarter]].
+
 ## Product — Akida AKD1500
 
 **What it is (evidenced — this is a product-specification claim, the tier vendor documents are authoritative for):**
@@ -67,6 +69,24 @@ Company-disclosed figures for the half-year ended 30 June 2026, via a Motley Foo
 
 New commercial detail from the same report: IP licensing deals signed with **EDGEAI** and **ASICLAND** during the half (revenue described as "potential," not yet broken out), a new **MicroIP** ecosystem partnership, and the **LDA Capital financing facility concluded** during the period with obligations "substantially settled" — removing a prior funding mechanism with no stated replacement. AKD2500 is tracking toward a "late-2026 development milestone" (claimed, owner BrainChip, no exact date).
 
+## September 2026 quarter
+
+Appendix 4C and Activities Report, dated 30 October 2026 — **ASX primary**, company-reported, unaudited as far as the filing states. Added 2026-11-26.
+
+| Item | Sep 2026 qtr | Jun 2026 qtr |
+|---|---|---|
+| Cash at quarter end | US$16.4M | US$20.3M |
+| Net operating outflow | US$4.31M | US$4.7M |
+| Customer receipts | US$273K | US$0.15M |
+| Reported funding runway | 3.95 quarters | 4.4 quarters |
+
+- The 3.95 figure adds a US$665K unused standby letter of credit to cash. The filing says that facility is **office-lease security**, so (synthesis) cash-only runway is slightly shorter (16,366 / 4,313 ≈ 3.8 quarters). A future capital raising is contemplated.
+- **Chips (evidenced):** first 2,000 AKD1500 received June, fulfilment from July; ~20,000 more received September, remainder expected by end November (count unstated). See [[../conflicts/brainchip-akd1500-2000-units]].
+- **Order units:** Parsons has received its full initial 10,000-chip order; Onsor has "received a 2,000 Chip order" (product awaits Omani health-ministry approval); Neuromorphyx received 1,200. No values or ASPs.
+- **Claimed (owner BrainChip, as of 2026-10-30):** AKD2500 tape-out by December 2026, engineering samples early Q3 2027 *subject to foundry capacity*; EdgeAI MPW tape-out December 2026; Frontgrade Gaisler GR801 tape-out in coming months, commercial silicon 2027; royalties "potentially beginning in late 2027".
+- **Sequora** generative-AI IP released October 2026, FPGA only, no performance figure.
+- **Silent on:** yield and environmental/military qualification — both open questions below remain open.
+
 ## Partnerships
 
 All named as claimed partnerships; the outlet's own caveat is that they carry **no publicly disclosed production volumes or revenue commitments**, and some contain termination provisions.
@@ -96,8 +116,8 @@ Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). B
 - Named customers behind "multiple customers", and whether the 2,000-unit first batch has fully shipped to them.
 - Root cause of the below-expectations yield — still unquantified and unaddressed even in the 1H CY2026 report.
 - Any TOPS/W figure with a stated measurement boundary, or any third-party benchmark — e.g. a [[../benchmarks/neurobench]] system-track submission or MLPerf Tiny entry?
-- Actual quarterly cash-flow outflow for the Jun 2026 quarter, to update the runway synthesis on a like-for-like basis with the Mar 2026 figure.
-- The September 2026 quarterly is the next disclosure checkpoint for yield improvement and H2-2026 volume.
+- Did the AKD2500 tape out by December 2026? (December-quarter filing, due late January 2027.)
+- ~~Jun-quarter outflow~~ answered: US$4.7M. The September quarterly said nothing on yield.
 
 ## Source
 
@@ -107,6 +127,7 @@ Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). B
 - `raw/research/weekly-2026-08-27/03-brainchip-h1-cy2026.md` — Motley Fool Australia, "BrainChip shares: Half-year results show revenue up, loss widens", 2026-08-26. Relay of BrainChip's ASX half-year filing; tier 4 (one level removed from primary, no filing linked).
 - `raw/research/weekly-2026-09-17/04-brainchip-akd1500-pcie-card.md` — BrainChip press release, "BrainChip Launches AKD1500 PCIe Card For Edge AI Evaluation Everywhere", 2026-09-17. Vendor primary.
 - `raw/research/weekly-2026-09-24/05-brainchip-akd1500-pcie-card.md` — GlobeNewswire syndication of the same 2026-09-17 BrainChip press release above, resurfaced by this week's sweep. Duplicate, not a new source — see dedup note above.
+- `raw/research/weekly-2026-11-26/05-brainchip-4c-sep-quarter-2026.md` — BrainChip September-quarter Activities Report and Appendix 4C, ASX, 2026-10-30. Primary.
 
 ## Related
 
@@ -117,3 +138,4 @@ Vendor primary (brainchip.com press room, captured cleanly, dated 2026-09-17). B
 - [[../weekly-briefs/2026-08-27]] — brought in by the 2026-08-27 weekly sweep
 - [[../weekly-briefs/2026-09-17]] — brought in by the 2026-09-17 weekly sweep
 - [[../weekly-briefs/2026-09-24]] — brought in by the 2026-09-24 weekly sweep
+- [[../weekly-briefs/2026-11-26]] — brought in by the 2026-11-26 weekly sweep

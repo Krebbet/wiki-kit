@@ -73,7 +73,7 @@ What `/weekly-brief` scans for **this wiki**, and what `/lint` evolves. High-sig
 | **SynSense** | Ultra-low-power vision/audio SNN silicon; Rockpool toolchain. Confirmed live, on-topic, no barriers. | https://www.synsense.ai | active |
 | **Innatera** | Analog-mixed-signal spiking sensor processor; shipping-status claims worth tracking. Confirmed live: dated newsroom through Jul 2026 (CES 2026, Computex 2025), no barriers on the main site. | https://innatera.com | active |
 | **Prophesee** | Event-camera side of the stack — the sensor that makes sparse workloads real. Confirmed live: dated news through Jun 2026 (Mantara launch, €20M raise), no barriers. | https://www.prophesee.ai | active |
-| **SpiNNcloud / SpiNNaker** | Manchester/TU-Dresden lineage commercialised; large-scale digital SNN. Resolves, on-topic, no barriers, but the news feed reads stale — most recent entry ~Jan 2025. | https://spinncloud.com | probation |
+| **Sparxity (formerly SpiNNcloud / SpiNNaker)** | Manchester/TU-Dresden lineage commercialised. Renamed; spinncloud.com redirects (2026-11-26 sweep). Blog is live with dated 2026-11 funding news; check how much remains spiking. | https://www.sparxity.ai/blog | active |
 | **imec** | Foundry-adjacent device research; strongest signal on BEOL integration and PDK readiness. Resolves and live (dated 2026 stories) but homepage shows no neuromorphic/memristor/RRAM/BEOL content directly — point the watcher at /news or /articles rather than the root. | https://www.imec-int.com | probation |
 | **CEA-Leti** | European device/integration programme, RRAM and FeFET. Confirmed live: dated 2026 press release on FeRAM/FeFET scaling to 22nm for edge AI, active news carousel. | https://www.leti-cea.com | active |
 | **Mythic** | Analog IMC incumbent; its funding trouble history is a load-bearing cautionary case. | https://mythic.ai | probation |
@@ -134,6 +134,13 @@ Corrections worth recording, because the method mattered:
 | **Kalkine / ASX commentary** | Only useful as a pointer to BrainChip's Appendix 4C filings. Never cite for a technical claim; go to the filing. | https://kalkine.com.au | probation |
 | **SATA / SpikeSim** (Yale Intelligent Computing Lab) | Open hardware-realistic SNN benchmarking harnesses; the tooling behind the estimated-vs-actual energy critique. | https://github.com/Intelligent-Computing-Lab-Yale | probation |
 | **NeuroBench repos** | The harness and system benchmarks themselves, more informative than the paper for what is actually measurable. | https://github.com/NeuroBench/neurobench | probation |
+
+**Added 2026-11-26**
+
+| Source | Why | URL | Status |
+|---|---|---|---|
+| **ASX announcements API** | Primary route to BrainChip (`brn`) and Weebit (`wbt`) filings; returns only the five latest, so check weekly. Found the Sept-quarter 4C that web search missed for four weeks. | https://asx.api.markitdigital.com/asx-research/1.0/companies/brn/announcements | active |
+| **SynSense / Prophesee RSS** | Dated vendor news (`/feed/`). | https://www.synsense.ai/feed/ · https://www.prophesee.ai/feed/ | probation |
 
 ## Selection priority (per bootstrap)
 

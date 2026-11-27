@@ -17,7 +17,8 @@ Seeded 2026-08-20 from the first research run. Coverage is thin and deliberately
 | Prophesee | Metavision (GENX320, EVK4/5) | Sony IMX636 lineage | **shipping product** — named automotive design wins (Xperi/DTS in-cabin DMS; Terranet/Mercedes-Benz VoxelFlow), both **vendor-claimed**, production status unconfirmed | 2026-08-21 | Vendor page carries **zero quantified performance claims**. Third-party sensor specs via survey |
 | EnCharge AI | EN100 (M.2 / PCIe) | not disclosed | **claimed available** — 200 TOPS in 8.25 W (M.2), ~1 petaops (PCIe). Princeton spin-out, >$144M raised | ⚠️ mixed | One press announcement + one **~2023-vintage** teaser. "~20× perf/W" has no baseline, workload or precision. No independent test |
 | Tianjic (Tsinghua) | Tianjic / TianjicX | 28 nm | **unknown** — architecture published 2019; hybrid spiking + non-spiking on one substrate. Lynxi commercialising the lineage | ⚠️ ~2019 | Community page only, ~7 years stale, one hard number (>610 GB/s). Primary (Nature 2019) uncapturable — science.org hangs |
-| [[brainchip]] (ASX:BRN) | Akida AKD1500 | 22FDX @ GlobalFoundries | **production shipments** — yield below expectations, not yet self-funding (~US$1.9M trailing revenue vs ~US$5.3M/qtr outflow) | 2026-06-30 | Vendor primary + company-disclosed quarterly. Node and fab named and checkable. No performance figure carries a measurement boundary. |
+| [[brainchip]] (ASX:BRN) | Akida AKD1500 | 22FDX @ GlobalFoundries | **production shipments** — yield below expectations (June qtr; not updated), not self-funding (US$273K receipts vs US$4.31M operating outflow, Sep qtr; US$16.4M cash) | 2026-09-30 | Vendor primary + ASX Appendix 4C. Node and fab named and checkable. No performance figure carries a measurement boundary. |
+| Sparxity (formerly SpiNNcloud) | sparse-compute chips and rack systems (not named in the source) | not disclosed | **claimed deployed** — >70,000 chips, 12 racks, >30 customers, $90M cumulative funding, all **vendor-claimed** | 2026-11 (release ~11-10) | One vendor press release. Never says spiking, neuromorphic or SpiNNaker. Multipliers (10×/18×/20×; 44× target) have no baseline |
 | Innatera Nanosystems | Spiking Neural Processor T1 | not disclosed | **unknown — stale record.** Claimed production "later this year" and high-volume delivery "Q2 2025" *as of ~April 2024*. Both dates are now in the past; outcome unknown from any captured source. | ~2024-04 ⚠️ | Trade press only. No node, no fab, no independently measured figure. |
 
 ### Innatera — why the row is deliberately empty
@@ -34,6 +35,10 @@ What it does **not** support: any performance claim. The source's only comparati
 
 A dedicated Innatera page is deliberately **not** created from this source alone. It should be opened when a second, technical source lands — a T1/Pulsar datasheet, a node/fab disclosure, or a shipping-status update.
 
+### Sparxity — what the Series A release does and does not establish
+
+Press release dated ~2026-11-10 (date inferred from the wire ID). **Vendor-claimed:** Series A led by ICM HPQC Fund (round size unstated; cumulative $90M), investors including Lockheed Martin Ventures, GlobalFoundries and EIC Fund; three tape-outs; revenue quadrupled 2024→2025 (no absolute figure); Jülich deployment; T-Systems partnership. Next chip targets "up to 44×" faster inference on ultra-sparse models — a target for undesigned silicon. (synthesis) The positioning has moved from neuromorphic to "sparse computing"; the SpiNNcloud lineage is the link to this wiki.
+
 ## Named but not yet researched
 
 Encountered in captured sources without enough evidence for a row. Each is a research target, not a claim:
@@ -41,7 +46,7 @@ Encountered in captured sources without enough evidence for a row. Each is a res
 - **Intel** (Loihi 2) — appears as a NeuroBench system-track baseline platform and as a co-author institution. Xylo Audio 3 also underpins the measured HyVox speaker-ID system ([[../chips/hyvox-xylo-speaker-id]], 2026-11 preprint). Now has one direct primary source: [[../chips/loihi2-persistent-monitoring]] (2026-08-20 weekly sweep) — a 16-chip VPX system running acoustic anomaly detection. Still short of a full row: no yield, volume, or pricing disclosure captured.
 - **SynSense** (Xylo) — appears as a NeuroBench system-track baseline platform and as a co-author institution.
 - **imec**, **TU Delft**, **Harvard** — NeuroBench co-author institutions.
-- **Prophesee**, **SpiNNcloud**, **Sony** — NeuroBench co-author organisations.
+- **Prophesee**, **SpiNNcloud** (now Sparxity, see above), **Sony** — NeuroBench co-author organisations.
 - **GlobalFoundries** — foundry, evidenced via BrainChip's 22FDX relationship.
 - **TSMC** — the only foundry-node-level embedded-RRAM claim in the device literature captured so far (40 nm RRAM 2019; 22 nm eRRAM 2024, per [[../devices/memristor-array-integration-gap]]).
 - **University of Edinburgh (Prodromakis group)** — the CMOS-RRAM prototyping route in [[../devices/cmos-rram-beol-integration]], now also the source of a large open memristor characterization database, see [[../devices/memristor-device-engineering]].
@@ -59,9 +64,12 @@ Encountered in captured sources without enough evidence for a row. Each is a res
 - `raw/research/neuromorphic-commercial-viability/01-brainchip-akd1500-shipments.md` — BrainChip press release, 2026-06-30.
 - `raw/research/neuromorphic-commercial-viability/02-innatera-21m-round.md` — DatacenterDynamics, "Neuromorphic processor startup Innatera raises $21m". ⚠️ No publication date in the capture; vintage estimated ~April 2024 from internal evidence.
 - `raw/research/neuromorphic-commercial-viability/03-brainchip-yield-cash.md` — Kalkine, BrainChip June-2026 quarter commentary.
+- `raw/research/weekly-2026-11-26/05-brainchip-4c-sep-quarter-2026.md` — BrainChip Appendix 4C, September 2026 quarter.
+- `raw/research/weekly-2026-11-26/06-sparxity-series-a.md` — Sparxity press release, Series A.
 
 ## Related
 
 - [[brainchip]] — the one player with a full record so far
 - [[../conflicts/snn-energy-payoff]] — where vendor efficiency claims are held to account
 - [[../viability-ledger]] — per-technology timeline these players feed
+- [[../weekly-briefs/2026-11-26]] — brought in by the 2026-11-26 weekly sweep

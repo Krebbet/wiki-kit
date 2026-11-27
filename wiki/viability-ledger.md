@@ -34,6 +34,16 @@ Built from 8 sources in one research run (2026-08-20). It is thin by constructio
 | **ECRAM** | **small array** | 4K-scale cross-point array; 8×4 sub-array at 100% yield; TTv2 training | Wiki has only an abstract relay; primary is on science.org, which **hangs on capture** | Access to the primary by any route |
 | **Event-based vision sensors** | **shipping product** | Real parts: Prophesee GENX320 at 3 mW, >120 dB; Sony IMX636 lineage; iniVation, CelePixel, Lucid | Processing gap — most pipelines densify events back to frames, discarding the sparsity. Ecosystem and tooling maturity | An end-to-end sparse pipeline in a shipping product |
 
+### Added 2026-11-26
+
+| Technology | Rung reached | Best evidence | Gating blocker | Would move the date |
+|---|---|---|---|---|
+| **3D NAND analog CIM** | **integrated macro (lab)** | [[devices/3d-nand-analog-cim]]: measured, 4.8M weights/mm² (estimated area), ≤4.2 TOPS/W (tile) | No endurance/drift data; power not itemised; accuracy at a slower operating point | One configuration reporting efficiency, density and accuracy together |
+| **VO2 Mott + spintronic neuron-memory** | **single device pair** | [[devices/vo2-mott-spintronic-lif-neuron]]: measured write path; energy calculated | No CMOS integration; read-out; calculated 51.9 nJ per conversion | A co-integrated array with measured energy |
+| **STT-MTJ stochastic sensory neuron** | **single device** (40 nm MRAM process) | [[devices/stt-mtj-magnetic-sensory-neuron]]; array simulated | No energy, endurance or variability data | A built sensor array |
+
+**Digital event-based (Akida) update, 30 Sept 2026 quarter (ASX primary):** ~20,000 further chips received; receipts US$273K vs outflow US$4.31M; 3.95 quarters of reported funding; yield not addressed. See [[players/brainchip]].
+
 ## Per-application status
 
 | Application | Status | Evidence |
@@ -66,7 +76,7 @@ Built from 8 sources in one research run (2026-08-20). It is thin by constructio
 ## Leading indicators to watch
 
 1. A NeuroBench **system-track submission** from any vendor currently making unquantified claims.
-2. A **quantified AKD1500 yield figure** — September 2026 quarterly is the next checkpoint.
+2. A **quantified AKD1500 yield figure** — the September 2026 quarterly passed without one; also AKD2500 tape-out by December 2026 (BrainChip claim).
 3. An announced **foundry PDK for analog CIM RRAM**, as distinct from embedded NVM.
 4. **Electrical characterisation** of a ≥1 Mbit integrated RRAM array.
 5. A specialized sparse-event accelerator (LoAS, SpikeX, Bishop) demonstrating **η ≈ 1** in silicon.
@@ -77,6 +87,8 @@ Built from 8 sources in one research run (2026-08-20). It is thin by constructio
 Synthesised from all eight sources in `raw/research/neuromorphic-commercial-viability/`. Each row traces to the page cited beside it; no claim here originates on this page.
 
 ## Related
+
+- [[weekly-briefs/2026-11-26]] — rows added by the 2026-11-26 weekly sweep
 
 - [[players/roster]] · [[players/brainchip]] — who
 - [[devices/memristor-array-integration-gap]] · [[devices/memristor-device-engineering]] · [[devices/cmos-rram-beol-integration]] — what gates the materials

@@ -200,3 +200,9 @@ Full brief: `wiki/weekly-briefs/2026-11-12.md`.
 Three arXiv captures (marker): 2611.18524 (EventSpikeSeg, GF180 mixed-signal architecture study, no silicon), 2611.00119 (device-informed STDP on threshold memristor, simulation), 2610.39688 (model-inversion privacy in memristive SNNs, simulation). Pages: chips/eventspikeseg-mixed-signal-gf180, devices/memristor-state-dependent-stdp, snn/memristive-snn-model-inversion-privacy. 8 watchlist additions. Industry/funding lane found nothing verifiable. Poetry venv lacked httpx; `poetry install` fixed it.
 
 Full brief: `wiki/weekly-briefs/2026-11-19.md`.
+
+## [2026-11-26] weekly-brief | 5 ingested, 10 watchlisted, BrainChip Sep-quarter primary / Sparxity / VO2 Mott / 3D-NAND CIM / STT-MTJ sensor
+
+Survey: arXiv API query (200 newest) plus one industry/journal agent. Ingested: BrainChip Appendix 4C (ASX primary), Sparxity Series A release, VO2 Mott + spintronic neuron (Nature Nanotechnology, open), 3D-NAND analog CIM (arXiv 2611.27479), STT-MTJ sensory neuron (arXiv 2611.30740). Three further arXiv PDFs were captured and not ingested (over the 5-capture cap; watchlisted). One conflict file: brainchip-akd1500-2000-units.
+
+Full brief: `wiki/weekly-briefs/2026-11-26.md`.

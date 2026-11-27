@@ -153,3 +153,9 @@ Confirms the same `/abs/` vs `/pdf/` failure recurred on the 2026-09-24 run: `ca
 **Observation:** `export.arxiv.org/api/query` returned HTTP 200 with a zero-byte body (rate-limit), and `arxiv.org/list/cs.AR|cs.ET|cond-mat.mtrl-sci/recent` returned a ~6.6 KB error page after the cs.NE listing succeeded. Survey agent also could not wait out back-off (`sleep` blocked). Crossref worked for IOP NCE.
 **Implication:** Space listing fetches out (one per call, retry later in the run), and prefer Crossref/listing HTML over the API in survey prompts.
 **Status:** open
+
+### 2026-11-26 — captures launched before all survey lanes returned overshot the 5-capture cap; ASX API finds filings web search misses
+**Scope:** both
+**Observation:** The orchestrator captured five arXiv PDFs while the industry survey agent was still running; its findings (BrainChip 4C, Sparxity, VO2) displaced three of them, giving 8 captures against a cap of 5. Separately, the BrainChip Sept-quarter 4C (lodged ~10-30) was watchlisted as "not located" for four weekly runs; the ASX announcements API returned it.
+**Implication:** (kit) weekly-brief step 4 should wait for every survey lane before capturing. (project) Check the ASX API each run (now in reference-sources).
+**Status:** open

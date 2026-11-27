@@ -51,6 +51,9 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ---
 | [[devices/ecram-short-term-plasticity-neuron]] | MoS2/PEO:LiClO4 ECRAM volatile conductance decay used as short-term plasticity in a delay-feedback LIF neuron. Only the single device (3 devices) is measured; ~2 pJ circuit energy (inconsistent with ~8 pJ Monte Carlo) and network results are simulated. |
 | [[devices/memristor-state-dependent-stdp]] | Hybrid local-STDP + threshold-memristor state update: 95.15% MNIST / 85.92% Fashion-MNIST in HSPICE-compact-model simulation; update asymmetry collapses learning; training-time faults absorbed. Simulation only. |
+| [[devices/vo2-mott-spintronic-lif-neuron]] | VO2 Mott LIF neuron writing spikes into a racetrack/SOT-MTJ without amplifier or ADC. Measured device pair; 51.9 nJ calculated; MNIST and array results simulated. |
+| [[devices/3d-nand-analog-cim]] | IBM/Micron hybrid-bonded 3D NAND analog CIM macro: measured, 4.8M weights/mm² (estimated area), ≤4.2 TOPS/W tile; headline and accuracy operating points differ. |
+| [[devices/stt-mtj-magnetic-sensory-neuron]] | 40 nm MRAM-process STT-MTJ as magnetic sensor and spike encoder: measured devices; 10×10 array and 90.7% accuracy simulated. |
 
 ## Chips & systems
 
@@ -104,5 +107,6 @@ Catalog of all pages in this wiki. Updated on every ingest.
 |---|---|
 | [[conflicts/analog-onchip-training-viability]] | **Open.** Does in-situ training rescue imperfect analog arrays? The yield-economics argument rests on SGD-based training that fails on realistic response curves with no defects present. Resolution: read Li et al. and establish the actual update rule. |
 | [[conflicts/snn-energy-payoff]] | **Open.** Vendor and algorithm-paper claims (10–100×) against hardware-realistic and capacity-matched accounting (1.3–25×, often worse than a quantized ANN). Separated by measurement boundary and baseline capacity. Resolution condition: a NeuroBench system-track submission. |
+| [[conflicts/brainchip-akd1500-2000-units]] | **Provisionally resolved.** First 2,000 AKD1500: received in June (ASX primary) vs shipped in 1H (relay). |
 
 ---
