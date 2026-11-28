@@ -94,3 +94,9 @@ The cluster gives Position A in [[../../conflicts/invisible-leash-vs-spiral-tran
 - [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep
 - [[rl-take-off-successful-groups]] (2611.26084): successful-group count predicts RL take-off on rare actions; repeats help, restarts hurt
 - [[blind-spots-travel-judge-rewards]] (2611.25191): structured-judge false rejections generalise by category; judge-free own-vote reward
+
+## Update 2026-11-27 (weekly-brief)
+
+- [[rl-recovered-from-rollouts]] (2611.33102): SFT on unfiltered, ordered RL rollout archives recovers online RLVR; offline PG replay drifts
+- [[rl-recovers-corrupted-sft]] (2611.26756): saturated GRPO erases corrupted-SFT damage on OLMo-2-1B/GSM8K; form-only-beats-gold claim unreplicated
+- [[../../weekly-briefs/2026-11-27]] — brought in by the 2026-11-27 weekly sweep

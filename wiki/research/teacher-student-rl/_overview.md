@@ -175,3 +175,8 @@ The theme's load-bearing contribution to the skeleton: **the student's condition
 - [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep
 - [[agentic-opd-react-patterns]] (2611.19244): agentic OPD transfers ReAct patterns incl. negative transfer; signed-Delta token selection
 - [[mrpd-replay-consolidation]] (2611.24059): ordered expert-log replay plus dense reverse-KL matches MOPD at ~1/3 cost
+
+## Update 2026-11-27 (weekly-brief)
+
+- [[vopd-verifiable-opd]] (2611.30325): verifier-teacher correlation sets OPD extrapolation strength; ~1 pt over ExOPD, most groups fall back
+- [[../../weekly-briefs/2026-11-27]] — brought in by the 2026-11-27 weekly sweep

@@ -31,3 +31,8 @@ Surfaced via the 2026-05-17 weekly sweep. FEST (arXiv:2605.15012) §4.1 obs. (ii
 - [[../research/rl-optimizers/bolt-kl-rlvr-boltzmann]] — coverage–ESS wall: a complementary lens on "how big is the gap to close"
 - [[../research/synthesis/proposed-method]] — project value proposition shifts if Position A generalises
 - [[../weekly-briefs/2026-05-17]] — brought in by the 2026-05-17 weekly sweep
+
+## Update 2026-11-27 (weekly-brief)
+
+- [[../research/rlvr-mechanics/rl-recovers-corrupted-sft]] (2611.26756): 8 synthetic form-only traces + GRPO reach 69.30 pass@2 vs 35.00 GRPO-only. Does not meet the resolution rule: different base (non-math-tuned 1B), GRPO-only arm poorly formatted with unclear tuning, no seeds. Compatible with FEST's "very small demonstration set suffices". **No ruling.**
+- [[../weekly-briefs/2026-11-27]] — extended by the 2026-11-27 weekly sweep

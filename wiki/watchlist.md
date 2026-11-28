@@ -99,6 +99,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - P²-MOPD (arXiv:2611.03953) — student+expert parameter mixing as priors; 1.7B recovers 94.7% vs 80.9% for MOPD
 - Reframe (arXiv:2611.12886) — observation-gated multi-teacher OPD for visual tool agents [agentic; low priority]
 - PhysOPSD (arXiv:2611.12411) — executable simulation code as privileged context for OPSD in video, ~3K samples [domain caveat: video]
+- On-policy distillation failure dynamics (arXiv:2611.27125) — spurious agreement, uncorrected teacher mismatch
+- Rethinking Reasoning Effort: OPD or RL? (arXiv:2611.32131) — OPD keeps effort tiers separate
+- Evolve to Learn (arXiv:2611.32390) — gradient alignment picks experience worth self-distilling; code released
 
 ## Process reward models
 
@@ -124,6 +127,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - LongZero (arXiv:2610.30132) — model writes multi-hop questions, expands evidence into long contexts, trains GRPO with no external data; code github.com/zhennan1/LongZero
 - Experience-Handoff RL (arXiv:2611.16409) — scalar-reward RL plus learned playbooks
 - Knowledge in the Harness, Reliability in the Weights (arXiv:2611.15268) — teacher-free self-diagnosed rules plus GRPO LoRA on a 12B model; code released
+- Fragility of Self-Rewarding Optimization (arXiv:2611.28582) — collapse below reward-fidelity threshold
 
 ## Test-time training and curriculum
 
@@ -200,6 +204,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Continually Post-training Small Models via Synthetic Self-distillation (arXiv:2610.13113) — larger same-family rewriter fixes SDFT failure on small models
 - HERD (arXiv:2610.31401) — recursive harness-to-weights distillation with drift anchors; agent-flavored continual learning
 - RL Forgets! Towards Continual Policy Optimization (CPO, arXiv:2607.04364) — standard RL still forgets because the KL regularizer is on current-task data; replay-free prior-task KL; code github.com/MaolinLuo/CPO; tension with Retaining by Doing (2510.18874) and RFT-mitigates-forgetting
+- Two Timescales of Forgetting (arXiv:2611.33302) — behaviour suppressed fast, representations erode slowly; code
+- InstructReplay (arXiv:2611.32918) — replaying own initial answers cuts benchmark loss; code
 
 ## RL optimizer miscellany
 
@@ -225,6 +231,9 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - EDEN (arXiv:2610.16105) — embedding-space perturbation rollouts for small GRPO groups; relevant to few-rollout regimes
 - FORK, Eat Your Precision (arXiv:2610.33512) — precision term in rubric-RL mitigates reward hacking (HealthBench win rate 22.1%→74.1%); non-verifiable, low priority
 - Amortizing Sequential Experimental Design in Reasoning LLMs (arXiv:2610.20832) — rewarding information gain trains information-gathering as a reasoning skill; loosely related to question-asking in concept learning; no code
+- SPLICE, When Every Rollout Fails (arXiv:2611.34777) — local targets from all-fail groups
+- CreditFilter (arXiv:2611.27227) — entropy-rank token weights over DAPO; code released
+- Structure Over Scale (arXiv:2611.27148) — cold-start GRPO collapses at high LoRA rank; code
 
 ## Process reward models (cont.)
 
@@ -239,6 +248,7 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Dynamic Important Example Mining for Reinforcement Finetuning (arXiv:2608.29252) — title suggests curriculum/data-selection relevance for RFT; content unconfirmed, low-confidence flag from this week's scan
 - Mathematical Transfer Follows Reasoning Approach More Than Topic (arXiv:2610.00331) — counterbalanced 2×2: same-approach data transfers better than same-topic; bears on concept-curriculum-method
 - Incentivizing Self-Learning via RL, BookNavigator (arXiv:2610.39671) — 35B textbook-proof accuracy 51.5%→79.5%; no code
+- Pretraining Representation Lottery (arXiv:2611.28777) — seed geometry limits fine-tuning generalisation
 
 ## In-context learning theory
 
@@ -257,6 +267,8 @@ Persistent radar for this wiki. Populated by `/weekly-brief` (up to 10 entries p
 - Conditional no-hair theorem (arXiv:2610.24133) — prompt influence decays as power law; how LMs forget their prompt
 
 ## Related
+
+- [[weekly-briefs/2026-11-27]] — most recent weekly sweep (5 captures: rollout-replay recovery, corrupted-SFT recovery, retention-tuned SFT, VOPD, weight-space task vectors; 10 watchlist additions)
 
 - [[weekly-briefs/2026-10-16]] — most recent weekly sweep (5 captures: OPD skill-vs-knowledge, Semi-OPD, RLVR OOD answer-format, thinking leakage, majority-vote gradient coherence; 10 watchlist additions)
 - [[weekly-briefs/2026-10-02]] — most recent weekly sweep (5 captures: multi-teacher OPD pair, OPD-vs-off-policy KL direction, ATD taskless distillation, random-reward reachability probe; new forgetting conflict; 10 watchlist additions)

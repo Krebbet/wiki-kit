@@ -73,3 +73,8 @@ Theme synthesised 2026-05-16 from the existing EWC seed plus 6 papers captured i
 - [[capability-drift-multilingual-post-training]] (2611.15717): on-policy GRPO regressed an unrewarded capability (-19 F1) while the rewarded gain was mostly answer format; reward-free distillation from an earlier checkpoint recovers most of it. Reward-blind forgetting under on-policy data; no LR/SFT control
 - [[../../weekly-briefs/2026-11-13]] — brought in by the 2026-11-13 weekly sweep
 - [[curvdelta-curvlora]] (2611.24654): K-FAC low-curvature delta with a preservation bound
+
+## Update 2026-11-27 (weekly-brief)
+
+- [[tune-for-retention-sft]] (2611.34579): retention-aware lr/batch selection removes most reported SFT forgetting; SDFT still more lr-robust
+- [[../../weekly-briefs/2026-11-27]] — brought in by the 2026-11-27 weekly sweep

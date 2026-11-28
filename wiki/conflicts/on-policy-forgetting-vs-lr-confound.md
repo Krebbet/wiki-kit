@@ -37,3 +37,10 @@ Surfaced via the 2026-10-02 weekly sweep: arXiv:2609.35259 abstract, `raw/resear
 - [[../research/selective-finetuning/deletion-tuning]] (2611.10866) — leans A (forward KL predicts forgetting; deletion lowers it further); no rollout-policy/LR variation.
 - [[../research/rlvr-mechanics/dense-rewards-grpo-matched-compute]] (2611.13560) — analogous confound: an LR retune erased most of the apparent method gain.
 - [[../weekly-briefs/2026-11-13]] — extended by the 2026-11-13 weekly sweep
+
+## Update 2026-11-27 (weekly-brief)
+
+- [[../research/catastrophic-forgetting/tune-for-retention-sft]] (2611.34579): changing only SFT lr/batch removes most of a 21–33 pp drop in Chen et al.'s settings; on 8B MMLU tuned SFT (+12.13 / +0.55) matches GRPO (+11.95 / −1.22). GRPO keeps an edge on at least one axis in the other three settings, and on-policy SDFT is more lr-robust.
+- Effect on positions: A is weakened as a magnitude claim where SFT was not tuned for retention, not refuted. B's lr-dependence is reproduced for demonstration SFT/SDFT.
+- Resolution rule still unmet: GRPO is not lr-swept, gain is not matched, no outcome-reward method is swept. **Stays open.**
+- [[../weekly-briefs/2026-11-27]] — extended by the 2026-11-27 weekly sweep

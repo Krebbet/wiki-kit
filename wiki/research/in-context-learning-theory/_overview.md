@@ -73,3 +73,8 @@ This overview synthesises the pages above. No new external sources.
 - [[bdh-cq-recurrent-latent-reasoning]]
 - [[icl-sft-rl-bayesian-unification]]
 - [[../../weekly-briefs/2026-09-25]] — brought in by the 2026-09-25 weekly sweep
+
+## Update 2026-11-27 (weekly-brief)
+
+- [[weight-space-programming-task-vectors]] (2611.26841): agent-written task-vector weight edits vs ICL and few-shot FT; format-bound, brittle to wording
+- [[../../weekly-briefs/2026-11-27]] — brought in by the 2026-11-27 weekly sweep
