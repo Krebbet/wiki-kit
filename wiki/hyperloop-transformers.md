@@ -45,3 +45,5 @@ No code released as of capture. PyTorch + torch.compile, no custom kernels. No p
 - [[par-progress-aligned-recurrence]] — retrofitted looped LM with progress-aligned targets + RMS norm anchoring; 16× length extrapolation
 
 - See also: [[loopback-transformer]] - successor residual aggregation (decayed update memory + parameter-free attention); beats Hyperloop's mHC by 0.005-0.011 nats in its own setup.
+- [[looptitan]] - matched-budget controls (MoE only) attribute looped gains to shape, residual scaling and compute; see [[conflicts/looped-parameter-sharing-benefit]].
+- [[mixture-of-loops-transformer]] - KV reuse across loops.

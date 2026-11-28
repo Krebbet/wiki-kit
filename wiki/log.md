@@ -378,3 +378,9 @@ Autonomous weekly sweep (week of 2026-11-14). Sources: HF daily_papers API (11-0
 Autonomous weekly sweep (week of 2026-11-21). Sources: HF daily_papers API (11-16..11-20; 11-14/15 empty), HF weekly W47, Latent Space AINews (11-20), alphaXiv (reachable), arXiv abs for verification. Reddit/X/podcasts not checked.
 
 **Captured and ingested (pymupdf, audit clean, 5/5 summaries validated):** [[steering-vectors-rl-dit]] (2611.26627), [[resolution-hypothesis]] (2611.23068), [[loopback-transformer]] (2611.07226), [[multi-branch-transformer]] (2611.19800), [[regularized-score-centering]] (2611.21791). No conflict files opened; [[resolution-hypothesis]] caveats [[skillopt]] / [[gepa-reflective-prompt-evolution]] via backlinks. Summaries were partial reads (appendices skipped). Poetry venv had to be rebuilt (`poetry install`) before capture.
+
+## [2026-11-28] weekly-brief | 5 captured, 10 watchlisted
+
+Autonomous weekly sweep (week of 2026-11-28). Sources: HF daily_papers API (11-23..11-27; 11-21/22/28 empty), HF weekly W48 (truncated), Latent Space AINews (11-23..11-27), alphaXiv, Thinking Machines index, arXiv, WebSearch. Reddit blocked; X, Discord, awesome-lists not checked.
+
+**Captured and ingested (pymupdf, audit clean, 5/5 summaries validated):** [[looptitan]] (2611.34821), [[mixture-of-loops-transformer]] (2611.34923), [[gated-deltanet-2]] extension (Stable GDN-2, 2611.34051), [[verifiable-opd]] (2611.30325), [[recursive-collective-intelligence]] (2611.32606). Conflicts opened: [[conflicts/looped-parameter-sharing-benefit]], [[conflicts/exopd-output-space-extrapolation]]; note added to [[conflicts/fixed-state-ssm-long-context]]. LoopTitan appendices partly read.

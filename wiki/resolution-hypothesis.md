@@ -48,3 +48,4 @@ Large reproducibility study (ShanghaiTech/ByteDance; 7 evolution methods, 6 mode
 - [[test-time-scaling-taxonomy]] - Best-of-N selection can lower accuracy when scores misalign.
 - [[huxley-godel-machine]] - self-improving agent selection by benchmark score.
 - [[kimi-k3]], [[deepseek-v4]] - evaluated agent models.
+- [[recursive-collective-intelligence]] - gated group-level generations; several gains reported on selection sets.

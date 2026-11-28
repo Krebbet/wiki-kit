@@ -88,3 +88,7 @@ Worth distinguishing two sub-claims:
 - [[conflicts/long-context-attention-vs-recurrent-memory]] — adjacent (different opponent).
 - [[conflicts/ssm-vs-associative-memory-taxonomy]] — separate Mamba-3-driven framing tension with [[nested-learning]].
 - [[watchlist]] — Mamba-2, Gated DeltaNet, RWKV-7, RetNet not captured.
+
+## Note (2026-11-28) - stability separated from capacity
+
+[[gated-deltanet-2]] (Stable GDN-2 section; arXiv:2611.34051): part of GDN-2's long-context weakness is a state-growth defect, not state size (recurrent RULER at 128K 4.82 -> 11.62 at equal size), and in the same study scalar-erase KDA beats unmodified GDN-2 on recurrent RULER. This narrows, but does not resolve, the dispute: absolute scores stay low and fall with length, training stops at 64K, and there is no full-attention or external-memory baseline. Single seed pair.

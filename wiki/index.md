@@ -18,6 +18,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Architectures & sequence models
 
 | Page | Summary |
+| [[looptitan]] | arXiv:2611.34821. Matched-budget controls: parameter revisit buys ~nothing in an MoE; gains from shape, residual scaling, compute; Muon matters more. |
+| [[mixture-of-loops-transformer]] | arXiv:2611.34923. Cross-loop KV reuse; beats OLMo3 at equal tokens (not equal compute, 2.01x at 700M). |
 | [[loopback-transformer]] | arXiv:2611.07226. Looped-Transformer residual aggregation (decayed per-block updates + parameter-free attention); beats matched-depth Transformers on ClimbMix with 40-75% of params; beats Hyperloop/mHC by 0.005-0.011 nats. |
 | [[multi-branch-transformer]] | arXiv:2611.19800. Parallel full-block branches with Joint-KV; claims 1.16-1.26x compute-equivalent quality, 19-34% less KV cache, up to 51.4% faster decode. No code link seen. |
 | [[visionhope]] | VisionHOPE (arXiv:2609.33325): vision backbone on Nested Learning's self-referential HOPE (five within-image memories, non-expansive step-size control); gains over TTT baselines ~0.0-0.3pp, no seeds. |
@@ -43,7 +45,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 | [[delta-mem]] | δ-mem (arXiv:2605.12357). Frozen full-attention backbone + compact gated delta-rule online state (8×8/layer, r=8) steering attention via dynamic low-rank Δq/Δo corrections; ~4.87M new params (0.12%), SFT only. Qwen3-4B avg +4.87 pp, MemoryAgentBench ×1.31, LoCoMo TTL ~×1.93. Memory-skeptical third path in [[conflicts/long-context-attention-vs-recurrent-memory]] / [[conflicts/fixed-state-ssm-long-context]]. |
 | [[elf-embedded-language-flows]] | MIT (Kaiming He et al., arXiv:2605.10938). Continuous diffusion LM: Flow Matching entirely in continuous embedding space, discretize only at t=1 via a shared-weight denoiser-decoder (no separate decoder, no compression VAE). WMT14 De-En BLEU 26.4, XSum R1 36.0 (best vs AR/MDLM/Duo); 10× fewer training tokens, no distillation. Parallel to [[coladlm]] in the continuous diffusion-LM cluster. |
 | [[orthrus]] | Orthrus (arXiv:2605.12825). Lightweight trainable masked-diffusion head injected into a frozen AR transformer sharing one KV cache; KL-distilled vs live AR teacher → mathematically lossless output. Up to 7.83× speedup, O(1) (~4.5 MiB) KV overhead, exact AR parity. Frozen-backbone sibling of [[tidar]]. |
-| [[gated-deltanet-2]] | NVIDIA (arXiv:2605.22791). Decouples delta-rule linear attention's single scalar gate β_t into two channel-wise gates — key-axis erase b_t + value-axis write w_t (recovers Gated DeltaNet/KDA as tied-gate special cases). Pure-recurrent beats Mamba-2/GDN/KDA/Mamba-3 SISO+MIMO at 1.3B/100B (recurrent avg 53.11 vs Mamba-3 MIMO 52.39); MK-NIAH-1 @4K 37.8 vs ≤28.0. Ablation: erase gate alone recovers most retrieval gain → update-rule specificity, not state size. Code released. Displaces [[mamba-3]] as recurrent SOTA. |
+| [[gated-deltanet-2]] | NVIDIA (arXiv:2605.22791). Decouples delta-rule linear attention's single scalar gate β_t into two channel-wise gates — key-axis erase b_t + value-axis write w_t (recovers Gated DeltaNet/KDA as tied-gate special cases). Pure-recurrent beats Mamba-2/GDN/KDA/Mamba-3 SISO+MIMO at 1.3B/100B (recurrent avg 53.11 vs Mamba-3 MIMO 52.39); MK-NIAH-1 @4K 37.8 vs ≤28.0. Ablation: erase gate alone recovers most retrieval gain → update-rule specificity, not state size. Code released. Displaces [[mamba-3]] as recurrent SOTA. Follow-up (arXiv:2611.34051): erase operator can grow state unboundedly (NaNs at 64K); Stable GDN-2 fix. |
 | [[hrm-text]] | SapientInc (arXiv:2605.20613). 1B dual-timescale hierarchical recurrent model (H2L3, 8 H/L steps, 4× recursion) pretrained from scratch on instruction-response pairs only — no raw-text phase, ~$1,472 / 40B tokens. MATH 56.2 / GSM8K 84.5 / ARC-C 81.9; beats Huginn 3.5B (MATH 12.6) at 127× more compute, rivals 2–7B dense models at 96–432× the compute. Positions task-completion-only pretraining against Chinchilla raw-text orthodoxy. Code released. |
 | [[hrm]] | Wang et al. (arXiv:2506.21734). Original Hierarchical Recurrent Model: 27M-param dual-timescale H/L architecture for symbolic reasoning tasks, 1000 training samples, no CoT tokens. Sudoku-Extreme 61.3%, ARC-AGI-1 52.0% (beaten by GRAM's stochastic extension). Foundational paper for [[hrm-text]] (language version) and [[gram-recursive-reasoning]] (stochastic extension). |
 | [[gram-recursive-reasoning]] | GRAM (KAIST/Mila/NYU, arXiv:2605.19376). Makes deterministic Recursive Reasoning Models (HRM/TRM/Looped Transformers) stochastic via ELBO/amortized VI — stochastic residual on the high-level state → multi-trajectory latent reasoning (N parallel, majority/LPRM select) + unconditional generation, no architecture change. Sudoku-Extreme 97.0% (vs TRM 87.4 / HRM 61.3); ARC-AGI-1 66.7% (vs TRM 55.7 / HRM 52.0). alphaXiv top-trending this week. |
@@ -58,6 +60,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Training & optimization
 
 | Page | Summary |
+| [[verifiable-opd]] | arXiv:2611.30325. OPD teacher reward weighted by per-group teacher-verifier correlation; ~+1 over fixed ExOPD, no seeds. |
 | [[steering-vectors-rl-dit]] | arXiv:2611.26627. Fixed per-block steering vectors fitted by velocity matching recover 90-96% of RL reward gain on six image DiTs; RL post-training of DiTs ≈ constant shift. |
 | [[regularized-score-centering]] | arXiv:2611.21791. Reverse-KL penalty added to score centering stabilizes async/off-policy RL; best on six agentic benchmarks, +14.3% AppWorld. |
 | [[deletion-tuning]] | arXiv:2611.10866. Learned binary mask zeroing <0.05% of gate weights matches full fine-tuning under GRPO/SFT/SDFT; 0.5–30 MB adapters, less forgetting. Code released. |
@@ -120,6 +123,7 @@ Catalog of all pages in this wiki. Updated on every ingest.
 ## Self-improving agents
 
 | Page | Summary |
+| [[recursive-collective-intelligence]] | arXiv:2611.32606. Equal-token-budget ladder for agent teams (vs vote, pass@n); label-free group generations; several gains on selection sets. |
 | [[resolution-hypothesis]] | arXiv:2611.23068. 1,030-run audit: agent-evolution stalls on noisy selection (~48.6% pairwise), not proposals; reported margins within run noise. |
 | [[co-cheating-crossfit]] | Co-cheating (shared wrong answers rewarded as agreement) in self-evolving search agents; CrossFit's source-level fold cross-fitting halves false agreement, +8-9 pts on Qwen3.5-4B/9B (arXiv:2609.39102). |
 |---|---|
@@ -180,6 +184,8 @@ Catalog of all pages in this wiki. Updated on every ingest.
 
 | Page | Summary |
 |---|---|
+| [[conflicts/looped-parameter-sharing-benefit]] | [[looptitan]] (compute/shape, not sharing) vs dense looped parameter savings ([[loopback-transformer]], [[hyperloop-transformers]]). |
+| [[conflicts/exopd-output-space-extrapolation]] | [[verifiable-opd]] finds ExOPD beats OPD; [[ride-opd-residual-extrapolation]] finds it degrades. |
 | [[conflicts/long-context-attention-vs-recurrent-memory]] | Titans/Hope claim recurrent memory beats GPT-4-class attention at extreme context. Awaiting attention-side counter-source. |
 | [[conflicts/fixed-state-ssm-long-context]] | Titans/Hope claim fixed-state SSMs (Mamba-2) cannot capture rich long-sequence info. Third-path defences: SST V2 / MemAgent / δ-mem; [[gated-deltanet-2]] is the nearest pure-fixed-state defence (the gap is the update rule, not capacity). Canonical Mamba-2 defence still uncaptured. |
 | [[conflicts/grpo-vs-evolution-strategies]] | EGGROLL claims ES matches/beats GRPO at scale (RWKV, 14B+, wall-clock efficiency); [[es-solution-coverage]] extends Position A to ordinary transformers at every scale 1.5B–32B on the solution-coverage/pass@k axis. Awaiting GRPO-orthodoxy primary source. |

@@ -39,6 +39,25 @@ All comparisons at 1.3B parameters, 100B FineWeb-Edu tokens, matched recurrent s
 
 **Throughput (Fig. 2, H100):** Hybrid 1.3B holds near-flat 38.0 → 36.1 Kt/s over 2K→16K sequence length; Transformer degrades sharply. Small constant overhead vs KDA from the added gate projections.
 
+## State instability and Stable GDN-2
+
+Follow-up (arXiv:2611.34051, MemTensor/USTC/HKUST(GZ); Jianlin Su co-author). GDN-2's channel-wise erase operator I - k(b*k)^T is non-normal: its spectral norm exceeds 1 unless b*k is parallel to k, so the state can grow without bound (Thm 3.1, Cor 3.2).
+
+- 64K training, 1.6B: 7 NaN-loss failures over 14 completed stages (3/8 pretraining, 4/8 post-training; one counted failure had succeeded on a first same-seed run). One completed run reached max |state| 3.16e36, near the FP32 limit.
+- Fix: symmetric channel-wise erase u = sqrt(b)*k plus residual write sqrt(1-d^2)*(k-u); non-expansive transition, O(sqrt(T)) state bound. Earlier mitigations: D-Clip (decay cap), beta-Guard (upstream gate shrinkage).
+
+| RULER avg %, recurrent | 32K | 64K | 128K |
+|---|---|---|---|
+| GDN-2 | 15.85 | 12.95 | 4.82 |
+| KDA | 16.51 | 14.55 | 9.96 |
+| beta-Guard | 16.29 | 15.27 | 10.82 |
+| Stable GDN-2 | 17.35 | 16.34 | 11.62 |
+
+- The headline +6.80 at 128K is against the weakest baseline; margin over beta-Guard is 0.80, mostly NIAH-driven. In hybrid mode beta-Guard leads at 64K/128K.
+- Recurrent 9-task average ties GDN-2 (50.39); LAMBADA PPL regresses 7.856 -> 9.333.
+- Caveats: single seed pair; no matched failure-rate comparison for the fix; no code link seen. KDA beating GDN-2 here is under a different protocol (82.8B tokens in 64K packs) from the 1.3B/100B results above.
+- Practical: monitor max |state|; finite loss does not imply a healthy state.
+
 ## Applicability
 
 Drop-in replacement for KDA or Gated DeltaNet blocks — same chunkwise WY structure, low adaptation cost for teams already using NVlabs GDN kernels. H100-class hardware preferred for Triton kernel compatibility. Strongest leverage on multi-key retrieval under fixed-state memory (agentic/RAG pipelines where recurrent decoding throughput matters). Not yet tested beyond 1.3B/100B; no released weights.
@@ -58,6 +77,7 @@ Very recent (2026-05-22). Authors include Jan Kautz and Yejin Choi (NVIDIA). Bui
 ## Source
 
 - `raw/research/weekly-2026-05-25/01-gated-deltanet-2.md` (arXiv:2605.22791)
+- `raw/research/weekly-2026-11-28/03-stable-gated-deltanet-2.md` (arXiv:2611.34051)
 
 ## Related
 

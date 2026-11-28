@@ -438,7 +438,7 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 
 - **Self-Improvement Memory Enables Continual Recursive Self-Improvement (https://arxiv.org/abs/2611.18856)** — Memory inside the harness optimizer; coding score +2.36 over harness-only (p=0.003); HF 36. Makes the RSI optimizer stateful; see [[resolution-hypothesis]] for the noise caveat. *(weekly-brief 2026-11-21.)*
 - **Piccolo: Co-Evolving Decision Models and Data through Recursive Self-Improvement (https://arxiv.org/abs/2611.24651)** — Research agents build and iterate the training data for 0.8B–27B decision models; code (agentscope-ai/Piccolo). Extends [[so-arena]] / System One line. *(weekly-brief 2026-11-21.)*
-- **LM Harnesses Are Compositional Generalizers (MIT CSAIL; no arXiv id found)** — Harness keeps each LLM call in-distribution, enabling synthetic per-call training; seen in AINews 11-20 and alphaXiv; unverified. *(weekly-brief 2026-11-21.)*
+- **LM Harnesses Are Compositional Generalizers (MIT CSAIL; https://arxiv.org/abs/2611.28298)** — Harness keeps each LLM call in-distribution, enabling synthetic per-call training; seen in AINews 11-20 and alphaXiv; unverified. *(weekly-brief 2026-11-21.)*
 
 ## RL / post-training (continued — weekly-brief 2026-11-21)
 
@@ -458,3 +458,31 @@ Papers and projects referenced in radar-2026-04 summaries that *would* deserve t
 ## Infrastructure (continued — weekly-brief 2026-11-21)
 
 - **Tideway: Phase-Aware Tiered Memory for MoE Inference on Consumer Devices (https://arxiv.org/abs/2611.14848)** — HF 67; code (Afterglow231/Tideway). *(weekly-brief 2026-11-21.)*
+
+## Architectures & sequence models (continued — weekly-brief 2026-11-28)
+
+- **Loom Attention (https://arxiv.org/abs/2611.30634)** — Per-token attention over earlier heads via matrix memory; reported to match Transformers trained with over 3x compute; HF 93; code (Caiyun-AI/LoomFormer). *(weekly-brief 2026-11-28.)*
+- **Loop Residuals (https://arxiv.org/abs/2611.31094)** — Looped layers attend to earlier-loop outputs; +29.1% over SFT on Qwen3-1.7B at 2x compute (metric per abstract, unverified); HF 25 + AINews; code (NUS-HPC-AI-Lab/LoopRes). Compare [[loopback-transformer]]. *(weekly-brief 2026-11-28.)*
+- **cmHC (https://arxiv.org/abs/2611.27193)** — Contracts the mHC mixing polytope; up to 44.8% lower hyper-connection latency on Ascend; HF 94; code (Newiz430/cmHC). Extends [[manifold-constrained-hyper-connections]]. *(weekly-brief 2026-11-28.)*
+
+## RL / post-training (continued — weekly-brief 2026-11-28)
+
+- **RL Can Be Recovered From Its Own Rollouts (https://arxiv.org/abs/2611.33102)** — Maximum-likelihood replay of archived rollouts, one update per batch, reported to recover online RL performance; alphaXiv-trending. *(weekly-brief 2026-11-28.)*
+- **Reinforcement Learning with Verifiable Beliefs (https://arxiv.org/abs/2611.32884)** — Exact-posterior reward for continue-vs-commit; +17.1% over base across nine settings; HF 65; code (declare-lab/RLVB). *(weekly-brief 2026-11-28.)*
+- **What Makes Good Data for Training Coding Agents (SWE-Gym-Verified) (https://arxiv.org/abs/2611.30207)** — Execution audit finds 74% of never-solved tasks reject correct fixes; audited labels add +2.4/+2.7 points; HF 19; code. *(weekly-brief 2026-11-28.)*
+
+## Self-improving agents (continued — weekly-brief 2026-11-28)
+
+- **Self-WSP (https://arxiv.org/abs/2611.28833)** — Model edits its own weights (GSM8K 11.8% to 62.2%), but random search is sometimes comparable; HF 12. Follow-on to [[weight-space-programming]]. *(weekly-brief 2026-11-28.)*
+
+## Benchmarks & evaluation (continued — weekly-brief 2026-11-28)
+
+- **CoEvoBench (https://arxiv.org/abs/2611.27116)** — LLM-as-researcher co-evolves model and harness; best closes over 4/5 of the gap, rarely succeeds on long-horizon coding; AINews; code. *(weekly-brief 2026-11-28.)*
+
+## Computer vision / 3D (continued — weekly-brief 2026-11-28)
+
+- **Single-Transformer Latent Diffusion (https://arxiv.org/abs/2611.29064)** — One backbone encodes, generates and decodes; gFID 2.08 at 215M; HF 16; code. Bears on [[conflicts/pixel-space-vs-latent-space-generation]]. *(weekly-brief 2026-11-28.)*
+
+## Infrastructure (continued — weekly-brief 2026-11-28)
+
+- **Looped Models are Fast Multi-Token Predictors (Floodgates) (https://arxiv.org/abs/2611.33896)** — Shallow-loop parallel drafter for self-speculative decoding; up to 7.5x lossless speedup; alphaXiv. *(weekly-brief 2026-11-28.)*

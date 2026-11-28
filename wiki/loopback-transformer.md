@@ -48,3 +48,5 @@ Pretraining-from-scratch of looped/recurrent-depth LMs (Huginn, Hyperloop style)
 - [[delta-mem]] - delta-rule write/read framing parallel.
 - [[gated-deltanet-2]] - linear-attention memory ideas ported to depth.
 - [[mamba-3]] - recurrent memory retention/gating lineage the paper cites.
+- [[looptitan]] - MoE evidence that residual-scale changes can act as effective-LR changes; not a direct test of this design. See [[conflicts/looped-parameter-sharing-benefit]].
+- [[mixture-of-loops-transformer]] - KV-based cross-loop aggregation.

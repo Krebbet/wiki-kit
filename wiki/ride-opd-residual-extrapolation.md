@@ -82,3 +82,4 @@ Table 1 Avg. (teacher / student / OPD top-1 / OPRD / ExOPD / RIDE):
 - [[kimi-k3]] — MOPD from 9 specialist RL models
 - [[sensenova-u1-5]] — multi-teacher OPD consolidating RL experts
 - [[sparse-policy-selection-vs-gradient-cancellation]] — RL as small, structured, consistent updates
+- [[verifiable-opd]] - reports fixed ExOPD beating OPD: [[conflicts/exopd-output-space-extrapolation]].
